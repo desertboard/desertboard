@@ -8,9 +8,29 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "450px",
+        sm: "576px",
+        md: "768px",
+        lg: "992px",
+        xl: "1200px",
+        xxl: "1400px",
+        "3xl": "1760px",
+      },
+      container: {
+        screens: {
+          xs: "450px",
+          sm: "568px",
+          md: "768px",
+          lg: "992px",
+          xl: "1200px",
+          xxl: "1400px",
+          "3xl": "1760px",
+        },
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: "#00594F",
+        secondary: "#FFB549",
       },
     },
   },
