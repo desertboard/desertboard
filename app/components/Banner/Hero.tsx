@@ -41,7 +41,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 <li key={index} className="inline-flex items-center">
                   <a
                     href={breadcrumb.href}
-                    className="text-[#FFFFFFBF] opacity-75 text-[20px]">
+                    className={`text-[#FFFFFFBF]  text-[20px] ${
+                      index === breadcrumbs.length - 1
+                        ? "font-bold text-white "
+                        : "opacity-75"
+                    }`}>
                     {breadcrumb.label}
                   </a>
                   {index < breadcrumbs.length - 1 && (
