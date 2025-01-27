@@ -10,6 +10,8 @@ import icn1 from "@/public/assets/images/icn1.svg";
 import icn2 from "@/public/assets/images/icn2.svg";
 import icn3 from "@/public/assets/images/icn3.svg";
 import icn4 from "@/public/assets/images/icn4.svg";
+import readarrow from "@/public/assets/images/read-arrow.svg";
+
 import Image from "next/image";
 
 const HeroSection = () => {
@@ -43,10 +45,10 @@ const HeroSection = () => {
         </div>
       </section>
 
-      <section className="py-20 py-md- 15 py-10 insp-mn relative">
+      <section className="pt-20 pt-md-15 pt-10 pb-[120px] pb-md-15 pb-10 insp-mn relative inspbg">
         <div className="container m-auto ">
           <div className="flex flex-col lg:flex-row items-center justify-between    adst relative">
-            <div className="lg:w-1/2 text-center lg:text-left px-16 py-5">
+            <div className="lg:w-1/2 text-center lg:text-left px-16 py-5 opacity-[99%]">
               <h2 className="  text-gray-900 mb-4 text-[48px]  font-black">
                 Inspiration<span className="text-[#FF671F]">.</span>
               </h2>
@@ -88,15 +90,15 @@ const HeroSection = () => {
                       stroke="currentColor"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M14.752 11.168l-3.197-2.132A1 1 0 0010 10v4a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
                       />
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"
                       />
                     </svg>
@@ -107,7 +109,7 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-      <section className="pb-20 pb-md-15 pb-10 pt-10 pt-md-5 pt-5 insp-mn relative">
+      <section className="py-20 py-md- 15 py-10 insp-mn relative darkbanner">
         <div className="container m-auto">
           <div className="text-center md:text-left mb-8">
             <h2 className="text-3xl font-bold text-gray-800 mb-2">
@@ -140,7 +142,12 @@ const HeroSection = () => {
                   and construction projects. From planning to execution, we
                   ensure precision and efficiency.
                 </p>
-                <a href="#" className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn ">Read More</a>
+                <a
+                  href="#"
+                  className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
+                >
+                  Read More
+                </a>
               </div>
             </div>
 
@@ -156,15 +163,19 @@ const HeroSection = () => {
                   <Image src={icn2} alt="icn1" className="" />
                 </div>
                 <h3 className=" pt-5 border-t opacity-[90%] text-lg font-semibold mt-5 text-[28px] leading-[1.3] font-[700] transition-all duration-300 group-hover:mt-10">
-                Landscape
+                  Landscape
                 </h3>
                 <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">
                   Discover how our innovative solutions streamline engineering
                   and construction projects. From planning to execution, we
                   ensure precision and efficiency.
                 </p>
-                <a href="#" className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn ">Read More</a>
-
+                <a
+                  href="#"
+                  className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
+                >
+                  Read More
+                </a>
               </div>
             </div>
 
@@ -180,15 +191,19 @@ const HeroSection = () => {
                   <Image src={icn3} alt="icn1" className="" />
                 </div>
                 <h3 className=" pt-5 border-t opacity-[90%] text-lg font-semibold mt-5 text-[28px] leading-[1.3] font-[700] transition-all duration-300 group-hover:mt-10">
-                Interior Design
+                  Interior Design
                 </h3>
                 <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">
                   Discover how our innovative solutions streamline engineering
                   and construction projects. From planning to execution, we
                   ensure precision and efficiency.
                 </p>
-                <a href="#" className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn ">Read More</a>
-
+                <a
+                  href="#"
+                  className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
+                >
+                  Read More
+                </a>
               </div>
             </div>
 
@@ -204,18 +219,220 @@ const HeroSection = () => {
                   <Image src={icn4} alt="icn1" className="" />
                 </div>
                 <h3 className=" pt-5 border-t opacity-[90%] text-lg font-semibold mt-5 text-[28px] leading-[1.3] font-[700] transition-all duration-300 group-hover:mt-10">
-                Events   <br /> & Exhibitions
+                  Events <br /> & Exhibitions
                 </h3>
                 <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">
                   Discover how our innovative solutions streamline engineering
                   and construction projects. From planning to execution, we
                   ensure precision and efficiency.
                 </p>
-                <a href="#" className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn ">Read More</a>
-
+                <a
+                  href="#"
+                  className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
+                >
+                  Read More
+                </a>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 py-md- 15 py-10 insp-mn relative darkbanner">
+        <div className="container m-auto">
+          <div className="flex justify-between mb-8 items-end">
+            <div className="text-center md:text-left ">
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">
+                Sustainable Development Goals
+                <span className="text-[#FF671F]">.</span>
+              </h2>
+              <p className="text-gray-400 text-[20px] max-w-[60ch]">
+                Explore how eco-friendly and locally produced materials are
+                helping us move closer to the United Nations' Sustainable
+                Development Goals.
+              </p>
+            </div>
+            <div className="flex gap-2 items-center ">
+              <div>
+                <p className="mb-0 text-18 text-[#FF671F]  font-black">
+                  Read More
+                </p>
+              </div>{" "}
+              <Image src={readarrow} alt="icn1" className="" />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex">
+          <div
+            className="relative group overflow-hidden transform transition-all duration-500 growf "
+            style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}
+          >
+            <div className="flex items-center justify-center min-h-[460px]">
+              <div className="relative    bg-cover bg-center p-6">
+                {/* Thumbnail Image Container with Hover Effect */}
+                <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
+                  <Image
+                    src={Banner}
+                    alt="Thumbnail"
+                    className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]"
+                  />
+                </div>
+
+                {/* Description Content with Hover Effect */}
+                <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <h3 className="text-lg font-bold text-white">
+                    Description Title
+                  </h3>
+                  <p className="text-sm text-white mt-2">
+                    This is a description that appears when you hover over the
+                    thumbnail image.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="relative group overflow-hidden transform transition-all duration-500 growf "
+            style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}
+          >
+            <div className="flex items-center justify-center min-h-[460px]">
+              <div className="relative    bg-cover bg-center p-6">
+                {/* Thumbnail Image Container with Hover Effect */}
+                <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
+                  <Image
+                    src={Banner}
+                    alt="Thumbnail"
+                    className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]"
+                  />
+                </div>
+
+                {/* Description Content with Hover Effect */}
+                <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <h3 className="text-lg font-bold text-white">
+                    Description Title
+                  </h3>
+                  <p className="text-sm text-white mt-2">
+                    This is a description that appears when you hover over the
+                    thumbnail image.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="relative group overflow-hidden transform transition-all duration-500 growf "
+            style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}
+          >
+            <div className="flex items-center justify-center min-h-[460px]">
+              <div className="relative    bg-cover bg-center p-6">
+                {/* Thumbnail Image Container with Hover Effect */}
+                <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
+                  <Image
+                    src={Banner}
+                    alt="Thumbnail"
+                    className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]"
+                  />
+                </div>
+
+                {/* Description Content with Hover Effect */}
+                <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <h3 className="text-lg font-bold text-white">
+                    Description Title
+                  </h3>
+                  <p className="text-sm text-white mt-2">
+                    This is a description that appears when you hover over the
+                    thumbnail image.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="relative group overflow-hidden transform transition-all duration-500 growf "
+            style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}
+          >
+            <div className="flex items-center justify-center min-h-[460px]">
+              <div className="relative    bg-cover bg-center p-6">
+                {/* Thumbnail Image Container with Hover Effect */}
+                <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
+                  <Image
+                    src={Banner}
+                    alt="Thumbnail"
+                    className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]"
+                  />
+                </div>
+
+                {/* Description Content with Hover Effect */}
+                <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <h3 className="text-lg font-bold text-white">
+                    Description Title
+                  </h3>
+                  <p className="text-sm text-white mt-2">
+                    This is a description that appears when you hover over the
+                    thumbnail image.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="relative group overflow-hidden transform transition-all duration-500 growf "
+            style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}
+          >
+            <div className="flex items-center justify-center min-h-[460px]">
+              <div className="relative    bg-cover bg-center p-6">
+                {/* Thumbnail Image Container with Hover Effect */}
+                <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
+                  <Image
+                    src={Banner}
+                    alt="Thumbnail"
+                    className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]"
+                  />
+                </div>
+
+                {/* Description Content with Hover Effect */}
+                <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <h3 className="text-lg font-bold text-white">
+                    Description Title
+                  </h3>
+                  <p className="text-sm text-white mt-2">
+                    This is a description that appears when you hover over the
+                    thumbnail image.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="relative group overflow-hidden transform transition-all duration-500 growf "
+            style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}
+          >
+            <div className="flex items-center justify-center min-h-[460px]">
+              <div className="relative    bg-cover bg-center p-6">
+                {/* Thumbnail Image Container with Hover Effect */}
+                <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
+                  <Image
+                    src={Banner}
+                    alt="Thumbnail"
+                    className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]"
+                  />
+                </div>
+
+                {/* Description Content with Hover Effect */}
+                <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <h3 className="text-lg font-bold text-white">
+                    Description Title
+                  </h3>
+                  <p className="text-sm text-white mt-2">
+                    This is a description that appears when you hover over the
+                    thumbnail image.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
     </>
