@@ -25,7 +25,6 @@ body {
   width: 65%;
   height: 100%;
   background: #e1dcd8;
-  z-index: -1;
 }
 .bg-blacktrans {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
@@ -40,8 +39,9 @@ body {
   background-repeat: no-repeat;
   background-position: left bottom;
   left: 0;
-  z-index: -2;
   transform: rotate(-3deg);
+  bottom: -22px;
+  z-index: -1;
 }
 .insp-mn::after {
   content: "";
@@ -52,8 +52,8 @@ body {
   background-repeat: no-repeat;
   background-position: top right;
   right: 0;
-  z-index: -2;
   top: 0;
+  z-index: -1;
 }
 .rmbtn {
   color: #ff671f;
@@ -94,3 +94,24 @@ body {
     -webkit-box-orient: vertical;
   }
 }
+.inspbg{background: url(/assets/images/home/Lighter.png);
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+ }
+.darkbanner{background: url(/assets/images/home/Darker.png);
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+ }
+
+
+ .growf {
+  flex-grow: 1;
+  position: relative;
+  transition: all 300ms ease-in-out;
+ }
+ .growf:hover {
+    flex-grow: 9;
+  }
+
