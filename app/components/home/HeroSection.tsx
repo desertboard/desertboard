@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import Link from "next/link";
 import Banner from "@/public/assets/banner.png";
@@ -11,6 +12,11 @@ import icn2 from "@/public/assets/images/icn2.svg";
 import icn3 from "@/public/assets/images/icn3.svg";
 import icn4 from "@/public/assets/images/icn4.svg";
 import readarrow from "@/public/assets/images/read-arrow.svg";
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
 
 import Image from "next/image";
 
@@ -100,14 +106,14 @@ const HeroSection = () => {
                 <h3 className=" pt-5 border-t opacity-[90%] text-lg font-semibold mt-5 text-[28px] leading-[1.3] font-[700] transition-all duration-300 group-hover:mt-10">
                   Engineering <br /> & Construction
                 </h3>
-                <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">
+                <p className="mt-5 opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-300 text-[16px] leading-[1.5]">
                   Discover how our innovative solutions streamline engineering
                   and construction projects. From planning to execution, we
                   ensure precision and efficiency.
                 </p>
                 <a
                   href="#"
-                  className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
+                  className="relative top-3 opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
                 >
                   Read More
                 </a>
@@ -124,14 +130,14 @@ const HeroSection = () => {
                 <h3 className=" pt-5 border-t opacity-[90%] text-lg font-semibold mt-5 text-[28px] leading-[1.3] font-[700] transition-all duration-300 group-hover:mt-10">
                   Landscape
                 </h3>
-                <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">
+                <p className="mt-5 opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-300 text-[16px] leading-[1.5]">
                   Discover how our innovative solutions streamline engineering
                   and construction projects. From planning to execution, we
                   ensure precision and efficiency.
                 </p>
                 <a
                   href="#"
-                  className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
+                  className="relative top-3 opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
                 >
                   Read More
                 </a>
@@ -148,14 +154,14 @@ const HeroSection = () => {
                 <h3 className=" pt-5 border-t opacity-[90%] text-lg font-semibold mt-5 text-[28px] leading-[1.3] font-[700] transition-all duration-300 group-hover:mt-10">
                   Interior Design
                 </h3>
-                <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">
+                <p className="mt-5 opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-300 text-[16px] leading-[1.5]">
                   Discover how our innovative solutions streamline engineering
                   and construction projects. From planning to execution, we
                   ensure precision and efficiency.
                 </p>
                 <a
                   href="#"
-                  className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
+                  className="relative top-3 opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
                 >
                   Read More
                 </a>
@@ -172,14 +178,14 @@ const HeroSection = () => {
                 <h3 className=" pt-5 border-t opacity-[90%] text-lg font-semibold mt-5 text-[28px] leading-[1.3] font-[700] transition-all duration-300 group-hover:mt-10">
                   Events <br /> & Exhibitions
                 </h3>
-                <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">
+                <p className="mt-5 opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-300 text-[16px] leading-[1.5]">
                   Discover how our innovative solutions streamline engineering
                   and construction projects. From planning to execution, we
                   ensure precision and efficiency.
                 </p>
                 <a
                   href="#"
-                  className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
+                  className="relative top-3 opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
                 >
                   Read More
                 </a>
@@ -222,7 +228,7 @@ const HeroSection = () => {
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="relative    bg-cover bg-center p-6">
                 {/* Thumbnail Image Container with Hover Effect */}
-                <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
+                <div className="inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
                   <Image
                     src={Banner}
                     alt="Thumbnail"
@@ -231,7 +237,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Description Content with Hover Effect */}
-                <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500">
                   <h3 className="text-lg font-bold text-white">
                     Description Title
                   </h3>
@@ -250,7 +256,7 @@ const HeroSection = () => {
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="relative    bg-cover bg-center p-6">
                 {/* Thumbnail Image Container with Hover Effect */}
-                <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
+                <div className="inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
                   <Image
                     src={Banner}
                     alt="Thumbnail"
@@ -259,7 +265,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Description Content with Hover Effect */}
-                <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500">
                   <h3 className="text-lg font-bold text-white">
                     Description Title
                   </h3>
@@ -278,7 +284,7 @@ const HeroSection = () => {
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="relative    bg-cover bg-center p-6">
                 {/* Thumbnail Image Container with Hover Effect */}
-                <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
+                <div className="inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
                   <Image
                     src={Banner}
                     alt="Thumbnail"
@@ -287,7 +293,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Description Content with Hover Effect */}
-                <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500">
                   <h3 className="text-lg font-bold text-white">
                     Description Title
                   </h3>
@@ -306,7 +312,7 @@ const HeroSection = () => {
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="relative    bg-cover bg-center p-6">
                 {/* Thumbnail Image Container with Hover Effect */}
-                <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
+                <div className="inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
                   <Image
                     src={Banner}
                     alt="Thumbnail"
@@ -315,7 +321,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Description Content with Hover Effect */}
-                <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500">
                   <h3 className="text-lg font-bold text-white">
                     Description Title
                   </h3>
@@ -334,7 +340,7 @@ const HeroSection = () => {
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="relative    bg-cover bg-center p-6">
                 {/* Thumbnail Image Container with Hover Effect */}
-                <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
+                <div className="inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
                   <Image
                     src={Banner}
                     alt="Thumbnail"
@@ -343,7 +349,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Description Content with Hover Effect */}
-                <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full  transition-opacity duration-500">
                   <h3 className="text-lg font-bold text-white">
                     Description Title
                   </h3>
@@ -362,7 +368,7 @@ const HeroSection = () => {
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="relative    bg-cover bg-center p-6">
                 {/* Thumbnail Image Container with Hover Effect */}
-                <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
+                <div className="inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
                   <Image
                     src={Banner}
                     alt="Thumbnail"
@@ -371,7 +377,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Description Content with Hover Effect */}
-                <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500">
                   <h3 className="text-lg font-bold text-white">
                     Description Title
                   </h3>
@@ -385,6 +391,17 @@ const HeroSection = () => {
           </div>
 
         </div>
+
+        <Swiper
+
+    >
+      <SwiperSlide>Slide 1</SwiperSlide>
+      <SwiperSlide>Slide 2</SwiperSlide>
+      <SwiperSlide>Slide 3</SwiperSlide>
+      <SwiperSlide>Slide 4</SwiperSlide>
+      ...
+        </Swiper>
+
       </section>
     </>
   );
