@@ -32,9 +32,9 @@ export const MenuItem = ({
     <div onMouseEnter={() => noMenu ? setActive(null) : setActive(item)} className="relative ">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-white hover:opacity-[0.9] dark:text-white"
+        className="cursor-pointer text-white hover:opacity-[0.9] dark:text-white font-bold"
       >
-        {item.toUpperCase()}
+        {item}
       </motion.p>
       {active !== null && !noMenu && (
         <motion.div
@@ -74,7 +74,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative border border-transparent dark:bg-black dark:border-white/[0.2] bg-transparent w-3/4 shadow-input flex justify-between space-x-4 px-24 py-2 "
+      className="relative border border-transparent dark:bg-black dark:border-white/[0.2] bg-transparent w-full shadow-input flex justify-between space-x-14 py-4"
     >
       {children}
     </nav>
