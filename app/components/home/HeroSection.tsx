@@ -29,12 +29,7 @@ import insta from "@/public/assets/images/home/inst.svg";
 import youtube from "@/public/assets/images/home/youtube.svg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-<<<<<<< HEAD
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-=======
-
-import { Navigation,  Pagination } from "swiper/modules";
->>>>>>> 1c85cab94fa42c841eedf27e5787221973ecce3b
 // Import Swiper styles
 import "swiper/css";
 import Image from "next/image";
@@ -59,7 +54,6 @@ const HeroSection = () => {
           </Link>
         </div>
       </section>
-<<<<<<< HEAD
       <MainDescBOx
         secTitle="Inspiration"
         subTitle="A Legacy Rooted in the Desert"
@@ -70,57 +64,6 @@ const HeroSection = () => {
         mainVdo="/assets/images/home/liftvdo.mp4"
         vdoPoster="/assets/images/mn.jpg"
       />
-=======
-
-      <section className="pt-20 md:pt-15 pt-10 pb-[120px] md:pb-15 pb-10 insp-mn relative inspbg">
-        <div className="container m-auto ">
-          <div className="flex flex-col lg:flex-row items-center justify-between    adst relative">
-            <div className="lg:w-1/2 text-left px-16 py-5 lg:py-20 opacity-[99%]">
-              <h2 className="  text-gray-900 mb-4 text-[28px] md:text-[48px]  font-black nuber-next">
-                Inspiration<span className="text-[#FF671F]">.</span>
-              </h2>
- 
-              <p className=" nuber-next   mb-6 text-[#151515] font-black opacity-[50%] text-font24">A Legacy Rooted in the Desert</p>
-              <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%]">In the heart of the desert, where towering date palm trees symbolize our heritage, a groundbreaking innovation has emerged: DesertBoard&apos;s Palm Strand Board (PSB®), the world’s first engineered palm-based board. </p>
-              <br />
-              <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%]">
-                For centuries, date palm trees have been a vital resource in the Middle East, historically used to construct Barasti houses that provided essential shelter in the harsh desert climate. Inspired by the rich legacy and the vision of the UAE&apos;s founding father, Sheikh Zayed bin Sultan Al Nahyan, DesertBoard® successfully produced
-                the first engineered board in 2021.
- 
-              </p>
-            </div>
-
-            <div className="  flex justify-end relative top-5">
-              <div className="relative">
-                {/* <Image
-                  src={imsec2}
-                  width={1080}
-                  height={640}
-                  className="h-auto lg:h-[640px] w-auto lg:w-580px]"
-                  alt="Picture of the author"
-                /> */}
-                <div className="relative ">
-                  {/* Video element */}
-                  <video ref={videoRef} className=" " src="/assets/images/home/liftvdo.mp4" poster="/assets/images/mn.jpg" controls={false} width={1080} height={740} playsInline onEnded={() => setIsPlaying(false)} />
-
-                  {/* Play/Pause Button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {!isPlaying && ( // Show the button only if video is paused
-                      <button className="bg-white bg-opacity-20 rounded-sm px-10 py-6 transition duration-300 hover:bg-opacity-50" onClick={togglePlay}>
-                        <svg width="26" height="34" viewBox="0 0 26 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M0.0114746 0.469116V33.5308L25.9885 17L0.0114746 0.469116Z" fill="white" />
-                        </svg>
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
->>>>>>> 1c85cab94fa42c841eedf27e5787221973ecce3b
       <UspList secTitle={"Key USP’s"} />
       <section className="py-20 md:py-15 py-10 insp-mn relative darkbanner">
         <div className="container m-auto">
