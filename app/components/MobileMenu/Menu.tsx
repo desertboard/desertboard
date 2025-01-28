@@ -1,3 +1,4 @@
+
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import styles from './style.module.scss';
 import { motion } from 'framer-motion';
@@ -51,7 +52,7 @@ const navItems = [
   },
 ]
 
-export default function index({setSubMenuActive,setIsActive}:{
+export default function Menu({setSubMenuActive,setIsActive}:{
   setSubMenuActive:Dispatch<SetStateAction<boolean>>
   setIsActive:Dispatch<SetStateAction<boolean>>
 }) {

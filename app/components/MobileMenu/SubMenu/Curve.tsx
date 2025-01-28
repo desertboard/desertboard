@@ -11,7 +11,6 @@ export default function Curve({setIsActive,setSubMenuActive}:{
   const targetPath = `M100 0 L100 ${window.innerHeight} Q100 ${window.innerHeight/2} 100 0`
   
 
-
   const curve = {
     initial: {
         d: initialPath

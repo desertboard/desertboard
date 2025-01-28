@@ -8,7 +8,7 @@ interface FrameworkItem {
   dec: string;
   link: string;
   image: StaticImageData;
-  icon: any;
+  icon: string;
 }
 
 interface FrameworkSectionProps {
