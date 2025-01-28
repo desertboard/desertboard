@@ -306,7 +306,7 @@
     .usp-4 {
         left: 50%;
         width: 50%;
-        
+
     }
     .usp-5 {
         left: 25%;
@@ -408,14 +408,32 @@
 }
 
 
+
 @media (max-width:992px){
     .usp{
         &__list{
             display: flex;
-            
+             &>div{
+                width:50%!important;
+           }
         }
         &-item{
             width: 50%;
+            position: relative!important;
+            inset: 0!important;
+        }
+    }
+}
+
+@media (max-width:768px){
+    .usp{
+        &__list{
+           &>div{
+                width:100%!important;
+           }
+        }
+         &-item{
+            width:100%;
             position: relative!important;
             inset: 0!important;
         }
