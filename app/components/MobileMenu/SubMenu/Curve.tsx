@@ -7,8 +7,10 @@ export default function Curve({setIsActive,setSubMenuActive}:{
   setSubMenuActive?:Dispatch<SetStateAction<boolean>>
 }) {
 
-  const initialPath = `M100 0 L100 ${window.innerHeight} Q-100 ${window.innerHeight/2} 100 0`
+   const initialPath = `M100 0 L100 ${window.innerHeight} Q-100 ${window.innerHeight/2} 100 0`
   const targetPath = `M100 0 L100 ${window.innerHeight} Q100 ${window.innerHeight/2} 100 0`
+  
+
 
   const curve = {
     initial: {
@@ -24,12 +26,15 @@ export default function Curve({setIsActive,setSubMenuActive}:{
     }
   }
 
+
   const handleCloseMenu = () =>{
     setIsActive(false) 
     if(setSubMenuActive){
       setSubMenuActive(false)
     }
   }
+
+
 
   return (
     <svg className={styles.svgCurve} onClick={handleCloseMenu}>

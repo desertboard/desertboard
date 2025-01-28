@@ -1,5 +1,4 @@
 "use client";
-import React, { useRef, useState } from "react";
 import Link from "next/link";
 import "@/app/components/home/usps.scss";
 import Banner from "@/public/assets/banner.png";
@@ -22,38 +21,17 @@ import youtube from "@/public/assets/images/home/youtube.svg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
+
 import { Navigation,  Pagination } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
-
 import Image from "next/image";
-
-import { Homecarlsldata } from "../../data/homecarlsl";
-
 import UspList from "./UspList";
+import MainDescBOx from "../Common/MainDescBox";
+import { Homecarlsldata } from "../../data/homecarlsl";
 import CardFlow from "../Common/cardflow";
 
 const HeroSection = () => {
-  // Function to toggle play/pause
-  const videoRef = useRef<HTMLVideoElement | null>(null); // Type the ref for HTMLVideoElement
-  const [isPlaying, setIsPlaying] = useState(false); // State to track play/pause
-
-  // Function to toggle play/pause
-  const togglePlay = () => {
-    const video = videoRef.current;
-    if (video) {
-      if (video.paused) {
-        video.play();
-        setIsPlaying(true);
-      } else {
-        video.pause();
-        setIsPlaying(false);
-      }
-    } else {
-      console.error("Video element not found");
-    }
-  };
-
   return (
     <>
       <section className="relative h-[98vh] bg-cover bg-center flex items-center justify-center text-center">
@@ -72,57 +50,21 @@ const HeroSection = () => {
         </div>
       </section>
 
-      <section className="pt-20 md:pt-15 pt-10 pb-[120px] md:pb-15 pb-10 insp-mn relative inspbg">
-        <div className="container m-auto ">
-          <div className="flex flex-col lg:flex-row items-center justify-between    adst relative">
-            <div className="lg:w-1/2 text-left px-16 py-5 lg:py-20 opacity-[99%]">
-              <h2 className="  text-gray-900 mb-4 text-[28px] md:text-[48px]  font-black nuber-next">
-                Inspiration<span className="text-[#FF671F]">.</span>
-              </h2>
+      <MainDescBOx
+        secTitle="Inspiration"
+        subTitle="A Legacy Rooted in the Desert"
+        desc="In the heart of the desert, where towering date palm trees symbolize our heritage, a groundbreaking innovation has emerged: DesertBoard's Palm Strand Board (PSB®), the world’s first engineered palm-based board. "
+        desc2=" For centuries, date palm trees have been a vital resource in the Middle East, historically used to construct Barasti houses that provided essential shelter in the harsh desert climate. Inspired by the rich legacy and the vision of the UAE's founding father, Sheikh Zayed bin Sultan Al Nahyan, DesertBoard® successfully produced the
+              first engineered board in 2021."
+        // mainImg="/assets/images/mn.jpg"
+        mainVdo="/assets/images/home/liftvdo.mp4"
+        vdoPoster="/assets/images/mn.jpg"
+      />
 
-              <p className=" nuber-next   mb-6 text-[#151515] font-black opacity-[50%] text-font24">A Legacy Rooted in the Desert</p>
-              <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%]">In the heart of the desert, where towering date palm trees symbolize our heritage, a groundbreaking innovation has emerged: DesertBoard&apos;s Palm Strand Board (PSB®), the world’s first engineered palm-based board. </p>
-              <br />
-              <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%]">
-                For centuries, date palm trees have been a vital resource in the Middle East, historically used to construct Barasti houses that provided essential shelter in the harsh desert climate. Inspired by the rich legacy and the vision of the UAE&apos;s founding father, Sheikh Zayed bin Sultan Al Nahyan, DesertBoard® successfully produced
-                the first engineered board in 2021.
 
-              </p>
-            </div>
-
-            <div className="  flex justify-end relative top-5">
-              <div className="relative">
-                {/* <Image
-                  src={imsec2}
-                  width={1080}
-                  height={640}
-                  className="h-auto lg:h-[640px] w-auto lg:w-580px]"
-                  alt="Picture of the author"
-                /> */}
-                <div className="relative ">
-                  {/* Video element */}
-                  <video ref={videoRef} className=" " src="/assets/images/home/liftvdo.mp4" poster="/assets/images/mn.jpg" controls={false} width={1080} height={740} playsInline onEnded={() => setIsPlaying(false)} />
-
-                  {/* Play/Pause Button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {!isPlaying && ( // Show the button only if video is paused
-                      <button className="bg-white bg-opacity-20 rounded-sm px-10 py-6 transition duration-300 hover:bg-opacity-50" onClick={togglePlay}>
-                        <svg width="26" height="34" viewBox="0 0 26 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M0.0114746 0.469116V33.5308L25.9885 17L0.0114746 0.469116Z" fill="white" />
-                        </svg>
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <UspList secTitle={"Key USP’s"} />
-
-      <section className="py-20 md:py-15 py-10 insp-mn relative inspbg">
+      <section className="py-20 md:py-15 py-10 insp-mn relative darkbanner">
         <div className="container m-auto">
           <div className="text-left mb-10">
             <h2 className="text-gray-900 mb-4 text-[28px] md:text-[48px]  font-black nuber-next">
@@ -398,39 +340,17 @@ const HeroSection = () => {
         </div>
         <div className="container m-auto relative">
           <div className="swiper-button-next cursor-pointer group absolute bottom-[-70px] right-0  transform -translate-y-1/2 text-white z-10">
-             <div className="transition-all duration-300 group-hover:translate-x-1">
-            <svg
-              width="25"
-              height="34"
-              viewBox="0 0 25 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996"
-                stroke="#FF671F"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
+            <div className="transition-all duration-300 group-hover:translate-x-1">
+              <svg width="25" height="34" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
               </svg>
             </div>
           </div>
           <div className="swiper-button-prev group cursor-pointer absolute bottom-[-70px] right-[60px] transform -translate-y-1/2 text-white z-10">
             {/* You can customize this icon as needed */}
             <div className="transition-all duration-300 group-hover:translate-x-[-5px]">
-            <svg
-              width="25"
-              height="34"
-              viewBox="0 0 25 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M17.9879 2L2.98787 17L17.9879 32M22.9939 7.00392L12.9978 17L22.9939 26.996"
-                stroke="#FF671F"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
+              <svg width="25" height="34" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.9879 2L2.98787 17L17.9879 32M22.9939 7.00392L12.9978 17L22.9939 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
               </svg>
             </div>
           </div>
@@ -440,23 +360,10 @@ const HeroSection = () => {
       <section className="bg-[#FFB549]  ">
         <div className="container m-auto">
           <div className="flex items-center gap-3 px-3 mdpx-0  py-10  group  justify-end">
-            <p className="mb-0 text-[22px] font-bold text-white nuber-next">
-              Discover Industry Solutions
-            </p>
+            <p className="mb-0 text-[22px] font-bold text-white nuber-next">Discover Industry Solutions</p>
             <div className="transition-all duration-300 group-hover:translate-x-1">
-            <svg
-              width="25"
-              height="34"
-              viewBox="0 0 25 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996"
-                stroke="#ffffff"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
+              <svg width="25" height="34" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
               </svg>
             </div>
           </div>
@@ -464,139 +371,124 @@ const HeroSection = () => {
       </section>
       <footer className=" bg-[#00594F]">
         <div className="container m-auto">
-        <div className="pt-10 md:pt-20    ">
-          <div className="py-[20px]  md:py-10 px-[20px]  md:px-12 bg-ser ">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 items-center">
-              <div>
-                <p className=" mb-0 text-gray-900   text-[25px]  md:text-[36px] leading-1 md:leading-none font-black">
-                  Stay Up To Date with DesertBoard
-                  <span className="text-[#FF671F] mb-0     text-[25px]  md:text-[36px]  ">
-                    .
-                  </span>
-                </p>
-              </div>
-              <div>
-                <div className="w-full flex items-center justify-between  ">
-                  <div className="relative w-full ">
-                    {/* Email Input Field */}
-                    <input type="email" placeholder="Email" className="emilfs w-full p-3 pl-5 pr-[110px] text-font18 leading-none border-b-2 border-[#002D28]   focus:outline-none   focus:border-b-[#FF671F]" />
+          <div className="pt-10 md:pt-20    ">
+            <div className="py-[20px]  md:py-10 px-[20px]  md:px-12 bg-ser ">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 items-center">
+                <div>
+                  <p className=" mb-0 text-gray-900   text-[25px]  md:text-[36px] leading-1 md:leading-none font-black">
+                    Stay Up To Date with DesertBoard
+                    <span className="text-[#FF671F] mb-0     text-[25px]  md:text-[36px]  ">.</span>
+                  </p>
+                </div>
+                <div>
+                  <div className="w-full flex items-center justify-between  ">
+                    <div className="relative w-full ">
+                      {/* Email Input Field */}
+                      <input type="email" placeholder="Email" className="emilfs w-full p-3 pl-5 pr-[110px] text-font18 leading-none border-b-2 border-[#002D28]   focus:outline-none   focus:border-b-[#FF671F]" />
 
-                    {/* Subscribe Button */}
-                    <button type="button" className="absolute top-0 right-0 mt-1 mr-1 px-5 py-2 text-sm font-bold text-[#002D28] flex gap-2 items-center transition-all">
-                      Subscribe
-                      <svg
-                        width="11"
-                        height="16"
-                        viewBox="0 0 25 34"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996"
-                          stroke="#002D28"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </button>
+                      {/* Subscribe Button */}
+                      <button type="button" className="absolute top-0 right-0 mt-1 mr-1 px-5 py-2 text-sm font-bold text-[#002D28] flex gap-2 items-center transition-all">
+                        Subscribe
+                        <svg width="11" height="16" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#002D28" strokeWidth="3" strokeLinecap="round" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-10 md:pt-20  ">
+            <div className="pb-10 md:pb-20 border-b-2 border-[#ffffff10]  ">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div>
+                  <div className="flex flex-col gap-10">
+                    <Image src={flogo} alt="logo" className="" />
+                    <div className="flex gap-3">
+                      <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center">
+                        <Image src={fb} alt="fb" />
+                      </div>
+                      <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center">
+                        <Image src={lin} alt="linkedin" />
+                      </div>
+                      <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center">
+                        <Image src={insta} alt="instagram" />
+                      </div>
+                      <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center">
+                        <Image src={youtube} alt="youtube" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+                    <div>
+                      <div>
+                        <p className="text-[24px] text-white font-black mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-1">Quick Links</p>
+                      </div>
+                      <div className="flex flex-col linkq">
+                        <a>About</a>
+                        <a>Sectors</a>
+                        <a>Sustainability</a>
+                        <a>Downloads</a>
+                        <a>News & Events </a>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <p className="text-[24px] text-white font-black mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-1">Quick Links</p>
+                      </div>
+                      <div className="flex flex-col linkq">
+                        <a>FAQS</a>
+                        <a>Glossary</a>
+                        <a>Download Brochure </a>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div>
+                        <p className="text-[24px] text-white font-black mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-1">Contact Us</p>
+                      </div>
+                      <div className="flex flex-col linkq">
+                        <a>
+                          {" "}
+                          <div className="flex gap-3 items-center">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M1.40338 8.50536C3.89327 13.9263 8.3166 18.223 13.8076 20.5543L14.6894 20.9472C15.6658 21.382 16.7644 21.4582 17.7916 21.1624C18.8187 20.8666 19.7085 20.2178 20.3041 19.3302L21.4569 17.6134C21.6373 17.3441 21.7103 17.0171 21.6616 16.6967C21.6128 16.3763 21.4459 16.0857 21.1936 15.8823L17.288 12.7313C17.1519 12.6216 16.9952 12.5406 16.827 12.493C16.6589 12.4455 16.4829 12.4324 16.3096 12.4546C16.1363 12.4767 15.9693 12.5337 15.8185 12.622C15.6678 12.7104 15.5364 12.8282 15.4324 12.9686L14.2239 14.5986C11.1216 13.0664 8.6106 10.5549 7.07904 7.45244L8.7077 6.24391C8.84806 6.13987 8.96595 6.00853 9.05428 5.85778C9.14261 5.70704 9.19957 5.53999 9.22174 5.36669C9.2439 5.19338 9.23081 5.01738 9.18325 4.84925C9.1357 4.68113 9.05465 4.52435 8.94499 4.38833L5.79401 0.482667C5.59055 0.230398 5.3 0.063461 4.9796 0.0147401C4.65919 -0.0339808 4.33216 0.0390465 4.06291 0.219437L2.33441 1.37869C1.4415 1.97748 0.790152 2.8738 0.4964 3.90799C0.202648 4.94218 0.285568 6.04706 0.730388 7.02582L1.40338 8.50536Z"
+                                fill="#FF671F"
+                              />
+                            </svg>
+
+                            <span>+971 6 5610999</span>
+                          </div>
+                        </a>
+                        <a>
+                          <div className="flex gap-3 items-center">
+                            <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M19.3494 0.339844H2.65057C1.50253 0.339844 0.573654 1.27915 0.573654 2.4272L0.563217 14.9513C0.563217 16.0994 1.50253 17.0387 2.65057 17.0387H19.3494C20.4975 17.0387 21.4368 16.0994 21.4368 14.9513V2.4272C21.4368 1.27915 20.4975 0.339844 19.3494 0.339844ZM18.932 4.77548L11.5531 9.38853C11.2192 9.59727 10.7808 9.59727 10.4468 9.38853L3.06804 4.77548C2.96339 4.71673 2.87175 4.63736 2.79866 4.54217C2.72557 4.44697 2.67256 4.33794 2.64282 4.22167C2.61309 4.1054 2.60726 3.9843 2.62569 3.86571C2.64411 3.74712 2.68641 3.6335 2.75002 3.53173C2.81362 3.42995 2.89722 3.34215 2.99574 3.27362C3.09427 3.20509 3.20568 3.15726 3.32322 3.13304C3.44076 3.10881 3.562 3.10869 3.67959 3.13267C3.79719 3.15666 3.90869 3.20425 4.00735 3.27258L11 7.64559L17.9926 3.27258C18.0913 3.20425 18.2028 3.15666 18.3204 3.13267C18.438 3.10869 18.5592 3.10881 18.6768 3.13304C18.7943 3.15726 18.9057 3.20509 19.0042 3.27362C19.1028 3.34215 19.1864 3.42995 19.25 3.53173C19.3136 3.6335 19.3559 3.74712 19.3743 3.86571C19.3927 3.9843 19.3869 4.1054 19.3572 4.22167C19.3274 4.33794 19.2744 4.44697 19.2013 4.54217C19.1282 4.63736 19.0366 4.71673 18.932 4.77548Z"
+                                fill="#FF671F"
+                              />
+                            </svg>
+                            <span className="break-all">Info@desertboard.ae</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="py-6 md:py-10">
+                <p className="mb-0 text-center text-white text-[14px]">Copyright 2025</p>
               </div>
             </div>
           </div>
         </div>
-
-        <div className="pt-10 md:pt-20  ">
-          <div className="pb-10 md:pb-20 border-b-2 border-[#ffffff10]  ">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-              <div>
-                <div className="flex flex-col gap-10">
-                  <Image src={flogo} alt="logo" className="" />
-                  <div className="flex gap-3">
-                    <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center">
-                      <Image src={fb} alt="fb" />
-                    </div>
-                    <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center">
-                      <Image src={lin} alt="linkedin" />
-                    </div>
-                    <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center">
-                      <Image src={insta} alt="instagram" />
-                    </div>
-                    <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center">
-                      <Image src={youtube} alt="youtube" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
-                  <div>
-                    <div>
-                      <p className="text-[24px] text-white font-black mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-1">Quick Links</p>
-                    </div>
-                    <div className="flex flex-col linkq">
-                      <a>About</a>
-                      <a>Sectors</a>
-                      <a>Sustainability</a>
-                      <a>Downloads</a>
-                      <a>News & Events </a>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <p className="text-[24px] text-white font-black mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-1">Quick Links</p>
-                    </div>
-                    <div className="flex flex-col linkq">
-                      <a>FAQS</a>
-                      <a>Glossary</a>
-                      <a>Download Brochure </a>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div>
-                      <p className="text-[24px] text-white font-black mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-1">Contact Us</p>
-                    </div>
-                    <div className="flex flex-col linkq">
-                      <a>
-                        {" "}
-                        <div className="flex gap-3 items-center">
-                          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                              d="M1.40338 8.50536C3.89327 13.9263 8.3166 18.223 13.8076 20.5543L14.6894 20.9472C15.6658 21.382 16.7644 21.4582 17.7916 21.1624C18.8187 20.8666 19.7085 20.2178 20.3041 19.3302L21.4569 17.6134C21.6373 17.3441 21.7103 17.0171 21.6616 16.6967C21.6128 16.3763 21.4459 16.0857 21.1936 15.8823L17.288 12.7313C17.1519 12.6216 16.9952 12.5406 16.827 12.493C16.6589 12.4455 16.4829 12.4324 16.3096 12.4546C16.1363 12.4767 15.9693 12.5337 15.8185 12.622C15.6678 12.7104 15.5364 12.8282 15.4324 12.9686L14.2239 14.5986C11.1216 13.0664 8.6106 10.5549 7.07904 7.45244L8.7077 6.24391C8.84806 6.13987 8.96595 6.00853 9.05428 5.85778C9.14261 5.70704 9.19957 5.53999 9.22174 5.36669C9.2439 5.19338 9.23081 5.01738 9.18325 4.84925C9.1357 4.68113 9.05465 4.52435 8.94499 4.38833L5.79401 0.482667C5.59055 0.230398 5.3 0.063461 4.9796 0.0147401C4.65919 -0.0339808 4.33216 0.0390465 4.06291 0.219437L2.33441 1.37869C1.4415 1.97748 0.790152 2.8738 0.4964 3.90799C0.202648 4.94218 0.285568 6.04706 0.730388 7.02582L1.40338 8.50536Z"
-                              fill="#FF671F"
-                            />
-                          </svg>
-
-                          <span>+971 6 5610999</span>
-                        </div>
-                      </a>
-                      <a>
-                        <div className="flex gap-3 items-center">
-                          <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                              d="M19.3494 0.339844H2.65057C1.50253 0.339844 0.573654 1.27915 0.573654 2.4272L0.563217 14.9513C0.563217 16.0994 1.50253 17.0387 2.65057 17.0387H19.3494C20.4975 17.0387 21.4368 16.0994 21.4368 14.9513V2.4272C21.4368 1.27915 20.4975 0.339844 19.3494 0.339844ZM18.932 4.77548L11.5531 9.38853C11.2192 9.59727 10.7808 9.59727 10.4468 9.38853L3.06804 4.77548C2.96339 4.71673 2.87175 4.63736 2.79866 4.54217C2.72557 4.44697 2.67256 4.33794 2.64282 4.22167C2.61309 4.1054 2.60726 3.9843 2.62569 3.86571C2.64411 3.74712 2.68641 3.6335 2.75002 3.53173C2.81362 3.42995 2.89722 3.34215 2.99574 3.27362C3.09427 3.20509 3.20568 3.15726 3.32322 3.13304C3.44076 3.10881 3.562 3.10869 3.67959 3.13267C3.79719 3.15666 3.90869 3.20425 4.00735 3.27258L11 7.64559L17.9926 3.27258C18.0913 3.20425 18.2028 3.15666 18.3204 3.13267C18.438 3.10869 18.5592 3.10881 18.6768 3.13304C18.7943 3.15726 18.9057 3.20509 19.0042 3.27362C19.1028 3.34215 19.1864 3.42995 19.25 3.53173C19.3136 3.6335 19.3559 3.74712 19.3743 3.86571C19.3927 3.9843 19.3869 4.1054 19.3572 4.22167C19.3274 4.33794 19.2744 4.44697 19.2013 4.54217C19.1282 4.63736 19.0366 4.71673 18.932 4.77548Z"
-                              fill="#FF671F"
-                            />
-                          </svg>
-                          <span className="break-all">Info@desertboard.ae</span>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="py-6 md:py-10">
-              <p className="mb-0 text-center text-white text-[14px]">
-                Copyright 2025
-              </p>
-            </div>
-          </div>
-          </div>
-          </div>
       </footer>
     </>
   );
