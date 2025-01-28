@@ -5,7 +5,6 @@ import styles from './style.module.scss'
 import { AnimatePresence } from 'framer-motion'
 import Menu from './Menu';
 import SubMenu from './SubMenu/SubMenu';
-import Logo from "@/public/assets/logo.svg"
 import flogo from "@/public/assets/images/home/flogo.png";
 import Image from 'next/image';
 
