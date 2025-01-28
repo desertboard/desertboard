@@ -36,12 +36,10 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 
 import Image from "next/image";
-import Usps from "./Usps";
-import Usp from "./Usp";
+
 import UspList from "./UspList";
 
 const HeroSection = () => {
-
   // Function to toggle play/pause
   const videoRef = useRef<HTMLVideoElement | null>(null); // Type the ref for HTMLVideoElement
   const [isPlaying, setIsPlaying] = useState(false); // State to track play/pause
