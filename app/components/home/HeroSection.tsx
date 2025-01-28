@@ -35,6 +35,9 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 
 import Image from "next/image";
+import Usps from "./Usps";
+import Usp from "./Usp";
+import UspList from "./UspList";
 
 const HeroSection = () => {
 
