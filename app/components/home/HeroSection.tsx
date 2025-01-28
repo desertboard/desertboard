@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import "@/app/components/home/usps.scss";
-import Banner from "@/public/assets/banner.png";
+import Banner from "@/public/assets/banner.jpg";
 
 import iconsl1 from "@/public/assets/images/home/slicon1.png";
 import iconsl2 from "@/public/assets/images/home/slicon2.png";

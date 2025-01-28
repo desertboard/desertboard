@@ -1,7 +1,6 @@
 "use client"
 
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import styles from './style.module.scss'
+import React, { Dispatch, SetStateAction } from 'react'
 import Menu from './Menu';
 
 const SubMenu = ({setSubMenuActive,setIsActive}:{

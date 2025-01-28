@@ -1,6 +1,5 @@
 'use client';
 import React from 'react'
-import Usp from './Usp'
 import ola from "@/public/assets/images/home/ola.svg";
 import uspImg1 from "@/public/assets/images/home/usps/usp-img1.jpg";
 import uspImg2 from "@/public/assets/images/home/usps/usp-img2.jpg";

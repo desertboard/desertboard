@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import uspi1 from "@/public/assets/images/home/usp-i1.svg";
 import { StaticImageData } from 'next/image';
 interface UspProps {
   uspTitle: string;

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import '@/app/components/Common/MainDescBox.scss';
-const imsec2 = "/path/to/your/image.jpg";
 import React, { useRef, useState } from "react";
 
 interface MainDescBoxProps {
