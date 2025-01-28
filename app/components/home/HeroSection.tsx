@@ -76,7 +76,7 @@ const HeroSection = () => {
           />
         </figure>
         <div className="relative z-10 text-white px-6 top-0 lg:top-[120px]">
-          <h1 className="text-4xl md:text-[96px] leading-none font-black mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next">
+          <h1 className="text-4xl md:text-[96px] leading-none font-black mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next m-auto">
             DesertBoard's Palm Strand Board
           </h1>
           <p className="text-font28 font-light mb-6 md:mb-[52px] opacity-[75%]">
@@ -181,7 +181,7 @@ const HeroSection = () => {
               <Image
                 src={gdim1}
                 alt="Engineering & Construction"
-                className="w-full h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300"
+                className="w-full h[300px] md:h[400px] xxl:h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300"
               />
               <div className="absolute inset-0 bg-blacktrans   bg-opacity-50 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div className="absolute top-0 text-white w-full p-8">
@@ -207,7 +207,7 @@ const HeroSection = () => {
               <Image
                 src={gdim2}
                 alt="Landscape"
-                className="w-full h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300"
+                className="w-full h[300px] md:h[400px] xxl:h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300"
               />
               <div className="absolute inset-0 bg-blacktrans bg-opacity-50 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div className="absolute top-0 text-white w-full p-8">
@@ -233,7 +233,7 @@ const HeroSection = () => {
               <Image
                 src={gdim3}
                 alt="Interior Design"
-                className="w-full h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300"
+                className="w-full h[300px] md:h[400px] xxl:h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300"
               />
               <div className="absolute inset-0 bg-blacktrans bg-opacity-50 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div className="absolute top-0 text-white w-full p-8">
@@ -259,7 +259,7 @@ const HeroSection = () => {
               <Image
                 src={gdim4}
                 alt="Events & Exhibitions"
-                className="w-full h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300"
+                className="w-full h[300px] md:h[400px] xxl:h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300"
               />
               <div className="absolute inset-0 bg-blacktrans bg-opacity-50 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div className="absolute top-0 text-white w-full p-8">
