@@ -205,7 +205,7 @@ const HeroSection = () => {
 
       <section className="py-20 md:py-15 py-10 insp-mn relative darkbanner">
         <div className="container m-auto">
-          <div className="flex justify-between mb-8 items-end">
+          <div className="flex justify-between mb-8 items-end mdgrd">
             <div className="text-left ">
               <h2 className="text-gray-900 mb-4 text-[28px] md:text-[48px]  font-black nuber-next ">
                 Sustainable Development Goals
@@ -463,17 +463,39 @@ const HeroSection = () => {
         </div>
         <div className="container m-auto relative">
           <div className="swiper-button-next cursor-pointer group absolute bottom-[-70px] right-0  transform -translate-y-1/2 text-white z-10">
-            <div className="transition-all duration-300 group-hover:translate-x-1">
-              <svg width="25" height="34" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" stroke-width="3" stroke-linecap="round" />
+             <div className="transition-all duration-300 group-hover:translate-x-1">
+            <svg
+              width="25"
+              height="34"
+              viewBox="0 0 25 34"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996"
+                stroke="#FF671F"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
               </svg>
             </div>
           </div>
           <div className="swiper-button-prev group cursor-pointer absolute bottom-[-70px] right-[60px] transform -translate-y-1/2 text-white z-10">
             {/* You can customize this icon as needed */}
             <div className="transition-all duration-300 group-hover:translate-x-[-5px]">
-              <svg width="25" height="34" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.9879 2L2.98787 17L17.9879 32M22.9939 7.00392L12.9978 17L22.9939 26.996" stroke="#FF671F" stroke-width="3" stroke-linecap="round" />
+            <svg
+              width="25"
+              height="34"
+              viewBox="0 0 25 34"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17.9879 2L2.98787 17L17.9879 32M22.9939 7.00392L12.9978 17L22.9939 26.996"
+                stroke="#FF671F"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
               </svg>
             </div>
           </div>
@@ -482,24 +504,40 @@ const HeroSection = () => {
 
       <section className="bg-[#FFB549]  ">
         <div className="container m-auto">
-          <div className="flex items-center gap-3  md:py-10  group  justify-end">
-            <p className="mb-0 text-[22px] font-bold text-white ">Discover Industry Solutions</p>
+          <div className="flex items-center gap-3 px-3 mdpx-0  py-10  group  justify-end">
+            <p className="mb-0 text-[22px] font-bold text-white ">
+              Discover Industry Solutions
+            </p>
             <div className="transition-all duration-300 group-hover:translate-x-1">
-              <svg width="25" height="34" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+            <svg
+              width="25"
+              height="34"
+              viewBox="0 0 25 34"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996"
+                stroke="#ffffff"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
               </svg>
             </div>
           </div>
         </div>
       </section>
       <footer className=" bg-[#00594F]">
-        <div className="p-10 md:p-20    ">
+        <div className="container m-auto">
+        <div className="pt-10 md:pt-20    ">
           <div className="py-[20px]  md:py-10 px-[20px]  md:px-12 bg-ser ">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 items-center">
               <div>
-                <p className=" mb-0 text-gray-900   text-[36px] leading-none font-black">
+                <p className=" mb-0 text-gray-900   text-[25px]  md:text-[36px] leading-1 md:leading-none font-black">
                   Stay Up To Date with DesertBoard
-                  <span className="text-[#FF671F] mb-0     text-[36px] ">.</span>
+                  <span className="text-[#FF671F] mb-0     text-[25px]  md:text-[36px]  ">
+                    .
+                  </span>
                 </p>
               </div>
               <div>
@@ -511,8 +549,19 @@ const HeroSection = () => {
                     {/* Subscribe Button */}
                     <button type="button" className="absolute top-0 right-0 mt-1 mr-1 px-5 py-2 text-sm font-bold text-[#002D28] flex gap-2 items-center transition-all">
                       Subscribe
-                      <svg width="11" height="16" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#002D28" stroke-width="3" stroke-linecap="round" />
+                      <svg
+                        width="11"
+                        height="16"
+                        viewBox="0 0 25 34"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996"
+                          stroke="#002D28"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                        />
                       </svg>
                     </button>
                   </div>
@@ -522,9 +571,9 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="px-10 md:px-20  ">
+        <div className="pt-10 md:pt-20  ">
           <div className="pb-10 md:pb-20 border-b-2 border-[#ffffff10]  ">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
               <div>
                 <div className="flex flex-col gap-10">
                   <Image src={flogo} alt="logo" className="" />
@@ -606,10 +655,13 @@ const HeroSection = () => {
           </div>
           <div>
             <div className="py-6 md:py-10">
-              <p className="mb-0 text-center text-white text-[14px]">Copyright 2025</p>
+              <p className="mb-0 text-center text-white text-[14px]">
+                Copyright 2025
+              </p>
             </div>
           </div>
-        </div>
+          </div>
+          </div>
       </footer>
     </>
   );
