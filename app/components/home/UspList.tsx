@@ -1,6 +1,5 @@
 'use client';
 import React from 'react'
-import Usp from './Usp'
 import ola from "@/public/assets/images/home/ola.svg";
 import uspImg1 from "@/public/assets/images/home/usps/usp-img1.jpg";
 import uspImg2 from "@/public/assets/images/home/usps/usp-img2.jpg";
@@ -26,7 +25,7 @@ interface UspsProps {
 export default function UspList({ secTitle }: UspsProps) {
   const [activeOrder, setActiveOrder] = useState<string | null>(null);
   return (
-    <section className="md:py-20 py-10 relative bg-primary text-white overflow-hidden">
+    <section className=" py-10 lg:py-20  relative bg-primary text-white overflow-hidden">
       <div className="ola ola-right absolute top-5 right-[-10%] w-[40em]">
         <Image className="absolute" src={ola} alt="Description of the image"></Image>
       </div>
@@ -34,7 +33,7 @@ export default function UspList({ secTitle }: UspsProps) {
         <Image className="absolute" src={ola} alt="Description of the image"></Image>
       </div>
       <div className="container ">
-        <h2 className="text-3xl font-bold text-font48 mb-10 leading-[1]">
+        <h2 className="text-3xl font-bold text-font48 mb-5 lg:mb-10">
           {secTitle}
           <span className="text-[#FF671F]">.</span>
         </h2>

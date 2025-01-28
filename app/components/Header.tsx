@@ -2,10 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Logo from "@/public/assets/logo.svg"
 import Image from "next/image";
 import flogo from "@/public/assets/images/home/flogo.png";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
+import { Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import MobileMenu from "./MobileMenu/MobileMenu";
 
 const Header = () => {
@@ -28,7 +27,7 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  
+
   if(isMobile){
     return <MobileMenu/>
   }
@@ -53,7 +52,7 @@ const Header = () => {
 
               <MenuItem item="About" setActive={setActive} active={active} noMenu>
                 <div className="p-4">
-                  <HoveredLink href="/">About</HoveredLink>
+                  <Link href="/">About</Link>
                 </div>
               </MenuItem>
 

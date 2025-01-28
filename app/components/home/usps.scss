@@ -306,7 +306,7 @@
     .usp-4 {
         left: 50%;
         width: 50%;
-        
+
     }
     .usp-5 {
         left: 25%;
@@ -408,6 +408,7 @@
 }
 
 
+
 @media (max-width:992px){
     .usp{
         &__list{
@@ -427,6 +428,7 @@
 @media (max-width:768px){
     .usp{
         &__list{
+            gap:1em;
            &>div{
                 width:100%!important;
            }

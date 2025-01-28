@@ -5,7 +5,7 @@ import styles from './style.module.scss'
 import { AnimatePresence } from 'framer-motion'
 import Menu from './Menu';
 import SubMenu from './SubMenu/SubMenu';
-import Logo from "@/public/assets/logo.svg"
+import flogo from "@/public/assets/images/home/flogo.png";
 import Image from 'next/image';
 
 const MobileMenu = () => {
@@ -40,8 +40,8 @@ const MobileMenu = () => {
 
     <div ref={menuRef}>
 
-      <div className='absolute z-20 left-5 top-3'>
-      <Image src={Logo} alt="Logo" />
+      <div className='absolute z-20 left-5 top-6'>
+      <Image src={flogo} alt="Logo" width={200}  height={60} />
       </div>
 
 
