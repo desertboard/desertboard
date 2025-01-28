@@ -15,7 +15,7 @@
 
 .backbutton {
     position: fixed;
-    left: 56%; // Adjust for better placement
+    left: 20px; // Adjust for better placement
     top: 20px;
     z-index: 50;
     width: 50px;
@@ -44,7 +44,6 @@
         transform: rotate(45deg) translate(2px, 5px);
     }
 }
-
 
 
 
@@ -106,13 +105,13 @@
     left: -99px;
     width: 100px;
     height: 100%;
-    fill: #8a725c;
+    fill: #745b44;
     stroke: none;
 }
 
 .menu{
     height: 100vh;
-    background-color: #8a725c;
+    background-color: #745b44;
     position: fixed;
     right: 0;
     top: 0;

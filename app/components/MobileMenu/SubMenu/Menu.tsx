@@ -4,51 +4,18 @@ import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { menuSlide } from './anim';
 import Link from './Link';
-import Curve from './Curve';
+import Curve from '../Curve';
 
 const navItems = [
   {
-    title: "Home",
+    title: "Product 1",
     href: "/",
   },
   {
-    title: "About",
-    href: "/about",
+    title: "Product 2",
+    href: "/",
   },
-  {
-    title: "Sectors",
-    href: "#",
-    children:[
-      {
-        title: "Product 1",
-        href: "/sectors",
-      },
-      {
-        title: "Product 2",
-        href: "/sectors",
-      },
-    ]
-  },
-  {
-    title: "Sustainability",
-    href: "/sustainability",
-  },
-  {
-    title: "Downloads",
-    href: "/downloads",
-  },
-  {
-    title: "News & Events",
-    href: "/newsandevents",
-  },
-  {
-    title: "Faqs",
-    href: "/faq",
-  },
-  {
-    title: "Contact",
-    href: "/contact",
-  },
+
 ]
 
 export default function index({setSubMenuActive,setIsActive}:{
@@ -67,12 +34,16 @@ export default function index({setSubMenuActive,setIsActive}:{
       exit="exit" 
       className={styles.menu}
       >
+        {<div onClick={() => setSubMenuActive(false)} className={styles.backbutton}>
+                <div className={`${styles.backbutton}`}></div>
+              </div>}
+
        <div className={styles.body}>
             <div onMouseLeave={() => {setSelectedIndicator(pathname)}} className={styles.nav}>
                     
                     {
                       navItems.map( (data, index) => {
-                        return <Link setSubMenuActive={setSubMenuActive}
+                        return <Link 
                         key={index} 
                         data={{...data, index}} 
                         isActive={selectedIndicator == data.href} 
@@ -86,7 +57,7 @@ export default function index({setSubMenuActive,setIsActive}:{
                 <a>Dribble</a>
                 <a>LinkedIn</a>
             </div>
-            <Curve setIsActive={setIsActive}/>
+            <Curve setIsActive={setIsActive} setSubMenuActive={setSubMenuActive}/>
         </div>
     </motion.div>
   )
