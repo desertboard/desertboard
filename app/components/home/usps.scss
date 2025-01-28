@@ -412,10 +412,27 @@
     .usp{
         &__list{
             display: flex;
-            
+             &>div{
+                width:50%!important;
+           }
         }
         &-item{
             width: 50%;
+            position: relative!important;
+            inset: 0!important;
+        }
+    }
+}
+
+@media (max-width:768px){
+    .usp{
+        &__list{
+           &>div{
+                width:100%!important;
+           }
+        }
+         &-item{
+            width:100%;
             position: relative!important;
             inset: 0!important;
         }
