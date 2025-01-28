@@ -428,6 +428,7 @@
 @media (max-width:768px){
     .usp{
         &__list{
+            gap:1em;
            &>div{
                 width:100%!important;
            }

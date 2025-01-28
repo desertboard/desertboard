@@ -92,7 +92,7 @@ const HeroSection = () => {
             </div>
             <div className="flex gap-2 items-center group">
               <div>
-                <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300 text-font18 font-black leading-[1.5] rmbtn min-w-[100px]">Read More</p>
+                <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300 text-font18 font-black leading-[1.5] rmbtn  text-font20 md:min-w-[100px]">Read More</p>
               </div>{" "}
               <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1" />
             </div>
@@ -144,7 +144,7 @@ const HeroSection = () => {
                   <div className="relative    bg-cover bg-center p-6">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl1} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                      <Image src={iconsl1} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -166,7 +166,7 @@ const HeroSection = () => {
                   <div className="relative    bg-cover bg-center p-6">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl2} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                      <Image src={iconsl2} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -188,7 +188,7 @@ const HeroSection = () => {
                   <div className="relative    bg-cover bg-center p-6">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl3} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-133%] group-hover:translate-y-[-215%] " />
+                      <Image src={iconsl3} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%] " />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -210,7 +210,7 @@ const HeroSection = () => {
                   <div className="relative    bg-cover bg-center p-6">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl4} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                      <Image src={iconsl4} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -232,7 +232,7 @@ const HeroSection = () => {
                   <div className="relative    bg-cover bg-center p-6">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl5} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                      <Image src={iconsl5} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -254,7 +254,7 @@ const HeroSection = () => {
                   <div className="relative    bg-cover bg-center p-6">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl6} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                      <Image src={iconsl6} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -276,7 +276,7 @@ const HeroSection = () => {
                   <div className="relative    bg-cover bg-center p-6">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl7} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                      <Image src={iconsl7} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -300,7 +300,7 @@ const HeroSection = () => {
                   <div className="relative    bg-cover bg-center p-6">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl8} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                      <Image src={iconsl8} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -322,7 +322,7 @@ const HeroSection = () => {
                   <div className="relative    bg-cover bg-center p-6">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl9} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                      <Image src={iconsl9} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
                     </div>
 
                     {/* Description Content with Hover Effect */}

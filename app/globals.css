@@ -91,7 +91,7 @@ background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 49%);
 }
 .rmbtn {
   color: #ff671f;
-  font-size: 20px;
+
   font-weight: 700;
   border-bottom: 2px solid #ff671f;
   width: fit-content;
@@ -177,6 +177,10 @@ background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 49%);
   }
 } */
 @media screen and (max-width: 767px){
+  .bg-blacktrans {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
+}
   .mdgrd{flex-direction: column;
     gap: 18px;}
 }
