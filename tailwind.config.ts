@@ -23,6 +23,7 @@ export default {
         "3xl": "1760px",
       },
       container: {
+        center: true,
         screens: {
           xs: "450px",
           sm: "568px",
@@ -40,11 +41,15 @@ export default {
       fontSize: {
         font14: "clamp(0.7rem,1.2vw,0.875rem)",
         font16: "clamp(0.7rem, 1.5vw, 1rem)",
+        font18: "clamp(0.7rem, 1.5vw, 18px)",
         font19: "clamp(0.8rem, 2vw, 1.1875rem)",
         font20: "clamp(0.8rem, 2vw, 1.25rem)",
+        font24: "clamp(0.9rem, 3vw, 1.5rem)",
         font25: "clamp(0.9rem, 3vw, 1.5625rem)",
+        font28: "clamp(1rem, 2.5vw, 1.75rem)",
         font30: "clamp(1rem, 2.5vw, 1.875rem)",
         font35: "clamp(1.2rem, 3.5vw, 2.1875rem)",
+        font48: "clamp(1.5rem, 4vw, 3rem)",
         font65: "clamp(1.5rem, 4.5vw, 4.0625rem)",
         font72: "clamp(1.5rem, 5vw, 4.5rem)",
         font80: "clamp(2rem, 8vw, 5rem)",
