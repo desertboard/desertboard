@@ -5,11 +5,7 @@ const {
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
 export default {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./pages/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}", "./app/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: "class",
   theme: {
     extend: {
@@ -20,18 +16,23 @@ export default {
         lg: "992px",
         xl: "1200px",
         xxl: "1400px",
-        "3xl": "1760px",
+        "3xl": "1600px",
+        "4xl": "1760px",
       },
       container: {
         center: true,
+        padding: {
+          DEFAULT: "15px", // Adds 15px horizontal padding on all screen sizes
+        },
         screens: {
-          xs: "450px",
-          sm: "568px",
-          md: "768px",
-          lg: "992px",
-          xl: "1200px",
-          xxl: "1400px",
-          "3xl": "1760px",
+          xs: "450px", // Container width on xs devices
+          sm: "540px", // Container width on sm devices
+          md: "720px", // Container width on md devices
+          lg: "960px", // Container width on lg devices
+          xl: "1140px", // Container width on xl devices
+          xxl: "1320px", // Container width on xxl devices
+          "3xl": "1520px", // Container width on 3xl devices
+          "4xl": "1760px", // Container width on 3xl devices
         },
       },
       colors: {

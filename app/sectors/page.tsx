@@ -1,5 +1,5 @@
 import Banner from "../components/Banner/Hero";
-import SecondSec from "../components/Common/Second-sec";
+import SecondSec from "../components/Common/SecondSec";
 import Tabs from "../components/Sectors/Tabs";
 import Downloads from "../components/Sectors/Downloads";
 
