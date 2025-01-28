@@ -3,15 +3,6 @@ import React, { useRef, useState } from "react";
 import Link from "next/link";
 import "@/app/components/home/usps.scss";
 import Banner from "@/public/assets/banner.png";
-import imsec2 from "@/public/assets/images/mn.jpg";
-import gdim1 from "@/public/assets/images/gd-im1.jpg";
-import gdim2 from "@/public/assets/images/gd-im2.jpg";
-import gdim3 from "@/public/assets/images/gd-im3.jpg";
-import gdim4 from "@/public/assets/images/gd-im4.jpg";
-import icn1 from "@/public/assets/images/icn1.svg";
-import icn2 from "@/public/assets/images/icn2.svg";
-import icn3 from "@/public/assets/images/icn3.svg";
-import icn4 from "@/public/assets/images/icn4.svg";
 
 import iconsl1 from "@/public/assets/images/home/slicon1.png";
 import iconsl2 from "@/public/assets/images/home/slicon2.png";
@@ -37,7 +28,10 @@ import "swiper/css";
 
 import Image from "next/image";
 
+import { Homecarlsldata } from "../../data/homecarlsl";
+
 import UspList from "./UspList";
+import CardFlow from "../Common/cardflow";
 
 const HeroSection = () => {
   // Function to toggle play/pause
@@ -69,7 +63,7 @@ const HeroSection = () => {
           <Image className="w-screen h-[98vh] absolute object-cover" src={Banner} width={1000} height={800} alt="" />
         </figure>
         <div className="relative z-10 text-white px-6 top-0 lg:top-[120px]">
-          <h1 className="text-4xl md:text-[96px] leading-none font-black mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next">DesertBoard&apos;s Palm Strand Board</h1>
+          <h1 className="text-4xl md:text-[96px] leading-none font-black mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next-heavy">DesertBoard&apos;s Palm Strand Board</h1>
           <p className="text-font28 font-light mb-6 md:mb-[52px] opacity-[75%]">The region&apos;s most sustainable building material</p>
           <Link href="#" className="flex group w-fit m-auto gap-2 rounded-none inline-block px-6 py-3 border border-white text-white btnhs hover:bg-white hover:text-black transition rounded-md">
             Know More
@@ -85,14 +79,14 @@ const HeroSection = () => {
               <h2 className="  text-gray-900 mb-4 text-[28px] md:text-[48px]  font-black nuber-next">
                 Inspiration<span className="text-[#FF671F]">.</span>
               </h2>
- 
+
               <p className=" nuber-next   mb-6 text-[#151515] font-black opacity-[50%] text-font24">A Legacy Rooted in the Desert</p>
               <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%]">In the heart of the desert, where towering date palm trees symbolize our heritage, a groundbreaking innovation has emerged: DesertBoard&apos;s Palm Strand Board (PSB®), the world’s first engineered palm-based board. </p>
               <br />
               <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%]">
                 For centuries, date palm trees have been a vital resource in the Middle East, historically used to construct Barasti houses that provided essential shelter in the harsh desert climate. Inspired by the rich legacy and the vision of the UAE&apos;s founding father, Sheikh Zayed bin Sultan Al Nahyan, DesertBoard® successfully produced
                 the first engineered board in 2021.
- 
+
               </p>
             </div>
 
@@ -128,82 +122,19 @@ const HeroSection = () => {
 
       <UspList secTitle={"Key USP’s"} />
 
-      <section className="py-20 md:py-15 py-10 insp-mn relative darkbanner">
+      <section className="py-20 md:py-15 py-10 insp-mn relative inspbg">
         <div className="container m-auto">
           <div className="text-left mb-10">
             <h2 className="text-gray-900 mb-4 text-[28px] md:text-[48px]  font-black nuber-next">
               Sectors<span className="text-[#FF671F]">.</span>
             </h2>
- 
+
             <p className="text-font20 text-[#151515] opacity-[75%]  max-w-[75ch]">PSB® boards diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring.</p>
- 
+
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="relative group bg-gray-800 csmn overflow-hidden ">
-              <Image src={gdim1} alt="Engineering & Construction" className="w-full h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300" />
-              <div className="absolute inset-0 bg-blacktrans   bg-opacity-50 group-hover:bg-opacity-30 transition-all duration-300"></div>
-              <div className="absolute top-0 text-white w-full p-8">
-                <div className="w-full ">
-                  <Image src={icn1} alt="icn1" className="" />
-                </div>
-                <h3 className=" pt-5 border-t opacity-[90%] text-font28 font-bold mt-5   leading-[1.3]  transition-all duration-300 group-hover:mt-10">
-                  Engineering <br /> & Construction
-                </h3>
-                <p className="mt-5 w-full opacity-0 group-hover:opacity-75 w-[250px] group-hover:w-full transition-opacity duration-300 text-font20 leading-[1.5]">PSB® board’s high strength and load-bearing capacity meet the needs of builders, constructors, and engineers.</p>
-                <a href="#" className="relative flex gap-2 max-w-fit top-3  opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-300 text-font18 font-black leading-[1.5] rmbtn ">
-                  Read More <Image src={readarrow} alt="icn1" className="  transition-all duration-300  " />
-                </a>
-              </div>
-            </div>
+      <CardFlow  data = {Homecarlsldata.data} />
 
-            <div className="relative group bg-gray-800 csmn overflow-hidden">
-              <Image src={gdim2} alt="Landscape" className="w-full h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300" />
-              <div className="absolute inset-0 bg-blacktrans bg-opacity-50 group-hover:bg-opacity-30 transition-all duration-300"></div>
-              <div className="absolute top-0 text-white w-full p-8">
-                <div className="w-full ">
-                  <Image src={icn2} alt="icn1" className="" />
-                </div>
-                <h3 className=" pt-5 border-t opacity-[90%] text-font28 font-bold mt-5 leading-[1.3]  transition-all duration-300 group-hover:mt-10">Landscape</h3>
-                <p className="mt-5 w-full opacity-0 group-hover:opacity-75 w-[250px] group-hover:w-full transition-opacity duration-300 text-font20 leading-[1.5]">PSB® board’s load-bearing capacity and moisture resistance makes them ideal for outdoor applications.</p>
-                <a href="#" className="relative flex gap-2 max-w-fit top-3  opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-300 text-font18 font-black leading-[1.5] rmbtn ">
-                  Read More <Image src={readarrow} alt="icn1" className="  transition-all duration-300  " />
-                </a>
-              </div>
-            </div>
-
-            <div className="relative group bg-gray-800 csmn overflow-hidden">
-              <Image src={gdim3} alt="Interior Design" className="w-full h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300" />
-              <div className="absolute inset-0 bg-blacktrans bg-opacity-50 group-hover:bg-opacity-30 transition-all duration-300"></div>
-              <div className="absolute top-0 text-white w-full p-8">
-                <div className="w-full ">
-                  <Image src={icn3} alt="icn1" className="" />
-                </div>
-                <h3 className=" pt-5 border-t opacity-[90%] text-font28 font-bold mt-5   leading-[1.3]  transition-all duration-300 group-hover:mt-10">Interior Design</h3>
-                <p className="mt-5 w-full opacity-0 group-hover:opacity-75 w-[250px] group-hover:w-full transition-opacity duration-300 text-font20 leading-[1.5]">PSB® board’s versatility makes them a preferred choice for a wide range of interior applications.</p>
-                <a href="#" className="relative flex gap-2 max-w-fit top-3  opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-300 text-font18 font-black leading-[1.5] rmbtn ">
-                  Read More <Image src={readarrow} alt="icn1" className="  transition-all duration-300  " />
-                </a>
-              </div>
-            </div>
-
-            <div className="relative group bg-gray-800 csmn overflow-hidden">
-              <Image src={gdim4} alt="Events & Exhibitions" className="w-full h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300" />
-              <div className="absolute inset-0 bg-blacktrans bg-opacity-50 group-hover:bg-opacity-30 transition-all duration-300"></div>
-              <div className="absolute top-0 text-white w-full p-8">
-                <div className="w-full ">
-                  <Image src={icn4} alt="icn1" className="" />
-                </div>
-                <h3 className=" pt-5 border-t opacity-[90%] text-font28 font-bold mt-5   leading-[1.3]  transition-all duration-300 group-hover:mt-10">
-                  Events <br /> & Exhibitions
-                </h3>
-                <p className="mt-5 w-full opacity-0 group-hover:opacity-75 w-[250px] group-hover:w-full transition-opacity duration-300 text-font20 leading-[1.5]">PSB® board’s screw-withdrawal & smooth finish capabilities makes them ideal for booths, stands and prefabricated structures.</p>
-                <a href="#" className="relative flex gap-2 max-w-fit top-3  opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-300 text-font18 font-black leading-[1.5] rmbtn ">
-                  Read More <Image src={readarrow} alt="icn1" className="  transition-all duration-300  " />
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -509,7 +440,7 @@ const HeroSection = () => {
       <section className="bg-[#FFB549]  ">
         <div className="container m-auto">
           <div className="flex items-center gap-3 px-3 mdpx-0  py-10  group  justify-end">
-            <p className="mb-0 text-[22px] font-bold text-white ">
+            <p className="mb-0 text-[22px] font-bold text-white nuber-next">
               Discover Industry Solutions
             </p>
             <div className="transition-all duration-300 group-hover:translate-x-1">
@@ -648,7 +579,7 @@ const HeroSection = () => {
                               fill="#FF671F"
                             />
                           </svg>
-                          <span>Info@desertboard.ae</span>
+                          <span className="break-all">Info@desertboard.ae</span>
                         </div>
                       </a>
                     </div>

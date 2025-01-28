@@ -24,6 +24,9 @@ export default {
       },
       container: {
         center: true,
+        padding: {
+          DEFAULT: "15px", // Adds 15px horizontal padding on all screen sizes
+        },
         screens: {
           xs: "450px",
           sm: "568px",
@@ -80,7 +83,7 @@ function addVariablesForColors({ addBase, theme }: any) {
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
- 
+
   addBase({
     ":root": newVars,
   });
