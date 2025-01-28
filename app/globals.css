@@ -162,3 +162,13 @@ body {
 
 .ansm .swiper-slide{    transition: 500ms all ease-in-out;}
 .ansm  .swiper-slide:hover{transform: scaleX(1.1);}
+.growf{background-size: cover;}
+/* @media screen and (min-width: 1600px) and (max-width: 1699px) {
+  .minh247 {
+    min-height: 247px;
+  }
+} */
+@media screen and (min-width: 767px){
+  .mdgrd{flex-direction: column;
+    gap: 18px;}
+}
