@@ -1,4 +1,5 @@
 import React from "react";
+import '@/app/components/home/usps.scss'
 import Link from "next/link";
 import Banner from "@/public/assets/banner.png";
 import imsec2 from "@/public/assets/images/mn.jpg";
@@ -10,9 +11,14 @@ import icn1 from "@/public/assets/images/icn1.svg";
 import icn2 from "@/public/assets/images/icn2.svg";
 import icn3 from "@/public/assets/images/icn3.svg";
 import icn4 from "@/public/assets/images/icn4.svg";
+import uspi1 from "@/public/assets/images/home/usp-i1.svg";
+import uspi2 from "@/public/assets/images/home/usp-i2.svg"; 
+import uspImg1 from "@/public/assets/images/home/usp-img1.jpg";
 import readarrow from "@/public/assets/images/read-arrow.svg";
-
 import Image from "next/image";
+import Usps from "./Usps";
+import Usp from "./Usp";
+import UspList from "./UspList";
 
 const HeroSection = () => {
   return (
@@ -53,25 +59,9 @@ const HeroSection = () => {
                 <Image src={imsec2} width={1080} height={640} alt="Picture of the author" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <button className="bg-black bg-opacity-50 rounded-full p-4">
-                    <svg
-                      className="w-8 h-8 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 10v4a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"
-                      />
+                    <svg className="w-8 h-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 10v4a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
                     </svg>
                   </button>
                 </div>
@@ -80,6 +70,10 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
+
+      {/* <Usps secTitle={"Key USP’s"} /> */}
+       <UspList secTitle={"Key USP’s"} />
+
       <section className="py-20 py-md- 15 py-10 insp-mn relative darkbanner">
         <div className="container m-auto">
           <div className="text-center md:text-left mb-8">
@@ -100,15 +94,8 @@ const HeroSection = () => {
                 <h3 className=" pt-5 border-t opacity-[90%] text-lg font-semibold mt-5 text-[28px] leading-[1.3] font-[700] transition-all duration-300 group-hover:mt-10">
                   Engineering <br /> & Construction
                 </h3>
-                <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">
-                  Discover how our innovative solutions streamline engineering
-                  and construction projects. From planning to execution, we
-                  ensure precision and efficiency.
-                </p>
-                <a
-                  href="#"
-                  className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
-                >
+                <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">Discover how our innovative solutions streamline engineering and construction projects. From planning to execution, we ensure precision and efficiency.</p>
+                <a href="#" className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn ">
                   Read More
                 </a>
               </div>
@@ -121,18 +108,9 @@ const HeroSection = () => {
                 <div className="w-full ">
                   <Image src={icn2} alt="icn1" className="" />
                 </div>
-                <h3 className=" pt-5 border-t opacity-[90%] text-lg font-semibold mt-5 text-[28px] leading-[1.3] font-[700] transition-all duration-300 group-hover:mt-10">
-                  Landscape
-                </h3>
-                <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">
-                  Discover how our innovative solutions streamline engineering
-                  and construction projects. From planning to execution, we
-                  ensure precision and efficiency.
-                </p>
-                <a
-                  href="#"
-                  className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
-                >
+                <h3 className=" pt-5 border-t opacity-[90%] text-lg font-semibold mt-5 text-[28px] leading-[1.3] font-[700] transition-all duration-300 group-hover:mt-10">Landscape</h3>
+                <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">Discover how our innovative solutions streamline engineering and construction projects. From planning to execution, we ensure precision and efficiency.</p>
+                <a href="#" className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn ">
                   Read More
                 </a>
               </div>
@@ -145,18 +123,9 @@ const HeroSection = () => {
                 <div className="w-full ">
                   <Image src={icn3} alt="icn1" className="" />
                 </div>
-                <h3 className=" pt-5 border-t opacity-[90%] text-lg font-semibold mt-5 text-[28px] leading-[1.3] font-[700] transition-all duration-300 group-hover:mt-10">
-                  Interior Design
-                </h3>
-                <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">
-                  Discover how our innovative solutions streamline engineering
-                  and construction projects. From planning to execution, we
-                  ensure precision and efficiency.
-                </p>
-                <a
-                  href="#"
-                  className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
-                >
+                <h3 className=" pt-5 border-t opacity-[90%] text-lg font-semibold mt-5 text-[28px] leading-[1.3] font-[700] transition-all duration-300 group-hover:mt-10">Interior Design</h3>
+                <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">Discover how our innovative solutions streamline engineering and construction projects. From planning to execution, we ensure precision and efficiency.</p>
+                <a href="#" className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn ">
                   Read More
                 </a>
               </div>
@@ -172,15 +141,8 @@ const HeroSection = () => {
                 <h3 className=" pt-5 border-t opacity-[90%] text-lg font-semibold mt-5 text-[28px] leading-[1.3] font-[700] transition-all duration-300 group-hover:mt-10">
                   Events <br /> & Exhibitions
                 </h3>
-                <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">
-                  Discover how our innovative solutions streamline engineering
-                  and construction projects. From planning to execution, we
-                  ensure precision and efficiency.
-                </p>
-                <a
-                  href="#"
-                  className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn "
-                >
+                <p className="mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5]">Discover how our innovative solutions streamline engineering and construction projects. From planning to execution, we ensure precision and efficiency.</p>
+                <a href="#" className="relative top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[16px] leading-[1.5] rmbtn ">
                   Read More
                 </a>
               </div>
@@ -197,17 +159,11 @@ const HeroSection = () => {
                 Sustainable Development Goals
                 <span className="text-[#FF671F]">.</span>
               </h2>
-              <p className="text-gray-400 text-[20px] max-w-[60ch]">
-                Explore how eco-friendly and locally produced materials are
-                helping us move closer to the United Nations' Sustainable
-                Development Goals.
-              </p>
+              <p className="text-gray-400 text-[20px] max-w-[60ch]">Explore how eco-friendly and locally produced materials are helping us move closer to the United Nations' Sustainable Development Goals.</p>
             </div>
             <div className="flex gap-2 items-center ">
               <div>
-                <p className="mb-0 text-18 text-[#FF671F]  font-black">
-                  Read More
-                </p>
+                <p className="mb-0 text-18 text-[#FF671F]  font-black">Read More</p>
               </div>{" "}
               <Image src={readarrow} alt="icn1" className="" />
             </div>
@@ -215,175 +171,102 @@ const HeroSection = () => {
         </div>
 
         <div className="flex">
-          <div
-            className="relative group overflow-hidden transform transition-all duration-500 growf "
-            style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}
-          >
+          <div className="relative group overflow-hidden transform transition-all duration-500 growf " style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}>
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="relative    bg-cover bg-center p-6">
                 {/* Thumbnail Image Container with Hover Effect */}
                 <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                  <Image
-                    src={Banner}
-                    alt="Thumbnail"
-                    className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]"
-                  />
+                  <Image src={Banner} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]" />
                 </div>
 
                 {/* Description Content with Hover Effect */}
                 <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <h3 className="text-lg font-bold text-white">
-                    Description Title
-                  </h3>
-                  <p className="text-sm text-white mt-2">
-                    This is a description that appears when you hover over the
-                    thumbnail image.
-                  </p>
+                  <h3 className="text-lg font-bold text-white">Description Title</h3>
+                  <p className="text-sm text-white mt-2">This is a description that appears when you hover over the thumbnail image.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            className="relative group overflow-hidden transform transition-all duration-500 growf "
-            style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}
-          >
+          <div className="relative group overflow-hidden transform transition-all duration-500 growf " style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}>
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="relative    bg-cover bg-center p-6">
                 {/* Thumbnail Image Container with Hover Effect */}
                 <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                  <Image
-                    src={Banner}
-                    alt="Thumbnail"
-                    className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]"
-                  />
+                  <Image src={Banner} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]" />
                 </div>
 
                 {/* Description Content with Hover Effect */}
                 <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <h3 className="text-lg font-bold text-white">
-                    Description Title
-                  </h3>
-                  <p className="text-sm text-white mt-2">
-                    This is a description that appears when you hover over the
-                    thumbnail image.
-                  </p>
+                  <h3 className="text-lg font-bold text-white">Description Title</h3>
+                  <p className="text-sm text-white mt-2">This is a description that appears when you hover over the thumbnail image.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            className="relative group overflow-hidden transform transition-all duration-500 growf "
-            style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}
-          >
+          <div className="relative group overflow-hidden transform transition-all duration-500 growf " style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}>
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="relative    bg-cover bg-center p-6">
                 {/* Thumbnail Image Container with Hover Effect */}
                 <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                  <Image
-                    src={Banner}
-                    alt="Thumbnail"
-                    className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]"
-                  />
+                  <Image src={Banner} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]" />
                 </div>
 
                 {/* Description Content with Hover Effect */}
                 <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <h3 className="text-lg font-bold text-white">
-                    Description Title
-                  </h3>
-                  <p className="text-sm text-white mt-2">
-                    This is a description that appears when you hover over the
-                    thumbnail image.
-                  </p>
+                  <h3 className="text-lg font-bold text-white">Description Title</h3>
+                  <p className="text-sm text-white mt-2">This is a description that appears when you hover over the thumbnail image.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            className="relative group overflow-hidden transform transition-all duration-500 growf "
-            style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}
-          >
+          <div className="relative group overflow-hidden transform transition-all duration-500 growf " style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}>
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="relative    bg-cover bg-center p-6">
                 {/* Thumbnail Image Container with Hover Effect */}
                 <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                  <Image
-                    src={Banner}
-                    alt="Thumbnail"
-                    className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]"
-                  />
+                  <Image src={Banner} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]" />
                 </div>
 
                 {/* Description Content with Hover Effect */}
                 <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <h3 className="text-lg font-bold text-white">
-                    Description Title
-                  </h3>
-                  <p className="text-sm text-white mt-2">
-                    This is a description that appears when you hover over the
-                    thumbnail image.
-                  </p>
+                  <h3 className="text-lg font-bold text-white">Description Title</h3>
+                  <p className="text-sm text-white mt-2">This is a description that appears when you hover over the thumbnail image.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            className="relative group overflow-hidden transform transition-all duration-500 growf "
-            style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}
-          >
+          <div className="relative group overflow-hidden transform transition-all duration-500 growf " style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}>
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="relative    bg-cover bg-center p-6">
                 {/* Thumbnail Image Container with Hover Effect */}
                 <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                  <Image
-                    src={Banner}
-                    alt="Thumbnail"
-                    className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]"
-                  />
+                  <Image src={Banner} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]" />
                 </div>
 
                 {/* Description Content with Hover Effect */}
                 <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <h3 className="text-lg font-bold text-white">
-                    Description Title
-                  </h3>
-                  <p className="text-sm text-white mt-2">
-                    This is a description that appears when you hover over the
-                    thumbnail image.
-                  </p>
+                  <h3 className="text-lg font-bold text-white">Description Title</h3>
+                  <p className="text-sm text-white mt-2">This is a description that appears when you hover over the thumbnail image.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            className="relative group overflow-hidden transform transition-all duration-500 growf "
-            style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}
-          >
+          <div className="relative group overflow-hidden transform transition-all duration-500 growf " style={{ backgroundImage: `url('/assets/images/mn.jpg')` }}>
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="relative    bg-cover bg-center p-6">
                 {/* Thumbnail Image Container with Hover Effect */}
                 <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                  <Image
-                    src={Banner}
-                    alt="Thumbnail"
-                    className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]"
-                  />
+                  <Image src={Banner} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500 group-hover:scale-75 group-hover:translate-x-[-175%] group-hover:translate-y-[-215%]" />
                 </div>
 
                 {/* Description Content with Hover Effect */}
                 <div className="absolute top-[-66px] left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <h3 className="text-lg font-bold text-white">
-                    Description Title
-                  </h3>
-                  <p className="text-sm text-white mt-2">
-                    This is a description that appears when you hover over the
-                    thumbnail image.
-                  </p>
+                  <h3 className="text-lg font-bold text-white">Description Title</h3>
+                  <p className="text-sm text-white mt-2">This is a description that appears when you hover over the thumbnail image.</p>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </section>
     </>
