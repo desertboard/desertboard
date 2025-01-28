@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
-import "@/app/components/Common/pgbnr.scss";
+import '@/app/components/Common/pgbnr.scss';
 
 interface HeroSectionProps {
   bannerSrc: StaticImageData | string;
@@ -12,10 +12,10 @@ interface HeroSectionProps {
   bnrHeight?: string;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title, desc, breadcrumbs}) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,desc, breadcrumbs, bnrHeight }) => {
   return (
     // <section className="relative h-[75dvh] bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full">
-    <section className={`relative bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full`}>
+    <section className="relative bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full" style={{ "--banner-height": bnrHeight } as React.CSSProperties}>
       {/* <div className="absolute inset-0 bg-black opacity-60 -z-10"></div>
       <div className="absolute inset-0 bg-primary opacity-20 -z-20"></div>  */}
       <figure className="absolute left-0 top-0 h-full w-full -z-40">
