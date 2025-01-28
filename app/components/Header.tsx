@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "@/public/assets/logo.svg"
 import Image from "next/image";
+import flogo from "@/public/assets/images/home/flogo.png";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import MobileMenu from "./MobileMenu/MobileMenu";
 
@@ -34,10 +35,10 @@ const Header = () => {
 
   return (
     <header className="bg-transparent text-white absolute w-full top-0 z-40">
-      <div className="container mx-auto  flex items-center justify-between py-4 z-10 border-b">
+      <div className="container mx-auto  flex items-center justify-between py-5 z-10 border-b">
 
         <div className="flex items-center">
-          <Image src={Logo} alt="Logo" />
+          <Image src={flogo} alt="Logo" width={311}  height={60}  className="logos"/>
         </div>
 
         <nav>

@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { motion } from 'framer-motion';
 import styles from './style.module.scss';
 
-export default function Curve() {
+export default function Curve({setIsActive,setSubMenuActive}:{
+  setIsActive:Dispatch<SetStateAction<boolean>>
+  setSubMenuActive?:Dispatch<SetStateAction<boolean>>
+}) {
 
    const initialPath = `M100 0 L100 ${window.innerHeight} Q-100 ${window.innerHeight/2} 100 0`
   const targetPath = `M100 0 L100 ${window.innerHeight} Q100 ${window.innerHeight/2} 100 0`
@@ -23,8 +26,18 @@ export default function Curve() {
     }
   }
 
+
+  const handleCloseMenu = () =>{
+    setIsActive(false) 
+    if(setSubMenuActive){
+      setSubMenuActive(false)
+    }
+  }
+
+
+
   return (
-    <svg className={styles.svgCurve}>
+    <svg className={styles.svgCurve} onClick={handleCloseMenu}>
         <motion.path variants={curve} initial="initial" animate="enter" exit="exit"></motion.path>
     </svg>
   )
