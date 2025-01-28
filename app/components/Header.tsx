@@ -27,7 +27,7 @@ const Header = () => {
                 </div>
               </MenuItem>
 
-              <MenuItem item="About" setActive={setActive} active={active} >
+              <MenuItem item="About" setActive={setActive} active={active} noMenu>
                 <div className="p-4">
                   <HoveredLink href="/">About</HoveredLink>
                 </div>
