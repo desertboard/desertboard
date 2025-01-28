@@ -30,7 +30,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, desc, des
     }
   };
   return (
-    <section className="pt-20 md:pt-15 pt-10 pb-[120px] md:pb-15 pb-10 insp-mn relative inspbg">
+    <section className="pt-10 lg:pt-20   pb-10 lg:pb-[100px]   insp-mn relative inspbg">
       <div className="container m-auto ">
         <div className="lg:flex flex-col lg:flex-row items-center justify-between adst relative xl:pr-[10em] xxl:pr-[20em]">
           <div className="lg:w-1/2 text-left pr-5 pl-5 lg:pl-6 xl:pl-16 py-5 lg:py-20 xl:py-28 opacity-[99%]">
@@ -56,7 +56,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, desc, des
                   {/* Play/Pause Button */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     {!isPlaying && ( // Show the button only if video is paused
-                      <button className="bg-white bg-opacity-20 rounded-sm px-10 py-6 transition duration-300 hover:bg-opacity-50" onClick={togglePlay}>
+                      <button className="bg-white bg-opacity-20 rounded-sm px-6 py-3 md:px-10 md:py-6 transition duration-300 hover:bg-opacity-50" onClick={togglePlay}>
                         <svg width="26" height="34" viewBox="0 0 26 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M0.0114746 0.469116V33.5308L25.9885 17L0.0114746 0.469116Z" fill="white" />
                         </svg>

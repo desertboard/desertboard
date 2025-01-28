@@ -27,7 +27,7 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  
+
   if(isMobile){
     return <MobileMenu/>
   }
