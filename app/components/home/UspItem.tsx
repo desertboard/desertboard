@@ -26,5 +26,5 @@ const UspItem = ({ uspTitle, order, mainImg, uspDesc, uspIcon, onMouseEnter }: U
       </div>
     );
 }
- 
+
 export default UspItem;

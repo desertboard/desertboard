@@ -27,5 +27,5 @@ const Usp = ({ uspTitle,order,mainImg,uspDesc,uspIcon }: UspProps) => {
       </div>
     );
 }
- 
+
 export default Usp;

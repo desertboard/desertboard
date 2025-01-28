@@ -1,13 +1,36 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "@/public/assets/logo.svg"
 import Image from "next/image";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
+import MobileMenu from "./MobileMenu/MobileMenu";
 
 const Header = () => {
   const [active, setActive] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Function to check screen width
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 998);
+    };
+
+    // Set initial value
+    handleResize();
+
+    // Listen for resize events
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  
+  if(isMobile){
+    return <MobileMenu/>
+  }
 
   return (
     <header className="bg-transparent text-white absolute w-full top-0 z-40">
