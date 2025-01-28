@@ -34,8 +34,8 @@ const Header = () => {
 
   return (
     <header className="bg-transparent text-white absolute w-full top-0 z-40">
-      <div className="container mx-auto  flex items-center justify-between py-5 z-10 border-b">
-
+      <div className="container   ">
+    <div className="py-5 z-10 border-b flex items-center justify-between">
         <div className="flex items-center">
           <Image src={flogo} alt="Logo" width={311}  height={60}  className="logos"/>
         </div>
@@ -145,7 +145,8 @@ const Header = () => {
               </Link>
             </li> */}
           </ul>
-        </nav>
+          </nav>
+          </div>
       </div>
     </header>
   );

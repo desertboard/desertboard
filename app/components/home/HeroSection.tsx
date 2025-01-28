@@ -30,6 +30,7 @@ import UspList from "./UspList";
 import MainDescBOx from "../Common/MainDescBox";
 import { Homecarlsldata } from "../../data/homecarlsl";
 import CardFlow from "../Common/cardflow";
+import '@/app/components/home/goalcrd.scss';
 
 const HeroSection = () => {
   return (
@@ -42,8 +43,8 @@ const HeroSection = () => {
         </figure>
         <div className="relative z-10 text-white px-6 top-0 lg:top-[120px]">
           <h1 className="text-4xl md:text-[96px] leading-none font-black mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next-heavy m-auto">DesertBoard&apos;s Palm Strand Board</h1>
-          <p className="text-font28 font-light mb-6 md:mb-[52px] opacity-[75%]">The region&apos;s most sustainable building material</p>
-          <Link href="#" className="flex nuber-next group w-fit m-auto gap-2 rounded-none inline-block px-6 py-3 border border-white text-white btnhs hover:bg-white hover:text-black transition rounded-md">
+          <p className="text-font28 font-[400] mb-6 md:mb-[52px] opacity-[75%]">The region&apos;s most sustainable building material</p>
+          <Link href="#" className="flex nuber-next group w-fit m-auto gap-2 rounded-none inline-block px-12 py-4  border border-white text-white btnhs hover:bg-white hover:text-black transition rounded-md">
             Know More
             <Image src={readarrow} alt="icn1" className="fiterwt transition-all duration-300 group-hover:translate-x-2 " />
           </Link>
@@ -103,7 +104,7 @@ const HeroSection = () => {
             // install Swiper modules
             modules={[Navigation, Pagination]}
             spaceBetween={0}
-            slidesPerView={6}
+            slidesPerView='auto'
             navigation={{
               nextEl: ".swiper-button-next", // Target the next button
               prevEl: ".swiper-button-prev", // Target the previous button
@@ -134,21 +135,23 @@ const HeroSection = () => {
             scrollbar={{ draggable: true }}
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log("slide change")}>
-            <SwiperSlide>
+           <SwiperSlide>
               <div
-                className="relative group overflow-hidden transform transition-all duration-500 growf "
+                className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn1.jpg')`,
                 }}>
                 <div className="flex items-center justify-center min-h-[460px]">
-                  <div className="relative    bg-cover bg-center p-6">
+                  <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
-                    <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl1} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                    <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
+                      <Image src={iconsl1} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
-                    <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
+                  </div>
+                  <div className="p-6">
+                    <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
                       <h3 className="text-[22px] font-bold text-black">Good Health And Well-Being</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">DesertBoard has designed its PSB® to be zero-emissions. This greener alternative to wood-based products (example: MDF, particleboard, and plywood) includes zero formaldehyde.</p>
                     </div>
