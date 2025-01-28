@@ -56,7 +56,7 @@ const HeroSection = () => {
               <p className="text-[20px]">
                 In the heart of the desert, where towering date palm trees
                 symbolize our heritage, a groundbreaking innovation has emerged:
-                DesertBoard's Palm Strand Board (PSB®), the world’s first
+                DesertBoard&apos;s Palm Strand Board (PSB®), the world’s first
                 engineered palm-based board.{" "}
               </p>
               <br />
@@ -64,7 +64,7 @@ const HeroSection = () => {
                 For centuries, date palm trees have been a vital resource in the
                 Middle East, historically used to construct Barasti houses that
                 provided essential shelter in the harsh desert climate. Inspired
-                by the rich legacy and the vision of the UAE's founding father,
+                by the rich legacy and the vision of the UAE&apos;s founding father,
                 Sheikh Zayed bin Sultan Al Nahyan, DesertBoard® successfully
                 produced the first engineered board in 2021.
               </p>
@@ -114,7 +114,7 @@ const HeroSection = () => {
               Sectors<span className="text-[#FF671F]">.</span>
             </h2>
             <p className="text-gray-400 text-[20px] max-w-[75ch]">
-              PSB® boards' diverse product lineup is used in everything from
+              PSB® boards&apos; diverse product lineup is used in everything from
               house building, furniture, and interior design to mass timber
               structures, fire-rated doors, building facades, and flooring.
             </p>
