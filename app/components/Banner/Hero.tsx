@@ -9,24 +9,13 @@ interface HeroSectionProps {
   breadcrumbs: { label: string; href: string }[];
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({
-  bannerSrc,
-  arrowSrc,
-  title,
-  breadcrumbs,
-}) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title, breadcrumbs }) => {
   return (
     <section className="relative h-[60vh] bg-cover bg-center flex items-center justify-center text-center bnr-pg w-full">
       {/* <div className="absolute inset-0 bg-black opacity-60 -z-10"></div>
       <div className="absolute inset-0 bg-primary opacity-20 -z-20"></div> */}
       <figure className="absolute h-[60vh] w-full -z-40">
-        <Image
-          className="w-full h-[60vh] absolute object-cover"
-          src={bannerSrc}
-          width={1000}
-          height={800}
-          alt="Banner image"
-        />
+        <Image className="w-full h-[60vh] absolute object-cover" src={bannerSrc} width={1000} height={800} alt="Banner image" />
       </figure>
       <div className="container relative">
         <div className="pg-bnr__div absolute bottom-0 pb-[80px]">
@@ -39,18 +28,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <ul className="flex items-center">
               {breadcrumbs.map((breadcrumb, index) => (
                 <li key={index} className="inline-flex items-center">
-                  <a
-                    href={breadcrumb.href}
-                    className={`text-[#FFFFFFBF]  text-[20px] ${
-                      index === breadcrumbs.length - 1
-                        ? "font-bold text-white "
-                        : "opacity-75"
-                    }`}>
+                  <a href={breadcrumb.href} className={`text-[#FFFFFFBF]  text-[20px] ${index === breadcrumbs.length - 1 ? "font-bold text-white " : "opacity-75"}`}>
                     {breadcrumb.label}
                   </a>
-                  {index < breadcrumbs.length - 1 && (
-                    <Image src={arrowSrc} alt="Arrow" className="mx-2" />
-                  )}
+                  {index < breadcrumbs.length - 1 && <Image src={arrowSrc} alt="Arrow" className="mx-2" />}
                 </li>
               ))}
             </ul>
