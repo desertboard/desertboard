@@ -31,7 +31,7 @@ import youtube from "@/public/assets/images/home/youtube.svg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Navigation, Autoplay, Pagination } from "swiper/modules";
+import { Navigation,  Pagination } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 
@@ -69,8 +69,8 @@ const HeroSection = () => {
           <Image className="w-screen h-[98vh] absolute object-cover" src={Banner} width={1000} height={800} alt="" />
         </figure>
         <div className="relative z-10 text-white px-6 top-0 lg:top-[120px]">
-          <h1 className="text-4xl md:text-[96px] leading-none font-black mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next">DesertBoard's Palm Strand Board</h1>
-          <p className="text-font28 font-light mb-6 md:mb-[52px] opacity-[75%]">The region’s most sustainable building material</p>
+          <h1 className="text-4xl md:text-[96px] leading-none font-black mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next">DesertBoard&apos;s Palm Strand Board</h1>
+          <p className="text-font28 font-light mb-6 md:mb-[52px] opacity-[75%]">The region&apos;s most sustainable building material</p>
           <Link href="#" className="flex group w-fit m-auto gap-2 rounded-none inline-block px-6 py-3 border border-white text-white btnhs hover:bg-white hover:text-black transition rounded-md">
             Know More
             <Image src={readarrow} alt="icn1" className="fiterwt transition-all duration-300 group-hover:translate-x-2 " />
@@ -132,7 +132,7 @@ const HeroSection = () => {
             <h2 className="text-gray-900 mb-4 text-[28px] md:text-[48px]  font-black nuber-next">
               Sectors<span className="text-[#FF671F]">.</span>
             </h2>
-            <p className="text-font20 text-[#151515] opacity-[75%]  max-w-[75ch]">PSB® boards&apos; diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring.</p>
+            <p className="text-font20 text-[#151515] opacity-[75%]  max-w-[75ch]">PSB® boards diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -211,7 +211,7 @@ const HeroSection = () => {
                 Sustainable Development Goals
                 <span className="text-[#FF671F]">.</span>
               </h2>
-              <p className="text-font20 text-[#151515] opacity-[75%]  max-w-[75ch]">Explore how eco-friendly and locally produced materials are helping us move closer to the United Nations' Sustainable Development Goals.</p>
+              <p className="text-font20 text-[#151515] opacity-[75%]  max-w-[75ch]">Explore how eco-friendly and locally produced materials are helping us move closer to the United Nations&apos; Sustainable Development Goals.</p>
             </div>
             <div className="flex gap-2 items-center group">
               <div>
@@ -295,7 +295,7 @@ const HeroSection = () => {
                     {/* Description Content with Hover Effect */}
                     <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
                       <h3 className="text-[22px] font-bold text-black">Affordable And Clean Energy</h3>
-                      <p className="text-sm text-black opacity-[75%] mt-2">As proved by Desert Board's life cycle assessment (LCA) and Environmental Product Declaration (EPD), 30% of the factory’s purchased electricity comes from clean sources (nuclear & solar).</p>
+                      <p className="text-sm text-black opacity-[75%] mt-2">As proved by Desert Board&apos;s life cycle assessment (LCA) and Environmental Product Declaration (EPD), 30% of the factory’s purchased electricity comes from clean sources (nuclear & solar).</p>
                     </div>
                   </div>
                 </div>
@@ -317,7 +317,7 @@ const HeroSection = () => {
                     {/* Description Content with Hover Effect */}
                     <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
                       <h3 className="text-[22px] font-bold text-black">Decent Work And Economic Growth</h3>
-                      <p className="text-sm text-black opacity-[75%] mt-2">As of 2025, DesertBoard employes a workforce of 284 team members, including 156 positions at our factory and 128 roles within the company's back-office operations.</p>
+                      <p className="text-sm text-black opacity-[75%] mt-2">As of 2025, DesertBoard employes a workforce of 284 team members, including 156 positions at our factory and 128 roles within the company&apos;s back-office operations.</p>
                     </div>
                   </div>
                 </div>
@@ -339,7 +339,7 @@ const HeroSection = () => {
                     {/* Description Content with Hover Effect */}
                     <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
                       <h3 className="text-[22px] font-bold text-black">Industry, Innovation, And Infrastructure</h3>
-                      <p className="text-sm text-black opacity-[75%] mt-2">Desert Board's engineered solutions are improving the construction industry while combating deforestation. Palm Strand Board®’s outstanding properties include high strength, versatility, fire resistance, sound isolation, among many more.</p>
+                      <p className="text-sm text-black opacity-[75%] mt-2">Desert Board&apos;s engineered solutions are improving the construction industry while combating deforestation. Palm Strand Board®’s outstanding properties include high strength, versatility, fire resistance, sound isolation, among many more.</p>
                     </div>
                   </div>
                 </div>
