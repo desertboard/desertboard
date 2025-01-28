@@ -1,6 +1,5 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-
 interface SecondSecProps {
   title: string;
   subtitle: string;

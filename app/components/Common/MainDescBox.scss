@@ -1,0 +1,17 @@
+.adst{
+    &::before {
+  content: "";
+  position: absolute;
+  width: 65%;
+  height: 100%;
+  background: #e1dcd8;
+}
+}
+
+@media (max-width: 992px) {
+    .adst{
+        &::before {
+            width: 100%;
+        }
+    }
+}

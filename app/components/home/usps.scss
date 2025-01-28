@@ -406,3 +406,18 @@
         height: 100%;
     }
 }
+
+
+@media (max-width:992px){
+    .usp{
+        &__list{
+            display: flex;
+            
+        }
+        &-item{
+            width: 50%;
+            position: relative!important;
+            inset: 0!important;
+        }
+    }
+}
