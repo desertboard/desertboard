@@ -6,7 +6,6 @@ import Image from "next/image";
 import flogo from "@/public/assets/images/home/flogo.png";
 import { Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import MobileMenu from "./MobileMenu/MobileMenu";
-import { assets } from "@/public/assets/images/assets";
 
 const Header = () => {
   const [active, setActive] = useState<string | null>(null);
