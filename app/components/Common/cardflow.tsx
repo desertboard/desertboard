@@ -19,10 +19,10 @@ interface FrameworkSectionProps {
 
   const CardFlow: React.FC<FrameworkSectionProps> = ({  data }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-10">
       {data.map((framework) => (
         <div className="relative group bg-gray-800 csmn overflow-hidden sectorcrd" key={framework.id}>
-          <Image src={framework.image} alt={framework.title} className="w-full h-[320px] lg:h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300" />
+          <Image src={framework.image} alt={framework.title} className="w-full h-[340px] lg:h-[450px] xxl:h-[492px] 3xl:h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300" />
           <div className="absolute inset-0 sectorcrd-overlay transition-all duration-500 ease-in-out"></div>
           <div className="absolute top-0 text-white w-full p-5 lg:p-8">
             <div className="w-full ">
