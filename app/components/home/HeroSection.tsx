@@ -6,15 +6,7 @@ import "@/app/components/home/goalcrd.scss";
 import Banner from "@/public/assets/banner2.jpg";
 
 
-import iconsl1 from "@/public/assets/images/home/slicon1.png";
-import iconsl2 from "@/public/assets/images/home/slicon2.png";
-import iconsl3 from "@/public/assets/images/home/slicon3.png";
-import iconsl4 from "@/public/assets/images/home/slicon4.png";
-import iconsl5 from "@/public/assets/images/home/slicon5.png";
-import iconsl6 from "@/public/assets/images/home/slicon6.png";
-import iconsl7 from "@/public/assets/images/home/slicon7.png";
-import iconsl8 from "@/public/assets/images/home/slicon8.png";
-import iconsl9 from "@/public/assets/images/home/slicon9.png";
+
 
 import svsic1 from "@/public/assets/images/home/svsic1.png";
 import svsic2 from "@/public/assets/images/home/svsic2.png";
