@@ -45,9 +45,9 @@ const HeroSection = () => {
           <Image className="w-screen h-[75vh] md:h-[98vh] absolute object-cover" src={Banner} width={1920} height={900} alt="" />
         </figure>
         <div className="relative z-10 text-white px-6 top-0 lg:top-[120px]">
-          <h1 className="text-[45px]  md:text-[96px] leading-none font-black mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next-heavy m-auto">DesertBoard&apos;s Palm Strand Board</h1>
+          <h1 className="text-[45px]  md:text-[96px] leading-none  mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next-heavy m-auto">DesertBoard&apos;s Palm Strand Board</h1>
           <p className="text-font28 font-[400] mb-6 md:mb-[52px] opacity-[75%] leading-[1.3]">The region&apos;s most sustainable building material</p>
-          <Link href="#" className="flex items-center nuber-next group w-fit text-font18 font-black m-auto gap-4 rounded-none inline-block px-5 py-3 md:px-10 md:py-4
+          <Link href="#" className="flex items-center nuber-next group w-fit text-font18  m-auto gap-4 rounded-none inline-block px-5 py-3 md:px-10 md:py-4
           border border-white text-white btnhs  hover:text-[#FF671F] hover:border-[#FF671F] transition rounded-md">
             Know More
             <Image src={readarrow} alt="icn1" width={16} height={24} className="fiterwt transition-all duration-300 group-hover:translate-x-2 " />
@@ -73,7 +73,7 @@ const HeroSection = () => {
       <section className="  py-10 lg:py-20   insp-mn relative inspbg">
         <div className="container m-auto">
           <div className="text-left mb-5 lg:mb-10">
-            <h2 className="text-Darkgreen mb-4 text-[28px] md:text-[48px] leading-[1] font-black nuber-next">
+            <h2 className="text-Darkgreen mb-4 text-[28px] md:text-[48px] leading-[1]  nuber-next">
               Sectors<span className="text-[#FF671F]">.</span>
             </h2>
 
@@ -89,7 +89,7 @@ const HeroSection = () => {
         <div className="container m-auto">
           <div className="flex justify-between mb-8 md:items-end mdgrd gap-4 ">
             <div className="text-left ">
-              <h2 className="text-Darkgreen mb-4 text-[28px] md:text-[48px]  font-black nuber-next leading-[1] ">
+              <h2 className="text-Darkgreen mb-4 text-[28px] md:text-[48px]   nuber-next leading-[1] ">
                 Sustainable Development Goals
                 <span className="text-[#FF671F]">.</span>
               </h2>
@@ -97,7 +97,7 @@ const HeroSection = () => {
             </div>
             <div className="flex gap-3 items-center group rmbtn pb-3">
               <div>
-                <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300 text-font18 font-black leading-[1.5]    text-font20 md:min-w-[105px] nuber-next-heavy leading-[1.25] ">Read More</p>
+                <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300 text-font18  leading-[1.5]    text-font20 md:min-w-[105px] nuber-next-heavy leading-[1.25] ">Read More</p>
               </div>{" "}
               <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1 " />
             </div>
@@ -108,7 +108,7 @@ const HeroSection = () => {
             // install Swiper modules
             modules={[Navigation, Pagination]}
             spaceBetween={0}
-            slidesPerView='auto'
+            // slidesPerView='auto'
             loop={true}
             navigation={{
               nextEl: ".swiper-button-next", // Target the next button
@@ -116,6 +116,10 @@ const HeroSection = () => {
             }}
             breakpoints={{
               0: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+              },
+              410: {
                 slidesPerView: 2,
                 spaceBetween: 0,
               },
@@ -389,7 +393,7 @@ const HeroSection = () => {
         </div>
       </section>
 
-      <section className="bg-[#FFB549]  ">
+      <section className="bg-secondary  ">
         <div className="container m-auto">
           <div className="flex items-center gap-3   py-6 md:py-10 group  justify-end">
             <p className="mb-0 nuber-next-bold text-font28 lg:text-[22px] font-bold text-white nuber-next">Discover Industry Solutions</p>

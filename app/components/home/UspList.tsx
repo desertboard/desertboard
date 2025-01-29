@@ -25,7 +25,7 @@ interface UspsProps {
 export default function UspList({ secTitle }: UspsProps) {
   const [activeOrder, setActiveOrder] = useState<string | null>("1");
   return (
-    <section className=" py-10 lg:py-20  relative bg-primary text-white overflow-hidden">
+    <section className=" py-10 lg:py-20  relative bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
       <div className="ola ola-right absolute top-5 right-[-10%] w-[40em]">
         <Image className="absolute" src={ola} alt="Description of the image"></Image>
       </div>
