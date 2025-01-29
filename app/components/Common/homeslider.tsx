@@ -97,7 +97,7 @@ interface FrameworkSectionProps {
               </div>
               <div className="p-6">
                 <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                      <h3 className="text-[22px] font-bold text-black"  >{framework.title} </h3>
+                      <h3 className="text-[22px] font-bold  "  >{framework.title} </h3>
                   <p className="text-sm text-black opacity-[75%] mt-2">{framework.dec}</p>
                 </div>
               </div>

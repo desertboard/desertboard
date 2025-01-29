@@ -30,7 +30,7 @@ import youtube from "@/public/assets/images/home/youtube.svg";
                       {/* Subscribe Button */}
                       <button
                         type="button"
-                        className="absolute group top-0 right-0 mt-1 mr-1 px-5 py-2 text-sm font-bold text-Darkgreen flex gap-2 items-center transition-all duration-300 ease-in-out
+                        className="absolute group top-0 right-0 mt-1 mr-1 px-5 py-2 text-sm nuber-next-bold text-Darkgreen flex gap-2 items-center transition-all duration-300 ease-in-out
                         hover:text-[#FF671F]"
                       >
                         Subscribe
