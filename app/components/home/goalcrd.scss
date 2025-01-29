@@ -7,13 +7,16 @@
         transform: translate(-50%, -50%);
         height: 100%;
         width: 100%;
+
         transition: all 0.3s ease;
+
     }
     &__ibox {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         transition: all 0.3s ease-in-out;
+
     }
     &:hover {
         &__icon {
@@ -24,6 +27,7 @@
 
     }
 }
+
 
 .goal-crd:hover .goal-crd__ibox {
     top: 5%;
@@ -40,6 +44,7 @@
             width: 430px !important;
         }
     }
+
 }
 @media (max-width: 768px) {
     .goal-crd {
