@@ -210,6 +210,7 @@
     }
 }
 .usp__list.active-2 {
+
     .usp-1 {
         left: 0;
         top: 50%;
@@ -218,6 +219,15 @@
     .usp-2 {
         left: 0%;
         width: 50%;
+        padding-bottom: 1.75rem;
+        .usp-item__desc {
+            opacity: 0.75;
+            filter: blur(0);
+            transform: translateY(0);
+            height: 100%;
+            transition: 300ms all linear;
+        }
+
     }
     .usp-3 {
         left: 50%;
@@ -242,6 +252,14 @@
     .usp-1 {
         left: 0;
         height: 100%;
+        padding-bottom: 1.75rem;
+        .usp-item__desc {
+            opacity: 0.75;
+            filter: blur(0);
+            transform: translateY(0);
+            height: 100%;
+            transition: 300ms all linear;
+        }
     }
     .usp-2 {
         left: 25%;
@@ -275,6 +293,14 @@
     .usp-3 {
         left: 50%;
         height: 100%;
+        padding-bottom: 1.75rem;
+        .usp-item__desc {
+            opacity: 0.75;
+            filter: blur(0);
+            transform: translateY(0);
+            height: 100%;
+            transition: 300ms all linear;
+        }
     }
     .usp-4 {
         left: 75%;
@@ -306,7 +332,14 @@
     .usp-4 {
         left: 50%;
         width: 50%;
-
+        padding-bottom: 1.75rem;
+        .usp-item__desc {
+            opacity: 0.75;
+            filter: blur(0);
+            transform: translateY(0);
+            height: 100%;
+            transition: 300ms all linear;
+        }
     }
     .usp-5 {
         left: 25%;
@@ -339,6 +372,14 @@
         top: 0;
         left: 25%;
         height: 100%;
+        padding-bottom: 1.75rem;
+        .usp-item__desc {
+            opacity: 0.75;
+            filter: blur(0);
+            transform: translateY(0);
+            height: 100%;
+            transition: 300ms all linear;
+        }
     }
     .usp-6 {
         left: 50%;
@@ -370,6 +411,14 @@
     .usp-6 {
         left: 25%;
         width: 50%;
+        padding-bottom: 1.75rem;
+        .usp-item__desc {
+            opacity: 0.75;
+            filter: blur(0);
+            transform: translateY(0);
+            height: 100%;
+            transition: 300ms all linear;
+        }
     }
     .usp-7 {
         left: 75%;
@@ -404,6 +453,14 @@
         top: 0;
         left: 75%;
         height: 100%;
+        padding-bottom: 1.75rem;
+        .usp-item__desc {
+            opacity: 0.75;
+            filter: blur(0);
+            transform: translateY(0);
+            height: 100%;
+            transition: 300ms all linear;
+        }
     }
 }
 
