@@ -1,10 +1,12 @@
 import type { Config } from "tailwindcss";
 
+const withMT = require("@material-tailwind/html/utils/withMT");
+
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
-export default {
+module.exports = withMT({
   content: ["./pages/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}", "./app/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: "class",
   theme: {
@@ -73,7 +75,8 @@ export default {
     },
   },
   plugins: [addVariablesForColors],
-} satisfies Config;
+})
+
 
 
 function addVariablesForColors({ addBase, theme }: any) {
