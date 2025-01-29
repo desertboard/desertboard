@@ -1,7 +1,10 @@
 "use client";
 import Link from "next/link";
 import "@/app/components/home/usps.scss";
-import Banner from "@/public/assets/banner2.jpg";
+
+import "@/app/components/home/goalcrd.scss";
+import Banner from "@/public/assets/banner.jpg";
+
 
 import iconsl1 from "@/public/assets/images/home/slicon1.png";
 import iconsl2 from "@/public/assets/images/home/slicon2.png";
@@ -21,8 +24,7 @@ import youtube from "@/public/assets/images/home/youtube.svg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
-
-import { Navigation,  Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 import Image from "next/image";
@@ -67,6 +69,7 @@ const HeroSection = () => {
 
 
       <UspList secTitle={"Key USP's"} />
+
       <section className="  py-10 lg:py-20   insp-mn relative inspbg">
         <div className="container m-auto">
           <div className="text-left mb-5 md:mb-10">
@@ -75,11 +78,9 @@ const HeroSection = () => {
             </h2>
 
             <p className="text-font20 text-[#151515] opacity-[75%]  max-w-[75ch]">PSB® boards diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring.</p>
-
           </div>
 
-      <CardFlow  data = {Homecarlsldata.data} />
-
+          <CardFlow data={Homecarlsldata.data} />
         </div>
       </section>
       {/* <HomeSlider  data = {Homecarlsldata.data} /> */}
@@ -140,7 +141,9 @@ const HeroSection = () => {
             onSlideChange={() => console.log("slide change")}>
            <SwiperSlide>
               <div
+
                 className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
+
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn1.jpg')`,
                 }}>
@@ -148,13 +151,17 @@ const HeroSection = () => {
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
+
                       <Image src={iconsl1} alt="Thumbnail" className="  transform transition-all duration-500" />
+
                     </div>
 
                     {/* Description Content with Hover Effect */}
                   </div>
                   <div className="p-6">
+
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
+
                       <h3 className="text-[22px] font-bold text-black">Good Health And Well-Being</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">DesertBoard has designed its PSB® to be zero-emissions. This greener alternative to wood-based products (example: MDF, particleboard, and plywood) includes zero formaldehyde.</p>
                     </div>
@@ -395,6 +402,7 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
+      
       <footer className=" bg-[#00594F]">
         <div className="container m-auto">
           <div className="pt-10 md:pt-20    ">
