@@ -63,13 +63,13 @@ const Header = () => {
                     title="Product A"
                     description="Description for Product A"
                     href="/products/a"
-                    src="/images/product-a.jpg"
+                    src="/assets/images/home/sliconmn6.jpg"
                   />
                   <ProductItem
                     title="Product B"
                     description="Description for Product B"
                     href="/products/b"
-                    src="/images/product-b.jpg"
+                    src="/assets/images/home/sliconmn4.jpg"
                   />
                 </div>
               </MenuItem>

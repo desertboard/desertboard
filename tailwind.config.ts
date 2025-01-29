@@ -40,6 +40,8 @@ module.exports = withMT({
       colors: {
         primary: "#00594F",
         secondary: "#FFB549",
+        Darkgreen: "#002D28",
+        litetext: "#151515",
       },
       fontSize: {
         font14: "clamp(0.7rem,1.2vw,0.875rem)",

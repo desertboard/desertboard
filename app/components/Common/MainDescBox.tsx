@@ -34,14 +34,14 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, desc, des
       <div className="container m-auto ">
         <div className="lg:flex flex-col lg:flex-row items-center justify-between adst relative xl:pr-[10em] xxl:pr-[20em]">
           <div className="lg:w-1/2 text-left pr-5 pl-5 lg:pl-6 xl:pl-16 py-5 lg:py-20 xl:py-28 opacity-[99%]">
-            <h2 className="  text-gray-900 mb-4 text-font28 md:text-[48px] font-black nuber-next leading-[1] overflow-hidden">
+            <h2 className="  text-Darkgreen mb-4 text-font28 md:text-[48px] font-black nuber-next leading-[1] overflow-hidden">
               {secTitle}
               <span className="text-[#FF671F]">.</span>
             </h2>
-            <p className=" nuber-next   md-6 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>
-            <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3]">{desc}</p>
+            <p className=" nuber-next   md-6 lg:mb-10 text-litetext font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>
+            <p className="text-font20 text-litetext opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3]">{desc}</p>
             <br />
-            <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3]">{desc2}</p>
+            <p className="text-font20 text-litetext opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3]">{desc2}</p>
           </div>
 
           <div className="flex lg:absolute lg:w-[58%] lg:right-0 lg:top-5 h-full">

@@ -43,7 +43,7 @@ export const MenuItem = ({
           transition={transition}
         >
           {active === item && (
-            <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4">
+            <div className="absolute top-[calc(100%_+_1rem)] left-1/2 transform -translate-x-1/2 pt-4">
               <motion.div
                 transition={transition}
                 layoutId="active" // layoutId ensures smooth animation
@@ -74,7 +74,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative border border-transparent dark:bg-black dark:border-white/[0.2] bg-transparent w-full shadow-input flex justify-between gap-[10px] lg:gap-[15px] xxl:gap-[25px] 3xl:gap-[52px] py-4"
+      className="relative border border-transparent dark:bg-black dark:border-white/[0.2] bg-transparent w-full shadow-input flex justify-between gap-[10px] lg:gap-[15px] xxl:gap-[25px] 3xl:gap-[40px] py-4"
     >
       {children}
     </nav>
@@ -102,10 +102,10 @@ export const ProductItem = ({
         className="flex-shrink-0 rounded-md shadow-2xl"
       />
       <div>
-        <h4 className="text-xl font-bold mb-1 text-black dark:text-white">
+        <h4 className="text-xl font-bold mb-1 text-black dark:text-white nuber-next-heavy mb-3 lg:mb-4">
           {title}
         </h4>
-        <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300">
+        <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300 helvetica">
           {description}
         </p>
       </div>

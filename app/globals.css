@@ -2,41 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide scrollbar for all browsers */
+html, body {
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none;
+}
+
 @font-face {
   font-family: "helvetica";
-  src: url("../public/assets/fonts/helvetica/HelveticaNeueLTPro-Roman.otf") format("opentype");
+  src: url("../public/assets/fonts/HelveticaNeueLTPro-Roman.woff2") format('woff2'), url("../public/assets/fonts/HelveticaNeueLTPro-Roman.woff") format('woff');
+
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Nuber Next";
-  src: url("../public/assets/fonts/nuber-next/NuberNext-Regular-BF63c8a0fb4a7c5.otf") format("opentype");
-  font-weight: normal;
+  font-family: "NuberBold";
+  src: url("../public/assets/fonts/NuberNext-Bold-BF63c8a0b20c2e1.woff2") format('woff2'), url("../public/assets/fonts/NuberNext-Bold-BF63c8a0b20c2e1.woff") format('woff');
+  font-weight: 700;
   font-style: normal;
+
 }
+
+
 
 @font-face {
-  font-family: "Nuber Next heavy";
-  src: url("../public/assets/fonts/nuber-next/NuberNext-Bold-BF63c8a0b20c2e1.otf") format("opentype");
-  font-weight: 900;
+  font-family: "NuberNextHeavy";
+  src: url("../public/assets/fonts/NuberNext-Heavy-BF63c8a0fb5d005.woff2") format('woff2'), url("../public/assets/fonts/NuberNext-Heavy-BF63c8a0fb5d005.woff") format('woff');
   font-style: normal;
+  font-display: swap;
 }
-
-/* @font-face {
-  font-family: "Nuber Next heavy";
-  src: url("../public/assets/fonts/nuber-next/NuberNextCondensed-Heavy-BF63c8a0ce720f4.woff2") format('woff2'), url("../public/assets/fonts/nuber-next/NuberNextCondensed-Heavy-BF63c8a0ce720f4.woff") format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: block
-} */
 .nuber-next-heavy {
-  font-family: "Nuber Next heavy", sans-serif;
+  font-family: "NuberNextHeavy", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-style: normal;
+  font-weight: 900;
 }
 
 .nuber-next {
-  font-family: "Nuber Next", sans-serif;
+  font-family: "NuberNextHeavy", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-style: normal;
+}
+.nuber-next-bold {
+  font-family: "NuberBold", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-style: normal;
+}
+.helvetica {
+  font-family: "helvetica", sans-serif;
   font-style: normal;
 }
 
@@ -44,11 +59,11 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Nuber Next";
+  font-family: "NuberBold" Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 p {
-  font-family: "helvetica";
+  font-family: "helvetica", sans-serif;
 }
 
 :root {
@@ -98,7 +113,7 @@ body {
   background-repeat: no-repeat;
   background-position: left bottom;
   left: 0;
-  bottom: -22px;
+  bottom: -64px;
   z-index: -1;
 }
 
@@ -118,7 +133,6 @@ body {
 .rmbtn {
   color: #ff671f;
 
-  font-weight: 700;
   border-bottom: 2px solid #ff671f;
   width: fit-content;
 }
@@ -211,6 +225,7 @@ body {
 }
 
 .linkq a {
+  font-family: "helvetica", sans-serif;
   margin-bottom: 16px;
   color: #fff;
   font-size: 18px;
@@ -228,16 +243,19 @@ body {
 
 
 
+@media screen and (max-width: 991px) {
+  .mdgrd {
+    flex-direction: column;
+    gap: 18px;
+  }
+}
 @media screen and (max-width: 767px) {
   .bg-blacktrans {
     background: rgb(0, 0, 0);
     background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
   }
 
-  .mdgrd {
-    flex-direction: column;
-    gap: 18px;
-  }
+
 }
 
 @media screen and (max-width: 1199px) {
