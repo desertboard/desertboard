@@ -6,15 +6,18 @@ import "@/app/components/home/goalcrd.scss";
 import Banner from "@/public/assets/banner2.jpg";
 
 
-import iconsl1 from "@/public/assets/images/home/slicon1.png";
-import iconsl2 from "@/public/assets/images/home/slicon2.png";
-import iconsl3 from "@/public/assets/images/home/slicon3.png";
-import iconsl4 from "@/public/assets/images/home/slicon4.png";
-import iconsl5 from "@/public/assets/images/home/slicon5.png";
-import iconsl6 from "@/public/assets/images/home/slicon6.png";
-import iconsl7 from "@/public/assets/images/home/slicon7.png";
-import iconsl8 from "@/public/assets/images/home/slicon8.png";
-import iconsl9 from "@/public/assets/images/home/slicon9.png";
+
+
+import svsic1 from "@/public/assets/images/home/svsic1.png";
+import svsic2 from "@/public/assets/images/home/svsic2.png";
+import svsic3 from "@/public/assets/images/home/svsic3.png";
+import svsic4 from "@/public/assets/images/home/svsic4.png";
+import svsic5 from "@/public/assets/images/home/svsic5.png";
+import svsic6 from "@/public/assets/images/home/svsic6.png";
+import svsic7 from "@/public/assets/images/home/svsic7.png";
+import svsic8 from "@/public/assets/images/home/svsic8.png";
+import svsic9 from "@/public/assets/images/home/svsic9.png";
+
 import readarrow from "@/public/assets/images/read-arrow.svg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -35,14 +38,14 @@ import '@/app/components/home/goalcrd.scss';
 const HeroSection = () => {
   return (
     <>
-      <section className="relative h-[98vh] bg-cover bg-center flex items-center justify-center text-center">
+      <section className="relative h-[75vh] md:h-[98vh] bg-cover bg-center flex items-center justify-center text-center">
         {/* <div className="absolute inset-0 bg-black opacity-60 -z-10"></div>
         <div className="absolute inset-0 bg-primary opacity-20 -z-20"></div> */}
-        <figure className="absolute h-[98vh] top-0   w-full  -z-40">
-          <Image className="w-screen h-[98vh] absolute object-cover" src={Banner} width={1920} height={900} alt="" />
+        <figure className="absolute h-[75vh] md:h-[98vh] top-0   w-full  -z-40">
+          <Image className="w-screen h-[75vh] md:h-[98vh] absolute object-cover" src={Banner} width={1920} height={900} alt="" />
         </figure>
         <div className="relative z-10 text-white px-6 top-0 lg:top-[120px]">
-          <h1 className="text-4xl md:text-[96px] leading-none font-black mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next-heavy m-auto">DesertBoard&apos;s Palm Strand Board</h1>
+          <h1 className="text-[45px]  md:text-[96px] leading-none font-black mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next-heavy m-auto">DesertBoard&apos;s Palm Strand Board</h1>
           <p className="text-font28 font-[400] mb-6 md:mb-[52px] opacity-[75%] leading-[1.3]">The region&apos;s most sustainable building material</p>
           <Link href="#" className="flex items-center nuber-next group w-fit text-font18 font-black m-auto gap-4 rounded-none inline-block px-5 py-3 md:px-10 md:py-4
           border border-white text-white btnhs  hover:text-[#FF671F] hover:border-[#FF671F] transition rounded-md">
@@ -69,8 +72,8 @@ const HeroSection = () => {
 
       <section className="  py-10 lg:py-20   insp-mn relative inspbg">
         <div className="container m-auto">
-          <div className="text-left mb-5 md:mb-10">
-            <h2 className="text-Darkgreen mb-5 text-[28px] md:text-[48px] leading-[1] font-black nuber-next">
+          <div className="text-left mb-5 lg:mb-10">
+            <h2 className="text-Darkgreen mb-4 text-[28px] md:text-[48px] leading-[1] font-black nuber-next">
               Sectors<span className="text-[#FF671F]">.</span>
             </h2>
 
@@ -149,7 +152,7 @@ const HeroSection = () => {
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-                      <Image src={iconsl1} alt="Thumbnail" className="  transform transition-all duration-500" />
+                      <Image src={svsic1} width={131} height={131} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -175,7 +178,7 @@ const HeroSection = () => {
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-                      <Image src={iconsl2} alt="Thumbnail" className="  transform transition-all duration-500" />
+                      <Image src={svsic2} width={131} height={131} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -199,7 +202,7 @@ const HeroSection = () => {
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-                      <Image src={iconsl3} alt="Thumbnail" className="  transform transition-all duration-500" />
+                      <Image src={svsic3} width={131} height={131} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -224,7 +227,7 @@ const HeroSection = () => {
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-                      <Image src={iconsl4} alt="Thumbnail" className="  transform transition-all duration-500" />
+                      <Image src={svsic4} width={131} height={131} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -248,7 +251,7 @@ const HeroSection = () => {
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-                      <Image src={iconsl5} alt="Thumbnail" className="  transform transition-all duration-500" />
+                      <Image src={svsic5} width={131} height={131} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -272,7 +275,7 @@ const HeroSection = () => {
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-                      <Image src={iconsl6} alt="Thumbnail" className="  transform transition-all duration-500" />
+                      <Image src={svsic6} width={131} height={131} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -297,7 +300,7 @@ const HeroSection = () => {
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-                      <Image src={iconsl7} alt="Thumbnail" className="  transform transition-all duration-500" />
+                      <Image src={svsic7} width={131} height={131} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -323,7 +326,7 @@ const HeroSection = () => {
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-                      <Image src={iconsl8} alt="Thumbnail" className="  transform transition-all duration-500" />
+                      <Image src={svsic8} width={131} height={131} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -348,7 +351,7 @@ const HeroSection = () => {
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-                      <Image src={iconsl9} alt="Thumbnail" className="  transform transition-all duration-500" />
+                      <Image src={svsic9} width={131} height={131} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -368,14 +371,14 @@ const HeroSection = () => {
           </Swiper>
         </div>
         <div className="container m-auto relative">
-          <div className="swiper-button-next cursor-pointer group absolute bottom-[-70px] right-[25px]  transform -translate-y-1/2 text-white z-10">
+          <div className="swiper-button-next cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
             <div className="transition-all duration-300 group-hover:translate-x-1">
               <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
               </svg>
             </div>
           </div>
-          <div className="swiper-button-prev group cursor-pointer absolute bottom-[-70px] right-[60px] transform -translate-y-1/2 text-white z-10">
+          <div className="swiper-button-prev group cursor-pointer absolute bottom-[-70px] right-[50px] transform -translate-y-1/2 text-white z-10">
             {/* You can customize this icon as needed */}
             <div className="transition-all duration-300 group-hover:translate-x-[-5px]">
               <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -388,7 +391,7 @@ const HeroSection = () => {
 
       <section className="bg-[#FFB549]  ">
         <div className="container m-auto">
-          <div className="flex items-center gap-3 px-3 py-6 md:py-10 group  justify-end">
+          <div className="flex items-center gap-3   py-6 md:py-10 group  justify-end">
             <p className="mb-0 nuber-next-bold text-font28 lg:text-[22px] font-bold text-white nuber-next">Discover Industry Solutions</p>
             <div className="transition-all duration-300 group-hover:translate-x-1">
               <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">

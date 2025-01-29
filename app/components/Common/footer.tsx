@@ -16,7 +16,7 @@ import youtube from "@/public/assets/images/home/youtube.svg";
             <div className="py-[20px]  md:py-10 px-[20px]  md:px-12 bg-ser ">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 items-center">
                 <div>
-                  <p className=" mb-0 text-Darkgreen   text-[25px]  md:text-[36px] leading-1 md:leading-none font-black ber-next-heavy">
+                  <p className=" mb-0 text-Darkgreen   text-[25px]  md:text-[36px] leading-[1.2] xxl:leading-none font-black ber-next-heavy">
                     Stay Up To Date with DesertBoard
                     <span className="text-[#FF671F] mb-0     text-[25px]  md:text-[36px]  ">.</span>
                   </p>
