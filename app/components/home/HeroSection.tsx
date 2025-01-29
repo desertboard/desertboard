@@ -30,6 +30,8 @@ import UspList from "./UspList";
 import MainDescBOx from "../Common/MainDescBox";
 import { Homecarlsldata } from "../../data/homecarlsl";
 import CardFlow from "../Common/cardflow";
+import HomeSlider from "../Common/homeslider";
+
 import '@/app/components/home/goalcrd.scss';
 
 const HeroSection = () => {
@@ -80,7 +82,7 @@ const HeroSection = () => {
 
         </div>
       </section>
-
+      {/* <HomeSlider  data = {Homecarlsldata.data} /> */}
       <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner">
         <div className="container m-auto">
           <div className="flex justify-between mb-8 md:items-end mdgrd gap-4 ">
@@ -105,6 +107,7 @@ const HeroSection = () => {
             modules={[Navigation, Pagination]}
             spaceBetween={0}
             slidesPerView='auto'
+            loop={true}
             navigation={{
               nextEl: ".swiper-button-next", // Target the next button
               prevEl: ".swiper-button-prev", // Target the previous button
@@ -161,20 +164,22 @@ const HeroSection = () => {
             </SwiperSlide>
             <SwiperSlide>
               <div
-                className="relative group overflow-hidden transform transition-all duration-500 growf "
+                className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn2.jpg')`,
                 }}>
                 <div className="flex items-center justify-center min-h-[460px]">
-                  <div className="relative    bg-cover bg-center p-6">
+                  <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
-                    <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl2} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                    <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
+                      <Image src={iconsl2} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
-                    <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                      <h3 className="text-[22px] font-bold text-black">Affordable And Clean Energy</h3>
+                  </div>
+                  <div className="p-6">
+                    <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
+                    <h3 className="text-[22px] font-bold text-black">Affordable And Clean Energy</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">As proved by Desert Board&apos;s life cycle assessment (LCA) and Environmental Product Declaration (EPD), 30% of the factory’s purchased electricity comes from clean sources (nuclear & solar).</p>
                     </div>
                   </div>
@@ -183,108 +188,120 @@ const HeroSection = () => {
             </SwiperSlide>
             <SwiperSlide>
               <div
-                className="relative group overflow-hidden transform transition-all duration-500 growf "
+                className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn3.jpg')`,
                 }}>
                 <div className="flex items-center justify-center min-h-[460px]">
-                  <div className="relative    bg-cover bg-center p-6">
+                  <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
-                    <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl3} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%] " />
+                    <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
+                      <Image src={iconsl3} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
-                    <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                      <h3 className="text-[22px] font-bold text-black">Decent Work And Economic Growth</h3>
+                  </div>
+                  <div className="p-6">
+                    <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
+                    <h3 className="text-[22px] font-bold text-black">Decent Work And Economic Growth</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">As of 2025, DesertBoard employes a workforce of 284 team members, including 156 positions at our factory and 128 roles within the company&apos;s back-office operations.</p>
-                    </div>
+                     </div>
                   </div>
                 </div>
               </div>
             </SwiperSlide>
+
             <SwiperSlide>
               <div
-                className="relative group overflow-hidden transform transition-all duration-500 growf "
+                className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn4.jpg')`,
                 }}>
                 <div className="flex items-center justify-center min-h-[460px]">
-                  <div className="relative    bg-cover bg-center p-6">
+                  <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
-                    <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl4} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                    <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
+                      <Image src={iconsl4} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
-                    <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                      <h3 className="text-[22px] font-bold text-black">Industry, Innovation, And Infrastructure</h3>
+                  </div>
+                  <div className="p-6">
+                    <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
+                    <h3 className="text-[22px] font-bold text-black">Industry, Innovation, And Infrastructure</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">Desert Board&apos;s engineered solutions are improving the construction industry while combating deforestation. Palm Strand Board®’s outstanding properties include high strength, versatility, fire resistance, sound isolation, among many more.</p>
-                    </div>
+                   </div>
                   </div>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div
-                className="relative group overflow-hidden transform transition-all duration-500 growf "
+                className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn5.jpg')`,
                 }}>
                 <div className="flex items-center justify-center min-h-[460px]">
-                  <div className="relative    bg-cover bg-center p-6">
+                  <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
-                    <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl5} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                    <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
+                      <Image src={iconsl5} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
-                    <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                      <h3 className="text-[22px] font-bold text-black">Reduced Inequality</h3>
+                  </div>
+                  <div className="p-6">
+                    <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
+                    <h3 className="text-[22px] font-bold text-black">Reduced Inequality</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">At DesertBoard, inclusivity is a key pillar, with a multicultural talent pool that values diversity in ethnicity, religious background, and an increasing female shares of our workforce.</p>
-                    </div>
+                     </div>
                   </div>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div
-                className="relative group overflow-hidden transform transition-all duration-500 growf "
+                className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn6.jpg')`,
                 }}>
                 <div className="flex items-center justify-center min-h-[460px]">
-                  <div className="relative    bg-cover bg-center p-6">
+                  <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
-                    <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl6} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                    <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
+                      <Image src={iconsl6} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
-                    <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                      <h3 className="text-[22px] font-bold text-black">Sustainable Cities And Communities</h3>
+                  </div>
+                  <div className="p-6">
+                    <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
+                    <h3 className="text-[22px] font-bold text-black">Sustainable Cities And Communities</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">DesertBoard is proudly preserving the UAE’s cultural and natural heritage by collecting annually regenerated palm frond biomass, preventing it from ending up in landfills or being incinerated, which would otherwise release CO2 or methane into the atmosphere.</p>
-                    </div>
+                     </div>
                   </div>
                 </div>
               </div>
             </SwiperSlide>
+
             <SwiperSlide>
               <div
-                className="relative group overflow-hidden transform transition-all duration-500 growf "
+                className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn7.jpg')`,
                 }}>
                 <div className="flex items-center justify-center min-h-[460px]">
-                  <div className="relative    bg-cover bg-center p-6">
+                  <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
-                    <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl7} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                    <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
+                      <Image src={iconsl7} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
-                    <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                      <h3 className="text-[22px] font-bold text-black">Responsible Consumption And Production</h3>
+                  </div>
+                  <div className="p-6">
+                    <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
+                    <h3 className="text-[22px] font-bold text-black">Responsible Consumption And Production</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">
                         Every year, DesertBoard sources hundreds of thousands of tons of palm residues from local farmers and converts them into PSB®. To raise awareness on responsible consumption and production, DesertBoard showcased its’ bio-economy model at 19 regional and global forums in 2024.
                       </p>
@@ -295,21 +312,24 @@ const HeroSection = () => {
             </SwiperSlide>
             <SwiperSlide>
               <div
-                className="relative group overflow-hidden transform transition-all duration-500 growf "
+                className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn8.jpg')`,
                 }}>
                 <div className="flex items-center justify-center min-h-[460px]">
-                  <div className="relative    bg-cover bg-center p-6">
+                  <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
-                    <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl8} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                    <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
+                      <Image src={iconsl8} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
-                    <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                      <h3 className="text-[22px] font-bold text-black">Climate Action</h3>
+                  </div>
+                  <div className="p-6">
+                    <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
+                    <h3 className="text-[22px] font-bold text-black">Climate Action</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">By producing 100% sustainable, zero-formaldehyde boards, DesertBoard is helping decarbonize the built environment and support the Net Zero initiatives of the UAE, KSA, EU, and India.</p>
+
                     </div>
                   </div>
                 </div>
@@ -317,20 +337,22 @@ const HeroSection = () => {
             </SwiperSlide>
             <SwiperSlide>
               <div
-                className="relative group overflow-hidden transform transition-all duration-500 growf "
+                className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn9.jpg')`,
                 }}>
                 <div className="flex items-center justify-center min-h-[460px]">
-                  <div className="relative    bg-cover bg-center p-6">
+                  <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
-                    <div className="absolute inset-0 flex items-center justify-center  transition-all duration-500 group-hover:inset-1">
-                      <Image src={iconsl9} alt="Thumbnail" className="w-20 h-20 transform transition-all duration-500  group-hover:translate-x-[-133%] group-hover:translate-y-[-215%]" />
+                    <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
+                      <Image src={iconsl9} alt="Thumbnail" className="  transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
-                    <div className=" opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                      <h3 className="text-[22px] font-bold text-black">Life On Land</h3>
+                  </div>
+                  <div className="p-6">
+                    <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
+                    <h3 className="text-[22px] font-bold text-black">Life On Land</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">
                         DesertBoard promotes forest conservation by reusing local biomass rather than sourcing newly cut trees from around the globe. This approach is in sync with the UAE’s 2030 Green Agenda, complying with the “Green Diversification Program”, and the “National Waste-To-Resources Program”.
                       </p>
@@ -339,6 +361,7 @@ const HeroSection = () => {
                 </div>
               </div>
             </SwiperSlide>
+
           </Swiper>
         </div>
         <div className="container m-auto relative">
