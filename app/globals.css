@@ -1,24 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide scrollbar for all browsers */
+html, body {
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none;
+}
+
 @font-face {
   font-family: "helvetica";
   src: url("../public/assets/fonts/helvetica/HelveticaNeueLTPro-Roman.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Nuber Next";
   src: url("../public/assets/fonts/nuber-next/NuberNext-Regular-BF63c8a0fb4a7c5.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Nuber Next heavy";
-  src: url("../public/assets/fonts/nuber-next/NuberNextCondensed-Heavy-BF63c8a0ce720f4.otf") format("opentype");
+  src: url("../public/assets/fonts/nuber-next/NuberNext-Bold-BF63c8a0b20c2e1.otf") format("opentype");
   font-weight: 900;
   font-style: normal;
 }
+
 /* @font-face {
   font-family: "Nuber Next heavy";
   src: url("../public/assets/fonts/nuber-next/NuberNextCondensed-Heavy-BF63c8a0ce720f4.woff2") format('woff2'), url("../public/assets/fonts/nuber-next/NuberNextCondensed-Heavy-BF63c8a0ce720f4.woff") format('woff');
@@ -26,24 +40,42 @@
   font-style: normal;
   font-display: block
 } */
-.nuber-next-heavy{
-  font-family: "Nuber Next heavy",sans-serif;
+.nuber-next-heavy {
+  font-family: "Nuber Next heavy", sans-serif;
   font-style: normal;
 }
-.nuber-next{
-  font-family: "Nuber Next",sans-serif;
+
+.nuber-next {
+  font-family: "Nuber Next", sans-serif;
   font-style: normal;
 }
-h1,h2,h3,h4{
-  font-family: "Nuber Next";}
-p{font-family: "helvetica";}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Nuber Next";
+}
+
+p {
+  font-family: "helvetica";
+}
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
-.fiterwt{filter: brightness(0) invert(1);}
-.btnhs:hover{.fiterwt{filter: none;}}
+
+.fiterwt {
+  filter: brightness(0) invert(1);
+}
+
+.btnhs:hover {
+  .fiterwt {
+    filter: none;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -58,13 +90,15 @@ body {
 }
 
 .bg-blacktrans {
-  background: rgb(0,0,0);
-background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 49%);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 49%);
 }
-.csmn:hover .bg-blacktrans{
+
+.csmn:hover .bg-blacktrans {
   background: linear-gradient(180deg, #002D28 -3%, rgba(0, 45, 40, 0) 100%),
-  linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, #000000 100%), rgba(0, 0, 0, 0.25);
+    linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, #000000 100%), rgba(0, 0, 0, 0.25);
 }
+
 .insp-mn::before {
   content: "";
   background-image: url(/assets/images/before-leaf.svg);
@@ -77,6 +111,7 @@ background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 49%);
   bottom: -22px;
   z-index: -1;
 }
+
 .insp-mn::after {
   content: "";
   background-image: url(/assets/images/after-leaf.svg);
@@ -89,6 +124,7 @@ background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 49%);
   top: 0;
   z-index: -1;
 }
+
 .rmbtn {
   color: #ff671f;
 
@@ -101,6 +137,7 @@ background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 49%);
   .container {
     height: 100%;
   }
+
   .pg-bnr__div {
     h1 {
       text-align: left;
@@ -110,6 +147,7 @@ background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 49%);
       opacity: 1;
       position: relative;
     }
+
     .pg-bnr__txt {
       color: #fff;
       z-index: 2;
@@ -117,74 +155,103 @@ background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 49%);
     }
   }
 }
+
 .news-events {
   .display-webkit-box {
     display: -webkit-box;
   }
+
   .webkit-line-clamp-2 {
     -webkit-line-clamp: 2;
   }
+
   .webkit-box-orient-vertical {
     -webkit-box-orient: vertical;
   }
 }
-.inspbg{background: url(/assets/images/home/Lighter.png);
+
+.inspbg {
+  background: url(/assets/images/home/Lighter.png);
   background-size: cover;
   position: relative;
   z-index: 1;
- }
-.darkbanner{background: url(/assets/images/home/Darker.png);
+}
+
+.darkbanner {
+  background: url(/assets/images/home/Darker.png);
   background-size: cover;
   position: relative;
   z-index: 1;
- }
+}
 
 
- .growf {
-  flex-grow: 1;
-  position: relative;
-  transition: all 300ms ease-in-out;
- }
- .growf:hover {
-    flex-grow: 9;
-  }
 
-.growf:hover{background: url(/assets/images/home/slidepattern.png) !important;}
+.growf {
+  background-size: cover;
+  transition: 200ms all linear;
+}
+
+
+
+.growf:hover {
+  background: url(/assets/images/home/slidepattern.jpg) !important;
+  background-repeat: no-repeat !important;
+
+  background-size: 100% !important;
+  background-position: center center !important;
+}
+
 .emilfs::placeholder {
   color: #00000075;
   font-weight: 600;
 }
 
-.emilfs::-ms-input-placeholder { /* Edge 12 -18 */
+.emilfs::-ms-input-placeholder {
+  /* Edge 12 -18 */
   color: #00000075;
   font-weight: 600;
 }
-.bg-ser{background: url(/assets/images/home/footerdark.png) !important;}
-.emilfs {background: none;}
-.linkq a{
+
+.bg-ser {
+  background: url(/assets/images/home/footerdark.png) !important;
+}
+
+.emilfs {
+  background: none;
+}
+
+.linkq a {
   margin-bottom: 16px;
   color: #fff;
   font-size: 18px;
 }
-.linkq a:nth-last-child(1){margin-bottom: 0px;}
 
-.ansm .swiper-slide{    transition: 500ms all ease-in-out;}
-.ansm  .swiper-slide:hover{transform: scaleX(1.1);}
-.growf{background-size: cover;}
-/* @media screen and (min-width: 1600px) and (max-width: 1699px) {
-  .minh247 {
-    min-height: 247px;
-  }
-} */
-@media screen and (max-width: 767px){
+.linkq a:nth-last-child(1) {
+  margin-bottom: 0px;
+}
+
+.ansm .swiper-slide {
+  transition: 500ms all ease-in-out;
+}
+
+
+
+
+
+@media screen and (max-width: 767px) {
   .bg-blacktrans {
     background: rgb(0, 0, 0);
     background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
-}
-  .mdgrd{flex-direction: column;
-    gap: 18px;}
+  }
+
+  .mdgrd {
+    flex-direction: column;
+    gap: 18px;
+  }
 }
 
-@media screen and (max-width: 1199px){
-.logos{width: 200px;}
+@media screen and (max-width: 1199px) {
+  .logos {
+    width: 200px;
+  }
 }
