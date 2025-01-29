@@ -113,7 +113,7 @@ body {
   background-repeat: no-repeat;
   background-position: left bottom;
   left: 0;
-  bottom: -22px;
+  bottom: -64px;
   z-index: -1;
 }
 
@@ -225,6 +225,7 @@ body {
 }
 
 .linkq a {
+  font-family: "helvetica", sans-serif;
   margin-bottom: 16px;
   color: #fff;
   font-size: 18px;
