@@ -19,9 +19,9 @@ const UspItem = ({ uspTitle, order, mainImg, uspDesc, uspIcon, onMouseEnter }: U
           <Image src={uspIcon} alt="usp" className=""></Image>
         </div>
 
-        <div className="usp-item__content relative z-10 xxl:px-8">
+        <div className="usp-item__content relative z-10 px-4 xxl:px-8">
           <h3 className="xxl:text-font28 leading-[1.3] nuber-next-bold">{uspTitle}</h3>
-          <p className="xxl:text-font20 leading-[1.3] usp-item__desc pt-2 xxl:pt-7 helvetica">{uspDesc}</p>
+          <p className="xxl:text-font20 leading-[1.3] usp-item__desc pt-4 xxl:pt-7 helvetica">{uspDesc}</p>
 
         </div>
       </div>
