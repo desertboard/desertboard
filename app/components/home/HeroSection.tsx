@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import "@/app/components/home/usps.scss";
-import Banner from "@/public/assets/banner.jpg";
+import Banner from "@/public/assets/banner2.jpg";
 
 import iconsl1 from "@/public/assets/images/home/slicon1.png";
 import iconsl2 from "@/public/assets/images/home/slicon2.png";
@@ -30,7 +30,7 @@ import UspList from "./UspList";
 import MainDescBOx from "../Common/MainDescBox";
 import { Homecarlsldata } from "../../data/homecarlsl";
 import CardFlow from "../Common/cardflow";
-import HomeSlider from "../Common/homeslider";
+// import HomeSlider from "../Common/homeslider";
 
 import '@/app/components/home/goalcrd.scss';
 
@@ -38,15 +38,15 @@ const HeroSection = () => {
   return (
     <>
       <section className="relative h-[98vh] bg-cover bg-center flex items-center justify-center text-center">
-        <div className="absolute inset-0 bg-black opacity-60 -z-10"></div>
-        <div className="absolute inset-0 bg-primary opacity-20 -z-20"></div>
+        {/* <div className="absolute inset-0 bg-black opacity-60 -z-10"></div>
+        <div className="absolute inset-0 bg-primary opacity-20 -z-20"></div> */}
         <figure className="absolute h-[98vh] top-0   w-full  -z-40">
-          <Image className="w-screen h-[98vh] absolute object-cover" src={Banner} width={1000} height={800} alt="" />
+          <Image className="w-screen h-[98vh] absolute object-cover" src={Banner} width={1920} height={900} alt="" />
         </figure>
         <div className="relative z-10 text-white px-6 top-0 lg:top-[120px]">
           <h1 className="text-4xl md:text-[96px] leading-none font-black mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next-heavy m-auto">DesertBoard&apos;s Palm Strand Board</h1>
           <p className="text-font28 font-[400] mb-6 md:mb-[52px] opacity-[75%]">The region&apos;s most sustainable building material</p>
-          <Link href="#" className="flex nuber-next group w-fit m-auto gap-2 rounded-none inline-block px-12 py-4  border border-white text-white btnhs hover:bg-white hover:text-black transition rounded-md">
+          <Link href="#" className="flex nuber-next group w-fit text-font18 font-black m-auto gap-2 rounded-none inline-block px-12 py-4  border border-white text-white btnhs hover:bg-white hover:text-black transition rounded-md">
             Know More
             <Image src={readarrow} alt="icn1" className="fiterwt transition-all duration-300 group-hover:translate-x-2 " />
           </Link>
@@ -66,7 +66,7 @@ const HeroSection = () => {
 
 
 
-      <UspList secTitle={"Key USP’s"} />
+      <UspList secTitle={"Key USP's"} />
       <section className="  py-10 lg:py-20   insp-mn relative inspbg">
         <div className="container m-auto">
           <div className="text-left mb-5 md:mb-10">
