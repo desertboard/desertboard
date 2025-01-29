@@ -21,11 +21,19 @@ const navItems = [
     href: "#",
     children:[
       {
-        title: "Product 1",
+        title: "Engineering & Construction",
         href: "/sectors",
       },
       {
-        title: "Product 2",
+        title: "Landscape",
+        href: "/sectors",
+      },
+      {
+        title: "Interior Design",
+        href: "/sectors",
+      },
+      {
+        title: "Events & Exhibitions",
         href: "/sectors",
       },
     ]
