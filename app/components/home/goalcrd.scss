@@ -1,0 +1,47 @@
+.goal-crd {
+    img {
+    }
+    &__icon {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 100%;
+        width: 100%;
+        transition: all 0.5s ease;
+    }
+    &__ibox {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &:hover {
+        &__icon {
+            top: 10%;
+            left: 10%;
+            transform: none;
+        }
+    }
+}
+.goal-crd:hover .goal-crd__icon {
+    // top: 20%;
+    // left: 20%;
+}
+.goal-crd:hover .goal-crd__ibox {
+    top: 5%;
+    left: 10%;
+    transform: none;
+}
+@media (max-width: 768px) {
+    .goal-crd {
+        &__icon {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .goal-crd:hover .goal-crd__ibox {
+        top: 5%;
+        left: 10%;
+        transform: none;
+    }
+}
