@@ -26,7 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  
+
     &::after, &::before {
         content: "";
         position: absolute;
@@ -81,7 +81,7 @@
         transform: rotate(-45deg);
         top: 0px;
     }
-    
+
 }
 
 
@@ -89,7 +89,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    
+
     .indicator{
         width: 10px;
         height: 10px;
@@ -122,7 +122,7 @@
     .body{
         box-sizing: border-box;
         height: 100%;
-        padding: 100px;
+        padding: 100px 55px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -148,7 +148,7 @@
                 color: white;
                 font-weight: 300;
             }
-            
+
         }
     }
     .footer{

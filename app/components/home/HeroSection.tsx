@@ -44,7 +44,7 @@ const HeroSection = () => {
         <div className="relative z-10 text-white px-6 top-0 lg:top-[120px]">
           <h1 className="text-4xl md:text-[96px] leading-none font-black mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next-heavy m-auto">DesertBoard&apos;s Palm Strand Board</h1>
           <p className="text-font28 font-[400] mb-6 md:mb-[52px] opacity-[75%] leading-[1.3]">The region&apos;s most sustainable building material</p>
-          <Link href="#" className="flex nuber-next group w-fit text-font18 font-black m-auto gap-4 rounded-none inline-block px-10 py-4
+          <Link href="#" className="flex items-center nuber-next group w-fit text-font18 font-black m-auto gap-4 rounded-none inline-block px-5 py-3 md:px-10 md:py-4
           border border-white text-white btnhs  hover:text-[#FF671F] hover:border-[#FF671F] transition rounded-md">
             Know More
             <Image src={readarrow} alt="icn1" width={16} height={24} className="fiterwt transition-all duration-300 group-hover:translate-x-2 " />
@@ -94,7 +94,7 @@ const HeroSection = () => {
             </div>
             <div className="flex gap-3 items-center group rmbtn pb-3">
               <div>
-                <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300 text-font18 font-black leading-[1.5]    text-font20 md:min-w-[100px] nuber-next-heavy leading-[1.25] ">Read More</p>
+                <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300 text-font18 font-black leading-[1.5]    text-font20 md:min-w-[105px] nuber-next-heavy leading-[1.25] ">Read More</p>
               </div>{" "}
               <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1 " />
             </div>
@@ -388,8 +388,8 @@ const HeroSection = () => {
 
       <section className="bg-[#FFB549]  ">
         <div className="container m-auto">
-          <div className="flex items-center gap-3 px-3 mdpx-0  py-10  group  justify-end">
-            <p className="mb-0 nuber-next-bold text-font20 lg:text-[22px] font-bold text-white nuber-next">Discover Industry Solutions</p>
+          <div className="flex items-center gap-3 px-3 py-6 md:py-10 group  justify-end">
+            <p className="mb-0 nuber-next-bold text-font28 lg:text-[22px] font-bold text-white nuber-next">Discover Industry Solutions</p>
             <div className="transition-all duration-300 group-hover:translate-x-1">
               <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />

@@ -243,16 +243,19 @@ body {
 
 
 
+@media screen and (max-width: 991px) {
+  .mdgrd {
+    flex-direction: column;
+    gap: 18px;
+  }
+}
 @media screen and (max-width: 767px) {
   .bg-blacktrans {
     background: rgb(0, 0, 0);
     background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
   }
 
-  .mdgrd {
-    flex-direction: column;
-    gap: 18px;
-  }
+
 }
 
 @media screen and (max-width: 1199px) {
