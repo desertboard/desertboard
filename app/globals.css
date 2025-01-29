@@ -21,10 +21,11 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 @font-face {
-  font-family: "Nuber Next";
+  font-family: "NuberBold";
   src: url("../public/assets/fonts/NuberNext-Bold-BF63c8a0b20c2e1.woff2") format('woff2'), url("../public/assets/fonts/NuberNext-Bold-BF63c8a0b20c2e1.woff") format('woff');
-  font-weight: normal;
+  font-weight: 700;
   font-style: normal;
+
 }
 
 
@@ -38,10 +39,19 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 .nuber-next-heavy {
   font-family: "NuberNextHeavy", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-style: normal;
+  font-weight: 900;
 }
 
 .nuber-next {
   font-family: "NuberNextHeavy", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-style: normal;
+}
+.nuber-next-bold {
+  font-family: "NuberBold", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-style: normal;
+}
+.helvetica {
+  font-family: "helvetica", sans-serif;
   font-style: normal;
 }
 
@@ -49,11 +59,11 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Nuber Next" Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: "NuberBold" Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 p {
-  font-family: "helvetica";
+  font-family: "helvetica", sans-serif;
 }
 
 :root {
@@ -123,7 +133,6 @@ body {
 .rmbtn {
   color: #ff671f;
 
-  font-weight: 700;
   border-bottom: 2px solid #ff671f;
   width: fit-content;
 }

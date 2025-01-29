@@ -29,10 +29,11 @@ interface FrameworkSectionProps {
               <Image src={framework.icon} alt="icn1" className="" />
             </div>
             <hr className="opacity-10 border-t-2 mt-4 transition-all duration-500 ease-in-out group-hover:mt-7" />
-            <h3 className="opacity-[90%] text-font28 font-[400] leading-[1.3] transition-all duration-500 mt-4 group-hover:mt-7" dangerouslySetInnerHTML={{ __html: framework.title }}></h3>
+            <h3 className="opacity-[90%] text-font28 font-[400] leading-[1.3] transition-all duration-500 mt-4 group-hover:mt-7 nuber-next-bold" dangerouslySetInnerHTML={{ __html: framework.title }}></h3>
             <p className="mt-5 w-full opacity-0 group-hover:opacity-75 w-[250px] group-hover:w-full transition-opacity duration-500  text-font20 leading-[1.5]">{framework.dec}</p>
-            <a href="#" className="relative flex gap-2 max-w-fit top-3  opacity-0 group-hover:opacity-100 w-[250px] group-hover:w-full transition-opacity duration-300 text-[14px] md:text-font18 font-black leading-[1.5] rmbtn ">
-              Read More <Image src={readarrow} alt="icn1" className="transition-all duration-300" width={10} height={16} />
+            <a href="#" className="relative nuber-next-heavy flex gap-2 max-w-fit top-3  opacity-0 group-hover:opacity-100 w-[250px]
+            group-hover:w-full transition-opacity duration-300 text-[14px] md:text-font18 font-black leading-[1.5] rmbtn pb-2 ">
+              Read More <Image src={readarrow} alt="icn1" className="transition-all duration-300 relative top-[2px]" width={11} height={16} />
             </a>
           </div>
         </div>
