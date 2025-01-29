@@ -13,7 +13,8 @@
         // background: rgb(0, 0, 0);
     }
     &:hover {
-        .sectorcrd-overlay {
+        .sectorcrd-overlaygreen {
+            height: 100%;
             background: rgb(0, 45, 40);
             background: -moz-linear-gradient(180deg, rgba(0, 45, 40, 1) 0%, rgba(0, 45, 40, 0) 100%);
             background: -webkit-linear-gradient(180deg, rgba(0, 45, 40, 1) 0%, rgba(0, 45, 40, 0) 100%);
@@ -29,3 +30,4 @@
     }
 
 }
+.sectorcrd-overlaygreen{height: 0%;}
