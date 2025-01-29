@@ -43,7 +43,7 @@ const SecondSec: React.FC<SecondSecProps> = ({
                 {title}
                 <span className="text-[#FF671F]">.</span>
               </h2>
-              <p className="text-lg text-gray-700 mb-6 text-[#151515] opacity-[50%]">
+              <p className="text-lg text-gray-700 mb-6 text-litetext opacity-[50%]">
                 {subtitle}
               </p>
               {paragraphs &&

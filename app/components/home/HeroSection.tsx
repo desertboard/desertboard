@@ -73,11 +73,12 @@ const HeroSection = () => {
       <section className="  py-10 lg:py-20   insp-mn relative inspbg">
         <div className="container m-auto">
           <div className="text-left mb-5 md:mb-10">
-            <h2 className="text-gray-900 mb-4 text-[28px] md:text-[48px] leading-[1] font-black nuber-next">
+            <h2 className="text-Darkgreen mb-4 text-[28px] md:text-[48px] leading-[1] font-black nuber-next">
               Sectors<span className="text-[#FF671F]">.</span>
             </h2>
 
-            <p className="text-font20 text-[#151515] opacity-[75%]  max-w-[75ch]">PSB® boards diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring.</p>
+            <p className="text-font20 text-litetext opacity-[75%]  max-w-[75ch]">PSB® boards diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring.</p>
+
           </div>
 
           <CardFlow data={Homecarlsldata.data} />
@@ -88,11 +89,11 @@ const HeroSection = () => {
         <div className="container m-auto">
           <div className="flex justify-between mb-8 md:items-end mdgrd gap-4 ">
             <div className="text-left ">
-              <h2 className="text-gray-900 mb-4 text-[28px] md:text-[48px]  font-black nuber-next leading-[1] ">
+              <h2 className="text-Darkgreen mb-4 text-[28px] md:text-[48px]  font-black nuber-next leading-[1] ">
                 Sustainable Development Goals
                 <span className="text-[#FF671F]">.</span>
               </h2>
-              <p className="text-font20 text-[#151515] opacity-[75%]  max-w-[75ch]">Explore how eco-friendly and locally produced materials are helping us move closer to the United Nations&apos; Sustainable Development Goals.</p>
+              <p className="text-font20 text-litetext opacity-[75%]  max-w-[75ch]">Explore how eco-friendly and locally produced materials are helping us move closer to the United Nations&apos; Sustainable Development Goals.</p>
             </div>
             <div className="flex gap-2 items-center group">
               <div>
@@ -151,9 +152,7 @@ const HeroSection = () => {
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-
                       <Image src={iconsl1} alt="Thumbnail" className="  transform transition-all duration-500" />
-
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -402,14 +401,14 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-      
+
       <footer className=" bg-[#00594F]">
         <div className="container m-auto">
           <div className="pt-10 md:pt-20    ">
             <div className="py-[20px]  md:py-10 px-[20px]  md:px-12 bg-ser ">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 items-center">
                 <div>
-                  <p className=" mb-0 text-gray-900   text-[25px]  md:text-[36px] leading-1 md:leading-none font-black">
+                  <p className=" mb-0 text-Darkgreen   text-[25px]  md:text-[36px] leading-1 md:leading-none font-black">
                     Stay Up To Date with DesertBoard
                     <span className="text-[#FF671F] mb-0     text-[25px]  md:text-[36px]  ">.</span>
                   </p>
@@ -418,10 +417,10 @@ const HeroSection = () => {
                   <div className="w-full flex items-center justify-between  ">
                     <div className="relative w-full ">
                       {/* Email Input Field */}
-                      <input type="email" placeholder="Email" className="emilfs w-full p-3 pl-5 pr-[110px] text-font18 leading-none border-b-2 border-[#002D28]   focus:outline-none   focus:border-b-[#FF671F]" />
+                      <input type="email" placeholder="Email" className="emilfs w-full p-3 pl-5 pr-[110px] text-font18 leading-none border-b-2 border-Darkgreen   focus:outline-none   focus:border-b-[#FF671F]" />
 
                       {/* Subscribe Button */}
-                      <button type="button" className="absolute top-0 right-0 mt-1 mr-1 px-5 py-2 text-sm font-bold text-[#002D28] flex gap-2 items-center transition-all">
+                      <button type="button" className="absolute top-0 right-0 mt-1 mr-1 px-5 py-2 text-sm font-bold text-Darkgreen flex gap-2 items-center transition-all">
                         Subscribe
                         <svg width="11" height="16" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#002D28" strokeWidth="3" strokeLinecap="round" />
