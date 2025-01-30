@@ -10,8 +10,7 @@ import svsic6 from "@/public/assets/images/home/svsic6.png";
 import svsic7 from "@/public/assets/images/home/svsic7.png";
 import svsic8 from "@/public/assets/images/home/svsic8.png";
 import svsic9 from "@/public/assets/images/home/svsic9.png";
-import lfbef from "@/public/assets/images/home/leaf.svg";
-import lfbt from "@/public/assets/images/home/lfbt.svg";
+
 import readarrow from "@/public/assets/images/read-arrow.svg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -21,27 +20,13 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
 import "@/app/components/home/goalcrd.scss";
-import { motion } from "framer-motion";
+
 
 const SustainabeSc = () => {
   return (
     <>
       <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner">
-      <motion.div
-        className="ola ola-right absolute top-0 right-[-10%] w-[40em]"
-        
-        animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }} 
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <Image className="absolute" src={lfbef} alt="Description of the image" />
-      </motion.div>
-      <motion.div
-        className="ola ola-right absolute bottom-[43%] left-[-15%] w-[40em]"
-        animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }} 
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <Image className="absolute" src={lfbt} alt="Description of the image" />
-      </motion.div>
+      
         <div className="container m-auto">
           <div className="flex justify-between mb-8 md:items-end mdgrd gap-4 ">
             <div className="text-left ">

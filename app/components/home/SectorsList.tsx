@@ -2,12 +2,29 @@
 import React from 'react'
 import CardFlow from '../Common/cardflow'
 import { Homecarlsldata } from '@/app/data/homecarlsl'
+import lfbef from "@/public/assets/images/home/leaf.svg";
+import lfbt from "@/public/assets/images/home/lfbt.svg";
 import { motion } from "framer-motion";
-
+import Image from 'next/image';
 const SectorsList = () => {
   return (
     <>
-           <section className="  py-10 lg:py-20   insp-mn relative inspbg">
+           <section className="relative  py-10 lg:py-20   insp-mn relative inspbg">
+            <motion.div
+                    className="ola ola-right absolute top-0 right-[-10%] w-[40em]"
+                    
+                    animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }} 
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Image className="absolute" src={lfbef} alt="Description of the image" />
+                  </motion.div>
+                  <motion.div
+                    className="ola ola-right absolute bottom-[43%] left-[-15%] w-[40em]"
+                    animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }} 
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Image className="absolute" src={lfbt} alt="Description of the image" />
+                  </motion.div>
         <div className="container m-auto">
           <div className="text-left mb-5 lg:mb-10">
             <motion.h2 className="text-Darkgreen mb-4 text-[28px] md:text-[48px] leading-[1]  nuber-next"
