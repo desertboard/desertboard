@@ -52,7 +52,7 @@ const SectorsList = () => {
                 x: 0,
                 transition: { duration: 1, delay: 0.5 },
               }, 
-            }}>PSB® boards diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring.</motion.p>
+            }}>PSB® boards&apos; diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring.</motion.p>
 
           </div>
 

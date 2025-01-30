@@ -10,7 +10,7 @@ import svsic6 from "@/public/assets/images/home/svsic6.png";
 import svsic7 from "@/public/assets/images/home/svsic7.png";
 import svsic8 from "@/public/assets/images/home/svsic8.png";
 import svsic9 from "@/public/assets/images/home/svsic9.png";
-
+import lfbef from "@/public/assets/images/home/leaf.svg";
 import readarrow from "@/public/assets/images/read-arrow.svg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -26,8 +26,15 @@ import {motion} from "framer-motion"
 const SustainabeSc = () => {
   return (
     <>
-      <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner">
-      
+      <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner relative overflow-hidden">
+      <motion.div
+                    className="ola ola-right absolute top-5 right-[-10%] w-[40em]"
+                    
+                    animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }} 
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Image className="absolute" src={lfbef} alt="Description of the image" />
+                  </motion.div>
         <div className="container m-auto">
           <div className="flex justify-between mb-8 md:items-end mdgrd gap-4 ">
             <div className="text-left ">
@@ -61,7 +68,7 @@ const SustainabeSc = () => {
             </div>
             <div className="flex gap-3 items-center group rmbtn pb-3">
               <div>
-                <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300 text-font18  leading-[1.5]    text-font20 md:min-w-[105px] nuber-next-heavy leading-[1.25] ">Read More</p>
+                <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300 text-font18  leading-[1.5]    text-font20 md:min-w-[105px] nuber-next-heavy leading-[1.25] cursor-pointer">Read More</p>
               </div>{" "}
               <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1 " />
             </div>

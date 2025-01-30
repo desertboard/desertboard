@@ -27,8 +27,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 
 }
 
-
-
 @font-face {
   font-family: "NuberNextHeavy";
   src: url("../public/assets/fonts/NuberNext-Heavy-BF63c8a0fb5d005.woff2") format('woff2'), url("../public/assets/fonts/NuberNext-Heavy-BF63c8a0fb5d005.woff") format('woff');
