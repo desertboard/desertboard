@@ -18,6 +18,9 @@ import uspI7 from "@/public/assets/images/home/usps/usp-i7.svg";
 import { useState } from 'react';
 import Image from 'next/image';
 import UspItem from './UspItem';
+import { motion } from "framer-motion";
+import "@/app/components/home/usps.scss";
+
 interface UspsProps {
   secTitle: string;
 }
@@ -26,17 +29,30 @@ export default function UspList({ secTitle }: UspsProps) {
   const [activeOrder, setActiveOrder] = useState<string | null>("1");
   return (
     <section className=" py-10 lg:py-20  relative bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
-      <div className="ola ola-right absolute top-5 right-[-10%] w-[40em]">
+      <motion.div className="ola ola-right absolute top-5 right-[-10%] w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }} 
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
         <Image className="absolute" src={ola} alt="Description of the image"></Image>
-      </div>
+      </motion.div>
+
       <div className="ola ola-right absolute bottom-0 left-[-10%] w-[40em] rotate-180">
         <Image className="absolute" src={ola} alt="Description of the image"></Image>
       </div>
       <div className="container ">
-        <h2 className="text-3xl nuber-next-heavy text-font48 mb-5 lg:mb-10">
+        <motion.h2 className="text-3xl nuber-next-heavy text-font48 mb-5 lg:mb-10"
+        initial={{ opacity: 0, x: -30 }}
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+        variants={{
+          hidden: { opacity: 0, x: -30 }, // Start below and invisible
+          visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 1, delay: 0.3 },
+          }, // Slide up and fade in
+        }}>
           {secTitle}
           <span className="text-[#FF671F]">.</span>
-        </h2>
+        </motion.h2>
         <div className={`usp__list ${activeOrder ? "active-" + activeOrder : ""}`}>
           <UspItem uspTitle="Deforestation Free" onMouseEnter={() => setActiveOrder("1")} uspIcon={uspI1} uspDesc="100% sustainable boards made from the UAE’s annually regenerated palm frond biomass, eliminating the need to cut down trees, and reducing reliance on imported wood." order="1" mainImg={uspImg1} />
           <UspItem uspTitle="Zero Formaldehyde" onMouseEnter={() => setActiveOrder("2")} uspIcon={uspI2} order="2" uspDesc="Designed for a healthier, eco-friendly indoorenvironment with zero formaldehyde emission. " mainImg={uspImg2} />
