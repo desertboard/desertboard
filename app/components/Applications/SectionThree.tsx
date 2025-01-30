@@ -6,10 +6,10 @@ import wh2 from "@/public/assets/images/applications/wh2.svg";
 import wh3 from "@/public/assets/images/applications/wh3.svg";
 import readarrow from "@/public/assets/images/read-arrow.svg";
 
-import SingleSlider from "../Applications/SingleSlider";
+import SingleSlider from "./SingleSlider";
 
 
-const SectionTwo = () => {
+const SectionThree = () => {
   return (
     <>
       <section className="py-10 md:py-20 insp-mn relative inspbg">
@@ -184,4 +184,4 @@ const SectionTwo = () => {
   );
 };
 
-export default SectionTwo;
+export default SectionThree;

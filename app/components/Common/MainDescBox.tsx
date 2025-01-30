@@ -59,7 +59,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, desc, des
         <div className="lg:flex flex-col lg:flex-row items-center justify-between adst relative xl:pr-[10em] xxl:pr-[20em]">
           <div className="lg:w-1/2 text-left pr-5 pl-5 lg:pl-6 xl:pl-16 py-5 lg:py-20 xl:py-28 opacity-[99%] mb-2 lg:mb-0">
           <motion.h2
-              className="text-Darkgreen mb-4 text-[28px] md:text-[48px] nuber-next leading-[1] overflow-hidden"
+              className="text-Darkgreen mb-4 text-[28px] md:text-[48px] nuber-next-heavy leading-[1] overflow-hidden"
               initial={{ opacity: 0, x: -30 }}
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -76,7 +76,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, desc, des
               <span className="text-[#FF671F]">.</span>
             </motion.h2>
             <motion.p
-              className="nuber-next mb-5 lg:mb-10 text-litetext opacity-[50%] text-font24 leading-[1]"
+              className="nuber-next-heavy mb-5 lg:mb-10 text-litetext opacity-[50%] text-font24 leading-[1]"
               initial={{ opacity: 0, x: -30 }}
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible

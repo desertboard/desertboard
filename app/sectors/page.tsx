@@ -9,7 +9,7 @@ import secImg from "@/public/assets/images/sectors/sec1.png";
 import secbgImg from "@/public/assets/images/sectors/secbg.png";
 import Arrow from "@/public/assets/brdcrbs.svg";
 
-import '@/app/components/Sectors/sectors.scss';
+
 
 const Sectors = () => {
   const breadcrumbs = [

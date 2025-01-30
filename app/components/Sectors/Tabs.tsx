@@ -124,7 +124,7 @@ const Tabs: React.FC = () => {
                           <div>
                             <p className="relative  flex gap-2 max-w-fit transition-opacity duration-300 text-font18  leading-[1.44]  text-font18   nuber-next-heavy leading-[1.25] ">Read More</p>
                           </div>
-                          <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1 " />
+                          <Image src={readarrow} alt="icn1" className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1 " />
                         </div>
                     </div>
                 </motion.section>
@@ -194,7 +194,7 @@ const Tabs: React.FC = () => {
                           <div>
                             <p className="relative  flex gap-2 max-w-fit transition-opacity duration-300 text-font18  leading-[1.44]  text-font18   nuber-next-heavy leading-[1.25] ">Read More</p>
                           </div>
-                          <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1 " />
+                          <Image src={readarrow} alt="icn1" className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1 " />
                         </div>
                     </div>
                 </motion.section>
@@ -263,7 +263,7 @@ const Tabs: React.FC = () => {
                           <div>
                             <p className="relative  flex gap-2 max-w-fit transition-opacity duration-300 text-font18  leading-[1.44]  text-font18   nuber-next-heavy leading-[1.25] ">Read More</p>
                           </div>
-                          <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1 " />
+                          <Image src={readarrow} alt="icn1" className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1 " />
                         </div>
                     </div>
                 </motion.section>
@@ -332,7 +332,7 @@ const Tabs: React.FC = () => {
                           <div>
                             <p className="relative  flex gap-2 max-w-fit transition-opacity duration-300 text-font18  leading-[1.44]  text-font18   nuber-next-heavy leading-[1.25] ">Read More</p>
                           </div>
-                          <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1 " />
+                          <Image src={readarrow} alt="icn1" className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1 " />
                         </div>
                     </div>
                 </motion.section>
@@ -401,7 +401,7 @@ const Tabs: React.FC = () => {
                           <div>
                             <p className="relative  flex gap-2 max-w-fit transition-opacity duration-300 text-font18  leading-[1.44]  text-font18   nuber-next-heavy leading-[1.25] ">Read More</p>
                           </div>
-                          <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1 " />
+                          <Image src={readarrow} alt="icn1" className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1 " />
                         </div>
                     </div>
                 </motion.section>
@@ -470,7 +470,7 @@ const Tabs: React.FC = () => {
                           <div>
                             <p className="relative  flex gap-2 max-w-fit transition-opacity duration-300 text-font18  leading-[1.44]  text-font18   nuber-next-heavy leading-[1.25] ">Read More</p>
                           </div>
-                          <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1 " />
+                          <Image src={readarrow} alt="icn1" className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1 " />
                         </div>
                     </div>
                 </motion.section>
@@ -539,7 +539,7 @@ const Tabs: React.FC = () => {
                           <div>
                             <p className="relative  flex gap-2 max-w-fit transition-opacity duration-300 text-font18  leading-[1.44]  text-font18   nuber-next-heavy leading-[1.25] ">Read More</p>
                           </div>
-                          <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1 " />
+                          <Image src={readarrow} alt="icn1" className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1 " />
                         </div>
                     </div>
                 </motion.section>

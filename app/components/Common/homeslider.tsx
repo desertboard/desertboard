@@ -29,7 +29,7 @@ interface FrameworkSectionProps {
     <div className="container m-auto">
       <div className="flex justify-between mb-8 md:items-end mdgrd gap-4 ">
         <div className="text-left ">
-          <h2 className="text-Darkgreen-900 mb-4 text-[28px] md:text-[48px]   nuber-next leading-[1] ">
+          <h2 className="text-Darkgreen-900 mb-4 text-[28px] md:text-[48px]   nuber-next-heavy  leading-[1] ">
             Sustainable Development Goals
             <span className="text-[#FF671F]">.</span>
           </h2>
@@ -39,7 +39,7 @@ interface FrameworkSectionProps {
           <div>
             <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300 text-font18  leading-[1.5] rmbtn  text-font20 md:min-w-[100px]">Read More</p>
           </div>{" "}
-          <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1" />
+          <Image src={readarrow} alt="icn1" className=" relative top-[2px] transition-all duration-300 group-hover:translate-x-1" />
         </div>
       </div>
     </div>

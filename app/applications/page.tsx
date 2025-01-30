@@ -1,4 +1,5 @@
 import SectionTwo from "../components/Applications/SectionTwo";
+import SectionThree from "../components/Applications/SectionThree";
 import PageBanner from "../components/Common/PageBanner";
 import Downloads from "../components/Common/Downloads";
 
@@ -7,7 +8,7 @@ import Downloads from "../components/Common/Downloads";
 import bannerImg from "@/public/assets/images/sectors/banner.png";
 import Arrow from "@/public/assets/brdcrbs.svg";
 
-import '@/app/components/Sectors/sectors.scss';
+
 
 const Sectors = () => {
   const breadcrumbs = [
@@ -28,7 +29,7 @@ const Sectors = () => {
         bnrHeight="60dvh"
       />
       <SectionTwo />
-
+      <SectionThree />
       <Downloads />
     </>
   );
