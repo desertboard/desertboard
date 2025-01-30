@@ -97,9 +97,9 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, desc, des
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
               variants={{
-                hidden: { opacity: 0.75, y: -30 }, // Start below and invisible
+                hidden: { opacity: 0, y: -30 }, // Start below and invisible
                 visible: {
-                  opacity: 1,
+                  opacity: 0.75,
                   y: 0,
                   transition: { duration: 1, delay: 0.7 },
                 }, 
@@ -115,9 +115,9 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, desc, des
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
               variants={{
-                hidden: { opacity: 0.75, y: -20 }, // Start below and invisible
+                hidden: { opacity: 0, y: -20 }, // Start below and invisible
                 visible: {
-                  opacity: 1,
+                  opacity: 0.75,
                   y: 0,
                   transition: { duration: 1, delay: 0.7 },
                 }, 

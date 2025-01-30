@@ -67,7 +67,17 @@ const SustainabeSc = () => {
             </div>
           </div>
         </div>
-        <div className="ansm">
+        <motion.div className="ansm"  initial={{ opacity: 0, y: -30 }}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{
+                hidden: { opacity: 0, y: -30 }, 
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1, delay: 0.5 },
+                }, 
+              }}>
           <Swiper
             // install Swiper modules
             modules={[Navigation, Pagination]}
@@ -337,7 +347,7 @@ const SustainabeSc = () => {
             </SwiperSlide>
 
           </Swiper>
-        </div>
+        </motion.div>
         <div className="container m-auto relative">
           <div className="swiper-button-next cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
             <div className="transition-all duration-300 group-hover:translate-x-1">
