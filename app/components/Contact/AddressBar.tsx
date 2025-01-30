@@ -1,11 +1,12 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { accordianData } from './data'
 import contactPhone from '@/public/assets/images/contact-phone.svg'
 import contactEmail from '@/public/assets/images/contact-email.svg'
 import contactLocation from '@/public/assets/images/contact-location.svg'
 import Image from 'next/image'
+import accordianArrow from '@/public/assets/images/accordian-arrow.svg'
 
 const AddressBar = () => {
 
@@ -16,39 +17,72 @@ const AddressBar = () => {
         console.log(accordianNumber)
     }
 
+    useEffect(()=>{
+        setActiveAccordian(1)
+    },[])
 
+    const [addressBarIndex,setAddressBarIndex] = useState(0)
+
+    const menu = [
+        {
+            title:"Middle East",
+            items:[
+                { 
+                    id: 1, 
+                    question: "United Arab Emirates", 
+                    answer: "Material Tailwind is a framework that enhances Tailwind CSS with additional styles and components." 
+                },
+                { 
+                    id: 2, 
+                    question: "Kingdom Of Saudi Arabia", 
+                    answer: "You can use Material Tailwind by importing its components into your Tailwind CSS project." 
+                }
+            ]
+        },
+        {
+            title:"Asia",
+            items:[
+                { 
+                    id: 1, 
+                    question: "India", 
+                    answer: "Material Tailwind is a framework that enhances Tailwind CSS with additional styles and components." 
+                },
+                { 
+                    id: 2, 
+                    question: "Example", 
+                    answer: "You can use Material Tailwind by importing its components into your Tailwind CSS project." 
+                }
+            ]
+        }
+]
 
     return (
         <div className='w-full'>
             <div>
-                <ul className='flex gap-5 text-black text-lg'>
-                    <div className='bg-[#E3DED9] px-8 py-2'><li className=''>Middle East</li></div>
-                    <li>Asia</li>
+                <ul className='flex  text-black text-lg'>
+                    {menu.map((item,index)=>(
+                        <div className={`${ addressBarIndex == index ? "bg-[#E3DED9]" : ""} px-6 py-2 cursor-pointer nuber-next`} key={index} onClick={()=>setAddressBarIndex(index)}><li className='flex'>{item.title}<div className='text-[#FF671F]'>.</div></li></div>
+                    ))}
                 </ul>
             </div>
 
-
-            {accordianData.map(({ id, question, answer }) => (
-                <div key={id} className="border-b border-slate-200 bg-[#E3DED9] p-8">
+            {menu[addressBarIndex].items.map(({ id, question },index) => (
+                <div key={id} className="bg-[#E3DED9] px-6 py-2">
                     <button
                         onClick={() => toggleAccordion(id)}
-                        className="w-full flex justify-between items-center pb-4 text-slate-800"
+                        className={`w-full flex justify-between items-center pb-6 text-slate-800 ${index !==0 ? "border-t" : "" } pt-6`}
                     >
-                        <span>{question}</span>
+                        <div className='nuber-next'>{question}<span className='text-[#FF671F]'>.</span></div>
                         <span id="icon-1" className="text-slate-800 transition-transform duration-300">
-                            {id === activeAccordian ? <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4">
-                                <path fillRule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
-                            </svg> : <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4">
-                                <path fillRule="evenodd" d="M11.78 9.78a.75.75 0 0 1-1.06 0L8 7.06 5.28 9.78a.75.75 0 0 1-1.06-1.06l3.25-3.25a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06Z" clipRule="evenodd" />
-                            </svg>}
+                            {id === activeAccordian ? <Image src={accordianArrow} alt='arrow'/> : <Image src={accordianArrow} alt='arrow' className='rotate-180'/>}
 
                         </span>
                     </button>
                     <div
-                        className={`overflow-hidden transition-all duration-300 ${activeAccordian === id ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                        className={`overflow-hidden transition-all duration-300 ${activeAccordian === id ? "max-h-96 opacity-100 pt-2" : "max-h-0 opacity-0"
                             }`}
                     >
-                        {/* <div className="pb-5 text-sm text-slate-500">{answer}</div> */}
+                        
                         <div className='text-black'>
                             <div className='grid grid-cols-1 w-1/2'>
                                 

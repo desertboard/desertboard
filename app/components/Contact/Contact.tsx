@@ -3,7 +3,10 @@ import bannerImg from "@/public/assets/contactbanner.jpg";
 import PageBanner from '../Common/PageBanner';
 import Arrow from "@/public/assets/brdcrbs.svg";
 import AddressBar from './AddressBar';
-import Forms from './Forms';
+import Forms from './FormComponents/Forms';
+import Footer from '../Common/footer';
+import BackGround from '@/public/assets/images/Background.jpg'
+import Image from 'next/image';
 
 const Contact = () => {
 
@@ -24,12 +27,13 @@ const Contact = () => {
                 bnrHeight="90dvh"
             />
 
-            <section className='p-10 h-fit'>
-                <div className='grid grid-cols-5 container m-auto mt-[40px] bg-orange-200 h-full p-10 gap-5'>
+            <section className='h-fit p-2 relative'>
+              <Image src={BackGround} alt='background' className='absolute left-0 top-0 -z-10 inset-0 h-full w-full object-cover'/>
+                <div className='grid grid-cols-5 container m-auto mt-[48px] h-full gap-12 pt-[15px] mb-[48px] z-10'>
                     
-                    <div className='col-span-2 text-black flex flex-col gap-6'>
-                        <h2 className='text-4xl'>Get in Touch</h2>
-                        <p>We’d love to hear from you! Whether you have questions, need assistance, or want to explore how we can work together, 
+                    <div className='col-span-2 text-black flex flex-col gap-6 border-r-2 border-[#E3DED9] nuber-next'>
+                        <h2 className='text-4xl'>Get in Touch<span className='text-orange'>.</span></h2>
+                        <p className='w-3/4'>We’d love to hear from you! Whether you have questions, need assistance, or want to explore how we can work together, 
                             our team is here to help. Reach out to us through the contact form, email, or phone, and we’ll get back to you as soon as possible. </p>
                     </div>
 
@@ -40,6 +44,21 @@ const Contact = () => {
 
                 </div>
             </section>
+
+            <section className="bg-[#FFB549]  ">
+        <div className="container m-auto">
+          <div className="flex items-center gap-4 px-2 py-6 md:py-10 group  justify-end">
+            <p className="mb-0 nuber-next-bold text-font28 lg:text-[22px] font-bold text-white nuber-next">Discover Industry Solutions</p>
+            <div className="transition-all duration-300 group-hover:translate-x-1">
+              <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+            <Footer/>
         </>
     )
 }
