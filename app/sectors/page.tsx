@@ -1,13 +1,15 @@
-import Banner from "../components/Banner/Hero";
-import SecondSec from "../components/Common/SecondSec";
+import MainDescBOx from "../components/Common/MainDescBox";
+import PageBanner from "../components/Common/PageBanner";
 import Tabs from "../components/Sectors/Tabs";
-import Downloads from "../components/Sectors/Downloads";
+import Downloads from "../components/Common/Downloads";
 
 // Image imports
 import bannerImg from "@/public/assets/images/sectors/banner.png";
 import secImg from "@/public/assets/images/sectors/sec1.png";
 import secbgImg from "@/public/assets/images/sectors/secbg.png";
 import Arrow from "@/public/assets/brdcrbs.svg";
+
+import '@/app/components/Sectors/sectors.scss';
 
 const Sectors = () => {
   const breadcrumbs = [
@@ -18,17 +20,23 @@ const Sectors = () => {
 
   return (
     <>
-      <Banner
+       <PageBanner
         bannerSrc={bannerImg} // Corrected image import here
         arrowSrc={Arrow}
+        desc=""
         title="Engineering & Construction"
         breadcrumbs={breadcrumbs}
+        bnrHeight="60dvh"
       />
-      <SecondSec
-        bgimgSrc={secbgImg}
-        title="Engineering & Construction"
-        subtitle="Desert Board proudly introduces Palm Strand Board (PSB®), a groundbreaking engineered solution redefining sustainability and performance in the construction industry. With zero formaldehyde emissions, PSB® ensures a healthier living environment, exemplifying our commitment to safety and well-being. Crafted from upcycled palm fronds, this locally manufactured material supports the region's bioeconomy while reducing environmental impact. Engineered for strength, durability, and versatility, PSB® thrives under challenging conditions, offering exceptional moisture resistance, fire safety, and sound isolation properties. From structural applications to fine furnishings, PSB® delivers unmatched quality and customization, empowering designers, architects, and builders to create with confidence and sustainability in mind."
-        imageSrc={secImg} // Updated for consistency, or use a different image here if necessary
+      <MainDescBOx
+        secTitle="Engineering & Construction."
+        subTitle=""
+        desc="In the heart of the desert, where towering date palm trees symbolize our heritage, a groundbreaking innovation has emerged: DesertBoard's Palm Strand Board (PSB®), the world’s first engineered palm-based board. "
+        desc2=" For centuries, date palm trees have been a vital resource in the Middle East, historically used to construct Barasti houses that provided essential shelter in the harsh desert climate. Inspired by the rich legacy and the vision of the UAE's founding father, Sheikh Zayed bin Sultan Al Nahyan, DesertBoard® successfully produced the
+              first engineered board in 2021."
+        // mainImg="/assets/images/mn.jpg"
+        mainVdo={"../assets/images/home/liftvdo.mp4"}
+        vdoPoster="../assets/images/mn.jpg"
       />
       <Tabs />
       <Downloads />
