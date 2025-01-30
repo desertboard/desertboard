@@ -1,5 +1,4 @@
-import Arrow from "@/public/assets/brdcrbs.svg";
-import Image from "next/image";
+
 const Downloads = () => {
   return (
     <>

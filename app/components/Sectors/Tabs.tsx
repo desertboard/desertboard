@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import sec2Img from "@/public/assets/images/sectors/sec2.png";
 import readarrow from "@/public/assets/images/read-arrow.svg";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";

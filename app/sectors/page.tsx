@@ -5,8 +5,6 @@ import Downloads from "../components/Common/Downloads";
 
 // Image imports
 import bannerImg from "@/public/assets/images/sectors/banner.png";
-import secImg from "@/public/assets/images/sectors/sec1.png";
-import secbgImg from "@/public/assets/images/sectors/secbg.png";
 import Arrow from "@/public/assets/brdcrbs.svg";
 
 

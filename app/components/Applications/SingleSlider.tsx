@@ -7,10 +7,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { motion } from "framer-motion";
-import Image from "next/image";
-
-import sec2Img from "@/public/assets/images/sectors/sec2.png";
-import sec1Img from "@/public/assets/images/sectors/sec1.png";
 
 const SectionTwo = () => {
   return (
