@@ -53,7 +53,7 @@ const SustainabeSc = () => {
               variants={{
                 hidden: { opacity: 0, x: -30 }, 
                 visible: {
-                  opacity: 1,
+                  opacity: 0.75,
                   x: 0,
                   transition: { duration: 1, delay: 0.5 },
                 }, 

@@ -41,7 +41,7 @@ const BannerSr = () => {
         <motion.p
           className="text-font28 font-[400] mb-6 md:mb-[52px] opacity-[75%] leading-[1.3]"
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 0.75, y: 0 }}
           transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
         >
           The region&apos;s most sustainable building material
