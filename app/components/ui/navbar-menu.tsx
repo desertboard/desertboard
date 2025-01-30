@@ -114,3 +114,18 @@ export const ProductItem = ({
 };
 
 
+export const ProductItemL = ({
+  title,
+  href,
+}: {
+  title: string;
+  href: string;
+}) => {
+  return (
+    <Link href={href} className="flex space-x-2">
+      <p className="text-black tracking-normal">
+       {title}
+       </p>
+    </Link>
+  );
+};
