@@ -1,6 +1,6 @@
 import Banner from "../components/Banner/Hero";
 import SecFirst from "../components/NewsEvents/SecFirst";
-import Downloads from "../components/Sectors/Downloads";
+import Downloads from "../components/Common/Downloads";
 import newsEvents from "../data/newsEvents.json";
 
 // Image imports

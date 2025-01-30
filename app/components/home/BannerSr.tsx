@@ -7,10 +7,10 @@ import Link from "next/link";
 import readarrow from "@/public/assets/images/read-arrow.svg";
 
 const BannerSr = () => {
-  
+
   return (
     <section
-  
+
       className="relative h-[75vh] md:h-screen bg-cover bg-center flex items-center justify-center text-center"
     >
       <figure className="absolute h-[75vh] md:h-screen top-0 w-full -z-40 bg-primary hr-figs">
@@ -51,12 +51,12 @@ const BannerSr = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.4, ease: "easeInOut", delay: 0.6 }}
         >
-            <Link href="#" className="flex items-center nuber-next group w-fit text-font18  m-auto gap-4 rounded-none inline-block px-5 py-3 md:px-10 md:py-4
+            <Link href="#" className="flex items-center nuber-next-heavy group w-fit text-font18  m-auto gap-4 rounded-none inline-block px-5 py-3 md:px-10 md:py-4
           border border-white text-white btnhs  hover:text-[#FF671F] hover:border-[#FF671F] transition rounded-md">
             Know More
             <Image src={readarrow} alt="icn1" width={16} height={24} className="fiterwt transition-all duration-300 group-hover:translate-x-2 " />
           </Link>
-         
+
         </motion.div>
       </div>
     </section>

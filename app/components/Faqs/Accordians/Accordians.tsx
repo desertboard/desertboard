@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import ProductAccordians from './ProductAccordians'
 
 
 const Accordians = () => {
 
-    const [activeAccordian, setActiveAccordian] = useState(0)
-      
-    const toggleAccordion = (accordianNumber: number) => {
-        setActiveAccordian(accordianNumber)
-        console.log(accordianNumber)
-    }
+    // const [activeAccordian, setActiveAccordian] = useState(0)
 
-    useEffect(()=>{
-        setActiveAccordian(1)
-    },[])
+    // const toggleAccordion = (accordianNumber: number) => {
+    //     setActiveAccordian(accordianNumber)
+    //     console.log(accordianNumber)
+    // }
+
+    // useEffect(()=>{
+    //     setActiveAccordian(1)
+    // },[])
 
     const [addressBarIndex,setAddressBarIndex] = useState(0)
 
@@ -32,7 +32,7 @@ const Accordians = () => {
     }
 ]
 
-const ActiveAccordian = menu[addressBarIndex].component
+// const ActiveAccordian = menu[addressBarIndex].component
 
 
   return (
@@ -47,7 +47,7 @@ const ActiveAccordian = menu[addressBarIndex].component
                 </ul>
             </div>
 
-            {ActiveAccordian}
+            {/* {ActiveAccordian} */}
 
         </div>
   )

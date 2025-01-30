@@ -22,8 +22,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
         <Image className="w-full h-full absolute object-cover" src={bannerSrc} width={1000} height={800} alt="Banner image" />
       </figure>
       <div className="container relative">
-        <div className="pg-bnr__div absolute bottom-0 pb-[80px]">
-          <h1 className="pg-bnr__ttl text-font72 mb-10 font-bold leading-[1]">
+        <div className="pg-bnr__div absolute bottom-0 pb-10 lg:pb-20">
+          <h1 className="pg-bnr__ttl heavywhite  mb-6 md:mb-10">
             {title}
             <span className="text-[#FF671F]">.</span>
           </h1>
@@ -32,7 +32,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
             <ul className="flex items-center">
               {breadcrumbs.map((breadcrumb, index) => (
                 <li key={index} className="inline-flex items-center">
-                  <a href={breadcrumb.href} className={`text-[#FFFFFFBF]  text-font20 ${index === breadcrumbs.length - 1 ? "font-bold text-white " : "opacity-75"}`}>
+                  <a href={breadcrumb.href} className={`text-[#FFFFFFBF]  texthelvetica20 ${index === breadcrumbs.length - 1 ? "font-bold text-white " : "opacity-75"}`}>
                     {breadcrumb.label}
                   </a>
                   {index < breadcrumbs.length - 1 && <Image src={arrowSrc} alt="Arrow" className="mx-2" />}

@@ -24,6 +24,12 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "helveticaBold";
+  src: url("../public/assets/fonts/HelveticaNeueLTPro-Bd.woff2") format('woff2'), url("../public/assets/fonts/HelveticaNeueLTPro-Bd.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @font-face {
   font-family: "NuberBold";
@@ -44,14 +50,15 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   font-family: "NuberNextHeavy", "Myriad Pro", Myriad, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-.nuber-next {
-  font-family: "NuberNextHeavy", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
+
 .nuber-next-bold {
   font-family: "NuberBold", "Myriad Pro", Myriad, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 .helvetica {
   font-family: "helvetica", sans-serif;
+}
+.helvetica-bold {
+  font-family: "helveticaBold", sans-serif;
 }
 
 h1,
