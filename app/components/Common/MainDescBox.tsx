@@ -33,18 +33,18 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, desc, des
     <section className="pt-10 lg:pt-20   pb-10 lg:pb-[100px]   insp-mn relative inspbg">
       <div className="container m-auto ">
         <div className="lg:flex flex-col lg:flex-row items-center justify-between adst relative xl:pr-[10em] xxl:pr-[20em]">
-          <div className="lg:w-1/2 text-left pr-5 pl-5 lg:pl-6 xl:pl-16 py-5 lg:py-20 xl:py-28 opacity-[99%]">
-            <h2 className="  text-Darkgreen mb-4 text-font28 md:text-[48px] font-black nuber-next leading-[1] overflow-hidden">
+          <div className="lg:w-1/2 text-left pr-5 pl-5 lg:pl-6 xl:pl-16 py-5 lg:py-20 xl:py-28 opacity-[99%] mb-2 lg:mb-0">
+            <h2 className="  text-Darkgreen mb-4 text-[28px] md:text-[48px]  nuber-next leading-[1] overflow-hidden">
               {secTitle}
               <span className="text-[#FF671F]">.</span>
             </h2>
-            <p className=" nuber-next   md-6 lg:mb-10 text-litetext font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>
-            <p className="text-font20 text-litetext opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3]">{desc}</p>
-            <br />
+            <p className=" nuber-next   mb-5 lg:mb-10 text-litetext  opacity-[50%] text-font24 leading-[1]">{subTitle}</p>
+            <p className="text-font20 text-litetext opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3] mb-3 lg:mb-4">{desc}</p>
+
             <p className="text-font20 text-litetext opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3]">{desc2}</p>
           </div>
 
-          <div className="flex lg:absolute lg:w-[58%] lg:right-0 lg:top-5 h-full">
+          <div className="flex lg:absolute lg:w-1/2 xl:w-[58%] lg:right-0 lg:top-5 h-full">
             {/* <div className="relative"> */}
             {mainImg && <Image src={mainImg} width={1080} height={640} className="h-auto lg:h-[640px] w-auto lg:w-580px]" alt="Picture of the author" />}
             {/* <div className="relative"> */}

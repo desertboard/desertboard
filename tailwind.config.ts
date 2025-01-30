@@ -35,6 +35,7 @@ module.exports = withMT({
           xxl: "1350px", // Container width on xxl devices
           "3xl": "1550px", // Container width on 3xl devices
           "4xl": "1790px", // Container width on 3xl devices
+
         },
       },
       colors: {

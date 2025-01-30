@@ -10,13 +10,13 @@ import youtube from "@/public/assets/images/home/youtube.svg";
 
   const Footer = () => {
   return (
-    <footer className=" bg-[#00594F]">
-        <div className="container m-auto">
+    <footer className=" bg-[#00594F] fotersmn">
+        <div className="container m-auto afsr">
           <div className="pt-10 md:pt-20    ">
             <div className="py-[20px]  md:py-10 px-[20px]  md:px-12 bg-ser ">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 items-center">
                 <div>
-                  <p className=" mb-0 text-Darkgreen   text-[25px]  md:text-[36px] leading-1 md:leading-none font-black ber-next-heavy">
+                  <p className=" mb-0 text-Darkgreen   text-[25px]  md:text-[36px] leading-[1.2] xxl:leading-none  nuber-next-heavy">
                     Stay Up To Date with DesertBoard
                     <span className="text-[#FF671F] mb-0     text-[25px]  md:text-[36px]  ">.</span>
                   </p>
@@ -30,7 +30,7 @@ import youtube from "@/public/assets/images/home/youtube.svg";
                       {/* Subscribe Button */}
                       <button
                         type="button"
-                        className="absolute group top-0 right-0 mt-1 mr-1 px-5 py-2 text-sm font-bold text-Darkgreen flex gap-2 items-center transition-all duration-300 ease-in-out
+                        className="absolute group top-0 right-0 mt-1 mr-1 px-5 py-2 text-sm nuber-next-bold text-Darkgreen flex gap-2 items-center transition-all duration-300 ease-in-out
                         hover:text-[#FF671F]"
                       >
                         Subscribe
@@ -94,10 +94,10 @@ import youtube from "@/public/assets/images/home/youtube.svg";
                   </div>
                 </div>
                 <div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:pl-10 lg:border-l-2 border-[#ffffff10]">
                     <div>
                       <div>
-                        <p className="text-[24px] text-white font-black mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-1 nuber-next-heavy">Quick Links</p>
+                        <p className="text-[24px] text-white  mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-[1.3] nuber-next-heavy">Quick Links</p>
                       </div>
                       <div className="flex flex-col linkq ">
                           <a href="#" className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2">
@@ -120,7 +120,7 @@ import youtube from "@/public/assets/images/home/youtube.svg";
                     </div>
                     <div>
                       <div>
-                        <p className="text-[24px] text-white font-black mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-1 nuber-next-heavy">Quick Links</p>
+                        <p className="text-[24px] text-white  mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-[1.3] nuber-next-heavy">Quick Links</p>
                       </div>
                       <div className="flex flex-col linkq">
                         <a href="#" className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2">FAQS</a>
@@ -131,7 +131,7 @@ import youtube from "@/public/assets/images/home/youtube.svg";
 
                     <div>
                       <div>
-                        <p className="text-[24px] text-white font-black mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-1 nuber-next-heavy">Contact Us</p>
+                        <p className="text-[24px] text-white  mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-[1.3] nuber-next-heavy">Contact Us</p>
                       </div>
                       <div className="flex flex-col linkq">
                         <a href="tel:+1" className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2">

@@ -37,14 +37,18 @@
         height: 75px;
 
 }
+
+@media (min-width: 430px) {
+
 .ansm {
     .swiper-slide{
-        width:320px !important;
+        // width:320px !important;
         &:hover {
             width: 430px !important;
         }
     }
 
+}
 }
 @media (max-width: 768px) {
     .goal-crd {

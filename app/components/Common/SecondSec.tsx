@@ -39,7 +39,7 @@ const SecondSec: React.FC<SecondSecProps> = ({
             />
 
             <div className="lg:w-1/2 text-center lg:text-left px-[60px] py-[80px]">
-              <h2 className="text-gray-900 mb-4 text-[48px] font-black">
+              <h2 className="text-gray-900 mb-4 text-[48px] ">
                 {title}
                 <span className="text-[#FF671F]">.</span>
               </h2>

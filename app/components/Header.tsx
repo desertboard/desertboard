@@ -60,16 +60,28 @@ const Header = () => {
               <MenuItem setActive={setActive} active={active} item="Sectors">
                 <div className="grid grid-cols-2 gap-4 p-4">
                   <ProductItem
-                    title="Product A"
-                    description="Description for Product A"
-                    href="/products/a"
-                    src="/assets/images/home/sliconmn6.jpg"
+                    title="Engineering & Construction"
+                    description=" "
+                    href="#"
+                    src={"/assets/images/gd-im1.jpg"}
                   />
                   <ProductItem
-                    title="Product B"
-                    description="Description for Product B"
-                    href="/products/b"
-                    src="/assets/images/home/sliconmn4.jpg"
+                    title="Landscape"
+                    description=""
+                    href="#"
+                    src="/assets/images/gd-im2.jpg"
+                  />
+                  <ProductItem
+                    title="Interior Design"
+                    description=""
+                    href="#"
+                    src="/assets/images/gd-im3.jpg"
+                  />
+                  <ProductItem
+                    title="Events & Exhibitions"
+                    description=""
+                    href="#"
+                    src="/assets/images/gd-im4.jpg"
                   />
                 </div>
               </MenuItem>

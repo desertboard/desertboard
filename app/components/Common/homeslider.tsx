@@ -29,7 +29,7 @@ interface FrameworkSectionProps {
     <div className="container m-auto">
       <div className="flex justify-between mb-8 md:items-end mdgrd gap-4 ">
         <div className="text-left ">
-          <h2 className="text-Darkgreen-900 mb-4 text-[28px] md:text-[48px]  font-black nuber-next leading-[1] ">
+          <h2 className="text-Darkgreen-900 mb-4 text-[28px] md:text-[48px]   nuber-next leading-[1] ">
             Sustainable Development Goals
             <span className="text-[#FF671F]">.</span>
           </h2>
@@ -37,7 +37,7 @@ interface FrameworkSectionProps {
         </div>
         <div className="flex gap-2 items-center group">
           <div>
-            <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300 text-font18 font-black leading-[1.5] rmbtn  text-font20 md:min-w-[100px]">Read More</p>
+            <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300 text-font18  leading-[1.5] rmbtn  text-font20 md:min-w-[100px]">Read More</p>
           </div>{" "}
           <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1" />
         </div>
@@ -97,7 +97,7 @@ interface FrameworkSectionProps {
               </div>
               <div className="p-6">
                 <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                      <h3 className="text-[22px] font-bold text-black"  >{framework.title} </h3>
+                      <h3 className="text-[22px]    "  >{framework.title} </h3>
                   <p className="text-sm text-black opacity-[75%] mt-2">{framework.dec}</p>
                 </div>
               </div>

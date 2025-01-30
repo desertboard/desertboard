@@ -3,7 +3,7 @@ import Image from "next/image";
 const Downloads = () => {
   return (
     <>
-      <section className="bg-[#FFB549] py-[40px] ">
+      <section className="bg-secondary py-[40px] ">
         <div className="container mx-auto ">
           <a className="text-[28px] text-white flex items-center justify-end font-bold">
             To Downloads

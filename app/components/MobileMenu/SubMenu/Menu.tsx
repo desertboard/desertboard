@@ -9,11 +9,19 @@ import Curve from './Curve';
 
 const navItems = [
   {
-    title: "Product 1",
+    title: "Engineering & Construction",
     href: "/",
   },
   {
-    title: "Product 2",
+    title: "Landscape",
+    href: "/",
+  },
+  {
+    title: "Interior Design",
+    href: "/",
+  },
+  {
+    title: "Events & Exhibitions",
     href: "/",
   },
 
@@ -28,11 +36,11 @@ export default function Menu({setSubMenuActive,setIsActive}:{
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
 
   return (
-    <motion.div 
-      variants={menuSlide} 
-      initial="initial" 
-      animate="enter" 
-      exit="exit" 
+    <motion.div
+      variants={menuSlide}
+      initial="initial"
+      animate="enter"
+      exit="exit"
       className={styles.menu}
       >
         {<div onClick={() => setSubMenuActive(false)} className={styles.backbutton}>
@@ -41,13 +49,13 @@ export default function Menu({setSubMenuActive,setIsActive}:{
 
        <div className={styles.body}>
             <div onMouseLeave={() => {setSelectedIndicator(pathname)}} className={styles.nav}>
-                    
+
                     {
                       navItems.map( (data, index) => {
-                        return <Link 
-                        key={index} 
-                        data={{...data, index}} 
-                        isActive={selectedIndicator == data.href} 
+                        return <Link
+                        key={index}
+                        data={{...data, index}}
+                        isActive={selectedIndicator == data.href}
                         setSelectedIndicator={setSelectedIndicator}>
                         </Link>
                       })
