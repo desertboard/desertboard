@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import flogo from "@/public/assets/images/home/flogo.png";
-import { Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
+import { Menu, MenuItem, ProductItem, ProductItemL } from "./ui/navbar-menu";
 import MobileMenu from "./MobileMenu/MobileMenu";
 
 const Header = () => {
@@ -57,7 +57,7 @@ const Header = () => {
               </MenuItem>
 
 
-              <MenuItem setActive={setActive} active={active} item="Sectors">
+              <MenuItem setActive={setActive} active={active} item="Sectors" noMenu>
                 <div className="grid grid-cols-2 gap-4 p-4">
                   <ProductItem
                     title="Engineering & Construction"
@@ -83,6 +83,27 @@ const Header = () => {
                     href="#"
                     src="/assets/images/gd-im4.jpg"
                   />
+                </div>
+              </MenuItem>
+              <MenuItem setActive={setActive} active={active} item="Products" noMenu>
+                <div className="grid grid-cols-1 gap-2">
+                  <ProductItemL
+                    title="Engineering & Construction"
+                     href="#"
+                  />
+                  <ProductItemL
+                    title="Engineering & Construction"
+                     href="#"
+                  />
+                  <ProductItemL
+                    title="Engineering & Construction"
+                     href="#"
+                  />
+                  <ProductItemL
+                    title="Engineering & Construction"
+                     href="#"
+                  />
+                
                 </div>
               </MenuItem>
 
