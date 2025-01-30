@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
-import { accordianData } from './data'
 import contactPhone from '@/public/assets/images/contact-phone.svg'
 import contactEmail from '@/public/assets/images/contact-email.svg'
 import contactLocation from '@/public/assets/images/contact-location.svg'
