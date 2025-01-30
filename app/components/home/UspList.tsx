@@ -53,7 +53,18 @@ export default function UspList({ secTitle }: UspsProps) {
           {secTitle}
           <span className="text-[#FF671F]">.</span>
         </motion.h2>
-        <div className={`usp__list ${activeOrder ? "active-" + activeOrder : ""}`}>
+        <motion.div className={`usp__list ${activeOrder ? "active-" + activeOrder : ""}`} 
+          initial={{ opacity: 0, y: -30 }}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{
+                hidden: { opacity: 0, y: -30 }, 
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1, delay: 0.5 },
+                }, 
+              }}>
           <UspItem uspTitle="Deforestation Free" onMouseEnter={() => setActiveOrder("1")} uspIcon={uspI1} uspDesc="100% sustainable boards made from the UAE’s annually regenerated palm frond biomass, eliminating the need to cut down trees, and reducing reliance on imported wood." order="1" mainImg={uspImg1} />
           <UspItem uspTitle="Zero Formaldehyde" onMouseEnter={() => setActiveOrder("2")} uspIcon={uspI2} order="2" uspDesc="Designed for a healthier, eco-friendly indoorenvironment with zero formaldehyde emission. " mainImg={uspImg2} />
           <UspItem
@@ -68,7 +79,7 @@ export default function UspList({ secTitle }: UspsProps) {
           <UspItem uspTitle="Versatile" onMouseEnter={() => setActiveOrder("5")} uspIcon={uspI5} order="5" uspDesc="Highly customizable boards with a variety of finishes, designed to meet the diverse needs of the construction & allied industries." mainImg={uspImg5} />
           <UspItem uspTitle="Production Facility" onMouseEnter={() => setActiveOrder("6")} uspIcon={uspI6} order="6" uspDesc="Capable of producing 6,200 sustainable PSB® boards per day, accommodating 16 (20-foot containers) daily." mainImg={uspImg6} />
           <UspItem uspTitle="Bi-Economical" onMouseEnter={() => setActiveOrder("7")} uspIcon={uspI7} order="7" uspDesc="An eco-friendly, cost-efficient alternative to traditional materials, PSB® Conform boards can be reused over 40 times vertically, saving both cost and time in the construction industry." mainImg={uspImg7} />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

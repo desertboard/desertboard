@@ -20,7 +20,8 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
 import "@/app/components/home/goalcrd.scss";
-
+import {motion} from "framer-motion"
+ 
 
 const SustainabeSc = () => {
   return (
@@ -30,11 +31,33 @@ const SustainabeSc = () => {
         <div className="container m-auto">
           <div className="flex justify-between mb-8 md:items-end mdgrd gap-4 ">
             <div className="text-left ">
-              <h2 className="text-Darkgreen mb-4 text-[28px] md:text-[48px]   nuber-next leading-[1] ">
+              <motion.h2 className="text-Darkgreen mb-4 text-[28px] md:text-[48px]   nuber-next leading-[1] "
+              initial={{ opacity: 0, x: -30 }}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{
+                hidden: { opacity: 0, x: -30 }, 
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  transition: { duration: 1, delay: 0.3 },
+                }, 
+              }}>
                 Sustainable Development Goals
                 <span className="text-[#FF671F]">.</span>
-              </h2>
-              <p className="text-font20 text-litetext opacity-[75%]  max-w-[75ch]">Explore how eco-friendly and locally produced materials are helping us move closer to the United Nations&apos; Sustainable Development Goals.</p>
+              </motion.h2>
+              <motion.p className="text-font20 text-litetext opacity-[75%]  max-w-[75ch]"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{
+                hidden: { opacity: 0, x: -30 }, 
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  transition: { duration: 1, delay: 0.5 },
+                }, 
+              }}>Explore how eco-friendly and locally produced materials are helping us move closer to the United Nations&apos; Sustainable Development Goals.</motion.p>
             </div>
             <div className="flex gap-3 items-center group rmbtn pb-3">
               <div>

@@ -11,11 +11,11 @@ const BannerSr = () => {
   return (
     <section
   
-      className="relative h-[75vh] md:h-[98vh] bg-cover bg-center flex items-center justify-center text-center"
+      className="relative h-[75vh] md:h-screen bg-cover bg-center flex items-center justify-center text-center"
     >
-      <figure className="absolute h-[75vh] md:h-[98vh] top-0 w-full -z-40 bg-primary hr-figs">
+      <figure className="absolute h-[75vh] md:h-screen top-0 w-full -z-40 bg-primary hr-figs">
         <motion.img
-          className="w-screen h-[75vh] md:h-[98vh] absolute object-cover"
+          className="w-screen h-[75vh] md:h-screen absolute object-cover"
           src={Banner.src}
           width={1920}
           height={900}
