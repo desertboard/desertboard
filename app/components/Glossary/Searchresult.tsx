@@ -1,10 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import lfbef from "@/public/assets/images/home/leaf.svg";
 import grarrow from "@/public/assets/images/icons/greenarrow.svg";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";

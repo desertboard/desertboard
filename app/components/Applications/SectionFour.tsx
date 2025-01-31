@@ -1,10 +1,8 @@
 "use client";
 import React from "react";
 
-import wh2 from "@/public/assets/images/applications/wh2.svg";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
-import arrow from "@/public/assets/images/applications/arrowdown.svg";
 // Import Swiper styles
 import "swiper/css";
 import Image from "next/image";
@@ -15,7 +13,7 @@ import Accordion from "../Applications/Accordion";
 const SectionFour = () => {
   return (
     <>
-      <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner relative overflow-hidden">
+      <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner  overflow-hidden">
         <motion.div
           className="ola ola-right absolute top-5 right-[-10%] w-[40em]"
           animate={{ y: [0, -20, 0], rotate: [0, 3, 0] }}

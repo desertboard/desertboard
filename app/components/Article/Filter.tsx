@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
-import grarrow from "@/public/assets/images/icons/greenarrow.svg";
  import Searchresult from "./Searchresult";
 import "swiper/css";
 import "swiper/css/navigation";
