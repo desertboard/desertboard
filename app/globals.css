@@ -136,7 +136,7 @@ body {
   z-index: -1;
 } */
 .fotersmn{position: relative;z-index: 3;}
-.fotersmn::after{
+/* .fotersmn::after{
   content: "";
   background-image: url(/assets/images/footerbg2.svg);
   width: 100%;
@@ -147,7 +147,7 @@ body {
   right: 15%;
   top: -5%;
   z-index: -5;
-}
+} */
 /* .fotersmn::before{
   content: "";
     background-image: url(/assets/images/footerbg3.svg);
