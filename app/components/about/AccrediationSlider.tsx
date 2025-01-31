@@ -26,8 +26,8 @@ const AccrediationSlider = () => {
           Our Accreditation Partners <span className="text-[#FF671F] leading-[1]">.</span>
         </h2>
         <p className="text-lightBlack text-font20 leading-[1.3] opacity-75">
-          DesertBoard's Palm Strand Board (PSB®) is accredited by leading national and international regulatory bodies, holding over 30 global, regional, and local certifications, reflecting our commitment to excellence and quality. This positions us as a trusted partner for clients across the MENA region, Asia, and beyond. By providing clients
-          with a high-quality, certified product, we empower them to confidently deliver sustainable and innovative construction projects that meet the highest industry standards.
+          DesertBoard&apos;s Palm Strand Board (PSB®) is accredited by leading national and international regulatory bodies, holding over 30 global, regional, and local certifications, reflecting our commitment to excellence and quality. This positions us as a trusted partner for clients across the MENA region, Asia, and beyond. By providing
+          clients with a high-quality, certified product, we empower them to confidently deliver sustainable and innovative construction projects that meet the highest industry standards.
         </p>
       </div>
       <div className="container relative h-full">
@@ -51,18 +51,18 @@ const AccrediationSlider = () => {
         </Swiper>
 
         <div className="relative top-10">
-        <div className="absolute bottom-[-10%] right-0 flex gap-4 z-10">
-          <button className="custom-next cursor-pointer hover:opacity-80 transition-opacity p-2">
-            <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-              <path d="M17.9879 2L2.98787 17L17.9879 32M22.9939 7.00392L12.9978 17L22.9939 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
-            </svg>
-          </button>
-          <button className="custom-prev cursor-pointer hover:opacity-80 transition-opacity p-2">
-            <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" >
-              <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
-            </svg>
-          </button>
-        </div>
+          <div className="absolute bottom-[-10%] right-0 flex gap-4 z-10">
+            <button className="custom-next cursor-pointer hover:opacity-80 transition-opacity p-2">
+              <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                <path d="M17.9879 2L2.98787 17L17.9879 32M22.9939 7.00392L12.9978 17L22.9939 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+            </button>
+            <button className="custom-prev cursor-pointer hover:opacity-80 transition-opacity p-2">
+              <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>
