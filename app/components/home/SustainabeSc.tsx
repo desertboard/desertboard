@@ -22,7 +22,7 @@ import "swiper/css";
 import Image from "next/image";
 import "@/app/components/home/goalcrd.scss";
 import {motion} from "framer-motion"
- 
+
 
 const SustainabeSc = () => {
   return (
@@ -30,15 +30,15 @@ const SustainabeSc = () => {
       <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner relative overflow-hidden">
       <motion.div
                     className="ola ola-right absolute top-5 right-[-10%] w-[40em]"
-                    
-                    animate={{ y: [0, -20, 0], rotate: [0, 3, 0] }} 
+
+                    animate={{ y: [0, -20, 0], rotate: [0, 3, 0] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                   >
                     <Image className="absolute" src={lfbef} alt="Description of the image" />
                   </motion.div>
                   <motion.div
         className="ola ola-right absolute bottom-[43%] left-[-15%] w-[40em]"
-        animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }} 
+        animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
         <Image className="absolute" src={lfbt} alt="Description of the image" />
@@ -46,17 +46,17 @@ const SustainabeSc = () => {
         <div className="container m-auto">
           <div className="flex justify-between mb-8 md:items-end mdgrd gap-4 ">
             <div className="text-left ">
-              <motion.h2 className="text-Darkgreen mb-4 text-[28px] md:text-[48px]   nuber-next leading-[1] "
+              <motion.h2 className="text-Darkgreen mb-4 text-[28px] md:text-[48px]   nuber-next-heavy leading-[1] "
               initial={{ opacity: 0, x: -30 }}
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={{
-                hidden: { opacity: 0, x: -30 }, 
+                hidden: { opacity: 0, x: -30 },
                 visible: {
                   opacity: 1,
                   x: 0,
                   transition: { duration: 1, delay: 0.3 },
-                }, 
+                },
               }}>
                 Sustainable Development Goals
                 <span className="text-[#FF671F]">.</span>
@@ -66,19 +66,19 @@ const SustainabeSc = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={{
-                hidden: { opacity: 0, x: -30 }, 
+                hidden: { opacity: 0, x: -30 },
                 visible: {
                   opacity: 0.75,
                   x: 0,
                   transition: { duration: 1, delay: 0.5 },
-                }, 
+                },
               }}>Explore how eco-friendly and locally produced materials are helping us move closer to the United Nations&apos; Sustainable Development Goals.</motion.p>
             </div>
             <div className="flex gap-3 items-center group rmbtn pb-3">
               <div>
                 <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300 text-font18  leading-[1.5]    text-font20 md:min-w-[105px] nuber-next-heavy leading-[1.25] cursor-pointer">Read More</p>
               </div>{" "}
-              <Image src={readarrow} alt="icn1" className="transition-all duration-300 group-hover:translate-x-1 " />
+              <Image src={readarrow} alt="icn1" className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1 " />
             </div>
           </div>
         </div>
@@ -86,12 +86,12 @@ const SustainabeSc = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={{
-                hidden: { opacity: 0, y: -30 }, 
+                hidden: { opacity: 0, y: -30 },
                 visible: {
                   opacity: 1,
                   y: 0,
                   transition: { duration: 1, delay: 0.5 },
-                }, 
+                },
               }}>
           <Swiper
             // install Swiper modules

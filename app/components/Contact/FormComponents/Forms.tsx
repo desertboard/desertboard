@@ -37,9 +37,9 @@ const Forms = () => {
             <div>
                 <ul className='flex text-black text-lg'>
                     {menu.map((item,index)=>(
-                        <div key={index} className={`px-7 py-2 ${menuIndex == index ? "bg-[#E3DED9]" : ""} cursor-pointer nuber-next nuber-next-bold`} onClick={()=>setMenuIndex(index)}><li>{item.title}</li></div>
+                        <div key={index} className={`px-7 py-2 ${menuIndex == index ? "bg-[#E3DED9]" : ""} cursor-pointer  nuber-next-bold`} onClick={()=>setMenuIndex(index)}><li>{item.title}</li></div>
                     ))}
-                    
+
                 </ul>
             </div>
 

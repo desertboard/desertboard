@@ -5,6 +5,16 @@ import ProductAccordians from './ProductAccordians'
 const Accordians = () => {
 
 
+    // const [activeAccordian, setActiveAccordian] = useState(0)
+
+    // const toggleAccordion = (accordianNumber: number) => {
+    //     setActiveAccordian(accordianNumber)
+    //     console.log(accordianNumber)
+    // }
+
+    // useEffect(()=>{
+    //     setActiveAccordian(1)
+    // },[])
 
     const [addressBarIndex,setAddressBarIndex] = useState(0)
 
@@ -23,7 +33,7 @@ const Accordians = () => {
     }
 ]
 
-const ActiveAccordian = menu[addressBarIndex].component
+// const ActiveAccordian = menu[addressBarIndex].component
 
 
   return (
@@ -38,7 +48,7 @@ const ActiveAccordian = menu[addressBarIndex].component
                 </ul>
             </div>
 
-            {ActiveAccordian}
+            {/* {ActiveAccordian} */}
 
         </div>
   )
