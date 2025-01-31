@@ -9,14 +9,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 interface MainDescBoxProps {
   secTitle: string;
   subTitle: string;
-  desc: string;
-  desc2?: string;
+  paragraphs: string[];
   mainImg?: string;
   mainVdo?: string;
   vdoPoster?: string;
 }
 
-const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, desc, desc2, mainImg, mainVdo, vdoPoster }) => {
+const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraphs, mainImg, mainVdo, vdoPoster }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null); // Type the ref for HTMLVideoElement
   const [isPlaying, setIsPlaying] = useState(false); // State to track play/pause
   const togglePlay = () => {
@@ -40,25 +39,16 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, desc, des
 
   return (
     <section className="pt-10 lg:pt-20   pb-10 lg:pb-[100px]   insp-mn relative inspbg relative">
-        <motion.div
-        className="ola ola-right absolute top-0 right-[-10%] w-[40em]"
-
-        animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      >
+      <motion.div className="ola ola-right absolute top-0 right-[-10%] w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
         <Image className="absolute" src={lfbef} alt="Description of the image" />
       </motion.div>
-      <motion.div
-        className="ola ola-right absolute bottom-[43%] left-[-15%] w-[40em]"
-        animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      >
+      <motion.div className="ola ola-right absolute bottom-[43%] left-[-15%] w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
         <Image className="absolute" src={lfbt} alt="Description of the image" />
       </motion.div>
       <div className="container m-auto ">
         <div className="lg:flex flex-col lg:flex-row items-center justify-between adst relative xl:pr-[10em] xxl:pr-[20em]">
           <div className="lg:w-1/2 text-left pr-5 pl-5 lg:pl-6 xl:pl-16 py-5 lg:py-20 xl:py-28 opacity-[99%] mb-2 lg:mb-0">
-          <motion.h2
+            <motion.h2
               className="text-Darkgreen mb-4 text-[28px] md:text-[48px] nuber-next-heavy leading-[1] overflow-hidden"
               initial={{ opacity: 0, x: -30 }}
               whileInView="visible"
@@ -70,67 +60,36 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, desc, des
                   x: 0,
                   transition: { duration: 1, delay: 0.3 },
                 },
-              }}
-            >
+              }}>
               {secTitle}
               <span className="text-[#FF671F]">.</span>
             </motion.h2>
-            <motion.p
-              className="nuber-next-heavy mb-5 lg:mb-10 text-litetext opacity-[50%] text-font24 leading-[1]"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-              variants={{
-                hidden: { opacity: 0, x: -30 }, // Start below and invisible
-                visible: {
-                  opacity: 0.5,
-                  x: 0,
-                  transition: { duration: 1, delay: 0.5 },
-                },
-              }}
-            >
-              {subTitle}
-            </motion.p>
-            <motion.p
-              className="text-font20 text-litetext opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3] mb-3 lg:mb-4"
-              initial={{ opacity: 0, y: -30 }}
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-              variants={{
-                hidden: { opacity: 0, y: -30 }, // Start below and invisible
-                visible: {
-                  opacity: 0.75,
-                  y: 0,
-                  transition: { duration: 1, delay: 0.7 },
-                },
-              }}
+            <p className=" nuber-next   md-6 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>
 
-            >
-              {desc}
-            </motion.p>
-
-            <motion.p
-                className="text-font20 text-litetext opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3]"
-                initial={{ opacity: 0, y: -20 }}
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-              variants={{
-                hidden: { opacity: 0, y: -20 }, // Start below and invisible
-                visible: {
-                  opacity: 0.75,
-                  y: 0,
-                  transition: { duration: 1, delay: 0.7 },
-                },
-              }}
-
-              >
-                {desc2}
+            {paragraphs.map((text, index) => (
+              <motion.p
+                key={index}
+                className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3] mb-4"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                variants={{
+                  hidden: { opacity: 0, x: -30 }, // Start below and invisible
+                  visible: {
+                    opacity: 0.5,
+                    x: 0,
+                    transition: { duration: 1, delay: 0.5 },
+                  },
+                }}>
+                {text}
               </motion.p>
+            ))}
+            
           </div>
 
           <div className="flex lg:absolute lg:w-1/2 xl:w-[58%] lg:right-0 lg:top-5 h-full">
             {/* <div className="relative"> */}
-            {mainImg && <Image src={mainImg} width={1080} height={640} className="h-auto lg:h-[640px] w-auto lg:w-580px]" alt="Picture of the author" />}
+            {mainImg && <Image src={mainImg} width={1080} height={640} className="w-auto lg:w-580px] object-cover h-full" alt="Picture of the author" />}
             {/* <div className="relative"> */}
             {/* Video element */}
             {mainVdo && (
