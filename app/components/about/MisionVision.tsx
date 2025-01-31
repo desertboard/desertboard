@@ -13,7 +13,7 @@ export default function MisionVision() {
   };
 
   return (
-    <section className="mivi bg-themebg mb-16">
+    <section className="mivi bg-themebg">
       <div className="container">
         <div className={`mivi__wrapper ${activeClass}`}>
           <div className="mivi__mi" onClick={handleMiClick}>
