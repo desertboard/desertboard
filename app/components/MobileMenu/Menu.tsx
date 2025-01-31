@@ -6,6 +6,11 @@ import { usePathname } from 'next/navigation';
 import { menuSlide } from './anim';
 import Link from './Link';
 import Curve from './Curve';
+import Image from 'next/image';
+import fb from "@/public/assets/images/home/fb.svg";
+import lin from "@/public/assets/images/home/lin.svg";
+import insta from "@/public/assets/images/home/inst.svg";
+import youtube from "@/public/assets/images/home/youtube.svg";
 
 const navItems = [
   {
@@ -14,7 +19,7 @@ const navItems = [
   },
   {
     title: "About",
-    href: "/about",
+    href: "#",
   },
   {
     title: "Sectors",
@@ -22,41 +27,41 @@ const navItems = [
     children:[
       {
         title: "Engineering & Construction",
-        href: "/sectors",
+        href: "#",
       },
       {
         title: "Landscape",
-        href: "/sectors",
+        href: "#",
       },
       {
         title: "Interior Design",
-        href: "/sectors",
+        href: "#",
       },
       {
         title: "Events & Exhibitions",
-        href: "/sectors",
+        href: "#",
       },
     ]
   },
   {
     title: "Sustainability",
-    href: "/sustainability",
+    href: "#",
   },
   {
     title: "Downloads",
-    href: "/downloads",
+    href: "#",
   },
   {
     title: "News & Events",
-    href: "/newsandevents",
+    href: "#",
   },
   {
     title: "Faqs",
-    href: "/faq",
+    href: "#",
   },
   {
     title: "Contact",
-    href: "/contact",
+    href: "#",
   },
 ]
 
@@ -84,16 +89,35 @@ export default function Menu({setSubMenuActive,setIsActive}:{
                         return <Link setSubMenuActive={setSubMenuActive}
                         key={index}
                         data={{...data, index}}
-                        isActive={selectedIndicator == data.href}
+                        isActive={selectedIndicator == data.title}
                         setSelectedIndicator={setSelectedIndicator}>
                         </Link>
                       })
                     }
             </div>
             <div className={styles.footer}>
-                <a>Instagram</a>
-                <a>Dribble</a>
-                <a>LinkedIn</a>
+              <div className='flex items-center gap-5'>
+                <a>  <Image
+                            src={fb}
+                            alt="Facebook"
+                            className="group-hover:brightness-2 brightness-0 invert group-hover:invert-0 h-4"
+                          /></a>
+                <a>  <Image
+                            src={lin}
+                            alt="Facebook"
+                            className="group-hover:brightness-2 brightness-0 invert group-hover:invert-0 h-4"
+                          /></a>
+                <a>  <Image
+                            src={insta}
+                            alt="Facebook"
+                            className="group-hover:brightness-2 brightness-0 invert group-hover:invert-0 h-4"
+                          /></a>
+                <a>  <Image
+                            src={youtube}
+                            alt="Facebook"
+                            className="group-hover:brightness-2 brightness-0 invert group-hover:invert-0 h-4"
+                          /></a>
+               </div>
             </div>
             <Curve setIsActive={setIsActive}/>
         </div>

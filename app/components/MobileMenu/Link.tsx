@@ -19,7 +19,7 @@ export default function Index({data, isActive, setSelectedIndicator,setSubMenuAc
   
     return (
       <motion.div 
-        className={styles.link} 
+        className={`${styles.link} mb-2`} 
         onMouseEnter={() => {setSelectedIndicator(href)}} 
         custom={index} 
         variants={slide} 
@@ -32,7 +32,7 @@ export default function Index({data, isActive, setSelectedIndicator,setSubMenuAc
           animate={isActive ? "open" : "closed"} 
           className={styles.indicator}>
         </motion.div>
-        <Link href={href} className='text-2xl mb-3' onClick={()=>title=="Sectors" ? setSubMenuActive(true) : null}>{title}</Link>
+        <Link href={href} className='text-2xl' onClick={()=>title=="Sectors" ? setSubMenuActive(true) : null}>{title}</Link>
       </motion.div>
     )
 }
