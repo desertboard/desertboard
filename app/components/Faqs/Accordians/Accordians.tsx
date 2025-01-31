@@ -1,19 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ProductAccordians from './ProductAccordians'
 
 
 const Accordians = () => {
 
-    const [activeAccordian, setActiveAccordian] = useState(0)
-      
-    const toggleAccordion = (accordianNumber: number) => {
-        setActiveAccordian(accordianNumber)
-        console.log(accordianNumber)
-    }
 
-    useEffect(()=>{
-        setActiveAccordian(1)
-    },[])
 
     const [addressBarIndex,setAddressBarIndex] = useState(0)
 

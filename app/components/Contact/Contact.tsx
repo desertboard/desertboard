@@ -4,7 +4,6 @@ import PageBanner from '../Common/PageBanner';
 import Arrow from "@/public/assets/brdcrbs.svg";
 import AddressBar from './AddressBar';
 import Forms from './FormComponents/Forms';
-import Footer from '../Common/footer';
 import BackGround from '@/public/assets/images/Background.jpg'
 import Image from 'next/image';
 
