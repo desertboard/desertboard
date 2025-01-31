@@ -1,6 +1,11 @@
+'use client'
 import React from "react";
+import { motion } from "framer-motion";
+ 
 import Image from "next/image";
-
+import ola from "@/public/assets/images/home/ola.svg";
+import olar from "@/public/assets/images/home/ola-r.svg";
+import leaff from "@/public/assets/images/home/leaf-f.svg";
 
 import flogo from "@/public/assets/images/home/flogo.png";
 import fb from "@/public/assets/images/home/fb.svg";
@@ -12,10 +17,41 @@ import youtube from "@/public/assets/images/home/youtube.svg";
   return (
     <>
 
-    <footer className=" bg-[#00594F] fotersmn">
+    <footer className="bg-[#00594F] fotersmn relative overflow-hidden *:">
+
+  
+ 
+    <motion.div className="ola ola-right absolute top-[4%] left-[-9%] w-[45em] rotate-[25deg]  -z-[1]" animate={{ x: [0, -20, 0], rotate: [25, 20, 25] }} 
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} >
+        <Image className="absolute" src={olar} alt="Description of the image"></Image>
+      </motion.div>
+    <motion.div className="ola ola-right absolute top-[-19%] left-[-2%] w-[40em] rotate-[5deg] -z-[1]" animate={{ x: [0, -20, 0], rotate: [5, 5, 5] }} 
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} >
+        <Image className="absolute" src={leaff} alt="Description of the image"></Image>
+      </motion.div>
+      <motion.div className="ola ola-right absolute bottom-[35%] right-[-15%] w-[40em] rotate-[28deg]  -z-[1]" animate={{ y: [0, -20, 0], rotate: [28, 35, 28] }} 
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} >
+        <Image className="absolute" src={ola} alt="Description of the image"></Image>
+      </motion.div>
+      <motion.div className="ola ola-right absolute top-[-15%] right-[30%] rotate-[-44deg] w-[30em]  -z-[1]" animate={{ x: [0, -20, 0], rotate: [-44, -40, -44] }} 
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} >
+        <Image className="absolute" src={ola} alt="Description of the image"></Image>
+      </motion.div>
+ 
+
         <div className="container m-auto afsr">
           <div className="pt-10 md:pt-20    ">
-            <div className="py-[20px]  md:py-10 px-[20px]  md:px-12 bg-ser ">
+            <motion.div className="py-[20px]  md:py-10 px-[20px]  md:px-12 bg-ser " initial='hidden'
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                variants={{
+                  hidden: { opacity: 0, y: -30 }, // Start below and invisible
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 1, delay: 0 },
+                  },
+                }}>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 items-center">
                 <div>
                   <p className=" mb-0 text-Darkgreen   text-[25px]  md:text-[36px] leading-[1.2] xxl:leading-none  nuber-next-heavy">
@@ -57,13 +93,24 @@ import youtube from "@/public/assets/images/home/youtube.svg";
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           <div className="pt-10 md:pt-20  ">
             <div className="pb-10 md:pb-20 border-b-2 border-[#ffffff10]  ">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6">
-                <div>
+                <motion.div 
+                initial='hidden'
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                variants={{
+                  hidden: { opacity: 0, y: -30 }, // Start below and invisible
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 1, delay: 0.2 },
+                  },
+                }}>
                   <div className="flex flex-col gap-10 lg:gap-20">
                     <Image src={flogo} alt="logo" className="w-1/2 md:w-[400px]" />
                     <div className="flex gap-3">
@@ -94,10 +141,20 @@ import youtube from "@/public/assets/images/home/youtube.svg";
 
 
                   </div>
-                </div>
+                </motion.div>
                 <div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:pl-10 lg:border-l-2 border-[#ffffff10]">
-                    <div>
+                    <motion.div  initial='hidden'
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                variants={{
+                  hidden: { opacity: 0, y: -30 }, // Start below and invisible
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 1, delay: 0.5 },
+                  },
+                }}>
                       <div>
                         <p className="text-[24px] text-white  mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-[1.3] nuber-next-heavy">Quick Links</p>
                       </div>
@@ -119,8 +176,19 @@ import youtube from "@/public/assets/images/home/youtube.svg";
                           </a>
                         </div>
 
-                    </div>
-                    <div>
+                    </motion.div>
+                    <motion.div
+                     initial='hidden'
+                     whileInView="visible"
+                     viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                     variants={{
+                       hidden: { opacity: 0, y: -30 }, // Start below and invisible
+                       visible: {
+                         opacity: 1,
+                         y: 0,
+                         transition: { duration: 1, delay: 0.7 },
+                       },
+                     }}>
                       <div>
                         <p className="text-[24px] text-white  mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-[1.3] nuber-next-heavy">Quick Links</p>
                       </div>
@@ -129,9 +197,20 @@ import youtube from "@/public/assets/images/home/youtube.svg";
                         <a href="#" className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2">Glossary</a>
                         <a href="#" className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2">Download Brochure </a>
                       </div>
-                    </div>
+                    </motion.div>
 
-                    <div>
+                    <motion.div
+                     initial='hidden'
+                     whileInView="visible"
+                     viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                     variants={{
+                       hidden: { opacity: 0, y: -30 }, // Start below and invisible
+                       visible: {
+                         opacity: 1,
+                         y: 0,
+                         transition: { duration: 1, delay: 0.9 },
+                       },
+                     }}>
                       <div>
                         <p className="text-[24px] text-white  mb-3 md:mb-5 pb-3 md:pb-5 border-b-2 border-[#ffffff10] w-fit leading-[1.3] nuber-next-heavy">Contact Us</p>
                       </div>
@@ -161,15 +240,26 @@ import youtube from "@/public/assets/images/home/youtube.svg";
                           </div>
                         </a>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
               </div>
             </div>
             <div>
-              <div className="py-6 md:py-10">
+              <motion.div className="py-6 md:py-10"  
+              initial='hidden'
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                variants={{
+                  hidden: { opacity: 0, y: -30 }, // Start below and invisible
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 1, delay: 1 },
+                  },
+                }}>
                 <p className="mb-0 text-center text-white text-[14px]">Copyright 2025</p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
