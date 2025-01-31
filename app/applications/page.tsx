@@ -1,5 +1,6 @@
 import SectionTwo from "../components/Applications/SectionTwo";
 import SectionThree from "../components/Applications/SectionThree";
+import SectionFive from "../components/Applications/SectionFive";
 import PageBanner from "../components/Common/PageBanner";
 import SectionFour from "../components/Applications/SectionFour";
 import Downloads from "../components/Common/Downloads";
@@ -25,13 +26,14 @@ const Sectors = () => {
         bannerSrc={bannerImg} // Corrected image import here
         arrowSrc={Arrow}
         desc=""
-        title="Façade Cladding."
+        title="Façade Cladding"
         breadcrumbs={breadcrumbs}
         bnrHeight="60dvh"
       />
       <SectionTwo />
       <SectionThree />
       <SectionFour />
+      <SectionFive />
      <Downloads title={"To Downloads"}/>
     </>
   );
