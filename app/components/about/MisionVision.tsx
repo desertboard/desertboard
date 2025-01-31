@@ -27,8 +27,8 @@ export default function MisionVision() {
               MIssion <span className="text-[#FF671F]">.</span>
             </h3>
             <p className="mivi__desc text-lightBlack">
-              Our mission is to leverage the UAE’s rich heritage of palm fronds to create high-strength, zero-emission structural panels. By transforming local materials into sustainable building solutions, we aim to enhance indoor air quality, reduce carbon footprints, and contribute to the local bio-economy. As the first industrial plant in the
-              UAE dedicated to this innovation, we support the nation's industrial growth while promoting environmental sustainability.
+              Our mission is to leverage the UAE&apos;s rich heritage of palm fronds to create high-strength, zero-emission structural panels. By transforming local materials into sustainable building solutions, we aim to enhance indoor air quality, reduce carbon footprints, and contribute to the local bio-economy. As the first industrial plant in
+              the UAE dedicated to this innovation, we support the nation&apos;s industrial growth while promoting environmental sustainability.
             </p>
           </div>
           <div className="mivi__vi" onClick={handleViClick}>

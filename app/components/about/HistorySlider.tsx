@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useMemo } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Controller } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/mousewheel";
 
 import '@/app/components/about/history.scss';
-import { tr } from "motion/react-client";
+
 
 interface TimelineItem {
   year: string;
