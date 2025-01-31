@@ -38,7 +38,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
   const translateY = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   return (
-    <section className="pt-10 lg:pt-20   pb-10 lg:pb-[100px]   insp-mn relative inspbg relative">
+    <section className="pt-10 lg:pt-20 pb-10 lg:pb-[100px] insp-mn relative inspbg">
       <motion.div className="ola ola-right absolute top-0 right-[-10%] w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
         <Image className="absolute" src={lfbef} alt="Description of the image" />
       </motion.div>
