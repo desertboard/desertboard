@@ -21,19 +21,19 @@ import youtube from "@/public/assets/images/home/youtube.svg";
 
   
  
-    <motion.div className="ola ola-right absolute top-[4%] left-[-9%] w-[45em] rotate-[25deg] " animate={{ x: [0, -20, 0], rotate: [25, 20, 25] }} 
+    <motion.div className="ola ola-right absolute top-[4%] left-[-9%] w-[45em] rotate-[25deg]  -z-[1]" animate={{ x: [0, -20, 0], rotate: [25, 20, 25] }} 
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} >
         <Image className="absolute" src={olar} alt="Description of the image"></Image>
       </motion.div>
-    <motion.div className="ola ola-right absolute top-[-19%] left-[-2%] w-[40em] rotate-[5deg] " animate={{ x: [0, -20, 0], rotate: [5, 5, 5] }} 
+    <motion.div className="ola ola-right absolute top-[-19%] left-[-2%] w-[40em] rotate-[5deg] -z-[1]" animate={{ x: [0, -20, 0], rotate: [5, 5, 5] }} 
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} >
         <Image className="absolute" src={leaff} alt="Description of the image"></Image>
       </motion.div>
-      <motion.div className="ola ola-right absolute bottom-[35%] right-[-15%] w-[40em] rotate-[28deg]" animate={{ y: [0, -20, 0], rotate: [28, 35, 28] }} 
+      <motion.div className="ola ola-right absolute bottom-[35%] right-[-15%] w-[40em] rotate-[28deg]  -z-[1]" animate={{ y: [0, -20, 0], rotate: [28, 35, 28] }} 
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} >
         <Image className="absolute" src={ola} alt="Description of the image"></Image>
       </motion.div>
-      <motion.div className="ola ola-right absolute top-[-15%] right-[30%] rotate-[-44deg] w-[30em] " animate={{ x: [0, -20, 0], rotate: [-44, -40, -44] }} 
+      <motion.div className="ola ola-right absolute top-[-15%] right-[30%] rotate-[-44deg] w-[30em]  -z-[1]" animate={{ x: [0, -20, 0], rotate: [-44, -40, -44] }} 
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} >
         <Image className="absolute" src={ola} alt="Description of the image"></Image>
       </motion.div>
