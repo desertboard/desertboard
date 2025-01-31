@@ -1,7 +1,6 @@
 
 import React from 'react'
-import Filter from './Filter'
-import PageBanner from "../Common/PageBanner";
+import ArticleBanner from "./ArticleBanner";
 
 import bannerImg from "@/public/assets/images/sectors/banner.png";
 import Arrow from "@/public/assets/brdcrbs.svg";
@@ -9,19 +8,19 @@ import Arrow from "@/public/assets/brdcrbs.svg";
 const Blogs = () => {
   const breadcrumbs = [
     { label: "Home", href: "#" },
-    { label: "Glossary", href: "#" },
+    { label: "News & Events", href: "#" },
+    { label: "DesertBoard® Stands....", href: "#" },
   ];
   return (
     <>
-      <PageBanner
+      <ArticleBanner
         bannerSrc={bannerImg} // Corrected image import here
         arrowSrc={Arrow}
-        desc=""
-        title="Glossary"
+        title="DesertBoard® Stands Out at Big 5 Global with Its Unique Lineup of Sustainable Solutions "
         breadcrumbs={breadcrumbs}
         bnrHeight="60dvh"
       />
-        <Filter/>
+
     </>
   )
 }
