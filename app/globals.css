@@ -148,7 +148,7 @@ body {
   top: -5%;
   z-index: -5;
 }
-.fotersmn::before{
+/* .fotersmn::before{
   content: "";
     background-image: url(/assets/images/footerbg3.svg);
     width: 100%;
@@ -171,7 +171,7 @@ body {
   right: 0;
   bottom: 0;
   z-index: -5;
-}
+} */
 .rmbtn {
   color: #ff671f;
 
