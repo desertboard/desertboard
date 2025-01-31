@@ -1,182 +1,142 @@
+'use client';
 import React from "react";
 import Image from "next/image";
-import imgdust from "@/public/assets/images/icons/imgdust.jpg";
-import wh1 from "@/public/assets/images/applications/wh1.svg";
-import wh2 from "@/public/assets/images/applications/wh2.svg";
-import wh3 from "@/public/assets/images/applications/wh3.svg";
-import readarrow from "@/public/assets/images/read-arrow.svg";
+import ola from "@/public/assets/images/home/ola.svg";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
-import SingleSlider from "./SingleSlider";
+import { motion } from "framer-motion";
 
-
+const accordianData = [
+  {
+      image: "/assets/images/applications/tile1.jpg",
+    title: "Raw Board",
+    desc:"A wide range of uncoated boards, used as a core material, offering flexibility for customization and finishing."
+  },
+  {
+      image: "@/public/assets/images/applications/tile1.jpg",
+    title: "Melamine Face Finishing",
+    desc:"A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications."
+  },
+  {
+      image: "@/public/assets/images/applications/tile1.jpg",
+    title: "Sanded Board",
+    desc:"A Smooth, sanded surface board, ideal for interior fit-outs and paneling, ensuring enhanced finish quality and easy customization."
+  },
+  {
+      image: "@/public/assets/images/applications/tile1.jpg",
+    title: "Premium Surface (Putty) Finishing",
+    desc:"A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications."
+  },
+  {
+      image: "@/public/assets/images/applications/tile1.jpg",
+    title: "Premium Plus Surface (Coated) Finishing",
+    desc:"A flawless, smooth-surfaced board achieved with putty, ideal for high-quality paint applications and achieving a polished, refined look. "
+  },
+  {
+      image: "@/public/assets/images/applications/tile1.jpg",
+    title: "Veneer Finishing",
+    desc:"A decorative-finished board using thin layers of real material, offering a natural look, durability, and customization options."
+  },
+]
 const SectionThree = () => {
   return (
     <>
-      <section className="py-10 md:py-20 insp-mn relative inspbg">
-        <div className="container m-auto ">
-          <div className="lg:flex flex-col lg:flex-row  gap-10 md:gap-20 ">
-            <div className="lg:w-1/2 ">
-              <div className="flex bg-[#E3DED9] justify-between">
-                <div className="flex p-10 ] gap-[32px]">
-                  <div className=" ">
-                    <p className="texthelvetica20 clr15op75">
-                      Product Suggested :
-                    </p>
-                  </div>
-                  <div className="  ">
-                    <p className=" helvetica-bold text-font28 leading-[1] text-Darkgreen ">
-                      PSB<sup>®</sup> SUPREME
-                    </p>
-                  </div>
-                </div>
-                <div className="  ">
-                  <Image src={imgdust} alt="" className="h-full" />
-                </div>
-              </div>
-              <div className="py-7 md:py-[60px] ">
-                <div>
-                  <p className=" helvetica-bold text-font28 leading-[1] text-Darkgreen mb-8">
-                    WHY PSB<sup>®</sup> SUPREME?
-                  </p>
-                </div>
-                <div>
-                  <div className="flex gap-3 md:gap-[18px] items-start mb-4">
-                    <Image src={wh2} alt="" />
-                    <p className="texthelvetica20 clr15op75">
-                      <span className="texthelvetica20bold opacity-[1] text-black">
-                        Superior Moisture Resistance Performance:
-                      </span>{" "}
-                      PSB<sup>®</sup> Supreme exhibits excellent moisture
-                      resistance, with a maximum thickness swelling of 15%. PSB
-                      <sup>®</sup> Supreme, when coated properly, results in a
-                      thickness swelling of less than 5%.
-                    </p>
-                  </div>
-                  <div className="flex gap-3 md:gap-[18px] items-start mb-4">
-                    <Image src={wh3} alt="" />
-                    <p className="texthelvetica20 clr15op75">
-                      <span className="texthelvetica20bold opacity-[1] text-black">
-                        High Modulus of Elasticity and Rupture Strength:
-                      </span>{" "}
-                      PSB<sup>®</sup> Supreme demonstrates high performance in
-                      terms of modulus of elasticity, measuring 3,500 Newtons
-                      per square millimeter (N/mm²), and modulus of rupture,
-                      ranging from 16 to 22 Newtons per square millimeter
-                      (N/mm²).
-                    </p>
-                  </div>
-                  <div className="flex gap-3 md:gap-[18px] items-start ">
-                    <Image src={wh1} alt="" />
-                    <p className="texthelvetica20 clr15op75">
-                      <span className="texthelvetica20bold opacity-[1] text-black">
-                        Enhanced Screw Withdrawal Strength and Reusability:
-                      </span>{" "}
-                      PSB<sup>®</sup> Supreme provides exceptional screw hold
-                      capacity compared to other solutions, with edge hold at
-                      1,350 Newtons (N) and face hold at 1,650 Newtons (N). PSB
-                      <sup>®</sup> Supreme’s mechanical properties allow for
-                      repeated use of the same hole without any loss in
-                      performance.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="p-4 md:p-8 bg-[#E3DED9]">
-                <h3 className="nubernext28heavy text-Darkgreen pb-4 md:pb-8">
-                  Specifications
-                </h3>
-                <div className="border-t border-[#15151510] border-dashed pb-4 md:pb-8">
-                  <div className="flex justify-between py-2 md:py-5 border-b border-[#15151510] border-dashed">
-                    <p className="texthelvetica20 clr15op75">
-                      Modulus of rupture{" "}
-                    </p>
-                    <p className="texthelvetica20 clr15op75">16 – 22 N/mm2</p>
-                  </div>
-                  <div className="flex justify-between py-2 md:py-5 border-b border-[#15151510] border-dashed">
-                    <p className="texthelvetica20 clr15op75">
-                      Modulus of elasticity{" "}
-                    </p>
-                    <p className="texthelvetica20 clr15op75">3,500 N/mm2</p>
-                  </div>
-                  <div className="flex justify-between py-2 md:py-5 border-b border-[#15151510] border-dashed">
-                    <p className="texthelvetica20 clr15op75">
-                      Internal Bonding{" "}
-                    </p>
-                    <p className="texthelvetica20 clr15op75">
-                      0.29 – 0.34 N/mm2
-                    </p>
-                  </div>
-                  <div className="flex justify-between py-2 md:py-5 border-b border-[#15151510] border-dashed">
-                    <p className="texthelvetica20 clr15op75">
-                      Thickness Swelling{" "}
-                    </p>
-                    <p className="texthelvetica20 clr15op75">5% - 15%</p>
-                  </div>
-                  <div className="flex justify-between py-2 md:py-5 border-b border-[#15151510] border-dashed">
-                    <p className="texthelvetica20 clr15op75">Width </p>
-                    <p className="texthelvetica20 clr15op75">
-                      1,200 – 1,250 mm
-                    </p>
-                  </div>
-                  <div className="flex justify-between py-2 md:py-5 border-b border-[#15151510] border-dashed">
-                    <p className="texthelvetica20 clr15op75">Length </p>
-                    <p className="texthelvetica20 clr15op75">
-                      1,830 – 3,048 mm
-                    </p>
-                  </div>
-                  <div className="flex justify-between py-2 md:py-5 border-b border-[#15151510] border-dashed">
-                    <p className="texthelvetica20 clr15op75">Thickness </p>
-                    <p className="texthelvetica20 clr15op75">9 – 44 mm</p>
-                  </div>
-                </div>
-                <div className="flex justify-between ">
-                  <div className="flex gap-3 items-center group rmbtn pb-3 cursor-pointer">
-                    <div>
-                      <p className="relative  flex gap-2 max-w-fit transition-opacity duration-300 text-font18  leading-[1.44]  text-font18
-                            nuber-next-heavy leading-[1.25] " >
-                        Technical Datasheet
-                      </p>
-                    </div>
-                    <Image
-                      src={readarrow}
-                      alt="icn1"
-                      className=" relative top-[2px] transition-all duration-300 group-hover:translate-x-1 "
-                    />
-                  </div>
+      <section className=" py-10 lg:py-20  relative bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
+      <motion.div className="ola ola-right absolute top-5 right-[-10%] w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+        <Image className="absolute" src={ola} alt="Description of the image"></Image>
+      </motion.div>
 
-                  <div className="flex gap-3 items-center group rmbtn pb-3 cursor-pointer">
-                    <div>
-                      <p className="relative  flex gap-2 max-w-fit transition-opacity duration-300 text-font18  leading-[1.44]  text-font18
-                            nuber-next-heavy leading-[1.25] " >
-                        Certificates
-                      </p>
-                    </div>
-                    <Image
-                      src={readarrow}
-                      alt="icn1"
-                      className=" relative top-[2px] transition-all duration-300 group-hover:translate-x-1 "
-                    />
-                  </div>
+      <div className="ola ola-right absolute bottom-0 left-[-10%] w-[40em] rotate-180">
+        <Image className="absolute" src={ola} alt="Description of the image"></Image>
+      </div>
+        <div className="container ">
+          <div><h2 className="heavydark48 mb-10 mb-20">Customizable Finishes<span className="text-orange">.</span></h2></div>
 
-                  <div className="flex gap-3 items-center group rmbtn pb-3 cursor-pointer">
-                    <div>
-                      <p className="relative  flex gap-2 max-w-fit transition-opacity duration-300 text-font18  leading-[1.44]  text-font18
-                            nuber-next-heavy leading-[1.25] " >
-                        Get InTouch
-                      </p>
-                    </div>
-                    <Image
-                      src={readarrow}
-                      alt="icn1"
-                      className=" relative top-[2px] transition-all duration-300 group-hover:translate-x-1 "
-                    />
+          <div>
+          <motion.div className="ansm"  initial={{ opacity: 0, y: -30 }}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{
+                hidden: { opacity: 0, y: -30 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1, delay: 0.5 },
+                },
+              }}>
+          <Swiper
+            // install Swiper modules
+            modules={[Navigation, Pagination]}
+            spaceBetween={0}
+            // slidesPerView='auto'
+            loop={true}
+            navigation={{
+              nextEl: ".swiper-button-next", // Target the next button
+              prevEl: ".swiper-button-prev", // Target the previous button
+            }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+              },
+              410: {
+                slidesPerView: 2,
+                spaceBetween: 0,
+              },
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 0,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 0,
+              },
+              1200: {
+                slidesPerView: 3,
+                spaceBetween: 0,
+              },
+              1524: {
+                slidesPerView: 6,
+                spaceBetween: 0,
+              },
+            }}
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log("slide change")}>
+
+          {accordianData.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div
+                className="relative group overflow-hidden transform goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
+                style={{ backgroundImage: `url(/assets/images/applications/tile1.jpg)` }}
+              >
+                <div className="flex items-end justify-center min-h-[462px]">
+                  <div className="px-4">
+                    <h3 className="nubernext28bold mb-4 text-white">{item.title}</h3>
+
+                    <p
+                      className="text-white overflow-hidden max-h-0 group-hover:max-h-[100px]
+                                transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100"
+                    >
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="lg:w-1/2 ">
-            <SingleSlider />
-            </div>
+            </SwiperSlide>
+          ))}
+
+
+
+          </Swiper>
+        </motion.div>
           </div>
         </div>
       </section>

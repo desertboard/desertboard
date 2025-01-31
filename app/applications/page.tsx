@@ -1,6 +1,7 @@
 import SectionTwo from "../components/Applications/SectionTwo";
 import SectionThree from "../components/Applications/SectionThree";
 import PageBanner from "../components/Common/PageBanner";
+import SectionFour from "../components/Applications/SectionFour";
 import Downloads from "../components/Common/Downloads";
 
 
@@ -30,7 +31,8 @@ const Sectors = () => {
       />
       <SectionTwo />
       <SectionThree />
-      <Downloads />
+      <SectionFour />
+     <Downloads title={"To Downloads"}/>
     </>
   );
 };
