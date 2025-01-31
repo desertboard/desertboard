@@ -5,14 +5,13 @@ import React, { useRef, useState } from "react";
 interface MainDescBoxProps {
   secTitle: string;
   subTitle: string;
-  desc: string;
-  desc2?: string;
+  paragraphs: string[];
   mainImg?: string;
   mainVdo?: string;
   vdoPoster?: string;
 }
 
-const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, desc, desc2, mainImg, mainVdo, vdoPoster }) => {
+const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraphs, mainImg, mainVdo, vdoPoster }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null); // Type the ref for HTMLVideoElement
   const [isPlaying, setIsPlaying] = useState(false); // State to track play/pause
   const togglePlay = () => {
@@ -39,14 +38,17 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, desc, des
               <span className="text-[#FF671F]">.</span>
             </h2>
             <p className=" nuber-next   md-6 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>
-            <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3]">{desc}</p>
-            <br />
-            <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3]">{desc2}</p>
+            {paragraphs.map((text, index) => (
+              <p key={index} className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3] mb-4">
+                {text}
+              </p>
+            ))}
+           
           </div>
 
           <div className="flex lg:absolute lg:w-[58%] lg:right-0 lg:top-5 h-full">
             {/* <div className="relative"> */}
-            {mainImg && <Image src={mainImg} width={1080} height={640} className="h-auto lg:h-[640px] w-auto lg:w-580px]" alt="Picture of the author" />}
+            {mainImg && <Image src={mainImg} width={1080} height={640} className="w-auto lg:w-580px] object-cover h-full" alt="Picture of the author" />}
             {/* <div className="relative"> */}
             {/* Video element */}
             {mainVdo && (

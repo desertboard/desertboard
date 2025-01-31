@@ -58,15 +58,11 @@ const HeroSection = () => {
       <MainDescBOx
         secTitle="Inspiration"
         subTitle="A Legacy Rooted in the Desert"
-        desc="In the heart of the desert, where towering date palm trees symbolize our heritage, a groundbreaking innovation has emerged: DesertBoard's Palm Strand Board (PSB®), the world’s first engineered palm-based board. "
-        desc2=" For centuries, date palm trees have been a vital resource in the Middle East, historically used to construct Barasti houses that provided essential shelter in the harsh desert climate. Inspired by the rich legacy and the vision of the UAE's founding father, Sheikh Zayed bin Sultan Al Nahyan, DesertBoard® successfully produced the
-              first engineered board in 2021."
         // mainImg="/assets/images/mn.jpg"
+        paragraphs={["In the heart of the desert, where towering date palm trees symbolize our heritage, a groundbreaking innovation has emerged: DesertBoard's Palm Strand Board (PSB®), the world’s first engineered palm-based board.", " For centuries, date palm trees have been a vital resource in the Middle East, historically used to construct Barasti houses that provided essential shelter in the harsh desert climate. Inspired by the rich legacy and the vision of the UAE's founding father, Sheikh Zayed bin Sultan Al Nahyan, DesertBoard® successfully produced the first engineered board in 2021."]}
         mainVdo="/assets/images/home/liftvdo.mp4"
         vdoPoster="/assets/images/mn.jpg"
       />
-
-
 
       <UspList secTitle={"Key USP's"} />
 
@@ -107,7 +103,7 @@ const HeroSection = () => {
             // install Swiper modules
             modules={[Navigation, Pagination]}
             spaceBetween={0}
-            slidesPerView='auto'
+            slidesPerView="auto"
             loop={true}
             navigation={{
               nextEl: ".swiper-button-next", // Target the next button
@@ -139,11 +135,9 @@ const HeroSection = () => {
             scrollbar={{ draggable: true }}
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log("slide change")}>
-           <SwiperSlide>
+            <SwiperSlide>
               <div
-
                 className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
-
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn1.jpg')`,
                 }}>
@@ -151,17 +145,13 @@ const HeroSection = () => {
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-
                       <Image src={iconsl1} alt="Thumbnail" className="  transform transition-all duration-500" />
-
                     </div>
 
                     {/* Description Content with Hover Effect */}
                   </div>
                   <div className="p-6">
-
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-
                       <h3 className="text-[22px] font-bold text-black">Good Health And Well-Being</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">DesertBoard has designed its PSB® to be zero-emissions. This greener alternative to wood-based products (example: MDF, particleboard, and plywood) includes zero formaldehyde.</p>
                     </div>
@@ -186,7 +176,7 @@ const HeroSection = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="text-[22px] font-bold text-black">Affordable And Clean Energy</h3>
+                      <h3 className="text-[22px] font-bold text-black">Affordable And Clean Energy</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">As proved by Desert Board&apos;s life cycle assessment (LCA) and Environmental Product Declaration (EPD), 30% of the factory’s purchased electricity comes from clean sources (nuclear & solar).</p>
                     </div>
                   </div>
@@ -210,9 +200,9 @@ const HeroSection = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="text-[22px] font-bold text-black">Decent Work And Economic Growth</h3>
+                      <h3 className="text-[22px] font-bold text-black">Decent Work And Economic Growth</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">As of 2025, DesertBoard employes a workforce of 284 team members, including 156 positions at our factory and 128 roles within the company&apos;s back-office operations.</p>
-                     </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -235,9 +225,9 @@ const HeroSection = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="text-[22px] font-bold text-black">Industry, Innovation, And Infrastructure</h3>
+                      <h3 className="text-[22px] font-bold text-black">Industry, Innovation, And Infrastructure</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">Desert Board&apos;s engineered solutions are improving the construction industry while combating deforestation. Palm Strand Board®’s outstanding properties include high strength, versatility, fire resistance, sound isolation, among many more.</p>
-                   </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -259,9 +249,9 @@ const HeroSection = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="text-[22px] font-bold text-black">Reduced Inequality</h3>
+                      <h3 className="text-[22px] font-bold text-black">Reduced Inequality</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">At DesertBoard, inclusivity is a key pillar, with a multicultural talent pool that values diversity in ethnicity, religious background, and an increasing female shares of our workforce.</p>
-                     </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -283,9 +273,9 @@ const HeroSection = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="text-[22px] font-bold text-black">Sustainable Cities And Communities</h3>
+                      <h3 className="text-[22px] font-bold text-black">Sustainable Cities And Communities</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">DesertBoard is proudly preserving the UAE’s cultural and natural heritage by collecting annually regenerated palm frond biomass, preventing it from ending up in landfills or being incinerated, which would otherwise release CO2 or methane into the atmosphere.</p>
-                     </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -308,7 +298,7 @@ const HeroSection = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="text-[22px] font-bold text-black">Responsible Consumption And Production</h3>
+                      <h3 className="text-[22px] font-bold text-black">Responsible Consumption And Production</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">
                         Every year, DesertBoard sources hundreds of thousands of tons of palm residues from local farmers and converts them into PSB®. To raise awareness on responsible consumption and production, DesertBoard showcased its’ bio-economy model at 19 regional and global forums in 2024.
                       </p>
@@ -334,9 +324,8 @@ const HeroSection = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="text-[22px] font-bold text-black">Climate Action</h3>
+                      <h3 className="text-[22px] font-bold text-black">Climate Action</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">By producing 100% sustainable, zero-formaldehyde boards, DesertBoard is helping decarbonize the built environment and support the Net Zero initiatives of the UAE, KSA, EU, and India.</p>
-
                     </div>
                   </div>
                 </div>
@@ -359,7 +348,7 @@ const HeroSection = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="text-[22px] font-bold text-black">Life On Land</h3>
+                      <h3 className="text-[22px] font-bold text-black">Life On Land</h3>
                       <p className="text-sm text-black opacity-[75%] mt-2">
                         DesertBoard promotes forest conservation by reusing local biomass rather than sourcing newly cut trees from around the globe. This approach is in sync with the UAE’s 2030 Green Agenda, complying with the “Green Diversification Program”, and the “National Waste-To-Resources Program”.
                       </p>
@@ -368,7 +357,6 @@ const HeroSection = () => {
                 </div>
               </div>
             </SwiperSlide>
-
           </Swiper>
         </div>
         <div className="container m-auto relative">
@@ -402,7 +390,7 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-      
+
       <footer className=" bg-[#00594F]">
         <div className="container m-auto">
           <div className="pt-10 md:pt-20    ">
