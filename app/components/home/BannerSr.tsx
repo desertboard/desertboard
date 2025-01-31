@@ -15,7 +15,7 @@ const BannerSr = () => {
     >
       <figure className="absolute h-[75vh] md:h-screen top-0 w-full -z-40 bg-primary hr-figs">
         <motion.img
-          className="w-screen h-[75vh] md:h-screen absolute object-cover"
+          className="h-[75vh] md:h-screen w-full absolute object-cover"
           src={Banner.src}
           width={1920}
           height={900}

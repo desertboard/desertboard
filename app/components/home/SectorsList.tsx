@@ -11,7 +11,7 @@ const SectorsList = () => {
     <>
            <section className="relative  py-10 lg:py-20   insp-mn relative inspbg">
             <motion.div
-                    className="ola ola-right absolute top-0 right-[-10%] w-[40em]"
+                    className="ola ola-right absolute top-0 right-[-20%] md:right-[-10%] w-[20em] md:w-[40em]"
                     
                     animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }} 
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -19,7 +19,7 @@ const SectorsList = () => {
                     <Image className="absolute" src={lfbef} alt="Description of the image" />
                   </motion.div>
                   <motion.div
-                    className="ola ola-right absolute bottom-[43%] left-[-15%] w-[40em]"
+                    className="ola ola-right absolute bottom-[43%] left-[-25%] md:left-[-15%] w-[20em] md:w-[40em]"
                     animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }} 
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                   >
