@@ -18,27 +18,27 @@ const accordianData = [
     desc:"A wide range of uncoated boards, used as a core material, offering flexibility for customization and finishing."
   },
   {
-      image: "@/public/assets/images/applications/tile1.jpg",
+      image: "/assets/images/applications/tile2.jpg",
     title: "Melamine Face Finishing",
     desc:"A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications."
   },
   {
-      image: "@/public/assets/images/applications/tile1.jpg",
+      image: "/assets/images/applications/tile3.jpg",
     title: "Sanded Board",
     desc:"A Smooth, sanded surface board, ideal for interior fit-outs and paneling, ensuring enhanced finish quality and easy customization."
   },
   {
-      image: "@/public/assets/images/applications/tile1.jpg",
+      image: "/assets/images/applications/tile4.jpg",
     title: "Premium Surface (Putty) Finishing",
     desc:"A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications."
   },
   {
-      image: "@/public/assets/images/applications/tile1.jpg",
+      image: "/assets/images/applications/tile5.jpg",
     title: "Premium Plus Surface (Coated) Finishing",
     desc:"A flawless, smooth-surfaced board achieved with putty, ideal for high-quality paint applications and achieving a polished, refined look. "
   },
   {
-      image: "@/public/assets/images/applications/tile1.jpg",
+      image: "/assets/images/applications/tile6.jpg",
     title: "Veneer Finishing",
     desc:"A decorative-finished board using thin layers of real material, offering a natural look, durability, and customization options."
   },
@@ -56,7 +56,7 @@ const SectionThree = () => {
         <Image className="absolute" src={ola} alt="Description of the image"></Image>
       </div>
         <div className="container ">
-          <div><h2 className="heavydark48 mb-10 mb-20">Customizable Finishes<span className="text-orange">.</span></h2></div>
+          <div><h2 className="heavydark48 mb-6 md:mb-10">Customizable Finishes<span className="text-orange">.</span></h2></div>
 
           <div>
           <motion.div className="ansm"  initial={{ opacity: 0, y: -30 }}
@@ -115,7 +115,7 @@ const SectionThree = () => {
             <SwiperSlide key={index}>
               <div
                 className="relative group overflow-hidden transform goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
-                style={{ backgroundImage: `url(/assets/images/applications/tile1.jpg)` }}
+                style={{ backgroundImage: `url(${item.image})` }}
               >
                 <div className="flex items-end justify-center min-h-[462px]">
                   <div className="px-4">

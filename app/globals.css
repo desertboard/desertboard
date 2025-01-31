@@ -17,7 +17,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   font-weight: normal;
   src: url("../public/assets/fonts/myriad/MYRIADPRO-BOLDCOND.woff") format('woff');
   }
-  
+
 @font-face {
   font-family: "helvetica";
   src: url("../public/assets/fonts/HelveticaNeueLTPro-Roman.woff2") format('woff2'), url("../public/assets/fonts/HelveticaNeueLTPro-Roman.woff") format('woff');
