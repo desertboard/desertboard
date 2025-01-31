@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import ola from "@/public/assets/images/home/ola.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, EffectFade } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";

@@ -5,7 +5,6 @@ import BannerSr from "./components/home/BannerSr";
 import SectorsList from "./components/home/SectorsList";
 import SustainabeSc from "./components/home/SustainabeSc";
 import UspList from "./components/home/UspList";
-import Downloads from "./components/Common/Downloads";
 
 export default function Home() {
   return (
