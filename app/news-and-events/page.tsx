@@ -21,7 +21,7 @@ const NewsAndEventsPage = () => {
         breadcrumbs={breadcrumbs}
       />
       <SecFirst newsEvents={newsEvents} />
-      <Downloads />
+           <Downloads title={"To Downloads"}/>
     </div>
   );
 };

@@ -37,7 +37,7 @@ const Sectors = () => {
         vdoPoster="../assets/images/mn.jpg"
       />
       <Tabs />
-      <Downloads />
+           <Downloads title={"To Downloads"}/>
     </>
   );
 };

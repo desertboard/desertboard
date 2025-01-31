@@ -14,7 +14,7 @@ const SectionTwo = () => {
     <>
       <section className="py-10 md:py-20 insp-mn relative inspbg">
         <div className="container m-auto ">
-          <div className="lg:flex flex-col lg:flex-row  gap-10 md:gap-20 ">
+          <div className="lg:flex flex-col lg:flex-row  gap-10 md:gap-10 ">
             <div className="lg:w-1/2 ">
               <div className="flex bg-[#E3DED9] justify-between">
                 <div className="flex p-10 ] gap-[32px]">
