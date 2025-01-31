@@ -3,21 +3,21 @@ import gdim1 from "../images/gd-im1.jpg";
 import gdim2 from "../images/gd-im2.jpg";
 import gdim3 from "../images/gd-im3.jpg";
 import gdim4 from "../images/gd-im4.jpg";
-import icn1 from "../images/icn1.svg";
-import icn2 from "../images/icn2.svg";
-import icn3 from "../images/icn3.svg";
-import icn4 from "../images/icn4.svg";
+import icn1 from "../images/icons/engineering.svg";
+import icn2 from "../images/icons/landscape.svg";
+import icn3 from "../images/icons/interior.svg";
+import icn4 from "../images/icons/events.svg";
 
 
-import iconsl1 from "../images/home/slicon1.png";
-import iconsl2 from "../images/home/slicon2.png";
-import iconsl3 from "../images/home/slicon3.png";
-import iconsl4 from "../images/home/slicon4.png";
-import iconsl5 from "../images/home/slicon5.png";
-import iconsl6 from "../images/home/slicon6.png";
-import iconsl7 from "../images/home/slicon7.png";
-import iconsl8 from "../images/home/slicon8.png";
-import iconsl9 from "../images/home/slicon9.png";
+import iconsl1 from "../images/home/svsic1.png";
+import iconsl2 from "../images/home/svsic2.png";
+import iconsl3 from "../images/home/svsic3.png";
+import iconsl4 from "../images/home/svsic4.png";
+import iconsl5 from "../images/home/svsic5.png";
+import iconsl6 from "../images/home/svsic6.png";
+import iconsl7 from "../images/home/svsic7.png";
+import iconsl8 from "../images/home/svsic8.png";
+import iconsl9 from "../images/home/svsic9.png";
 
 import sliconmn1 from "../images/home/sliconmn1.jpg";
 import sliconmn2 from "../images/home/sliconmn2.jpg";

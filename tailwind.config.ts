@@ -1,10 +1,12 @@
 import type { Config } from "tailwindcss";
 
+const withMT = require("@material-tailwind/html/utils/withMT");
+
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
-export default {
+module.exports = withMT({
   content: ["./pages/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}", "./app/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: "class",
   theme: {
@@ -33,11 +35,15 @@ export default {
           xxl: "1350px", // Container width on xxl devices
           "3xl": "1550px", // Container width on 3xl devices
           "4xl": "1790px", // Container width on 3xl devices
+
         },
       },
       colors: {
         primary: "#00594F",
         secondary: "#FFB549",
+        Darkgreen: "#002D28",
+        litetext: "#151515",
+        orange:'#FF671F',
         accent: "#ff671f",
         themebg: "#E5E0DC",
         lightBlack: "#151515",
@@ -77,7 +83,8 @@ export default {
     },
   },
   plugins: [addVariablesForColors],
-} satisfies Config;
+})
+
 
 
 function addVariablesForColors({ addBase, theme }: any) {
@@ -90,3 +97,5 @@ function addVariablesForColors({ addBase, theme }: any) {
     ":root": newVars,
   });
 }
+
+

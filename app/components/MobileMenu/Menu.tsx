@@ -21,11 +21,19 @@ const navItems = [
     href: "#",
     children:[
       {
-        title: "Product 1",
+        title: "Engineering & Construction",
         href: "/sectors",
       },
       {
-        title: "Product 2",
+        title: "Landscape",
+        href: "/sectors",
+      },
+      {
+        title: "Interior Design",
+        href: "/sectors",
+      },
+      {
+        title: "Events & Exhibitions",
         href: "/sectors",
       },
     ]
@@ -61,22 +69,22 @@ export default function Menu({setSubMenuActive,setIsActive}:{
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
 
   return (
-    <motion.div 
-      variants={menuSlide} 
-      initial="initial" 
-      animate="enter" 
-      exit="exit" 
+    <motion.div
+      variants={menuSlide}
+      initial="initial"
+      animate="enter"
+      exit="exit"
       className={styles.menu}
       >
        <div className={styles.body}>
             <div onMouseLeave={() => {setSelectedIndicator(pathname)}} className={styles.nav}>
-                    
+
                     {
                       navItems.map( (data, index) => {
                         return <Link setSubMenuActive={setSubMenuActive}
-                        key={index} 
-                        data={{...data, index}} 
-                        isActive={selectedIndicator == data.href} 
+                        key={index}
+                        data={{...data, index}}
+                        isActive={selectedIndicator == data.href}
                         setSelectedIndicator={setSelectedIndicator}>
                         </Link>
                       })

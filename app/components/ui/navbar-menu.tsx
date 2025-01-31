@@ -32,7 +32,7 @@ export const MenuItem = ({
     <div onMouseEnter={() => noMenu ? setActive(null) : setActive(item)} className="relative ">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-white hover:opacity-[0.9] dark:text-white font-black text-[12px] xl:text-[14px]  xxl:text-font18 mitm nuber-next"
+        className="cursor-pointer text-white hover:opacity-[0.9] dark:text-white  text-[12px] xl:text-[14px]  xxl:text-font18 mitm nuber-next-bold tracking-normal"
       >
         {item}
       </motion.p>
@@ -43,7 +43,7 @@ export const MenuItem = ({
           transition={transition}
         >
           {active === item && (
-            <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4">
+            <div className="absolute top-[calc(100%_+_1rem)] left-1/2 transform -translate-x-1/2 pt-4">
               <motion.div
                 transition={transition}
                 layoutId="active" // layoutId ensures smooth animation
@@ -74,7 +74,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative border border-transparent dark:bg-black dark:border-white/[0.2] bg-transparent w-full shadow-input flex justify-between gap-[10px] lg:gap-[15px] xxl:gap-[25px] 3xl:gap-[52px] py-4"
+      className="relative border border-transparent dark:bg-black dark:border-white/[0.2] bg-transparent w-full shadow-input flex justify-between gap-[10px] lg:gap-[15px] xxl:gap-[30px] 3xl:gap-[52px] py-4"
     >
       {children}
     </nav>
@@ -96,16 +96,16 @@ export const ProductItem = ({
     <Link href={href} className="flex space-x-2">
       <Image
         src={src}
-        width={140}
+        width={80}
         height={70}
         alt={title}
         className="flex-shrink-0 rounded-md shadow-2xl"
       />
       <div>
-        <h4 className="text-xl font-bold mb-1 text-black dark:text-white">
+        <h4 className="text-font18  mb-1 text-black dark:text-white nuber-next-heavy mb-3 lg:mb-4">
           {title}
         </h4>
-        <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300">
+        <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300 helvetica">
           {description}
         </p>
       </div>
@@ -114,3 +114,18 @@ export const ProductItem = ({
 };
 
 
+export const ProductItemL = ({
+  title,
+  href,
+}: {
+  title: string;
+  href: string;
+}) => {
+  return (
+    <Link href={href} className="flex space-x-2">
+      <p className="text-black tracking-normal">
+       {title}
+       </p>
+    </Link>
+  );
+};

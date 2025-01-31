@@ -28,7 +28,7 @@ export default function Usps({ secTitle }: UspsProps) {
             <Image className="absolute" src={ola} alt="Description of the image"></Image>
         </div>
       <div className="container ">
-        <h2 className="text-3xl font-bold text-font48 mb-10 ">
+        <h2 className="text-3xl nuber-next-heavy text-font48 mb-5 lg:mb-10 ">
           {secTitle}
           <span className="text-[#FF671F]">.</span>
         </h2>
