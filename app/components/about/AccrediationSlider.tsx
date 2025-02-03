@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide,SwiperRef } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "@/app/components/about/accr-slider.scss";
 
@@ -13,16 +13,18 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
-import { span } from "framer-motion/client";
 
 const AccrediationSlider = () => {
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperRef>(null);
 
   useEffect(() => {
     if (swiperRef.current) {
       // Simulate next slide transition after initialization
       setTimeout(() => {
-        swiperRef.current.swiper.slideNext(0); // Instant transition (0ms duration)
+        if(swiperRef.current){
+
+          swiperRef.current.swiper.slideNext(0); // Instant transition (0ms duration)
+        }
       }, 100);
     }
   }, []);
