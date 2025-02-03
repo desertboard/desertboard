@@ -1,16 +1,15 @@
 
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 import { topicSelection } from '../selectionData'
 
-const TopicSelection = ({ activeTopic, setActiveTopic, isMobile, setTopicChanged }: {
+const TopicSelection = ({ activeTopic, setActiveTopic, isMobile }: {
     activeTopic: number,
     setActiveTopic: Dispatch<SetStateAction<number>>
     isMobile: boolean
-    setTopicChanged:Dispatch<SetStateAction<boolean>>
 }) => {
 
     const [dropDownOpen,setDropDownOpen] = useState(false)
-    const [selectedValue,setSelectedValue] = useState("Select Topic")
+    const [selectedValue,setSelectedValue] = useState(topicSelection[0].title)
 
     const handleSelection = (title:string,index:number) =>{
         setSelectedValue(title)
@@ -18,11 +17,11 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile, setTopicChanged
         setActiveTopic(index)
     }
 
-    useEffect(()=>{
-        if(selectedValue!=="Select Topic"){
-            setTopicChanged(true)
-        }
-    },[selectedValue])
+    // useEffect(()=>{
+    //     if(selectedValue!=="Select Topic"){
+    //         setTopicChanged(true)
+    //     }
+    // },[selectedValue,setTopicChanged])
 
     return (
         <>

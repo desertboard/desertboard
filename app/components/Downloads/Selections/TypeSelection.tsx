@@ -1,15 +1,15 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 
-const TypeSelection = ({activeTypes,setActiveType,activeType,isMobile,setTypeChanged}:{
+const TypeSelection = ({activeTypes,setActiveType,activeType,isMobile}:{
     activeTypes:{ title: string; result: { title: string; image: string; }[]; }[]
     activeType:number,
     setActiveType:Dispatch<SetStateAction<number>>
     isMobile:boolean
-    setTypeChanged:Dispatch<SetStateAction<boolean>>
+    
 }) => {
 
         const [dropDownOpen,setDropDownOpen] = useState(false)
-        const [selectedValue,setSelectedValue] = useState("Select Type")
+        const [selectedValue,setSelectedValue] = useState(activeTypes[0].title)
     
         const handleSelection = (title:string,index:number) =>{
             setSelectedValue(title)
@@ -17,11 +17,11 @@ const TypeSelection = ({activeTypes,setActiveType,activeType,isMobile,setTypeCha
             setActiveType(index)
         }
 
-        useEffect(()=>{
-            if(selectedValue!="Select Type"){
-                setTypeChanged(true)
-            }
-        },[selectedValue])
+        // useEffect(()=>{
+        //     if(selectedValue!="Select Type"){
+        //         setTypeChanged(true)
+        //     }
+        // },[selectedValue,setTypeChanged])
 
   return (
     <>

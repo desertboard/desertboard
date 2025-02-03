@@ -16,8 +16,7 @@ const Selections = () => {
     const [activeType,setActiveType] = useState(0)
     // let activeResult = topicSelection[activeTopic].types[activeType].result
     const [isMobile,setIsMobile] = useState(false)
-    const [topicChanged,setTopicChanged] = useState(false)
-    const [typeChanged,setTypeChanged] = useState(false)
+
 
     console.log("activeTypes",activeTypes)
 
@@ -42,7 +41,9 @@ const Selections = () => {
 
     },[])
 
-    const populateResults = ()=>{
+
+    
+    useEffect(() => {
         const currentTopic = topicSelection[activeTopic];
         if (!currentTopic || !currentTopic.types || !currentTopic.types[activeType]) {
             return;
@@ -56,29 +57,25 @@ const Selections = () => {
         } else {
             setActiveResult(currentType.result);
         }
-    }
-    
-    useEffect(() => {
-        populateResults()
 
-    }, [activeTopic, activeType]);
+    }, [activeType,activeTopic]);
 
     
     
-    useEffect(()=>{
-        if(!isMobile){
-            populateResults()
-        }
+    // useEffect(()=>{
+    //     if(!isMobile){
+    //         populateResults()
+    //     }
 
-        if(!topicChanged){
-            setActiveResult([])
-        }
+    //     if(!topicChanged){
+    //         setActiveResult([])
+    //     }
 
-        if(!typeChanged){
-            setActiveResult([])
-        }
+    //     if(!typeChanged){
+    //         setActiveResult([])
+    //     }
 
-    },[topicChanged,typeChanged])
+    // },[topicChanged,typeChanged,isMobile])
 
 
 
@@ -90,11 +87,11 @@ const Selections = () => {
                 <div className='grid md:grid-cols-3 gap-3'>
 
                     <div className={`col-span-1 pr-8 ${!isMobile ? "border-r-2" : ""}`}>
-                        <TopicSelection activeTopic={activeTopic} setActiveTopic={setActiveTopic} isMobile={isMobile} setTopicChanged={setTopicChanged}/>
+                        <TopicSelection activeTopic={activeTopic} setActiveTopic={setActiveTopic} isMobile={isMobile}/>
                     </div>
 
                     <div className={`col-span-1 pr-8 ${!isMobile ? "pl-4 border-r-2" : "mt-5"}`}>
-                        <TypeSelection activeTypes={activeTypes} activeType={activeType} setActiveType={setActiveType} isMobile={isMobile} setTypeChanged={setTypeChanged}/>
+                        <TypeSelection activeTypes={activeTypes} activeType={activeType} setActiveType={setActiveType} isMobile={isMobile}/>
                     </div>
 
                     <div className={`col-span-1 ${!isMobile ? "pl-4" : "mt-5 pr-8"}`}>
