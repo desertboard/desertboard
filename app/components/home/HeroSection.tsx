@@ -137,7 +137,7 @@ const HeroSection = () => {
             onSlideChange={() => console.log("slide change")}>
             <SwiperSlide>
               <div
-                className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
+                className="relative group overflow-hidden transform growf goal-crd bg-center delay-0"
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn1.jpg')`,
                 }}>

@@ -17,7 +17,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   font-weight: normal;
   src: url("../public/assets/fonts/myriad/MYRIADPRO-BOLDCOND.woff") format('woff');
   }
-  
+
 @font-face {
   font-family: "helvetica";
   src: url("../public/assets/fonts/HelveticaNeueLTPro-Roman.woff2") format('woff2'), url("../public/assets/fonts/HelveticaNeueLTPro-Roman.woff") format('woff');
@@ -110,6 +110,8 @@ body {
     linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, #000000 100%), rgba(0, 0, 0, 0.25);
 }
 
+
+
 /* .insp-mn::before {
   content: "";
   background-image: url(/assets/images/before-leaf.svg);
@@ -136,7 +138,7 @@ body {
   z-index: -1;
 } */
 .fotersmn{position: relative;z-index: 3;}
-.fotersmn::after{
+/* .fotersmn::after{
   content: "";
   background-image: url(/assets/images/footerbg2.svg);
   width: 100%;
@@ -147,8 +149,8 @@ body {
   right: 15%;
   top: -5%;
   z-index: -5;
-}
-.fotersmn::before{
+} */
+/* .fotersmn::before{
   content: "";
     background-image: url(/assets/images/footerbg3.svg);
     width: 100%;
@@ -171,7 +173,7 @@ body {
   right: 0;
   bottom: 0;
   z-index: -5;
-}
+} */
 .rmbtn {
   color: #ff671f;
 
@@ -305,4 +307,9 @@ body {
   .logos {
     width: 200px;
   }
+}
+
+
+.style_body__b5Rqs {
+  display: none !important;
 }

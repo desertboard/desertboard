@@ -1,0 +1,9 @@
+.swiper-button-disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+/* Optional: Adjust pagination position */
+.accr__slider .swiper-pagination {
+  bottom: 40px !important; /* Adjust based on button height */
+}

@@ -20,7 +20,7 @@ export default function Index({data, isActive, setSelectedIndicator,setSubMenuAc
   
     return (
       <motion.div 
-        className={styles.link} 
+        className={`${styles.link} mb-2`} 
         onMouseEnter={() => {setSelectedIndicator(href)}} 
         custom={index} 
         variants={slide} 

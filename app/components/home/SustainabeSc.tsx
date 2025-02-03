@@ -29,7 +29,7 @@ const SustainabeSc = () => {
     <>
       <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner relative overflow-hidden">
       <motion.div
-                    className="ola ola-right absolute top-5 right-[-10%] w-[40em]"
+                    className="ola ola-right absolute top-5 right-[-20%] md:right-[-10%] w-[20em] md:w-[40em]"
 
                     animate={{ y: [0, -20, 0], rotate: [0, 3, 0] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -37,7 +37,7 @@ const SustainabeSc = () => {
                     <Image className="absolute" src={lfbef} alt="Description of the image" />
                   </motion.div>
                   <motion.div
-        className="ola ola-right absolute bottom-[43%] left-[-15%] w-[40em]"
+        className="ola ola-right absolute bottom-[-52%] md:bottom-[43%] left-[-15%] w-[20em] md:w-[40em]"
         animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >

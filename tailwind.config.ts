@@ -47,6 +47,7 @@ module.exports = withMT({
         accent: "#ff671f",
         themebg: "#E5E0DC",
         lightBlack: "#151515",
+        grayE3D:"#E3DED9"
       },
       fontSize: {
         font14: "clamp(0.7rem,1.2vw,0.875rem)",
