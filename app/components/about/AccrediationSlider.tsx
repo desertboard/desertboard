@@ -17,7 +17,6 @@ import lfbt from "@/public/assets/images/home/lfbt.svg";
 const AccrediationSlider = () => {
   const swiperRef = useRef<SwiperRef>(null);
 
-  
   useEffect(() => {
     if (swiperRef.current) {
       // Simulate next slide transition after initialization
