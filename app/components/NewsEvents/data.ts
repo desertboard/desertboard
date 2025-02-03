@@ -4,7 +4,7 @@ export const newsEvents = [
     type: "news",
     imageSrc: "/assets/images/News/news1.jpg",
     date: "January 9, 2025",
-    title: "DesertBoard® at Al Ain Dates Festival 2025: Honouring Emirati Heritage with Sustainable Building Solutions. ",
+    title: "DesertBoard® at Al Ain Dates Festival 2025: Honouring Emirati Heritage with Sustainable Building Solutions.",
     desc: "DesertBoard® proudly participated in the Al Ain Dates Festival 2025, held from January 3rd to 8th under the esteemed patronage of His Highness Sheikh Mansour bin Zayed Al Nahyan. Organized by the Abu Dhabi Heritage Authority at Wahat Hili, Al-Ain, the festival celebrated the historical significance of the palm tree as a symbol of Emirati heritage while promoting awareness of UAE traditions and cultural practices.",
     categories: ["Company News", "Sustainability"],
     readMoreLink: "#",
