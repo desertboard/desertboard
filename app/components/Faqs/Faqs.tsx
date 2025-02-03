@@ -33,14 +33,14 @@ const Faqs = () => {
                 <Image src={BackGround} alt='background' className='absolute left-0 top-0 -z-10 inset-0 h-full w-full object-cover' />
                 <div className='grid grid-cols-5 container m-auto mt-[48px] h-full gap-12 pt-[15px] mb-[48px] z-10'>
 
-                    <div className='col-span-2 text-black flex flex-col gap-6 border-r-2 border-[#E3DED9] nuber-next'>
+                    <div className='col-span-2 text-black flex flex-col gap-6 border-r-2 border-[#E3DED9] nuber-next-bold'>
                         <h2 className='text-4xl'>Frequently
                             Asked Questions<span className='text-orange'>.</span></h2>
                     </div>
 
                     <div className='col-span-3 w-full flex flex-col gap-10'>
                         <Accordians />
-                        <div className='px-6 text-black nuber-next'>
+                        <div className='px-6 text-black nuber-next-bold'>
                             <h4 className='text-2xl'>Still Have Questions?</h4>
                             <p>We’re here to help! If you didn’t find the answers you were looking for, feel free to reach out to us directly.</p>
                             <button

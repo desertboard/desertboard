@@ -63,7 +63,7 @@ const MobileMenu = () => {
       <AnimatePresence mode='sync'>
 
         {isActive && <Menu key={"menu"} setSubMenuActive={setSubMenuActive} setIsActive={setIsActive}/>}
-        {isSubMenuActive && <SubMenu setSubMenuActive={setSubMenuActive} setIsActive={setIsActive}/>}
+        {/* {isSubMenuActive && <SubMenu setSubMenuActive={setSubMenuActive} setIsActive={setIsActive}/>} */}
 
       </AnimatePresence>
       </div>

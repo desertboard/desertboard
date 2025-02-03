@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { slide, scale } from './anim';
 import { Dispatch, SetStateAction } from 'react';
 
-export default function Index({data, isActive, setSelectedIndicator,setSubMenuActive}:{
+export default function Index({data, isActive, setSelectedIndicator,setSubMenuActive,setIsActive}:{
     data:{
         title:string;
         href:string;
@@ -13,6 +13,7 @@ export default function Index({data, isActive, setSelectedIndicator,setSubMenuAc
     isActive:boolean;
     setSelectedIndicator:Dispatch<SetStateAction<string>>
     setSubMenuActive:Dispatch<SetStateAction<boolean>>
+    setIsActive:Dispatch<SetStateAction<boolean>>
 }) {
   
     const { title, href, index} = data;
@@ -32,7 +33,7 @@ export default function Index({data, isActive, setSelectedIndicator,setSubMenuAc
           animate={isActive ? "open" : "closed"} 
           className={styles.indicator}>
         </motion.div>
-        <Link href={href} className='text-2xl mb-3' onClick={()=>title=="Sectors" ? setSubMenuActive(true) : null}>{title}</Link>
+        <Link href={href} className='text-2xl mb-3' onClick={()=>title=="Sectors" ? setSubMenuActive(true) : setIsActive(false)}>{title}</Link>
       </motion.div>
     )
 }

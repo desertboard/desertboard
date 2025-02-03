@@ -39,6 +39,10 @@ const navItems = [
     ]
   },
   {
+    title: "Products",
+    href: "/sustainability",
+  },
+  {
     title: "Sustainability",
     href: "/sustainability",
   },
@@ -81,7 +85,7 @@ export default function Menu({setSubMenuActive,setIsActive}:{
 
                     {
                       navItems.map( (data, index) => {
-                        return <Link setSubMenuActive={setSubMenuActive}
+                        return <Link setSubMenuActive={setSubMenuActive} setIsActive={setIsActive}
                         key={index}
                         data={{...data, index}}
                         isActive={selectedIndicator == data.href}

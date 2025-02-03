@@ -58,9 +58,9 @@ const AddressBar = () => {
     return (
         <div className='w-full'>
             <div>
-                <ul className='flex  text-black text-lg'>
+                <ul className='flex  text-black text-font28'>
                     {menu.map((item,index)=>(
-                        <div className={`${ addressBarIndex == index ? "bg-[#E3DED9]" : ""} px-6 py-2 cursor-pointer nuber-next`} key={index} onClick={()=>setAddressBarIndex(index)}><li className='flex'>{item.title}<div className='text-[#FF671F]'>.</div></li></div>
+                        <div className={`${ addressBarIndex == index ? "bg-[#E3DED9]" : ""} px-6 py-2 cursor-pointer nuber-next-heavy`} key={index} onClick={()=>setAddressBarIndex(index)}><li className='flex'>{item.title}<div className='text-[#FF671F]'>.</div></li></div>
                     ))}
                 </ul>
             </div>
@@ -71,7 +71,7 @@ const AddressBar = () => {
                         onClick={() => toggleAccordion(id)}
                         className={`w-full flex justify-between items-center pb-6 text-slate-800 ${index !==0 ? "border-t" : "" } pt-6`}
                     >
-                        <div className='nuber-next'>{question}<span className='text-[#FF671F]'>.</span></div>
+                        <div className='nuber-next-bold'>{question}<span className='text-[#FF671F]'>.</span></div>
                         <span id="icon-1" className="text-slate-800 transition-transform duration-300">
                             {id === activeAccordian ? <Image src={accordianArrow} alt='arrow'/> : <Image src={accordianArrow} alt='arrow' className='rotate-180'/>}
 

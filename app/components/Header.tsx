@@ -31,7 +31,7 @@ const Header = () => {
   if(isMobile){
     return <MobileMenu/>
   }
-
+  
   return (
     <header className="bg-transparent text-white absolute w-full top-0 z-40">
       <div className="container   ">

@@ -33,7 +33,7 @@ const Accordians = () => {
     }
 ]
 
-// const ActiveAccordian = menu[addressBarIndex].component
+const ActiveAccordian = menu[addressBarIndex].component
 
 
   return (
@@ -41,14 +41,14 @@ const Accordians = () => {
             <div className='border-b-2'>
                 <ul className='flex  text-black text-lg'>
                     {menu.map((item,index)=>(
-                        <div className={`${ addressBarIndex == index ? "border-b-2 border-orange" : ""} px-6 py-2 cursor-pointer nuber-next `} key={index} onClick={()=>setAddressBarIndex(index)}>
+                        <div className={`${ addressBarIndex == index ? "border-b-2 border-orange" : ""} px-6 py-2 cursor-pointer nuber-next-heavy`} key={index} onClick={()=>setAddressBarIndex(index)}>
                             <li className='flex pb-2'>{item.title}</li>
                         </div>
                     ))}
                 </ul>
             </div>
 
-            {/* {ActiveAccordian} */}
+            {ActiveAccordian}
 
         </div>
   )

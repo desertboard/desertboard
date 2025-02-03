@@ -2,7 +2,7 @@ interface UspsProps {
   title: string;
 }
 
-export default function Downloads({ title }: UspsProps) {
+export default function BeforeFooterTag({ title }: UspsProps) {
   return (
     <>
       <section className="bg-secondary  relative z-[1]">

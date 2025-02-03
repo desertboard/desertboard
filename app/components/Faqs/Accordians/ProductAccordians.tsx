@@ -76,7 +76,7 @@ const ProductAccordians = () => {
                         <button onClick={() => toggleAccordian(index)}
                             className={`w-full flex justify-between items-center  text-slate-800 py-4 bg-[#E3DED9] px-4`}
                         >
-                            <div className='nuber-next'>{item.question}</div>
+                            <div className='helvetica-bold'>{item.question}</div>
                             <span id="icon-1" className="text-slate-800 transition-transform duration-300">
                                 {activeAccordian == index ? <Image src={accordianArrow} alt='arrow' /> : <Image src={accordianArrow} alt='arrow' className='rotate-180' />}
 

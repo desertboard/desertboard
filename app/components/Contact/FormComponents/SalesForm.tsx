@@ -35,8 +35,8 @@ const SalesForm = () => {
                 ></textarea>
             </div>
 
-            <div className="mt-6  border-gray-400  bg-[#D8D4CF] rounded-md">
-                <div className="flex items-center px-4 py-3 rounded-md justify-around w-1/2">
+            <div className="mt-6  border-gray-400  bg-[#D8D4CF] rounded-md text-font20">
+                <div className="flex items-center py-3 rounded-md  lg:w-1/2 px-4 lg:gap-14 gap-3">
                     <label className="text-sm text-gray-600">Resume</label>
                     <div>
                         <label className="font-semibold text-gray-900 cursor-pointer">
@@ -51,7 +51,7 @@ const SalesForm = () => {
 
             <button
                 type="submit"
-                className="mt-6 font-semibold text-sm  group items-center hover:border-b-2  border-[#FF671F] text-[#FF671F] pb-1 h-6 flex gap-1 nuber-next"
+                className="mt-6 font-semibold text-sm  group items-center hover:border-b-2  border-[#FF671F] text-[#FF671F] pb-1 h-6 flex gap-1 nuber-next-heavy"
             >
                 Send Message <div className="transition-all duration-300 group-hover:translate-x-1">
               <svg width="20" height="15" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">

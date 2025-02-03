@@ -33,11 +33,11 @@ const Forms = () => {
     const activeComponent = menu[menuIndex].component
 
     return (
-        <div className='w-full '>
+        <div className='w-full'>
             <div>
-                <ul className='flex text-black text-lg'>
+                <ul className='flex text-black text-font24'>
                     {menu.map((item,index)=>(
-                        <div key={index} className={`px-7 py-2 ${menuIndex == index ? "bg-[#E3DED9]" : ""} cursor-pointer  nuber-next-bold`} onClick={()=>setMenuIndex(index)}><li>{item.title}</li></div>
+                        <div key={index} className={`lg:px-7 px-2 py-2 ${menuIndex == index ? "bg-[#E3DED9]" : ""} cursor-pointer  nuber-next-bold`} onClick={()=>setMenuIndex(index)}><li>{item.title}</li></div>
                     ))}
 
                 </ul>
