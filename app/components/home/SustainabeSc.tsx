@@ -1,5 +1,6 @@
-'use client'
-import React from 'react'
+"use client";
+import React from "react";
+import arrowExpand from "@/public/assets/images/icons/arrows-angle-expand.svg";
 
 import svsic1 from "@/public/assets/images/home/svsic1.png";
 import svsic2 from "@/public/assets/images/home/svsic2.png";
@@ -21,58 +22,52 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
 import "@/app/components/home/goalcrd.scss";
-import {motion} from "framer-motion"
-
+import { motion } from "framer-motion";
 
 const SustainabeSc = () => {
   return (
     <>
       <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner relative overflow-hidden">
-      <motion.div
-                    className="ola ola-right absolute top-5 right-[-20%] md:right-[-10%] w-[20em] md:w-[40em]"
-
-                    animate={{ y: [0, -20, 0], rotate: [0, 3, 0] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <Image className="absolute" src={lfbef} alt="Description of the image" />
-                  </motion.div>
-                  <motion.div
-        className="ola ola-right absolute bottom-[-52%] md:bottom-[43%] left-[-15%] w-[20em] md:w-[40em]"
-        animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <Image className="absolute" src={lfbt} alt="Description of the image" />
-      </motion.div>
+        <motion.div className="ola ola-right absolute top-5 right-[-20%] md:right-[-10%] w-[20em] md:w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, 3, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+          <Image className="absolute" src={lfbef} alt="Description of the image" />
+        </motion.div>
+        <motion.div className="ola ola-right absolute bottom-[-52%] md:bottom-[43%] left-[-15%] w-[20em] md:w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+          <Image className="absolute" src={lfbt} alt="Description of the image" />
+        </motion.div>
         <div className="container m-auto">
           <div className="flex justify-between mb-8 md:items-end mdgrd gap-4 ">
             <div className="text-left ">
-              <motion.h2 className="text-Darkgreen mb-4 text-[28px] md:text-[48px]   nuber-next-heavy leading-[1] "
-              initial={{ opacity: 0, x: -30 }}
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={{
-                hidden: { opacity: 0, x: -30 },
-                visible: {
-                  opacity: 1,
-                  x: 0,
-                  transition: { duration: 1, delay: 0.3 },
-                },
-              }}>
+              <motion.h2
+                className="text-Darkgreen mb-4 text-[28px] md:text-[48px]   nuber-next-heavy leading-[1] "
+                initial={{ opacity: 0, x: -30 }}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={{
+                  hidden: { opacity: 0, x: -30 },
+                  visible: {
+                    opacity: 1,
+                    x: 0,
+                    transition: { duration: 1, delay: 0.3 },
+                  },
+                }}>
                 Sustainable Development Goals
                 <span className="text-[#FF671F]">.</span>
               </motion.h2>
-              <motion.p className="text-font20 text-litetext opacity-[75%]  max-w-[75ch]"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={{
-                hidden: { opacity: 0, x: -30 },
-                visible: {
-                  opacity: 0.75,
-                  x: 0,
-                  transition: { duration: 1, delay: 0.5 },
-                },
-              }}>Explore how eco-friendly and locally produced materials are helping us move closer to the United Nations&apos; Sustainable Development Goals.</motion.p>
+              <motion.p
+                className="text-font20 text-litetext opacity-[75%]  max-w-[75ch]"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={{
+                  hidden: { opacity: 0, x: -30 },
+                  visible: {
+                    opacity: 0.75,
+                    x: 0,
+                    transition: { duration: 1, delay: 0.5 },
+                  },
+                }}>
+                Explore how eco-friendly and locally produced materials are helping us move closer to the United Nations&apos; Sustainable Development Goals.
+              </motion.p>
             </div>
             <div className="flex gap-3 items-center group rmbtn pb-3">
               <div>
@@ -82,17 +77,19 @@ const SustainabeSc = () => {
             </div>
           </div>
         </div>
-        <motion.div className="ansm"  initial={{ opacity: 0, y: -30 }}
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={{
-                hidden: { opacity: 0, y: -30 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 1, delay: 0.5 },
-                },
-              }}>
+        <motion.div
+          className="ansm"
+          initial={{ opacity: 0, y: -30 }}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{
+            hidden: { opacity: 0, y: -30 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 1, delay: 0.5 },
+            },
+          }}>
           <Swiper
             // install Swiper modules
             modules={[Navigation, Pagination]}
@@ -133,14 +130,15 @@ const SustainabeSc = () => {
             scrollbar={{ draggable: true }}
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log("slide change")}>
-           <SwiperSlide>
+            <SwiperSlide>
               <div
-
                 className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
-
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn1.jpg')`,
                 }}>
+                <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
+                  <Image src={arrowExpand} alt="" width={20} height={20}></Image>
+                </div>
                 <div className="flex items-center justify-center min-h-[460px]">
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
@@ -151,11 +149,9 @@ const SustainabeSc = () => {
                     {/* Description Content with Hover Effect */}
                   </div>
                   <div className="p-6">
-
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-
                       <h3 className="nuber-next-bold text-font28  text-black">SDG 3</h3>
-                      <p className="helvetica text-font20 text-black opacity-[75%] mt-2">DesertBoard’s zero-formaldehdye Palm Strand Boards ® improve indoor air quality  </p>
+                      <p className="helvetica text-font20 text-black opacity-[75%] mt-2">DesertBoard’s zero-formaldehdye Palm Strand Boards ® improve indoor air quality </p>
                     </div>
                   </div>
                 </div>
@@ -167,6 +163,9 @@ const SustainabeSc = () => {
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn2.jpg')`,
                 }}>
+                <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
+                  <Image src={arrowExpand} alt="" width={20} height={20}></Image>
+                </div>
                 <div className="flex items-center justify-center min-h-[460px]">
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
@@ -178,8 +177,8 @@ const SustainabeSc = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="nuber-next-bold text-font28   text-black">SDG 7</h3>
-                      <p className="helvetica text-font20 text-black opacity-[75%] mt-2">DesertBoard’s eco-friendly manufacturing process is powered by 30% clean energy.  </p>
+                      <h3 className="nuber-next-bold text-font28   text-black">SDG 7</h3>
+                      <p className="helvetica text-font20 text-black opacity-[75%] mt-2">DesertBoard’s eco-friendly manufacturing process is powered by 30% clean energy. </p>
                     </div>
                   </div>
                 </div>
@@ -191,6 +190,9 @@ const SustainabeSc = () => {
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn3.jpg')`,
                 }}>
+                <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
+                  <Image src={arrowExpand} alt="" width={20} height={20}></Image>
+                </div>
                 <div className="flex items-center justify-center min-h-[460px]">
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
@@ -202,9 +204,9 @@ const SustainabeSc = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="nuber-next-bold text-font28  text-black">SDG 8</h3>
+                      <h3 className="nuber-next-bold text-font28  text-black">SDG 8</h3>
                       <p className="helvetica text-font20 text-black opacity-[75%] mt-2">DesertBoard adheres to the Abu Dhabi Occupational Safety and Health System Framework, along with ISO 45001, ISO 14001, and ISO 9001 standards, ensuring a safe work environment. </p>
-                     </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -216,6 +218,9 @@ const SustainabeSc = () => {
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn4.jpg')`,
                 }}>
+                <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
+                  <Image src={arrowExpand} alt="" width={20} height={20}></Image>
+                </div>
                 <div className="flex items-center justify-center min-h-[460px]">
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
@@ -227,9 +232,9 @@ const SustainabeSc = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="nuber-next-bold text-font28   text-black">SDG 9</h3>
+                      <h3 className="nuber-next-bold text-font28   text-black">SDG 9</h3>
                       <p className="helvetica text-font20 text-black opacity-[75%] mt-2">DesertBoard has generated 284 job opportunities since inception, divided between 156 factory team members and 128 back-office team members.</p>
-                   </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -240,6 +245,9 @@ const SustainabeSc = () => {
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn5.jpg')`,
                 }}>
+                <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
+                  <Image src={arrowExpand} alt="" width={20} height={20}></Image>
+                </div>
                 <div className="flex items-center justify-center min-h-[460px]">
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
@@ -251,9 +259,9 @@ const SustainabeSc = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="nuber-next-bold text-font28   text-black">SDG 10</h3>
+                      <h3 className="nuber-next-bold text-font28   text-black">SDG 10</h3>
                       <p className="helvetica text-font20 text-black opacity-[75%] mt-2">DesertBoard proudly embraces diversity and inclusivity in the workplace, employing a workforce that includes 19 nationalities, with a significant female representation. </p>
-                     </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -264,6 +272,9 @@ const SustainabeSc = () => {
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn6.jpg')`,
                 }}>
+                <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
+                  <Image src={arrowExpand} alt="" width={20} height={20}></Image>
+                </div>
                 <div className="flex items-center justify-center min-h-[460px]">
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
@@ -275,9 +286,9 @@ const SustainabeSc = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="nuber-next-bold text-font28   text-black">SDG 11</h3>
-                      <p className="helvetica text-font20 text-black opacity-[75%] mt-2">DesertBoard honors and preserves Emirati heritage by upcycling palm frond biomass into innovative sustainable building solution.    </p>
-                     </div>
+                      <h3 className="nuber-next-bold text-font28   text-black">SDG 11</h3>
+                      <p className="helvetica text-font20 text-black opacity-[75%] mt-2">DesertBoard honors and preserves Emirati heritage by upcycling palm frond biomass into innovative sustainable building solution. </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -289,6 +300,9 @@ const SustainabeSc = () => {
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn7.jpg')`,
                 }}>
+                <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
+                  <Image src={arrowExpand} alt="" width={20} height={20}></Image>
+                </div>
                 <div className="flex items-center justify-center min-h-[460px]">
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
@@ -300,10 +314,8 @@ const SustainabeSc = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="nuber-next-bold text-font28  text-black">SDG 12</h3>
-                      <p className="helvetica text-font20 text-black opacity-[75%] mt-2">
-                      DesertBoard proactively advocates for the significance of sustainable building solutions, having participated in 30+ regional and global forums in 2024.
-                      </p>
+                      <h3 className="nuber-next-bold text-font28  text-black">SDG 12</h3>
+                      <p className="helvetica text-font20 text-black opacity-[75%] mt-2">DesertBoard proactively advocates for the significance of sustainable building solutions, having participated in 30+ regional and global forums in 2024.</p>
                     </div>
                   </div>
                 </div>
@@ -315,6 +327,9 @@ const SustainabeSc = () => {
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn8.jpg')`,
                 }}>
+                <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
+                  <Image src={arrowExpand} alt="" width={20} height={20}></Image>
+                </div>
                 <div className="flex items-center justify-center min-h-[460px]">
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
@@ -326,9 +341,8 @@ const SustainabeSc = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="nuber-next-bold text-font28   text-black">SDG 13</h3>
+                      <h3 className="nuber-next-bold text-font28   text-black">SDG 13</h3>
                       <p className="helvetica text-font20 text-black opacity-[75%] mt-2">DesertBoard proudly supports the UAE&apos;s Net Zero 2050 strategy, Saudi Arabia&apos;s Net Zero 2060 initiative, and India&apos;s Net Zero 2070 vision.</p>
-
                     </div>
                   </div>
                 </div>
@@ -340,6 +354,9 @@ const SustainabeSc = () => {
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn9.jpg')`,
                 }}>
+                <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
+                  <Image src={arrowExpand} alt="" width={20} height={20}></Image>
+                </div>
                 <div className="flex items-center justify-center min-h-[460px]">
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
@@ -351,16 +368,13 @@ const SustainabeSc = () => {
                   </div>
                   <div className="p-6">
                     <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="nuber-next-bold text-font28  text-black">SDG 15</h3>
-                      <p className="helvetica text-font20 text-black opacity-[75%] mt-2">
-                      DesertBoard protects the natural ecosystem with zero-deforestation supply chain.
-                      </p>
+                      <h3 className="nuber-next-bold text-font28  text-black">SDG 15</h3>
+                      <p className="helvetica text-font20 text-black opacity-[75%] mt-2">DesertBoard protects the natural ecosystem with zero-deforestation supply chain.</p>
                     </div>
                   </div>
                 </div>
               </div>
             </SwiperSlide>
-
           </Swiper>
         </motion.div>
         <div className="container m-auto relative">
@@ -381,8 +395,8 @@ const SustainabeSc = () => {
           </div>
         </div>
       </section>
-      </>
-  )
-}
+    </>
+  );
+};
 
-export default SustainabeSc
+export default SustainabeSc;
