@@ -145,7 +145,7 @@ const HeroSection = () => {
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-                      <Image src={iconsl1} alt="Thumbnail" className="  transform transition-all duration-500" />
+                      <Image src={iconsl1} alt="Thumbnail" className="transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -234,7 +234,7 @@ const HeroSection = () => {
             </SwiperSlide>
             <SwiperSlide>
               <div
-                className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
+                className="relative group overflow-hidden transform  growf goal-crd  bg-center delay-0"
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn5.jpg')`,
                 }}>
