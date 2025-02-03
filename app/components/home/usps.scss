@@ -499,11 +499,7 @@
             inset: 0 !important;
         }
     }
-    .usp__list .usp-item__desc {
-        opacity: 0.75!important;
-        filter: blur(0)!important;
-        transform: translateY(0)!important;
-        height: 100%!important;
-        transition: 300ms all linear!important;
+    .usp__list .usp-item {
+        padding-bottom: 1.75rem!important;
     }
 }
