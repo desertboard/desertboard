@@ -35,7 +35,6 @@ module.exports = withMT({
           xxl: "1350px", // Container width on xxl devices
           "3xl": "1550px", // Container width on 3xl devices
           "4xl": "1790px", // Container width on 3xl devices
-
         },
       },
       colors: {
@@ -43,11 +42,13 @@ module.exports = withMT({
         secondary: "#FFB549",
         Darkgreen: "#002D28",
         litetext: "#151515",
-        orange:'#FF671F',
+        orange: "#FF671F",
         accent: "#ff671f",
         themebg: "#E5E0DC",
         lightBlack: "#151515",
-        grayE3D:"#E3DED9"
+
+        grayE3D:"#E3DED9",
+        medBg: "#E3DED9",
       },
       fontSize: {
         font14: "clamp(0.7rem,1.2vw,0.875rem)",
@@ -61,6 +62,7 @@ module.exports = withMT({
         font30: "clamp(1rem, 2.5vw, 1.875rem)",
         font32: "clamp(1rem, 2.5vw, 2rem)",
         font35: "clamp(1.2rem, 3.5vw, 2.1875rem)",
+        font40: "clamp(1.2rem, 3.5vw, 2.5rem)",
         font48: "clamp(1.5rem, 4vw, 3rem)",
         font65: "clamp(1.5rem, 4.5vw, 4.0625rem)",
         font72: "clamp(1.5rem, 5vw, 4.5rem)",
@@ -84,7 +86,7 @@ module.exports = withMT({
     },
   },
   plugins: [addVariablesForColors],
-})
+});
 
 
 
