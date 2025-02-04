@@ -2,17 +2,17 @@ import React from 'react'
 
 const SalesForm = () => {
     return (
-        <form className="mx-auto bg-[#E3DED9] px-6 py-8 text-black">
+        <form className="mx-auto bg-[#E3DED9] lg:px-6 px-2 py-8 text-black">
             <div className="grid grid-cols-2 gap-6">
                 <div className="flex flex-col">
-                    <label className="text-sm text-gray-600 pl-3">Name</label>
+                    <label className="text-sm text-gray-600 lg:pl-3">Name</label>
                     <input
                         type="text"
                         className="border-b border-gray-400 focus:outline-none focus:border-black bg-transparent h-4"
                     />
                 </div>
                 <div className="flex flex-col">
-                    <label className="text-sm text-gray-600 pl-3">Email</label>
+                    <label className="text-sm text-gray-600 lg:pl-3">Email</label>
                     <input
                         type="email"
                         className="border-b border-gray-400 focus:outline-none focus:border-black bg-transparent  h-4"
@@ -21,7 +21,7 @@ const SalesForm = () => {
             </div>
 
             <div className="mt-6 flex flex-col">
-                <label className="text-sm text-gray-600 pl-3">Phone</label>
+                <label className="text-sm text-gray-600 lg:pl-3">Phone</label>
                 <input
                     type="tel"
                     className="border-b border-gray-400 focus:outline-none focus:border-black bg-transparent  h-4"
@@ -29,13 +29,13 @@ const SalesForm = () => {
             </div>
 
             <div className="mt-6 flex flex-col">
-                <label className="text-sm text-gray-600 pl-3">Message</label>
+                <label className="text-sm text-gray-600 lg:pl-3">Message</label>
                 <textarea
                     className="border-b border-gray-400 focus:outline-none focus:border-black bg-transparent h-16 resize-none"
                 ></textarea>
             </div>
 
-            <div className="mt-6  border-gray-400  bg-[#D8D4CF] rounded-md text-font20">
+            {/* <div className="mt-6  border-gray-400  bg-[#D8D4CF] rounded-md text-font20">
                 <div className="flex items-center py-3 rounded-md  lg:w-1/2 px-4 lg:gap-14 gap-3">
                     <label className="text-sm text-gray-600">Resume</label>
                     <div>
@@ -47,7 +47,7 @@ const SalesForm = () => {
                     </div>
 
                 </div>
-            </div>
+            </div> */}
 
             <button
                 type="submit"

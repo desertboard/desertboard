@@ -14,11 +14,9 @@ const Selections = () => {
     const [activeTopic,setActiveTopic] = useState(0)
     const activeTypes = topicSelection[activeTopic].types
     const [activeType,setActiveType] = useState(0)
-    // let activeResult = topicSelection[activeTopic].types[activeType].result
     const [isMobile,setIsMobile] = useState(false)
 
 
-    console.log("activeTypes",activeTypes)
 
     const [activeResult,setActiveResult] = useState<{ title: string; image: string; }[]>([])
 
@@ -45,39 +43,36 @@ const Selections = () => {
     
     useEffect(() => {
         const currentTopic = topicSelection[activeTopic];
-        if (!currentTopic || !currentTopic.types || !currentTopic.types[activeType]) {
+        console.log(currentTopic.types[activeType])
+        
+        if (!currentTopic || !currentTopic.types) {
             return;
+        
+        }else if(currentTopic.types[activeType] == undefined){
+            setActiveType(currentTopic.types.findIndex((item)=>item.title == currentTopic.types[0].title))
+            const currentType: {result:{ title: string; image: string; }[]} = currentTopic.types[0];
+            console.log(currentType.result)
+            if (currentType.result === undefined) {
+                setActiveType(0);
+                setActiveResult(currentTopic.types[0]?.result || []);
+            } else {
+                setActiveResult(currentType.result);
+            }
+        
+        }else{
+            const currentType =currentTopic.types[activeType];
+            if (currentType.result === undefined) {
+                setActiveType(0);
+                setActiveResult(currentTopic.types[0]?.result || []);
+            } else {
+                setActiveResult(currentType.result);
+            }
         }
-    
-        const currentType = currentTopic.types[activeType];
-    
-        if (currentType.result === undefined) {
-            setActiveType(0);
-            setActiveResult(currentTopic.types[0]?.result || []);
-        } else {
-            setActiveResult(currentType.result);
-        }
+
 
     }, [activeType,activeTopic]);
 
     
-    
-    // useEffect(()=>{
-    //     if(!isMobile){
-    //         populateResults()
-    //     }
-
-    //     if(!topicChanged){
-    //         setActiveResult([])
-    //     }
-
-    //     if(!typeChanged){
-    //         setActiveResult([])
-    //     }
-
-    // },[topicChanged,typeChanged,isMobile])
-
-
 
     return (
         <>
@@ -91,7 +86,7 @@ const Selections = () => {
                     </div>
 
                     <div className={`col-span-1 pr-8 ${!isMobile ? "pl-4 border-r-2" : "mt-5"}`}>
-                        <TypeSelection activeTypes={activeTypes} activeType={activeType} setActiveType={setActiveType} isMobile={isMobile}/>
+                        <TypeSelection activeTypes={activeTypes} activeType={activeType} setActiveType={setActiveType} isMobile={isMobile} activeTopic={activeTopic}/>
                     </div>
 
                     <div className={`col-span-1 ${!isMobile ? "pl-4" : "mt-5 pr-8"}`}>

@@ -1,14 +1,37 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SalesForm from './SalesForm'
 import MarketingForm from './MarketingForm'
 import Careers from './Careers'
 import General from './General'
+import Image from 'next/image'
+import accordianArrow from '@/public/assets/images/accordian-arrow.svg'
 
 const Forms = () => {
 
     const [menuIndex,setMenuIndex] = useState(0)
+    const [isMobile,setIsMobile] = useState(false)
+
+    useEffect(()=>{
+
+        const handleScreenChange = (screenWidth:number)=>{
+            if(screenWidth<798){
+                setIsMobile(true)
+            }else{
+                setIsMobile(false)
+            }
+        }
+
+        const handleResize = () => handleScreenChange(window.innerWidth);
+
+        handleResize();
+
+        window.addEventListener('resize',handleResize)
+        return () => window.removeEventListener('resize',handleResize)
+
+    },[])
+
 
     const menu = [
         {
@@ -34,16 +57,44 @@ const Forms = () => {
 
     return (
         <div className='w-full'>
-            <div>
+            {!isMobile && <div>
                 <ul className='flex text-black text-font24'>
                     {menu.map((item,index)=>(
                         <div key={index} className={`lg:px-7 px-2 py-2 ${menuIndex == index ? "bg-[#E3DED9]" : ""} cursor-pointer  nuber-next-bold`} onClick={()=>setMenuIndex(index)}><li>{item.title}</li></div>
                     ))}
 
                 </ul>
-            </div>
+            </div>}
 
-            {activeComponent}
+                    {isMobile && <div>
+                        {menu.map((item,index)=>(
+                            <div key={index}>
+                            <button
+                            className={`w-full flex justify-between items-center  text-slate-800 py-4 bg-[#E3DED9] px-6`}
+                            onClick={()=>setMenuIndex(index)}
+                        >
+                            <div className='helvetica-bold'>{item.title}</div>
+                            <span id="icon-1" className="text-slate-800 transition-transform duration-300">
+                            {index === menuIndex ? <Image src={accordianArrow} alt='arrow'/> : <Image src={accordianArrow} alt='arrow' className='rotate-180'/>}
+
+                            </span>
+                            </button>
+                        
+
+                        <div
+                            className={`overflow-hidden transition-all duration-300 pb-3 px-4 ${menuIndex === index ? "max-h-fit opacity-100 bg-[#E3DED9] mb-3" : "max-h-0 opacity-0"
+                                }`}
+                        >
+
+                            {activeComponent}
+
+                        </div>
+
+                        </div>
+                        ))}
+                    </div>}
+
+            {!isMobile && activeComponent}
 
         </div>
     )

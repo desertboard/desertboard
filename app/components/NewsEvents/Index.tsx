@@ -2,7 +2,7 @@
 import PageBanner from "../Common/PageBanner";
 import bannerImg from "@/public/assets/images/sectors/abt-bnr.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
-import Downloads from "../Common/Downloads";
+import BeforeFooterTag from "../Common/BeforeFooterTag";
 import NewsBlock from "./NewsBlock";
 import { newsEvents, linkedInSliderData } from "./data";
 import  LinkedInSlider  from "./LinkedInSlider";
@@ -37,7 +37,7 @@ const Index = () => {
       <NewsBlock newsEvent={latestNews} />
       <LinkedInSlider data={linkedInSliderData} />
       <NewsBlock newsEvent={latestExpertise} />
-      <Downloads title={"Discover Industry Solutions"} />
+      <BeforeFooterTag title={"Discover Industry Solutions"} />
     </>
   );
 };

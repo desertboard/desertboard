@@ -3,6 +3,7 @@ import Image from "next/image";
 import '@/app/components/Common/MainDescBox.scss';
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
+import { StaticImageData } from "next/image";
 import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -10,7 +11,7 @@ interface MainDescBoxProps {
   secTitle: string;
   subTitle: string;
   paragraphs: string[];
-  mainImg?: string;
+  mainImg?: StaticImageData | string;
   mainVdo?: string;
   vdoPoster?: string;
 }
@@ -84,7 +85,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
                 {text}
               </motion.p>
             ))}
-            
+
           </div>
 
           <div className="flex lg:absolute lg:w-1/2 xl:w-[58%] lg:right-0 lg:top-5 h-full">
