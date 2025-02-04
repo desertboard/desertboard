@@ -9,3 +9,8 @@
         gap: 1em;
     }
 }
+.related-news{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 2em;
+}

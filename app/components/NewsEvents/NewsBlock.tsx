@@ -3,6 +3,7 @@ import Image from "next/image";
 import "@/app/components/NewsEvents/newsblock.scss";
 import tagIcon from "@/public/assets/images/News/pin.svg";
 import PrimaryArrowBtn from "../Common/PrimaryArrowBtn";
+import Link from "next/link";
 
 
 interface NewsEvent {
@@ -51,14 +52,14 @@ const NewsBlock = ({newsEvent}:NewsEventsProps) => {
                         <ul className="news__category list-none text-black uppercase font-bold text-font14 leading-normal flex gap-3 opacity-75">
                           {news.categories.map((category, index) => (
                             <li key={index}>
-                              <a href="#" className="underline">
+                              <Link href="#" className="underline">
                                 {category}
-                              </a>
+                              </Link>
                             </li>
                           ))}
                         </ul>
                       </div>
-                      <PrimaryArrowBtn btntitle="Read more" btnLink={news.readMoreLink} />
+                      <PrimaryArrowBtn btntitle="Read more" btnLink={`article`} />
                     </div>
                   </>
                 ) : (
@@ -82,7 +83,7 @@ const NewsBlock = ({newsEvent}:NewsEventsProps) => {
                           ))}
                         </ul>
                       </div>
-                      <PrimaryArrowBtn btntitle="Read more" btnLink={news.readMoreLink} />
+                      <PrimaryArrowBtn btntitle="Read more" btnLink={`article`} />
                     </div>
                   </>
                 )}
