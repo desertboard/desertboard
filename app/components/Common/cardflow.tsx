@@ -12,7 +12,6 @@ interface FrameworkItem {
 }
 
 interface FrameworkSectionProps {
-
   data: FrameworkItem[];
 }
 import {motion} from "framer-motion"
@@ -20,16 +19,16 @@ import {motion} from "framer-motion"
 
   const CardFlow: React.FC<FrameworkSectionProps> = ({  data }) => {
   return (
-    <motion.div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-10" initial={{ opacity: 0, y: -30 }}
+    <motion.div className={`grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-10`} initial={{ opacity: 0, y: -30 }}
     whileInView="visible"
     viewport={{ once: true, amount: 0.3 }}
     variants={{
-      hidden: { opacity: 0, y: -30 }, 
+      hidden: { opacity: 0, y: -30 },
       visible: {
         opacity: 1,
         y: 0,
         transition: { duration: 1, delay: 0.5 },
-      }, 
+      },
     }}>
       {data.map((framework) => (
         <div className="relative group bg-gray-800 csmn overflow-hidden sectorcrd" key={framework.id}>

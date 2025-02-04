@@ -3,7 +3,7 @@ import PageBanner from '../Common/PageBanner'
 import bannerImg from "@/public/assets/downloadsbanner.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import Selections from './Selections/Selections';
-import BeforeFooterTag from '../Common/Downloads';
+import BeforeFooterTag from '../Common/BeforeFooterTag';
 
 
 const Downloads = () => {

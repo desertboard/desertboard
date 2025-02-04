@@ -17,11 +17,6 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile }: {
         setActiveTopic(index)
     }
 
-    // useEffect(()=>{
-    //     if(selectedValue!=="Select Topic"){
-    //         setTopicChanged(true)
-    //     }
-    // },[selectedValue,setTopicChanged])
 
     return (
         <>
@@ -47,7 +42,7 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile }: {
 
                 {isMobile &&
                     <>
-                    <div className={` px-4 group border-b-[2px] border-[#1515151A] flex justify-between py-6 helvetica-bold cursor-pointer`} onClick={()=>setDropDownOpen((prev)=>!prev)}>
+                    <div className={` group border-b-[2px] border-[#1515151A] flex justify-between py-6 helvetica-bold cursor-pointer`} onClick={()=>setDropDownOpen((prev)=>!prev)}>
 
                         <h4>{selectedValue}</h4>
 
@@ -62,7 +57,11 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile }: {
                     {dropDownOpen && <div>
                        {topicSelection.map((topic,index)=>(
                             
-                            <div className={`border-b-[2px] border-[#1515151A] flex justify-between py-6 helvetica pl-4 cursor-pointer hover:text-orange`} onClick={()=>handleSelection(topic.title,index)} key={index}>
+                            topic.title == selectedValue ? null 
+                            
+                            : 
+                            
+                            <div className={`border-b-[2px] border-[#1515151A] flex justify-between py-6 helvetica cursor-pointer hover:text-orange`} onClick={()=>handleSelection(topic.title,index)} key={index}>
 
                             <h4>{topic.title}</h4>
     

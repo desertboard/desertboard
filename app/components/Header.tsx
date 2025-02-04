@@ -4,8 +4,10 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import flogo from "@/public/assets/images/home/flogo.png";
-import { Menu, MenuItem, ProductItem, ProductItemL } from "./ui/navbar-menu";
+import logo from "@/public/assets/images/home/desert-logo.svg";
+import { Menu, MenuItem } from "./ui/navbar-menu";
 import MobileMenu from "./MobileMenu/MobileMenu";
+import { menuItems } from "../data/menuItems";
 
 const Header = () => {
   const [active, setActive] = useState<string | null>(null);
@@ -28,36 +30,59 @@ const Header = () => {
   }, []);
 
 
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 500) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+ 
+
+
   if(isMobile){
     return <MobileMenu/>
   }
   
   return (
-    <header className="bg-transparent text-white absolute w-full top-0 z-40">
-      <div className="container   ">
+    <header className={`w-full ${isSticky ? "fixed bg-white text-primary header" : "absolute bg-transparent text-white"} top-0 z-40`}>
+      <div className="container">
     <div className="py-5 z-10 border-b flex items-center justify-between">
         <div className="flex items-center">
-          <Image src={flogo} alt="Logo" width={311}  height={60}  className="logos"/>
+          <Image src={isSticky ? logo : flogo} alt="Logo" width={311}  height={60}  className={`logos`}/>
         </div>
 
         <nav>
-          <ul className="flex space-x-6 uppercase text-sm tracking-widest">
+          <ul className="flex space-x-6 uppercase text-sm tracking-widest group">
             <Menu setActive={setActive}>
-
-              <MenuItem item="Home" setActive={setActive} active={active} noMenu>
+              {menuItems.map((item,index)=>(
+                <MenuItem item={item.title} setActive={setActive} active={active} noMenu key={index} >
                 <div className="p-4">
-                  <Link href="/">Home</Link>
+                  <Link href={item.href}>{item.title}</Link>
                 </div>
               </MenuItem>
+              ))}
+              
 
-              <MenuItem item="About" setActive={setActive} active={active} noMenu>
+              {/* <MenuItem item="About" setActive={setActive} active={active} noMenu>
                 <div className="p-4">
                   <Link href="/">About</Link>
                 </div>
-              </MenuItem>
+              </MenuItem> */}
 
 
-              <MenuItem setActive={setActive} active={active} item="Sectors" noMenu>
+              {/* <MenuItem setActive={setActive} active={active} item="Sectors" noMenu>
                 <div className="grid grid-cols-2 gap-4 p-4">
                   <ProductItem
                     title="Engineering & Construction"
@@ -135,7 +160,8 @@ const Header = () => {
                 <div className="p-4">
                   <Link href="/">Contact</Link>
                 </div>
-              </MenuItem>
+              </MenuItem> */}
+              
             </Menu>
             {/* <li>
               <Link href="#home">

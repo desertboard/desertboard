@@ -1,0 +1,85 @@
+"use client";
+import React from "react";
+
+import lfbef from "@/public/assets/images/home/leaf.svg";
+import lfbt from "@/public/assets/images/home/lfbt.svg";
+
+import {  SliderData } from "./data";
+// Import Swiper styles
+import "swiper/css";
+import Image from "next/image";
+import "@/app/components/home/goalcrd.scss";
+import { motion } from "framer-motion";
+import Slidersustain from "./swipersustain";
+
+const Sustainslide = () => {
+  return (
+    <>
+      <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner  overflow-hidden">
+        <motion.div className="ola ola-right absolute top-5 right-[-20%] md:right-[-10%] w-[20em] md:w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, 3, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+          <Image className="absolute" src={lfbef} alt="Description of the image" />
+        </motion.div>
+        <motion.div className="ola ola-right absolute bottom-[-52%] md:bottom-[43%] left-[-15%] w-[20em] md:w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+          <Image className="absolute" src={lfbt} alt="Description of the image" />
+        </motion.div>
+        <div className="container m-auto">
+          <div className="flex justify-between mb-8 md:items-end mdgrd gap-4 ">
+            <div className="text-left ">
+              <motion.h2
+                className="text-Darkgreen mb-4 text-[28px] md:text-[48px]   nuber-next-heavy leading-[1] "
+                initial={{ opacity: 0, x: -30 }}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={{
+                  hidden: { opacity: 0, x: -30 },
+                  visible: {
+                    opacity: 1,
+                    x: 0,
+                    transition: { duration: 1, delay: 0.3 },
+                  },
+                }}>
+                Sustainable Development Goals
+                <span className="text-[#FF671F]">.</span>
+              </motion.h2>
+              <motion.p
+                className="text-font20 text-litetext opacity-[75%]  max-w-[75ch]"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={{
+                  hidden: { opacity: 0, x: -30 },
+                  visible: {
+                    opacity: 0.75,
+                    x: 0,
+                    transition: { duration: 1, delay: 0.5 },
+                  },
+                }}>
+                DesertBoard&apos;s practices align with nine of the United Nations&apos; Sustainable Development Goals (SDGs), focusing on minimizing environmental impact, fostering inclusivity, and ensuring responsible resource use.
+              </motion.p>
+            </div>
+
+          </div>
+        </div>
+        <motion.div
+          className="ansm w800w"
+          initial={{ opacity: 0, y: -30 }}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{
+            hidden: { opacity: 0, y: -30 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 1, delay: 0.5 },
+            },
+          }}>
+          <Slidersustain data={SliderData} />
+
+        </motion.div>
+
+      </section>
+    </>
+  );
+};
+
+export default Sustainslide;

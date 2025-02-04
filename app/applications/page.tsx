@@ -3,7 +3,7 @@ import SectionThree from "../components/Applications/SectionThree";
 import SectionFive from "../components/Applications/SectionFive";
 import PageBanner from "../components/Common/PageBanner";
 import SectionFour from "../components/Applications/SectionFour";
-import Downloads from "../components/Common/Downloads";
+import Downloads from "../components/Common/BeforeFooterTag";
 
 
 // Image imports

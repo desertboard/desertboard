@@ -1,7 +1,7 @@
 import MainDescBOx from "../components/Common/MainDescBox";
 import PageBanner from "../components/Common/PageBanner";
 import Tabs from "../components/Sectors/Tabs";
-import Downloads from "../components/Common/Downloads";
+import Downloads from "../components/Common/BeforeFooterTag";
 
 // Image imports
 import bannerImg from "@/public/assets/images/sectors/banner.png";
