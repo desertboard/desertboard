@@ -133,23 +133,23 @@ export const linkedInSliderData = [
 export const instagramPosts = [
   {
     id: 1,
-    imgPost: "@/public/assets/images/instagram/post-1.jpg"
+    imgPost: "/assets/images/instagram/post-1.jpg"
   },
   {
     id: 2,
-    imgPost: "@/public/assets/images/instagram/post-2.jpg"
+    imgPost: "/assets/images/instagram/post-2.jpg"
   },
   {
     id: 3,
-    imgPost: "@/public/assets/images/instagram/post-3.jpg"
+    imgPost: "/assets/images/instagram/post-3.jpg"
   },
   {
     id: 4,
-    imgPost: "@/public/assets/images/instagram/post-4.jpg"
+    imgPost: "/assets/images/instagram/post-4.jpg"
   },
   {
     id: 5,
-    imgPost: "@/public/assets/images/instagram/post-5.jpg"
+    imgPost: "/assets/images/instagram/post-5.jpg"
   },
 ];
 
