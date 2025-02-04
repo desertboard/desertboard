@@ -46,7 +46,6 @@ module.exports = withMT({
         accent: "#ff671f",
         themebg: "#E5E0DC",
         lightBlack: "#151515",
-
         grayE3D:"#E3DED9",
         medBg: "#E3DED9",
       },
