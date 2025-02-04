@@ -10,6 +10,7 @@ import AccrediationSlider from "./AccrediationSlider";
 // Image imports
 import bannerImg from "@/public/assets/images/sectors/abt-bnr.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
+import BeforeFooterTag from "../Common/BeforeFooterTag";
 
 // import SecondSec from "../components/Common/Second-sec";
 
@@ -30,7 +31,7 @@ export default function Index() {
         bnrHeight="90dvh"
       />
       <MainDescBOx
-        secTitle="The DesertBoard Story."
+        secTitle="The DesertBoard Story"
         subTitle=""
         // mainImg="/assets/images/mn.jpg"
         paragraphs={[
@@ -38,11 +39,12 @@ export default function Index() {
           " With the region's vast date palm groves, substantial quantities of palm biomass are generated each year, which, if left to decompose, would emit harmful methane gas, and if incinerated, it releases CO2 - both major contributors to climate change.",
           "DesertBoard® addresses this environmental challenge by upcycling palm biomass using a patented process, becoming the world’s first factory to produce a Super E0 (zero-emission) grade panel, equivalent to OSB3 & OSB4.",
         ]}
-        mainImg="/assets/images/mn.jpg"
+        mainImg="/assets/images/about/about-main.jpg"
       />
       <HistorySlider />
       <MisionVision />
       <AccrediationSlider />
+       <BeforeFooterTag title={"Discover Industry Solutions"} /> 
     </>
   );
 }

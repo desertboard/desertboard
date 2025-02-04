@@ -37,7 +37,7 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
             <PrimaryArrowBtn btntitle={"Visit LinkedIn"} btnLink="#" />
           </div>
         </div>
-        <div className="container  !overflow-visible">
+        <div className="container pb-[100px] !overflow-visible">
           <Swiper
             className="linkedin-slider !overflow-visible"
             modules={[Navigation, Pagination]}
