@@ -33,7 +33,7 @@ const NewsBlock = ({newsEvent}:NewsEventsProps) => {
             <h2 className="text-font48 heavydark mb-2 xl:mb-10">
               News Events<span className="text-[#FF671F] leading-[1]">.</span>
             </h2>
-            <PrimaryArrowBtn btntitle={"View All News"} btnLink="#" />
+            <PrimaryArrowBtn btntitle={"View All News"} btnLink="news-and-events-listing" />
           </div>
           <div className="news-crd__wrapper">
             {newsEvent.map((news, index) => (
