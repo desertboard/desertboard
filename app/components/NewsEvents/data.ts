@@ -129,3 +129,80 @@ export const linkedInSliderData = [
   },
 
 ];
+
+export const instagramPosts = [
+  {
+    id: 1,
+    imgPost: "@/public/assets/images/instagram/post-1.jpg"
+  },
+  {
+    id: 2,
+    imgPost: "@/public/assets/images/instagram/post-2.jpg"
+  },
+  {
+    id: 3,
+    imgPost: "@/public/assets/images/instagram/post-3.jpg"
+  },
+  {
+    id: 4,
+    imgPost: "@/public/assets/images/instagram/post-4.jpg"
+  },
+  {
+    id: 5,
+    imgPost: "@/public/assets/images/instagram/post-5.jpg"
+  },
+];
+
+export const upCommingEvents = [
+  {
+    id: 1,
+    eventLogo: "/assets/images/events/upcomming-events/event-1.png",
+    eventTitle: "Dubai Wood Show",
+    eventDate: "21 Nov 2024 - 24 Nov 2024",
+    eventTime: "9:00 AM - 10 PM",
+    eventLocation: "Crowne Plaza | Riyadh RDC Hotel",
+    eventTickets: "#",
+    eventWebsite: "#",
+  },
+  {
+    id: 2,
+    eventLogo: "/assets/images/events/upcomming-events/event-2.png",
+    eventTitle: "Dubai Design Week",
+    eventDate: "21 Nov 2024 - 24 Nov 2024",
+    eventTime: "9:00 AM - 10 PM",
+    eventLocation: "Crowne Plaza | Riyadh RDC Hotel",
+    eventTickets: "#",
+    eventWebsite: "#",
+  },
+  {
+    id: 3,
+    eventLogo: "/assets/images/events/upcomming-events/event-3.png",
+    eventTitle: "Big5 Global 2024",
+    eventDate: "21 Nov 2024 - 24 Nov 2024",
+    eventTime: "9:00 AM - 10 PM",
+    eventLocation: "Crowne Plaza | Riyadh RDC Hotel",
+    eventTickets: "#",
+    eventWebsite: "#",
+  },
+  {
+    id: 4,
+    eventLogo: "/assets/images/events/upcomming-events/event-4.png",
+    eventTitle: "Saudi Wood Expo",
+    eventDate: "21 Nov 2024 - 24 Nov 2024",
+    eventTime: "9:00 AM - 10 PM",
+    eventLocation: "Crowne Plaza | Riyadh RDC Hotel",
+    eventTickets: "#",
+    eventWebsite: "#",
+  },
+  {
+    id: 6,
+    eventLogo: "/assets/images/events/upcomming-events/event-1.png",
+    eventTitle: "Dubai Wood Show",
+    eventDate: "21 Nov 2024 - 24 Nov 2024",
+    eventTime: "9:00 AM - 10 PM",
+    eventLocation: "Crowne Plaza | Riyadh RDC Hotel",
+    eventTickets: "#",
+    eventWebsite: "#",
+  },
+];
+

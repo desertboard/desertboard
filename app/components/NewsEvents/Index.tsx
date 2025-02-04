@@ -4,8 +4,10 @@ import bannerImg from "@/public/assets/images/sectors/abt-bnr.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import BeforeFooterTag from "../Common/BeforeFooterTag";
 import NewsBlock from "./NewsBlock";
-import { newsEvents, linkedInSliderData } from "./data";
+import { newsEvents, linkedInSliderData, instagramPosts,upCommingEvents } from "./data";
 import  LinkedInSlider  from "./LinkedInSlider";
+import InstagramBlock from "./InstagramBlock";
+import UpcommingEvents from "./UpcommingEvents";
 
 
 const Index = () => {
@@ -37,6 +39,8 @@ const Index = () => {
       <NewsBlock newsEvent={latestNews} />
       <LinkedInSlider data={linkedInSliderData} />
       <NewsBlock newsEvent={latestExpertise} />
+      <InstagramBlock instagramData={instagramPosts}/>
+      <UpcommingEvents commingEvents={upCommingEvents} />
       <BeforeFooterTag title={"Discover Industry Solutions"} />
     </>
   );
