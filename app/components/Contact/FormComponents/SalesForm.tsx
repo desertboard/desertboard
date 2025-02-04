@@ -2,7 +2,7 @@ import React from 'react'
 
 const SalesForm = () => {
     return (
-        <form className="mx-auto bg-[#E3DED9] px-6 py-8 text-black">
+        <form className="mx-auto bg-[#E3DED9] lg:px-6 px-4 py-8 text-black">
             <div className="grid grid-cols-2 gap-6">
                 <div className="flex flex-col">
                     <label className="text-sm text-gray-600 pl-3">Name</label>
