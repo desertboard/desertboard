@@ -29,8 +29,34 @@ import sliconmn7 from "../images/home/sliconmn7.jpg";
 import sliconmn8 from "../images/home/sliconmn8.jpg";
 import sliconmn9 from "../images/home/sliconmn9.jpg";
 
-export const assets = {
+import articlebanner from "../images/articles/article-banner.jpg";
+import articlesec1 from "../images/articles/articlesec1.jpg";
+import articlesec2 from "../images/articles/articlesec2.jpg";
+import articlesec3 from "../images/articles/articlesec3.jpg";
+import articlesec4 from "../images/articles/articlesec4.jpg";
+import articlesec5 from "../images/articles/articlesec5.jpg";
+import relart1 from "../images/articles/relart1.jpg";
+import relart2 from "../images/articles/relart2.jpg";
+import relart3 from "../images/articles/relart3.jpg";
+import relart4 from "../images/articles/relart4.jpg";
+import calender from "../images/icons/calender.svg";
+import label from "../images/icons/label.svg";
+import share from "../images/icons/share.svg";
 
+export const assets = {
+    calender,
+    label,
+    share,
+    articlebanner,
+    articlesec1,
+    articlesec2,
+    articlesec3,
+    articlesec4,
+    articlesec5,
+    relart1,
+    relart2,
+    relart3,
+    relart4,
     gdim1,
     gdim2,
     gdim3,
