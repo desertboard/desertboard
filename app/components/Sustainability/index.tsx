@@ -10,7 +10,8 @@ import './sustainability.css';
 import Greenslider from './greenslider';
 import Sustainslide from './Sustainslide';
 import Sustainabilitypartners from './Sustainabilitypartners';
-import Tabs from '../Sectors/Tabs';
+import Tabssustain from './Tabssustain';
+import {tabData} from './data';
 
 const Blogs = () => {
   const breadcrumbs = [
@@ -38,7 +39,7 @@ const Blogs = () => {
       <Greenslider />
       <Sustainslide />
       <Sustainabilitypartners />
-      <Tabs />
+      <Tabssustain data={tabData.data} />
        <Downloads title={"To Downloads"}/>
 
     </>

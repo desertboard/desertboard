@@ -64,6 +64,9 @@ import sl06 from "../images/sustainability/slideimgs6.jpg";
 import sl07 from "../images/sustainability/slideimgs7.jpg";
 import sl08 from "../images/sustainability/slideimgs8.jpg";
 import sl09 from "../images/sustainability/slideimgs9.jpg";
+import imgal from "../images/sustainability/img-al.jpg";
+import secim from "../images/sectors/sec2.png";
+
 
 
 
@@ -71,6 +74,8 @@ import sl09 from "../images/sustainability/slideimgs9.jpg";
 
 
 export const assets = {
+    secim,
+    imgal,
     sl01,
     sl02,
     sl03,
