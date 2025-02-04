@@ -3,6 +3,7 @@ import Image from "next/image";
 import "@/app/components/NewsEvents/newsblock.scss";
 import tagIcon from "@/public/assets/images/News/pin.svg";
 import PrimaryArrowBtn from "../Common/PrimaryArrowBtn";
+import Link from "next/link";
 
 
 interface NewsEvent {
@@ -33,7 +34,7 @@ const NewsBlock = ({newsEvent}:NewsEventsProps) => {
             <h2 className="text-font48 heavydark mb-2 xl:mb-10">
               News Events<span className="text-[#FF671F] leading-[1]">.</span>
             </h2>
-            <PrimaryArrowBtn btntitle={"View All News"} btnLink="#" />
+            <PrimaryArrowBtn btntitle={"View All News"} btnLink="news-and-events-listing" />
           </div>
           <div className="news-crd__wrapper">
             {newsEvent.map((news, index) => (
@@ -51,14 +52,14 @@ const NewsBlock = ({newsEvent}:NewsEventsProps) => {
                         <ul className="news__category list-none text-black uppercase font-bold text-font14 leading-normal flex gap-3 opacity-75">
                           {news.categories.map((category, index) => (
                             <li key={index}>
-                              <a href="#" className="underline">
+                              <Link href="#" className="underline">
                                 {category}
-                              </a>
+                              </Link>
                             </li>
                           ))}
                         </ul>
                       </div>
-                      <PrimaryArrowBtn btntitle="Read more" btnLink={news.readMoreLink} />
+                      <PrimaryArrowBtn btntitle="Read more" btnLink={`article`} />
                     </div>
                   </>
                 ) : (
@@ -82,7 +83,7 @@ const NewsBlock = ({newsEvent}:NewsEventsProps) => {
                           ))}
                         </ul>
                       </div>
-                      <PrimaryArrowBtn btntitle="Read more" btnLink={news.readMoreLink} />
+                      <PrimaryArrowBtn btntitle="Read more" btnLink={`article`} />
                     </div>
                   </>
                 )}
