@@ -1,7 +1,7 @@
 import '@/app/components/NewsEventsListing/listing.scss'
 import LightSectionContainer from "../Common/LightSectionContainer";
 import { newsEvents } from "../NewsEvents/data";
-import ListItem from "./ListItem";
+import ListItem from "./NewsListItem";
 const Listing = () => {
     return (
       <LightSectionContainer>

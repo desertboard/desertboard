@@ -2,7 +2,7 @@ import PageBanner from "../Common/PageBanner";
 import bannerImg from "@/public/assets/images/sectors/abt-bnr.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import Filter from "./Filter";
-import Listing from "./Listing";
+import Listing from "./NewsListing";
 const Index = () => {
     
   const breadcrumbs = [
