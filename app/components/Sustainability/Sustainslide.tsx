@@ -15,7 +15,7 @@ import Slidersustain from "./swipersustain";
 const Sustainslide = () => {
   return (
     <>
-      <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner  overflow-hidden">
+      <section className="pt-10 lg:pt-20  insp-mn relative darkbanner  overflow-hidden">
         <motion.div className="ola ola-right absolute top-5 right-[-20%] md:right-[-10%] w-[20em] md:w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, 3, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
           <Image className="absolute" src={lfbef} alt="Description of the image" />
         </motion.div>

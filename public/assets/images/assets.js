@@ -56,6 +56,14 @@ import sliderimg3 from "../images/sustainability/slider-img3.jpg";
 import sliderimg4 from "../images/sustainability/slider-img4.jpg";
 import sliderimg5 from "../images/sustainability/slider-img5.jpg";
 import sl01 from "../images/sustainability/slideimgs.jpg";
+import sl02 from "../images/sustainability/slideimgs2.jpg";
+import sl03 from "../images/sustainability/slideimgs3.jpg";
+import sl04 from "../images/sustainability/slideimgs4.jpg";
+import sl05 from "../images/sustainability/slideimgs5.jpg";
+import sl06 from "../images/sustainability/slideimgs6.jpg";
+import sl07 from "../images/sustainability/slideimgs7.jpg";
+import sl08 from "../images/sustainability/slideimgs8.jpg";
+import sl09 from "../images/sustainability/slideimgs9.jpg";
 
 
 
@@ -64,6 +72,14 @@ import sl01 from "../images/sustainability/slideimgs.jpg";
 
 export const assets = {
     sl01,
+    sl02,
+    sl03,
+    sl04,
+    sl05,
+    sl06,
+    sl07,
+    sl08,
+    sl09,
     sliderimg1,
     sliderimg2,
     sliderimg3,

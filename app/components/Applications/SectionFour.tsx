@@ -8,6 +8,7 @@ import "swiper/css";
 import Image from "next/image";
 import "@/app/components/home/goalcrd.scss";
 import { motion } from "framer-motion";
+ import { accordionData } from "./data";
 
 import Accordion from "../Applications/Accordion";
 const SectionFour = () => {
@@ -70,7 +71,7 @@ const SectionFour = () => {
               },
             }}
           >
-            <Accordion />
+            <Accordion accordionData={accordionData.data} bg={"bg-[#E3DED9]"} bullet={true} />
 
           </motion.div>
         </div>

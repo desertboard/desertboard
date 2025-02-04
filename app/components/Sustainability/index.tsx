@@ -9,6 +9,8 @@ import MainDescBOx from '../Common/MainDescBox';
 import './sustainability.css';
 import Greenslider from './greenslider';
 import Sustainslide from './Sustainslide';
+import Sustainabilitypartners from './Sustainabilitypartners';
+import Tabs from '../Sectors/Tabs';
 
 const Blogs = () => {
   const breadcrumbs = [
@@ -35,6 +37,8 @@ const Blogs = () => {
       />
       <Greenslider />
       <Sustainslide />
+      <Sustainabilitypartners />
+      <Tabs />
        <Downloads title={"To Downloads"}/>
 
     </>

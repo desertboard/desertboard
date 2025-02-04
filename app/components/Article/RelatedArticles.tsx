@@ -27,7 +27,7 @@ const RelatedArticles: React.FC = () => {
       <div className=" relative z-[1] ">
       <div className="container mx-auto">
         <h2 className="heavydark mb-2 xl:mb-10">
-          Applications<span className="text-[#FF671F] leading-[1]">.</span>
+        Related Articles<span className="text-[#FF671F] leading-[1]">.</span>
         </h2>
 
       </div>
