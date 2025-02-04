@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
+
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
-import readarrow from "@/public/assets/images/read-arrow.svg";
 
 import {  SliderData } from "./data";
 // Import Swiper styles
@@ -10,9 +10,9 @@ import "swiper/css";
 import Image from "next/image";
 import "@/app/components/home/goalcrd.scss";
 import { motion } from "framer-motion";
-import Slidersustain from "./Slidersustain";
+import Slidersustain from "./swipersustain";
 
-const SustainabeSc = () => {
+const Sustainslide = () => {
   return (
     <>
       <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner  overflow-hidden">
@@ -54,19 +54,14 @@ const SustainabeSc = () => {
                     transition: { duration: 1, delay: 0.5 },
                   },
                 }}>
-                Explore how eco-friendly and locally produced materials are helping us move closer to the United Nations&apos; Sustainable Development Goals.
+                DesertBoard&apos;s practices align with nine of the United Nations&apos; Sustainable Development Goals (SDGs), focusing on minimizing environmental impact, fostering inclusivity, and ensuring responsible resource use.
               </motion.p>
             </div>
-            <div className="flex gap-3 items-center group rmbtn pb-3">
-              <div>
-                <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300       text-font20 md:min-w-[105px] nuber-next-heavy leading-[1.25] cursor-pointer">Read More</p>
-              </div>{" "}
-              <Image src={readarrow} alt="icn1" className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1 " />
-            </div>
+
           </div>
         </div>
         <motion.div
-          className="ansm"
+          className="ansm w800w"
           initial={{ opacity: 0, y: -30 }}
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
@@ -87,4 +82,4 @@ const SustainabeSc = () => {
   );
 };
 
-export default SustainabeSc;
+export default Sustainslide;
