@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import arrowExpand from "@/public/assets/images/icons/arrows-angle-expand.svg";
+import arrowExpand from "@/public/assets/images/icons/expand-icon.png";
 
 import svsic1 from "@/public/assets/images/home/svsic1.png";
 import svsic2 from "@/public/assets/images/home/svsic2.png";
