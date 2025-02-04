@@ -30,8 +30,8 @@ const Swipersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
       <Swiper
         // install Swiper modules
         modules={[Navigation, Pagination]}
-        spaceBetween={0}
-        // slidesPerView='auto'
+        // spaceBetween={0}
+       slidesPerView='auto'
         loop={true}
         navigation={{
           nextEl: ".button-next", // Target the next button
@@ -68,10 +68,11 @@ const Swipersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
 
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
+
       >
 
       {data.map((framework) => (
-        <SwiperSlide key={framework.id}>
+        <SwiperSlide key={framework.id}  >
           <div
             className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
             style={{

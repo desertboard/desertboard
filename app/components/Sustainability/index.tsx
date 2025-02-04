@@ -9,6 +9,9 @@ import MainDescBOx from '../Common/MainDescBox';
 import './sustainability.css';
 import Greenslider from './greenslider';
 import Sustainslide from './Sustainslide';
+import Sustainabilitypartners from './Sustainabilitypartners';
+import Tabssustain from './Tabssustain';
+import {tabData} from './data';
 
 const Blogs = () => {
   const breadcrumbs = [
@@ -35,6 +38,8 @@ const Blogs = () => {
       />
       <Greenslider />
       <Sustainslide />
+      <Sustainabilitypartners />
+      <Tabssustain data={tabData.data} />
        <Downloads title={"To Downloads"}/>
 
     </>

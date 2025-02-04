@@ -139,11 +139,11 @@ const Tabs: React.FC = () => {
                       <div className="flex gap-3 items-center group rmbtn pb-3 cursor-pointer">
                           <div>
                             <p className="relative  flex gap-2 max-w-fit transition-opacity duration-300 text-font18  leading-[1.44]  text-font18   nuber-next-heavy leading-[1.25] ">Read More</p>
-                          </div> 
+                          </div>
                           <Image src={readarrow} alt="icn1" className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1 " />
                         </div>
                     </div>
-                </motion.section> 
+                </motion.section>
               )}
 
           {activeTab === "tab2" && (
