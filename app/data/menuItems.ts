@@ -1,32 +1,56 @@
 export const menuItems = [
   {
-    item: "Home",
-    url: "#",
+    title: "Home",
+    href: "/",
   },
   {
-    item: "About",
-    url: "#",
+    title: "About",
+    href: "#",
   },
   {
-    item: "Sectors",
-    children: [
+    title: "Sectors",
+    href: "#",
+    children:[
       {
-        item: "Performance Marketing",
-        url: "#",
+        title: "Engineering & Construction",
+        href: "#",
       },
-    ],
-    url: "#",
+      {
+        title: "Landscape",
+        href: "#",
+      },
+      {
+        title: "Interior Design",
+        href: "#",
+      },
+      {
+        title: "Events & Exhibitions",
+        href: "#",
+      },
+    ]
   },
   {
-    item: "PORTFOLIO",
-    url: "#",
+    title: "Products",
+    href: "/sustainability",
   },
   {
-    item: "CAREERS",
-    url: "#",
+    title: "Sustainability",
+    href: "#",
   },
   {
-    item: "BLOGS",
-    url: "#",
+    title: "Downloads",
+    href: "#",
+  },
+  {
+    title: "News & Events",
+    href: "#",
+  },
+  {
+    title: "Faqs",
+    href: "#",
+  },
+  {
+    title: "Contact",
+    href: "#",
   },
 ];

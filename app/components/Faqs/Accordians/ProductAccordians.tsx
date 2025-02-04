@@ -69,7 +69,7 @@ const ProductAccordians = () => {
     ]
 
     return (
-        <div className="px-6 py-2 mt-3">
+        <div className="py-2 mt-3">
             <div className='flex flex-col gap-3'>
                 {accordianData.map((item, index) => (
                     <div key={index}>
@@ -85,7 +85,7 @@ const ProductAccordians = () => {
 
 
                         <div
-                            className={`overflow-hidden transition-all duration-300 pb-3 px-4 ${activeAccordian === index ? "max-h-96 opacity-100 bg-[#E3DED9]" : "max-h-0 opacity-0"
+                            className={`overflow-hidden transition-all duration-300 pb-3 px-4 ${activeAccordian === index ? "max-h-fit opacity-100 bg-[#E3DED9]" : "max-h-0 opacity-0"
                                 }`}
                         >
 
