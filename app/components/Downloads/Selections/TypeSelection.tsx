@@ -20,7 +20,7 @@ const TypeSelection = ({ activeTypes, setActiveType, activeType, isMobile, activ
 
     useEffect(() => {
         setSelectedValue(topicSelection[activeTopic].types[activeType].title)
-    }, [activeType])
+    }, [activeType,activeTopic])
 
 
     return (
