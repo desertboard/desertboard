@@ -1,102 +1,87 @@
 
-
-
-import { assets } from "@/public/assets/images/assets";
-
-export const tabData = {
-  data: [
+export const menuItem = [
     {
-      id: 1,
-      tab:"Façade Cladding",
-      title: "Façade Cladding",
-      image: assets.secim,
-      description: "DesertBoard’s PSB® provides the engineering and construction industry with sustainable, high-performance materials tailored for demanding applications. From durable formwork to fire-rated door cores, PSB® ensures strength, safety, and eco-responsibility in every project.",
-
-      list: ["Structural Elements: I-Beams, I-Joists, Columns, and Slabs.",
-        "Wall Cladding & Partitions: Moisture-resistant boards for interiors and exteriors.",
-        "Formwork and Shuttering: PSB® Conform for repeated use in harsh conditions.",
-        "Flooring Solutions: Raised flooring and parquet with PSB® Ultra.",
-        "Fire-Rated Door Cores: Up to 90-minute certified fire resistance."],
+        title:"Engineering & Construction",
+        applications:[
+            {
+                title:"Facade Cladding",
+                image:"/assets/images/applications/ra1.jpg"
+            },
+            {
+                title:"Wall Cladding",
+                image:"/assets/images/applications/ra2.jpg"
+            },
+            {
+                title:"Partitional Wall",
+                image:"/assets/images/applications/ra3.jpg"
+            },
+            {
+                title:"Concrete Forming",
+                image:"/assets/images/applications/ra4.jpg"
+            },
+            {
+                title:"Sub-Flooring",
+                image:"/assets/images/applications/ra5.jpg"
+            },
+            {
+                title:"Roofing",
+                image:"/assets/images/applications/ra6.jpg"
+            },
+            {
+                title:"Site Hoarding",
+                image:"/assets/images/applications/ra7.jpg"
+            }
+        ]
     },
     {
-      id: 2,
-      tab:"Wall Cladding",
-      title: "Wall Cladding",
-      image: assets.secim,
-      description: "DesertBoard’s PSB® provides the engineering and construction industry with sustainable, high-performance materials tailored for demanding applications. From durable formwork to fire-rated door cores, PSB® ensures strength, safety, and eco-responsibility in every project.",
-
-      list: ["Structural Elements: I-Beams, I-Joists, Columns, and Slabs.",
-        "Wall Cladding & Partitions: Moisture-resistant boards for interiors and exteriors.",
-        "Formwork and Shuttering: PSB® Conform for repeated use in harsh conditions.",
-        "Flooring Solutions: Raised flooring and parquet with PSB® Ultra.",
-        "Fire-Rated Door Cores: Up to 90-minute certified fire resistance."],
+        title:"Landscape",
+        applications:[
+            {
+                title:"Facade Cladding land",
+                image:"/assets/images/applications/ra1.jpg"
+            },
+            {
+                title:"Wall Cladding",
+                image:"/assets/images/applications/ra2.jpg"
+            },
+            {
+                title:"Partitional Wall",
+                image:"/assets/images/applications/ra3.jpg"
+            }
+        ]
     },
     {
-      id: 3,
-      tab:"Partitional Wall",
-      title: "Partitional Wall",
-      image: assets.secim,
-      description: "DesertBoard’s PSB® provides the engineering and construction industry with sustainable, high-performance materials tailored for demanding applications. From durable formwork to fire-rated door cores, PSB® ensures strength, safety, and eco-responsibility in every project.",
-
-      list: ["Structural Elements: I-Beams, I-Joists, Columns, and Slabs.",
-        "Wall Cladding & Partitions: Moisture-resistant boards for interiors and exteriors.",
-        "Formwork and Shuttering: PSB® Conform for repeated use in harsh conditions.",
-        "Flooring Solutions: Raised flooring and parquet with PSB® Ultra.",
-        "Fire-Rated Door Cores: Up to 90-minute certified fire resistance."],
+        title:"Interior Design",
+        applications:[
+            {
+                title:"Facade Cladding land",
+                image:"/assets/images/applications/ra1.jpg"
+            },
+            {
+                title:"Wall Cladding",
+                image:"/assets/images/applications/ra2.jpg"
+            },
+            {
+                title:"Partitional Wall",
+                image:"/assets/images/applications/ra3.jpg"
+            }
+        ]
     },
     {
-      id: 4,
-      tab:"Sub-Flooring",
-      title: "Sub-Flooring",
-      image: assets.secim,
-      description: "DesertBoard’s PSB® provides the engineering and construction industry with sustainable, high-performance materials tailored for demanding applications. From durable formwork to fire-rated door cores, PSB® ensures strength, safety, and eco-responsibility in every project.",
-
-      list: ["Structural Elements: I-Beams, I-Joists, Columns, and Slabs.",
-        "Wall Cladding & Partitions: Moisture-resistant boards for interiors and exteriors.",
-        "Formwork and Shuttering: PSB® Conform for repeated use in harsh conditions.",
-        "Flooring Solutions: Raised flooring and parquet with PSB® Ultra.",
-        "Fire-Rated Door Cores: Up to 90-minute certified fire resistance."],
-    },
-    {
-      id: 5,
-      tab:"Roofing",
-      title: "Roofing",
-      image: assets.secim,
-      description: "DesertBoard’s PSB® provides the engineering and construction industry with sustainable, high-performance materials tailored for demanding applications. From durable formwork to fire-rated door cores, PSB® ensures strength, safety, and eco-responsibility in every project.",
-
-      list: ["Structural Elements: I-Beams, I-Joists, Columns, and Slabs.",
-        "Wall Cladding & Partitions: Moisture-resistant boards for interiors and exteriors.",
-        "Formwork and Shuttering: PSB® Conform for repeated use in harsh conditions.",
-        "Flooring Solutions: Raised flooring and parquet with PSB® Ultra.",
-        "Fire-Rated Door Cores: Up to 90-minute certified fire resistance."],
-    },
-    {
-      id: 6,
-      tab:"Concrete Forming",
-      title: "Concrete Forming",
-      image: assets.secim,
-      description: "DesertBoard’s PSB® provides the engineering and construction industry with sustainable, high-performance materials tailored for demanding applications. From durable formwork to fire-rated door cores, PSB® ensures strength, safety, and eco-responsibility in every project.",
-
-      list: ["Structural Elements: I-Beams, I-Joists, Columns, and Slabs.",
-        "Wall Cladding & Partitions: Moisture-resistant boards for interiors and exteriors.",
-        "Formwork and Shuttering: PSB® Conform for repeated use in harsh conditions.",
-        "Flooring Solutions: Raised flooring and parquet with PSB® Ultra.",
-        "Fire-Rated Door Cores: Up to 90-minute certified fire resistance."],
-    },
-    {
-      id: 7,
-      tab:"Site Hoarding",
-      title: "Site Hoarding",
-      image: assets.secim,
-      description: "DesertBoard’s PSB® provides the engineering and construction industry with sustainable, high-performance materials tailored for demanding applications. From durable formwork to fire-rated door cores, PSB® ensures strength, safety, and eco-responsibility in every project.",
-
-      list: ["Structural Elements: I-Beams, I-Joists, Columns, and Slabs.",
-        "Wall Cladding & Partitions: Moisture-resistant boards for interiors and exteriors.",
-        "Formwork and Shuttering: PSB® Conform for repeated use in harsh conditions.",
-        "Flooring Solutions: Raised flooring and parquet with PSB® Ultra.",
-        "Fire-Rated Door Cores: Up to 90-minute certified fire resistance."],
-    },
-
-  ],
-};
-
+        title:"Events & Exhibitions",
+        applications:[
+            {
+                title:"Facade Cladding land",
+                image:"/assets/images/applications/ra1.jpg"
+            },
+            {
+                title:"Wall Cladding",
+                image:"/assets/images/applications/ra2.jpg"
+            },
+            {
+                title:"Partitional Wall",
+                image:"/assets/images/applications/ra3.jpg"
+            }
+        ]
+    }
+]
