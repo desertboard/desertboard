@@ -7,3 +7,86 @@
 .accr__slider .swiper-pagination {
   bottom: 40px !important; /* Adjust based on button height */
 }
+.accr {
+  &__slider {
+    .swiper-wrapper {
+      align-items: center;
+      .swiper-slide {
+        // padding-inline: 2em;
+        width: 492px !important;
+        // height: 307px !important;
+        .accr-crd {
+          background-color: var(--primary);
+        }
+        opacity: 1;
+        // transform: scale(0.8);
+        &-next,
+        &-prev {
+          opacity: 1;
+          // padding-inline: 4em;
+          // width: 300px !important;
+        }
+        &-next {
+          padding-left: 1.5em;
+        }
+        &-prev {
+          padding-right: 1.5em;
+        }
+      }
+    }
+  }
+  &__title {
+    font-size: clamp(1.2rem, 3.5vw, 2.5rem);
+  }
+  &__desc {
+    font-size: clamp(0.8rem, 2vw, 1.25rem);
+  }
+}
+
+.accr__slider .swiper-wrapper .swiper-slide.accr__slide.swiper-slide-active {
+  // transform: scaleY(1.4);
+  will-change: transform;
+  width: 609px !important;
+  // height: 384px !important;
+  // width: 40% !important;
+  // height: 100%;
+  // transition: all 0.3s ease-in-out;
+  // padding: 0 50px;
+  opacity: 1 !important;
+  // transform: scale(1.15) !important;
+  padding-inline: 0.5em;
+  width: 50%;
+  z-index: 2;
+  &::before{
+    position: absolute;
+    content: "";
+    top:-50%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-image: url(/assets/images/ola.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(200deg) scaleY(-1);
+    opacity: 0.5;
+    z-index: 1;
+  }
+  .accr-crd {
+    background-color: #002d28;
+  }
+  .accr__title {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+  }
+  .accr__desc {
+    font-size: clamp(1rem, 2.5vw, 1.75rem);
+  }
+}
+
+.accr__slider {
+  .swiper-slide {
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+    transform-origin: center center;
+  }
+}

@@ -5,7 +5,7 @@ import "@/app/components/home/usps.scss";
 import "@/app/components/home/goalcrd.scss";
 import Banner from "@/public/assets/banner.jpg";
 
-
+import arrowExpand from "@/public/assets/images/icons/arrows-angle-expand.svg"
 import iconsl1 from "@/public/assets/images/home/slicon1.png";
 import iconsl2 from "@/public/assets/images/home/slicon2.png";
 import iconsl3 from "@/public/assets/images/home/slicon3.png";
@@ -79,6 +79,7 @@ const HeroSection = () => {
           <CardFlow data={Homecarlsldata.data} />
         </div>
       </section>
+
       {/* <HomeSlider  data = {Homecarlsldata.data} /> */}
       <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner">
         <div className="container m-auto">
@@ -141,11 +142,14 @@ const HeroSection = () => {
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn1.jpg')`,
                 }}>
+                <div className="block lg:hidden absolute top-0 right-0 z-50">
+                    <Image src={arrowExpand} alt="" width={50} height={50}></Image>
+                </div>
                 <div className="flex items-center justify-center min-h-[460px]">
                   <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                     {/* Thumbnail Image Container with Hover Effect */}
                     <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-                      <Image src={iconsl1} alt="Thumbnail" className="  transform transition-all duration-500" />
+                      <Image src={iconsl1} alt="Thumbnail" className="transform transition-all duration-500" />
                     </div>
 
                     {/* Description Content with Hover Effect */}
@@ -234,7 +238,7 @@ const HeroSection = () => {
             </SwiperSlide>
             <SwiperSlide>
               <div
-                className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
+                className="relative group overflow-hidden transform  growf goal-crd  bg-center delay-0"
                 style={{
                   backgroundImage: `url('/assets/images/home/sliconmn5.jpg')`,
                 }}>
