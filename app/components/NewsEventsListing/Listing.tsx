@@ -7,7 +7,7 @@ const Listing = () => {
       <LightSectionContainer>
         <div className="container">
           <div className="news-list">
-            {newsEvents.map((item)=>(
+            {newsEvents.map((item)=>( 
                 <ListItem listData={item} key={item.id} />
             ))}
           </div>
