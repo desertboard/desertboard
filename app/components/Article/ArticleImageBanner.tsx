@@ -15,12 +15,12 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc }) => {
       {/* <div className="absolute inset-0 bg-black opacity-60 -z-10"></div>
       <div className="absolute inset-0 bg-primary opacity-20 -z-20"></div>  */}
 
-      <div className=" h-[300px] bg-Darkgreen absolute w-full "> </div>
+      <div className=" h-[300px] bg-Darkgreen hidden lg:block absolute w-full "> </div>
       <div className="container relative">
-        <div className="">
+        <div className=" pt-10 lg:pt-0">
           <Image
             className="w-full h-full   object-cover"
-            src={assets.articlebanner}
+            src={bannerSrc}
             width={1000}
             height={600}
             alt="Banner image"
@@ -46,7 +46,7 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc }) => {
               construction materials.{" "}
             </p>
           </div>
-          <div className="flex gap-4 md:gap-[40px]">
+          <div className="flex gap-4 md:gap-[40px] flex-wrap">
             <Image src={assets.articlesec1} alt=""></Image>
             <Image src={assets.articlesec2} alt=""></Image>
             <Image src={assets.articlesec3} alt=""></Image>
@@ -82,7 +82,7 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc }) => {
             </p>
           </div>
 
-          <div className="flex gap-4 mg:gap-[40px] pb-10 lg:pb-[60px] ">
+          <div className="flex gap-4 mg:gap-[40px] pb-10 lg:pb-[60px] flex-wrap">
             <Image src={assets.articlesec4} alt=""></Image>
             <Image src={assets.articlesec5} alt=""></Image>
           </div>

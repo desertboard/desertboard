@@ -1,11 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { StaticImageData } from "next/image";
 import '@/app/components/Common/pgbnr.scss';
 import { assets } from "@/public/assets/images/assets";
 
 interface HeroSectionProps {
-  bannerSrc: StaticImageData | string;
   arrowSrc: string;
   title: string;
   date: string;
@@ -15,7 +13,7 @@ interface HeroSectionProps {
   bnrHeight?: string;
 }
 
-const ArticleBanner: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,date, labeltext ,  breadcrumbs, bnrHeight }) => {
+const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labeltext ,  breadcrumbs, bnrHeight }) => {
   return (
     // <section className="relative h-[75dvh] bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full">
     <section className="relative bg-cover bg-Darkgreen flex items-center justify-center text-center bnr-pg pg-bnr article-banner w-full" style={{ "--banner-height": bnrHeight } as React.CSSProperties}>
@@ -54,6 +52,7 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,
                   <a href={breadcrumb.href} className={`text-[#FFFFFFBF]  texthelvetica20 ${index === breadcrumbs.length - 1 ? "font-bold text-white " : "opacity-75"}`}>
                     {breadcrumb.label}
                   </a>
+
                   {index < breadcrumbs.length - 1 && <Image src={arrowSrc} alt="Arrow" className="mx-2" />}
                 </li>
               ))}

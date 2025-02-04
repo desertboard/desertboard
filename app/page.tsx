@@ -1,5 +1,6 @@
 
 
+import BeforeFooterTag from "./components/Common/BeforeFooterTag";
 import MainDescBOx from "./components/Common/MainDescBox";
 import BannerSr from "./components/home/BannerSr";
 import SectorsList from "./components/home/SectorsList";
@@ -24,6 +25,7 @@ export default function Home() {
       <UspList secTitle={"Key USP's"} />
       <SectorsList />
       <SustainabeSc />
+      <BeforeFooterTag title={'To Sustainability'} />
     </>
   );
 }

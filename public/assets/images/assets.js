@@ -42,8 +42,41 @@ import relart4 from "../images/articles/relart4.jpg";
 import calender from "../images/icons/calender.svg";
 import label from "../images/icons/label.svg";
 import share from "../images/icons/share.svg";
+import sumain from "../images/sustainability/su-main.jpg";
+import sumainbg from "../images/sustainability/su-mainbg.jpg";
+import sumabanner from "../images/sustainability/sus-banner.jpg";
+import slidericon1 from "../images/sustainability/slider-icon1.svg";
+import slidericon2 from "../images/sustainability/slider-icon2.svg";
+import slidericon3 from "../images/sustainability/slider-icon3.svg";
+import slidericon4 from "../images/sustainability/slider-icon4.svg";
+import slidericon5 from "../images/sustainability/slider-icon5.svg";
+import sliderimg1 from "../images/sustainability/slider-img1.jpg";
+import sliderimg2 from "../images/sustainability/slider-img2.jpg";
+import sliderimg3 from "../images/sustainability/slider-img3.jpg";
+import sliderimg4 from "../images/sustainability/slider-img4.jpg";
+import sliderimg5 from "../images/sustainability/slider-img5.jpg";
+import sl01 from "../images/sustainability/slideimgs.jpg";
+
+
+
+
+
 
 export const assets = {
+    sl01,
+    sliderimg1,
+    sliderimg2,
+    sliderimg3,
+    sliderimg4,
+    sliderimg5,
+    slidericon1,
+    slidericon2,
+    slidericon3,
+    slidericon4,
+    slidericon5,
+    sumain,
+    sumainbg,
+    sumabanner,
     calender,
     label,
     share,
