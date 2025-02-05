@@ -12,12 +12,12 @@ import Image from "next/image";
 import LightSectionContainer from "../Common/LightSectionContainer";
 import { accrediations } from "./data";
 
-// interface AccrediationsProps {
-//   id: number;
-//   accrLogo: string;
-//   accrTitle: string;
-//   accrDesc: string;
-// }
+interface AccrediationsProps {
+  id: number;
+  accrLogo: string;
+  accrTitle: string;
+  accrDesc: string;
+}
 
 const AccrediationSlider:React.FC = () => {
   const swiperRef = useRef<SwiperRef>(null);
