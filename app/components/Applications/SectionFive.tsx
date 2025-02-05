@@ -69,7 +69,7 @@ const SectionFive = () => {
         <div className="container ">
           <div>
             <h2 className="heavydark mb-6 md:mb-10">
-              Customizable Finishes<span className="text-orange">.</span>
+            Related Applications<span className="text-orange">.</span>
             </h2>
           </div>
 
@@ -91,7 +91,7 @@ const SectionFive = () => {
               <Swiper
                 // install Swiper modules
                 modules={[Navigation, Pagination]}
-                spaceBetween={0}
+                spaceBetween={40}
                 slidesPerView={5}
                 loop={true}
                 navigation={{
@@ -105,23 +105,23 @@ const SectionFive = () => {
                   },
                   410: {
                     slidesPerView: 2,
-                    spaceBetween: 0,
+                    spaceBetween: 10,
                   },
                   640: {
                     slidesPerView: 3,
-                    spaceBetween: 0,
+                    spaceBetween: 10,
                   },
                   768: {
                     slidesPerView: 3,
-                    spaceBetween: 0,
+                    spaceBetween: 20,
                   },
                   1200: {
                     slidesPerView: 3,
-                    spaceBetween: 0,
+                    spaceBetween: 20,
                   },
                   1524: {
                     slidesPerView: 5,
-                    spaceBetween: 0,
+                    spaceBetween: 20,
                   },
                 }}
                 pagination={false}

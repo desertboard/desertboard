@@ -13,32 +13,32 @@ import { motion } from "framer-motion";
 
 const accordianData = [
   {
-      image: "/assets/images/applications/tile1.jpg",
+      image: "/assets/images/applications/ras1.jpg",
     title: "Raw Board",
     desc:"A wide range of uncoated boards, used as a core material, offering flexibility for customization and finishing."
   },
   {
-      image: "/assets/images/applications/tile2.jpg",
+      image: "/assets/images/applications/ras2.jpg",
     title: "Melamine Face Finishing",
     desc:"A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications."
   },
   {
-      image: "/assets/images/applications/tile3.jpg",
+      image: "/assets/images/applications/ras3.jpg",
     title: "Sanded Board",
     desc:"A Smooth, sanded surface board, ideal for interior fit-outs and paneling, ensuring enhanced finish quality and easy customization."
   },
   {
-      image: "/assets/images/applications/tile4.jpg",
+      image: "/assets/images/applications/ras4.jpg",
     title: "Premium Surface (Putty) Finishing",
     desc:"A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications."
   },
   {
-      image: "/assets/images/applications/tile5.jpg",
+      image: "/assets/images/applications/ras5.jpg",
     title: "Premium Plus Surface (Coated) Finishing",
     desc:"A flawless, smooth-surfaced board achieved with putty, ideal for high-quality paint applications and achieving a polished, refined look. "
   },
   {
-      image: "/assets/images/applications/tile6.jpg",
+      image: "/assets/images/applications/ras6.jpg",
     title: "Veneer Finishing",
     desc:"A decorative-finished board using thin layers of real material, offering a natural look, durability, and customization options."
   },
@@ -115,11 +115,11 @@ const SectionThree = () => {
               <div
                 className="relative group overflow-hidden transform goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
                 style={{ backgroundImage: `url(${item.image})` }}
-              ><div className="absolute bottom-4 left-4 opacity-[1] group-hover:opacity-[0]">
+              ><div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
                     <h3 className="nubernext28bold   text-white " >{item.title}</h3></div>
                 <div className="flex items-end  min-h-[462px] sld transition-colors duration-500 opacity-[0] group-hover:opacity-[1] ">
 
-                  <div className="p-4 transition-all duration-500 ease-in-out w-full  ">
+                  <div className="p-5 transition-all duration-500 ease-in-out w-full  ">
                     <h3 className="nubernext28bold text-white">
                             {item.title}
                           </h3>
