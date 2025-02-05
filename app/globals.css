@@ -91,11 +91,6 @@ p {
   font-family: "helvetica", sans-serif;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 .fiterwt {
   filter: brightness(0) invert(1);
 }
@@ -106,16 +101,7 @@ p {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -332,4 +318,11 @@ body {
 
 .style_body__b5Rqs {
   display: none !important;
+}
+
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
 }
