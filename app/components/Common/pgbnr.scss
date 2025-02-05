@@ -1,5 +1,5 @@
 .pg-bnr {
-    height: var(--banner-height, 75vh); /* Default height */
+    height: var(--banner-height, 75dvh); /* Default height */
     &:before {
         position: absolute;
         content: "";

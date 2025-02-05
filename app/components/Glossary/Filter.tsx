@@ -114,7 +114,7 @@ const Filter = () => {
                   <input
                     type="text"
                     placeholder="Search"
-                    className="emilfs w-full  text-font18 leading-none    focus:outline-none   focus:border-b-[#FF671F]"
+                    className="emilfs w-full  text-font20 leading-none    focus:outline-none   focus:border-b-[#FF671F] "
                   />
                 </div>
               </div>
@@ -128,7 +128,7 @@ const Filter = () => {
                     className={`w-fit py-[10px] px-[15px] cursor-pointer transition-all duration-300
             ${
               activeLetter === letter
-                ? "border-b-2 border-[orange]"
+                ? "border-b-2 border-orange"
                 : "border-b-2 border-transparent"
             }
           `}
@@ -137,14 +137,22 @@ const Filter = () => {
                   </div>
                 ))}
               </div>
-              <div>
 
+                <div >
                 <Searchresult itemdata={menuforA} />
+                  </div>
+                <div >
                 <Searchresult itemdata={menuforB} />
+                  </div>
+                <div >
                 <Searchresult itemdata={menuforC} />
+                  </div>
+                <div >
                 <Searchresult itemdata={menuforD} />
+                  </div>
+                <div className="ouy">
                 <Searchresult itemdata={menuforE} />
-              </div>
+                  </div>
             </div>
           </div>
         </div>
