@@ -1,57 +1,41 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import wh2 from "@/public/assets/images/applications/wh2.svg";
 import arrow from "@/public/assets/images/applications/arrowdown.svg";
-const accordionData = [
-  {
-    title: "Coating for Durability",
-    content:
-      "For fastening, it is recommended to use screws, nails, or staples with a length at least 2.5 times the thickness of the board, but not less than 50-75 mm. Fastening should be carried out at intervals of 150-300 mm on intermediate supports (depending on roof pitch), 150 mm along board joints, and 100 mm along roof edges.",
-  },
-  {
-    title: "Edge Coating After Resizing",
-    content:
-      "For fastening, it is recommended to use screws, nails, or staples with a length at least 2.5 times the thickness of the board, but not less than 50-75 mm. Fastening should be carried out at intervals of 150-300 mm on intermediate supports (depending on roof pitch), 150 mm along board joints, and 100 mm along roof edges.",
-  },
-  {
-    title: "Pre-Drilling for Fastening",
-    content:
-      "For fastening, it is recommended to use screws, nails, or staples with a length at least 2.5 times the thickness of the board, but not less than 50-75 mm. Fastening should be carried out at intervals of 150-300 mm on intermediate supports (depending on roof pitch), 150 mm along board joints, and 100 mm along roof edges.",
-  },
-  {
-    title: "Storage and Transportation Protection",
-    content:
-      "For fastening, it is recommended to use screws, nails, or staples with a length at least 2.5 times the thickness of the board, but not less than 50-75 mm. Fastening should be carried out at intervals of 150-300 mm on intermediate supports (depending on roof pitch), 150 mm along board joints, and 100 mm along roof edges.",
-  },
-  {
-    title: "Fastening Guidelines",
-    content:
-      "For fastening, it is recommended to use screws, nails, or staples with a length at least 2.5 times the thickness of the board, but not less than 50-75 mm. Fastening should be carried out at intervals of 150-300 mm on intermediate supports (depending on roof pitch), 150 mm along board joints, and 100 mm along roof edges.",
-  },
-  {
-    title: "Avoid Direct Decorative Applications",
-    content:
-      "For fastening, it is recommended to use screws, nails, or staples with a length at least 2.5 times the thickness of the board, but not less than 50-75 mm. Fastening should be carried out at intervals of 150-300 mm on intermediate supports (depending on roof pitch), 150 mm along board joints, and 100 mm along roof edges.",
-  },
-];
+import { assets } from "@/public/assets/images/assets";
+
 interface HeroSectionProps {
   title: string;
   content: string;
+  bg: string;
+  bullet: boolean;
 }
+type AccordionProps = {
 
-const AccordionItem: React.FC<HeroSectionProps> = ({ title, content }) => {
+  bg: string;
+  bullet: boolean;
+  accordionData: {
+
+    title: string;
+
+    content: string;
+
+  }[];
+
+};
+
+const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className=" bg-[#E3DED9] mb-3 md:mb-5">
+       <div className={`mb-3 md:mb-5 ${bg}`}>
       {/* Accordion Header */}
       <div
         className="flex justify-between cursor-pointer items-center   p-3 md:p-5 transition-all duration-300"
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex gap-3 md:gap-[16px] items-start">
-          <Image src={wh2} alt="icon" />
+        {bullet && <Image src={assets.accic} alt="icon" />}
           <p className="texthelvetica20bold clr15op75">{title}</p>
         </div>
         <div
@@ -59,7 +43,8 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, content }) => {
             isOpen ? "rotate-180" : "rotate-0"
           }`}
         >
-          <Image src={arrow} alt="arrow" />
+
+       <Image src={arrow} alt="arrow" />
         </div>
       </div>
 
@@ -75,11 +60,11 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, content }) => {
   );
 };
 
-const Accordion = () => {
+const Accordion : React.FC<AccordionProps> = ({ accordionData, bg, bullet}) => {
   return (
     <div className="w-full  ">
-      {accordionData.map((item, index) => (
-        <AccordionItem key={index} title={item.title} content={item.content} />
+      {accordionData && accordionData.map((item, index) => (
+        <AccordionItem key={index} bg={bg} bullet={bullet} title={item.title} content={item.content} />
       ))}
     </div>
   );

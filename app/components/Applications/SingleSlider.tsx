@@ -32,7 +32,7 @@ const SectionTwo = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative w-full h-[500px] md:h-[840px] bg-cover bg-center"
+            className="relative w-full h-[300px] md:h-[840px] bg-cover bg-center"
             style={{ backgroundImage: `url(/assets/images/sectors/sec1.png)` }}
             whileHover={{ scale: 1.02 }}
           />
@@ -44,7 +44,7 @@ const SectionTwo = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative w-full h-[500px] md:h-[840px] bg-cover bg-center"
+            className="relative w-full h-[300px] md:h-[840px] bg-cover bg-center"
             style={{ backgroundImage: `url(/assets/images/sectors/sec2.png)` }}
             whileHover={{ scale: 1.02 }}
           />

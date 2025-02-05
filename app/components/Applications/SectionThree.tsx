@@ -47,14 +47,12 @@ const SectionThree = () => {
   return (
     <>
       <section className=" py-10 lg:py-20  relative bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
-      <motion.div className="ola ola-right absolute top-5 right-[-10%] w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
+      <motion.div className="ola ola-right absolute top-[-200px] right-[-10%] w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
         <Image className="absolute" src={ola} alt="Description of the image"></Image>
       </motion.div>
 
-      <div className="ola ola-right absolute bottom-0 left-[-10%] w-[40em] rotate-180">
-        <Image className="absolute" src={ola} alt="Description of the image"></Image>
-      </div>
+
         <div className="container ">
           <div><h2 className="heavydark48 mb-6 md:mb-10">Customizable Finishes<span className="text-orange">.</span></h2></div>
 
@@ -71,7 +69,8 @@ const SectionThree = () => {
                 },
               }}>
           <Swiper
-            // install Swiper modules
+                // install Swiper modules
+                className="swpstss  "
             modules={[Navigation, Pagination]}
             spaceBetween={0}
             // slidesPerView='auto'
@@ -116,17 +115,19 @@ const SectionThree = () => {
               <div
                 className="relative group overflow-hidden transform goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
                 style={{ backgroundImage: `url(${item.image})` }}
-              >
-                <div className="flex items-end justify-center min-h-[462px]">
-                  <div className="px-4">
-                    <h3 className="nubernext28bold mb-4 text-white">{item.title}</h3>
+              ><div className="absolute bottom-4 left-4 opacity-[1] group-hover:opacity-[0]">
+                    <h3 className="nubernext28bold   text-white " >{item.title}</h3></div>
+                <div className="flex items-end  min-h-[462px] sld transition-colors duration-500 opacity-[0] group-hover:opacity-[1] ">
 
-                    <p
-                      className="text-white overflow-hidden max-h-0 group-hover:max-h-[100px]
-                                transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100"
-                    >
-                      {item.desc}
-                    </p>
+                  <div className="p-4 transition-all duration-500 ease-in-out w-full  ">
+                    <h3 className="nubernext28bold text-white">
+                            {item.title}
+                          </h3>
+
+                          <p className="text-white overflow-hidden pt-5  min-w-[45ch] translate-y-[100%] hidden group-hover:translate-y-[0] group-hover:block
+                          transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-[1]" >
+                            {item.desc}
+                          </p>
                   </div>
                 </div>
               </div>

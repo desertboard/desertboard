@@ -61,56 +61,132 @@ export const SliderData = [
     title:"Affordable And Clean Energy ",
     desc:"As proved by Desert Board's life cycle assessment (LCA) and Environmental Product Declaration (EPD), 30% of the factory’s purchased electricity comes from clean sources (nuclear & solar).  ",
     icon: assets.iconsl2,
-    image:assets.sl01
+    image:assets.sl02
   },
   {
     id: 3,
     title:"Decent Work And Economic Growth",
     desc:" As of 2025, DesertBoard employes a workforce of 284 team members, including 156 positions at our factory and 128 roles within the company's back-office operations.",
     icon: assets.iconsl3,
-    image:assets.sl01
+    image:assets.sl03
   },
   {
     id: 4,
     title:"Industry, Innovation, And Infrastructure",
     desc:"Desert Board's engineered solutions are improving the construction industry while combating deforestation. Palm Strand Board®’s outstanding properties include high strength, versatility, fire resistance, sound isolation, among many more.",
     icon: assets.iconsl4,
-    image:assets.sl01
+    image:assets.sl04
   },
   {
     id: 5,
     title:"Inequality",
     desc:"At DesertBoard, inclusivity is a key pillar, with a multicultural talent pool that values diversity in ethnicity, religious background, and an increasing female shares of our workforce.",
     icon: assets.iconsl5,
-    image:assets.sl01
+    image:assets.sl05
   },
   {
     id: 6,
     title:"Sustainable Cities And Communities ",
     desc:"DesertBoard is proudly preserving the UAE’s cultural and natural heritage by collecting annually regenerated palm frond biomass, preventing it from ending up in landfills or being incinerated, which would otherwise release CO2 or methane into the atmosphere.",
     icon: assets.iconsl6,
-    image:assets.sl01
+    image:assets.sl06
   },
   {
     id: 7,
     title:"Responsible Consumption And Production ",
     desc:"Every year, DesertBoard sources hundreds of thousands of tons of palm residues from local farmers and converts them into PSB®. To raise awareness on responsible consumption and production, DesertBoard showcased its’ bio-economy model at 19 regional and global forums n 2024.",
     icon: assets.iconsl7,
-    image:assets.sl01
+    image:assets.sl07
   },
   {
     id: 8,
     title:"SDG 13",
     desc:"DesertBoard proudly supports the UAE&apos;s Net Zero 2050 strategy, Saudi Arabia&apos;s Net Zero 2060 initiative, and India&apos;s Net Zero 2070 vision.",
     icon: assets.iconsl8,
-    image:assets.sl01
+    image:assets.sl08
   },
   {
     id: 9,
     title:"SDG 15",
     desc:"DesertBoard protects the natural ecosystem with zero-deforestation supply chain.",
     icon: assets.iconsl9,
-    image:assets.sl01
+    image:assets.sl09
   },
 
 ];
+
+
+export const accordionData = {
+  data: [
+    {
+      title: "Alo Saf’at Green Building System - Dubai Muncipaity",
+      content:
+        "For fastening, it is recommended to use screws, nails, or staples with a length at least 2.5 times the thickness of the board, but not less than 50-75 mm. Fastening should be carried out at intervals of 150-300 mm on intermediate supports (depending on roof pitch), 150 mm along board joints, and 100 mm along roof edges.",
+    },
+    {
+      title: "United Nations Global Compact",
+      content:
+        "For fastening, it is recommended to use screws, nails, or staples with a length at least 2.5 times the thickness of the board, but not less than 50-75 mm. Fastening should be carried out at intervals of 150-300 mm on intermediate supports (depending on roof pitch), 150 mm along board joints, and 100 mm along roof edges.",
+    },
+    {
+      title: "United Nations Climate Neutral Now",
+      content:
+        "For fastening, it is recommended to use screws, nails, or staples with a length at least 2.5 times the thickness of the board, but not less than 50-75 mm. Fastening should be carried out at intervals of 150-300 mm on intermediate supports (depending on roof pitch), 150 mm along board joints, and 100 mm along roof edges.",
+    },
+    {
+      title: "Emirates Green Building Council",
+      content:
+        "For fastening, it is recommended to use screws, nails, or staples with a length at least 2.5 times the thickness of the board, but not less than 50-75 mm. Fastening should be carried out at intervals of 150-300 mm on intermediate supports (depending on roof pitch), 150 mm along board joints, and 100 mm along roof edges.",
+    },
+    {
+      title: "International Code Council (ICC)",
+      content:
+        "For fastening, it is recommended to use screws, nails, or staples with a length at least 2.5 times the thickness of the board, but not less than 50-75 mm. Fastening should be carried out at intervals of 150-300 mm on intermediate supports (depending on roof pitch), 150 mm along board joints, and 100 mm along roof edges.",
+    },
+
+  ],
+};
+export const tabData = {
+  data: [
+    {
+      id: 1,
+      tab:"United Arab Emirates",
+      title: "United Arab Emirates",
+      image: assets.imgal,
+      description: "The UAE is known for its skyscrapers, luxury lifestyle, and rich cultural heritage.",
+
+      list: ["Item 1", "Item 2"],
+    }, {
+      id: 2,
+      tab:"European Union",
+      title: "European Union",
+      image: assets.imgal,
+      description: "The UAE is known for its skyscrapers, luxury lifestyle, and rich cultural heritage.",
+
+      list: ["Item 1", "Item 2"],
+    },
+    {
+      id: 3,
+      tab:"Saudi Arabia",
+      title: "Saudi Arabia",
+      image: assets.imgal,
+      description: "The UAE is known for its skyscrapers, luxury lifestyle, and rich cultural heritage.",
+
+      list: ["Item 1", "Item 2"],
+    },
+    {
+      id: 4,
+      tab:"India",
+      title: "Advancing Net-Zero by 2070",
+      image: assets.imgal,
+      description: "The UAE is known for its skyscrapers, luxury lifestyle, and rich cultural heritage.",
+
+      list: ["DesertBoard’s Palm Strand Board, crafted from 100% sustainable agricultural palm biomass, aligns with India’s long-term low-carbon development strategy. PSB® boards act as an artificial carbon sink as they can store the carbon within their structure, addressing India’s goals for CO2 removal and net-zero emissions by 2070 vision. ",
+        "The use of renewable palm biomass eliminates the need for deforestation, preserving ecosystems and promoting vegetation growth, aligning with India’s commitment to enhancing forest cover and fostering climate justice.",
+        "By offering a renewable alternative to traditional wood-based materials, PSB® boards empower the development of green buildings and resilient cities, aligning with India’s vision for sustainable and low-carbon urban growth."
+      ],
+    },
+
+  ],
+};
+
