@@ -73,7 +73,7 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc }) => {
           />
         </div>
         <div className="max-w-[1400px]">
-          <div className="pb-10 lg:pb-[60px] pt-10 lg:pt-20">
+          <div className="pb-6 lg:pb-[60px] pt-6 lg:pt-20">
             <p className="pb-5 lg:pb-10 clr15op75 texthelvetica20">
               DesertBoard® proudly unveiled its versatile range of 100%
               sustainable products at Big 5 Global 2024, the region’s largest
@@ -97,7 +97,7 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc }) => {
             <Image src={assets.articlesec2} alt=""></Image>
             <Image src={assets.articlesec3} alt=""></Image>
           </div>
-          <div className="pb-10 lg:pb-[60px] pt-10 lg:pt-20">
+          <div className="pb-6 lg:pb-[60px] pt-6 lg:pt-20">
             <p className="pb-5 lg:pb-10 clr15op75 texthelvetica20">
               Aligned with the gulf’s Vision 2030, DesertBoard®’s
               zero-formaldehyde boards contribute directly to achieving net-zero
@@ -128,21 +128,21 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc }) => {
             </p>
           </div>
 
-          <div className="flex gap-4 mg:gap-[40px] pb-10 lg:pb-[60px] flex-wrap">
+          <div className="flex gap-4 mg:gap-[40px] pb-6 lg:pb-[60px] flex-wrap">
             <Image src={assets.articlesec4} alt=""></Image>
             <Image src={assets.articlesec5} alt=""></Image>
           </div>
-            <div className="pb-10 lg:pb-[60px] ">
+            <div className="pb-6 lg:pb-[60px] ">
               <p className=" clr15op75">
               DesertBoard® extends its heartfelt appreciation to everyone who visited its stall and showed interest in its zero-emission Palm Strand Board (PSB®). Your enthusiasm for locally manufactured solutions fuels our mission to drive the construction industry toward a greener, more innovative future.
               </p>
           </div>
 
-          <div className="flex items-center gap-2 pb-10 lg:pb-[60px]">
+          <div className="flex items-center gap-2 pb-6 lg:pb-[60px]">
                     <Image src={assets.label} alt=""></Image>
                     <p className="nuber-next-bold texthelvetica20bold text-Darkgreen leading-[1] uppercase underline">Sustainability, Company News </p>
           </div>
-          <div className="flex items-center gap-2 pb-10 lg:pb-20">
+          <div className="flex items-center gap-2 pb-6 lg:pb-20">
                     <Image src={assets.share} alt=""></Image>
                     <p className="nuber-next-bold text-font18 text-Darkgreen leading-[1] ">Share Article</p>
           </div>

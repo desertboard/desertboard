@@ -22,12 +22,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
         <Image className="w-full h-full absolute object-cover" src={bannerSrc} width={1000} height={800} alt="Banner image" />
       </figure>
       <div className="container relative">
-        <div className="pg-bnr__div absolute bottom-0 pb-10 lg:pb-20">
-          <h1 className="pg-bnr__ttl heavywhite  mb-6 md:mb-10">
+        <div className="pg-bnr__div absolute bottom-0 pb-4 lg:pb-20">
+          <h1 className="pg-bnr__ttl heavywhite  mb-5 md:mb-10">
             {title}
             <span className="text-[#FF671F]">.</span>
           </h1>
-          <p className="text-[#FFFFFFBF] text-font20 lh-1p33 mb-10 max-w-[40ch] text-left">{desc}</p>
+          {desc && <p className="text-[#FFFFFFBF] text-font20 lh-1p33 mb-10 max-w-[40ch] text-left">{desc}</p>}
           <div className="pg-bnr__txt flex items-center flex-wrap">
             <ul className="flex items-center">
               {breadcrumbs.map((breadcrumb, index) => (
