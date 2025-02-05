@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
- import Searchresult from "./Searchresult";
+import Searchresult from "./Searchresult";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -20,9 +20,7 @@ const Filter = () => {
   };
   const menuforB = {
     alphabet: "B",
-    items: [
-      { id: 1, name: "BS" },
-    ],
+    items: [{ id: 1, name: "BS" }],
   };
   const menuforC = {
     alphabet: "C",
@@ -57,6 +55,24 @@ const Filter = () => {
     "#",
   ];
   const [activeLetter, setActiveLetter] = useState<string>("");
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 500) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <section className=" py-10 lg:py-20  insp-mn relative inspbg ">
@@ -81,78 +97,87 @@ const Filter = () => {
         </div>
         <div className="container ">
           <div className="relative z-1">
-            <div className="flex  justify-between ">
-              <div>
-                <h2 className="heavydark ">
-                  Filter<span className="text-orange">.</span>
-                </h2>
-              </div>
-              <div className="w- flex items-center justify-between  ">
-                <div className="relative w-full flex items-center gap-2 border-b-2 border-Darkgreen p-3 pl-5 pr-[110px]">
-                  <button
-                    type="button"
-                    className="  group top-0 left-0 mt-1 mr-1    text-sm nuber-next-bold text-Darkgreen flex gap-2 items-center transition-all duration-300 ease-in-out
+            <div
+              className={`w-full ${
+                isSticky ? "fixed bgsti z-[9999] left-0 pt-[80px] md:pt-5" : ""
+              } top-[0] lg:top-[100px] `}
+            >
+              <div className="container">
+                <div className="flex  justify-between ">
+                  <div>
+                    <h2 className="heavydark ">
+                      Filter<span className="text-orange">.</span>
+                    </h2>
+                  </div>
+                  <div className="w- flex items-center justify-between  ">
+                    <div className="relative w-full flex items-center gap-2 border-b-2 border-Darkgreen p-3 pl-5 pr-[110px]">
+                      <button
+                        type="button"
+                        className="  group top-0 left-0 mt-1 mr-1    text-sm nuber-next-bold text-Darkgreen flex gap-2 items-center transition-all duration-300 ease-in-out
                         hover:text-[#FF671F]"
-                  >
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M19 19L14.65 14.65M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
-                        stroke="#151515"
-                        strokeOpacity="0.5"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+                      >
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M19 19L14.65 14.65M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
+                            stroke="#151515"
+                            strokeOpacity="0.5"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+                      <input
+                        type="text"
+                        placeholder="Search"
+                        className="emilfs w-full  text-font20 leading-none    focus:outline-none   focus:border-b-[#FF671F] "
                       />
-                    </svg>
-                  </button>
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    className="emilfs w-full  text-font20 leading-none    focus:outline-none   focus:border-b-[#FF671F] "
-                  />
+                    </div>
+                  </div>
+                </div>
+                <div className="  mt-8">
+                  <div className="flex flex-wrap gap-2 py-8 justify-between w-full border-y-2 border-[#15151510] mb-6 md:mb-10">
+                    {alphabet.map((letter) => (
+                      <div
+                        key={letter}
+                        onClick={() => setActiveLetter(letter)}
+                        className={`w-fit py-[10px] px-[15px] cursor-pointer transition-all duration-300
+                      ${
+                        activeLetter === letter
+                          ? "border-b-2 border-orange"
+                          : "border-b-2 border-transparent"
+                      }
+                    `}
+                      >
+                        <p className="texthelvetica20 font-bold">{letter}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="  mt-8">
-              <div className="flex flex-wrap gap-2 py-8 justify-between w-full border-y-2 border-[#15151510] mb-6 md:mb-10">
-                {alphabet.map((letter) => (
-                  <div
-                    key={letter}
-                    onClick={() => setActiveLetter(letter)}
-                    className={`w-fit py-[10px] px-[15px] cursor-pointer transition-all duration-300
-            ${
-              activeLetter === letter
-                ? "border-b-2 border-orange"
-                : "border-b-2 border-transparent"
-            }
-          `}
-                  >
-                    <p className="texthelvetica20 font-bold">{letter}</p>
-                  </div>
-                ))}
-              </div>
-
-                <div >
+            <div>
+              <div>
                 <Searchresult itemdata={menuforA} />
-                  </div>
-                <div >
+              </div>
+              <div>
                 <Searchresult itemdata={menuforB} />
-                  </div>
-                <div >
+              </div>
+              <div>
                 <Searchresult itemdata={menuforC} />
-                  </div>
-                <div >
+              </div>
+              <div>
                 <Searchresult itemdata={menuforD} />
-                  </div>
-                <div className="ouy">
+              </div>
+              <div className="ouy">
                 <Searchresult itemdata={menuforE} />
-                  </div>
+              </div>
             </div>
           </div>
         </div>
