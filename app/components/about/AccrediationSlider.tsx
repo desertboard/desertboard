@@ -12,12 +12,12 @@ import Image from "next/image";
 import LightSectionContainer from "../Common/LightSectionContainer";
 import { accrediations } from "./data";
 
-// interface AccrediationsProps {
-//   id: number;
-//   accrLogo: string;
-//   accrTitle: string;
-//   accrDesc: string;
-// }
+interface AccrediationsProps {
+  id: number;
+  accrLogo: string;
+  accrTitle: string;
+  accrDesc: string;
+}
 
 const AccrediationSlider:React.FC = () => {
   const swiperRef = useRef<SwiperRef>(null);
@@ -83,16 +83,16 @@ const AccrediationSlider:React.FC = () => {
               slidesPerView: 2,
             },
             1200: {
-              slidesPerView:1,
+              slidesPerView: 1,
             },
             1400: {
-              slidesPerView:3.2,
+              slidesPerView: 3.2,
             },
-            1789:{
-              slidesPerView:3.2
-            }
+            1789: {
+              slidesPerView: 3.2,
+            },
           }}>
-          {accrediations.map((accr) => (
+          {accrediations.map((accr: AccrediationsProps) => (
             <SwiperSlide className="accr__slide h-40 text-white" key={accr.id}>
               <div className="accr-crd p-[40px] bg-Darkgreen">
                 <div className="accr__img bg-white mb-7 p-2 w-[70px] h-[70px] flex items-center justify-center">
@@ -121,7 +121,6 @@ const AccrediationSlider:React.FC = () => {
             </button>
           </div>
         </div>
-
       </div>
     </LightSectionContainer>
   );
