@@ -95,35 +95,35 @@ export const linkedInSliderData = [
   {
     id: 1,
     timePosted:"4 hours ago",
-    desc:"1 DesertBoard is proud to participate in the Al Ain Dates Festival, held under the",
+    desc:"DesertBoard is proud to participate in the Al Ain Dates Festival, held under the",
     imageSrc: "/assets/images/linkedin/post1.jpg",
     likes:"14"
   },
   {
     id: 2,
     timePosted:"4 hours ago",
-    desc:"2 DesertBoard is proud to participate in the Al Ain Dates Festival, held under the",
+    desc:"DesertBoard is proud to participate in the Al Ain Dates Festival, held under the",
     imageSrc: "/assets/images/linkedin/post2.jpg",
     likes:"14"
   },
   {
     id: 3,
     timePosted:"4 hours ago",
-    desc:"3 DesertBoard is proud to participate in the Al Ain Dates Festival, held under the",
+    desc:"DesertBoard is proud to participate in the Al Ain Dates Festival, held under the",
     imageSrc: "/assets/images/linkedin/post3.jpg",
     likes:"14"
   },
   {
     id: 4,
     timePosted:"4 hours ago",
-    desc:"4 DesertBoard is proud to participate in the Al Ain Dates Festival, held under the",
+    desc:"DesertBoard is proud to participate in the Al Ain Dates Festival, held under the",
     imageSrc: "/assets/images/linkedin/post4.jpg",
     likes:"14"
   },
   {
     id: 5,
     timePosted:"4 days ago",
-    desc:"5 DesertBoard is proud to participate in the Al Ain Dates Festival, held under the",
+    desc:"DesertBoard is proud to participate in the Al Ain Dates Festival, held under the",
     imageSrc: "/assets/images/linkedin/post5.jpg",
     likes:"14"
   },

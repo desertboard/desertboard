@@ -74,6 +74,7 @@ import wh2 from "../images/applications/wh2.svg";
 import wh3 from "../images/applications/wh3.svg";
 import accic from "../images/icons/accic.svg";
 import bghr from "../images/applications/bghr.jpg"
+import appbanner from "../images/applications/banner.jpg"
 
 
 
@@ -83,6 +84,7 @@ import bghr from "../images/applications/bghr.jpg"
 
 
 export const assets = {
+    appbanner,
     bghr,
     accic,
     wh1,

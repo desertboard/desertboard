@@ -7,7 +7,7 @@ import flogo from "@/public/assets/images/home/flogo.png";
 import logo from "@/public/assets/images/home/desert-logo.svg";
 import { Menu, MenuItem } from "./ui/navbar-menu";
 import MobileMenu from "./MobileMenu/MobileMenu";
-import { menuItems } from "../data/menuItems";
+import { menuItems } from "../(user)/data/menuItems";
 
 const Header = () => {
   const [active, setActive] = useState<string | null>(null);

@@ -43,7 +43,7 @@ const AccrediationSlider:React.FC = () => {
           clients with a high-quality, certified product, we empower them to confidently deliver sustainable and innovative construction projects that meet the highest industry standards.
         </p>
       </div>
-      <div className="container mb-[50px] lg:mb-[100px] h-full !overflow-visible relative">
+      <div className="container mb-[50px] xxl:mb-[100px] h-full !overflow-visible relative">
         <Swiper
           ref={swiperRef}
           className="accr__slider h-screen !overflow-visible"
@@ -77,16 +77,16 @@ const AccrediationSlider:React.FC = () => {
           }}
           breakpoints={{
             320: {
-              slidesPerView: 2,
+              slidesPerView: 1.4,
             },
             768: {
-              slidesPerView: 2,
+              slidesPerView: 1.1,
             },
             1200: {
-              slidesPerView: 1,
+              slidesPerView: 2.2,
             },
             1400: {
-              slidesPerView: 3.2,
+              slidesPerView: 2.2,
             },
             1789: {
               slidesPerView: 3.2,
@@ -94,7 +94,7 @@ const AccrediationSlider:React.FC = () => {
           }}>
           {accrediations.map((accr: AccrediationsProps) => (
             <SwiperSlide className="accr__slide h-40 text-white" key={accr.id}>
-              <div className="accr-crd p-[40px] bg-Darkgreen">
+              <div className="accr-crd p-6 xl:p-[40px] bg-Darkgreen">
                 <div className="accr__img bg-white mb-7 p-2 w-[70px] h-[70px] flex items-center justify-center">
                   <Image src={accr.accrLogo} alt="" width={70} height={70} className="object-contain"></Image>
                 </div>

@@ -17,11 +17,9 @@ const InstagramBlock: React.FC<InstagramDataProps> = ({ instagramData }) => {
     <>
       <CustomClrSection bgClr="ola-white bg-primary border-t-[6px] border-b-[6px] border-secondary">
         <div className="container">
-          <div className="flex justify-between items-center relative z-50">
-            <h2 className="text-font48 heavydark text-white mb-2 xl:mb-10">
-              Are you following us on LinkedIn?<span className="text-[#FF671F] leading-[1]">.</span>
-            </h2>
-            <PrimaryArrowBtn btntitle={"Visit LinkedIn"} btnLink="#" />
+          <div className="flex justify-between items-start relative z-50 flex-wrap gap-x-5 mb-5 lg:mb-10">
+            <h2 className="text-font48 heavydark text-white mb-2 xl:mb-10">Are you following us on Instagram?</h2>
+            <PrimaryArrowBtn btntitle={"Visit Instagram"} btnLink="#" />
           </div>
           <div className="grid grid-flow-row grid-cols-5">
             {instagramData.map((post) => (

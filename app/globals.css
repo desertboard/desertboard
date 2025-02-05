@@ -84,16 +84,11 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "NuberBold" Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: "NuberBold",  "Myriad Pro", Myriad, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 p {
   font-family: "helvetica", sans-serif;
-}
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
 }
 
 .fiterwt {
@@ -129,29 +124,40 @@ p {
     height: 100%;
 } */
 .swiper-pagination-bullet-active{background: #00594F !important;}
+.hrcd::after{
+  content: '';
+  position: absolute;
+  z-index: -1;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);}
+    .hrcd:hover::after{
+      content: '';
+      position: absolute;
+      z-index: -1;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        background: rgb(0,0,0);
+        background: -moz-linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,28,25,1) 99%);
+        background: -webkit-linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,28,25,1) 99%);
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,28,25,1) 99%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#001c19",GradientType=1); }
 .hrcd:hover{
 background-size: cover !important;
     background-image: url(/assets/images/applications/bghr.jpg) !important;
-
-    background: rgb(0, 28, 25);
-    background: -moz-linear-gradient(180deg, rgba(0, 28, 25, 0) 0%, rgba(0, 28, 25, 0.46) 20%, rgb(0, 28, 25) 100%);
-    background: -webkit-linear-gradient(180deg, rgba(0, 28, 25, 0) 0%, rgba(0, 28, 25, 0.46) 20%, rgb(0, 28, 25) 100%);
-    background: linear-gradient(180deg, rgba(0, 28, 25, 0) 0%, rgba(0, 28, 25, 0.46) 20%, rgb(0, 28, 25) 100%);
-    background: linear-gradient(0deg, #001C19 0%, rgba(0, 28, 25, 0.2) 45%, rgba(0, 28, 25, 0) 99%), rgba(0, 0, 0, 0.5);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#001c19",endColorstr="#001c19",GradientType=1);}
+}
 .ouy .dst{margin-bottom: 0px !important}
 
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -259,7 +265,8 @@ body {
     }
   }
 }
-
+.bgsti{background: url(/assets/images/home/Light02.png);
+  background-size: contain;}
 .news-events {
   .display-webkit-box {
     display: -webkit-box;
@@ -276,14 +283,14 @@ body {
 
 .inspbg {
   background: url(/assets/images/home/Light02.png);
-  background-size: cover;
+
   position: relative;
   z-index: 1;
 }
 
 .darkbanner {
   background: url(/assets/images/home/Darker.png);
-  background-size: cover;
+
   position: relative;
   z-index: 1;
 }
@@ -368,4 +375,11 @@ body {
 
 .style_body__b5Rqs {
   display: none !important;
+}
+
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
 }

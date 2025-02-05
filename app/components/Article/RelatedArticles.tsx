@@ -9,7 +9,7 @@ const RelatedArticles: React.FC = () => {
   return (
     <CustomClrSection>
       <div className="container">
-        <h2 className="heavydark mb-2 xl:mb-10">
+        <h2 className="heavydark mb-5 md:mb-10">
           Related Articles<span className="text-[#FF671F] leading-[1]">.</span>
         </h2>
         <div className="related-news">
