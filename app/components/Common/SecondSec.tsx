@@ -2,9 +2,6 @@
 
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import { motion } from "framer-motion";
-import lfbef from "@/public/assets/images/home/leaf.svg";
-import lfbt from "@/public/assets/images/home/lfbt.svg";
 interface SecondSecProps {
   title: string;
   subtitle: string;
