@@ -1,12 +1,12 @@
 
 
 // Image imports
-import bannerImg from "@/public/assets/images/sectors/banner.png";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import PageBanner from "../Common/PageBanner";
 import MainDescBOx from "../Common/MainDescBox";
 import Tabs from "./Tabs";
 import BeforeFooterTag from "../Common/BeforeFooterTag";
+import { assets } from "@/public/assets/images/assets";
 
 
 
@@ -20,7 +20,7 @@ const SectorDetails = () => {
   return (
     <>
       <PageBanner
-        bannerSrc={bannerImg} // Corrected image import here
+        bannerSrc={assets.secdbanner} // Corrected image import here
         arrowSrc={Arrow}
         desc=""
         title="Engineering & Construction"
@@ -31,12 +31,11 @@ const SectorDetails = () => {
         secTitle="Engineering & Construction"
         subTitle=""
         paragraphs={[
-          "In the heart of the desert, where towering date palm trees symbolize our heritage, a groundbreaking innovation has emerged: DesertBoard's Palm Strand Board (PSB®), the world’s first engineered palm-based board. ",
-          "For centuries, date palm trees have been a vital resource in the Middle East, historically used to construct Barasti houses that provided essential shelter in the harsh desert climate. Inspired by the rich legacy and the vision of the UAE's founding father, Sheikh Zayed bin Sultan Al Nahyan, DesertBoard® successfully produced the first engineered board in 2021.",
+          "Desert Board proudly introduces Palm Strand Board (PSB®), a groundbreaking engineered solution redefining sustainability and performance in the construction industry. With zero formaldehyde emissions, PSB® ensures a healthier living environment, exemplifying our commitment to safety and well-being. Crafted from upcycled palm fronds, this locally manufactured material supports the region's bioeconomy while reducing environmental impact. Engineered for strength, durability, and versatility, PSB® thrives under challenging conditions, offering exceptional moisture resistance, fire safety, and sound isolation properties. From structural applications to fine furnishings, PSB® delivers unmatched quality and customization, empowering designers, architects, and builders to create with confidence and sustainability in mind.",
         ]}
-        // mainImg="/assets/images/mn.jpg"
-        mainVdo={"../assets/images/home/liftvdo.mp4"}
-        vdoPoster="../assets/images/mn.jpg"
+         mainImg={assets.sec1}
+        // mainVdo={"../assets/images/home/liftvdo.mp4"}
+        // vdoPoster="../assets/images/mn.jpg"
       />
       <Tabs />
            <BeforeFooterTag title={"To Downloads"}/>
