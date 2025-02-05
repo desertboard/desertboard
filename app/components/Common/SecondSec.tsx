@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 interface SecondSecProps {
@@ -17,8 +19,26 @@ const SecondSec: React.FC<SecondSecProps> = ({
 }) => {
   return (
     <div>
-      <section className="py-[80px] insp-mn relative">
-        <div className="container m-auto mt-[40px] pb-[80px]">
+      <section className="pt-10 lg:pt-20 pb-10 lg:pb-[120px] insp-mn relative  inspbg">
+      {/* <motion.div
+        className="ola ola-right absolute top-0 right-[-10%] w-[40em]"
+        animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Image
+          className="absolute"
+          src={lfbef}
+          alt="Description of the image"
+        />
+      </motion.div>
+      <motion.div
+        className="ola ola-right absolute bottom-[43%] left-[-15%] w-[40em]"
+        animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Image className="absolute" src={lfbt} alt="Description of the image" />
+      </motion.div> */}
+        <div className="container  ">
           <div
             className="flex flex-col lg:flex-row items-center justify-between adst relative"
             style={{
@@ -39,11 +59,11 @@ const SecondSec: React.FC<SecondSecProps> = ({
             />
 
             <div className="lg:w-1/2 text-center lg:text-left px-[60px] py-[80px]">
-              <h2 className="text-gray-900 mb-4 text-[48px] font-black">
+              <h2 className="heavydark mb-4 ">
                 {title}
                 <span className="text-[#FF671F]">.</span>
               </h2>
-              <p className="text-lg text-gray-700 mb-6 text-[#151515] opacity-[50%]">
+              <p className="texthelvetica20 clr15op75 mb-0  ">
                 {subtitle}
               </p>
               {paragraphs &&
