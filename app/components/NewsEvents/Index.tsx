@@ -1,6 +1,6 @@
 "use client";
 import PageBanner from "../Common/PageBanner";
-import bannerImg from "@/public/assets/images/sectors/abt-bnr.jpg";
+import bannerImg from "@/public/assets/images/banners/news-and-events-banner1.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import BeforeFooterTag from "../Common/BeforeFooterTag";
 import NewsBlock from "./NewsBlock";
@@ -34,12 +34,12 @@ const Index = () => {
         desc=""
         title="News & Events"
         breadcrumbs={breadcrumbs}
-        bnrHeight="90dvh"
+        bnrHeight="92dvh"
       />
-      <NewsBlock newsEvent={latestNews} />
+      <NewsBlock newsEvent={latestNews} sectionTitle="Company News" />
       <LinkedInSlider data={linkedInSliderData} />
-      <NewsBlock newsEvent={latestExpertise} />
-      <InstagramBlock instagramData={instagramPosts}/>
+      <NewsBlock newsEvent={latestExpertise} sectionTitle="Our Expertise" />
+      <InstagramBlock instagramData={instagramPosts} />
       <UpcommingEvents commingEvents={upCommingEvents} />
       <BeforeFooterTag title={"Discover Industry Solutions"} />
     </>

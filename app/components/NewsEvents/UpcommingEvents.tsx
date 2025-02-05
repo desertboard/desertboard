@@ -30,11 +30,10 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
     <>
       <LightSectionContainer>
         <div className="container">
-          <div className="flex justify-between items-center relative z-50">
-            <h2 className="text-font48 heavydark mb-2 xl:mb-10">
-              Upcomming Events<span className="text-[#FF671F] leading-[1]">.</span>
+          <div className="relative z-50 ">
+            <h2 className="text-font48 heavydark mb-5 xl:mb-10">
+              Upcoming Events<span className="text-[#FF671F] leading-[1]">.</span>
             </h2>
-            <PrimaryArrowBtn btntitle={"Visit LinkedIn"} btnLink="#" />
           </div>
         </div>
         <div className="container pb-[100px] !overflow-visible">
@@ -61,7 +60,13 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
                 slidesPerView: 2.5,
               },
               1024: {
-                slidesPerView: 4.4,
+                slidesPerView: 2.6,
+              },
+              1400: {
+                slidesPerView: 3.3,
+              },
+              1600: {
+                slidesPerView: 4.6,
               },
             }}>
             {commingEvents.map((event) => (
@@ -71,11 +76,11 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
                     <Image src={event.eventLogo} className="object-contain" width={150} height={42} alt={event.eventTitle}></Image>
                   </div>
                   <div className="upc-event-crd__body">
-                    <h3 className="text-primary nuber-next-heavy text-font24 leading-[1.3]">{event.eventTitle}</h3>
+                    <h3 className="text-Darkgreen nuber-next-heavy text-font24 leading-[1.3]">{event.eventTitle}</h3>
                     <ul className="upc-event__info flex flex-col gap-4 pt-6">
                       <li className="flex gap-2 text-black opacity-75 font-bold text-font16 leading-normal">
                         <span>
-                          <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <svg width="18" height="18" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 17C0 18.7 1.3 20 3 20H17C18.7 20 20 18.7 20 17V9H0V17ZM17 2H15V1C15 0.4 14.6 0 14 0C13.4 0 13 0.4 13 1V2H7V1C7 0.4 6.6 0 6 0C5.4 0 5 0.4 5 1V2H3C1.3 2 0 3.3 0 5V7H20V5C20 3.3 18.7 2 17 2Z" fill="#FF671F" />
                           </svg>
                         </span>
@@ -83,7 +88,7 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
                       </li>
                       <li className="flex gap-2 text-black opacity-75 font-bold text-font16 leading-normal">
                         <span>
-                          <svg width="24" height="20" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <svg width="18" height="18" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                               d="M6 0.220703C7.5913 0.220703 9.11742 0.852844 10.2426 1.97806C11.3679 3.10328 12 4.6294 12 6.2207C12 7.812 11.3679 9.33813 10.2426 10.4633C9.11742 11.5886 7.5913 12.2207 6 12.2207C4.4087 12.2207 2.88258 11.5886 1.75736 10.4633C0.632141 9.33813 0 7.812 0 6.2207C0 4.6294 0.632141 3.10328 1.75736 1.97806C2.88258 0.852844 4.4087 0.220703 6 0.220703ZM5.4375 3.0332V6.2207C5.4375 6.4082 5.53125 6.58398 5.68828 6.68945L7.93828 8.18945C8.19609 8.36289 8.54531 8.29258 8.71875 8.03242C8.89219 7.77227 8.82187 7.42539 8.56172 7.25195L6.5625 5.9207V3.0332C6.5625 2.72148 6.31172 2.4707 6 2.4707C5.68828 2.4707 5.4375 2.72148 5.4375 3.0332Z"
                               fill="#FF671F"
@@ -94,7 +99,7 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
                       </li>
                       <li className="flex gap-2 text-black opacity-75 font-bold text-font16 leading-normal">
                         <span>
-                          <svg width="24" height="24" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <svg width="18" height="18" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                               fillRule="evenodd"
                               clipRule="evenodd"
@@ -108,8 +113,8 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
                     </ul>
                   </div>
                   <div className="upc-event-crd__footer mt-auto flex gap-6">
-                    <PrimaryArrowBtn btntitle={"Tickets"} btnLink={"#"}/>
-                    <PrimaryArrowBtn btntitle={"Website"} btnLink={"#"}/>
+                    <PrimaryArrowBtn btntitle={"Tickets"} btnLink={"#"} />
+                    <PrimaryArrowBtn btntitle={"Website"} btnLink={"#"} />
                   </div>
                 </div>
               </SwiperSlide>

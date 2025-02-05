@@ -4,9 +4,9 @@ const Filter = () => {
     return (
       <section className="bg-grayE3D py-[41px]">
         <div className="container mx-auto">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between flex-wrap gap-4">
             {/* Left Group: Filter, Type, Sector */}
-            <div className="flex items-center space-x-6 gap-[50px]">
+            <div className="flex flex-wrap items-center lg:space-x-6 gap-4 lg:gap-[50px]">
               {/* Filter Text */}
               <span className="text-[28px] font-bold text-primary">
                 Filter<span className="text-[#FF671F]">.</span>

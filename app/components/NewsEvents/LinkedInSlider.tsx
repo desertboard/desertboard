@@ -29,10 +29,8 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({ data }) => {
     <>
       <CustomClrSection>
         <div className="container">
-          <div className="flex justify-between items-center relative z-50">
-            <h2 className="text-font48 heavydark mb-2 xl:mb-10">
-              Are you following us on LinkedIn?<span className="text-[#FF671F] leading-[1]">.</span>
-            </h2>
+          <div className="flex justify-between flex-wrap items-start relative z-50 gap-x-5 mb-5 ">
+            <h2 className="text-font48 heavydark xl:mb-10 mb-5 md:mb-10 ">Are you following us on LinkedIn?</h2>
             <PrimaryArrowBtn btntitle={"Visit LinkedIn"} btnLink="#" />
           </div>
         </div>
@@ -60,17 +58,25 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({ data }) => {
                 slidesPerView: 2.5,
               },
               1024: {
-                slidesPerView: 4.4,
+                slidesPerView: 2.6,
+              },
+              1400: {
+                slidesPerView: 3.6,
+              },
+              1600: {
+                slidesPerView: 4.6,
               },
             }}>
             {data.map((post) => (
               <SwiperSlide className="linkedin-slider__slide" key={post.id}>
                 <div className="linkedIn-crd bg-[#F9F3EE]">
                   <div className="linkediIn-crd__head flex gap-2 flex-wrap p-6">
-                    <Image src={LInkedInLogo} alt="LinkedIn Logo" width={50} height={50} />
+                    <div className="bg-white rounded-full overflow-hidden w-[46.63] h-[46.63] flex items-center justify-center" style={{ boxShadow: "inset 0px 0px 2.91px 0px rgba(17, 17, 17, 0.1)" }}>
+                      <Image src={LInkedInLogo} alt="LinkedIn Logo" width={50} height={50} />
+                    </div>
                     <div>
-                      <h3 className="text-primary font-bold nuber-next-heavy text-font20 leading-[1.3]">Deseart Board</h3>
-                      <p className="text-black opacity-75 leading-[1.61]">{post.timePosted}</p>
+                      <h3 className="text-Darkgreen font-bold nuber-next-heavy text-font20 leading-[1.3]">Deseart Board</h3>
+                      <p className="text-black text-font18 opacity-75 leading-[1.61]">{post.timePosted}</p>
                     </div>
                   </div>
                   <div className="linkedIn-crd__body px-6 pb-10">
