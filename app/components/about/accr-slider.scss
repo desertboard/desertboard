@@ -61,6 +61,7 @@
   z-index: 2;
   @media (max-width: 1550px) {
     width: 500px !important;
+    height: min-content !important;
   }
   &::before {
     position: absolute;
@@ -81,14 +82,20 @@
   }
   .accr__title {
     font-size: clamp(1.5rem, 4vw, 3rem);
-     @media (max-width: 1550px) {
+    @media (max-width: 1550px) {
       font-size: 2rem;
+    }
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
     }
   }
   .accr__desc {
     font-size: clamp(1rem, 2.5vw, 1.75rem);
     @media (max-width: 1550px) {
       font-size: 24px;
+    }
+    @media (max-width: 768px) {
+      font-size: 16px;
     }
   }
   .accr__img {
@@ -98,6 +105,9 @@
 
 .accr__slider {
   min-height: 24em;
+  @media (max-width:768px){
+    min-height: 20em;
+  }
   .swiper-slide {
     transition:
       transform 0.3s ease,

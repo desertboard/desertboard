@@ -67,7 +67,7 @@ export default function MisionVision() {
       <div className="container d-none" ref={nextContainerRef}></div>
       <div className={`mivi__wrapper ${activeClass}`}>
         <div className="mivi__mi pt-5 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleMiClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
-        {/* <div className="mivi__mi pt-5 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleMiClick} style={{ "--miviwidth": divWidth } as React.CSSProperties}> */}
+          {/* <div className="mivi__mi pt-5 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleMiClick} style={{ "--miviwidth": divWidth } as React.CSSProperties}> */}
           <div className="ola absolute top-[-10%] right-[-10%]">
             <Image src={lfbef} width={150} height={150} className="lg:w-full lg:h-full" alt=""></Image>
           </div>
@@ -82,7 +82,8 @@ export default function MisionVision() {
             the UAE dedicated to this innovation, we support the nation&apos;s industrial growth while promoting environmental sustainability.
           </p>
         </div>
-        <div className="mivi__vi pt-5 pb-10 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={{ "--miviwidth": divWidth } as React.CSSProperties}>
+        <div className="mivi__vi pt-5 pb-10 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
+          {/* <div className="mivi__vi pt-5 pb-10 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={{ "--miviwidth": divWidth } as React.CSSProperties}> */}
           <div className="ola absolute top-[-30%] right-[-12.5%] z-0">
             <Image src={lfbef} width={150} height={150} className="w-full h-full" alt=""></Image>
           </div>
