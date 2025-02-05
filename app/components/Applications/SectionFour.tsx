@@ -38,7 +38,7 @@ const SectionFour = () => {
           />
         </motion.div>
         <div className="container m-auto">
-          <div>
+          <div className="relative z-[1]">
             <motion.h2
               className="text-Darkgreen mb-4 md:mb-10 text-[28px] md:text-[48px]   nuber-next-heavy leading-[1] "
               initial={{ opacity: 0, x: -30 }}
@@ -71,7 +71,7 @@ const SectionFour = () => {
               },
             }}
           >
-            <Accordion accordionData={accordionData.data} bg={"bg-[#E3DED9]"} bullet={true} />
+            <Accordion accordionData={accordionData.data} bg={"bg-[#ede8e3]"} bullet={true} />
 
           </motion.div>
         </div>

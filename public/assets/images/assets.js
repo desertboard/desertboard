@@ -66,6 +66,15 @@ import sl08 from "../images/sustainability/slideimgs8.jpg";
 import sl09 from "../images/sustainability/slideimgs9.jpg";
 import imgal from "../images/sustainability/img-al.jpg";
 import secim from "../images/sectors/sec2.png";
+import secdbanner from "../images/sectors/banner.jpg";
+import sec1 from "../images/sectors/sec1.png";
+import imgdust from "../images/icons/imgdust.jpg";
+import wh1 from "../images/applications/wh1.svg";
+import wh2 from "../images/applications/wh2.svg";
+import wh3 from "../images/applications/wh3.svg";
+import accic from "../images/icons/accic.svg";
+import bghr from "../images/applications/bghr.jpg"
+
 
 
 
@@ -74,6 +83,14 @@ import secim from "../images/sectors/sec2.png";
 
 
 export const assets = {
+    bghr,
+    accic,
+    wh1,
+    wh2,
+    wh3,
+    imgdust,
+    sec1,
+    secdbanner,
     secim,
     imgal,
     sl01,

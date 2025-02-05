@@ -1,3 +1,4 @@
+import { assets } from "@/public/assets/images/assets";
 
 
 export const accordionData = {
@@ -35,4 +36,43 @@ export const accordionData = {
 
   ],
 };
+export const suggestData = {
+  data: [
+    {
+      id: 1,
+      title: "PSB<sup>®</sup> SUPREME",
+      image: assets.imgdust
+     },
 
+  ],
+};
+
+export const whySupreme = {
+    sectitle: "WHY PSB<sup>®</sup> SUPREME?",
+    data: [
+      {
+        id: 1,
+        title: "",
+        icon: assets.wh1,
+        boldtest: "Superior Moisture Resistance Performance",
+        description:
+          "PSB® Supreme exhibits excellent moisture resistance, with a maximum thickness swelling of 15%. PSB  ® Supreme, when coated properly, results in a thickness swelling of less than 5%.",
+      },
+      {
+        id: 2,
+        title: "",
+        icon: assets.wh2,
+        boldtest: "High Modulus of Elasticity and Rupture Strength",
+        description:
+          "PSB® Supreme demonstrates high performance in terms of modulus of elasticity, measuring 3,500 Newtons per square millimeter (N/mm²), and modulus of rupture, ranging from 16 to 22 Newtons per square millimeter (N/mm²).",
+      },
+      {
+        id: 3,
+        title: "",
+        icon: assets.wh3,
+        boldtest: "Enhanced Screw Withdrawal Strength and Reusability",
+        description:
+          " PSB® Supreme provides exceptional screw hold capacity compared to other solutions, with edge hold at 1,350 Newtons (N) and face hold at 1,650 Newtons (N). PSB ®Supreme’s mechanical properties allow for performance.",
+      },
+    ],
+};
