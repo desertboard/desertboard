@@ -7,7 +7,7 @@ import Downloads from "../../components/Common/BeforeFooterTag";
 
 
 // Image imports
-import bannerImg from "@/public/assets/images/sectors/banner.png";
+import { assets } from "@/public/assets/images/assets";
 import Arrow from "@/public/assets/brdcrbs.svg";
 
 
@@ -23,7 +23,7 @@ const Sectors = () => {
   return (
     <>
        <PageBanner
-        bannerSrc={bannerImg} // Corrected image import here
+        bannerSrc={assets.appbanner} // Corrected image import here
         arrowSrc={Arrow}
         desc=""
         title="Façade Cladding"
