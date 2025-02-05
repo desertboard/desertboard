@@ -18,7 +18,7 @@ const Blogs = () => {
       <ArticleBanner arrowSrc={Arrow} title="DesertBoard® Stands Out at Big 5 Global with Its Unique Lineup of Sustainable Solutions " date="November 30, 2024" labeltext="Sustainability, Company News" breadcrumbs={breadcrumbs} bnrHeight="60dvh" />
       <ArticleImageBanner bannerSrc={assets.articlebanner} />
       <RelatedArticles />
-      <Downloads title={"To Downloads"} />
+      <Downloads title={"To Sustainability"} />
     </>
   );
 };

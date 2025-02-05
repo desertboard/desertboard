@@ -32,11 +32,11 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labe
               <div className="flex  items-center gap-5">
                   <div className="flex items-center gap-2">
                     <Image src={assets.calender} alt=""></Image>
-                    <p className="nuber-next-bold text-font20 text-[#fff] leading-[1] opacity-[75%]">{date} </p>
+                    <p className="nuber-next-bold text-font20 text-[#fff] leading-[1] opacity-[75%] uppercase">{date} </p>
                   </div>
                   <div className="flex items-center gap-2">
                     <Image src={assets.label} alt=""></Image>
-                    <p className="nuber-next-bold text-font20 text-[#fff] leading-[1] opacity-[75%]">{labeltext} </p>
+                    <p className="nuber-next-bold text-font20 text-[#fff] leading-[1] opacity-[75%] uppercase underline">{labeltext} </p>
                     </div>
               </div>
               <div className="flex items-center gap-2">

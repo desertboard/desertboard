@@ -259,7 +259,8 @@ body {
     }
   }
 }
-
+.bgsti{background: url(/assets/images/home/Light02.png);
+  background-size: contain;}
 .news-events {
   .display-webkit-box {
     display: -webkit-box;
@@ -276,14 +277,14 @@ body {
 
 .inspbg {
   background: url(/assets/images/home/Light02.png);
-  background-size: cover;
+
   position: relative;
   z-index: 1;
 }
 
 .darkbanner {
   background: url(/assets/images/home/Darker.png);
-  background-size: cover;
+
   position: relative;
   z-index: 1;
 }
