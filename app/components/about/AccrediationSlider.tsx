@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Swiper, SwiperSlide,SwiperRef } from "swiper/react";
+import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "@/app/components/about/accr-slider.scss";
 
@@ -8,35 +8,33 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
-import lfbef from "@/public/assets/images/home/leaf.svg";
-import lfbt from "@/public/assets/images/home/lfbt.svg";
+import LightSectionContainer from "../Common/LightSectionContainer";
+import { accrediations } from "./data";
 
-const AccrediationSlider = () => {
+interface AccrediationsProps {
+  id: number;
+  accrLogo: string;
+  accrTitle: string;
+  accrDesc: string;
+}
+
+const AccrediationSlider:React.FC = () => {
   const swiperRef = useRef<SwiperRef>(null);
 
   useEffect(() => {
     if (swiperRef.current) {
       // Simulate next slide transition after initialization
       setTimeout(() => {
-        if(swiperRef.current){
-
+        if (swiperRef.current) {
           swiperRef.current.swiper.slideNext(0); // Instant transition (0ms duration)
         }
       }, 100);
     }
   }, []);
   return (
-    <section className="pt-10 lg:pt-20 pb-10 lg:pb-[200px] insp-mn relative inspbg ">
-      <motion.div className="ola ola-right absolute top-0 right-[-10%] w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
-        <Image className="absolute w-full " src={lfbef} alt="Description of the image" width={300} height={300}  />
-      </motion.div>
-      <motion.div className="ola ola-right absolute bottom-[43%] left-[-15%] w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
-        <Image className="absolute w-full" src={lfbt} alt="Description of the image" width={300} height={300} />
-      </motion.div>
-      <div className="container mb-10">
+    <LightSectionContainer>
+      <div className="container mb-20">
         <h2 className="heavydark mb-2 xl:mb-10">
           Our Accreditation Partners <span className="text-[#FF671F] leading-[1]">.</span>
         </h2>
@@ -45,7 +43,7 @@ const AccrediationSlider = () => {
           clients with a high-quality, certified product, we empower them to confidently deliver sustainable and innovative construction projects that meet the highest industry standards.
         </p>
       </div>
-      <div className="container relative h-full !overflow-visible">
+      <div className="container mb-[100px] relative h-full !overflow-visible">
         <Swiper
           ref={swiperRef}
           className="accr__slider h-screen !overflow-visible"
@@ -60,7 +58,7 @@ const AccrediationSlider = () => {
           slidesPerView={2}
           // Number of slides to duplicate
           // loopedSlides={4}
-          // loopAdditionalSlides={6}
+          // loopAdditionalSlides={3}
           // initialSlide={4}
           onInit={(swiper) => {
             // Force re-calculate sizes
@@ -79,81 +77,34 @@ const AccrediationSlider = () => {
           }}
           breakpoints={{
             320: {
-              slidesPerView: 1.5,
+              slidesPerView: 2,
             },
             768: {
-              slidesPerView: 2.5,
+              slidesPerView: 2,
             },
-            1024: {
-              slidesPerView: 3.2,
+            1200: {
+              slidesPerView:1,
             },
+            1400: {
+              slidesPerView:3.2,
+            },
+            1789:{
+              slidesPerView:3.2
+            }
           }}>
-          <SwiperSlide className="accr__slide h-40 text-white">
-            <div className="accr-crd p-[40px] bg-Darkgreen">
-              <div className="accr__img bg-white p-5 w-fit mb-7">
-                <Image src={"/assets/images/about/accr1.svg"} alt="" width={100} height={100}></Image>
+          {accrediations.map((accr) => (
+            <SwiperSlide className="accr__slide h-40 text-white" key={accr.id}>
+              <div className="accr-crd p-[40px] bg-Darkgreen">
+                <div className="accr__img bg-white mb-7 p-2 w-[70px] h-[70px] flex items-center justify-center">
+                  <Image src={accr.accrLogo} alt="" width={70} height={70} className="object-contain"></Image>
+                </div>
+                <h3 className="accr__title text-white leading-[1] nuber-next-heavy mb-7">
+                  {accr.accrTitle} <span className="text-[#FF671F]">.</span>
+                </h3>
+                <p className="accr__desc text-white opacity-75 leading-[1.2] nuber-next-heavy">{accr.accrDesc}</p>
               </div>
-              <h3 className="accr__title text-white lh-[1] nuber-next-heavy mb-7">
-                Global IMQ <span className="text-[#FF671F]">.</span>
-              </h3>
-              <p className="accr__desc text-white opacity-75 lh-[1.2] nuber-next-heavy">Global IMQ. Global IMQ Environmental Product Declaration (EPD) Certification</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="accr__slide h-40 text-white">
-            <div className="accr-crd p-[40px] bg-Darkgreen">
-              <div className="accr__img bg-white p-5 w-fit mb-7">
-                <Image src={"/assets/images/about/accr1.svg"} alt="" width={100} height={100}></Image>
-              </div>
-              <h3 className="accr__title text-white lh-[1] nuber-next-heavy mb-7">
-                Global IMQ <span className="text-[#FF671F]">.</span>
-              </h3>
-              <p className="accr__desc text-white opacity-75 lh-[1.2] nuber-next-heavy">Global IMQ. Global IMQ Environmental Product Declaration (EPD) Certification</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="accr__slide h-40 text-white">
-            <div className="accr-crd p-[40px] bg-Darkgreen">
-              <div className="accr__img bg-white p-5 w-fit mb-7">
-                <Image src={"/assets/images/about/accr1.svg"} alt="" width={100} height={100}></Image>
-              </div>
-              <h3 className="accr__title text-white lh-[1] nuber-next-heavy mb-7">
-                Global IMQ <span className="text-[#FF671F]">.</span>
-              </h3>
-              <p className="accr__desc text-white opacity-75 lh-[1.2] nuber-next-heavy">Global IMQ. Global IMQ Environmental Product Declaration (EPD) Certification</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="accr__slide h-40 text-white">
-            <div className="accr-crd p-[40px] bg-Darkgreen">
-              <div className="accr__img bg-white p-5 w-fit mb-7">
-                <Image src={"/assets/images/about/accr1.svg"} alt="" width={100} height={100}></Image>
-              </div>
-              <h3 className="accr__title text-white lh-[1] nuber-next-heavy mb-7">
-                Global IMQ <span className="text-[#FF671F]">.</span>
-              </h3>
-              <p className="accr__desc text-white opacity-75 lh-[1.2] nuber-next-heavy">Global IMQ. Global IMQ Environmental Product Declaration (EPD) Certification</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="accr__slide h-40 text-white">
-            <div className="accr-crd p-[40px] bg-Darkgreen">
-              <div className="accr__img bg-white p-5 w-fit mb-7">
-                <Image src={"/assets/images/about/accr1.svg"} alt="" width={100} height={100}></Image>
-              </div>
-              <h3 className="accr__title text-white lh-[1] nuber-next-heavy mb-7">
-                Global IMQ <span className="text-[#FF671F]">.</span>
-              </h3>
-              <p className="accr__desc text-white opacity-75 lh-[1.2] nuber-next-heavy">Global IMQ. Global IMQ Environmental Product Declaration (EPD) Certification</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="accr__slide h-40 text-white">
-            <div className="accr-crd p-[40px] bg-Darkgreen">
-              <div className="accr__img bg-white p-5 w-fit mb-7">
-                <Image src={"/assets/images/about/accr1.svg"} alt="" width={100} height={100}></Image>
-              </div>
-              <h3 className="accr__title text-white lh-[1] nuber-next-heavy mb-7">
-                Global IMQ <span className="text-[#FF671F]">.</span>
-              </h3>
-              <p className="accr__desc text-white opacity-75 lh-[1.2] nuber-next-heavy">Global IMQ. Global IMQ Environmental Product Declaration (EPD) Certification</p>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
+          ))}
         </Swiper>
 
         <div className="relative top-24">
@@ -170,8 +121,9 @@ const AccrediationSlider = () => {
             </button>
           </div>
         </div>
+
       </div>
-    </section>
+    </LightSectionContainer>
   );
 };
 
