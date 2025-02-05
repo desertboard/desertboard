@@ -104,7 +104,7 @@ const HistorySlider: React.FC<HistorySliderProps> = ({ className = "" }) => {
           </div>
 
           {/* Year Navigation */}
-          <div className="w-[20%] h-full relative flex flex-col justify-center ">
+          <div className="w-max lg:w-[20%] h-full relative flex flex-col justify-center ">
             <div className="absolute inset-0 z-10 pointer-events-none " />
             <Swiper
               direction="vertical"

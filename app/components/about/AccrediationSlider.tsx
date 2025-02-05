@@ -34,7 +34,7 @@ const AccrediationSlider:React.FC = () => {
   }, []);
   return (
     <LightSectionContainer>
-      <div className="container mb-20">
+      <div className="container mb-5 lg:mb-20">
         <h2 className="heavydark mb-2 xl:mb-10">
           Our Accreditation Partners <span className="text-[#FF671F] leading-[1]">.</span>
         </h2>
@@ -43,7 +43,7 @@ const AccrediationSlider:React.FC = () => {
           clients with a high-quality, certified product, we empower them to confidently deliver sustainable and innovative construction projects that meet the highest industry standards.
         </p>
       </div>
-      <div className="container mb-[100px] relative h-full !overflow-visible">
+      <div className="container mb-[50px] lg:mb-[100px] h-full !overflow-visible relative">
         <Swiper
           ref={swiperRef}
           className="accr__slider h-screen !overflow-visible"
@@ -107,7 +107,7 @@ const AccrediationSlider:React.FC = () => {
           ))}
         </Swiper>
 
-        <div className="relative top-24">
+        <div className="absolute w-full h-full right-0 bottom-[-50px]">
           <div className="absolute bottom-0 right-0 flex gap-4 z-10">
             <button className="custom-next cursor-pointer hover:opacity-80 transition-opacity p-2">
               <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
