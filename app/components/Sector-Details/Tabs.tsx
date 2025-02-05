@@ -146,7 +146,14 @@ const Tabs: React.FC = () => {
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
-                          >
+                          ><motion.img
+                          src={tab.image.src}
+                          alt="New Tab Content"
+                          className="w-full h-[200px] mb-5  object-cover opacity-80 transition-opacity duration-300 hover:opacity-100"
+                          initial={{ scale: 0.9 }}
+                          animate={{ scale: 1 }}
+                          transition={{ duration: 0.5 }}
+                        />
                             <div className="p-4 pt-0">
                               {/* <h3 className="heavydark mb-5">{tab.title}</h3> */}
                               <p className="texthelvetica20 clr15op75 mb-6">

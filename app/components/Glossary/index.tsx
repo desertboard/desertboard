@@ -3,8 +3,9 @@ import React from 'react'
 import Filter from './Filter'
 import PageBanner from "../Common/PageBanner";
 
-import bannerImg from "@/public/assets/images/sectors/banner.png";
+import bannerImg from "@/public/assets/images/bannergl.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
+import BeforeFooterTag from '../Common/BeforeFooterTag';
 
 const Blogs = () => {
   const breadcrumbs = [
@@ -21,7 +22,8 @@ const Blogs = () => {
         breadcrumbs={breadcrumbs}
         bnrHeight="60dvh"
       />
-        <Filter/>
+      <Filter />
+      <BeforeFooterTag title={'Discover Industry Solutions'}  />
     </>
   )
 }

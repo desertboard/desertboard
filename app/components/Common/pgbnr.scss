@@ -1,5 +1,5 @@
 .pg-bnr {
-    height: var(--banner-height, 75vh); /* Default height */
+    height: var(--banner-height, 75dvh); /* Default height */
     &:before {
         position: absolute;
         content: "";
@@ -26,7 +26,7 @@
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#001c19",endColorstr="#001c19",GradientType=1);
     }
     @media (max-width: 768px) {
-        height: calc(var(--banner-height) - 25vh);
+        height: calc(var(--banner-height) - 20dvh);
     }
 }
 .article-banner {
