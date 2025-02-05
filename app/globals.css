@@ -139,7 +139,7 @@ background-size: cover !important;
     background: linear-gradient(180deg, rgba(0, 28, 25, 0) 0%, rgba(0, 28, 25, 0.46) 20%, rgb(0, 28, 25) 100%);
     background: linear-gradient(0deg, #001C19 0%, rgba(0, 28, 25, 0.2) 45%, rgba(0, 28, 25, 0) 99%), rgba(0, 0, 0, 0.5);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#001c19",endColorstr="#001c19",GradientType=1);}
-
+.ouy .dst{margin-bottom: 0px !important}
 
 
 @media (prefers-color-scheme: dark) {

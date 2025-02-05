@@ -24,7 +24,7 @@ const Searchresult: React.FC<AlphabetMenuProps> = ({ itemdata }) => {
 
   return (
     <>
-        <div className="bg-grayE3D p-10 pb-[8px]  mb-10 md-mb-20">
+      <div className="bg-grayE3D p-10 pb-[8px] dst mb-10 md-mb-20 ">
                   <div>
                     <p className="heavydark leading-[1] pb-8 border-b-2 border-[#15151510]">
                       {itemdata.alphabet}<span className="text-orange">.</span>
@@ -33,7 +33,7 @@ const Searchresult: React.FC<AlphabetMenuProps> = ({ itemdata }) => {
                   <div className="flex flex-wrap mt-8">
                     {itemdata.items.map((item, index) => (
                       <div className="w-full md:w-1/3 mb-4 md:mb-8 " key={index}>
-                        <div className="flex items-center gap-5">
+                        <div className="flex items-center gap-5 justify-between md:justify-normal">
                           <p className="nuber-next-heavy text-font20 leading-[1] text-Darkgreen">
                             {item.name}
                           </p>
