@@ -1,40 +1,22 @@
 "use client"
 
 import { Input } from "@/components/ui/input";
-import React, { useEffect } from "react";
+import React from "react";
 import { Label } from "@/components/ui/label"
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
+
 import {
     Sheet,
     SheetClose,
     SheetContent,
-    SheetDescription,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import dynamic from 'next/dynamic'
-const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
-import "react-quill/dist/quill.snow.css";
-import { Button } from "@/components/ui/button"
-import { Controller, useForm } from "react-hook-form";
+
+
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
 
-type FormData = {
-    title: string;
-    description: string;
-    story: string;
-    mission: string;
-};
 
 
 export default function AdminFaqs() {

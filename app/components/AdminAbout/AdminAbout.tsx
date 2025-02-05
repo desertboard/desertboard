@@ -15,7 +15,6 @@ import {
     Sheet,
     SheetClose,
     SheetContent,
-    SheetDescription,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
@@ -196,7 +195,7 @@ export default function AdminAbout() {
 
             <div className="flex justify-between">
                 <h1 className="text-3xl font-bold">About Page</h1>
-                <Button variant="outline" className="bg-blue-50" type="submit">Save Changes</Button>
+                <Button variant="outline" className="bg-blue-50" type="submit" disabled={isSubmitting}>Save Changes</Button>
             </div>
 
             <div>
