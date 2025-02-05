@@ -104,7 +104,7 @@ const HistorySlider: React.FC<HistorySliderProps> = ({ className = "" }) => {
           </div>
 
           {/* Year Navigation */}
-          <div className="w-[20%] h-full relative flex flex-col justify-center ">
+          <div className="w-max lg:w-[20%] h-full relative flex flex-col justify-center ">
             <div className="absolute inset-0 z-10 pointer-events-none " />
             <Swiper
               direction="vertical"
@@ -120,7 +120,7 @@ const HistorySlider: React.FC<HistorySliderProps> = ({ className = "" }) => {
               onSlideChange={handleSlideChange}
               centeredSlides={true}
               speed={800}
-              initialSlide={0}
+              initialSlide={1}
               watchSlidesProgress={true}
               observer={true}
               observeParents={true}
@@ -133,10 +133,10 @@ const HistorySlider: React.FC<HistorySliderProps> = ({ className = "" }) => {
                 <SwiperSlide key={item.year} className="!h-[100px] flex items-center justify-center">
                   <button
                     onClick={() => handleYearClick(item.year)}
-                    className={`w-full h-full flex items-center text-right justify-end gap-1 relative group transition-all duration-300
-                  ${activeYear === item.year ? "text-accent font-[400] scale-110 z-20 text-font32" : "text-gray-100 text-font24 font-bold hover:text-gray-200"}`}>
+                    className={`w-full h-full flex items-center text-right justify-end gap-1 relative group transition-all ease-linear duration-300 text-font24
+                  // ${activeYear === item.year ? "text-accent font-[400] z-20 text-font32 ease-linear" : "text-gray-100 font-bold hover:text-gray-200"}`}>
                     <span className="relative z-10 transition-all ease-linear duration-300 helvetica">{item.year}</span>
-                    <div className={`w-8 h-[2px] transition-all duration-300 ${activeYear === item.year ? "bg-accent opacity-100 scale-y-125" : "opacity-0 group-hover:opacity-50 scale-95"}`} />
+                    <div className={`w-8 h-[2px] transition-all ease-linear duration-300 ${activeYear === item.year ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
                   </button>
                 </SwiperSlide>
               ))}

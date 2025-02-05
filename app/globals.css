@@ -100,6 +100,49 @@ p {
     filter: none;
   }
 }
+.sts .sser:nth-last-child(1) .strs {
+  margin-bottom: 0px;
+}
+.swpstss .sld:hover {background: rgb(0, 28, 25);
+  background: -moz-linear-gradient(180deg, rgba(0, 28, 25, 0) 0%, rgba(0, 28, 25, 0.46) 20%, rgb(0, 28, 25) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(0, 28, 25, 0) 0%, rgba(0, 28, 25, 0.46) 20%, rgb(0, 28, 25) 100%);
+  background: linear-gradient(180deg, rgba(0, 28, 25, 0) 0%, rgba(0, 28, 25, 0.46) 20%, rgb(0, 28, 25) 100%);
+  background: linear-gradient(0deg, #001C19 0%, rgba(0, 28, 25, 0.2) 45%, rgba(0, 28, 25, 0) 99%), rgba(0, 0, 0, 0.5);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#001c19",endColorstr="#001c19",GradientType=1);
+  }
+  /* .decss{
+    opacity: 0;
+    filter: blur(1px);
+    transform: translateY(100%);
+    height: 0;
+    transition: 500ms all linear;
+  }
+  .sld:hover .decss {
+    opacity: 0.75;
+    filter: blur(0);
+    transform: translateY(0px);
+    height: 100%;
+} */
+.swiper-pagination-bullet-active{background: #00594F !important;}
+.hrcd::after{
+  content: '';
+  position: absolute;
+  z-index: -1;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);}
+.hrcd:hover{
+background-size: cover !important;
+    background-image: url(/assets/images/applications/bghr.jpg) !important;
+}
+.ouy .dst{margin-bottom: 0px !important}
+
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -209,7 +252,8 @@ body {
     }
   }
 }
-
+.bgsti{background: url(/assets/images/home/Light02.png);
+  background-size: contain;}
 .news-events {
   .display-webkit-box {
     display: -webkit-box;
@@ -226,14 +270,14 @@ body {
 
 .inspbg {
   background: url(/assets/images/home/Light02.png);
-  background-size: cover;
+
   position: relative;
   z-index: 1;
 }
 
 .darkbanner {
   background: url(/assets/images/home/Darker.png);
-  background-size: cover;
+
   position: relative;
   z-index: 1;
 }

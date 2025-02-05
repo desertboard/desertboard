@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import wh2 from "@/public/assets/images/applications/wh2.svg";
 import arrow from "@/public/assets/images/applications/arrowdown.svg";
+import { assets } from "@/public/assets/images/assets";
 
 interface HeroSectionProps {
   title: string;
@@ -35,7 +35,7 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex gap-3 md:gap-[16px] items-start">
-        {bullet && <Image src={wh2} alt="icon" />}
+        {bullet && <Image src={assets.accic} alt="icon" />}
           <p className="texthelvetica20bold clr15op75">{title}</p>
         </div>
         <div
