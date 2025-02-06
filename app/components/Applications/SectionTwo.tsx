@@ -44,10 +44,10 @@ const SectionTwo = () => {
       </div>
 
       {/* Buttons */}
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-3 flex-wrap">
         {["Technical Datasheet", "Certificates", "Get InTouch"].map((text, index) => (
-          <div key={index} className="flex gap-3 items-center group rmbtn pb-3 cursor-pointer">
-            <p className="relative flex gap-2 max-w-fit transition-opacity duration-300 text-font18 nuber-next-heavy leading-[1.25]">
+          <div key={index} className="flex gap-3 items-center group rmbtn pb-2 md:pb-3 cursor-pointer">
+            <p className="relative flex gap-2 max-w-fit transition-opacity duration-300 text-[16px] md:text-[18px] nuber-next-heavy leading-[1.25]">
               {text}
             </p>
             <Image

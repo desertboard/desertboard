@@ -94,7 +94,7 @@ const HistorySlider: React.FC<HistorySliderProps> = ({ className = "" }) => {
           <div className="flex-grow flex items-end relative overflow-hidden history__content">
             <div className="absolute inset-0 flex items-center transition-transform duration-500">
               <div className="max-w-2xl">
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-10 nuber-next-heavy text-font72">
+                <h3 className="text-4xl md:text-5xl lg:text-6xl helveticaBold text-white mb-10 nuber-next-heavy text-font72">
                   {activeYear} <span className="text-[#FF671F]">.</span>
                 </h3>
                 <h4 className="text-xl md:text-2xl lg:text-font28 leading-[1.3] opacity-75 font-semibold text-white mb-5">{activeContent.subtitle}</h4>
@@ -146,7 +146,7 @@ const HistorySlider: React.FC<HistorySliderProps> = ({ className = "" }) => {
       </div>
 
       {/* <style jsx global>{`
-        
+
       `}</style> */}
     </section>
   );
