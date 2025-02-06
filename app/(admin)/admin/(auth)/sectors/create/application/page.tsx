@@ -4,6 +4,7 @@ import { Card } from "@/app/components/ui/card";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useSectorStore } from "@/app/store/useSectorStore";
+import { useEffect, useState } from "react";
 
 interface ApplicationFormData {
   title: string;
@@ -14,18 +15,21 @@ const CreateApplicationPage = () => {
   const router = useRouter();
   const addApplication = useSectorStore((state) => state.addApplication);
   const tempFinishes = useSectorStore((state) => state.tempFinishes);
-  const tempApplicationData = localStorage.getItem("tempApplicationData");
-  const tempApplicationDataParsed = tempApplicationData ? JSON.parse(tempApplicationData) : null;
+  const [initialFormData, setInitialFormData] = useState<ApplicationFormData>({ title: "", description: "" });
+
+  useEffect(() => {
+    const tempApplicationData = localStorage.getItem("tempApplicationData");
+    if (tempApplicationData) {
+      setInitialFormData(JSON.parse(tempApplicationData));
+    }
+  }, []);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<ApplicationFormData>({
-    defaultValues: {
-      title: tempApplicationDataParsed?.title || "",
-      description: tempApplicationDataParsed?.description || "",
-    },
+    defaultValues: initialFormData,
   });
 
   const onSubmit = (data: ApplicationFormData) => {
@@ -35,6 +39,19 @@ const CreateApplicationPage = () => {
     });
     localStorage.removeItem("tempApplicationData");
     router.push("/admin/sectors/create");
+  };
+
+  const handleAddFinish = () => {
+    // Store the current form data in localStorage before navigating
+    const formData = {
+      title: (document.querySelector('input[name="title"]') as HTMLInputElement)?.value,
+      description: (document.querySelector('textarea[name="description"]') as HTMLTextAreaElement)?.value,
+    };
+    localStorage.setItem("tempApplicationData", JSON.stringify(formData));
+
+    // Navigate to finish creation
+    const nextIndex = useSectorStore.getState().applications.length;
+    router.push(`/admin/sectors/create/application/${nextIndex}/finish`);
   };
 
   return (
@@ -74,18 +91,7 @@ const CreateApplicationPage = () => {
               <button
                 type="button"
                 className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                onClick={() => {
-                  // Store the current form data in localStorage before navigating
-                  const formData = {
-                    title: (document.querySelector('input[name="title"]') as HTMLInputElement)?.value,
-                    description: (document.querySelector('textarea[name="description"]') as HTMLTextAreaElement)?.value,
-                  };
-                  localStorage.setItem("tempApplicationData", JSON.stringify(formData));
-
-                  // Navigate to finish creation
-                  const nextIndex = useSectorStore.getState().applications.length;
-                  router.push(`/admin/sectors/create/application/${nextIndex}/finish`);
-                }}
+                onClick={handleAddFinish}
               >
                 Add Finish
               </button>

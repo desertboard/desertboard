@@ -1,9 +1,9 @@
 import connectDB from "@/lib/mongodb";
 import { Sector } from "@/models/Sector";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
-  const { id } = params;
+export async function GET(request: NextRequest) {
+  const id = request.nextUrl.searchParams.get("id");
 
   await connectDB();
 

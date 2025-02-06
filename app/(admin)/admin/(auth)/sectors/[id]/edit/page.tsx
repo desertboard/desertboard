@@ -1,7 +1,6 @@
 "use client";
-
-import SectorFormPage from "../../create/page";
 import { useParams } from "next/navigation";
+import SectorFormPage from "../../sector-form-page";
 
 const EditSectorPage = () => {
   const params = useParams();

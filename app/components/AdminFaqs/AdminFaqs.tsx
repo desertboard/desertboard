@@ -17,8 +17,6 @@ import {
 import { useState } from "react";
 
 
-
-
 export default function AdminFaqs() {
 
     const [newsection,setNewSection] = useState("")
@@ -45,6 +43,7 @@ export default function AdminFaqs() {
                 </div>
                 <div className="grid grid-cols-3">
                     <div className="col-span-1 flex flex-col w-full gap-2 border-r-2 h-screen px-2">
+                        <h3>Sections</h3>
                         <div className="border-b w-full p-6 bg-blue-50">
                             Item 1
                         </div>
@@ -54,6 +53,7 @@ export default function AdminFaqs() {
                     </div>
 
                     <div className="col-span-2 flex flex-col w-full gap-2 h-screen px-2">
+                        <h3>Items</h3>
                         <div className="border-b w-full p-6 bg-blue-50">
                             Item 1
                         </div>
@@ -63,9 +63,6 @@ export default function AdminFaqs() {
                     </div>
                 </div>
             </div>
-
-
-
 
 
         </>
