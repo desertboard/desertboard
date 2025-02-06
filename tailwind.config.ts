@@ -56,7 +56,7 @@ module.exports = withMT({
   			font14: 'clamp(0.7rem,1.2vw,0.875rem)',
   			font16: 'clamp(0.7rem, 1.5vw, 1rem)',
   			font18: 'clamp(0.8rem, 1.5vw, 18px)',
-  			font19: 'clamp(0.8rem, 2vw, 1.1875rem)',
+  			font19: 'clamp(0.9rem, 2vw, 1.1875rem)',
   			font20: 'clamp(1rem, 2vw, 1.25rem)',
   			font24: 'clamp(1.2rem, 3vw, 1.5rem)',
   			font25: 'clamp(1.3rem, 3vw, 1.5625rem)',

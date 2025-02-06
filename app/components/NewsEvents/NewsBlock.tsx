@@ -51,9 +51,9 @@ const NewsBlock = ({newsEvent, sectionTitle}:NewsEventsProps) => {
                       <h4 className="text-black text-font14 opacity-75 leading-normal mb-3 uppercase font-bold">{news.date}</h4>
                       {/* <h3 className="text-font20 xl:text-font28 text-Darkgreen font-bold leading-[1.3] mb-2 lg:mb-5 overflow-hidden text-ellipsis display-webkit-box line-clamp-2 webkit-box-orient-vertical" dangerouslySetInnerHTML={{ __html: news.title }}></h3> */}
                       <h3 className="text-font20 xxl:text-font24 text-Darkgreen font-bold leading-[1.3] mb-2 lg:mb-5 overflow-hidden text-ellipsis helvetica display-webkit-box line-clamp-2 webkit-box-orient-vertical">{parse(news.title)}</h3>
-                      <p className="text-font16 xxl:text-font20 leading-normal text-black opacity-75 mb-5 overflow-hidden text-ellipsis display-webkit-box line-clamp-3 webkit-box-orient-vertical">{parse(news.desc)}</p>
+                      <p className="text-font19 xxl:text-font20 leading-normal text-black opacity-75 mb-5 overflow-hidden text-ellipsis display-webkit-box line-clamp-3 webkit-box-orient-vertical">{parse(news.desc)}</p>
                       <div className="flex flex-wrap gap-2 mb-6">
-                        <Image src={tagIcon} width={20} height={20} alt="categories" />
+                        <Image src={tagIcon} width={20} height={20} alt="categories" className="w-[15px] h-[15px] xl:w-[18px] xl:h-[18px]" />
                         <ul className="news__category list-none text-black uppercase font-bold text-font14 leading-normal flex gap-3 opacity-75">
                           {news.categories.map((category, index) => (
                             <li key={index}>
@@ -75,9 +75,9 @@ const NewsBlock = ({newsEvent, sectionTitle}:NewsEventsProps) => {
                     </div>
                     <div className="news-crd__body pt-2">
                       <h4 className="text-black text-font14 opacity-75 leading-normal mb-3 uppercase font-bold">{news.date}</h4>
-                      <h3 className="font20 xxl:text-font24 text-Darkgreen font-bold leading-[1.3] mb-2 lg:mb-3 overflow-hidden text-ellipsis display-webkit-box line-clamp-2 webkit-box-orient-vertical"> {parse(news.title)}</h3>
+                      <h3 className="font20 xxl:text-font24 text-Darkgreen font-helvetica font-bold leading-[1.3] mb-2 lg:mb-3 overflow-hidden text-ellipsis display-webkit-box line-clamp-2 webkit-box-orient-vertical"> {parse(news.title)}</h3>
                       <div className="flex flex-wrap gap-2 mb-6">
-                        <Image src={tagIcon} width={20} height={20} alt="categories" />
+                        <Image src={tagIcon} width={20} height={20} alt="categories" className="w-[15px] h-[15px] xl:w-[18px] xl:h-[18px]" />
                         <ul className="news__category list-none text-black uppercase font-bold text-font14 leading-normal flex gap-1 xxl:gap-3 opacity-75">
                           {news.categories.map((category, index) => (
                             <li key={index}>
