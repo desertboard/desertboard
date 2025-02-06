@@ -11,6 +11,9 @@ module.exports = withMT({
   darkMode: ["class", "class"],
   theme: {
   	extend: {
+		fontFamily:{
+			helvetica:["Helvetica","sans-serif"]
+		},
   		screens: {
   			xs: '480px',
   			sm: '606px',

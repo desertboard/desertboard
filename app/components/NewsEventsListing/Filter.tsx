@@ -44,7 +44,7 @@ const Filter = () => {
 
             <div className="relative w-full lg:w-auto">
               <Listbox as={Fragment} value={typeSelected} onChange={setTypeSelected}>
-                <Listbox.Button className="appearance-none bg-transparent flex border-b-[2px] border-[#002D28] outline-none rounded-none text-font20 text-black opacity-75 w-full lg:w-52 helvetica">
+                <Listbox.Button className="appearance-none bg-transparent flex border-b-[2px] border-[#002D28] outline-none rounded-none text-font20 text-black opacity-75 w-full lg:w-52 font-helvetica font-[500]">
                   {typeSelected.name}
                   <svg className="absolute right-0 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
@@ -62,7 +62,7 @@ const Filter = () => {
 
             <div className="relative w-full lg:w-auto">
               <Listbox value={sectorSelected} onChange={setSectorSelected}>
-                <Listbox.Button className="appearance-none bg-transparent flex border-b-[2px] border-[#002D28] outline-none rounded-none text-font20 text-black opacity-75 w-full lg:w-52 helvetica">
+                <Listbox.Button className="appearance-none bg-transparent flex border-b-[2px] border-[#002D28] outline-none rounded-none text-font20 text-black opacity-75 w-full lg:w-52 helvetica-500">
                   {sectorSelected.name}
                   <svg className="absolute right-0 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
@@ -93,7 +93,7 @@ const Filter = () => {
 
           <div className="relative flex gap-3 items-center border-b-[2px] border-[#002D28]  pb-2 w-full  md:w-auto">
             <Image src={SearchIcon} alt="" width={20} height={20}></Image>
-            <input type="text" placeholder="Search" className="bg-transparent focus:outline-none text-[#151515BF] text-[20px] " />
+            <input type="text" placeholder="Search" className="bg-transparent focus:outline-none font-helvetica placeholder-lightBlack placeholder-opacity-50 placeholder:font-helvetica placeholder:font-[500] text-[20px] " />
           </div>
         </div>
       </div>
