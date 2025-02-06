@@ -24,7 +24,7 @@ const Searchresult: React.FC<AlphabetMenuProps> = ({ itemdata }) => {
 
   return (
     <>
-      <div className="bg-grayE3D p-10 pb-[8px] dst mb-10 md-mb-20 ">
+      <div className="bg-grayE3D p-5 md:p-10 md:pb-[8px] dst mb-10 md-mb-20 ">
                   <div>
                     <p className="heavydark leading-[1] pb-8 border-b-2 border-[#15151510]">
                       {itemdata.alphabet}<span className="text-orange">.</span>
