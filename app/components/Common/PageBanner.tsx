@@ -29,10 +29,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
           </h1>
           {desc && <p className="text-[#FFFFFFBF] text-font20 lh-1p33 mb-10 max-w-[40ch] text-left">{desc}</p>}
           <div className="pg-bnr__txt flex items-center flex-wrap">
-            <ul className="flex items-center">
+            <ul className="flex items-center flex-wrap">
               {breadcrumbs.map((breadcrumb, index) => (
                 <li key={index} className="inline-flex items-center">
-                  <a href={breadcrumb.href} className={`text-[#FFFFFFBF]  texthelvetica20 ${index === breadcrumbs.length - 1 ? "font-bold text-white " : "opacity-75"}`}>
+                  <a href={breadcrumb.href} className={`text-[#FFFFFFBF] min-w-fit texthelvetica20 ${index === breadcrumbs.length - 1 ? "helveticaBold text-white " : "opacity-75"}`}>
                     {breadcrumb.label}
                   </a>
                   {index < breadcrumbs.length - 1 && <Image src={arrowSrc} alt="Arrow" className="mx-2" />}

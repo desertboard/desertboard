@@ -99,11 +99,11 @@ const Filter = () => {
           <div className="relative z-1">
             <div
               className={`w-full ${
-                isSticky ? "fixed bgsti z-[9999] left-0 pt-[80px] md:pt-5" : ""
+                isSticky ? "fixed bgsti z-[9999] left-0 pt-4 md:pt-5" : ""
               } top-[0] lg:top-[100px] `}
             >
               <div className="container">
-                <div className="flex  justify-between ">
+                <div className="flex justify-start gap-5 md:gap-4 md:justify-between  items-center">
                   <div>
                     <h2 className="heavydark ">
                       Filter<span className="text-orange">.</span>
@@ -141,13 +141,13 @@ const Filter = () => {
                     </div>
                   </div>
                 </div>
-                <div className="  mt-8">
-                  <div className="flex flex-wrap gap-2 py-8 justify-between w-full border-y-2 border-[#15151510] mb-6 md:mb-10">
+                <div className="  mt-5 md:mt-8">
+                  <div className="flex flex-wrap gap-2 py-4 md:py-8 justify-start md:justify-between w-full border-y-2 border-[#15151510] mb-6 md:mb-10">
                     {alphabet.map((letter) => (
                       <div
                         key={letter}
                         onClick={() => setActiveLetter(letter)}
-                        className={`w-fit py-[10px] px-[15px] cursor-pointer transition-all duration-300
+                        className={`w-fit py-[5px] md:py-[10px] px-[10px] md:px-[15px] cursor-pointer transition-all duration-300
                       ${
                         activeLetter === letter
                           ? "border-b-2 border-orange"

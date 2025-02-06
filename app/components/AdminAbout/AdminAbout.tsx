@@ -126,6 +126,12 @@ export default function AdminAbout() {
         setDescription(histories[index].description)
     }
 
+    const handleDeleteHistory = (index:number) =>{
+        setHistories((prev)=>(
+            prev.splice(index-1,1)
+        ))
+    }
+
     const handleConfirmEdit = (index: number) => {
         setHistories((prev) => {
            
@@ -149,6 +155,12 @@ export default function AdminAbout() {
             );
         });
     };
+
+    const handleDeletePartner = (index:number)=>{
+        setPartners((prev)=>(
+            prev.splice(index-1,1)
+        ))
+    } 
 
 
     const [aboutData,setAboutData] = useState<{id:string} | null>(null)
@@ -231,7 +243,7 @@ export default function AdminAbout() {
                             <TableHead className="w-[100px]">Time Span</TableHead>
                             <TableHead className=" max-w-14">Heading</TableHead>
                             <TableHead>Description</TableHead>
-                            <TableHead>
+                            <TableHead className="">
                                 <Sheet>
                                     <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button">Add</SheetTrigger>
                                     <SheetContent>
@@ -268,6 +280,7 @@ export default function AdminAbout() {
                             <TableCell>
                                 <Sheet>
                                     <SheetTrigger onClick={()=>handleEditHistory(index)} className="border-2 py-1 px-3 bg-yellow-800 rounded-lg text-white">Edit</SheetTrigger>
+                                    <Button className="border-2 py-1 px-3 bg-yellow-800 rounded-lg text-white max-h-8" onClick={()=>handleDeleteHistory(index)} type="button">Delete</Button>
                                     <SheetContent>
                                         <SheetHeader>
                                             <SheetTitle>Add a history</SheetTitle>
@@ -285,6 +298,8 @@ export default function AdminAbout() {
 
                                             <SheetClose className="bg-blue-500 text-white p-3" onClick={()=>handleConfirmEdit(index)}>Confirm</SheetClose>
                                             </div>
+
+                                            
 
                                     </SheetContent>
                                 </Sheet>
@@ -355,6 +370,7 @@ export default function AdminAbout() {
                             <TableCell>
                                 <Sheet>
                                     <SheetTrigger className="border-2 py-1 px-3 bg-yellow-800 rounded-lg text-white" onClick={()=>handleEditPartner(index)}>Edit</SheetTrigger>
+                                    <Button className="border-2 py-1 px-3 bg-yellow-800 rounded-lg text-white max-h-8" onClick={()=>handleDeletePartner(index)} type="button">Delete</Button>
                                     <SheetContent>
                                         <SheetHeader>
                                             <SheetTitle>Edit Partner Data</SheetTitle>

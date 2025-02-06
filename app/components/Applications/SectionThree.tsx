@@ -115,18 +115,24 @@ const SectionThree = () => {
               <div
                 className="relative group overflow-hidden transform goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
                 style={{ backgroundImage: `url(${item.image})` }}
-              ><div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
-                    <h3 className="nubernext28bold   text-white " >{item.title}</h3></div>
+              >
+                {/* <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
+                    <h3 className="nubernext28bold   text-white " >{item.title}</h3></div> */}
                 <div className="flex items-end  min-h-[462px] sld transition-colors duration-500 opacity-[0] group-hover:opacity-[1] ">
 
                   <div className="p-5 transition-all duration-500 ease-in-out w-full  ">
-                    <h3 className="nubernext28bold text-white">
-                            {item.title}
+                    <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-in-out w-full  translate-y-[0px] group-hover:translate-y-[-20px]">
+
+                      <span className="  overflow-hidden transition-opacity duration-500 group-hover:delay-100 delay-0 ">
+                        {item.title}
+                        </span>
                           </h3>
 
-                          <p className="text-white overflow-hidden pt-5  min-w-[45ch] translate-y-[100%] hidden group-hover:translate-y-[0] group-hover:block
-                          transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-[1]" >
-                            {item.desc}
+                          <p className="text-white overflow-hidden pt-3  min-w-[45ch]
+                          transition-all duration-500 ease-in-out translate-y-[0px] group-hover:translate-y-[-10px] opacity-0 group-hover:opacity-[1]" >
+                           <span className="opacity-0 group-hover:opacity-100  transition-opacity duration-500 group-hover:delay-100 delay-0">
+                        {item.desc}
+                        </span>
                           </p>
                   </div>
                 </div>
