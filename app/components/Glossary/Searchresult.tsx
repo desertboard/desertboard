@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
+import React,{ useState } from "react";
 import Image from "next/image";
-import grarrow from "@/public/assets/images/icons/greenarrow.svg";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
+import { assets } from "@/public/assets/images/assets";
 
 interface MenuItem {
   id: number;
@@ -14,12 +14,20 @@ interface MenuItem {
 
 interface AlphabetMenuProps {
   itemdata: {
+    desc: string;
     alphabet: string;
     items: MenuItem[];
   };
 }
 
 const Searchresult: React.FC<AlphabetMenuProps> = ({ itemdata }) => {
+
+
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const toggleVisibility = (index: number) => {
+    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
 
 
   return (
@@ -34,21 +42,46 @@ const Searchresult: React.FC<AlphabetMenuProps> = ({ itemdata }) => {
                     {itemdata.items.map((item, index) => (
                       <div className="w-full md:w-1/3 mb-4 md:mb-8 " key={index}>
 
-                        <div className="relative w-fit">
-                          <select id="country" name="country" autoComplete="country-name" className="appearance-none bg-transparent py-1.5 pr-8 pl-3   outline-none rounded-none text-font20 nuber-next-heavy   leading-[1] text-Darkgreen">
-                            <option className="text-font20 text-black opacity-75">{item.name} </option>
-                            <option className="text-font20 text-black opacity-75">Sector 1</option>
-                            <option className="text-font20 text-black opacity-75">Sector 2</option>
-                            <option className="text-font20 text-black opacity-75">Sector 3</option>
-                          </select>
-                          <Image
-                            src={grarrow}
-                            alt=" "
-                            className="    absolute right-0 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-600 pointer-events-none"
-                            width={16}
-                            height={8}
-                          ></Image>
-                        </div>
+<div>
+      {/* Clickable Section */}
+      <div
+        className="flex items-center gap-5 mb-3 cursor-pointer"
+        onClick={() => toggleVisibility(index)}
+      >
+        <p className="nuber-next-heavy text-font20 leading-[1] text-Darkgreen">
+          {item.name}
+        </p>
+        <Image
+          src={assets.grarrow}
+          alt="arrow"
+        className= {`relative top-[2px] transition-opacity duration-300 ${
+                                  activeIndex === index ? "block" : "hidden"
+                                }`}
+          width={16}
+          height={8}
+                            />
+             <Image
+        src={assets.line}
+        alt="arrow"
+      className= {`relative top-[2px] transition-opacity duration-300 ${
+                                activeIndex === index ? "hidden" : "block"
+                              }`}
+        width={16}
+        height={8}
+      />
+      </div>
+
+      {/* Hidden Paragraph (Only Affects Next Sibling) */}
+      <div className="overflow-hidden transition-all duration-300">
+            <p
+              className={`texthelvetica20 clr15op75 transition-opacity duration-300 ${
+                activeIndex === index ? "opacity-100 max-h-[500px]" : "opacity-0 max-h-0"
+              }`}
+            >{itemdata.desc}
+        </p>
+      </div>
+    </div>
+
 
                       </div>
                     ))}

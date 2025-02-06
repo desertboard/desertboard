@@ -20,15 +20,15 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile }: {
 
     return (
         <>
-            <div className='border-b-[2px] pb-5 border-[#1515151A]'>
-                <h3 className='nuber-next-bold text-2xl'>Select Topic<span className='text-orange'>.</span></h3>
+            <div className='border-b-[2px] pb-5 md:pb-8 border-[#1515151A]'>
+                <h3 className='nuber-next-heavy text-font28 text-Darkgreen'>Select Topic<span className='text-orange'>.</span></h3>
             </div>
             <div>
 
                 {!isMobile && topicSelection.map((topic, index) => (
-                    <div className={`group border-b-[2px] border-[#1515151A] flex justify-between py-6 ${activeTopic == index ? "helvetica-bold" : "helvetica"} cursor-pointer`} key={index} onClick={() => setActiveTopic(index)}>
+                    <div className={`group border-b-[2px] border-[#1515151A] flex justify-between py-5 md:py-8 cursor-pointer`} key={index} onClick={() => setActiveTopic(index)}>
 
-                        <h4>{topic.title}</h4>
+                        <h4 className={`${activeTopic == index ? "texthelvetica20bold" : "texthelvetica20"} `}>{topic.title}</h4>
 
 
                         <div className="transition-all duration-300 group-hover:translate-x-1">
@@ -42,7 +42,7 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile }: {
 
                 {isMobile &&
                     <>
-                    <div className={` group border-b-[2px] border-[#1515151A] flex justify-between py-6 helvetica-bold cursor-pointer`} onClick={()=>setDropDownOpen((prev)=>!prev)}>
+                    <div className={` group border-b-[2px] border-[#1515151A] flex justify-between py-5 md:py-8 helvetica-bold cursor-pointer`} onClick={()=>setDropDownOpen((prev)=>!prev)}>
 
                         <h4>{selectedValue}</h4>
 
@@ -56,20 +56,20 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile }: {
 
                     {dropDownOpen && <div>
                        {topicSelection.map((topic,index)=>(
-                            
-                            topic.title == selectedValue ? null 
-                            
-                            : 
-                            
+
+                            topic.title == selectedValue ? null
+
+                            :
+
                             <div className={`border-b-[2px] border-[#1515151A] flex justify-between py-6 helvetica cursor-pointer hover:text-orange`} onClick={()=>handleSelection(topic.title,index)} key={index}>
 
                             <h4>{topic.title}</h4>
-    
+
                             </div>
-                       
-                       ))}     
+
+                       ))}
                     </div>}
-                    
+
                     </>
                     }
 

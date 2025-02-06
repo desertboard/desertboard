@@ -1,9 +1,9 @@
 import React from 'react'
 import PageBanner from '../Common/PageBanner'
-import bannerImg from "@/public/assets/downloadsbanner.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import Selections from './Selections/Selections';
 import BeforeFooterTag from '../Common/BeforeFooterTag';
+import { assets } from '@/public/assets/images/assets';
 
 
 const Downloads = () => {
@@ -17,7 +17,7 @@ const Downloads = () => {
   return (
     <>
         <PageBanner
-                bannerSrc={bannerImg} // Corrected image import here
+                bannerSrc={assets.dbanner} // Corrected image import here
                 arrowSrc={Arrow}
                 // desc="Upcycling annually regenerated palm biomass into sustainable building solutions "
                 title="Downloads"
@@ -28,7 +28,7 @@ const Downloads = () => {
         <Selections/>
         <BeforeFooterTag title='Discover Industry Solutions'/>
     </>
-    
+
   )
 }
 

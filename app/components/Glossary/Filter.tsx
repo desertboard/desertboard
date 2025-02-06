@@ -17,10 +17,12 @@ const Filter = () => {
       { id: 1, name: "Al Sa’afat" },
       { id: 2, name: "ASTM" },
     ],
+    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
   };
   const menuforB = {
     alphabet: "B",
     items: [{ id: 1, name: "BS" }],
+    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
   };
   const menuforC = {
     alphabet: "C",
@@ -29,6 +31,7 @@ const Filter = () => {
       { id: 2, name: "CO2 (Carbon Dioxide)" },
       { id: 3, name: "Carbon Sink" },
     ],
+    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
   };
   const menuforD = {
     alphabet: "D",
@@ -37,6 +40,7 @@ const Filter = () => {
       { id: 2, name: "CO2 (Carbon Dioxide)" },
       { id: 3, name: "Carbon Sink" },
     ],
+    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
   };
   const menuforE = {
     alphabet: "E",
@@ -49,6 +53,7 @@ const Filter = () => {
       { id: 6, name: "ESL" },
       { id: 7, name: "EST" },
     ],
+    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
   };
   const menuforF = {
     alphabet: "F",
@@ -56,6 +61,7 @@ const Filter = () => {
       { id: 1, name: "Fossil Fuels" },
       { id: 2, name: "Forest Stewardship Council (FSC)" },
     ],
+    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
   };
 
   const menuforG = {
@@ -64,24 +70,28 @@ const Filter = () => {
       { id: 1, name: "Greenhouse Gas (GHG)" },
       { id: 2, name: "Global Warming" },
     ],
+    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
   };const menuforH = {
     alphabet: "H",
     items: [
       { id: 1, name: "Greenhouse Gas (GHG)" },
       { id: 2, name: "Global Warming" },
     ],
+    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
   };const menuforI = {
     alphabet: "I",
     items: [
       { id: 1, name: "Greenhouse Gas (GHG)" },
       { id: 2, name: "Global Warming" },
     ],
+    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
   };const menuforJ = {
     alphabet: "J",
     items: [
       { id: 1, name: "Greenhouse Gas (GHG)" },
       { id: 2, name: "Global Warming" },
     ],
+    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
   };
 
   // const alphabet = [
@@ -91,7 +101,7 @@ const Filter = () => {
   // const [activeLetter, setActiveLetter] = useState<string>("");
   const [isSticky, setIsSticky] = useState(false);
   const componentsList = [
-    { id: 1, name: "A", component: <Searchresult itemdata={menuforA} /> },
+    { id: 1, name: "A", component: <Searchresult itemdata={menuforA}   /> },
     { id: 2, name: "B", component: <Searchresult itemdata={menuforB} /> },
     { id: 3, name: "C", component: <Searchresult itemdata={menuforC} /> },
     { id: 4, name: "D", component: <Searchresult itemdata={menuforD} /> },

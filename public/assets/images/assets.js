@@ -68,6 +68,7 @@ import imgal from "../images/sustainability/img-al.jpg";
 import secim from "../images/sectors/sec2.png";
 import secdbanner from "../images/sectors/banner.jpg";
 import sec1 from "../images/sectors/sec1.png";
+import sec2 from "../images/sectors/sec2.png";
 import imgdust from "../images/icons/imgdust.jpg";
 import wh1 from "../images/applications/wh1.svg";
 import wh2 from "../images/applications/wh2.svg";
@@ -75,6 +76,17 @@ import wh3 from "../images/applications/wh3.svg";
 import accic from "../images/icons/accic.svg";
 import bghr from "../images/applications/bghr.jpg"
 import appbanner from "../images/applications/banner.jpg"
+import grarrow from "../images/icons/greenarrow.svg"
+import line from "../images/icons/line.svg"
+import secbanner from "../images/sectors/secbanner.jpg"
+import tlse from "../images/sectors/tlse.jpg"
+import readarrow from "../images/read-arrow.svg";
+import dbanner from "../images/downloads/banner.jpg";
+import leaf from "../images/home/leaf.svg";
+import lfbt from "../images/home/lfbt.svg";
+import downorange from "../images/downloads/downorange.svg";
+
+
 
 
 
@@ -84,9 +96,19 @@ import appbanner from "../images/applications/banner.jpg"
 
 
 export const assets = {
+    downorange,
+    leaf,
+    lfbt,
+    dbanner,
+    readarrow,
+    tlse,
+    secbanner,
     appbanner,
+    grarrow,
+    line,
     bghr,
     accic,
+    sec2,
     wh1,
     wh2,
     wh3,

@@ -30,7 +30,9 @@ const Sectors = () => {
         breadcrumbs={breadcrumbs}
         bnrHeight="60dvh"
       />
+
       <SectionTwo />
+      <div className="py-10 md:pt-20 insp-mn relative inspbg"></div>
       <SectionThree />
       <SectionFour />
       <SectionFive />
