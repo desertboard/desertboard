@@ -2,7 +2,13 @@ import { Card } from "@/app/components/ui/card";
 import { useSectorStore } from "@/app/store/useSectorStore";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
+import dynamic from "next/dynamic";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import "react-quill/dist/quill.snow.css";
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 interface Application {
   title: string;
@@ -38,6 +44,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
     handleSubmit,
     getValues,
     setValue,
+    control,
     formState: { errors },
   } = useForm<SectorFormData>({
     defaultValues: {
@@ -53,9 +60,9 @@ const SectorFormPage = ({ sectorId }: Props) => {
       if (sectorId) {
         try {
           setIsLoading(true);
-          const response = await fetch(`/api/admin/sector/${sectorId}`);
+          clearAll();
+          const response = await fetch(`/api/admin/sector/byid?id=${sectorId}`);
           const data = await response.json();
-          console.log(data);
           setValue("title", data.data.title);
           setValue("description", data.data.description);
           setValue("image_url", data.data.image_url);
@@ -116,8 +123,8 @@ const SectorFormPage = ({ sectorId }: Props) => {
       <Card className="p-6">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-sm font-medium">Title</label>
-            <input
+            <Label className="text-sm font-medium">Title</Label>
+            <Input
               {...register("title", { required: "Title is required" })}
               className="w-full p-2 border rounded-md"
               placeholder="Enter sector title"
@@ -126,18 +133,21 @@ const SectorFormPage = ({ sectorId }: Props) => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Description</label>
-            <textarea
-              {...register("description", { required: "Description is required" })}
-              className="w-full p-2 border rounded-md h-32"
-              placeholder="Enter sector description"
+            <Label className="text-sm font-medium">Description</Label>
+            <Controller
+              name="description"
+              control={control}
+              rules={{ required: "Description is required" }}
+              render={({ field }) => (
+                <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="mt-1" />
+              )}
             />
             {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>}
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Image URL</label>
-            <input
+            <Label className="text-sm font-medium">Image URL</Label>
+            <Input
               {...register("image_url", { required: "Image URL is required" })}
               className="w-full p-2 border rounded-md"
               placeholder="Enter image URL"
@@ -148,16 +158,16 @@ const SectorFormPage = ({ sectorId }: Props) => {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <h2 className="text-xl font-semibold">Applications</h2>
-              <button
+              <Button
                 type="button"
                 className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
                 onClick={handleClickAddApplication}
               >
                 Add Application
-              </button>
+              </Button>
             </div>
 
-            {applications.length === 0 ? (
+            {!applications || applications?.length === 0 ? (
               <p className="text-gray-500 text-center py-4">No applications added yet</p>
             ) : (
               <div className="space-y-4">
@@ -168,13 +178,13 @@ const SectorFormPage = ({ sectorId }: Props) => {
                     <div className="mt-4">
                       <div className="flex justify-between items-center mb-2">
                         <p className="text-sm font-medium">Finishes ({app.finishes.length})</p>
-                        <button
+                        <Button
                           type="button"
                           onClick={() => router.push(`/admin/sectors/create/application/${index}/finish`)}
                           className="text-sm bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600"
                         >
                           Add Finish
-                        </button>
+                        </Button>
                       </div>
                       {app.finishes.length > 0 ? (
                         <div className="grid grid-cols-2 gap-2">
@@ -195,9 +205,9 @@ const SectorFormPage = ({ sectorId }: Props) => {
             )}
           </div>
 
-          <button type="submit" className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600">
+          <Button type="submit" className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600">
             {isLoading ? "Saving..." : sectorId ? "Update Sector" : "Create Sector"}
-          </button>
+          </Button>
         </form>
       </Card>
     </div>
