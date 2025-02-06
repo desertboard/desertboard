@@ -19,10 +19,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
       {/* <div className="absolute inset-0 bg-black opacity-60 -z-10"></div>
       <div className="absolute inset-0 bg-primary opacity-20 -z-20"></div>  */}
       <figure className="absolute left-0 top-0 h-full w-full -z-40">
-        <Image className="w-full h-full absolute object-cover" src={bannerSrc} width={1000} height={800} alt="Banner image" />
+        <Image className="w-full h-full absolute top-0 left-0 object-cover object-center" src={bannerSrc} fill objectFit="cover" alt="Banner image" />
       </figure>
       <div className="container relative">
-        <div className="pg-bnr__div absolute bottom-0 pb-4 lg:pb-20">
+        <div className="pg-bnr__div absolute bottom-0 pb-10 lg:pb-20">
           <h1 className="pg-bnr__ttl heavywhite  mb-5 md:mb-10">
             {title}
             <span className="text-[#FF671F]">.</span>

@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2em;
+    column-gap: 2.5em;
     @media (max-width: 1229px) {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -37,5 +38,24 @@
     }
     @media (max-width: 768px) {
         grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.news {
+    &__category {
+        li {
+            position: relative;
+            &::after {
+                position: absolute;
+                top: 0;
+                right: -5px;
+                content: ",";
+            }
+            &:last-child {
+                &::after {
+                    display: none;
+                }
+            }
+        }
     }
 }

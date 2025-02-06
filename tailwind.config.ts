@@ -11,6 +11,9 @@ module.exports = withMT({
   darkMode: ["class", "class"],
   theme: {
   	extend: {
+		fontFamily:{
+			helvetica:["Helvetica","sans-serif"]
+		},
   		screens: {
   			xs: '480px',
   			sm: '606px',
@@ -53,7 +56,7 @@ module.exports = withMT({
   			font14: 'clamp(0.7rem,1.2vw,0.875rem)',
   			font16: 'clamp(0.7rem, 1.5vw, 1rem)',
   			font18: 'clamp(0.8rem, 1.5vw, 18px)',
-  			font19: 'clamp(0.8rem, 2vw, 1.1875rem)',
+  			font19: 'clamp(0.9rem, 2vw, 1.1875rem)',
   			font20: 'clamp(1rem, 2vw, 1.25rem)',
   			font24: 'clamp(1.2rem, 3vw, 1.5rem)',
   			font25: 'clamp(1.3rem, 3vw, 1.5625rem)',
@@ -86,6 +89,28 @@ module.exports = withMT({
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		keyframes: {
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
   		}
   	}
   },

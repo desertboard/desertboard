@@ -21,10 +21,10 @@ const InstagramBlock: React.FC<InstagramDataProps> = ({ instagramData }) => {
             <h2 className="text-font48 heavydark text-white mb-2 xl:mb-10">Are you following us on Instagram?</h2>
             <PrimaryArrowBtn btntitle={"Visit Instagram"} btnLink="#" />
           </div>
-          <div className="grid grid-flow-row grid-cols-5">
+          <div className="grid grid-flow-row grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {instagramData.map((post) => (
               <div key={post.id}>
-                <Image src={post.imgPost} alt="Instagram Image" className="w-full" width={200} height={200} objectFit="cover" />
+                <Image src={post.imgPost} alt="Instagram Image" className="w-full" width={200} height={200} objectFit="cover" quality={100} priority unoptimized />
               </div>
             ))}
           </div>

@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useSectorStore } from "@/app/store/useSectorStore";
 import { useParams } from "next/navigation";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 
 interface FinishFormData {
   title: string;
@@ -57,8 +60,8 @@ const CreateFinishPage = () => {
       <Card className="p-6">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-sm font-medium">Title</label>
-            <input
+            <Label className="text-sm font-medium">Title</Label>
+            <Input
               {...register("title", { required: "Title is required" })}
               className="w-full p-2 border rounded-md"
               placeholder="Enter finish title"
@@ -67,8 +70,8 @@ const CreateFinishPage = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Image URL</label>
-            <input
+            <Label className="text-sm font-medium">Image URL</Label>
+            <Input
               {...register("image_url", { required: "Image URL is required" })}
               className="w-full p-2 border rounded-md"
               placeholder="Enter image URL"
@@ -77,16 +80,16 @@ const CreateFinishPage = () => {
           </div>
 
           <div className="flex gap-4">
-            <button
+            <Button
               type="button"
               onClick={() => router.back()}
               className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-200"
             >
               Cancel
-            </button>
-            <button type="submit" className="flex-1 bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">
+            </Button>
+            <Button type="submit" className="flex-1 bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">
               Add Finish
-            </button>
+            </Button>
           </div>
         </form>
       </Card>
