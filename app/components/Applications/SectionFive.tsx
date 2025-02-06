@@ -137,14 +137,16 @@ const SectionFive = () => {
                     >
                       <div className="flex items-end pb-5 min-h-[462px]">
                         <div className="px-4 w-full">
-                          <h3 className="nubernext28bold text-white">
+                          <h3 className="nubernext28bold text-white translate-y-[5px] transition-all duration-500 group-hover:translate-y-[-10px]">
                             {item.title}
                           </h3>
 
-                          <p className="text-white overflow-hidden pt-5  min-w-[32ch] translate-y-[100%] hidden group-hover:translate-y-[0] group-hover:block
-                          transition-all duration-500 ease-linear opacity-0 group-hover:opacity-[1]" >
-                            {item.desc}
-                          </p>
+                            <p className="text-white overflow-hidden pt-3 h-0 group-hover:h-full   group-hover:translate-y-[-10px]
+                            transition-all duration-500 ease-in-out  ">
+                            <span className="opacity-0 group-hover:opacity-100  transition-opacity duration-500 group-hover:delay-100 delay-0">
+                              {item.desc}
+                              </span>
+                            </p>
                         </div>
                       </div>
                     </div>
