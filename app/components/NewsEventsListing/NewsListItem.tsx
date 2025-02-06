@@ -19,8 +19,9 @@ const ListItem = ({listData}:ListItemProps) => {
     <div key={listData.id} className="news-list__item">
       <Image src={listData.imageSrc} alt="" className='news-list__img flex w-full h-full object-cover' width={300} height={350} />
       <p className="text-[#151515BF] text-[14px] uppercase font-bold nuber-next-heavy">{listData.date}</p>
-      <h3 className="text-[24px] font-bold nuber-next-heavy text-[#002D28] max-w-[45ch] overflow-hidden text-ellipsis display-webkit-box line-clamp-2 webkit-box-orient-vertical">{listData.title}</h3>
-      <div className='flex flex-col gap-8'>
+      <h3 className="text-font24 leading-[1.3] font-bold nuber-next-heavy text-[#002D28] max-w-[45ch] overflow-hidden text-ellipsis display-webkit-box line-clamp-2 webkit-box-orient-vertical">
+        {listData.title}</h3>
+      <div className='flex flex-col gap-5 xl:gap-8'>
         <div className="flex items-baseline gap-2">
           <Image src={NewsIcon} alt=""  />
           {

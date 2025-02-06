@@ -31,7 +31,7 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
       <LightSectionContainer>
         <div className="container">
           <div className="relative z-50 ">
-            <h2 className="text-font48 heavydark mb-5 xl:mb-10">
+            <h2 className="text-font48 heavydark mb-5 lg:mb-10">
               Upcoming Events<span className="text-[#FF671F] leading-[1]">.</span>
             </h2>
           </div>
