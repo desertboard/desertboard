@@ -7,10 +7,12 @@ import { topicSelection } from '../selectionData'
 import TopicSelection from './TopicSelection'
 import TypeSelection from './TypeSelection'
 import ResultSelection from './ResultSelection'
+import { motion } from 'framer-motion'
+import { assets } from '@/public/assets/images/assets'
 
 
 const Selections = () => {
-   
+
     const [activeTopic,setActiveTopic] = useState(0)
     const activeTypes = topicSelection[activeTopic].types
     const [activeType,setActiveType] = useState(0)
@@ -23,7 +25,7 @@ const Selections = () => {
     useEffect(()=>{
 
         const handleScreenChange = (screenWidth:number)=>{
-            if(screenWidth<798){
+            if(screenWidth<1021){
                 setIsMobile(true)
             }else{
                 setIsMobile(false)
@@ -40,14 +42,14 @@ const Selections = () => {
     },[])
 
 
-    
+
     useEffect(() => {
         const currentTopic = topicSelection[activeTopic];
         console.log(currentTopic.types[activeType])
-        
+
         if (!currentTopic || !currentTopic.types) {
             return;
-        
+
         }else if(currentTopic.types[activeType] == undefined){
             setActiveType(currentTopic.types.findIndex((item)=>item.title == currentTopic.types[0].title))
             const currentType: {result:{ title: string; image: string; }[]} = currentTopic.types[0];
@@ -58,7 +60,7 @@ const Selections = () => {
             } else {
                 setActiveResult(currentType.result);
             }
-        
+
         }else{
             const currentType =currentTopic.types[activeType];
             if (currentType.result === undefined) {
@@ -72,20 +74,38 @@ const Selections = () => {
 
     }, [activeType,activeTopic]);
 
-    
+
 
     return (
         <>
-        <div className='px-6 relative py-20'>
-            <Image src={BackGround} alt='background' className='absolute left-0 top-0 -z-10 inset-0 h-full w-full object-cover' />
+        <section className='  relative py-10 lg:py-20'>
+                <Image src={BackGround} alt='background' className='absolute left-0 top-0 -z-10 inset-0 h-full w-full object-cover' />
+                <motion.div
+        className="ola ola-right absolute top-0 right-[-25%] md:right-[-10%] w-[20em] md:w-[40em]"
+        animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Image
+          className="absolute"
+          src={assets.leaf}
+          alt="Description of the image"
+        />
+      </motion.div>
+      <motion.div
+        className="ola ola-right absolute bottom-[43%] left-[-25%] md:left-[-15%] w-[20em] md:w-[40em]"
+        animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Image className="absolute" src={assets.lfbt} alt="Description of the image" />
+      </motion.div>
             <div className='container h-fit text-black'>
-                <div className='grid md:grid-cols-3 gap-3'>
+                <div className='grid lg:grid-cols-3 gap-3 relative'>
 
-                    <div className={`col-span-1 pr-8 ${!isMobile ? "border-r-2" : ""}`}>
+                    <div className={`col-span-1 pr-8 border-[#00000010] ${!isMobile ? "border-r-2" : ""}`}>
                         <TopicSelection activeTopic={activeTopic} setActiveTopic={setActiveTopic} isMobile={isMobile}/>
                     </div>
 
-                    <div className={`col-span-1 pr-8 ${!isMobile ? "pl-4 border-r-2" : "mt-5"}`}>
+                    <div className={`col-span-1 pr-8 border-[#00000010] ${!isMobile ? "pl-4 border-r-2" : "mt-5"}`}>
                         <TypeSelection activeTypes={activeTypes} activeType={activeType} setActiveType={setActiveType} isMobile={isMobile} activeTopic={activeTopic}/>
                     </div>
 
@@ -95,7 +115,7 @@ const Selections = () => {
 
                 </div>
             </div>
-        </div>
+        </section>
 
         </>
     )

@@ -25,14 +25,14 @@ const TypeSelection = ({ activeTypes, setActiveType, activeType, isMobile, activ
 
     return (
         <>
-            <div className='border-b-[2px] border-[#1515151A] pb-5'>
-                <h3 className='nuber-next-bold text-2xl'>Select Type<span className='text-orange'>.</span></h3>
+            <div className='border-b-[2px] pb-5 md:pb-8 border-[#1515151A]  '>
+                <h3 className='nuber-next-heavy text-font28 text-Darkgreen'>Select Type<span className='text-orange'>.</span></h3>
             </div>
             {!isMobile && activeTypes.map((type, index) => (
                 <div key={index} className='group cursor-pointer' onClick={() => setActiveType(index)}>
-                    <div className={`border-b-[2px] border-[#1515151A] flex justify-between py-6 helvetica-bold`}>
+                    <div className={`border-b-[2px] border-[#1515151A] flex justify-between py-5 md:py-8  `}>
 
-                        <h4 className={`${activeType == index ? "helvetica-bold" : "helvetica"}`}>{type.title}</h4>
+                        <h4 className={`${activeType == index ? "texthelvetica20bold" : "texthelvetica20"}`}>{type.title}</h4>
 
 
                         <div className="transition-all duration-300 group-hover:translate-x-1">
@@ -48,7 +48,7 @@ const TypeSelection = ({ activeTypes, setActiveType, activeType, isMobile, activ
 
             {isMobile &&
                 <>
-                    <div className={` group border-b-[2px] border-[#1515151A] flex justify-between py-6 helvetica-bold cursor-pointer`} onClick={() => setDropDownOpen((prev) => !prev)}>
+                    <div className={` group border-b-[2px] border-[#1515151A] flex justify-between py-5 md:py-8 helvetica-bold cursor-pointer`} onClick={() => setDropDownOpen((prev) => !prev)}>
 
                         <h4>{selectedValue}</h4>
 

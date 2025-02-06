@@ -27,7 +27,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
             {title}
             <span className="text-[#FF671F]">.</span>
           </h1>
-          {desc && <p className="text-[#FFFFFFBF] text-font20 lh-1p33 mb-10 max-w-[40ch] text-left">{desc}</p>}
+          {desc && <p className="text-[#FFFFFFBF] text-font20 lh-1p33 mb-10 max-w-[90ch] text-left">{desc}</p>}
           <div className="pg-bnr__txt flex items-center flex-wrap">
             <ul className="flex items-center flex-wrap">
               {breadcrumbs.map((breadcrumb, index) => (

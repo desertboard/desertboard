@@ -69,7 +69,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   font-family: "NuberNextHeavy", "Myriad Pro", Myriad, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-
+.dnld img{    filter: brightness(0) invert(1);}
 .nuber-next-bold {
   font-family: "NuberBold", "Myriad Pro", Myriad, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }

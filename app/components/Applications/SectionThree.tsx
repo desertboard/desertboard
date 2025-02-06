@@ -46,7 +46,7 @@ const accordianData = [
 const SectionThree = () => {
   return (
     <>
-      <section className=" py-10 lg:py-20  relative bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
+      <section className=" py-10 lg:py-20  relative z-[1] bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
       <motion.div className="ola ola-right absolute top-[-200px] right-[-10%] w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
         <Image className="absolute" src={ola} alt="Description of the image"></Image>

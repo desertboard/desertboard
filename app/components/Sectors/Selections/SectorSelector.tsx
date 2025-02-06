@@ -1,5 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { menuItem } from '../data'
+import Image from "next/image";
+import { assets } from '@/public/assets/images/assets';
 
 const SectorSelector = ({ setActiveSector, activeSector }: {
     setActiveSector: Dispatch<SetStateAction<number>>;
@@ -40,23 +42,24 @@ const SectorSelector = ({ setActiveSector, activeSector }: {
 
     return (
         <>
-            <div className='border-b-[2px] pb-5 border-[#1515151A]'>
-                <h3 className='nuber-next-bold text-font28'>Select Sector<span className='text-orange'>.</span></h3>
+            <div className='border-b-[2px] pb-5 border-[#00000010]'>
+                <h3 className='nuber-next-heavy text-font28 text-Darkgreen'>Select Sector<span className='text-orange'>.</span></h3>
             </div>
 
             {
                 isMobile &&
                 <>
-                    <div className={`text-font28 nuber-next-bold group border-b-[2px] border-[#1515151A] flex justify-between py-6 cursor-pointer`} onClick={()=>setIsOpen(true)}>
+                    <div className={`text-font28 nuber-next-bold group border-b-[2px] border-[#00000010] flex justify-between py-6 lg:py-8 cursor-pointer`} onClick={()=>setIsOpen(true)}>
 
-                        <h4>{selectedValue}</h4>
+                        <h4 className='leading-[1]'>{selectedValue}</h4>
+                        <Image src={assets.grarrow} alt="" />
 
                     </div>
 
                     { isOpen && menuItem.map((item, index) => (
-                        <div className={`text-font28 nuber-next-bold group border-b-[2px] border-[#1515151A] flex justify-between py-6 cursor-pointer ${activeSector == index ? "text-orange" : "text-[#151515BF]"}`} key={index} onClick={() => handleSelection(index,item.title)}>
+                        <div className={`text-font28 nuber-next-bold group border-b-[2px] border-[#00000010] flex justify-between py-6 lg:py-8 cursor-pointer ${activeSector == index ? "text-orange" : "text-[#151515BF]"}`} key={index} onClick={() => handleSelection(index,item.title)}>
 
-                            <h4>{item.title}</h4>
+                            <h4 className='leading-[1]'>{item.title}</h4>
 
                         </div>
                     ))}
@@ -64,16 +67,16 @@ const SectorSelector = ({ setActiveSector, activeSector }: {
 
             }
 
-            {!isMobile && 
-            
-            menuItem.map((item, index) => (
-                <div className={`text-font28 nuber-next-bold group border-b-[2px] border-[#1515151A] flex justify-between py-6 cursor-pointer ${activeSector == index ? "text-orange" : "text-[#151515BF]"}`} key={index} onClick={() => setActiveSector(index)}>
+            {!isMobile &&
 
-                    <h4>{item.title}</h4>
+            menuItem.map((item, index) => (
+                <div className={`text-font28 nuber-next-bold group border-b-[2px] border-[#00000010] flex justify-between py-6 lg:py-8 cursor-pointer ${activeSector == index ? "text-orange" : "text-[#151515BF]"}`} key={index} onClick={() => setActiveSector(index)}>
+
+                    <h4 className='leading-[1]'>{item.title}</h4>
 
                 </div>
             ))
-            
+
             }
 
         </>

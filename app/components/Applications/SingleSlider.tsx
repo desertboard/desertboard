@@ -7,7 +7,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { motion } from "framer-motion";
-
+import { assets } from "@/public/assets/images/assets";
+import Image from "next/image";
 const SectionTwo = () => {
   return (
     <>
@@ -32,23 +33,47 @@ const SectionTwo = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative w-full h-[300px] md:h-[840px] bg-cover bg-center"
-            style={{ backgroundImage: `url(/assets/images/sectors/sec1.png)` }}
+            className="relative w-full"
             whileHover={{ scale: 1.02 }}
-          />
-        </SwiperSlide>
+            />
 
-        {/* Slide 2 */}
-        <SwiperSlide>
+            <figure className=" relative w-full h-[840px] overflow-hidden  ">
+                                      <Image className="w-full   object-cover h-full" src={assets.sec2} width={320} height={320}  alt="" />
+            </figure>
+
+          </SwiperSlide>
+          {/* <SwiperSlide>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative w-full h-[300px] md:h-[840px] bg-cover bg-center"
-            style={{ backgroundImage: `url(/assets/images/sectors/sec2.png)` }}
+            className="relative w-full"
             whileHover={{ scale: 1.02 }}
-          />
-        </SwiperSlide>
+            />
+
+            <figure className=" relative w-full h-[840px] overflow-hidden  ">
+                                      <Image className="w-full   object-cover h-full" src={assets.sec2} width={300} height={840}  alt="" />
+            </figure>
+
+          </SwiperSlide> */}
+
+
+
+        {/* Slide 2 */}
+        {/* <SwiperSlide>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="relative w-full"
+
+              whileHover={{ scale: 1.02 }}
+
+            />
+            <figure className=" relative w-full overflow-hidden  ">
+                                      <Image className="w-full   object-cover h-full" src={assets.sec2} width={320} height={320}  alt="" />
+            </figure>
+        </SwiperSlide> */}
       </Swiper>
 
 
