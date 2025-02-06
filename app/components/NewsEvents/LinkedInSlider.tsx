@@ -29,7 +29,7 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({ data }) => {
     <>
       <CustomClrSection>
         <div className="container">
-          <div className="flex justify-between flex-wrap items-start relative z-50 gap-x-5 mb-5 ">
+          <div className="flex justify-between flex-wrap items-start relative z-10 gap-x-5 mb-5 ">
             <h2 className="text-font48 heavydark xl:mb-10 mb-5 md:mb-10 ">Are you following us on LinkedIn?</h2>
             <PrimaryArrowBtn btntitle={"Visit LinkedIn"} btnLink="#" />
           </div>

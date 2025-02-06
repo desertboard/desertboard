@@ -86,11 +86,11 @@ const HistorySlider: React.FC<HistorySliderProps> = ({ className = "" }) => {
           backgroundPosition: "center",
         }}
       />
-      <div className="container">
+      <div className="container relative">
         <h2 className="relative text-white z-10 text-font48 nuber-next-heavy pt-20 leading-[1]">
           Our History <span className="text-[#FF671F]">.</span>
         </h2>
-        <div className="flex relative z-10">
+        <div className="flex relative z-10 min-h-[50dvh]">
           <div className="flex-grow flex items-end relative overflow-hidden history__content">
             <div className="absolute inset-0 flex items-center transition-transform duration-500">
               <div className="max-w-2xl">
@@ -102,46 +102,45 @@ const HistorySlider: React.FC<HistorySliderProps> = ({ className = "" }) => {
               </div>
             </div>
           </div>
-
-          {/* Year Navigation */}
-          <div className="w-max lg:w-[20%] h-full relative flex flex-col justify-center ">
-            <div className="absolute inset-0 z-10 pointer-events-none " />
-            <Swiper
-              direction="vertical"
-              slidesPerView={4}
-              loop={true}
-              mousewheel={{
-                sensitivity: 1,
-                thresholdDelta: 30,
-              }}
-              modules={[Mousewheel, Controller]}
-              className="h-full "
-              onSwiper={setSwiper}
-              onSlideChange={handleSlideChange}
-              centeredSlides={true}
-              speed={800}
-              initialSlide={1}
-              watchSlidesProgress={true}
-              observer={true}
-              observeParents={true}
-              breakpoints={{
-                1024: {
-                  slidesPerView: 5,
-                },
-              }}>
-              {sortedTimelineData.map((item) => (
-                <SwiperSlide key={item.year} className="!h-[100px] flex items-center justify-center">
-                  <button
-                    onClick={() => handleYearClick(item.year)}
-                    className={`w-full h-full flex items-center text-right justify-end gap-1 relative group transition-all ease-linear duration-300 text-font24
-                  // ${activeYear === item.year ? "text-accent font-[400] z-20 text-font32 ease-linear" : "text-gray-100 font-bold hover:text-gray-200"}`}>
-                    <span className="relative z-10 transition-all ease-linear duration-300 helvetica">{item.year}</span>
-                    <div className={`w-8 h-[2px] transition-all ease-linear duration-300 ${activeYear === item.year ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
-                  </button>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+        </div>
+        {/* Year Navigation */}
+        <div className="w-full absolute right-0 top-0 flex flex-col justify-center z-50 h-full">
+          <div className=" z-10 pointer-events-none " />
+          <Swiper
+            direction="vertical"
+            slidesPerView={5}
+            loop={true}
+            mousewheel={{
+              sensitivity: 1,
+              thresholdDelta: 30,
+            }}
+            modules={[Mousewheel, Controller]}
+            className="h-full "
+            onSwiper={setSwiper}
+            onSlideChange={handleSlideChange}
+            centeredSlides={true}
+            speed={800}
+            initialSlide={1}
+            watchSlidesProgress={true}
+            observer={true}
+            observeParents={true}
+            breakpoints={{
+              1024: {
+                slidesPerView: 5,
+              },
+            }}>
+            {sortedTimelineData.map((item) => (
+              <SwiperSlide key={item.year} className="!h-[100px] flex items-center justify-center min-w-[20em]">
+                <button
+                  onClick={() => handleYearClick(item.year)}
+                  className={`w-full min-w-[20em] h-full flex items-center text-right justify-end gap-1 relative group transition-all ease-linear duration-300 text-font24
+                  // ${activeYear === item.year ? "text-accent font-[400] z-20 text-font32 ease-linear" : "text-gray-100 font-normal hover:text-gray-200"}`}>
+                  <span className="relative z-10 transition-all ease-linear duration-300 helvetica">{item.year}</span>
+                  <div className={`w-[30px] h-[2px] transition-all ease-linear duration-300 ${activeYear === item.year ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
+                </button>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
 
