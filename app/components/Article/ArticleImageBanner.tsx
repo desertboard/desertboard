@@ -67,8 +67,7 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc }) => {
           <Image
             className="w-full h-full   object-cover"
             src={bannerSrc}
-            width={1000}
-            height={600}
+
             alt="Banner image"
           />
         </div>
@@ -106,7 +105,7 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc }) => {
               60,000 tons of CO2 annually, further reinforcing its commitment to
               sustainability.
             </p>
-            <p className="pb-5 lg:pb-10 clr15op75">
+            <p className="pb-5 lg:pb-10 clr15op75 texthelvetica20">
               The event underscored DesertBoard®’s pivotal role in advancing
               sustainable construction. By engaging with key stakeholders, the
               company inspired attendees to embrace eco-friendly materials that
@@ -116,7 +115,7 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc }) => {
               demand for sustainable material, setting new standards in
               durability and environmental impact.
             </p>
-            <p className="clr15op75">
+            <p className="clr15op75 texthelvetica20">
               The event underscored DesertBoard®’s pivotal role in advancing
               sustainable construction. By engaging with key stakeholders, the
               company inspired attendees to embrace eco-friendly materials that
@@ -133,7 +132,7 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc }) => {
             <Image src={assets.articlesec5} alt=""></Image>
           </div>
             <div className="pb-6 lg:pb-[60px] ">
-              <p className=" clr15op75">
+              <p className=" clr15op75 texthelvetica20">
               DesertBoard® extends its heartfelt appreciation to everyone who visited its stall and showed interest in its zero-emission Palm Strand Board (PSB®). Your enthusiasm for locally manufactured solutions fuels our mission to drive the construction industry toward a greener, more innovative future.
               </p>
           </div>

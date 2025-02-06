@@ -1,5 +1,5 @@
 import PageBanner from "../Common/PageBanner";
-import bannerImg from "@/public/assets/images/sectors/abt-bnr.jpg";
+import bannerImg from "@/public/assets/images/banners/news-evnets-listing.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import Filter from "./Filter";
 import Listing from "./NewsListing";
@@ -17,7 +17,7 @@ const Index = () => {
           desc=""
           title="News & Events"
           breadcrumbs={breadcrumbs}
-          bnrHeight="90dvh"
+          bnrHeight="55dvh"
         />
         <Filter/>
         <Listing/>

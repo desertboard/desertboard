@@ -50,13 +50,74 @@ const Filter = () => {
       { id: 7, name: "EST" },
     ],
   };
-  const alphabet = [
-    ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)),
-    "#",
-  ];
-  const [activeLetter, setActiveLetter] = useState<string>("");
-  const [isSticky, setIsSticky] = useState(false);
+  const menuforF = {
+    alphabet: "F",
+    items: [
+      { id: 1, name: "Fossil Fuels" },
+      { id: 2, name: "Forest Stewardship Council (FSC)" },
+    ],
+  };
 
+  const menuforG = {
+    alphabet: "G",
+    items: [
+      { id: 1, name: "Greenhouse Gas (GHG)" },
+      { id: 2, name: "Global Warming" },
+    ],
+  };const menuforH = {
+    alphabet: "H",
+    items: [
+      { id: 1, name: "Greenhouse Gas (GHG)" },
+      { id: 2, name: "Global Warming" },
+    ],
+  };const menuforI = {
+    alphabet: "I",
+    items: [
+      { id: 1, name: "Greenhouse Gas (GHG)" },
+      { id: 2, name: "Global Warming" },
+    ],
+  };const menuforJ = {
+    alphabet: "J",
+    items: [
+      { id: 1, name: "Greenhouse Gas (GHG)" },
+      { id: 2, name: "Global Warming" },
+    ],
+  };
+
+  // const alphabet = [
+  //   ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)),
+  //   "#",
+  // ];
+  // const [activeLetter, setActiveLetter] = useState<string>("");
+  const [isSticky, setIsSticky] = useState(false);
+  const componentsList = [
+    { id: 1, name: "A", component: <Searchresult itemdata={menuforA} /> },
+    { id: 2, name: "B", component: <Searchresult itemdata={menuforB} /> },
+    { id: 3, name: "C", component: <Searchresult itemdata={menuforC} /> },
+    { id: 4, name: "D", component: <Searchresult itemdata={menuforD} /> },
+    { id: 5, name: "E", component: <Searchresult itemdata={menuforE} /> },
+    { id: 6, name: "F", component: <Searchresult itemdata={menuforF} /> },
+    { id: 7, name: "G", component: <Searchresult itemdata={menuforG} /> },
+    { id: 8, name: "H", component: <Searchresult itemdata={menuforH} /> },
+    { id: 9, name: "I", component: <Searchresult itemdata={menuforI} /> },
+    { id: 10, name: "J", component: <Searchresult itemdata={menuforJ} /> },
+    { id: 11, name: "K", component: <Searchresult itemdata={menuforC} /> },
+    { id: 12, name: "L", component: <Searchresult itemdata={menuforC} /> },
+    { id: 13, name: "M", component: <Searchresult itemdata={menuforC} /> },
+    { id: 14, name: "N", component: <Searchresult itemdata={menuforC} /> },
+    { id: 15, name: "O", component: <Searchresult itemdata={menuforC} /> },
+    { id: 16, name: "P", component: <Searchresult itemdata={menuforC} /> },
+    { id: 17, name: "Q", component: <Searchresult itemdata={menuforC} /> },
+    { id: 18, name: "R", component: <Searchresult itemdata={menuforC} /> },
+    { id: 19, name: "S", component: <Searchresult itemdata={menuforC} /> },
+    { id: 20, name: "T", component: <Searchresult itemdata={menuforC} /> },
+    { id: 21, name: "U", component: <Searchresult itemdata={menuforC} /> },
+    { id: 22, name: "V", component: <Searchresult itemdata={menuforC} /> },
+    { id: 23, name: "W", component: <Searchresult itemdata={menuforC} /> },
+    { id: 24, name: "X", component: <Searchresult itemdata={menuforC} /> },
+    { id: 25, name: "Y", component: <Searchresult itemdata={menuforC} /> },
+    { id: 26, name: "Z", component: <Searchresult itemdata={menuforC} /> },
+  ];
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 500) {
@@ -72,6 +133,12 @@ const Filter = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+
+  // Determine which components to show
+  const filteredComponents = selectedId
+    ? componentsList.filter((item) => item.id === selectedId)
+    : componentsList;
 
   return (
     <>
@@ -99,11 +166,11 @@ const Filter = () => {
           <div className="relative z-1">
             <div
               className={`w-full ${
-                isSticky ? "fixed bgsti z-[9999] left-0 pt-[80px] md:pt-5" : ""
+                isSticky ? "fixed bgsti z-[9999] left-0 pt-4 md:pt-5" : ""
               } top-[0] lg:top-[100px] `}
             >
               <div className="container">
-                <div className="flex  justify-between ">
+                <div className="flex justify-start gap-5 md:gap-4 md:justify-between  items-center">
                   <div>
                     <h2 className="heavydark ">
                       Filter<span className="text-orange">.</span>
@@ -141,13 +208,14 @@ const Filter = () => {
                     </div>
                   </div>
                 </div>
-                <div className="  mt-8">
-                  <div className="flex flex-wrap gap-2 py-8 justify-between w-full border-y-2 border-[#15151510] mb-6 md:mb-10">
+                <div className="  mt-5 md:mt-8">
+                  {/* <div className="flex flex-wrap gap-2 py-4 md:py-8 justify-start md:justify-between w-full border-y-2 border-[#15151510] mb-6 md:mb-10">
                     {alphabet.map((letter) => (
+
                       <div
                         key={letter}
                         onClick={() => setActiveLetter(letter)}
-                        className={`w-fit py-[10px] px-[15px] cursor-pointer transition-all duration-300
+                        className={`w-fit py-[5px] md:py-[10px] px-[10px] md:px-[15px] cursor-pointer transition-all duration-300
                       ${
                         activeLetter === letter
                           ? "border-b-2 border-orange"
@@ -155,15 +223,46 @@ const Filter = () => {
                       }
                     `}
                       >
-                        <p className="texthelvetica20 font-bold">{letter}</p>
+                        {componentsList.map((item) => (
+                          <p className="texthelvetica20 font-bold" onClick={() => setSelectedId(item.id)}>{letter}</p>
+                        ))}
+
                       </div>
                     ))}
-                  </div>
+
+                  </div> */}
+                  <div className="flex flex-wrap gap-2 py-4 md:py-8 justify-start md:justify-between w-full border-y-2 border-[#15151510] mb-6 md:mb-10">
+
+                  {componentsList.map((item) => (
+
+          <p
+            key={item.id}
+            onClick={() => setSelectedId(item.id)}
+            className={`texthelvetica20 font-bold
+                       ${
+                         selectedId === item.id
+                           ? "border-b-2 border-orange"
+                           : "border-b-2 border-transparent"
+                       }`}
+          ><div className={`w-fit py-[5px] md:py-[10px] px-[10px] md:px-[15px] cursor-pointer transition-all duration-300`}>
+            {item.name}
+            </div>
+                      </p>
+
+        ))}
+                      </div>
+                  {/* <p className="texthelvetica20 font-bold" onClick={() => setSelectedId(null)}>{letter}</p> */}
+
                 </div>
               </div>
             </div>
             <div>
-              <div>
+            <div className="">
+        {filteredComponents.map((item) => (
+          <div key={item.id}>{item.component}</div>
+        ))}
+      </div>
+              {/* <div>
                 <Searchresult itemdata={menuforA} />
               </div>
               <div>
@@ -177,7 +276,7 @@ const Filter = () => {
               </div>
               <div className="ouy">
                 <Searchresult itemdata={menuforE} />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
