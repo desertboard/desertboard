@@ -1,10 +1,16 @@
 "use client";
 
 import { Card } from "@/app/components/ui/card";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useSectorStore } from "@/app/store/useSectorStore";
 import { useEffect, useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+import { Button } from "@/components/ui/button";
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 interface ApplicationFormData {
   title: string;
@@ -27,6 +33,7 @@ const CreateApplicationPage = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<ApplicationFormData>({
     defaultValues: initialFormData,
@@ -66,8 +73,8 @@ const CreateApplicationPage = () => {
       <Card className="p-6">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-sm font-medium">Title</label>
-            <input
+            <Label className="text-sm font-medium">Title</Label>
+            <Input
               {...register("title", { required: "Title is required" })}
               className="w-full p-2 border rounded-md"
               placeholder="Enter application title"
@@ -76,11 +83,14 @@ const CreateApplicationPage = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Description</label>
-            <textarea
-              {...register("description", { required: "Description is required" })}
-              className="w-full p-2 border rounded-md h-32"
-              placeholder="Enter application description"
+            <Label className="text-sm font-medium">Description</Label>
+            <Controller
+              name="description"
+              control={control}
+              rules={{ required: "Description is required" }}
+              render={({ field }) => (
+                <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="mt-1" />
+              )}
             />
             {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>}
           </div>
@@ -88,13 +98,13 @@ const CreateApplicationPage = () => {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <h2 className="text-xl font-semibold">Finishes</h2>
-              <button
+              <Button
                 type="button"
                 className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
                 onClick={handleAddFinish}
               >
                 Add Finish
-              </button>
+              </Button>
             </div>
 
             {tempFinishes.length === 0 ? (
@@ -112,16 +122,16 @@ const CreateApplicationPage = () => {
           </div>
 
           <div className="flex gap-4">
-            <button
+            <Button
               type="button"
               onClick={() => router.back()}
               className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-200"
             >
               Cancel
-            </button>
-            <button type="submit" className="flex-1 bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">
+            </Button>
+            <Button type="submit" className="flex-1 bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">
               Add Application
-            </button>
+            </Button>
           </div>
         </form>
       </Card>

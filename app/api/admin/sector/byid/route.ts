@@ -3,7 +3,8 @@ import { Sector } from "@/models/Sector";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
-  const id = request.nextUrl.searchParams.get("id");
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
 
   await connectDB();
 
