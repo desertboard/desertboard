@@ -62,7 +62,7 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }
 
 const Accordion : React.FC<AccordionProps> = ({ accordionData, bg, bullet}) => {
   return (
-    <div className="w-full  ">
+    <div className="w-full relative z-[1] ">
       {accordionData && accordionData.map((item, index) => (
         <AccordionItem key={index} bg={bg} bullet={bullet} title={item.title} content={item.content} />
       ))}
