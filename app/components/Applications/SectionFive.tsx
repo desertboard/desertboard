@@ -121,7 +121,7 @@ const SectionFive = () => {
                   },
                   1524: {
                     slidesPerView: 5,
-                    spaceBetween: 20,
+                    spaceBetween: 40,
                   },
                 }}
                 pagination={false}
@@ -135,8 +135,8 @@ const SectionFive = () => {
                       className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
                       style={{ backgroundImage: `url(${item.image})` }}
                     >
-                      <div className="flex items-end pb-5 min-h-[462px]">
-                        <div className="px-4 w-full">
+                      <div className="flex items-end pb-6 md:pb-10 min-h-[462px]">
+                        <div className="px-6 md:px-10 w-full">
                           <h3 className="nubernext28bold text-white translate-y-[5px] transition-all duration-500 group-hover:translate-y-[-10px]">
                             {item.title}
                           </h3>
