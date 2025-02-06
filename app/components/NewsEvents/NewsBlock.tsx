@@ -4,7 +4,7 @@ import "@/app/components/NewsEvents/newsblock.scss";
 import tagIcon from "@/public/assets/images/News/pin.svg";
 import PrimaryArrowBtn from "../Common/PrimaryArrowBtn";
 import Link from "next/link";
-
+import parse from "react-html-parser";
 
 interface NewsEvent {
  
@@ -34,7 +34,7 @@ const NewsBlock = ({newsEvent, sectionTitle}:NewsEventsProps) => {
       <LightSectionContainer>
         <div className="container">
           <div className="flex justify-between gap-x-4 gap-y-2 flex-wrap items-center relative z-50 mb-5 lg:mb-10">
-            <h2 className="text-font48 heavydark mb-5 md:mb-10 min-w-max">
+            <h2 className="text-font48 heavydark min-w-max">
               {sectionTitle}
               <span className="text-[#FF671F] leading-[1]">.</span>
             </h2>
@@ -49,8 +49,9 @@ const NewsBlock = ({newsEvent, sectionTitle}:NewsEventsProps) => {
                     <Image src={news.imageSrc} className="w-full h-full absolute top-0 left-0 -z-10 object-cover" alt="news" fill />
                     <div className="news-crd__content bg-[#fbf5f0] font-helvetica p-6">
                       <h4 className="text-black text-font14 opacity-75 leading-normal mb-3 uppercase font-bold">{news.date}</h4>
-                      <h3 className="text-font20 xl:text-font28 text-Darkgreen font-bold leading-[1.3] mb-2 lg:mb-5 overflow-hidden text-ellipsis display-webkit-box line-clamp-2 webkit-box-orient-vertical">{news.title}</h3>
-                      <p className="text-font16 xxl:text-font20 leading-[1.3] text-black opacity-75 mb-5 overflow-hidden text-ellipsis display-webkit-box line-clamp-3 webkit-box-orient-vertical">{news.desc}</p>
+                      {/* <h3 className="text-font20 xl:text-font28 text-Darkgreen font-bold leading-[1.3] mb-2 lg:mb-5 overflow-hidden text-ellipsis display-webkit-box line-clamp-2 webkit-box-orient-vertical" dangerouslySetInnerHTML={{ __html: news.title }}></h3> */}
+                      <h3 className="text-font20 xxl:text-font28 text-Darkgreen font-bold leading-[1.3] mb-2 lg:mb-5 overflow-hidden text-ellipsis display-webkit-box line-clamp-2 webkit-box-orient-vertical">{parse(news.title)}</h3>
+                      <p className="text-font16 xxl:text-font20 leading-[1.3] text-black opacity-75 mb-5 overflow-hidden text-ellipsis display-webkit-box line-clamp-3 webkit-box-orient-vertical">{parse(news.desc)}</p>
                       <div className="flex flex-wrap gap-1 mb-6">
                         <Image src={tagIcon} width={20} height={20} alt="categories" />
                         <ul className="news__category list-none text-black uppercase font-bold text-font14 leading-normal flex gap-3 opacity-75">
@@ -74,7 +75,7 @@ const NewsBlock = ({newsEvent, sectionTitle}:NewsEventsProps) => {
                     </div>
                     <div className="news-crd__body">
                       <h4 className="text-black text-font14 opacity-75 leading-normal mb-3 uppercase font-bold">{news.date}</h4>
-                      <h3 className="text-font16 xl:text-font24 text-Darkgreen font-bold leading-[1.3] mb-2 lg:mb-3 overflow-hidden text-ellipsis display-webkit-box line-clamp-2 webkit-box-orient-vertical">{news.title}</h3>
+                      <h3 className="font20 xxl:text-font24 text-Darkgreen font-bold leading-[1.3] mb-2 lg:mb-3 overflow-hidden text-ellipsis display-webkit-box line-clamp-2 webkit-box-orient-vertical"> {parse(news.title)}</h3>
                       <div className="flex flex-wrap gap-1 mb-6">
                         <Image src={tagIcon} width={20} height={20} alt="categories" />
                         <ul className="news__category list-none text-black uppercase font-bold text-font14 leading-normal flex gap-3 opacity-75">
