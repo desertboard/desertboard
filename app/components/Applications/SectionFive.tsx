@@ -46,6 +46,7 @@ const accordianData = [
 const SectionFive = () => {
   return (
     <>
+
       <section className=" py-20  insp-mn relative inspbg ">
         <motion.div
           className="ola ola-right absolute top-5 right-[-10%] w-[40em]"
