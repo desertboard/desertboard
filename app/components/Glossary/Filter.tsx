@@ -84,11 +84,11 @@ const Filter = () => {
     ],
   };
 
-  const alphabet = [
-    ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)),
-    "#",
-  ];
-  const [activeLetter, setActiveLetter] = useState<string>("");
+  // const alphabet = [
+  //   ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)),
+  //   "#",
+  // ];
+  // const [activeLetter, setActiveLetter] = useState<string>("");
   const [isSticky, setIsSticky] = useState(false);
   const componentsList = [
     { id: 1, name: "A", component: <Searchresult itemdata={menuforA} /> },

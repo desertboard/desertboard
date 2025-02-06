@@ -3,7 +3,7 @@
 import React from "react";
 import CustomClrSection from "../Common/CustomClrSection";
 import { newsEvents } from "./data";
-import NewsListItem from "../NewsEventsListing/NewsListItem";
+// import NewsListItem from "../NewsEventsListing/NewsListItem";
 import '@/app/components/NewsEventsListing/listing.scss'
 
 import { Swiper, SwiperSlide } from "swiper/react";
