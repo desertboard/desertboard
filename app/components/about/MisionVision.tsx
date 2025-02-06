@@ -16,7 +16,7 @@ export default function MisionVision() {
   // Ref for the next container (HTMLDivElement type)
   const nextContainerRef = useRef<HTMLDivElement | null>(null);
   const [divWidth, setDivWidth] = useState("100%");
-    const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   useEffect(() => {
     const updateDivWidth = () => {
       if (nextContainerRef.current) {

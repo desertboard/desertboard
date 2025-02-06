@@ -34,7 +34,7 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({ data }) => {
             <PrimaryArrowBtn btntitle={"Visit LinkedIn"} btnLink="#" />
           </div>
         </div>
-        <div className="container pb-[100px] !overflow-visible">
+        <div className="container pb-[80px] !overflow-visible">
           <Swiper
             className="linkedin-slider !overflow-visible"
             modules={[Navigation, Pagination]}
