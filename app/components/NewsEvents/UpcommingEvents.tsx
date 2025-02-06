@@ -66,7 +66,7 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
                 slidesPerView: 3.3,
               },
               1600: {
-                slidesPerView: 4.6,
+                slidesPerView: 4.2,
               },
             }}>
             {commingEvents.map((event) => (

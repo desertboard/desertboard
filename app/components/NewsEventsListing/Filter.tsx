@@ -25,7 +25,7 @@ const Filter = () => {
           {/* Left Group: Filter, Type, Sector */}
           <div className="flex flex-wrap w-full lg:w-auto items-center lg:space-x-6 gap-4 lg:gap-[50px]">
             {/* Filter Text */}
-            <span className="text-[28px] font-bold text-primary">
+            <span className="text-[28px] font-bold text-Darkgreen">
               Filter<span className="text-[#FF671F]">.</span>
             </span>
 
@@ -44,10 +44,13 @@ const Filter = () => {
 
             <div className="relative w-full lg:w-auto">
               <Listbox as={Fragment} value={typeSelected} onChange={setTypeSelected}>
-                <Listbox.Button className="appearance-none bg-transparent flex border-b-[2px] border-[#002D28] outline-none rounded-none text-font20 text-black opacity-75 w-full lg:w-52 font-helvetica font-[500]">
+                <Listbox.Button className="appearance-none bg-transparent flex border-b-[2px] border-[#002D28] outline-none rounded-none text-font20 text-black opacity-75 w-full lg:w-52 font-helvetica font-[500] pb-3 pl-3">
                   {typeSelected.name}
-                  <svg className="absolute right-0 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  {/* <svg className="absolute right-0 top-5 transform -translate-y-1/2 w-4 h-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg> */}
+                  <svg className="absolute right-3 top-5 transform -translate-y-1/2 w-4 h-4 text-gray-600" width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L7 7L13 1" stroke="#151515" strokeOpacity="0.5" stroke-width="2" stroke-linecap="round" />
                   </svg>
                 </Listbox.Button>
                 <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 overflow-auto">
@@ -62,10 +65,10 @@ const Filter = () => {
 
             <div className="relative w-full lg:w-auto">
               <Listbox value={sectorSelected} onChange={setSectorSelected}>
-                <Listbox.Button className="appearance-none bg-transparent flex border-b-[2px] border-[#002D28] outline-none rounded-none text-font20 text-black opacity-75 w-full lg:w-52 helvetica-500">
+                <Listbox.Button className="appearance-none bg-transparent flex border-b-[2px] border-[#002D28] outline-none rounded-none text-font20 text-black opacity-75 w-full lg:w-52 helvetica-500 pb-3 pl-3">
                   {sectorSelected.name}
-                  <svg className="absolute right-0 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  <svg className="absolute right-3 top-5 transform -translate-y-1/2 w-4 h-4 text-gray-600" width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L7 7L13 1" stroke="#151515" strokeOpacity="0.5" stroke-width="2" stroke-linecap="round" />
                   </svg>
                 </Listbox.Button>
                 <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 overflow-auto">
@@ -91,7 +94,7 @@ const Filter = () => {
             </div> */}
           </div>
 
-          <div className="relative flex gap-3 items-center border-b-[2px] border-[#002D28]  pb-2 w-full  md:w-auto">
+          <div className="relative flex gap-3 items-center border-b-[2px] border-[#002D28]  pb-2 w-full  md:w-auto xxl:w-[25%] px-3">
             <Image src={SearchIcon} alt="" width={20} height={20}></Image>
             <input type="text" placeholder="Search" className="bg-transparent focus:outline-none font-helvetica placeholder-lightBlack placeholder-opacity-50 placeholder:font-helvetica placeholder:font-[500] text-[20px] " />
           </div>
