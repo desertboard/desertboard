@@ -52,7 +52,7 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({ data }) => {
             // }}
             breakpoints={{
               320: {
-                slidesPerView: 1.5,
+                slidesPerView: 1,
               },
               768: {
                 slidesPerView: 2.5,
@@ -70,7 +70,7 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({ data }) => {
             {data.map((post) => (
               <SwiperSlide className="linkedin-slider__slide" key={post.id}>
                 <div className="linkedIn-crd bg-[#F9F3EE]">
-                  <div className="linkediIn-crd__head flex gap-2 flex-wrap p-6">
+                  <div className="linkediIn-crd__head flex gap-2 flex-wrap p-3 xl:p-6">
                     <div className="bg-white rounded-full overflow-hidden w-[46.63] h-[46.63] flex items-center justify-center" style={{ boxShadow: "inset 0px 0px 2.91px 0px rgba(17, 17, 17, 0.1)" }}>
                       <Image src={LInkedInLogo} alt="LinkedIn Logo" width={50} height={50} />
                     </div>
@@ -79,12 +79,12 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({ data }) => {
                       <p className="text-black text-font18 opacity-75 leading-[1.61]">{post.timePosted}</p>
                     </div>
                   </div>
-                  <div className="linkedIn-crd__body px-6 pb-10">
+                  <div className="linkedIn-crd__body px-3 pb-5 xl:px-6 xl:pb-10">
                     <p className="text-black opacity-75 leading-[1.3] text-font20">{post.desc}</p>
                   </div>
                   <div className="linkedIn-crd__footer">
                     <div className="linkedIn-crd__img">
-                      <Image src={post.imageSrc} alt="LinkedIn Logo" className="w-full h-[216px] object-cover" width={350} height={217} />
+                      <Image src={post.imageSrc} alt="LinkedIn Logo" className="w-full h-[216px] object-cover" width={350} height={217} quality={100} priority unoptimized />
                     </div>
                     <div className="flex justify-between items-center p-6">
                       <div className="flex items-center gap-1 opacity-75">
@@ -96,9 +96,9 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({ data }) => {
                             fill="#111111"
                           />
                         </svg>
-                        <p className="text-black leading-[1.3] text-font20 mb-0">{post.likes}</p>
+                        <p className="text-black leading-[1] text-font19 mb-0">{post.likes}</p>
                       </div>
-                      <div className="flex gap-1 opacity-75">
+                      <div className="flex gap-2 opacity-75">
                         <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
                             fillRule="evenodd"
@@ -107,7 +107,7 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({ data }) => {
                             fill="#111111"
                           />
                         </svg>
-                        <a href="#" className="text-black ">
+                        <a href="#" className="text-black leading-[1] text-font19">
                           Share
                         </a>
                       </div>
