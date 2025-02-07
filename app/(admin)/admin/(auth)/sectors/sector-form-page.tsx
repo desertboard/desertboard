@@ -94,14 +94,25 @@ const SectorFormPage = ({ sectorId }: Props) => {
     };
     try {
       setIsLoading(true);
-      const response = await fetch(`/api/admin/sector${sectorId ? `/${sectorId}` : ""}`, {
-        method: sectorId ? "PATCH" : "POST",
-        body: JSON.stringify(newData),
-      });
-      const res = await response.json();
-      console.log(res);
-      clearAll();
-      router.push("/admin/sectors");
+      if (sectorId) {
+        const response = await fetch(`/api/admin/sector?id=${sectorId}`, {
+          method: "PATCH",
+          body: JSON.stringify(newData),
+        });
+        const res = await response.json();
+        console.log(res);
+        clearAll();
+        router.push("/admin/sectors");
+      } else {
+        const response = await fetch(`/api/admin/sector`, {
+          method: "POST",
+          body: JSON.stringify(newData),
+        });
+        const res = await response.json();
+        console.log(res);
+        clearAll();
+        router.push("/admin/sectors");
+      }
     } catch (error) {
       console.error("Error submitting sector:", error);
     } finally {

@@ -1,49 +1,29 @@
 "use client";
-import React from "react";
-import Image from "next/image";
+import React, { useRef } from "react";
+import Image, { StaticImageData } from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
 import { motion } from "framer-motion";
+interface WhySupremeProps {
+  sectitle: string;
+  data: {
+    id: number;
+    title: string;
+    image: StaticImageData
+    desc: string;
+  }[];
+}
 
-const accordianData = [
-  {
-    image: "/assets/images/applications/ra1.jpg",
-    title: "Façade Cladding",
-    desc: "A wide range of uncoated boards, used as a core material, offering flexibility for customization and finishing.",
-  },
-  {
-    image: "/assets/images/applications/ra2.jpg",
-    title: "Wall Cladding",
-    desc: "A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications.",
-  },
-  {
-    image: "/assets/images/applications/ra3.jpg",
-    title: "Partitional Wall",
-    desc: "A Smooth, sanded surface board, ideal for interior fit-outs and paneling, ensuring enhanced finish quality and easy customization.",
-  },
-  {
-    image: "/assets/images/applications/ra4.jpg",
-    title: "Concrete Forming",
-    desc: "A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications.",
-  },
-  {
-    image: "/assets/images/applications/ra5.jpg",
-    title: "Sub-Flooring",
-    desc: "A flawless, smooth-surfaced board achieved with putty, ideal for high-quality paint applications and achieving a polished, refined look. ",
-  },
-  {
-    image: "/assets/images/applications/ra5.jpg",
-    title: "Sub-Flooring",
-    desc: "A flawless, smooth-surfaced board achieved with putty, ideal for high-quality paint applications and achieving a polished, refined look. ",
-  },
-];
-const SectionFive = () => {
+// Component to display the data
+const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
+  const swiperRef = useRef<SwiperType | null>(null);
   return (
     <>
 
@@ -70,7 +50,7 @@ const SectionFive = () => {
         <div className="container ">
           <div>
             <h2 className="heavydark mb-6 md:mb-10">
-            Related Applications<span className="text-orange">.</span>
+            {sectitle}<span className="text-orange">.</span>
             </h2>
           </div>
 
@@ -108,11 +88,7 @@ const SectionFive = () => {
                     slidesPerView: 2,
                     spaceBetween: 10,
                   },
-                  640: {
-                    slidesPerView: 3,
-                    spaceBetween: 10,
-                  },
-                  768: {
+                  700: {
                     slidesPerView: 3,
                     spaceBetween: 20,
                   },
@@ -120,27 +96,32 @@ const SectionFive = () => {
                     slidesPerView: 3,
                     spaceBetween: 20,
                   },
-                  1524: {
+                  1700: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                  },
+                  1800: {
                     slidesPerView: 5,
                     spaceBetween: 40,
                   },
                 }}
                 pagination={false}
                 scrollbar={{ draggable: true }}
-                onSwiper={(swiper) => console.log(swiper)}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={() => console.log("slide change")}
               >
-                {accordianData.map((item, index) => (
-                  <SwiperSlide key={index}>
+               {data.map((item) => (
+                  <SwiperSlide key={item.id}>
                     <div
                       className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
-                      style={{ backgroundImage: `url(${item.image})` }}
+                      style={{ backgroundImage: `url(${item.image.src})` }}
                     >
-                      <div className="flex items-end pb-6 md:pb-10 min-h-[462px]">
-                        <div className="px-6 md:px-10 w-full">
+                      <div className="flex items-end pb-3 md:pb-6 xl:pb-10 min-h-[300px] lg:min-h-[462px]">
+                        <div className="px-4 md:px-6 xl:px-10 w-full">
                           <h3 className="nubernext28bold text-white translate-y-[5px] transition-all duration-500 group-hover:translate-y-[-10px]">
                             {item.title}
                           </h3>
+
 
                             <p className="text-white overflow-hidden pt-3 h-0 group-hover:h-full   group-hover:translate-y-[-10px]
                             transition-all duration-500 ease-in-out  ">
@@ -156,7 +137,7 @@ const SectionFive = () => {
               </Swiper>
             </motion.div>
             <div className="  relative">
-              <div className="button-next next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
+              <div onClick={() => swiperRef.current?.slideNext()} className=" next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
                 <div className="transition-all duration-300 group-hover:translate-x-1">
                   <svg
                     width="20"
@@ -174,7 +155,7 @@ const SectionFive = () => {
                   </svg>
                 </div>
               </div>
-              <div className="button-next prev-style group cursor-pointer absolute bottom-[-70px]   right-[50px] transform -translate-y-1/2 text-white z-10">
+              <div onClick={() => swiperRef.current?.slidePrev()}className=" prev-style group cursor-pointer absolute bottom-[-70px]   right-[50px] transform -translate-y-1/2 text-white z-10">
                 {/* You can customize this icon as needed */}
                 <div className="transition-all duration-300 group-hover:translate-x-[-5px]">
                   <svg

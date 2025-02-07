@@ -49,9 +49,9 @@ const SectorSelector = ({ setActiveSector, activeSector }: {
             {
                 isMobile &&
                 <>
-                    <div className={`text-font28 nuber-next-bold group border-b-[2px] border-[#00000010] flex justify-between py-6 lg:py-8 cursor-pointer`} onClick={()=>setIsOpen(true)}>
+                    <div className={`   group border-b-[2px] border-[#00000010] flex justify-between py-6 lg:py-8 cursor-pointer`} onClick={()=>setIsOpen(true)}>
 
-                        <h4 className='leading-[1]'>{selectedValue}</h4>
+                        <h4 className='text-font24 lg:text-font28 lg:nuber-next-bold leading-[1]'>{selectedValue}</h4>
                         <Image src={assets.grarrow} alt="" />
 
                     </div>

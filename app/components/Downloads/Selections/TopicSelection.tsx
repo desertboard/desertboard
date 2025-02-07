@@ -28,13 +28,15 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile }: {
                 {!isMobile && topicSelection.map((topic, index) => (
                     <div className={`group border-b-[2px] border-[#1515151A] flex justify-between py-5 md:py-8 cursor-pointer`} key={index} onClick={() => setActiveTopic(index)}>
 
-                        <h4 className={`${activeTopic == index ? "texthelvetica20bold" : "texthelvetica20"} `}>{topic.title}</h4>
+                        <h4 className={`${activeTopic == index ? "font-helvetica font-bold" : "texthelvetica20 clr15op75"} text-font20 leading-[1.1]`}>{topic.title}</h4>
 
 
                         <div className="transition-all duration-300 group-hover:translate-x-1">
-                            <svg width="14" height="14" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke={`${activeTopic == index ? "#FF671F" : "#000000"}`} strokeWidth="3" strokeLinecap="round" />
+
+                            <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.33394 1L12.3339 9L4.33394 17M1.66406 3.66876L6.9953 8.99999L1.66406 14.3312" stroke={`${activeTopic == index ? "#FF671F" : "#151515"}`} stroke-opacity={`${activeTopic == index ? "1" : "0.5"}`} stroke-width="2" stroke-linecap="round"/>
                             </svg>
+
                         </div>
 
                     </div>
