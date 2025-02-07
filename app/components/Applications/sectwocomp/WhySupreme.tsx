@@ -18,7 +18,7 @@ const WhySupreme: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
   return (
     <>
 
-        <div className="py-7 md:py-[60px] ">
+        <div className="pb-7 md:pb-[60px] ">
         <div>
           <p className=" helvetica-bold text-font28 leading-[1] text-Darkgreen mb-8" dangerouslySetInnerHTML={{ __html:   sectitle }}>
 

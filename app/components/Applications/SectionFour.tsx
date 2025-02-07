@@ -8,10 +8,17 @@ import "swiper/css";
 import Image from "next/image";
 import "@/app/components/home/goalcrd.scss";
 import { motion } from "framer-motion";
- import { accordionData } from "./data";
 
 import Accordion from "../Applications/Accordion";
-const SectionFour = () => {
+interface WhySupremeProps {
+  data: {
+    content: string;
+    title: string;
+  }[];
+}
+
+// Component to display the data
+const SectionFour: React.FC<WhySupremeProps> = ({ data }) => {
   return (
     <>
       <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner  overflow-hidden">
@@ -71,7 +78,7 @@ const SectionFour = () => {
               },
             }}
           >
-            <Accordion accordionData={accordionData.data} bg={"bg-[#ede8e3]"} bullet={true} />
+            <Accordion accordionData={data} bg={"bg-[#ede8e3]"} bullet={true} />
 
           </motion.div>
         </div>

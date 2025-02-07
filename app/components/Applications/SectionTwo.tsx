@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
+
 import Image from "next/image";
 import readarrow from "@/public/assets/images/read-arrow.svg";
 
@@ -8,33 +9,73 @@ import SuggestedProduct from "./sectwocomp/SuggestedProduct";
 import { suggestData, whySupreme } from "./data";
 import WhySupreme from "./sectwocomp/WhySupreme";
 
+interface SectionTwoProps {
+  suggested?: boolean; // Optional boolean prop
+}
 
-const SectionTwo = () => {
+function SectionTwo({ suggested }: SectionTwoProps) {
 
-  const [isSticky, setIsSticky] = useState(false);
-   useEffect(() => {
-      const handleScroll = () => {
-        if (window.scrollY > 500) {
-          setIsSticky(true);
-        } else {
-          setIsSticky(false);
+
+
+
+
+   const referenceDiv = useRef<HTMLDivElement | null>(null);
+  const [divWidth, setDivWidth] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (window.innerWidth > 1021) {
+      if (referenceDiv.current) {
+        setDivWidth((referenceDiv.current.offsetWidth) - 20); // Get the width of referenceDiv
+      }
+    }
+    // Resize event listener to update width on window resize
+    const handleResize = () => {
+      if (window.innerWidth > 1021) {
+        if (referenceDiv.current) {
+          setDivWidth((referenceDiv.current.offsetWidth) - 20);
         }
-      };
+      }
+    };
 
-      window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
+
+  const targetDivRef = useRef<HTMLDivElement | null>(null);
+  const nextDivRef = useRef<HTMLDivElement | null>(null);
+  const [isStickydiv, setIsStickydiv] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!targetDivRef.current || !nextDivRef.current) return;
+
+      const stickyRect = targetDivRef.current.getBoundingClientRect();
+      const nextDivRect = nextDivRef.current.getBoundingClientRect();
+    if(window.innerWidth > 1021){
+      if (stickyRect.top <= 0 && nextDivRect.top > 150) {
+        setIsStickydiv(true);
+      }
+      else {
+        setIsStickydiv(false);
+      }
+
       };
-   }, []);
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
 
   return (
     <>
       <section className="py-10 md:pt-20 pb-0 insp-mn relative inspbg">
         <div className="container overflow-hidden" >
           <div className="lg:flex flex-col lg:flex-row  gap-10 md:gap-10 ">
-            <div className="lg:w-1/2 ">
-            <SuggestedProduct data={suggestData.data} />
+            <div className="lg:w-1/2 " ref={targetDivRef} >
+           {suggested && <SuggestedProduct data={suggestData.data} />}
                 <WhySupreme {...whySupreme} />
 
 
@@ -79,18 +120,20 @@ const SectionTwo = () => {
       </div>
     </div>
             </div>
-            <div className="lg:w-1/2 ">
-              <div className={` ${
-                isSticky ? "fixed   top-[80px]" : ""
-                } top-0 `}>
-                <div>
+            <div className="lg:w-1/2 " ref={referenceDiv}>
+              <div
+            className={`transition-all duration-300 mt-10 lg:mt-0 ${
+              isStickydiv ? "fixed top-[110px] lg:w-2/6" : ""
+                }`}
+                style={{ width: divWidth ? `${divWidth}px` : "auto" }}>
                   <SingleSlider />
+
                   </div>
-                </div>
             </div>
           </div>
         </div>
       </section>
+      <div ref={nextDivRef} > </div>
     </>
   );
 };
