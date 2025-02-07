@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -44,6 +44,7 @@ const accordianData = [
   },
 ];
 const SectionFive = () => {
+  const swiperRef = useRef<any>(null);
   return (
     <>
 
@@ -127,7 +128,7 @@ const SectionFive = () => {
                 }}
                 pagination={false}
                 scrollbar={{ draggable: true }}
-                onSwiper={(swiper) => console.log(swiper)}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={() => console.log("slide change")}
               >
                 {accordianData.map((item, index) => (
@@ -156,7 +157,7 @@ const SectionFive = () => {
               </Swiper>
             </motion.div>
             <div className="  relative">
-              <div className="button-next next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
+              <div onClick={() => swiperRef.current?.slideNext()} className=" next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
                 <div className="transition-all duration-300 group-hover:translate-x-1">
                   <svg
                     width="20"
@@ -174,7 +175,7 @@ const SectionFive = () => {
                   </svg>
                 </div>
               </div>
-              <div className="button-next prev-style group cursor-pointer absolute bottom-[-70px]   right-[50px] transform -translate-y-1/2 text-white z-10">
+              <div onClick={() => swiperRef.current?.slidePrev()}className=" prev-style group cursor-pointer absolute bottom-[-70px]   right-[50px] transform -translate-y-1/2 text-white z-10">
                 {/* You can customize this icon as needed */}
                 <div className="transition-all duration-300 group-hover:translate-x-[-5px]">
                   <svg

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React ,{ useRef }  from "react";
 import CustomClrSection from "../Common/CustomClrSection";
 import { newsEvents } from "./data";
 // import NewsListItem from "../NewsEventsListing/NewsListItem";
@@ -14,6 +14,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import RelatedItem from "./RelatedItem";
 const RelatedArticles: React.FC = () => {
+  const swiperRef = useRef<any>(null);
   return (
     <CustomClrSection>
       <div className="container">
@@ -32,10 +33,10 @@ const RelatedArticles: React.FC = () => {
             spaceBetween={0}
             // slidesPerView='auto'
             loop={true}
-            // navigation={{
-            //   nextEl: ".swiper-button-next", // Target the next button
-            //   prevEl: ".swiper-button-prev", // Target the previous button
-            // }}
+            navigation={{
+              nextEl: ".button-next", // Target the next button
+              prevEl: ".button-prev", // Target the previous button
+            }}
             breakpoints={{
               0: {
                 slidesPerView: 1,
@@ -63,8 +64,9 @@ const RelatedArticles: React.FC = () => {
               },
             }}
             // pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
+          scrollbar={{ draggable: true }}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+            // onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log("slide change")}>
 
 
@@ -80,7 +82,24 @@ const RelatedArticles: React.FC = () => {
 
 
 
-          </Swiper>
+        </Swiper>
+        <div className="container  relative">
+          <div onClick={() => swiperRef.current?.slideNext()} className=" next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
+            <div className="transition-all duration-300 group-hover:translate-x-1">
+              <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+            </div>
+          </div>
+          <div onClick={() => swiperRef.current?.slidePrev()} className=" prev-style group cursor-pointer absolute bottom-[-70px]   right-[50px] transform -translate-y-1/2 text-white z-10">
+            {/* You can customize this icon as needed */}
+            <div className="transition-all duration-300 group-hover:translate-x-[-5px]">
+              <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.9879 2L2.98787 17L17.9879 32M22.9939 7.00392L12.9978 17L22.9939 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
     </CustomClrSection>
   );

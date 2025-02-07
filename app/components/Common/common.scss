@@ -19,8 +19,7 @@
     font-family: "NuberBold", "Myriad Pro", Myriad, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 .texthelvetica20 {
-    @apply leading-[1.3];
-    font-size: clamp(0.8rem, 2vw, 1.25rem);
+    @apply leading-[1.3] text-font20;
     font-family: "helvetica", sans-serif;
 }
 .texthelvetica20bold {
