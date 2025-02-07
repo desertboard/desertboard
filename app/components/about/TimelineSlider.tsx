@@ -1,0 +1,210 @@
+import React, { useState, useRef, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
+import { FreeMode, Thumbs, Mousewheel, EffectFade } from "swiper/modules";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import "swiper/css/effect-fade"; 
+import "@/app/components/about/timeline.scss";
+const TimeLineSlider: React.FC = () => {
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+  const mainSwiperRef = useRef<SwiperType | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  //   const [thumbsSwiper, setThumbsSwiper] = useState<Swiper | null>(null);
+
+  const timelineData = [
+    { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
+    {
+      year: "2009 - 2021",
+      subtitle: "Resilience & Refined Visions",
+      description:
+        "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
+      image: "/assets/images/timeline/2009-2021.jpeg",
+    },
+    {
+      year: "Dec-14 2021",
+      subtitle: "Digital Transformation",
+      description:
+        "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
+      image: "/assets/images/timeline/dec14-2021.jpg",
+    },
+
+    { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
+    { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
+    {
+      year: "2009 - 2021",
+      subtitle: "Resilience & Refined Visions",
+      description:
+        "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
+      image: "/assets/images/timeline/2009-2021.jpeg",
+    },
+    {
+      year: "Dec-14 2021",
+      subtitle: "Digital Transformation",
+      description:
+        "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
+      image: "/assets/images/timeline/dec14-2021.jpg",
+    },
+
+    { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
+    { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
+    {
+      year: "2009 - 2021",
+      subtitle: "Resilience & Refined Visions",
+      description:
+        "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
+      image: "/assets/images/timeline/2009-2021.jpeg",
+    },
+    {
+      year: "Dec-14 2021",
+      subtitle: "Digital Transformation",
+      description:
+        "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
+      image: "/assets/images/timeline/dec14-2021.jpg",
+    },
+
+    { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
+  ];
+
+    // Ref for the next container (HTMLDivElement type)
+    const nextContainerRef = useRef<HTMLDivElement | null>(null);
+    const [divWidth, setDivWidth] = useState("100%");
+    // const [isSmallScreen, setIsSmallScreen] = useState(false);
+  useEffect(() => {
+    const updateDivWidth = () => {
+      if (nextContainerRef.current) {
+        // Get the bounding rectangle of the next container
+        const containerRect = nextContainerRef.current.getBoundingClientRect();
+
+        // Get the computed style of the next container to retrieve margin values
+        const computedStyle = window.getComputedStyle(nextContainerRef.current);
+
+        // Calculate the total width including margins (left + width + right)
+        const marginLeft = parseFloat(computedStyle.marginLeft);
+        const totalWidth = containerRect.width + marginLeft - 15;
+
+        setDivWidth(`${totalWidth}px`);
+      }
+      console.log(activeIndex)
+    };
+
+    // Initial width calculation
+    updateDivWidth();
+
+    // Recalculate on window resize
+    window.addEventListener("resize", updateDivWidth);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener("resize", updateDivWidth);
+    };
+  }, []);
+  return (
+    <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary">
+      <div className="container d-none" ref={nextContainerRef}></div>
+      <div className="flex flex-col md:flex-row w-full gap-6 relative h-[35em] lg:h-[70dvh] ">
+        <h2 className="text-white z-10 text-font48 nuber-next-heavy leading-[1] absolute top-10 lg:top-20 " style={{ left: `calc(100vw - (${divWidth})` }}>
+          Our History <span className="text-[#FF671F]">.</span>
+        </h2>
+        {/* Main content slider */}
+        <div className="w-full h-full absolute top-0 left-0 z-1 ">
+          <Swiper
+            onSwiper={(swiper) => {
+              mainSwiperRef.current = swiper;
+            }}
+            direction="vertical"
+            spaceBetween={0}
+            slidesPerView={1}
+            loop={true}
+            modules={[FreeMode, Thumbs, EffectFade]}
+            className="h-full main-swiper"
+            speed={1000}
+            effect="fade"
+            fadeEffect={{ crossFade: true }}
+            watchSlidesProgress={true}
+            allowTouchMove={false}
+            mousewheel={false}
+            noSwiping={true}
+            noSwipingClass="swiper-slide"
+            observer={true}
+            observeParents={true}
+            watchOverflow={true}
+            preventInteractionOnTransition={true}>
+            {timelineData.map((item, index) => (
+              <SwiperSlide key={index} className="!h-full ">
+                <div className="timeline__bg flex-grow bg-cover bg-center absolute top-0 left-0 z-1 history__bg  w-full h-full">
+                  <div className="timeline__img">
+                    <Image src={item.image} fill objectFit="cover" className="h-full w-full" alt="" />
+                  </div>
+                </div>
+                <div className="rounded-lg shadow h-full flex flex-col justify-center xl:justify-end pb-20 relative z-30 xl:w-1/2 " style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
+                  <h3 className="text-4xl md:text-5xl lg:text-6xl helveticaBold text-white mb-10 nuber-next-heavy text-font72">{item.year}</h3>
+                  <h4 className="text-xl md:text-2xl lg:text-font28 leading-[1.3] opacity-75 font-semibold text-white mb-5">{item.subtitle}</h4>
+                  <p className="text-white text-font20 leading-[1.3] opacity-75 font-[400]">{item.description}</p>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <button className="absolute left-6 bottom-20 -translate-y-1/2 z-10 border border-white bg-tranparent p-1 rounded-full shadow md:hidden hover:bg-primary transition-colors duration-300" onClick={() => thumbsSwiper?.slidePrev()}>
+            <ChevronLeft className="w-6 h-6 text-white" />
+          </button>
+          <button className="absolute right-6 bottom-20 -translate-y-1/2 z-10 border border-white bg-transparent p-1 rounded-full shadow md:hidden hover:bg-primary transition-colors duration-300" onClick={() => thumbsSwiper?.slideNext()}>
+            <ChevronRight className="w-6 h-6 text-white" />
+          </button>
+        </div>
+
+        {/* Thumbnail slider with navigation */}
+        <div className="timeline__years w-full md:w-1/4  absolute bottom-0 xl:top-0 right-0 z-10" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
+          {/* Navigation Buttons - Only visible on mobile */}
+
+          <Swiper
+            onSwiper={setThumbsSwiper}
+            direction={"horizontal"}
+            slidesPerView="auto"
+            breakpoints={{
+              768: {
+                direction: "vertical",
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+            }}
+            spaceBetween={10}
+            loop={true}
+            watchSlidesProgress={true}
+            modules={[FreeMode, Thumbs, Mousewheel]}
+            className="h-full thumbs-swiper"
+            mousewheel={{
+              forceToAxis: true,
+              sensitivity: 1,
+              thresholdDelta: 50,
+            }}
+            slideToClickedSlide={true}
+            speed={800}
+            allowTouchMove={true}
+            centeredSlides={false}
+            onSlideChange={(swiper) => {
+              if (mainSwiperRef.current) {
+                mainSwiperRef.current.slideTo(swiper.realIndex);
+                setActiveIndex(swiper.realIndex);
+              }
+            }}>
+            {timelineData.map((item, index) => (
+              <SwiperSlide key={index} className="!h-16 md:!h-24 cursor-pointer timeline__thumb">
+                <div className={`w-full h-full flex items-center justify-end rounded transition-all duration-300`}>
+                  <span className={`text-font20 text-right md:text-2xl font-bold transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent font-[400] xl:text-font32" : "text-gray-100 font-normal hover:text-gray-200"}`}>{item.year}</span>
+                  <div className={`w-[30px] hidden lg:block lg:ml-4 h-[2px] transition-all ease-linear duration-300 ${thumbsSwiper?.realIndex === index ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default TimeLineSlider;
