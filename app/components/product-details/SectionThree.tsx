@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
 import ola from "@/public/assets/images/home/ola.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -26,6 +26,16 @@ interface WhySupremeProps {
 const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
 
   const swiperRef = useRef<SwiperType | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const contentRefs = useRef<(HTMLSpanElement | null)[]>([]);
+
+  useEffect(() => {
+    if (hoveredIndex !== null && contentRefs.current[hoveredIndex]) {
+      contentRefs.current[hoveredIndex]!.style.maxHeight =
+        contentRefs.current[hoveredIndex]!.scrollHeight + 20+ "px"; // Expand to content height
+    }
+  }, [hoveredIndex]); // Runs when hoveredIndex changes
+
   return (
     <>
       <section className=" pt-10 lg:pt-20 pb-[80px] lg:pb-[80px]  relative z-[1] bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
@@ -92,28 +102,47 @@ const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                               onSlideChange={() => console.log("slide change")}
                             >
                              {data.map((item) => (
-                                <SwiperSlide key={item.id}>
-                                  <div
-                                    className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
-                                    style={{ backgroundImage: `url(${item.image.src})` }}
-                                  >
-                                    <div className="flex items-end pb-3 md:pb-6 xl:pb-10 min-h-[300px] lg:min-h-[426px]">
-                                      <div className="px-4 md:px-6 xl:px-10 w-full">
-                                        <h3 className="nubernext28bold text-white translate-y-[5px] transition-all duration-500 group-hover:translate-y-[-10px]">
-                                          {item.title}
-                                        </h3>
 
+                                            <SwiperSlide key={item.id}>
+                                              <div
+                                                className="relative group slidehr overflow-hidden transform goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
+                                   style={{ backgroundImage: `url(${item.image.src})` }}
+                                   onMouseEnter={() => setHoveredIndex(item.id)}
+                                   onMouseLeave={() => setHoveredIndex(null)}
+                                              >
+                                                {/* <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
+                                                    <h3 className="nubernext28bold   text-white " >{item.title}</h3></div> */}
+                                                <div className="flex items-end  min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500  ">
 
-                                          <p className="text-white overflow-hidden pt-3 h-0 group-hover:h-full   group-hover:translate-y-[-10px]
-                                          transition-all duration-500 ease-in-out  ">
-                                          <span className="opacity-0 group-hover:opacity-100  transition-opacity duration-500 group-hover:delay-100 delay-0">
-                                            {item.desc}
-                                            </span>
-                                          </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </SwiperSlide>
+                                                  <div className="p-5 transition-all duration-500 ease-in-out w-full  ">
+                                                    <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-in-out w-full  translate-y-[0px] delay-200 group-hover:translate-y-[-10px]">
+
+                                                      <span className="  overflow-hidden transition-opacity duration-500 group-hover:delay-100 delay-0 ">
+                                                        {item.title}
+                                                        </span>
+                                                          </h3>
+
+                                                          <p
+                                                          className="text-white overflow-hidden pt-3 min-w-[45ch] transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100  "
+                                                          style={{
+                                                            maxHeight: hoveredIndex === item.id ? `${contentRefs.current[item.id]?.scrollHeight  || 0}px` : "0px",
+                                                                                      }}
+                                                                                      ref={(el) => {
+                                                                                        contentRefs.current[item.id] = el;
+                                                                                      }}
+                                                        >
+                                                          <span
+
+                                                            className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:delay-100 delay-0 block"
+                                                          >
+                                                            {item.desc}
+                                                          </span>
+                                                        </p>
+
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </SwiperSlide>
                               ))}
                             </Swiper>
             </motion.div>
