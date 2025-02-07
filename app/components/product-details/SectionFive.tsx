@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -24,6 +24,16 @@ interface WhySupremeProps {
 // Component to display the data
 const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
   const swiperRef = useRef<SwiperType | null>(null);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const contentRefs = useRef<(HTMLSpanElement | null)[]>([]);
+
+    useEffect(() => {
+      if (hoveredIndex !== null && contentRefs.current[hoveredIndex]) {
+        contentRefs.current[hoveredIndex]!.style.maxHeight =
+          contentRefs.current[hoveredIndex]!.scrollHeight + 20+ "px"; // Expand to content height
+      }
+    }, [hoveredIndex]); // Runs when hoveredIndex changes
+
   return (
     <>
 
@@ -111,34 +121,39 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
             scrollbar={{ draggable: true }}
             onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={() => console.log("slide change")}>
-{data.map((item) => (
-            <SwiperSlide key={item.id}>
-              <div
-                className="relative group overflow-hidden transform goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
-                style={{ backgroundImage: `url(${item.image.src})` }}
-              >
-                {/* <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
-                    <h3 className="nubernext28bold   text-white " >{item.title}</h3></div> */}
-                <div className="flex items-end  min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500  ">
+                {data.map((item) => (
+  <SwiperSlide key={item.id}>
+                                    <div
+                                      className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
+                      style={{ backgroundImage: `url(${item.image.src})` }}
 
-                  <div className="p-5 transition-all duration-500 ease-in-out w-full  ">
-                    <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-in-out w-full  translate-y-[0px] group-hover:translate-y-[-20px]">
+                      onMouseEnter={() => setHoveredIndex(item.id)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                                    >
+                                      <div className="flex items-end pb-3 md:pb-5 xl:pb-5 min-h-[300px] lg:min-h-[426px]">
+                                        <div className="px-4 md:px-5 xl:px-5 w-full">
+                                          <h3 className="nubernext28bold text-white translate-y-[5px] transition-all duration-500 delay-200 group-hover:translate-y-[-10px]">
+                                            {item.title}
+                                          </h3>
 
-                      <span className="  overflow-hidden transition-opacity duration-500 group-hover:delay-100 delay-0 ">
-                        {item.title}
-                        </span>
-                          </h3>
 
-                          <p className="text-white overflow-hidden pt-3  min-w-[45ch] h-0 group-hover:h-full
-                          transition-all duration-500 ease-in-out translate-y-[0px] group-hover:translate-y-[-10px] opacity-0 group-hover:opacity-[1]" >
-                           <span className="opacity-0 group-hover:opacity-100  transition-opacity duration-500 group-hover:delay-100 delay-0">
-                        {item.desc}
-                        </span>
-                          </p>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
+                                            <p className="text-white overflow-hidden pt-3 h-0 group-hover:h-full   group-hover:translate-y-[-10px]
+                                            transition-all duration-500 ease-in-out  "
+                                            style={{
+                                              maxHeight: hoveredIndex === item.id ? `${contentRefs.current[item.id]?.scrollHeight  || 0}px` : "0px",
+                                                                        }}
+                                                                        ref={(el) => {
+                                                                          contentRefs.current[item.id] = el;
+                                                                        }}
+                          >
+                                            <span className="opacity-0 group-hover:opacity-100  transition-opacity duration-500 group-hover:delay-100 delay-0">
+                                              {item.desc}
+                                              </span>
+                                            </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </SwiperSlide>
           ))}
 
 

@@ -26,7 +26,7 @@ const ProducrDetails = () => {
         bannerSrc={assets.appbanner} // Corrected image import here
         arrowSrc={Arrow}
         desc=""
-        title="PSB® Supreme."
+        title="PSB® Supreme"
         breadcrumbs={breadcrumbs}
         bnrHeight="60dvh"
       />
