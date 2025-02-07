@@ -109,11 +109,7 @@ const SectionFive = () => {
                     slidesPerView: 2,
                     spaceBetween: 10,
                   },
-                  640: {
-                    slidesPerView: 3,
-                    spaceBetween: 10,
-                  },
-                  768: {
+                  700: {
                     slidesPerView: 3,
                     spaceBetween: 20,
                   },
@@ -121,7 +117,11 @@ const SectionFive = () => {
                     slidesPerView: 3,
                     spaceBetween: 20,
                   },
-                  1524: {
+                  1700: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                  },
+                  1800: {
                     slidesPerView: 5,
                     spaceBetween: 40,
                   },
@@ -137,11 +137,12 @@ const SectionFive = () => {
                       className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
                       style={{ backgroundImage: `url(${item.image})` }}
                     >
-                      <div className="flex items-end pb-6 md:pb-10 min-h-[462px]">
-                        <div className="px-6 md:px-10 w-full">
+                      <div className="flex items-end pb-3 md:pb-6 xl:pb-10 min-h-[300px] lg:min-h-[462px]">
+                        <div className="px-4 md:px-6 xl:px-10 w-full">
                           <h3 className="nubernext28bold text-white translate-y-[5px] transition-all duration-500 group-hover:translate-y-[-10px]">
                             {item.title}
                           </h3>
+
 
                             <p className="text-white overflow-hidden pt-3 h-0 group-hover:h-full   group-hover:translate-y-[-10px]
                             transition-all duration-500 ease-in-out  ">

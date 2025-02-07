@@ -42,11 +42,7 @@ const RelatedArticles: React.FC = () => {
                 slidesPerView: 1,
                 spaceBetween: 10,
               },
-              410: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-              },
-              640: {
+              540: {
                 slidesPerView: 2,
                 spaceBetween: 20,
               },

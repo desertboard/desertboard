@@ -127,6 +127,7 @@ const Filter = () => {
     { id: 24, name: "X", component: <Searchresult itemdata={menuforC} /> },
     { id: 25, name: "Y", component: <Searchresult itemdata={menuforC} /> },
     { id: 26, name: "Z", component: <Searchresult itemdata={menuforC} /> },
+    { id: 27, name: "#", component: <Searchresult itemdata={menuforC} /> },
   ];
   useEffect(() => {
     const handleScroll = () => {
