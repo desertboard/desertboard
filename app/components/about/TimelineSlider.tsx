@@ -142,9 +142,9 @@ const TimeLineSlider: React.FC = () => {
                   </div>
                 </div>
                 <div className="rounded-lg shadow h-full flex flex-col justify-center xl:justify-end pb-20 relative z-30 xl:w-1/2 " style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
-                  <h3 className="text-4xl md:text-5xl lg:text-6xl helveticaBold text-white mb-10 nuber-next-heavy text-font72">{item.year}</h3>
-                  <h4 className="text-xl md:text-2xl lg:text-font28 leading-[1.3] opacity-75 font-semibold text-white mb-5">{item.subtitle}</h4>
-                  <p className="text-white text-font20 leading-[1.3] opacity-75 font-[400]">{item.description}</p>
+                  <h3 className="text-4xl md:text-5xl lg:text-font72 helveticaBold text-white mb-10 nuber-next-heavy ">{item.year}</h3>
+                  <h4 className="text-xl md:text-2xl lg:text-font28 leading-[1.2] opacity-75 nuber-next-heavy text-white mb-5">{item.subtitle}</h4>
+                  <p className="text-white text-font20 leading-[1.3] opacity-75 font-normal">{item.description}</p>
                 </div>
               </SwiperSlide>
             ))}
@@ -158,7 +158,7 @@ const TimeLineSlider: React.FC = () => {
         </div>
 
         {/* Thumbnail slider with navigation */}
-        <div className="timeline__years w-full md:w-1/4  absolute bottom-0 xl:top-0 right-0 z-10" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
+        <div className="timeline__years w-full md:w-1/4  absolute bottom-0 xl:top-10 right-0 z-10" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
           {/* Navigation Buttons - Only visible on mobile */}
 
           <Swiper
@@ -168,7 +168,7 @@ const TimeLineSlider: React.FC = () => {
             breakpoints={{
               768: {
                 direction: "vertical",
-                slidesPerView: 4,
+                slidesPerView: 5,
                 spaceBetween: 20,
               },
             }}
@@ -195,8 +195,8 @@ const TimeLineSlider: React.FC = () => {
             {timelineData.map((item, index) => (
               <SwiperSlide key={index} className="!h-16 md:!h-24 cursor-pointer timeline__thumb">
                 <div className={`w-full h-full flex items-center justify-end rounded transition-all duration-300`}>
-                  <span className={`text-font20 text-right md:text-2xl font-bold transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent font-[400] xl:text-font32" : "text-gray-100 font-normal hover:text-gray-200"}`}>{item.year}</span>
-                  <div className={`w-[30px] hidden lg:block lg:ml-4 h-[2px] transition-all ease-linear duration-300 ${thumbsSwiper?.realIndex === index ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
+                  <span className={`text-font20 text-right md:text-2xl font-normal transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-bold xl:text-font32 opacity-100" : "text-white opacity-50 text-font24 font-normal hover:text-gray-200"}`}>{item.year}</span>
+                  <div className={`hidden lg:block lg:ml-3 h-[4px] w-[68px] transition-all ease-linear duration-300 ${thumbsSwiper?.realIndex === index ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
                 </div>
               </SwiperSlide>
             ))}

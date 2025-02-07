@@ -88,7 +88,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
           <div className="flex lg:absolute w-full lg:w-1/2 xl:w-[58%] lg:right-0 lg:top-5 h-full">
 
             {mainImg && <figure className=" relative h-full  w-full   ">
-              <Image className="w-full   object-cover h-full" src={mainImg}  alt="Banner image" />
+              <Image className="w-full object-cover h-full" src={mainImg} fill objectFit="cover"  alt="Banner image" />
             </figure>}
             {/* <div className="relative"> */}
             {/* Video element */}
