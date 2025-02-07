@@ -168,7 +168,7 @@ const TimeLineSlider: React.FC = () => {
             breakpoints={{
               768: {
                 direction: "vertical",
-                slidesPerView: 4,
+                slidesPerView: 5,
                 spaceBetween: 20,
               },
             }}
