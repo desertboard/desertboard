@@ -85,6 +85,21 @@ import dbanner from "../images/downloads/banner.jpg";
 import leaf from "../images/home/leaf.svg";
 import lfbt from "../images/home/lfbt.svg";
 import downorange from "../images/downloads/downorange.svg";
+import ras1 from "../images/applications/ras1.jpg";
+import ras2 from "../images/applications/ras2.jpg";
+import ras3 from "../images/applications/ras3.jpg";
+import ras4 from "../images/applications/ras4.jpg";
+import ras5 from "../images/applications/ras5.jpg";
+import ras6 from "../images/applications/ras6.jpg";
+
+import ra1 from "../images/applications/ra1.jpg";
+import ra2 from "../images/applications/ra2.jpg";
+import ra3 from "../images/applications/ra3.jpg";
+import ra4 from "../images/applications/ra4.jpg";
+import ra5 from "../images/applications/ra5.jpg";
+
+
+
 
 
 
@@ -96,6 +111,17 @@ import downorange from "../images/downloads/downorange.svg";
 
 
 export const assets = {
+    ra1,
+    ra2,
+    ra3,
+    ra4,
+    ra5,
+    ras1,
+    ras2,
+    ras3,
+    ras4,
+    ras5,
+    ras6,
     downorange,
     leaf,
     lfbt,

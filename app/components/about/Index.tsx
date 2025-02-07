@@ -2,7 +2,7 @@
 import React from "react";
 import PageBanner from "../Common/PageBanner";
 import MainDescBOx from "../Common/MainDescBox";
-import HistorySlider from "./HistorySlider";
+// import HistorySlider from "./HistorySlider";
 import MisionVision from "./MisionVision";
 import AccrediationSlider from "./AccrediationSlider";
 
@@ -11,6 +11,7 @@ import AccrediationSlider from "./AccrediationSlider";
 import bannerImg from "@/public/assets/images/sectors/abt-bnr.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import BeforeFooterTag from "../Common/BeforeFooterTag";
+import TimeLineSlider from "./TimelineSlider";
 
 // import SecondSec from "../components/Common/Second-sec";
 
@@ -41,7 +42,8 @@ export default function Index() {
         ]}
         mainImg="/assets/images/about/about-main.jpg"
       />
-      <HistorySlider />
+      {/* <HistorySlider /> */}
+      <TimeLineSlider/>
       <MisionVision />
       <AccrediationSlider />
        <BeforeFooterTag title={"Discover Industry Solutions"} /> 

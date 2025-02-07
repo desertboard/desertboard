@@ -127,6 +127,7 @@ const Filter = () => {
     { id: 24, name: "X", component: <Searchresult itemdata={menuforC} /> },
     { id: 25, name: "Y", component: <Searchresult itemdata={menuforC} /> },
     { id: 26, name: "Z", component: <Searchresult itemdata={menuforC} /> },
+    { id: 27, name: "#", component: <Searchresult itemdata={menuforC} /> },
   ];
   useEffect(() => {
     const handleScroll = () => {
@@ -241,7 +242,7 @@ const Filter = () => {
                     ))}
 
                   </div> */}
-                  <div className="flex flex-wrap gap-2 py-4 md:py-8 justify-start md:justify-between w-full border-y-2 border-[#15151510] mb-6 md:mb-10">
+                  <div className="flex flex-wrap gap-1 lg:gap-2 py-4 md:py-8 justify-start lg:justify-between w-full border-y-2 border-[#15151510] mb-6 md:mb-10">
 
                   {componentsList.map((item) => (
 
@@ -254,7 +255,7 @@ const Filter = () => {
                            ? "border-b-2 border-orange"
                            : "border-b-2 border-transparent"
                        }`}
-          ><div className={`w-fit py-[5px] md:py-[10px] px-[10px] md:px-[15px] cursor-pointer transition-all duration-300`}>
+          ><div className={`w-fit py-[5px] md:py-[6px] xxl:py-[9px] px-[10px] md:px-[6px] xxl:px-[13px] cursor-pointer transition-all duration-300`}>
             {item.name}
             </div>
                       </p>

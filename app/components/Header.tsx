@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import flogo from "@/public/assets/images/home/flogo.png";
-import logo from "@/public/assets/images/home/desert-logo.svg";
+import logo from "@/public/assets/images/home/sticky-logo.png";
 import { Menu, MenuItem } from "./ui/navbar-menu";
 import MobileMenu from "./MobileMenu/MobileMenu";
 import { menuItems } from "../(user)/data/menuItems";
@@ -29,7 +29,6 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -48,41 +47,36 @@ const Header = () => {
     };
   }, []);
 
- 
-
-
-  if(isMobile){
-    return <MobileMenu/>
+  if (isMobile) {
+    return <MobileMenu />;
   }
-  
+
   return (
     <header className={`w-full ${isSticky ? "fixed bg-white text-primary header" : "absolute bg-transparent text-white"} top-0 z-40`}>
       <div className="container">
-    <div className="py-5 z-10 border-b flex items-center justify-between">
-        <div className="flex items-center">
-          <Image src={isSticky ? logo : flogo} alt="Logo" width={311}  height={60}  className={`logos`}/>
-        </div>
+        <div className="py-5 z-10 border-b flex items-center justify-between">
+          <div className="flex items-center">
+            <Image src={isSticky ? logo : flogo} alt="Logo" width={311} height={60} className={`logos`} />
+          </div>
 
-        <nav>
-          <ul className="flex space-x-6 uppercase text-sm tracking-widest group">
-            <Menu setActive={setActive}>
-              {menuItems.map((item,index)=>(
-                <MenuItem item={item.title} setActive={setActive} active={active} noMenu key={index} >
-                <div className="p-4">
-                  <Link href={item.href}>{item.title}</Link>
-                </div>
-              </MenuItem>
-              ))}
-              
+          <nav>
+            <ul className="flex space-x-6 uppercase text-sm tracking-widest group">
+              <Menu setActive={setActive}>
+                {menuItems.map((item, index) => (
+                  <MenuItem item={item.title} setActive={setActive} active={active} noMenu key={index}>
+                    <div className="p-4">
+                      <Link href={item.href}>{item.title}</Link>
+                    </div>
+                  </MenuItem>
+                ))}
 
-              {/* <MenuItem item="About" setActive={setActive} active={active} noMenu>
+                {/* <MenuItem item="About" setActive={setActive} active={active} noMenu>
                 <div className="p-4">
                   <Link href="/">About</Link>
                 </div>
               </MenuItem> */}
 
-
-              {/* <MenuItem setActive={setActive} active={active} item="Sectors" noMenu>
+                {/* <MenuItem setActive={setActive} active={active} item="Sectors" noMenu>
                 <div className="grid grid-cols-2 gap-4 p-4">
                   <ProductItem
                     title="Engineering & Construction"
@@ -161,9 +155,8 @@ const Header = () => {
                   <Link href="/">Contact</Link>
                 </div>
               </MenuItem> */}
-              
-            </Menu>
-            {/* <li>
+              </Menu>
+              {/* <li>
               <Link href="#home">
                 <span>Home</span>
               </Link>
@@ -203,9 +196,9 @@ const Header = () => {
                 <span>Contact</span>
               </Link>
             </li> */}
-          </ul>
+            </ul>
           </nav>
-          </div>
+        </div>
       </div>
     </header>
   );

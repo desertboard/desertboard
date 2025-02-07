@@ -16,7 +16,7 @@ const SuggestedProduct: React.FC<HeroSectionProps> = ({ data }) => {
   return (
     <>
       {data.map((framework) => (
-        <div className="flex bg-[#E3DED9] justify-between flex-col md:flex-row" key={framework.id}>
+        <div className="flex mb-7 md:mb-[60px] bg-[#E3DED9] justify-between flex-col md:flex-row" key={framework.id}>
           <div className="flex p-6  gap-[32px]">
             <div className=" ">
               <p className="texthelvetica20 clr15op75">

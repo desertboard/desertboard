@@ -32,6 +32,12 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 @font-face {
   font-family: "Helvetica";
+  src: url("../public/assets/fonts/HelveticaNeueLTPro-Bd.woff2") format('woff2'), url("../public/assets/fonts/HelveticaNeueLTPro-Bd.woff") format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Helvetica";
   src: url("/assets/fonts/helvetica/HelveticaNeueLTPro-Md.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
@@ -393,3 +399,12 @@ body {
     --radius: 0.5rem;
   }
 }
+
+@media screen and (min-width:1630px) and (max-width: 1789px) {
+.navgap{gap: 40px !important;}
+}
+@media screen and (min-width:1430px) and (max-width: 1549px) {
+  .navgap .mitm {font-size: 18px !important;}
+  .navgap{gap: 24px !important;}
+  }
+  /* .slidefix .swiper-slide{max-width: 800px !important;} */

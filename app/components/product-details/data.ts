@@ -2,88 +2,90 @@ import { assets } from "@/public/assets/images/assets";
 
 
 
+
 export const relslideses = {
-  sectitle: "Related Applications",
+  sectitle: "Customizable Finishes",
   data: [
     {
       id:1,
-      image: assets.ra1,
+      image: assets.ras1,
       title: "Façade Cladding",
       desc: "A wide range of uncoated boards, used as a core material, offering flexibility for customization and finishing.",
     },
     {
       id:2,
-      image: assets.ra2,
+      image: assets.ras2,
       title: "Wall Cladding",
       desc: "A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications.",
     },
     {
       id:3,
-      image: assets.ra3,
+      image: assets.ras3,
       title: "Partitional Wall",
       desc: "A Smooth, sanded surface board, ideal for interior fit-outs and paneling, ensuring enhanced finish quality and easy customization.",
     },
     {
       id:4,
-      image: assets.ra4,
+      image: assets.ras4,
       title: "Concrete Forming",
       desc: "A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications.",
     },
     {
       id:5,
-      image: assets.ra5,
+      image: assets.ras5,
       title: "Sub-Flooring",
       desc: "A flawless, smooth-surfaced board achieved with putty, ideal for high-quality paint applications and achieving a polished, refined look. ",
     },
     {
       id:6,
-      image: assets.ra5,
+      image: assets.ras6,
       title: "Sub-Flooring",
       desc: "A flawless, smooth-surfaced board achieved with putty, ideal for high-quality paint applications and achieving a polished, refined look. ",
     },
   ],
 };
 export const slideses = {
-  sectitle: "Customizable Finishes",
-  data: [
+    sectitle: "PSB® Supreme Applications.",
+    data: [
+      {
+        id:1,
+        image: assets.ra1,
+      title: "Raw Board",
+      desc:"A wide range of uncoated boards, used as a core material, offering flexibility for customization and finishing."
+    },
     {
-      id:1,
-      image: assets.ras1,
-    title: "Raw Board",
-    desc:"A wide range of uncoated boards, used as a core material, offering flexibility for customization and finishing."
-  },
-  {
-    id:2,
-      image: assets.ras2,
-    title: "Melamine Face Finishing",
-    desc:"A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications."
-  },
-  {
-    id:3,
-      image: assets.ras3,
-    title: "Sanded Board",
-    desc:"A Smooth, sanded surface board, ideal for interior fit-outs and paneling, ensuring enhanced finish quality and easy customization."
-  },
-  {
-    id:4,
-      image: assets.ras4,
-    title: "Premium Surface (Putty) Finishing",
-    desc:"A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications."
-  },
-  {
-    id:5,
-      image: assets.ras5,
-    title: "PremPremium Plus Surface (Coated) Finishing",
-    desc:"A flawless, smooth-surfaced board achieved with putty, ideal for high-quality paint applications and achieving a polished, refined look. "
-  },
-  {
-    id:6,
-      image: assets.ras6,
-    title: "Veneer Finishing",
-    desc:"A decorative-finished board using thin layers of real material, offering a natural look, durability, and customization options."
-  },
-  ],
+      id:2,
+        image: assets.ra2,
+      title: "Melamine Face Finishing",
+      desc:"A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications."
+    },
+    {
+      id:3,
+        image: assets.ra3,
+      title: "Sanded Board",
+      desc:"A Smooth, sanded surface board, ideal for interior fit-outs and paneling, ensuring enhanced finish quality and easy customization."
+    },
+    {
+      id:4,
+        image: assets.ra4,
+      title: "Premium Surface (Putty) Finishing",
+      desc:"A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications."
+    },
+    {
+      id:5,
+        image: assets.ra5,
+      title: "PremPremium Plus Surface (Coated) Finishing",
+      desc:"A flawless, smooth-surfaced board achieved with putty, ideal for high-quality paint applications and achieving a polished, refined look. "
+    },
+    {
+      id:6,
+        image: assets.ra1,
+      title: "Veneer Finishing",
+      desc:"A decorative-finished board using thin layers of real material, offering a natural look, durability, and customization options."
+    },
+    ],
 };
+
 export const accordionData = {
   data: [
     {

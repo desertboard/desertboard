@@ -7,6 +7,8 @@ import Arrow from "@/public/assets/brdcrbs.svg";
 import BackGround from '@/public/assets/images/Background.jpg'
 import Image from 'next/image';
 import Accordians from './Accordians/Accordians';
+import { motion } from 'framer-motion';
+import { assets } from '@/public/assets/images/assets';
 
 const Faqs = () => {
 
@@ -31,14 +33,32 @@ const Faqs = () => {
 
             <section className='h-fit p-2 relative'>
                 <Image src={BackGround} alt='background' className='absolute left-0 top-0 -z-10 inset-0 h-full w-full object-cover' />
-                <div className='grid lg:grid-cols-5 grid-cols-1 container m-auto mt-[48px] h-full lg:gap-12 pt-[15px] mb-[48px] z-10'>
+                    <motion.div
+                     className="ola ola-right absolute top-0 right-[-25%] md:right-[-10%] w-[20em] md:w-[40em]"
+                     animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
+                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                   >
+                     <Image
+                       className="absolute"
+                       src={assets.leaf}
+                       alt="Description of the image"
+                     />
+                   </motion.div>
+                   <motion.div
+                     className="ola ola-right absolute bottom-[43%] left-[-25%] md:left-[-15%] w-[20em] md:w-[40em]"
+                     animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
+                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                   >
+                     <Image className="absolute" src={assets.lfbt} alt="Description of the image" />
+                   </motion.div>
+                <div className='grid lg:grid-cols-6 grid-cols-1 container m-auto mt-[48px] h-full   pt-[15px] mb-[48px] z-10 relative z-1'>
 
-                    <div className='lg:col-span-2 col-span-1 text-black flex flex-col gap-6 lg:border-r-2 border-[#E3DED9] nuber-next-bold'>
-                        <h2 className='text-4xl'>Frequently
+                    <div className='lg:col-span-2 col-span-1 pr-5 md-pr-7 lg:pr-20 text-black flex flex-col gap-6 lg:border-r-2 border-[#E3DED9] nuber-next-bold'>
+                        <h2 className='text-Darkgreen mb-4 text-[28px] md:text-[48px] nuber-next-heavy leading-[1.2] '>Frequently
                             Asked Questions<span className='text-orange'>.</span></h2>
                     </div>
 
-                    <div className='lg:col-span-3 w-full flex flex-col gap-10 mt-8 lg:mt-0'>
+                    <div className='lg:col-span-4 w-full flex flex-col gap-10 mt-8 lg:mt-0 pl-5 md-pl-7 lg:pl-20'>
                         <Accordians />
                         <div className='px-6 text-black nuber-next-bold'>
                             <h4 className='text-2xl'>Still Have Questions?</h4>
