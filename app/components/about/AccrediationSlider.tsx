@@ -43,10 +43,10 @@ const AccrediationSlider:React.FC = () => {
           clients with a high-quality, certified product, we empower them to confidently deliver sustainable and innovative construction projects that meet the highest industry standards.
         </p>
       </div>
-      <div className="container mb-[50px] xxl:mb-[100px] h-full !overflow-visible relative">
+      <div className="container mb-[50px] xxl:mb-[100px] !overflow-visible relative">
         <Swiper
           ref={swiperRef}
-          className="accr__slider h-screen !overflow-visible"
+          className="accr__slider !overflow-visible"
           modules={[Navigation, Pagination]}
           loop={true}
           centeredSlides={true}

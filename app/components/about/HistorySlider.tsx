@@ -5,8 +5,7 @@ import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/mousewheel";
 
-import '@/app/components/about/history.scss';
-
+import "@/app/components/about/history.scss";
 
 interface TimelineItem {
   year: string;
@@ -76,7 +75,7 @@ const HistorySlider: React.FC<HistorySliderProps> = ({ className = "" }) => {
   if (!activeContent) return null;
 
   return (
-    <section className={`border-y-[6px] border-secondary flex h-auto max-h-[800px] history pb-20 relative ${className}`}>
+    <section className={`border-y-[6px] border-secondary flex h-auto max-h-[800px] history  relative ${className}`}>
       {/* Content Section */}
       <div
         className="flex-grow bg-cover bg-center absolute w-full h-full z-0 history__bg"
@@ -130,11 +129,11 @@ const HistorySlider: React.FC<HistorySliderProps> = ({ className = "" }) => {
               },
             }}>
             {sortedTimelineData.map((item) => (
-              <SwiperSlide key={item.year} className="!h-[100px] flex items-center justify-center min-w-[20em]">
+              <SwiperSlide key={item.year} className="!h-[100px] flex items-center justify-center lg:min-w-[20em]">
                 <button
                   onClick={() => handleYearClick(item.year)}
-                  className={`w-full min-w-[20em] h-full flex items-center text-right justify-end gap-1 relative group transition-all ease-linear duration-300 text-font24
-                  // ${activeYear === item.year ? "text-accent font-[400] z-20 text-font32 ease-linear" : "text-gray-100 font-normal hover:text-gray-200"}`}>
+                  className={`lg:w-full lg:min-w-[20em] h-full flex items-center text-right justify-end gap-1 relative group transition-all ease-linear duration-300 text-font24
+                  // ${activeYear === item.year ? "text-accent font-[400] z-20 xl:text-font32 ease-linear" : "text-gray-100 font-normal hover:text-gray-200"}`}>
                   <span className="relative z-10 transition-all ease-linear duration-300 helvetica">{item.year}</span>
                   <div className={`w-[30px] h-[2px] transition-all ease-linear duration-300 ${activeYear === item.year ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
                 </button>
