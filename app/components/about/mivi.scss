@@ -25,7 +25,14 @@
             height: 100px;
             max-height: 100px;
             transition: none;
-
+            @media (max-width: 768px) {
+                // min-width: 100%;
+                // max-width: 100%;
+                // min-height: 5em;
+                // max-height: 5em;
+                height: 5em;
+                max-height: min-content;
+            }
         }
     }
     &__mi {
