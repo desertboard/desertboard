@@ -86,23 +86,23 @@ const SectionThree = () => {
               },
               410: {
                 slidesPerView: 2,
-                spaceBetween: 0,
+                spaceBetween: 10,
               },
-              640: {
+              700: {
                 slidesPerView: 3,
-                spaceBetween: 0,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 0,
+                spaceBetween: 20,
               },
               1200: {
                 slidesPerView: 3,
-                spaceBetween: 0,
+                spaceBetween: 20,
               },
-              1524: {
+              1700: {
+                slidesPerView: 5,
+                spaceBetween: 20,
+              },
+              1800: {
                 slidesPerView: 6,
-                spaceBetween: 0,
+                spaceBetween: 40,
               },
             }}
             pagination={{ clickable: true }}
@@ -118,7 +118,7 @@ const SectionThree = () => {
               >
                 {/* <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
                     <h3 className="nubernext28bold   text-white " >{item.title}</h3></div> */}
-                <div className="flex items-end  min-h-[462px] sld transition-colors duration-500 opacity-[0] group-hover:opacity-[1] ">
+                <div className="flex items-end  min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500  ">
 
                   <div className="p-5 transition-all duration-500 ease-in-out w-full  ">
                     <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-in-out w-full  translate-y-[0px] group-hover:translate-y-[-20px]">
@@ -128,7 +128,7 @@ const SectionThree = () => {
                         </span>
                           </h3>
 
-                          <p className="text-white overflow-hidden pt-3  min-w-[45ch]
+                          <p className="text-white overflow-hidden pt-3  min-w-[45ch] h-0 group-hover:h-full
                           transition-all duration-500 ease-in-out translate-y-[0px] group-hover:translate-y-[-10px] opacity-0 group-hover:opacity-[1]" >
                            <span className="opacity-0 group-hover:opacity-100  transition-opacity duration-500 group-hover:delay-100 delay-0">
                         {item.desc}

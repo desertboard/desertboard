@@ -1,7 +1,9 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Navigation, Pagination } from "swiper/modules";
+import { Swiper as SwiperType } from "swiper";
 
 // Images
 import arrowExpand from "@/public/assets/images/icons/expand-icon.png";
@@ -25,6 +27,7 @@ interface LinkedInSliderProps {
 }
 
 const Swipersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
+  const swiperRef = useRef<SwiperType | null>(null);
   return (
     <>
       <Swiper
@@ -66,7 +69,7 @@ const Swipersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
 
 
 
-        onSwiper={(swiper) => console.log(swiper)}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={() => console.log("slide change")}
 
       >
@@ -114,14 +117,14 @@ const Swipersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
       ))}
       </Swiper>
       <div className="container  relative">
-          <div className="button-next next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
+          <div onClick={() => swiperRef.current?.slideNext()}  className="  next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
             <div className="transition-all duration-300 group-hover:translate-x-1">
               <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
               </svg>
             </div>
           </div>
-          <div className="button-next prev-style group cursor-pointer absolute bottom-[-70px]   right-[50px] transform -translate-y-1/2 text-white z-10">
+          <div onClick={() => swiperRef.current?.slidePrev()} className="  prev-style group cursor-pointer absolute bottom-[-70px]   right-[50px] transform -translate-y-1/2 text-white z-10">
             {/* You can customize this icon as needed */}
             <div className="transition-all duration-300 group-hover:translate-x-[-5px]">
               <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">

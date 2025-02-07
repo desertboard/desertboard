@@ -49,7 +49,7 @@ const Sectors = () => {
         <Image className="absolute" src={lfbt} alt="Description of the image" />
       </motion.div>
                 <div className='container h-fit text-black'>
-                    <div className='flex gap-3 lg:gap-0 flex-col lg:flex-row'>
+                    <div className='flex gap-6 lg:gap-0 flex-col lg:flex-row'>
 
                         <div className={`w-full lg:w-1/3 lg:pr-20`}>
 
@@ -57,7 +57,7 @@ const Sectors = () => {
 
                         </div>
 
-                        <div className={`w-full lg:w-2/3  lg:pl-20 flex flex-col gap-7 lg:border-l border-[#0000010]`}>
+                        <div className={`w-full lg:w-2/3  lg:pl-20 flex flex-col gap-7 lg:border-l-2 border-[#15151510]`}>
 
                             <ApplicationSelector activeApplications={activeApplications}/>
                         </div>

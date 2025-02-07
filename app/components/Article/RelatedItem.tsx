@@ -17,7 +17,7 @@ interface ListItemProps {
 const RelatedItem = ({listData}:ListItemProps) => {
   return (
     <div key={listData.id} className="">
-      <div className='h-[280px] md:h-[350px]'>
+      <div className='h-[180px] md:h-[250px]  lg:h-[350px]'>
         <figure className=" relative  h-full md:h-full  w-full  ">
             <Image className="w-full   object-cover h-full" src={listData.imageSrc} width={300} height={350}  alt="" />
          </figure>

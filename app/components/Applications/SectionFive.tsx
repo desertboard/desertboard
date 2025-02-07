@@ -1,9 +1,10 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -44,6 +45,7 @@ const accordianData = [
   },
 ];
 const SectionFive = () => {
+  const swiperRef = useRef<SwiperType | null>(null);
   return (
     <>
 
@@ -108,11 +110,7 @@ const SectionFive = () => {
                     slidesPerView: 2,
                     spaceBetween: 10,
                   },
-                  640: {
-                    slidesPerView: 3,
-                    spaceBetween: 10,
-                  },
-                  768: {
+                  700: {
                     slidesPerView: 3,
                     spaceBetween: 20,
                   },
@@ -120,14 +118,18 @@ const SectionFive = () => {
                     slidesPerView: 3,
                     spaceBetween: 20,
                   },
-                  1524: {
+                  1700: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                  },
+                  1800: {
                     slidesPerView: 5,
                     spaceBetween: 40,
                   },
                 }}
                 pagination={false}
                 scrollbar={{ draggable: true }}
-                onSwiper={(swiper) => console.log(swiper)}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={() => console.log("slide change")}
               >
                 {accordianData.map((item, index) => (
@@ -136,11 +138,12 @@ const SectionFive = () => {
                       className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
                       style={{ backgroundImage: `url(${item.image})` }}
                     >
-                      <div className="flex items-end pb-6 md:pb-10 min-h-[462px]">
-                        <div className="px-6 md:px-10 w-full">
+                      <div className="flex items-end pb-3 md:pb-6 xl:pb-10 min-h-[300px] lg:min-h-[462px]">
+                        <div className="px-4 md:px-6 xl:px-10 w-full">
                           <h3 className="nubernext28bold text-white translate-y-[5px] transition-all duration-500 group-hover:translate-y-[-10px]">
                             {item.title}
                           </h3>
+
 
                             <p className="text-white overflow-hidden pt-3 h-0 group-hover:h-full   group-hover:translate-y-[-10px]
                             transition-all duration-500 ease-in-out  ">
@@ -156,7 +159,7 @@ const SectionFive = () => {
               </Swiper>
             </motion.div>
             <div className="  relative">
-              <div className="button-next next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
+              <div onClick={() => swiperRef.current?.slideNext()} className=" next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
                 <div className="transition-all duration-300 group-hover:translate-x-1">
                   <svg
                     width="20"
@@ -174,7 +177,7 @@ const SectionFive = () => {
                   </svg>
                 </div>
               </div>
-              <div className="button-next prev-style group cursor-pointer absolute bottom-[-70px]   right-[50px] transform -translate-y-1/2 text-white z-10">
+              <div onClick={() => swiperRef.current?.slidePrev()}className=" prev-style group cursor-pointer absolute bottom-[-70px]   right-[50px] transform -translate-y-1/2 text-white z-10">
                 {/* You can customize this icon as needed */}
                 <div className="transition-all duration-300 group-hover:translate-x-[-5px]">
                   <svg

@@ -24,17 +24,17 @@ const ResultSelection = ({activeResult}:{
                                 <div className='flex flex-col gap-3 md:gap-5 group' key={index}>
                                 <div className='relative'>
                                         <Image src={resultImage} alt='result-image' />
-                                        <div className=' absolute top-0 left-0 w-full h-full flex items-center justify-center'>
-                                        <div className='w-20 h-20 bg-[#ff671f7a]  flex  top-0 left-0  cursor-pointer items-center justify-center dnld opacity-0 group-hover:opacity-[1] transition-all duration-500'>
+                                        <div className=' absolute top-0 left-0 w-full h-full flex items-center justify-center cursor-pointer'>
+                                        <div className='w-20 h-20 bg-[#ff671f7a]  flex  top-0 left-0   items-center justify-center dnld opacity-0 group-hover:opacity-[1] transition-all duration-500'>
                                         <Image src={assets.downorange} alt='download' className='w-5 h-5  '/>
                                         </div>
                                         </div>
                                 </div>
 
                                 <div className='flex justify-between'>
-                                    <h5 className='texthelvetica20bold'>{result.title}</h5>
+                                    <h5 className='font-helvetica font-bold text-font20 leading-[1.3]'>{result.title}</h5>
                                     <Image src={downloadIcon} alt='download' className='w-5 h-5 opacity-[1] group-hover:opacity-0  ' />
-                                    <Image src={assets.downorange} alt='download' className='w-5 h-5 hidden group-hover:block opacity-0 group-hover:opacity-[1] transition-all duration-500' />
+                                    <Image src={assets.downorange} alt='download' className='cursor-pointer w-5 h-5 hidden group-hover:block opacity-0 group-hover:opacity-[1] transition-all duration-500' />
                                 </div>
                             </div>
                             ))
