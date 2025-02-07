@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -11,40 +11,18 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
 import { motion } from "framer-motion";
+interface WhySupremeProps {
+  sectitle: string;
+  data: {
+    id: number;
+    title: string;
+    image: StaticImageData
+    desc: string;
+  }[];
+}
 
-const accordianData = [
-  {
-    image: "/assets/images/applications/ra1.jpg",
-    title: "Façade Cladding",
-    desc: "A wide range of uncoated boards, used as a core material, offering flexibility for customization and finishing.",
-  },
-  {
-    image: "/assets/images/applications/ra2.jpg",
-    title: "Wall Cladding",
-    desc: "A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications.",
-  },
-  {
-    image: "/assets/images/applications/ra3.jpg",
-    title: "Partitional Wall",
-    desc: "A Smooth, sanded surface board, ideal for interior fit-outs and paneling, ensuring enhanced finish quality and easy customization.",
-  },
-  {
-    image: "/assets/images/applications/ra4.jpg",
-    title: "Concrete Forming",
-    desc: "A smooth, decorative melamine-surfaced board, perfect for furniture, cabinetry, and interior applications.",
-  },
-  {
-    image: "/assets/images/applications/ra5.jpg",
-    title: "Sub-Flooring",
-    desc: "A flawless, smooth-surfaced board achieved with putty, ideal for high-quality paint applications and achieving a polished, refined look. ",
-  },
-  {
-    image: "/assets/images/applications/ra5.jpg",
-    title: "Sub-Flooring",
-    desc: "A flawless, smooth-surfaced board achieved with putty, ideal for high-quality paint applications and achieving a polished, refined look. ",
-  },
-];
-const SectionFive = () => {
+// Component to display the data
+const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
   const swiperRef = useRef<SwiperType | null>(null);
   return (
     <>
@@ -72,7 +50,7 @@ const SectionFive = () => {
         <div className="container ">
           <div>
             <h2 className="heavydark mb-6 md:mb-10">
-            Related Applications<span className="text-orange">.</span>
+            {sectitle}<span className="text-orange">.</span>
             </h2>
           </div>
 
@@ -132,11 +110,11 @@ const SectionFive = () => {
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={() => console.log("slide change")}
               >
-                {accordianData.map((item, index) => (
-                  <SwiperSlide key={index}>
+               {data.map((item) => (
+                  <SwiperSlide key={item.id}>
                     <div
                       className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
-                      style={{ backgroundImage: `url(${item.image})` }}
+                      style={{ backgroundImage: `url(${item.image.src})` }}
                     >
                       <div className="flex items-end pb-3 md:pb-6 xl:pb-10 min-h-[300px] lg:min-h-[462px]">
                         <div className="px-4 md:px-6 xl:px-10 w-full">
