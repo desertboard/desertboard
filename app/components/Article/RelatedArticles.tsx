@@ -7,6 +7,7 @@ import { newsEvents } from "./data";
 import '@/app/components/NewsEventsListing/listing.scss'
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperType } from "swiper";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -14,7 +15,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import RelatedItem from "./RelatedItem";
 const RelatedArticles: React.FC = () => {
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
   return (
     <CustomClrSection>
       <div className="container">

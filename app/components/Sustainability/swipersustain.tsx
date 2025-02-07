@@ -1,7 +1,9 @@
-import React,{ useRef } from "react";
+"use client";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Navigation, Pagination } from "swiper/modules";
+import { Swiper as SwiperType } from "swiper";
 
 // Images
 import arrowExpand from "@/public/assets/images/icons/expand-icon.png";
@@ -25,7 +27,7 @@ interface LinkedInSliderProps {
 }
 
 const Swipersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
   return (
     <>
       <Swiper
