@@ -1,0 +1,49 @@
+import connectDB from "@/lib/mongodb";
+import Sustainability from "@/models/Sustainability";
+import { NextRequest, NextResponse } from "next/server";
+
+export async function GET() {
+    await connectDB();
+  
+    try {
+      const sustainability = await Sustainability.findOne();
+  
+      if (!sustainability) {
+        return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
+      }else{
+        return NextResponse.json({ sustainability });
+      }
+  
+    } catch (error) {
+      console.log("error getting sustainability:", error);
+      return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    }
+  }
+
+  export async function PATCH(req: NextRequest) {
+    
+    await connectDB();
+  
+    try {
+
+      const formData = await req.formData();
+      const updatedData = Object.fromEntries(formData.entries());
+        
+      const sustainability = await Sustainability.findOne();
+
+      if (!sustainability) {
+        return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
+      }else{
+        sustainability.pageHeading = updatedData.pageHeading
+        sustainability.pageDescription = updatedData.pageDescription
+        sustainability.heading = updatedData.heading
+        sustainability.description = updatedData.description
+        sustainability.image = updatedData.image
+        await sustainability.save()
+        return NextResponse.json({ message: "Sustainability updated successfully" }, { status: 200 });
+        }   
+    } catch (error) {
+      console.log("error updating sustainability:", error);
+      return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    }
+  }

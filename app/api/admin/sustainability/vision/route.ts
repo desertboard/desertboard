@@ -1,0 +1,119 @@
+import connectDB from "@/lib/mongodb";
+import Sustainability from "@/models/Sustainability";
+import { NextRequest, NextResponse } from "next/server";
+
+
+export async function GET() {
+    await connectDB();
+  
+    try {
+      const sustainability = await Sustainability.findOne();
+  
+      if (!sustainability) {
+        return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
+      }else{
+        const vision = sustainability.vision
+        return NextResponse.json({ vision });
+      }
+  
+    } catch (error) {
+      console.log("error getting visions:", error);
+      return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    }
+  }
+
+
+export async function POST(req: NextRequest) {
+    
+    await connectDB();
+  
+    try {
+
+      const formData = await req.formData();
+      const entries = Object.fromEntries(formData.entries());
+        
+      //todo - need to change this
+      const sustainability = await Sustainability.findOne()
+
+      if (!sustainability) {
+        return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
+      }
+
+      sustainability.vision.push({image:entries.image,description:entries.description,title:entries.title,region:entries.region})
+      await sustainability.save()      
+      return NextResponse.json({ message: "Vision added successfully" }, { status: 200 });
+    
+    } catch (error) {
+      console.log("error adding vision:", error);
+      return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    }
+  }
+
+
+  export async function PATCH(req: NextRequest) {
+    
+    await connectDB();
+  
+    try {
+
+        const { searchParams } = new URL(req.url);
+        const id = searchParams.get("id");
+
+      const formData = await req.formData();
+      const updatedData = Object.fromEntries(formData.entries());
+        
+      const sustainability = await Sustainability.findOne();
+
+      if (!sustainability) {
+        return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
+      }else{
+        const toEditItem = sustainability.vision.find((item:{_id:string})=>item._id==id)
+        if(toEditItem){
+          if(updatedData.title!==""){
+            toEditItem.title = updatedData.title
+          }
+          if(updatedData.description!==""){
+            toEditItem.description = updatedData.description
+          }
+          if(updatedData.region!==""){
+            toEditItem.region = updatedData.region
+          }
+          await sustainability.save()
+        } 
+        return NextResponse.json({ message: "Vision updated successfully" }, { status: 200 });
+      }
+      
+    } catch (error) {
+      console.log("error updating vision:", error);
+      return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    }
+  }
+
+
+  export async function DELETE(req: NextRequest) {
+    
+    await connectDB();
+  
+    try {
+
+      const {searchParams} = new URL(req.url)
+      const id = searchParams.get("id")
+
+      const sustainability = await Sustainability.findOne();
+
+      if (!sustainability) {
+        return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
+      }else{
+        const toDeleteItem = sustainability.vision.findIndex((item:{_id:string})=>item._id==id)
+        if(toDeleteItem!==-1){
+            sustainability.vision.splice(toDeleteItem,1)
+            await sustainability.save()
+            return NextResponse.json({ message: "Vision deleted successfully" }, { status: 200 });
+        }
+      }
+    
+    } catch (error) {
+      console.log("error deleting vision:", error);
+      return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    }
+  }
