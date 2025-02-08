@@ -19,10 +19,22 @@
         }
         p{
             // min-height: 7em;
-            transition-delay: 0;
+            // transition-delay: 0;
             // min-width: 900px;
             // max-width: 40ch;
-
+            // height: 100px;
+            min-height: 90px;
+            max-height: 90px;
+            overflow: hidden;
+            transition: none;
+            @media (max-width: 768px) {
+                // min-width: 100%;
+                // max-width: 100%;
+                // min-height: 5em;
+                // max-height: 5em;
+                height: 5em;
+                max-height: min-content;
+            }
         }
     }
     &__mi {
@@ -67,6 +79,7 @@
             // justify-content: center;
             // padding-top: 6%;
             min-width: max-content;
+            z-index: 50;
             overflow: hidden;
             .mivi__icon {
                 img {
@@ -83,13 +96,15 @@
             h3 {
                 color: #fff;
                 writing-mode: horizontal-tb;
-                transform: rotate(270deg) translateX(-60px);
+                // transform: rotate(270deg) translateX(-60px);
+                transform: rotate(-90deg) translateX(-20%);
                 display: inline-block;
                 width: 100%;
                 margin: 0 auto;
                 margin-top: 60px;
                 display: flex;
-                transition: .3ms all linear;
+                transition: .3s all linear;
+                transition-delay: .1s;
             }
             p {
                 color: #fff;
@@ -137,11 +152,12 @@
             h3 {
                 color: #fff;
                 writing-mode: horizontal-tb;
-                transform: rotate(270deg);
+                transform: rotate(-90deg) translateX(-10%);
                 display: inline-block;
                 margin: 0;
                 margin-top: 60px;
-                transition: 0.3ms all linear;
+                transition: .3s all linear;
+                transition-delay: 0.1s;
             }
 
             p {

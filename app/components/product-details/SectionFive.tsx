@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -24,6 +24,16 @@ interface WhySupremeProps {
 // Component to display the data
 const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
   const swiperRef = useRef<SwiperType | null>(null);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const contentRefs = useRef<(HTMLSpanElement | null)[]>([]);
+
+    useEffect(() => {
+      if (hoveredIndex !== null && contentRefs.current[hoveredIndex]) {
+        contentRefs.current[hoveredIndex]!.style.maxHeight =
+          contentRefs.current[hoveredIndex]!.scrollHeight + 20+ "px"; // Expand to content height
+      }
+    }, [hoveredIndex]); // Runs when hoveredIndex changes
+
   return (
     <>
 
@@ -69,72 +79,86 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                 },
               }}
             >
-              <Swiper
+
+          <Swiper
                 // install Swiper modules
-                modules={[Navigation, Pagination]}
-                spaceBetween={40}
-                slidesPerView={5}
-                loop={true}
-                navigation={{
-                  nextEl: ".button-next", // Target the next button
-                  prevEl: ".button-next", // Target the previous button
-                }}
-                breakpoints={{
-                  0: {
-                    slidesPerView: 1,
-                    spaceBetween: 0,
-                  },
-                  410: {
-                    slidesPerView: 2,
-                    spaceBetween: 10,
-                  },
-                  700: {
-                    slidesPerView: 3,
-                    spaceBetween: 20,
-                  },
-                  1200: {
-                    slidesPerView: 3,
-                    spaceBetween: 20,
-                  },
-                  1700: {
-                    slidesPerView: 4,
-                    spaceBetween: 20,
-                  },
-                  1800: {
-                    slidesPerView: 5,
-                    spaceBetween: 40,
-                  },
-                }}
-                pagination={false}
-                scrollbar={{ draggable: true }}
-                onSwiper={(swiper) => (swiperRef.current = swiper)}
-                onSlideChange={() => console.log("slide change")}
-              >
-               {data.map((item) => (
-                  <SwiperSlide key={item.id}>
-                    <div
-                      className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
+                className="swpstss  "
+            modules={[Navigation, Pagination]}
+            spaceBetween={0}
+            // slidesPerView='auto'
+            loop={true}
+            navigation={{
+              nextEl: ".swiper-button-next", // Target the next button
+              prevEl: ".swiper-button-prev", // Target the previous button
+            }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+              },
+              410: {
+                slidesPerView: 2,
+                spaceBetween: 0,
+              },
+              700: {
+                slidesPerView: 3,
+                spaceBetween: 0,
+              },
+              1200: {
+                slidesPerView: 3,
+                spaceBetween: 0,
+              },
+              1700: {
+                slidesPerView: 5,
+                spaceBetween: 0,
+              },
+              1800: {
+                slidesPerView: 6,
+                spaceBetween: 0,
+              },
+            }}
+            // pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
+                onSlideChange={() => console.log("slide change")}>
+                {data.map((item) => (
+  <SwiperSlide key={item.id}>
+                                    <div
+                                      className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
                       style={{ backgroundImage: `url(${item.image.src})` }}
-                    >
-                      <div className="flex items-end pb-3 md:pb-6 xl:pb-10 min-h-[300px] lg:min-h-[462px]">
-                        <div className="px-4 md:px-6 xl:px-10 w-full">
-                          <h3 className="nubernext28bold text-white translate-y-[5px] transition-all duration-500 group-hover:translate-y-[-10px]">
-                            {item.title}
-                          </h3>
+
+                      onMouseEnter={() => setHoveredIndex(item.id)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                                    >
+                                      <div className="flex items-end pb-3 md:pb-5 xl:pb-5 min-h-[300px] lg:min-h-[426px]">
+                                        <div className="px-4 md:px-5 xl:px-5 w-full">
+                                          <h3 className="nubernext28bold text-white translate-y-[5px] transition-all duration-500 delay-200 group-hover:translate-y-[-10px]">
+                                            {item.title}
+                                          </h3>
 
 
-                            <p className="text-white overflow-hidden pt-3 h-0 group-hover:h-full   group-hover:translate-y-[-10px]
-                            transition-all duration-500 ease-in-out  ">
-                            <span className="opacity-0 group-hover:opacity-100  transition-opacity duration-500 group-hover:delay-100 delay-0">
-                              {item.desc}
-                              </span>
-                            </p>
-                        </div>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                                            <p className="text-white overflow-hidden pt-3 h-0 group-hover:h-full   group-hover:translate-y-[-10px]
+                                            transition-all duration-500 ease-in-out  "
+                                            style={{
+                                              maxHeight: hoveredIndex === item.id ? `${contentRefs.current[item.id]?.scrollHeight  || 0}px` : "0px",
+                                                                        }}
+                                                                        ref={(el) => {
+                                                                          contentRefs.current[item.id] = el;
+                                                                        }}
+                          >
+                                            <span className="opacity-0 group-hover:opacity-100  transition-opacity duration-500 group-hover:delay-100 delay-0">
+                                              {item.desc}
+                                              </span>
+                                            </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </SwiperSlide>
+          ))}
+
+
+
+          </Swiper>
             </motion.div>
             <div className="  relative">
               <div onClick={() => swiperRef.current?.slideNext()} className=" next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">

@@ -54,7 +54,7 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }
           isOpen ? "max-h-[500px] opacity-100 pl-8 pb-5" : "max-h-0 opacity-0"
         }`}
       >
-        <p className="helvetica text-font20  clr15op75 px-5">{content}</p>
+        <p className="helvetica text-font20   clr15op75 px-5">{content}</p>
       </div>
     </div>
   );

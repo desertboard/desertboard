@@ -32,7 +32,9 @@ export async function PATCH(request: NextRequest) {
   if (!isAdmin) {
     return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
   }
-  const { id, title, description, image_url, applications } = await request.json();
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
+  const { title, description, image_url, applications } = await request.json();
 
   await connectDB();
 
@@ -47,7 +49,8 @@ export async function DELETE(request: NextRequest) {
   if (!isAdmin) {
     return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
   }
-  const { id } = await request.json();
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
 
   await connectDB();
 

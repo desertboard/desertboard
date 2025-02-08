@@ -1,0 +1,58 @@
+.thumbs-swiper .swiper-slide-thumb-active div {
+}
+
+.thumbs-swiper .swiper-slide-thumb-active span {
+    color: var(--secondary) !important;
+}
+
+.main-swiper {
+    // height: 100% !important;
+}
+
+.main-swiper .swiper-wrapper {
+    // height: 100% !important;
+}
+
+.main-swiper .swiper-slide {
+    // height: 100% !important;
+    // overflow: hidden;
+}
+
+// .thumbs-swiper .swiper-slide {
+//   height: auto !important;
+// }
+
+.timeline {
+    &__img {
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 61%, #000000 99%),
+                linear-gradient(270deg, #000b09 7%, rgba(0, 11, 9, 0) 53%, rgba(0, 11, 9, 0.8861) 84%, #000b09 100%),
+                rgba(0, 45, 40, 0.1);
+            $color: #000;
+            $alpha: 0.5;
+            background-size: cover;
+            z-index: 2;
+            opacity: 1;
+        }
+    }
+    &__years {
+        padding-bottom: 2em;
+        @media (min-width: 1200px) {
+            height: 58dvh;
+            overflow: hidden;
+            padding-block: 3em;
+        }
+    }
+    &__thumb {
+        @media (max-width: 768px) {
+            width: fit-content;
+            padding-inline: 1em;
+        }
+    }
+}
