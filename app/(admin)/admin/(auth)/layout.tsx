@@ -14,6 +14,7 @@ const navItems = [
   { name: "About", href: "/admin/about", icon: UserGroupIcon },
   { name: "Faqs", href: "/admin/faqs", icon: UserGroupIcon },
   { name: "Glossary", href: "/admin/glossary", icon: UserGroupIcon },
+  { name: "Sustainability", href: "/admin/sustainability", icon: UserGroupIcon },
   { name: "News & Events", href: "/admin/news-events", icon: NewspaperIcon },
   { name: "Products", href: "/admin/products", icon: CubeIcon },
   { name: "Sectors", href: "/admin/sectors", icon: BuildingOfficeIcon },
