@@ -106,7 +106,7 @@ const TimeLineSlider: React.FC = () => {
   return (
     <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary">
       <div className="container d-none" ref={nextContainerRef}></div>
-      <div className="flex flex-col md:flex-row w-full gap-6 relative h-[35em] lg:h-[70dvh] ">
+      <div className="flex flex-col md:flex-row w-full gap-6 relative h-[35em] lg:h-[90dvh] xl:h-[90dvh] xxl:h-[90dvh]">
         <h2 className="text-white z-10 text-font48 nuber-next-heavy leading-[1] absolute top-10 lg:top-20 " style={{ left: `calc(100vw - (${divWidth})` }}>
           Our History <span className="text-[#FF671F]">.</span>
         </h2>
@@ -141,7 +141,7 @@ const TimeLineSlider: React.FC = () => {
                     <Image src={item.image} fill objectFit="cover" className="h-full w-full" alt="" />
                   </div>
                 </div>
-                <div className="rounded-lg shadow h-full flex flex-col justify-center xl:justify-end pb-20 relative z-30 xl:w-1/2 " style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
+                <div className="rounded-lg shadow h-full flex flex-col justify-center xl:justify-end pb-20 relative z-30 xl:w-2/3 " style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
                   <h3 className="text-4xl md:text-5xl lg:text-font72 helveticaBold text-white mb-10 nuber-next-heavy ">{item.year}</h3>
                   <h4 className="text-xl md:text-2xl lg:text-font28 leading-[1.2] opacity-75 nuber-next-heavy text-white mb-5">{item.subtitle}</h4>
                   <p className="text-white text-font20 leading-[1.3] opacity-75 font-normal">{item.description}</p>
@@ -158,7 +158,7 @@ const TimeLineSlider: React.FC = () => {
         </div>
 
         {/* Thumbnail slider with navigation */}
-        <div className="timeline__years w-full md:w-1/4  absolute bottom-0 xl:top-10 right-0 z-10" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
+        <div className="timeline__years w-full md:w-1/3  absolute bottom-0 xl:top-10 right-0 z-10" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
           {/* Navigation Buttons - Only visible on mobile */}
 
           <Swiper
@@ -195,7 +195,7 @@ const TimeLineSlider: React.FC = () => {
             {timelineData.map((item, index) => (
               <SwiperSlide key={index} className="!h-16 md:!h-24 cursor-pointer timeline__thumb">
                 <div className={`w-full h-full flex items-center justify-end rounded transition-all duration-300`}>
-                  <span className={`text-font20 text-right md:text-2xl font-normal transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-bold xl:text-font32 opacity-100" : "text-white opacity-50 text-font24 font-normal hover:text-gray-200"}`}>{item.year}</span>
+                  <span className={`text-font20 text-right md:text-2xl font-normal transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-bold lg:min-w-max xl:text-font32 opacity-100" : "text-white opacity-50 text-font24 font-normal hover:text-gray-200"}`}>{item.year}</span>
                   <div className={`hidden lg:block lg:ml-3 h-[4px] w-[68px] transition-all ease-linear duration-300 ${thumbsSwiper?.realIndex === index ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
                 </div>
               </SwiperSlide>

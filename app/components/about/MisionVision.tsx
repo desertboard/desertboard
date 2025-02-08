@@ -71,29 +71,37 @@ export default function MisionVision() {
           <div className="ola absolute top-[-10%] right-[-10%]">
             <Image src={lfbef} width={150} height={150} className="lg:w-full lg:h-full" alt=""></Image>
           </div>
-          <div className="mivi__icon">
-            <Image src="assets/images/about/mi-icon.svg" className="mb-10  xl:mb-[60px]" alt="Mission Icon" width={50} height={50} />
+          {/* <div className="mivi__head"> */}
+            <div className="mivi__icon">
+              <Image src="assets/images/about/mi-icon.svg" className="mb-10 xl:mb-[60px]" alt="Mission Icon" width={50} height={50} />
+            </div>
+            <h3 className="mivi__title text-font48 text-Darkgreen leading-[1] nuber-next-heavy mb-10  xl:mb-[60px]">
+              Mission <span className="text-[#FF671F]">.</span>
+            </h3>
+          {/* </div> */}
+          <div className="mivi__desc text-black opacity-75 leading-[1.3] text-font20">
+            <p>
+              Our mission is to leverage the UAE&apos;s rich heritage of palm fronds to create high-strength, zero-emission structural panels. By transforming local materials into sustainable building solutions, we aim to enhance indoor air quality, reduce carbon footprints, and contribute to the local bio-economy. As the first industrial plant in
+              the UAE dedicated to this innovation, we support the nation&apos;s industrial growth while promoting environmental sustainability.
+            </p>
           </div>
-          <h3 className="mivi__title text-font48 text-Darkgreen leading-[1] nuber-next-heavy mb-10  xl:mb-[60px]">
-            Mission <span className="text-[#FF671F]">.</span>
-          </h3>
-          <p className="mivi__desc text-black opacity-75 leading-[1.3] text-font20">
-            Our mission is to leverage the UAE&apos;s rich heritage of palm fronds to create high-strength, zero-emission structural panels. By transforming local materials into sustainable building solutions, we aim to enhance indoor air quality, reduce carbon footprints, and contribute to the local bio-economy. As the first industrial plant in
-            the UAE dedicated to this innovation, we support the nation&apos;s industrial growth while promoting environmental sustainability.
-          </p>
         </div>
         <div className="mivi__vi pt-5 pb-10 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
           {/* <div className="mivi__vi pt-5 pb-10 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={{ "--miviwidth": divWidth } as React.CSSProperties}> */}
           <div className="ola absolute top-[-30%] right-[-12.5%] z-0">
             <Image src={lfbef} width={150} height={150} className="w-full h-full" alt=""></Image>
           </div>
-          <div className="mivi__icon relative z-10">
-            <Image src="assets/images/about/vi-icon.svg" className="mb-10  xl:mb-[60px]" alt="Mission Icon" width={50} height={50} />
+          <div className="mivi__head">
+            <div className="mivi__icon relative z-10">
+              <Image src="assets/images/about/vi-icon.svg" className="mb-10  xl:mb-[60px]" alt="Mission Icon" width={50} height={50} />
+            </div>
+            <h3 className="mivi__title text-font48 text-Darkgreen leading-[1] nuber-next-heavy mb-10  xl:mb-[60px]">
+              Vision <span className="text-[#FF671F]">.</span>
+            </h3>
           </div>
-          <h3 className="mivi__title text-font48 text-Darkgreen leading-[1] nuber-next-heavy mb-10  xl:mb-[60px]">
-            Vision <span className="text-[#FF671F]">.</span>
-          </h3>
-          <p className="mivi__desc text-black opacity-75 leading-[1.3] text-font20">To make the built environment more sustainable by providing locally produced engineered solutions, driving the circular economy forward, and setting new standards for eco-friendly, high-performance materials across sectors.</p>
+          <div className="mivi__desc text-black opacity-75 leading-[1.3] text-font20">
+            <p>To make the built environment more sustainable by providing locally produced engineered solutions, driving the circular economy forward, and setting new standards for eco-friendly, high-performance materials across sectors.</p>
+          </div>
         </div>
       </div>
     </section>
