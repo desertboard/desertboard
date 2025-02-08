@@ -2,7 +2,6 @@ import connectDB from "@/lib/mongodb";
 import Sustainability from "@/models/Sustainability";
 import { NextRequest, NextResponse } from "next/server";
 
-
 export async function GET() {
     await connectDB();
   
@@ -12,13 +11,13 @@ export async function GET() {
       if (!sustainability) {
         return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
       }else{
-        const goals = sustainability.goals.goals
-        const topContent = {heading:sustainability.goals.heading,description:sustainability.goals.description}
-        return NextResponse.json({ goals,topContent });
+        const partners = sustainability.partners.partners
+        const topContent = {heading:sustainability.partners.heading,description:sustainability.partners.description}
+        return NextResponse.json({ partners,topContent });
       }
   
     } catch (error) {
-      console.log("error getting roles:", error);
+      console.log("error getting partners:", error);
       return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
   }
@@ -44,15 +43,15 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
       }else{
         if(t){
-          sustainability.goals.heading = entries.contentheading
-          sustainability.goals.description = entries.contentdescription
+          sustainability.partners.heading = entries.contentheading
+          sustainability.partners.description = entries.contentdescription
           await sustainability.save()
-          return NextResponse.json({ message: "Goal updated successfully" }, { status: 200 });
+          return NextResponse.json({ message: "Partner updated successfully" }, { status: 200 });
         }else{
           console.log(sustainability)
-          sustainability.goals.goals.push({image:entries.image,logo:entries.logo,heading:entries.title,description:entries.description})
+          sustainability.partners.partners.push({title:entries.title,description:entries.description})
           await sustainability.save()      
-          return NextResponse.json({ message: "Goal added successfully" }, { status: 200 });
+          return NextResponse.json({ message: "Partner added successfully" }, { status: 200 });
         }
         
       }
@@ -60,7 +59,7 @@ export async function POST(req: NextRequest) {
       
     
     } catch (error) {
-      console.log("error adding goal:", error);
+      console.log("error adding partner:", error);
       return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
   }
@@ -72,35 +71,30 @@ export async function POST(req: NextRequest) {
   
     try {
 
-        const { searchParams } = new URL(req.url);
-        const id = searchParams.get("id");
-
       const formData = await req.formData();
       const updatedData = Object.fromEntries(formData.entries());
+
+      const editId = updatedData.editId
+
+
+      const sustainability = await Sustainability.findOne()
+
+      if (sustainability) {
+        // Append new contents to the existing array
+        const editItem = await sustainability.partners.partners.find((item:{_id:string})=>item._id == editId)
+        editItem.title = updatedData.title
+        editItem.description = updatedData.description
+        await sustainability.save();
+      } else {
         
-      const sustainability = await Sustainability.findOne();
-
-      console.log("updatedData",updatedData)
-
-      if (!sustainability) {
-        return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
-      }else{
-        const toEditItem = sustainability.goals.goals.find((item:{_id:string})=>item._id==id)
-        if(toEditItem){
-            //to not override with empty string if content not present
-            if(updatedData.title!==""){
-                toEditItem.heading = updatedData.title
-            }
-            if(updatedData.description!==""){
-                toEditItem.description = updatedData.description
-            }
-            await sustainability.save()
-            return NextResponse.json({ message: "Goal updated successfully" }, { status: 200 });
-        }
-      }
+        return NextResponse.json({ message: "Sustainability not found" }, { status: 400 });
       
+      }
+
+      return NextResponse.json({ message: "Partners updated successfully" }, { status: 200 });
+    
     } catch (error) {
-      console.log("error updating role:", error);
+      console.log("error updating partners:", error);
       return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
   }
@@ -120,16 +114,16 @@ export async function POST(req: NextRequest) {
       if (!sustainability) {
         return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
       }else{
-        const toDeleteItem = sustainability.goals.goals.findIndex((item:{_id:string})=>item._id==id)
+        const toDeleteItem = sustainability.partners.partners.findIndex((item:{_id:string})=>item._id==id)
         if(toDeleteItem!==-1){
-            sustainability.goals.goals.splice(toDeleteItem,1)
+            sustainability.partners.partners.splice(toDeleteItem,1)
             await sustainability.save()
-            return NextResponse.json({ message: "Goal deleted successfully" }, { status: 200 });
+            return NextResponse.json({ message: "Partner deleted successfully" }, { status: 200 });
         }
       }
     
     } catch (error) {
-      console.log("error deleting goal:", error);
+      console.log("error deleting partner:", error);
       return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
   }

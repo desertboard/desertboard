@@ -31,12 +31,13 @@ const GoalsSection = () => {
         handleSubmit,
         register,
         setValue,
+        getValues,
     } = useForm<FormData>();
 
     const [isOpen, setIsOpen] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [refetch, setRefetch] = useState(false)
-    const [goals, setGoals] = useState([])
+    const [goals, setGoals] = useState<{ _id: string, image: string, logo: string, heading: string, description: string }[]>([])
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
 
@@ -87,9 +88,13 @@ const GoalsSection = () => {
                     const data = await response.json();
 
                     if (data.goals) {
-
+                        
                         console.log(data.goals)
                         setGoals(data.goals)
+                    }
+                    if(data.topContent){
+                        setValue("contentheading",data.topContent.heading) 
+                        setValue("contentdescription",data.topContent.description) 
                     }
 
                 } else {
@@ -137,6 +142,7 @@ const GoalsSection = () => {
 
     const handleDeleteRole = async (id: string) => {
         try {
+            console.log("Before deletion:", goals);
             const url = `/api/admin/sustainability/goals?id=${id}`;
             const method = "DELETE";
             const response = await fetch(url, {
@@ -145,8 +151,8 @@ const GoalsSection = () => {
 
             if (response.ok) {
                 const data = await response.json()
+                setGoals((prevGoals) => prevGoals.filter((goal) => goal._id !== id));
                 alert(data.message)
-                setRefetch((prev) => !prev)
                 // router.push('/admin/about')
             } else {
                 throw new Error("Failed to delete goal");
@@ -166,12 +172,44 @@ const GoalsSection = () => {
         setValue("description", "")
     }
 
+    const handleHeadDescSave = async(heading:string,description:string) =>{
+        setIsSubmitting(true);
+        const formData = new FormData();
+        formData.append("contentheading", heading);
+        formData.append("contentdescription", description);
+
+        try {
+            const url = `/api/admin/sustainability/goals?t=${true}`;
+            const method = "POST";
+            const response = await fetch(url, {
+                method: method,
+                body: formData,
+            });
+
+            if (response.ok) {
+                const data = await response.json()
+                alert(data.message)
+                // router.push('/admin/about')
+            } else {
+                throw new Error("Failed to edit goal");
+            }
+
+        } catch (error) {
+            console.error("Error adding goals:", error);
+            alert("Failed to add goals. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+            setRefetch((prev) => !prev)
+            setIsOpen(false)
+        }
+    }
+
     return (
         <div className='flex flex-col gap-10'>
             
                 <div className='flex justify-between'>
                     <div className='text-2xl font-bold'>Sustainability / Goals Section</div>
-                    <Button>Save</Button>
+                    <Button onClick={()=>handleHeadDescSave(getValues("contentheading"),getValues("contentdescription"))}>Save</Button>
                 </div>
 
 
@@ -210,7 +248,7 @@ const GoalsSection = () => {
                                 <Label>Description</Label>
                                 <Textarea {...register("description")} />
 
-                                <Button>Save</Button>
+                                <Button disabled={isSubmitting}>Save</Button>
                             </form>
 
 
@@ -219,8 +257,8 @@ const GoalsSection = () => {
                 </Dialog>
             </div>
 
-            {goals && goals.length > 0 ? goals.map((goal: { _id: string, image: string, logo: string, heading: string, description: string }, key) => (
-                <div className='h-80 w-full border border-neutral-200 flex p-2  flex-col gap-5 rounded-xl' key={key}>
+            {goals && goals.length > 0 ? goals.map((goal: { _id: string, image: string, logo: string, heading: string, description: string }) => (
+                <div className='h-80 w-full border border-neutral-200 flex p-2  flex-col gap-5 rounded-xl' key={goal._id}>
                     <div className='grid grid-cols-2 h-full w-full rounded-xl  border-neutral-200 gap-5'>
 
                         <div className='flex items-center justify-center col-span-1 bg-blue-50'>

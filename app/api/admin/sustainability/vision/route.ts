@@ -12,13 +12,12 @@ export async function GET() {
       if (!sustainability) {
         return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
       }else{
-        const goals = sustainability.goals.goals
-        const topContent = {heading:sustainability.goals.heading,description:sustainability.goals.description}
-        return NextResponse.json({ goals,topContent });
+        const vision = sustainability.vision
+        return NextResponse.json({ vision });
       }
   
     } catch (error) {
-      console.log("error getting roles:", error);
+      console.log("error getting visions:", error);
       return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
   }
@@ -30,37 +29,22 @@ export async function POST(req: NextRequest) {
   
     try {
 
-      const {searchParams} = new URL(req.url)
-      const t = searchParams.get("t")
       const formData = await req.formData();
       const entries = Object.fromEntries(formData.entries());
         
       //todo - need to change this
       const sustainability = await Sustainability.findOne()
 
-      console.log("entiresss",entries)
-
       if (!sustainability) {
         return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
-      }else{
-        if(t){
-          sustainability.goals.heading = entries.contentheading
-          sustainability.goals.description = entries.contentdescription
-          await sustainability.save()
-          return NextResponse.json({ message: "Goal updated successfully" }, { status: 200 });
-        }else{
-          console.log(sustainability)
-          sustainability.goals.goals.push({image:entries.image,logo:entries.logo,heading:entries.title,description:entries.description})
-          await sustainability.save()      
-          return NextResponse.json({ message: "Goal added successfully" }, { status: 200 });
-        }
-        
       }
 
-      
+      sustainability.vision.push({image:entries.image,description:entries.description,title:entries.title,region:entries.region})
+      await sustainability.save()      
+      return NextResponse.json({ message: "Vision added successfully" }, { status: 200 });
     
     } catch (error) {
-      console.log("error adding goal:", error);
+      console.log("error adding vision:", error);
       return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
   }
@@ -80,27 +64,27 @@ export async function POST(req: NextRequest) {
         
       const sustainability = await Sustainability.findOne();
 
-      console.log("updatedData",updatedData)
-
       if (!sustainability) {
         return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
       }else{
-        const toEditItem = sustainability.goals.goals.find((item:{_id:string})=>item._id==id)
+        const toEditItem = sustainability.vision.find((item:{_id:string})=>item._id==id)
         if(toEditItem){
-            //to not override with empty string if content not present
-            if(updatedData.title!==""){
-                toEditItem.heading = updatedData.title
-            }
-            if(updatedData.description!==""){
-                toEditItem.description = updatedData.description
-            }
-            await sustainability.save()
-            return NextResponse.json({ message: "Goal updated successfully" }, { status: 200 });
-        }
+          if(updatedData.title!==""){
+            toEditItem.title = updatedData.title
+          }
+          if(updatedData.description!==""){
+            toEditItem.description = updatedData.description
+          }
+          if(updatedData.region!==""){
+            toEditItem.region = updatedData.region
+          }
+          await sustainability.save()
+        } 
+        return NextResponse.json({ message: "Vision updated successfully" }, { status: 200 });
       }
       
     } catch (error) {
-      console.log("error updating role:", error);
+      console.log("error updating vision:", error);
       return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
   }
@@ -120,16 +104,16 @@ export async function POST(req: NextRequest) {
       if (!sustainability) {
         return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
       }else{
-        const toDeleteItem = sustainability.goals.goals.findIndex((item:{_id:string})=>item._id==id)
+        const toDeleteItem = sustainability.vision.findIndex((item:{_id:string})=>item._id==id)
         if(toDeleteItem!==-1){
-            sustainability.goals.goals.splice(toDeleteItem,1)
+            sustainability.vision.splice(toDeleteItem,1)
             await sustainability.save()
-            return NextResponse.json({ message: "Goal deleted successfully" }, { status: 200 });
+            return NextResponse.json({ message: "Vision deleted successfully" }, { status: 200 });
         }
       }
     
     } catch (error) {
-      console.log("error deleting goal:", error);
+      console.log("error deleting vision:", error);
       return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
   }

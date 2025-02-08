@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Alphabet is required" }, { status: 400 });
       }
 
-      let glossaryEntry = await Glossary.findOne({ alphabet });
+      const glossaryEntry = await Glossary.findOne({ alphabet });
 
       if (glossaryEntry) {
         // Append new contents to the existing array
@@ -122,7 +122,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Glossary not found" }, { status: 400 });
       }
 
-      let glossaryEntry = await Glossary.findOne({ alphabet });
+      const glossaryEntry = await Glossary.findOne({ alphabet });
 
       if (glossaryEntry) {
         // Append new contents to the existing array

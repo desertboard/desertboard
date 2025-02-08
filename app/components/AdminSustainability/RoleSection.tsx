@@ -175,7 +175,7 @@ const RoleSection = () => {
                                 <Label>Title</Label>
                                 <Input {...register("title")}></Input>
 
-                                <Button>Save</Button>
+                                <Button disabled={isSubmitting}>Save</Button>
                             </form>
 
 

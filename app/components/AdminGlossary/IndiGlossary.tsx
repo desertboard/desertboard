@@ -178,7 +178,7 @@ const IndiGlossary = () => {
                                 <Textarea {...register("description")} />
                                 
                                 
-                                <Button>Save Content</Button>
+                                <Button disabled={isSubmitting}>Save Content</Button>
                                 
                             </form>
 

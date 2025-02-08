@@ -13,50 +13,6 @@ const RoleSchema = new mongoose.Schema({
     }
 })
 
-const GoalsSchema = new mongoose.Schema({
-    heading: {
-        type: String
-    },
-    description: {
-        type: String
-    },
-    goals: [
-        {
-            image: {
-                type: String
-            },
-            logo: {
-                type: String
-            },
-            heading: {
-                type: String
-            },
-            description: {
-                type: String
-            }
-        }
-    ]
-})
-
-
-const PartnersSchema = new mongoose.Schema({
-    heading: {
-        type: String
-    },
-    description: {
-        type: String
-    },
-    partners: [
-        {
-            title: {
-                type: String
-            },
-            description: {
-                type: String
-            },
-        }
-    ]
-})
 
 const VisionSchema = new mongoose.Schema({
     image: {
@@ -64,6 +20,12 @@ const VisionSchema = new mongoose.Schema({
     },
     title: {
         type: String
+    },
+    description:{
+        type:String
+    },
+    region:{
+        type:String
     }
 })
 
@@ -114,7 +76,24 @@ const SustainabilitySchema = new mongoose.Schema({
             }
         ]
     },
-    partners: PartnersSchema,
+    partners: {
+        heading: {
+            type: String
+        },
+        description: {
+            type: String
+        },
+        partners: [
+            {
+                title: {
+                    type: String
+                },
+                description: {
+                    type: String
+                },
+            }
+        ]
+    },
     vision: [VisionSchema]
 });
 
