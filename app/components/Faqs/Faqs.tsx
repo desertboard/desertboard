@@ -58,7 +58,7 @@ const Faqs = () => {
                             Asked Questions<span className='text-orange'>.</span></h2>
                     </div>
 
-                    <div className='lg:col-span-4 w-full flex flex-col gap-8 mt-3 md:mt-8 lg:mt-0 pl-0 md-pl-7 lg:pl-20'>
+                    <div className='lg:col-span-4 w-full flex flex-col gap-5 md:gap-8 mt-3 md:mt-8 lg:mt-0 pl-0 md-pl-7 lg:pl-20'>
                         <Accordians />
                         <div className='   '>
                             <h4 className='font-helvetica font-[700] text-font20 text-black'>Still Have Questions?</h4>
