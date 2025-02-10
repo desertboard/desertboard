@@ -10,16 +10,11 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import Image from "next/image";
 import LightSectionContainer from "../Common/LightSectionContainer";
-import { accrediations } from "./data";
+
 import { AboutType } from "@/types/AboutType";
 import parse from 'html-react-parser'
 
-interface AccrediationsProps {
-  id: number;
-  accrLogo: string;
-  accrTitle: string;
-  accrDesc: string;
-}
+
 
 const AccrediationSlider = ({data}:{
   data:AboutType

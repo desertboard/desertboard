@@ -62,7 +62,7 @@ export default function AdminAbout() {
     const [timeSpan,setTimeSpan] = useState("")
     const [heading,setHeading] = useState("")
     const [description,setDescription] = useState("")
-    const [historyImage,setHistoryImage] = useState("")
+  
 
     const [partnerImage,setPartnerImage] = useState("")
     const [partnerName,setPartnerName] = useState("")
@@ -139,10 +139,7 @@ export default function AdminAbout() {
         setDescription("")
     }
 
-    useEffect(()=>{
-        console.log(getValues("image_url"))
-        setHistoryImage(getValues("image_url"))
-    },[getValues("image_url")])
+
 
     const handleEditHistory = (index:number) =>{
         setTimeSpan(histories[index].timeSpan)
@@ -236,7 +233,7 @@ export default function AdminAbout() {
         setValue("image_url", imageUrl);
       }, [watch("image_url"), setValue]);
 
-      console.log(histories)
+     
 
 
 

@@ -9,7 +9,7 @@ import useSWR from 'swr'
 const Accordians = () => {
 
 
-    const [addressBarIndex, setAddressBarIndex] = useState(0)
+    // const [addressBarIndex, setAddressBarIndex] = useState(0)
 
     // const menu = [
     //     {
@@ -28,7 +28,7 @@ const Accordians = () => {
 
     const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-    const { data, error } = useSWR('/api/admin/faqs', fetcher)
+    const { data } = useSWR('/api/admin/faqs', fetcher)
 
     const [sections, setSections] = useState([])
     const [activeSession,setActiveSection] = useState(null)
@@ -47,7 +47,7 @@ const Accordians = () => {
     
     useEffect(()=>{
         setItems(()=>(
-            data && data.faqs && data.faqs.filter((item:any)=>(
+            data && data.faqs && data.faqs.filter((item:{sectionName:string})=>(
                 item.sectionName == activeSession
             ))
         ))

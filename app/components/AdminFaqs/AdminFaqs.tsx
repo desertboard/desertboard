@@ -31,7 +31,9 @@ export default function AdminFaqs() {
     const [items, setItems] = useState<{customId:string,sectionName: string, question: string; answer: string }[]>([]);
     const [selectedSection, setSelectedSection] = useState<string>("")
     const [selectedItems, setSelectedItems] = useState<{customId:string,sectionName: string, question: string; answer: string }[]>([])
-
+    const [sectionName,setSectionName] = useState("")
+    const [previousSectionName,setPreviousSectionName] = useState("")
+    const [refetch,setRefetch] = useState(false)
 
     const {
         handleSubmit,
@@ -110,7 +112,7 @@ export default function AdminFaqs() {
         }
 
         fetchFaqData()
-    }, [])
+    }, [refetch])
 
     const handleEditItem = (question:string,answer:string) =>{
         setQuestion(question)
@@ -135,6 +137,67 @@ export default function AdminFaqs() {
                 : item
             ))
         ))
+    }
+
+    const handleSetEditSection = (item:string) =>{
+        setPreviousSectionName(item)
+        setSectionName(item)
+    }
+
+    const handleEditSection = async() =>{
+        const formData = new FormData();
+        
+        formData.append("sectionName", sectionName);
+        formData.append("previousSectionName", previousSectionName);
+
+        try {
+            const url = `/api/admin/faqs/section`;
+            const method = "PATCH";
+            const response = await fetch(url, {
+                method: method,
+                body: formData,
+            });
+
+            if (response.ok) {
+                const data = await response.json()
+                alert(data.message)
+                setRefetch((prev)=>!prev)
+                // router.push('/admin/about')
+            } else {
+                throw new Error("Failed to save faqs");
+            }
+
+        } catch (error) {
+            console.error("Error editing faqs:", error);
+            alert("Failed to edit faqs. Please try again.");
+        }
+    }
+
+
+    const handleDeleteSection = async(item:string) =>{
+        try {
+            const formData = new FormData()
+            formData.append("sectionName",item)
+            const url = `/api/admin/faqs/section`;
+            const method = "DELETE";
+            const response = await fetch(url, {
+                method: method,
+                body:formData
+            });
+
+            if (response.ok) {
+                const data = await response.json()
+                alert(data.message)
+                setRefetch((prev)=>!prev)
+                // router.push('/admin/about')
+            } else {
+                throw new Error("Failed to delete faqs");
+            }
+
+        } catch (error) {
+            console.error("Error deleting faqs:", error);
+            alert("Failed to delete faqs. Please try again.");
+        }
     }
 
 
@@ -168,8 +231,29 @@ export default function AdminFaqs() {
 
                         </div>
                         {sections.map((item, index) => (
-                            <div className="border-b w-full p-6 bg-blue-50" key={index} onClick={() => setSelectedSection(item)}>
-                                {item}
+                            <div className="border-b w-full p-6 bg-blue-50 flex justify-between" key={index} onClick={() => setSelectedSection(item)}>
+                                <div>{item}</div>
+                                <div className="flex items-center gap-2">
+                                <Sheet>
+                                <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button" onClick={()=>handleSetEditSection(item)}>Edit</SheetTrigger>
+                                <SheetContent className="flex flex-col gap-4">
+
+                                    <SheetHeader>
+                                        <SheetTitle>Edit Section</SheetTitle>
+                                    </SheetHeader>
+
+                                    <div className="flex justify-center flex-col gap-4">
+                                        <Label htmlFor="question">Section Name</Label>
+                                        <Input value={sectionName} onChange={(e) => setSectionName(e.target.value)} />
+                                        <SheetClose className="bg-blue-500 text-white p-2 rounded-lg" onClick={handleEditSection}>Confirm</SheetClose>
+                                    </div>
+
+                                </SheetContent>
+                            </Sheet>
+
+                            <Button className="max-h-8" type="button" onClick={()=>handleDeleteSection(item)}>Delete</Button>
+                                </div>
+                                
                             </div>
                         ))}
 

@@ -10,7 +10,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 interface MainDescBoxProps {
   secTitle: string;
   subTitle: string;
-  paragraphs: JSX.Element | string | JSX.Element[];
+  paragraphs: JSX.Element | string | JSX.Element[] | string[];
   mainImg?: StaticImageData | string;
   mainVdo?: string;
   vdoPoster?: string;
@@ -64,17 +64,10 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
               {secTitle}
               <span className="text-[#FF671F]">.</span>
             </motion.h2>
-<<<<<<< HEAD
             {subTitle && <p className="nuber-next md-6 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>}
             
               <motion.div
                 
-=======
-            {subTitle && <p className="nuber-next mb-3 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>}
-            {paragraphs.map((text, index) => (
-              <motion.p
-                key={index}
->>>>>>> 91ec3a6224ba870755a7c4f5dde447d06b05748a
                 className="text-font20 clr15op75 max-w-[100%] md:max-w-[98%] leading-[1.3] mb-4 last:mb-0"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView="visible"

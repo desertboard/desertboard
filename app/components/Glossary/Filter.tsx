@@ -16,11 +16,11 @@ const Filter = () => {
 
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data, error } = useSWR('/api/admin/glossary', fetcher)
+  const { data } = useSWR('/api/admin/glossary', fetcher)
 
-  const [sections, setSections] = useState([])
-  const [activeSession,setActiveSection] = useState(null)
-  const [items,setItems] = useState([])
+  // const [sections, setSections] = useState([])
+  // const [activeSession,setActiveSection] = useState(null)
+  // const [items,setItems] = useState([])
 
   useEffect(()=>{
     console.log(data)

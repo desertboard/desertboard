@@ -20,59 +20,59 @@ const TimeLineSlider = ({data}:{
   const [activeIndex, setActiveIndex] = useState(0);
   //   const [thumbsSwiper, setThumbsSwiper] = useState<Swiper | null>(null);
 
-  const timelineData = [
-    { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
-    {
-      year: "2009 - 2021",
-      subtitle: "Resilience & Refined Visions",
-      description:
-        "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
-      image: "/assets/images/timeline/2009-2021.jpeg",
-    },
-    {
-      year: "Dec-14 2021",
-      subtitle: "Digital Transformation",
-      description:
-        "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
-      image: "/assets/images/timeline/dec14-2021.jpg",
-    },
+  // const timelineData = [
+  //   { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
+  //   {
+  //     year: "2009 - 2021",
+  //     subtitle: "Resilience & Refined Visions",
+  //     description:
+  //       "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
+  //     image: "/assets/images/timeline/2009-2021.jpeg",
+  //   },
+  //   {
+  //     year: "Dec-14 2021",
+  //     subtitle: "Digital Transformation",
+  //     description:
+  //       "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
+  //     image: "/assets/images/timeline/dec14-2021.jpg",
+  //   },
 
-    { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
-    { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
-    {
-      year: "2009 - 2021",
-      subtitle: "Resilience & Refined Visions",
-      description:
-        "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
-      image: "/assets/images/timeline/2009-2021.jpeg",
-    },
-    {
-      year: "Dec-14 2021",
-      subtitle: "Digital Transformation",
-      description:
-        "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
-      image: "/assets/images/timeline/dec14-2021.jpg",
-    },
+  //   { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
+  //   { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
+  //   {
+  //     year: "2009 - 2021",
+  //     subtitle: "Resilience & Refined Visions",
+  //     description:
+  //       "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
+  //     image: "/assets/images/timeline/2009-2021.jpeg",
+  //   },
+  //   {
+  //     year: "Dec-14 2021",
+  //     subtitle: "Digital Transformation",
+  //     description:
+  //       "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
+  //     image: "/assets/images/timeline/dec14-2021.jpg",
+  //   },
 
-    { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
-    { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
-    {
-      year: "2009 - 2021",
-      subtitle: "Resilience & Refined Visions",
-      description:
-        "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
-      image: "/assets/images/timeline/2009-2021.jpeg",
-    },
-    {
-      year: "Dec-14 2021",
-      subtitle: "Digital Transformation",
-      description:
-        "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
-      image: "/assets/images/timeline/dec14-2021.jpg",
-    },
+  //   { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
+  //   { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
+  //   {
+  //     year: "2009 - 2021",
+  //     subtitle: "Resilience & Refined Visions",
+  //     description:
+  //       "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
+  //     image: "/assets/images/timeline/2009-2021.jpeg",
+  //   },
+  //   {
+  //     year: "Dec-14 2021",
+  //     subtitle: "Digital Transformation",
+  //     description:
+  //       "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
+  //     image: "/assets/images/timeline/dec14-2021.jpg",
+  //   },
 
-    { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
-  ];
+  //   { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
+  // ];
 
     // Ref for the next container (HTMLDivElement type)
     const nextContainerRef = useRef<HTMLDivElement | null>(null);
