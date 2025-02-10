@@ -24,6 +24,32 @@ interface WhySupremeProps {
 // Component to display the data
 const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
   const swiperRef = useRef<SwiperType | null>(null);
+
+   const [showNavButtons, setShowNavButtons] = useState(false);
+
+    useEffect(() => {
+      const updateNavVisibility = () => {
+        if (swiperRef.current) {
+          const slidesPerView = swiperRef.current.params.slidesPerView;
+          if (typeof slidesPerView === 'number') {
+            setShowNavButtons(slidesPerView < 6);
+          }
+        }
+      };
+
+      // Check on initialization and listen to resize events
+      if (swiperRef.current) {
+        updateNavVisibility();
+        swiperRef.current.on("resize", updateNavVisibility);
+      }
+
+      return () => {
+        if (swiperRef.current) {
+          swiperRef.current.off("resize", updateNavVisibility);
+        }
+      };
+    }, []);
+
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const contentRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
@@ -126,18 +152,18 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                                     <div
                                       className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
                       style={{ backgroundImage: `url(${item.image.src})` }}
-
                       onMouseEnter={() => setHoveredIndex(item.id)}
                       onMouseLeave={() => setHoveredIndex(null)}
+                      onTouchStart={() => setHoveredIndex(item.id)}  // For mobile devices
                                     >
-                                      <div className="flex items-end pb-3 md:pb-5 xl:pb-5 min-h-[300px] lg:min-h-[426px]">
+                                      <div className="flex items-end pb-1 md:pb-3 xl:pb-3 min-h-[300px] lg:min-h-[426px]">
                                         <div className="px-4 md:px-5 xl:px-5 w-full">
-                                          <h3 className="nubernext28bold text-white translate-y-[5px] transition-all duration-500 delay-200 group-hover:translate-y-[-10px]">
+                                          <h3 className="nubernext28bold text-white translate-y-[0px] pb-2 transition-all duration-500 delay-200 group-hover:translate-y-[-10px]">
                                             {item.title}
                                           </h3>
 
 
-                                            <p className="text-white overflow-hidden pt-3 h-0 group-hover:h-full   group-hover:translate-y-[-10px]
+                                            <p className="text-white overflow-hidden   h-0 group-hover:h-full   group-hover:translate-y-[-10px]
                                             transition-all duration-500 ease-in-out  "
                                             style={{
                                               maxHeight: hoveredIndex === item.id ? `${contentRefs.current[item.id]?.scrollHeight  || 0}px` : "0px",
@@ -146,7 +172,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                                                                           contentRefs.current[item.id] = el;
                                                                         }}
                           >
-                                            <span className="opacity-0 group-hover:opacity-100  transition-opacity duration-500 group-hover:delay-100 delay-0">
+                                            <span className="">
                                               {item.desc}
                                               </span>
                                             </p>
@@ -160,45 +186,47 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
 
           </Swiper>
             </motion.div>
-            <div className="  relative">
-              <div onClick={() => swiperRef.current?.slideNext()} className=" next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
-                <div className="transition-all duration-300 group-hover:translate-x-1">
-                  <svg
-                    width="20"
-                    height="30"
-                    viewBox="0 0 25 34"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996"
-                      stroke="#FF671F"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                    />
-                  </svg>
+            {showNavButtons && (
+              <div className="  relative">
+                <div onClick={() => swiperRef.current?.slideNext()} className=" next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
+                  <div className="transition-all duration-300 group-hover:translate-x-1">
+                    <svg
+                      width="20"
+                      height="30"
+                      viewBox="0 0 25 34"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996"
+                        stroke="#FF671F"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div onClick={() => swiperRef.current?.slidePrev()} className=" prev-style group cursor-pointer absolute bottom-[-70px]   right-[50px] transform -translate-y-1/2 text-white z-10">
+                  {/* You can customize this icon as needed */}
+                  <div className="transition-all duration-300 group-hover:translate-x-[-5px]">
+                    <svg
+                      width="20"
+                      height="30"
+                      viewBox="0 0 25 34"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.9879 2L2.98787 17L17.9879 32M22.9939 7.00392L12.9978 17L22.9939 26.996"
+                        stroke="#FF671F"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
-              <div onClick={() => swiperRef.current?.slidePrev()}className=" prev-style group cursor-pointer absolute bottom-[-70px]   right-[50px] transform -translate-y-1/2 text-white z-10">
-                {/* You can customize this icon as needed */}
-                <div className="transition-all duration-300 group-hover:translate-x-[-5px]">
-                  <svg
-                    width="20"
-                    height="30"
-                    viewBox="0 0 25 34"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M17.9879 2L2.98787 17L17.9879 32M22.9939 7.00392L12.9978 17L22.9939 26.996"
-                      stroke="#FF671F"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </section>

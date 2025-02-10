@@ -71,14 +71,14 @@ export default function MisionVision({data}:{
     <section className="mivi bg-themebg">
       <div className="container d-none" ref={nextContainerRef}></div>
       <div className={`mivi__wrapper ${activeClass}`}>
-        <div className="mivi__mi pt-5 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleMiClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
+        <div className="mivi__mi pt-8 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleMiClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
           {/* <div className="mivi__mi pt-5 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleMiClick} style={{ "--miviwidth": divWidth } as React.CSSProperties}> */}
           <div className="ola absolute top-[-10%] right-[-10%]">
             <Image src={lfbef} width={150} height={150} className="lg:w-full lg:h-full" alt=""></Image>
           </div>
-          {/* <div className="mivi__head"> */}
+          <div className="mivi__head" style={{ "--containerWidth": divWidth } as React.CSSProperties}>
             <div className="mivi__icon">
-              <Image src="assets/images/about/mi-icon.svg" className="mb-10 xl:mb-[60px]" alt="Mission Icon" width={50} height={50} />
+              <Image src="assets/images/about/mi-icon.svg" className="xl:mb-[60px]" alt="Mission Icon" width={50} height={50} />
             </div>
             <h3 className="mivi__title text-font48 text-Darkgreen leading-[1] nuber-next-heavy mb-10  xl:mb-[60px]">
               Mission <span className="text-[#FF671F]">.</span>
@@ -92,14 +92,14 @@ export default function MisionVision({data}:{
             {data && data.about[0] && parse(data.about[0].mission)}
           </div>
         </div>
-        <div className="mivi__vi pt-5 pb-10 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
+        <div className="mivi__vi pt-8 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
           {/* <div className="mivi__vi pt-5 pb-10 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={{ "--miviwidth": divWidth } as React.CSSProperties}> */}
           <div className="ola absolute top-[-30%] right-[-12.5%] z-0">
             <Image src={lfbef} width={150} height={150} className="w-full h-full" alt=""></Image>
           </div>
-          <div className="mivi__head">
+          <div className="mivi__head" style={{ "--containerWidth": divWidth } as React.CSSProperties}>
             <div className="mivi__icon relative z-10">
-              <Image src="assets/images/about/vi-icon.svg" className="mb-10  xl:mb-[60px]" alt="Mission Icon" width={50} height={50} />
+              <Image src="assets/images/about/vi-icon.svg" className="mb-10 xl:mb-[60px]" alt="Mission Icon" width={50} height={50} />
             </div>
             <h3 className="mivi__title text-font48 text-Darkgreen leading-[1] nuber-next-heavy mb-10  xl:mb-[60px]">
               Vision <span className="text-[#FF671F]">.</span>
@@ -110,6 +110,7 @@ export default function MisionVision({data}:{
             {data && data.about[0] && parse(data.about[0].vision)}
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

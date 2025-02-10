@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { FreeMode, Thumbs, Mousewheel, EffectFade } from "swiper/modules";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+// import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -108,9 +108,9 @@ const TimeLineSlider = ({data}:{
     };
   }, []);
   return (
-    <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary">
+    <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary timeline__sec">
       <div className="container d-none" ref={nextContainerRef}></div>
-      <div className="flex flex-col md:flex-row w-full gap-6 relative h-[35em] lg:h-[90dvh] xl:h-[90dvh] xxl:h-[70dvh]">
+      <div className="flex flex-col md:flex-row w-full gap-6 relative h-[38em] lg:h-[90dvh] xl:h-[90dvh] xxl:h-[70dvh]">
         <h2 className="text-white z-10 text-font48 nuber-next-heavy leading-[1] absolute top-10 lg:top-20 " style={{ left: `calc(100vw - (${divWidth})` }}>
           Our History <span className="text-[#FF671F]">.</span>
         </h2>
@@ -130,7 +130,7 @@ const TimeLineSlider = ({data}:{
             effect="fade"
             fadeEffect={{ crossFade: true }}
             watchSlidesProgress={true}
-            allowTouchMove={false}
+            allowTouchMove={true}
             mousewheel={false}
             noSwiping={true}
             noSwipingClass="swiper-slide"
@@ -153,22 +153,16 @@ const TimeLineSlider = ({data}:{
               </SwiperSlide>
             ))}
           </Swiper>
-          <button className="absolute left-6 bottom-20 -translate-y-1/2 z-10 border border-white bg-tranparent p-1 rounded-full shadow md:hidden hover:bg-primary transition-colors duration-300" onClick={() => thumbsSwiper?.slidePrev()}>
-            <ChevronLeft className="w-6 h-6 text-white" />
-          </button>
-          <button className="absolute right-6 bottom-20 -translate-y-1/2 z-10 border border-white bg-transparent p-1 rounded-full shadow md:hidden hover:bg-primary transition-colors duration-300" onClick={() => thumbsSwiper?.slideNext()}>
-            <ChevronRight className="w-6 h-6 text-white" />
-          </button>
         </div>
 
         {/* Thumbnail slider with navigation */}
-        <div className="timeline__years w-full md:w-1/3  absolute bottom-0 xl:top-10 right-0 z-10" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
+        <div className="timeline__years w-full md:w-1/3  absolute bottom-10 xl:top-10 right-0 z-10" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
           {/* Navigation Buttons - Only visible on mobile  */}
 
           <Swiper
             onSwiper={setThumbsSwiper}
             direction={"horizontal"}
-            slidesPerView="auto"
+            slidesPerView={3}
             breakpoints={{
               768: {
                 direction: "vertical",
@@ -190,6 +184,7 @@ const TimeLineSlider = ({data}:{
             speed={800}
             allowTouchMove={true}
             centeredSlides={true}
+        
             onSlideChange={(swiper) => {
               if (mainSwiperRef.current) {
                 mainSwiperRef.current.slideTo(swiper.realIndex);
@@ -205,6 +200,18 @@ const TimeLineSlider = ({data}:{
               </SwiperSlide>
             ))}
           </Swiper>
+              <button className="absolute left-6 bottom-[-18%] -translate-y-1/2 z-10 shadow md:hidden transition-colors duration-300" onClick={() => thumbsSwiper?.slidePrev()}>
+            {/* <ChevronLeft className="w-6 h-6 text-white" /> */}
+             <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                <path d="M17.9879 2L2.98787 17L17.9879 32M22.9939 7.00392L12.9978 17L22.9939 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+          </button>
+          <button className="absolute right-6 bottom-[-18%] -translate-y-1/2 z-10 rounded-full shadow md:hidden transition-colors duration-300" onClick={() => thumbsSwiper?.slideNext()}>
+            {/* <ChevronRight className="w-6 h-6 text-white" /> */}
+            <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+          </button>
         </div>
       </div>
     </section>
