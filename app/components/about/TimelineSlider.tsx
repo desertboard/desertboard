@@ -159,7 +159,7 @@ const TimeLineSlider: React.FC = () => {
 
         {/* Thumbnail slider with navigation */}
         <div className="timeline__years w-full md:w-1/3  absolute bottom-0 xl:top-10 right-0 z-10" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
-          {/* Navigation Buttons - Only visible on mobile */}
+          {/* Navigation Buttons - Only visible on mobile  */}
 
           <Swiper
             onSwiper={setThumbsSwiper}
