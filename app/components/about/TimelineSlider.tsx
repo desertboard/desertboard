@@ -126,28 +126,27 @@ const TimeLineSlider: React.FC = () => {
             effect="fade"
             fadeEffect={{ crossFade: true }}
             watchSlidesProgress={true}
-            // allowTouchMove={true}
-            // mousewheel={false}
-            // noSwiping={true}
-            // noSwipingClass="swiper-slide"
-            
+            allowTouchMove={true}
+            mousewheel={false}
+            noSwiping={true}
+            noSwipingClass="swiper-slide"
             observer={true}
             observeParents={true}
             watchOverflow={true}
             // preventInteractionOnTransition={true}
               // Add these new properties
-  allowTouchMove={true}
-  touchRatio={1}
-  touchAngle={45}
-  resistance={true}
-  resistanceRatio={0.85}
-  shortSwipes={true}
-  longSwipes={true}
-  longSwipesRatio={0.5}
-  touchStartPreventDefault={false}
-  touchMoveStopPropagation={true}
-  grabCursor={true}
-  cssMode={true}
+  // allowTouchMove={true}
+  // touchRatio={1}
+  // touchAngle={45}
+  // resistance={true}
+  // resistanceRatio={0.85}
+  // shortSwipes={true}
+  // longSwipes={true}
+  // longSwipesRatio={0.5}
+  // touchStartPreventDefault={false}
+  // touchMoveStopPropagation={true}
+  // grabCursor={true}
+  // cssMode={true}
             >
             {timelineData.map((item, index) => (
               <SwiperSlide key={index} className="!h-full ">
