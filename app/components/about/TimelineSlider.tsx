@@ -159,7 +159,7 @@ const TimeLineSlider: React.FC = () => {
           <Swiper
             onSwiper={setThumbsSwiper}
             direction={"horizontal"}
-            slidesPerView="auto"
+            slidesPerView={3}
             breakpoints={{
               768: {
                 direction: "vertical",
@@ -189,8 +189,8 @@ const TimeLineSlider: React.FC = () => {
             }}>
             {timelineData.map((item, index) => (
               <SwiperSlide key={index} className="!h-16 md:!h-24 cursor-pointer timeline__thumb">
-                <div className={`w-full h-full flex items-center justify-end rounded transition-all duration-300`}>
-                  <span className={`text-font20 text-right md:text-2xl font-normal transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-bold lg:min-w-max xl:text-font32 opacity-100" : "text-white opacity-50 text-font24 font-normal hover:text-gray-200"}`}>{item.year}</span>
+                <div className={`w-full h-full flex items-center justify-center lg:justify-end rounded transition-all duration-300`}>
+                  <span className={`text-font19 lg:text-font20 text-right font-normal transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-bold lg:min-w-max xl:text-font32 opacity-100" : "text-white opacity-50 lg:text-font24 font-normal hover:text-gray-200"}`}>{item.year}</span>
                   <div className={`hidden lg:block lg:ml-3 h-[4px] w-[68px] transition-all ease-linear duration-300 ${thumbsSwiper?.realIndex === index ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
                 </div>
               </SwiperSlide>
