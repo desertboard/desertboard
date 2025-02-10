@@ -45,7 +45,7 @@ const Slidersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
             slidesPerView: 1,
             spaceBetween: 0,
           },
-          410: {
+          600: {
             slidesPerView: 2,
             spaceBetween: 0,
           },

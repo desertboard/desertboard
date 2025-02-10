@@ -64,7 +64,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
               {secTitle}
               <span className="text-[#FF671F]">.</span>
             </motion.h2>
-            {subTitle && <p className="nuber-next md-6 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>}
+            {subTitle && <p className="nuber-next mb-3 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>}
             {paragraphs.map((text, index) => (
               <motion.p
                 key={index}
@@ -87,8 +87,10 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
 
           <div className="flex lg:absolute w-full lg:w-1/2 xl:w-[58%] lg:right-0 lg:top-5 h-full">
 
-            {mainImg && <figure className=" relative h-full  w-full   ">
-              <Image className="w-full object-cover h-full" src={mainImg} fill objectFit="cover"  alt="Banner image" />
+            {mainImg && <figure className=" relative h-[250px] lg:h-full  w-full   ">
+
+                <Image className="w-full object-cover h-[full]" src={mainImg} fill objectFit="cover" alt="Banner image" />
+
             </figure>}
             {/* <div className="relative"> */}
             {/* Video element */}
