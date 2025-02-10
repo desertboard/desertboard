@@ -34,6 +34,12 @@
             height: auto;
             min-height: 13em;
         }
+        p{
+            @media (max-width:768px){
+                transition: 0.3s all linear!important;
+                transition-delay: 0s!important;
+            }
+        }
     }
 
     &__mi {

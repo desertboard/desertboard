@@ -66,7 +66,7 @@ export default function MisionVision() {
     <section className="mivi bg-themebg">
       <div className="container d-none" ref={nextContainerRef}></div>
       <div className={`mivi__wrapper ${activeClass}`}>
-        <div className="mivi__mi pt-5 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleMiClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
+        <div className="mivi__mi pt-8 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleMiClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
           {/* <div className="mivi__mi pt-5 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleMiClick} style={{ "--miviwidth": divWidth } as React.CSSProperties}> */}
           <div className="ola absolute top-[-10%] right-[-10%]">
             <Image src={lfbef} width={150} height={150} className="lg:w-full lg:h-full" alt=""></Image>
@@ -80,13 +80,13 @@ export default function MisionVision() {
             </h3>
           </div>
           <div className="mivi__desc text-black opacity-75 leading-[1.3] text-18 lg:text-font20">
-            <p className="text-font19 lg:text-font20">
+            <p className="lg:text-font20">
               Our mission is to leverage the UAE&apos;s rich heritage of palm fronds to create high-strength, zero-emission structural panels. By transforming local materials into sustainable building solutions, we aim to enhance indoor air quality, reduce carbon footprints, and contribute to the local bio-economy. As the first industrial plant in
               the UAE dedicated to this innovation, we support the nation&apos;s industrial growth while promoting environmental sustainability.
             </p>
           </div>
         </div>
-        <div className="mivi__vi pt-5 pb-10 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
+        <div className="mivi__vi pt-8 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
           {/* <div className="mivi__vi pt-5 pb-10 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={{ "--miviwidth": divWidth } as React.CSSProperties}> */}
           <div className="ola absolute top-[-30%] right-[-12.5%] z-0">
             <Image src={lfbef} width={150} height={150} className="w-full h-full" alt=""></Image>
@@ -100,7 +100,7 @@ export default function MisionVision() {
             </h3>
           </div>
           <div className="mivi__desc text-black opacity-75 leading-[1.3]">
-            <p className="text-font19 lg:text-font20">To make the built environment more sustainable by providing locally produced engineered solutions, driving the circular economy forward, and setting new standards for eco-friendly, high-performance materials across sectors.</p>
+            <p className="text-font20">To make the built environment more sustainable by providing locally produced engineered solutions, driving the circular economy forward, and setting new standards for eco-friendly, high-performance materials across sectors.</p>
           </div>
         </div>
       </div>
