@@ -168,7 +168,7 @@ const TimeLineSlider: React.FC = () => {
             breakpoints={{
               768: {
                 direction: "vertical",
-                slidesPerView: 5,
+                slidesPerView: 4,
                 spaceBetween: 20,
               },
             }}
@@ -185,7 +185,7 @@ const TimeLineSlider: React.FC = () => {
             slideToClickedSlide={true}
             speed={800}
             allowTouchMove={true}
-            centeredSlides={false}
+            centeredSlides={true}
             onSlideChange={(swiper) => {
               if (mainSwiperRef.current) {
                 mainSwiperRef.current.slideTo(swiper.realIndex);
