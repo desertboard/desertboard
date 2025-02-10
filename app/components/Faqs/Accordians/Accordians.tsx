@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import ProductAccordians from './ProductAccordians'
 import Link from 'next/link'
+import { accordionData } from '../data'
+import Faqaccordian from './Faqaccordian'
 
 
 const Accordians = () => {
@@ -15,7 +16,7 @@ const Accordians = () => {
       },
       {
           title:"Product",
-          component:<ProductAccordians/>
+          component:<Faqaccordian accordionData={accordionData.data} bg={"bg-[#E3DED9]"} bullet={false} />
       },
     //   {
     //     title:"Glossary",
@@ -28,10 +29,10 @@ const ActiveAccordian = menu[addressBarIndex].component
 
   return (
     <div className='w-full'>
-            <div className='border-b-2'>
+            <div className='border-b-2 border-[#15151510]'>
                 <ul className='flex  text-black text-lg justify-between  lg:w-[30%] text-font24 gap-x-5'>
                     {menu.map((item,index)=>(
-                            <li key={index} className={`${ addressBarIndex == index ? "border-b-2 border-orange nuber-next-heavy text-Darkgreen" : " text-[#00000050]"} py-2 cursor-pointer nuber-next-heavy flex transition-all duration-500 hover:text-Darkgreen`} onClick={()=>setAddressBarIndex(index)}>{item.title}</li>
+                            <li key={index} className={`${ addressBarIndex == index ? "border-b-2 border-orange nuber-next-heavy text-Darkgreen" : " text-[#00000050]"} relative top-[2px] py-2 cursor-pointer nuber-next-heavy flex transition-all duration-500 hover:text-Darkgreen`} onClick={()=>setAddressBarIndex(index)}>{item.title}</li>
                     ))}
                     <li><Link href={'/glossary'} className='py-2 cursor-pointer nuber-next-heavy flex items-center gap-2 text-[#00000050]  hover:text-Darkgreen transition-all duration-500'>
                         Glossary

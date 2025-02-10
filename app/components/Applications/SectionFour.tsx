@@ -21,9 +21,9 @@ interface WhySupremeProps {
 const SectionFour: React.FC<WhySupremeProps> = ({ data }) => {
   return (
     <>
-      <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner  overflow-hidden">
+      <section className="pt-10 lg:pt-20 pb-10 md:pb-20 insp-mn relative darkbanner  overflow-hidden">
         <motion.div
-          className="ola ola-right absolute top-5 right-[-10%] w-[40em]"
+          className="ola ola-right absolute top-5 right-[-10%] w-[20em] md:w-[40em]"
           animate={{ y: [0, -20, 0], rotate: [0, 3, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -34,7 +34,7 @@ const SectionFour: React.FC<WhySupremeProps> = ({ data }) => {
           />
         </motion.div>
         <motion.div
-          className="ola ola-right absolute bottom-[43%] left-[-15%] w-[40em]"
+          className="ola ola-right absolute bottom-[43%] left-[-15%] w-[20em] md:w-[40em]"
           animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >

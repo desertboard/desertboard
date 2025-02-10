@@ -62,7 +62,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 .header{
   animation: headerSlideDown 0.8s forwards;
 }
-
+.mnsas li:nth-last-child(1){
+  margin-bottom: 0px !important;
+}
 @keyframes headerSlideDown {
   0% {
     margin-top: -20px;
@@ -353,7 +355,7 @@ body {
   background: url(/assets/images/home/slidepattern.png) !important;
   background-repeat: no-repeat !important;
 
-  background-size: 100% !important;
+  background-size: cover !important;
   background-position: center center !important;
 }
 

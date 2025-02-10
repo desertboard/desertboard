@@ -63,9 +63,9 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
   return (
     <>
 
-      <section className=" py-20  insp-mn relative inspbg ">
+      <section className=" pt-10 lg:pt-20 pb-[80px] lg:pb-[80px]    insp-mn relative inspbg ">
         <motion.div
-          className="ola ola-right absolute top-5 right-[-10%] w-[40em]"
+          className="ola ola-right absolute top-5 right-[-10%] w-[20em] md:w-[40em]"
           animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -76,7 +76,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
           ></Image>
         </motion.div>
 
-        <div className="lfbef ola-right absolute bottom-0 left-[-10%] w-[40em] rotate-180">
+        <div className="lfbef ola-right absolute bottom-0 left-[-10%] w-[20em] md:w-[40em] rotate-180">
           <Image
             className="absolute"
             src={lfbef}

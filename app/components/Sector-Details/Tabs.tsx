@@ -74,7 +74,7 @@ const Tabs: React.FC = () => {
                     </React.Fragment>
                   ))}
                 </div>
-                <div className="tab-panels flex flex-wrap mt-10 md:mt-20    ">
+                <div className="tab-panels flex flex-wrap mt-6 lg:mt-20    ">
                   <AnimatePresence mode="wait">
                     {tabData.data.map(
                       (tab, index) =>
@@ -82,7 +82,7 @@ const Tabs: React.FC = () => {
                           <motion.section
                             key={`tab${index + 1}`}
                             id={`f${index + 1}`}
-                            className="tab-panel flex flex-col lg:flex-row w-full gap-10 md:gap-20"
+                            className="tab-panel flex flex-col lg:flex-row w-full gap-10 lg:gap-20"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
@@ -105,7 +105,7 @@ const Tabs: React.FC = () => {
                               <p className="texthelvetica20 clr15op75 mb-6 md:mb-10">
                                 {tab.description}
                               </p>
-                              <ul className="mb-6 md:mb-10">
+                              <ul className="mb-0 lg:mb-10 mnsas">
                                 {tab.list.map((item, idx) => (
                                   <li
                                     key={idx}
