@@ -8,6 +8,8 @@ import SingleSlider from "../Applications/SingleSlider";
 import SuggestedProduct from "./sectwocomp/SuggestedProduct";
 import { suggestData, whySupreme } from "./data";
 import WhySupreme from "./sectwocomp/WhySupreme";
+import { motion } from "framer-motion";
+import { assets } from "@/public/assets/images/assets";
 
 interface SectionTwoProps {
   suggested?: boolean; // Optional boolean prop
@@ -72,8 +74,30 @@ function SectionTwo({ suggested }: SectionTwoProps) {
   return (
     <>
       <section className="py-10 md:pt-20 pb-0 insp-mn relative inspbg">
+      <motion.div
+          className="ola ola-right absolute top-5 right-[-10%] w-[20em] md:w-[40em]"
+          animate={{ y: [0, -20, 0], rotate: [0, 3, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Image
+            className="absolute"
+            src={assets.leaf}
+            alt="Description of the image"
+          />
+        </motion.div>
+        <motion.div
+          className="ola ola-right absolute bottom-[43%] left-[-15%] w-[20em] md:w-[40em]"
+          animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Image
+            className="absolute"
+            src={assets.lfbt}
+            alt="Description of the image"
+          />
+        </motion.div>
         <div className="container overflow-hidden" >
-          <div className="lg:flex flex-col lg:flex-row  gap-10 md:gap-10 ">
+          <div className="lg:flex flex-col lg:flex-row  gap-10 md:gap-10  relative">
             <div className="lg:w-1/2 " ref={targetDivRef} >
            {suggested && <SuggestedProduct data={suggestData.data} />}
                 <WhySupreme {...whySupreme} />

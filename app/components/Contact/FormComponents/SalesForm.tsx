@@ -2,56 +2,48 @@ import React from 'react'
 
 const SalesForm = () => {
     return (
-        <form className="mx-auto bg-[#E3DED9] lg:px-6 px-2 py-8 text-black">
+        <form className="mx-auto bg-[#E3DED9] md:px-6 px-0   py-0 md:py-8 text-black">
             <div className="grid grid-cols-2 gap-6">
-                <div className="flex flex-col">
-                    <label className="text-sm text-gray-600 lg:pl-3">Name</label>
-                    <input
-                        type="text"
-                        className="border-b border-gray-400 focus:outline-none focus:border-black bg-transparent h-4"
-                    />
+
+                <div className="relative float-label-input mb-4 md:mb-8 mt-0">
+                    <input type="text" id="name" placeholder=" " className="block w-full focus:shadow-outline  border-b border-gray-400 focus:outline-none focus:border-black bg-transparent texthelvetica20 clr15op50 lg:pl-3    py-3 px-3   appearance-none leading-normal   " />
+                    <label   className="absolute font-helvetica text-font20 text-[#15151550] top-3 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Name</label>
                 </div>
-                <div className="flex flex-col">
-                    <label className="text-sm text-gray-600 lg:pl-3">Email</label>
-                    <input
-                        type="email"
-                        className="border-b border-gray-400 focus:outline-none focus:border-black bg-transparent  h-4"
-                    />
+                <div className="relative float-label-input mb-4 md:mb-8 mt-0">
+                    <input type="email" id="name" placeholder=" " className="block w-full focus:shadow-outline  border-b border-gray-400 focus:outline-none focus:border-black bg-transparent texthelvetica20 clr15op50 lg:pl-3    py-3 px-3   appearance-none leading-normal   " />
+                    <label   className="absolute font-helvetica text-font20 text-[#15151550] top-3 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Email</label>
                 </div>
             </div>
 
-            <div className="mt-6 flex flex-col">
-                <label className="text-sm text-gray-600 lg:pl-3">Phone</label>
-                <input
-                    type="tel"
-                    className="border-b border-gray-400 focus:outline-none focus:border-black bg-transparent  h-4"
-                />
+            <div className="relative float-label-input mb-4 md:mb-8 mt-0">
+                    <input type="text" id="name" placeholder=" " className="block w-full focus:shadow-outline   border-b border-gray-400 focus:outline-none focus:border-black bg-transparent texthelvetica20 clr15op50 lg:pl-3    py-3 px-3   appearance-none leading-normal   " />
+                    <label   className="absolute font-helvetica text-font20 text-[#15151550] top-3 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Phone</label>
             </div>
-
-            <div className="mt-6 flex flex-col">
-                <label className="text-sm text-gray-600 lg:pl-3">Message</label>
-                <textarea
-                    className="border-b border-gray-400 focus:outline-none focus:border-black bg-transparent h-16 resize-none"
+            <div className="relative float-label-input mb-4 md:mb-8 mt-0">
+            <textarea
+                    className="border-b w-full border-gray-400 focus:outline-none focus:border-black bg-transparent h-[131px] resize-none"
                 ></textarea>
-            </div>
+                <label className="absolute font-helvetica text-font20 text-[#15151550] top-1 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Message</label>
+                </div>
 
-            {/* <div className="mt-6  border-gray-400  bg-[#D8D4CF] rounded-md text-font20">
-                <div className="flex items-center py-3 rounded-md  lg:w-1/2 px-4 lg:gap-14 gap-3">
-                    <label className="text-sm text-gray-600">Resume</label>
+
+                <div className="mt-6  border-gray-400  bg-[#D8D4CF] rounded-xs text-font20">
+                <div className="flex items-start md:items-center flex-col md:flex-row py-3 rounded-md  lg:w-1/2 px-3 md:px-4 lg:gap-14 gap-3">
+                    <label className="font-helvetica text-font20 text-[#15151550]">Resume</label>
                     <div>
-                        <label className="font-semibold text-gray-900 cursor-pointer">
+                        <label className="font-helvetica font-bold text-font20   text-Darkgreen  cursor-pointer">
                             Choose File
                             <input type="file" className="hidden" />
                         </label>
-                        <span className="ml-4 text-gray-600 text-sm">skzresume.pdf</span>
+                        <span className="ml-4 font-helvetica text-font20 text-[#15151550]">skzresume.pdf</span>
                     </div>
 
                 </div>
-            </div> */}
+            </div>
 
             <button
                 type="submit"
-                className="mt-6 font-semibold text-sm  group items-center hover:border-b-2  border-[#FF671F] text-[#FF671F] pb-1 h-6 flex gap-1 nuber-next-heavy"
+                className="mt-6    group items-center hover:border-b-2  border-[#FF671F] text-[#FF671F] pb-2   flex gap-1 nuber-next-heavy text-font18"
             >
                 Send Message <div className="transition-all duration-300 group-hover:translate-x-1">
               <svg width="20" height="15" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">

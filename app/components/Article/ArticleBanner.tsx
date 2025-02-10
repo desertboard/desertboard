@@ -21,7 +21,7 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labe
     // <section className="relative h-[75dvh] bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full">
     <section className="relative bg-cover bg-Darkgreen flex items-center justify-center text-center bnr-pg   article-banner w-full" >
        <motion.div
-          className="ola ola-right absolute top-5 right-[-10%] w-[40em]"
+          className="ola ola-right absolute top-5 right-[-10%] w-[20em] md:w-[40em]"
           animate={{ y: [0, -20, 0], rotate: [0, 3, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >

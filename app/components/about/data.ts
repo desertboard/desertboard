@@ -2,7 +2,7 @@ export const accrediations = [
   {
     id: 1,
     accrLogo: "/assets/images/about/accr1.svg",
-    accrTitle: "Global ISO.",
+    accrTitle: "Global ISO",
     accrDesc: "Global IMQ Environmental Product Declaration (EPD) Certification",
   },
   {
@@ -14,13 +14,13 @@ export const accrediations = [
   {
     id: 3,
     accrLogo: "/assets/images/about/accr3.svg",
-    accrTitle: "Global Thomas Bell-Wright Reaction.",
+    accrTitle: "Global Thomas Bell-Wright Reaction",
     accrDesc: "Global IMQ Environmental Product Declaration (EPD) Certification",
   },
   {
     id: 4,
     accrLogo: "/assets/images/about/accr4.svg",
-    accrTitle: "UAE Al-Futtaim.",
+    accrTitle: "UAE Al-Futtaim",
     accrDesc: "Global IMQ Environmental Product Declaration (EPD) Certification",
   },
   {

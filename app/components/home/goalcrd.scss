@@ -1,6 +1,17 @@
-.goal-crd {
-    img {
+.suscard{
+    .goal-crd {
+    &__ibox {
+        top: 20%;
+
     }
+}
+.goal-crd:hover .goal-crd__ibox {
+    top: 9%;
+}
+}
+
+.goal-crd {
+
     &__icon {
         top: 50%;
         left: 50%;
@@ -61,9 +72,5 @@
             transform: translate(-50%, -50%);
         }
     }
-    .goal-crd .goal-crd__ibox {
-        // top: 5%;
-        // left: 10%;
-        // transform: none;
-    }
+
 }

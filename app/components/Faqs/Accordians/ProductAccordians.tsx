@@ -34,11 +34,11 @@ const ProductAccordians = ({items}:{
         },
         {
             question: "Does DesertBoard produce fire-rated door cores?",
-            answer: `<p>Yes, DesertBoard produces fire-rated door cores under its PSB® product line, certified to meet 
-            global and local fire safety standards. These door cores offer fire resistance for 90, 60, and 30 minutes, providing critical time for safe evacuation in 
-            emergencies. DesertBoard’s certifications include EN-1634-1 (European standard for fire resistance), BS-476 (British standard for fire tests on building 
-            materials and structures), and UL-10C (American standard for fire tests of door assemblies). 
-            In the UAE, local testing facilities such as Emirates Safety Laboratory prioritize EN-1634-1 and BS-476 standards, while in KSA, they prioritize the UL-10C 
+            answer: `<p>Yes, DesertBoard produces fire-rated door cores under its PSB® product line, certified to meet
+            global and local fire safety standards. These door cores offer fire resistance for 90, 60, and 30 minutes, providing critical time for safe evacuation in
+            emergencies. DesertBoard’s certifications include EN-1634-1 (European standard for fire resistance), BS-476 (British standard for fire tests on building
+            materials and structures), and UL-10C (American standard for fire tests of door assemblies).
+            In the UAE, local testing facilities such as Emirates Safety Laboratory prioritize EN-1634-1 and BS-476 standards, while in KSA, they prioritize the UL-10C
             (USA standard). DesertBoard is also actively working on obtaining certifications for regions like India to ensure compliance with their specific testing standards.
             This commitment to uncompromising safety ensures that DesertBoard’s fire-rated door cores meet the highest global requirements.</p>`
         },
@@ -73,7 +73,7 @@ const ProductAccordians = ({items}:{
     ]
 
     return (
-        <div className="py-2 mt-3">
+        <div className="mt-8">
             <div className='flex flex-col gap-3'>
                 {items && items.map((item:any, index:any) => (
                     <div key={index}>
@@ -89,7 +89,7 @@ const ProductAccordians = ({items}:{
 
 
                         <div
-                            className={`overflow-hidden transition-all duration-300 pb-3 px-4 ${activeAccordian === index ? "max-h-fit opacity-100 bg-[#E3DED9]" : "max-h-0 opacity-0"
+                            className={`overflow-hidden transition-all duration-300 pb-3 px-3 md:px-4 ${activeAccordian === index ? "max-h-fit opacity-100 bg-[#E3DED9]" : "max-h-0 opacity-0"
                                 }`}
                         >
 

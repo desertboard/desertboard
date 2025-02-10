@@ -32,3 +32,17 @@
 .clr15op50 {
     @apply text-[#151515] opacity-[50%];
 }
+.mnspo:nth-child(1) button{
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.float-label-input {
+    margin: 32px 0;
+ }
+
+.float-label-input:focus-within label,
+  .float-label-input input:not(:placeholder-shown) + label {
+    transform: translateY(-1.5rem) scale(0.75);
+
+}

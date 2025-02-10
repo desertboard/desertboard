@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { Upload, X, Loader2 } from "lucide-react";
 import Image from "next/image";
@@ -9,13 +9,19 @@ import { Button } from "./button";
 
 interface ImageUploaderProps {
   value?: string;
-  onChange: (url: string) => void;
+  onChange: (url: string, imageData?: File) => void;
   className?: string;
 }
 
 export function ImageUploader({ value, onChange, className }: ImageUploaderProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [localImageUrl, setLocalImageUrl] = useState<string | null>(null);
+  const [isUploadComplete, setIsUploadComplete] = useState(false);
+
+  useEffect(() => {
+    setIsUploadComplete(!!value);
+  }, [value]);
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
@@ -25,6 +31,7 @@ export function ImageUploader({ value, onChange, className }: ImageUploaderProps
       try {
         setIsUploading(true);
         setError(null);
+        setIsUploadComplete(false);
 
         const formData = new FormData();
         formData.append("file", file);
@@ -35,14 +42,17 @@ export function ImageUploader({ value, onChange, className }: ImageUploaderProps
         });
 
         if (response.status !== 200) {
+          setLocalImageUrl(null);
           alert("Upload failed");
           return;
         }
 
         const data = await response.json();
-        
-        onChange(data.url);
+        setLocalImageUrl(data.url);
+        onChange(data.url, file);
+        setIsUploadComplete(true);
       } catch (err) {
+        setLocalImageUrl(null);
         setError(err instanceof Error ? err.message : "Failed to upload image");
       } finally {
         setIsUploading(false);
@@ -61,14 +71,18 @@ export function ImageUploader({ value, onChange, className }: ImageUploaderProps
   });
 
   const removeImage = useCallback(() => {
-    onChange("");
-  }, [onChange]);
+    setLocalImageUrl(null);
+    setIsUploadComplete(false);
+    onChange("", undefined);
+  }, [onChange, localImageUrl]);
+
+  const displayUrl = localImageUrl || value;
 
   return (
     <div className={cn("space-y-4 w-full", className)}>
-      {value ? (
+      {displayUrl && isUploadComplete ? (
         <div className="relative w-full max-w-[300px] aspect-[4/3] overflow-hidden rounded-lg border">
-          <Image src={value} alt="Uploaded image" className="object-cover" fill />
+          <Image src={value ? value : displayUrl} alt="Uploaded image" className="object-cover" fill />
           <Button
             type="button"
             variant="destructive"

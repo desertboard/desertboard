@@ -16,15 +16,15 @@ type AccordionProps = {
   bullet: boolean;
   accordionData: {
 
-    title: string;
+    question: string;
 
-    content: string;
+    answer: string;
 
   }[];
 
 };
 
-const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }) => {
+const Faqaccordian: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -51,10 +51,10 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }
       {/* Accordion Content */}
       <div
         className={`overflow-hidden transition-all duration-500 ease-in-out ${
-          isOpen ? "max-h-[500px] opacity-100 lg:pl-8 pb-5" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[500px] opacity-100 px-3 md:px-5 pb-3 md:pb-5 " : "max-h-0 opacity-0"
         }`}
       >
-        <p className="helvetica text-font20  clr15op75 px-5">{content}</p>
+        <p className="helvetica text-font20  clr15op75  " dangerouslySetInnerHTML={{ __html: content }} ></p>
       </div>
     </div>
   );
@@ -62,9 +62,9 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }
 
 const Accordion : React.FC<AccordionProps> = ({ accordionData, bg, bullet}) => {
   return (
-    <div className="w-full relative z-[1] ">
+    <div className="w-full relative z-[1] pt-8">
       {accordionData && accordionData.map((item, index) => (
-        <AccordionItem key={index} bg={bg} bullet={bullet} title={item.title} content={item.content} />
+        <Faqaccordian key={index} bg={bg} bullet={bullet} title={item.question} content={item.answer} />
       ))}
     </div>
   );

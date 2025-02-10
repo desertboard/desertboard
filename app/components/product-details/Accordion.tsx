@@ -51,7 +51,7 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }
       {/* Accordion Content */}
       <div
         className={`overflow-hidden transition-all duration-500 ease-in-out ${
-          isOpen ? "max-h-[500px] opacity-100 pl-8 pb-5" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[500px] opacity-100  lg:pl-8 pb-5" : "max-h-0 opacity-0"
         }`}
       >
         <p className="helvetica text-font20   clr15op75 px-5">{content}</p>

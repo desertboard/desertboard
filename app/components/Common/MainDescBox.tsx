@@ -47,7 +47,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
       </motion.div>
       <div className="container m-auto">
         <div className="lg:flex flex-col lg:flex-row items-center justify-between adst relative xl:pr-[10em] xxl:pr-[20em]">
-          <div className="lg:w-1/2 text-left pl-5 lg:pl-6 xl:pl-16 py-5 lg:py-20 xl:py-20 opacity-[99%] mb-2 lg:mb-0">
+          <div className="lg:w-1/2 text-left px-5 lg:pl-6 xl:pl-16 py-5 lg:py-20 xl:py-20 opacity-[99%] mb-2 lg:mb-0">
             <motion.h2
               className="text-Darkgreen mb-4 text-[28px] md:text-[48px] nuber-next-heavy leading-[1.2] overflow-hidden"
               initial={{ opacity: 0, x: -30 }}
@@ -64,10 +64,17 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
               {secTitle}
               <span className="text-[#FF671F]">.</span>
             </motion.h2>
+<<<<<<< HEAD
             {subTitle && <p className="nuber-next md-6 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>}
             
               <motion.div
                 
+=======
+            {subTitle && <p className="nuber-next mb-3 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>}
+            {paragraphs.map((text, index) => (
+              <motion.p
+                key={index}
+>>>>>>> 91ec3a6224ba870755a7c4f5dde447d06b05748a
                 className="text-font20 clr15op75 max-w-[100%] md:max-w-[98%] leading-[1.3] mb-4 last:mb-0"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView="visible"
@@ -87,8 +94,10 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
 
           <div className="flex lg:absolute w-full lg:w-1/2 xl:w-[58%] lg:right-0 lg:top-5 h-full">
 
-            {mainImg && <figure className=" relative h-full  w-full   ">
-              <Image className="w-full object-cover h-full" src={mainImg} fill objectFit="cover"  alt="Banner image" />
+            {mainImg && <figure className=" relative h-[250px] lg:h-full  w-full   ">
+
+                <Image className="w-full object-cover h-[full]" src={mainImg} fill objectFit="cover" alt="Banner image" />
+
             </figure>}
             {/* <div className="relative"> */}
             {/* Video element */}
