@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PageBanner from "../Common/PageBanner";
 import MainDescBOx from "../Common/MainDescBox";
 // import HistorySlider from "./HistorySlider";
@@ -12,6 +12,10 @@ import bannerImg from "@/public/assets/images/sectors/abt-bnr.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import BeforeFooterTag from "../Common/BeforeFooterTag";
 import TimeLineSlider from "./TimelineSlider";
+import useSWR from 'swr'
+import { AboutType } from "@/types/AboutType";
+import Error from "next/error";
+import parse from 'html-react-parser'
 
 // import SecondSec from "../components/Common/Second-sec";
 
@@ -21,13 +25,23 @@ const breadcrumbs = [
 ];
 
 export default function Index() {
+
+  const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+  
+  const { data, error, isLoading }:{data:AboutType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/about', fetcher)
+
+
+  useEffect(()=>{
+    console.log(data)
+  },[data])
+  
   return (
     <>
       <PageBanner
         bannerSrc={bannerImg} // Corrected image import here
         arrowSrc={Arrow}
-        desc="Upcycling annually regenerated palm biomass into sustainable building solutions "
-        title="About DesertBoard"
+        desc={data && data.about[0] && data.about[0].description}
+        title={data && data.about[0] && data.about[0].title}
         breadcrumbs={breadcrumbs}
         bnrHeight="90dvh"
       />
@@ -35,17 +49,13 @@ export default function Index() {
         secTitle="The DesertBoard Story"
         subTitle=""
         // mainImg="/assets/images/mn.jpg"
-        paragraphs={[
-          "DesertBoard® is the manufacturer of the region’s most sustainable building material, Palm Strand Board (PSB®), crafted from annually regenerated date palm biomass.Founded by Mr. Hatem Farah, the company was driven by the ambitious vision of transforming abundantly available raw materials into innovative and sustainable solutions.",
-          " With the region's vast date palm groves, substantial quantities of palm biomass are generated each year, which, if left to decompose, would emit harmful methane gas, and if incinerated, it releases CO2 - both major contributors to climate change.",
-          "DesertBoard® addresses this environmental challenge by upcycling palm biomass using a patented process, becoming the world’s first factory to produce a Super E0 (zero-emission) grade panel, equivalent to OSB3 & OSB4.",
-        ]}
+        paragraphs={data && data.about[0] && parse(data.about[0].story)}
         mainImg="/assets/images/about/about-main.jpg"
       />
       {/* <HistorySlider /> */}
-      <TimeLineSlider/>
-      <MisionVision />
-      <AccrediationSlider />
+      <TimeLineSlider data={data}/>
+      <MisionVision data={data}/>
+      <AccrediationSlider data={data}/>
        <BeforeFooterTag title={"Discover Industry Solutions"} /> 
     </>
   );

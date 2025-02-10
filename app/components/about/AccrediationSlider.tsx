@@ -11,6 +11,8 @@ import "swiper/css/scrollbar";
 import Image from "next/image";
 import LightSectionContainer from "../Common/LightSectionContainer";
 import { accrediations } from "./data";
+import { AboutType } from "@/types/AboutType";
+import parse from 'html-react-parser'
 
 interface AccrediationsProps {
   id: number;
@@ -19,7 +21,9 @@ interface AccrediationsProps {
   accrDesc: string;
 }
 
-const AccrediationSlider:React.FC = () => {
+const AccrediationSlider = ({data}:{
+  data:AboutType
+}) => {
   const swiperRef = useRef<SwiperRef>(null);
 
   useEffect(() => {
@@ -38,10 +42,13 @@ const AccrediationSlider:React.FC = () => {
         <h2 className="heavydark mb-2 xl:mb-10">
           Our Accreditation Partners <span className="text-[#FF671F] leading-[1]">.</span>
         </h2>
-        <p className="text-lightBlack text-font20 leading-[1.3] opacity-75">
+        {/* <p className="text-lightBlack text-font20 leading-[1.3] opacity-75">
           DesertBoard&apos;s Palm Strand Board (PSB®) is accredited by leading national and international regulatory bodies, holding over 30 global, regional, and local certifications, reflecting our commitment to excellence and quality. This positions us as a trusted partner for clients across the MENA region, Asia, and beyond. By providing
           clients with a high-quality, certified product, we empower them to confidently deliver sustainable and innovative construction projects that meet the highest industry standards.
-        </p>
+        </p> */}
+        <div className="text-lightBlack text-font20 leading-[1.3] opacity-75">
+          {data && data.about[0] && parse(data.about[0].partners.description)}
+        </div>
       </div>
       <div className="container mb-[50px] xxl:mb-[100px] !overflow-visible relative">
         <Swiper
@@ -92,16 +99,16 @@ const AccrediationSlider:React.FC = () => {
               slidesPerView: 3.2,
             },
           }}>
-          {accrediations.map((accr: AccrediationsProps) => (
-            <SwiperSlide className="accr__slide h-40 text-white" key={accr.id}>
+          {data && data.about[0] && data.about[0].partners.partners.map((accr,index) => (
+            <SwiperSlide className="accr__slide h-40 text-white" key={index}>
               <div className="accr-crd p-6 xl:p-[40px] bg-Darkgreen">
                 <div className="accr__img bg-white mb-7 p-2 w-[70px] h-[70px] flex items-center justify-center">
-                  <Image src={accr.accrLogo} alt="" width={70} height={70} className="object-contain"></Image>
+                  <Image src={"/assets/images/about/accr2.svg"} alt="" width={70} height={70} className="object-contain"></Image>
                 </div>
                 <h3 className="accr__title text-white leading-[1] nuber-next-heavy mb-7">
-                  {accr.accrTitle} <span className="text-[#FF671F]">.</span>
+                  {accr.name} <span className="text-[#FF671F]">.</span>
                 </h3>
-                <p className="accr__desc text-white opacity-75 leading-[1.2] nuber-next-heavy">{accr.accrDesc}</p>
+                <p className="accr__desc text-white opacity-75 leading-[1.2] nuber-next-heavy">{accr.description}</p>
               </div>
             </SwiperSlide>
           ))}

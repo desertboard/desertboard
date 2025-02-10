@@ -2,27 +2,35 @@ import mongoose from "mongoose";
 
 
 const HistorySchema = new mongoose.Schema({
-    timeSpan:{
-        type:String
-    },
-    heading:{
-        type:String
-    },
-    description:{
-        type:String
-    }
+  timeSpan: {
+    type: String
+  },
+  heading: {
+    type: String
+  },
+  description: {
+    type: String
+  }
 })
 
 const PartnersSchema = new mongoose.Schema({
-    image:{
-        type:String
-    },
-    name:{
-        type:String
-    },
-    description:{
-        type:String
+  description: {
+    type: String
+  },
+  partners: [
+    {
+      image: {
+        type: String
+      },
+      name: {
+        type: String
+      },
+      description: {
+        type: String
+      }
     }
+  ]
+
 })
 
 
@@ -43,8 +51,12 @@ const AboutSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  history:[HistorySchema],
-  partners:[PartnersSchema]
+  vision:{
+    type:String,
+    required:true
+  },
+  history: [HistorySchema],
+  partners: PartnersSchema
 });
 
 

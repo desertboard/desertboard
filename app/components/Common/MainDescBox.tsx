@@ -4,13 +4,13 @@ import "@/app/components/Common/MainDescBox.scss";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
 import { StaticImageData } from "next/image";
-import React, { useRef, useState } from "react";
+import React, { JSX, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface MainDescBoxProps {
   secTitle: string;
   subTitle: string;
-  paragraphs: string[];
+  paragraphs: JSX.Element | string | JSX.Element[];
   mainImg?: StaticImageData | string;
   mainVdo?: string;
   vdoPoster?: string;
@@ -65,9 +65,9 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
               <span className="text-[#FF671F]">.</span>
             </motion.h2>
             {subTitle && <p className="nuber-next md-6 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>}
-            {paragraphs.map((text, index) => (
-              <motion.p
-                key={index}
+            
+              <motion.div
+                
                 className="text-font20 clr15op75 max-w-[100%] md:max-w-[98%] leading-[1.3] mb-4 last:mb-0"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView="visible"
@@ -80,9 +80,9 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
                     transition: { duration: 1, delay: 0.5 },
                   },
                 }}>
-                {text}
-              </motion.p>
-            ))}
+                {paragraphs}
+              </motion.div>
+            
           </div>
 
           <div className="flex lg:absolute w-full lg:w-1/2 xl:w-[58%] lg:right-0 lg:top-5 h-full">

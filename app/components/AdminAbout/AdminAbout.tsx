@@ -33,6 +33,8 @@ type FormData = {
     description: string;
     story: string;
     mission: string;
+    vision:string;
+    partnerDescription:string;
 };
 
 
@@ -64,8 +66,10 @@ export default function AdminAbout() {
         formData.append("description", data.description);
         formData.append("story", data.story);
         formData.append("mission", data.mission);
+        formData.append("vision", data.vision);
         formData.append("history",JSON.stringify(histories))
         formData.append("partners",JSON.stringify(partners))
+        formData.append("partnerDescription",data.partnerDescription)
 
 
         try {
@@ -174,20 +178,22 @@ export default function AdminAbout() {
                     const data = await response.json();
                     if (data.about[0]) {
 
-                        console.log(data.about[0].id)
+                        console.log(data.about[0])
                         setAboutData(data.about[0])
 
                         setValue("title", data.about[0].title);
                         setValue("description", data.about[0].description);
                         setValue("story", data.about[0].story);
                         setValue("mission", data.about[0].mission)
+                        setValue("vision", data.about[0].vision)
+                        setValue("partnerDescription", data.about[0].partners.description)
 
                         if (data.about[0].history) {
                             console.log(data.about[0].history)
                             setHistories(data.about[0].history)
                         }
                         if (data.about[0].partners) {
-                            setPartners(data.about[0].partners)
+                            setPartners(data.about[0].partners.partners)
                         }
                     }
 
@@ -327,7 +333,32 @@ export default function AdminAbout() {
             </div>
 
             <div>
+                <Label htmlFor="mission">Vision</Label>
+                <Controller
+                    name="vision"
+                    control={control}
+                    rules={{ required: "Vision is required" }}
+                    render={({ field }) => (
+                        <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="mt-1" />
+                    )}
+                />
+                {errors.vision && <span className="text-red-500">{errors.vision.message}</span>}
+            </div>
+
+            <div>
                 <Label htmlFor="accreditation partners">Accreditation Partners</Label>
+                <div>
+                <Label htmlFor="mission">Description</Label>
+                <Controller
+                    name="partnerDescription"
+                    control={control}
+                    rules={{ required: "Partner description is required" }}
+                    render={({ field }) => (
+                        <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="mt-1" />
+                    )}
+                />
+                {errors.partnerDescription && <span className="text-red-500">{errors.partnerDescription.message}</span>}
+            </div>
                 <Table className="mt-5">
                     <TableHeader className="bg-blue-50">
                         

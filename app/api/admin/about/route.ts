@@ -37,14 +37,21 @@ export async function GET() {
       if(updatedData.history && typeof updatedData.history == "string"){
         updatedData.history = JSON.parse(updatedData.history)
       }
-
+      
+      let partnerData;
       if(updatedData.partners && typeof updatedData.partners == "string"){
-        updatedData.partners = JSON.parse(updatedData.partners)
+        partnerData = JSON.parse(updatedData.partners)
+        delete updatedData.partners
+        console.log("partnersData",partnerData)
       }
+
         
       //todo - need to change this
       console.log("update data final", updatedData);
       const about = await About.findByIdAndUpdate(id, updatedData, { new: true });
+      about.partners.partners = partnerData
+      about.partners.description = updatedData.partnerDescription
+      await about.save()
       if (!about) {
         return NextResponse.json({ error: "About not found" }, { status: 404 });
       }

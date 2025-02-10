@@ -10,7 +10,11 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import "swiper/css/effect-fade"; 
 import "@/app/components/about/timeline.scss";
-const TimeLineSlider: React.FC = () => {
+import { AboutType } from "@/types/AboutType";
+
+const TimeLineSlider = ({data}:{
+  data:AboutType
+}) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -134,16 +138,16 @@ const TimeLineSlider: React.FC = () => {
             observeParents={true}
             watchOverflow={true}
             preventInteractionOnTransition={true}>
-            {timelineData.map((item, index) => (
+            {data && data.about[0] && data.about[0].history.map((item, index) => (
               <SwiperSlide key={index} className="!h-full ">
                 <div className="timeline__bg flex-grow bg-cover bg-center absolute top-0 left-0 z-1 history__bg  w-full h-full">
                   <div className="timeline__img">
-                    <Image src={item.image} fill objectFit="cover" className="h-full w-full" alt="" />
+                    <Image src={"/assets/images/timeline/dec14-2021.jpg"} fill objectFit="cover" className="h-full w-full" alt="" />
                   </div>
                 </div>
                 <div className="rounded-lg shadow h-full flex flex-col justify-center xl:justify-end pb-20 relative z-30 xl:w-2/3 " style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
-                  <h3 className="text-4xl md:text-5xl lg:text-font72 helveticaBold text-white mb-10 nuber-next-heavy ">{item.year}</h3>
-                  <h4 className="text-xl md:text-2xl lg:text-font28 leading-[1.2] opacity-75 nuber-next-heavy text-white mb-5">{item.subtitle}</h4>
+                  <h3 className="text-4xl md:text-5xl lg:text-font72 helveticaBold text-white mb-10 nuber-next-heavy ">{item.timeSpan}</h3>
+                  <h4 className="text-xl md:text-2xl lg:text-font28 leading-[1.2] opacity-75 nuber-next-heavy text-white mb-5">{item.heading}</h4>
                   <p className="text-white text-font20 leading-[1.3] opacity-75 font-normal">{item.description}</p>
                 </div>
               </SwiperSlide>
@@ -192,10 +196,10 @@ const TimeLineSlider: React.FC = () => {
                 setActiveIndex(swiper.realIndex);
               }
             }}>
-            {timelineData.map((item, index) => (
+            {data && data.about[0] && data.about[0].history.map((item, index) => (
               <SwiperSlide key={index} className="!h-16 md:!h-24 cursor-pointer timeline__thumb">
                 <div className={`w-full h-full flex items-center justify-end rounded transition-all duration-300`}>
-                  <span className={`text-font20 text-right md:text-2xl font-normal transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-bold lg:min-w-max xl:text-font32 opacity-100" : "text-white opacity-50 text-font24 font-normal hover:text-gray-200"}`}>{item.year}</span>
+                  <span className={`text-font20 text-right md:text-2xl font-normal transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-bold lg:min-w-max xl:text-font32 opacity-100" : "text-white opacity-50 text-font24 font-normal hover:text-gray-200"}`}>{item.timeSpan}</span>
                   <div className={`hidden lg:block lg:ml-3 h-[4px] w-[68px] transition-all ease-linear duration-300 ${thumbsSwiper?.realIndex === index ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
                 </div>
               </SwiperSlide>

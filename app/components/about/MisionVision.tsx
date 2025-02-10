@@ -3,7 +3,12 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import "@/app/components/about/mivi.scss";
 import lfbef from "@/public/assets/images/home/leaf.svg";
-export default function MisionVision() {
+import { AboutType } from "@/types/AboutType";
+import parse from 'html-react-parser'
+
+export default function MisionVision({data}:{
+  data:AboutType
+}) {
   const [activeClass, setActiveClass] = useState("mivi__mibig");
 
   const handleMiClick = () => {
@@ -80,10 +85,11 @@ export default function MisionVision() {
             </h3>
           {/* </div> */}
           <div className="mivi__desc text-black opacity-75 leading-[1.3] text-font20">
-            <p>
+            {/* <p>
               Our mission is to leverage the UAE&apos;s rich heritage of palm fronds to create high-strength, zero-emission structural panels. By transforming local materials into sustainable building solutions, we aim to enhance indoor air quality, reduce carbon footprints, and contribute to the local bio-economy. As the first industrial plant in
               the UAE dedicated to this innovation, we support the nation&apos;s industrial growth while promoting environmental sustainability.
-            </p>
+            </p> */}
+            {data && data.about[0] && parse(data.about[0].mission)}
           </div>
         </div>
         <div className="mivi__vi pt-5 pb-10 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
@@ -100,7 +106,8 @@ export default function MisionVision() {
             </h3>
           </div>
           <div className="mivi__desc text-black opacity-75 leading-[1.3] text-font20">
-            <p>To make the built environment more sustainable by providing locally produced engineered solutions, driving the circular economy forward, and setting new standards for eco-friendly, high-performance materials across sectors.</p>
+            {/* <p>To make the built environment more sustainable by providing locally produced engineered solutions, driving the circular economy forward, and setting new standards for eco-friendly, high-performance materials across sectors.</p> */}
+            {data && data.about[0] && parse(data.about[0].vision)}
           </div>
         </div>
       </div>

@@ -8,17 +8,18 @@ export async function GET() {
     await connectDB();
   
     try {
-      const faqs = await Contact.find();
+      const contact = await Contact.find();
   
-      console.log(faqs);
+      console.log(contact);
   
-      if (!faqs) {
-        return NextResponse.json({ error: "Faqs not found" }, { status: 404 });
+      if (!contact) {
+        return NextResponse.json({ error: "Contact not found" }, { status: 404 });
       }
   
-      return NextResponse.json({ faqs: formatDbResponse(faqs) });
+      return NextResponse.json({ regions: formatDbResponse(contact) });
+
     } catch (error) {
-      console.log("error getting faqs:", error);
+      console.log("error getting contact:", error);
       return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
   }
