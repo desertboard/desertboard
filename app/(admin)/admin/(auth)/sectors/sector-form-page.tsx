@@ -51,8 +51,8 @@ const SectorFormPage = ({ sectorId }: Props) => {
     defaultValues: {
       title: title,
       description: description,
-      image_url: "",
-      applications: [],
+      image_url: image_url,
+      applications: applications,
     },
   });
 
