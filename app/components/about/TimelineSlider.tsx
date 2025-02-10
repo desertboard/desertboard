@@ -106,7 +106,7 @@ const TimeLineSlider: React.FC = () => {
   return (
     <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary">
       <div className="container d-none" ref={nextContainerRef}></div>
-      <div className="flex flex-col md:flex-row w-full gap-6 relative h-[35em] lg:h-[90dvh] xl:h-[90dvh] xxl:h-[90dvh]">
+      <div className="flex flex-col md:flex-row w-full gap-6 relative h-[35em] lg:h-[90dvh] xl:h-[90dvh] xxl:h-[70dvh]">
         <h2 className="text-white z-10 text-font48 nuber-next-heavy leading-[1] absolute top-10 lg:top-20 " style={{ left: `calc(100vw - (${divWidth})` }}>
           Our History <span className="text-[#FF671F]">.</span>
         </h2>
