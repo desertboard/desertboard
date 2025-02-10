@@ -155,7 +155,6 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                       onMouseEnter={() => setHoveredIndex(item.id)}
                       onMouseLeave={() => setHoveredIndex(null)}
                       onTouchStart={() => setHoveredIndex(item.id)}  // For mobile devices
-                      onTouchEnd={() => setHoveredIndex(null)}
                                     >
                                       <div className="flex items-end pb-1 md:pb-3 xl:pb-3 min-h-[300px] lg:min-h-[426px]">
                                         <div className="px-4 md:px-5 xl:px-5 w-full">
