@@ -14,7 +14,6 @@ interface ClientSideLinkProps {
 // Client component for handling active states
 export default function ClientSideLink({ href, name, icon, className }: ClientSideLinkProps) {
   const pathname = usePathname();
-  console.log(pathname)
   const isActive = pathname === href || pathname?.startsWith(`${href}/`);
 
   return (

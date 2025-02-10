@@ -1,18 +1,15 @@
 import mongoose from "mongoose";
 
-const FinishSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  image_url: {
-    type: String,
-    required: true,
-  },
-});
-
 const ApplicationSchema = new mongoose.Schema({
   title: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+  product: {
     type: String,
     required: true,
   },
@@ -20,7 +17,6 @@ const ApplicationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  finishes: [FinishSchema],
 });
 
 const SectorSchema = new mongoose.Schema(
@@ -33,7 +29,7 @@ const SectorSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    image_url: {
+    image: {
       type: String,
       required: true,
     },

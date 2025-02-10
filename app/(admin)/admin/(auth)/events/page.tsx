@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PencilIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type Events = {
   _id: string;
@@ -79,7 +80,7 @@ export default function AdminProducts() {
           {events.map((event, index) => (
             <Card key={index} className="overflow-hidden group">
               <div className="aspect-video relative">
-                <img
+                <Image
                   width={100}
                   height={100}
                   src={event.image}

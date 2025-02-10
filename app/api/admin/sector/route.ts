@@ -9,11 +9,17 @@ export async function POST(request: NextRequest) {
   if (!isAdmin) {
     return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
   }
-  const { title, description, image_url, applications } = await request.json();
+  const { title, description, image, applications } = await request.json();
 
   await connectDB();
 
-  const sector = await Sector.create({ title, description, image_url, applications });
+  const existingSector = await Sector.findOne({ title });
+
+  if (existingSector) {
+    return NextResponse.json({ success: false, message: "Sector already exists" }, { status: 400 });
+  }
+
+  const sector = await Sector.create({ title, description, image, applications });
 
   return NextResponse.json({ success: true, data: sector }, { status: 201 });
 }
@@ -34,11 +40,11 @@ export async function PATCH(request: NextRequest) {
   }
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
-  const { title, description, image_url, applications } = await request.json();
+  const { title, description, image, applications } = await request.json();
 
   await connectDB();
 
-  const sector = await Sector.findByIdAndUpdate(id, { title, description, image_url, applications });
+  const sector = await Sector.findByIdAndUpdate(id, { title, description, image, applications });
 
   return NextResponse.json({ success: true, data: sector }, { status: 200 });
 }

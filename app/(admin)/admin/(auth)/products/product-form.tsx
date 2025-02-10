@@ -9,16 +9,32 @@ import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { ImageUploader } from "@/app/components/ui/image-uploader";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
+
+type FinishData = {
+  name: string;
+  image: string;
+};
 
 type ProductData = {
   title: string;
-  description: string;
-  image_url: string;
+  subTitle: string;
   specifications: {
     name: string;
     value: string;
   }[];
+  subSections: {
+    icon: string;
+    description: string;
+  }[];
+  bestPractices: {
+    title: string;
+    description: string;
+  }[];
+  finishes: FinishData[];
+  sector: string;
 };
 
 interface ProductFormData {
@@ -26,34 +42,85 @@ interface ProductFormData {
 }
 const ProductForm = ({ productId }: ProductFormData) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [sectors, setSectors] = useState<string[]>([]);
+  const [finishes, setFinishes] = useState<FinishData[]>([]);
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    control,
-    setValue,
-    formState: { errors },
-  } = useForm<ProductData>({
+  const { register, handleSubmit, control, setValue } = useForm<ProductData>({
     defaultValues: {
       title: "",
-      description: "",
-      image_url: "",
+      subTitle: "",
       specifications: [],
+      subSections: [],
+      bestPractices: [],
+      finishes: [],
+      sector: "",
     },
   });
 
-  const { fields, append, remove } = useFieldArray({
+  const {
+    fields: specFields,
+    append: appendSpec,
+    remove: removeSpec,
+  } = useFieldArray({
     control,
     name: "specifications",
   });
+
+  const {
+    fields: subSectionFields,
+    append: appendSubSection,
+    remove: removeSubSection,
+  } = useFieldArray({
+    control,
+    name: "subSections",
+  });
+
+  const {
+    fields: bestPracticeFields,
+    append: appendBestPractice,
+    remove: removeBestPractice,
+  } = useFieldArray({
+    control,
+    name: "bestPractices",
+  });
+
+  const {
+    fields: finishFields,
+    append: appendFinish,
+    replace: replaceFinishes,
+  } = useFieldArray({
+    control,
+    name: "finishes",
+  });
+
+  useEffect(() => {
+    const fetchSectors = async () => {
+      const response = await fetch("/api/admin/sector");
+      const res = await response.json();
+      setSectors(res.data.map((sector: { title: string }) => sector.title));
+    };
+    fetchSectors();
+  }, []);
+
+  useEffect(() => {
+    const fetchFinishes = async () => {
+      const response = await fetch("/api/admin/finish");
+      const res = await response.json();
+      setFinishes(res.data);
+    };
+    fetchFinishes();
+  }, []);
 
   const fetchProduct = async () => {
     const response = await fetch(`/api/admin/products/byid?id=${productId}`);
     const res = await response.json();
     setValue("title", res.data.title);
-    setValue("description", res.data.description);
-    setValue("image_url", res.data.image_url);
+    setValue("subTitle", res.data.subTitle);
     setValue("specifications", res.data.specifications);
+    setValue("subSections", res.data.subSections);
+    setValue("bestPractices", res.data.bestPractices);
+    setValue("finishes", res.data.finishes);
+    setValue("sector", res.data.sector);
   };
 
   useEffect(() => {
@@ -88,6 +155,18 @@ const ProductForm = ({ productId }: ProductFormData) => {
     }
   };
 
+  const toggleFinish = (finish: FinishData) => {
+    const currentFinishes = finishFields;
+    const isSelected = currentFinishes.some((f) => f.name === finish.name);
+
+    if (isSelected) {
+      const newFinishes = currentFinishes.filter((f) => f.name !== finish.name);
+      replaceFinishes(newFinishes);
+    } else {
+      appendFinish(finish);
+    }
+  };
+
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6">{productId ? "Edit" : "Create"} Product</h1>
@@ -100,32 +179,34 @@ const ProductForm = ({ productId }: ProductFormData) => {
               <Input id="title" {...register("title")} />
             </div>
             <div className="space-y-2">
-              <Label className="text-sm font-medium">Description</Label>
-              <Controller
-                name="description"
-                control={control}
-                rules={{ required: "Description is required" }}
-                render={({ field }) => (
-                  <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="mt-1" />
-                )}
-              />
-              {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>}
+              <Label htmlFor="subTitle">Sub Title</Label>
+              <Input id="subTitle" {...register("subTitle")} />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="image_url">Image URL</Label>
-              <Input id="image_url" {...register("image_url")} />
+              <Label htmlFor="sector">Sector</Label>
+              <Select {...register("sector")}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a sector" />
+                </SelectTrigger>
+                <SelectContent>
+                  {sectors.map((sector) => (
+                    <SelectItem key={sector} value={sector}>
+                      {sector}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
-
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <Label>Specifications</Label>
-              <Button type="button" variant="outline" onClick={() => append({ name: "", value: "" })}>
+              <Button type="button" variant="outline" onClick={() => appendSpec({ name: "", value: "" })}>
                 Add Specification
               </Button>
             </div>
 
-            {fields.map((field, index) => (
+            {specFields.map((field, index) => (
               <div key={field.id} className="flex gap-4 items-start">
                 <div className="space-y-2 flex-1">
                   <Label htmlFor={`specifications.${index}.name`}>Name</Label>
@@ -135,11 +216,131 @@ const ProductForm = ({ productId }: ProductFormData) => {
                   <Label htmlFor={`specifications.${index}.value`}>Value</Label>
                   <Input {...register(`specifications.${index}.value`)} placeholder="Specification value" />
                 </div>
-                <Button type="button" variant="destructive" className="mt-8" onClick={() => remove(index)}>
+                <Button type="button" variant="destructive" className="mt-8" onClick={() => removeSpec(index)}>
                   Remove
                 </Button>
               </div>
             ))}
+          </div>
+
+          {/* Sub Sections */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <Label>Sub Sections</Label>
+              <Button type="button" variant="outline" onClick={() => appendSubSection({ icon: "", description: "" })}>
+                Add Sub Section
+              </Button>
+            </div>
+
+            {subSectionFields.map((field, index) => (
+              <div key={field.id} className="space-y-4 p-4 border rounded-lg">
+                <div className="space-y-2">
+                  <Label>Icon</Label>
+                  <Controller
+                    name={`subSections.${index}.icon`}
+                    control={control}
+                    render={({ field }) => <ImageUploader value={field.value} onChange={field.onChange} />}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>Description</Label>
+                  <Controller
+                    name={`subSections.${index}.description`}
+                    control={control}
+                    render={({ field }) => (
+                      <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="bg-white" />
+                    )}
+                  />
+                </div>
+                <Button type="button" variant="destructive" onClick={() => removeSubSection(index)}>
+                  Remove Sub Section
+                </Button>
+              </div>
+            ))}
+          </div>
+
+          {/* Best Practices */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <Label>Best Practices</Label>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => appendBestPractice({ title: "", description: "" })}
+              >
+                Add Best Practice
+              </Button>
+            </div>
+
+            {bestPracticeFields.map((field, index) => (
+              <div key={field.id} className="space-y-4 p-4 border rounded-lg">
+                <div className="space-y-2">
+                  <Label>Title</Label>
+                  <Input {...register(`bestPractices.${index}.title`)} placeholder="Best Practice Title" />
+                </div>
+                <div className="space-y-2">
+                  <Label>Description</Label>
+                  <Controller
+                    name={`bestPractices.${index}.description`}
+                    control={control}
+                    render={({ field }) => (
+                      <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="bg-white" />
+                    )}
+                  />
+                </div>
+                <Button type="button" variant="destructive" onClick={() => removeBestPractice(index)}>
+                  Remove Best Practice
+                </Button>
+              </div>
+            ))}
+          </div>
+
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <Label>Finishes</Label>
+              <div className="text-sm text-muted-foreground">Selected: {finishFields.length}</div>
+            </div>
+
+            {finishes.length === 0 ? (
+              <div className="text-center p-8 border rounded-lg">
+                <p className="text-muted-foreground">No finishes available to select</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
+                {finishes.map((finish) => {
+                  const isSelected = finishFields.some((f) => f.name === finish.name);
+                  return (
+                    <div
+                      key={finish.name}
+                      className={`
+                        cursor-pointer rounded-lg border p-2 transition-all
+                        hover:border-primary hover:shadow-sm
+                        ${isSelected ? "border-primary bg-primary/5" : "border-border"}
+                      `}
+                      onClick={() => toggleFinish(finish)}
+                    >
+                      <div className="aspect-square w-full relative mb-1">
+                        <img src={finish.image} alt={finish.name} className="object-cover rounded-md w-full h-full" />
+                        {isSelected && (
+                          <div className="absolute top-1 right-1 bg-primary text-white rounded-full p-0.5">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              className="w-3 h-3"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                      <p className="text-xs font-medium text-center truncate">{finish.name}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
           <Button type="submit" className="w-full">

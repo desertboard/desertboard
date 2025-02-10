@@ -57,7 +57,7 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
       setImageUrls(data.data.images);
     };
     fetchNews();
-  }, []);
+  }, [newsId]);
 
   const handleImageUpload = async (uploadedUrl: string) => {
     setImageUrls((prev) => [...prev, uploadedUrl]);
