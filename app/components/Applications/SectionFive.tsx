@@ -126,7 +126,9 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                      style={{ backgroundImage: `url(${item.image.src})` }}
 
                      onMouseEnter={() => setHoveredIndex(item.id)}
-                     onMouseLeave={() => setHoveredIndex(null)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                      onTouchStart={() => setHoveredIndex(item.id)}  // For mobile devices
+                      onTouchEnd={() => setHoveredIndex(null)}
                     >
                       <div className="flex items-end pb-1 md:pb-4 xl:pb-8 min-h-[300px] lg:min-h-[462px]">
                         <div className="px-4 md:px-6 xl:px-10 w-full">

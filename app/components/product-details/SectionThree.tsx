@@ -108,7 +108,9 @@ const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                                                 className="relative group slidehr overflow-hidden transform goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
                                    style={{ backgroundImage: `url(${item.image.src})` }}
                                    onMouseEnter={() => setHoveredIndex(item.id)}
-                                   onMouseLeave={() => setHoveredIndex(null)}
+                                    onMouseLeave={() => setHoveredIndex(null)}
+                                    onTouchStart={() => setHoveredIndex(item.id)}  // For mobile devices
+                                    onTouchEnd={() => setHoveredIndex(null)}
                                               >
                                                 {/* <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
                                                     <h3 className="nubernext28bold   text-white " >{item.title}</h3></div> */}
