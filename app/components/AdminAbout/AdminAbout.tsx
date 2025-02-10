@@ -26,6 +26,10 @@ import { Button } from "@/components/ui/button"
 import { Controller, useForm } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { ImageUploader } from "../ui/image-uploader";
+import Image from "next/image";
+// import { useTempImageStore } from "@/app/store/useTempImageStore";
+
 
 
 type FormData = {
@@ -35,6 +39,8 @@ type FormData = {
     mission: string;
     vision:string;
     partnerDescription:string;
+    image_url:string;
+    partner_image_url:string;
 };
 
 
@@ -47,17 +53,25 @@ export default function AdminAbout() {
         handleSubmit,
         formState: { errors },
         setValue,
+        getValues,
         control,
+        watch,
     } = useForm<FormData>();
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [timeSpan,setTimeSpan] = useState("")
     const [heading,setHeading] = useState("")
     const [description,setDescription] = useState("")
+    const [historyImage,setHistoryImage] = useState("")
 
     const [partnerImage,setPartnerImage] = useState("")
     const [partnerName,setPartnerName] = useState("")
     const [partnerDescription,setPartnerDescription] = useState("")
+
+    // const { 
+    //     tempHistoryImage, setTempHistoryImage, clearTempHistoryImage,
+    //     tempPartnerImage, setTempPartnerImage, clearTempPartnerImage
+    //   } = useTempImageStore((state)=>state)
 
     const onSubmit = async (data: FormData) => {
         setIsSubmitting(true);
@@ -101,12 +115,13 @@ export default function AdminAbout() {
         }
     };
 
-    const [histories,setHistories] = useState<{timeSpan:string,heading:string,description:string}[] | []>([])
+    const [histories,setHistories] = useState<{timeSpan:string,heading:string,description:string,image:string}[] | []>([])
     const [partners,setPartners] = useState<{image:string,name:string,description:string}[] | []>([])
 
     const handleAddHistory = () =>{
+        console.log("Image",getValues("image_url"))
         setHistories((prev)=>{
-            const newHistory = {timeSpan,heading,description}
+            const newHistory = {timeSpan,heading,description,image:getValues("image_url")}
             return [...prev,newHistory]
         })
         setTimeSpan("")
@@ -116,13 +131,18 @@ export default function AdminAbout() {
 
     const handleAddPartner = () =>{
         setPartners((prev)=>{
-            const newPartner = {image:partnerImage,name:partnerName,description:partnerDescription}
+            const newPartner = {image:getValues("partner_image_url"),name:partnerName,description:partnerDescription}
             return [...prev,newPartner]
         })
         setTimeSpan("")
         setHeading("")
         setDescription("")
     }
+
+    useEffect(()=>{
+        console.log(getValues("image_url"))
+        setHistoryImage(getValues("image_url"))
+    },[getValues("image_url")])
 
     const handleEditHistory = (index:number) =>{
         setTimeSpan(histories[index].timeSpan)
@@ -195,6 +215,7 @@ export default function AdminAbout() {
                         if (data.about[0].partners) {
                             setPartners(data.about[0].partners.partners)
                         }
+
                     }
 
                 } else {
@@ -207,6 +228,17 @@ export default function AdminAbout() {
 
         fetchAboutData()
     }, [setValue])
+
+
+    useEffect(() => {
+        const imageUrl = getValues("image_url");
+        // setTempHistoryImage(imageUrl)
+        setValue("image_url", imageUrl);
+      }, [watch("image_url"), setValue]);
+
+      console.log(histories)
+
+
 
     return (
         <form className="min-h-screen flex  text-black flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
@@ -246,6 +278,7 @@ export default function AdminAbout() {
                 <Table className="mt-5">
                     <TableHeader className="bg-blue-50">
                         <TableRow>
+                            <TableHead className="w-[100px]">Image</TableHead>
                             <TableHead className="w-[100px]">Time Span</TableHead>
                             <TableHead className=" max-w-14">Heading</TableHead>
                             <TableHead>Description</TableHead>
@@ -268,7 +301,10 @@ export default function AdminAbout() {
                                             <Label htmlFor="heading">Description</Label>
                                             <Input value={description} onChange={(e)=>setDescription(e.target.value)}/>
 
-                                            <SheetClose className="bg-blue-500 text-white p-3" onClick={handleAddHistory}>Confirm</SheetClose>
+                                            <Label className="text-sm font-medium">Image</Label>
+                                            <ImageUploader value={watch("image_url")} onChange={(url) => setValue("image_url", url)} />
+                                            
+                                            <SheetClose className="bg-blue-500 text-white p-3" type="button" onClick={handleAddHistory}>Confirm</SheetClose>
                                             </div>
                                         
                                     </SheetContent>
@@ -280,6 +316,7 @@ export default function AdminAbout() {
                     <TableBody>
                         {histories.map((history,index)=>(
                             <TableRow key={index}>
+                            <TableCell className="font-medium">{history.image && <Image src={history.image} alt="image" width={100} height={100}/>}</TableCell>
                             <TableCell className="font-medium">{history.timeSpan}</TableCell>
                             <TableCell>{history.heading}</TableCell>
                             <TableCell>{history.description}</TableCell>
@@ -371,7 +408,7 @@ export default function AdminAbout() {
                                     <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button">Add</SheetTrigger>
                                     <SheetContent>
                                         <SheetHeader>
-                                            <SheetTitle>Add a history</SheetTitle>
+                                            <SheetTitle>Add a partner</SheetTitle>
                                         </SheetHeader>
                                             <div className="flex justify-center flex-col gap-3">
                                             <Label htmlFor="timeSpan">Image</Label>
@@ -382,6 +419,9 @@ export default function AdminAbout() {
                                             
                                             <Label htmlFor="heading">Partner Description</Label>
                                             <Input value={partnerDescription} onChange={(e)=>setPartnerDescription(e.target.value)}/>
+
+                                            <Label className="text-sm font-medium">Image</Label>
+                                            <ImageUploader value={watch("partner_image_url")} onChange={(url) => setValue("partner_image_url", url)} />
 
                                             <SheetClose className="bg-blue-500 text-white p-3" onClick={handleAddPartner}>Confirm</SheetClose>
                                             </div>
@@ -395,7 +435,7 @@ export default function AdminAbout() {
                     <TableBody>
                         {partners.map((partner,index)=>(
                             <TableRow key={index}>
-                            <TableCell className="font-medium">{partner.image}</TableCell>
+                            <TableCell className="font-medium">{partner.image !== "test" && <Image src={partner.image} alt="image" width={100} height={100}/>}</TableCell>
                             <TableCell>{partner.name}</TableCell>
                             <TableCell>{partner.description}</TableCell>
                             <TableCell>

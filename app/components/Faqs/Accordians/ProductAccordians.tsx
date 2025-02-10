@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import accordianArrow from '@/public/assets/images/accordian-arrow.svg'
 
-const ProductAccordians = () => {
+const ProductAccordians = ({items}:{
+    items:any
+}) => {
     const [activeAccordian, setActiveAccordian] = useState<null | number>(null)
 
     const toggleAccordian = (index: number) => {
@@ -18,6 +20,8 @@ const ProductAccordians = () => {
             setActiveAccordian(index)
         }
     }
+
+    console.log(items)
 
     const accordianData = [
         {
@@ -71,7 +75,7 @@ const ProductAccordians = () => {
     return (
         <div className="py-2 mt-3">
             <div className='flex flex-col gap-3'>
-                {accordianData.map((item, index) => (
+                {items && items.map((item:any, index:any) => (
                     <div key={index}>
                         <button onClick={() => toggleAccordian(index)}
                             className={`w-full flex justify-between items-center  text-slate-800 py-4 bg-[#E3DED9] px-4`}

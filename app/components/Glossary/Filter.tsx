@@ -9,8 +9,23 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
 import { motion } from "framer-motion";
+import useSWR from "swr";
 
 const Filter = () => {
+
+
+  const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+
+  const { data, error } = useSWR('/api/admin/glossary', fetcher)
+
+  const [sections, setSections] = useState([])
+  const [activeSession,setActiveSection] = useState(null)
+  const [items,setItems] = useState([])
+
+  useEffect(()=>{
+    console.log(data)
+  },[data])
+
   const menuforA = {
     alphabet: "A",
     items: [

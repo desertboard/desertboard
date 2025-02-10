@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import bannerImg from "@/public/assets/faqsbanner.jpg";
 import PageBanner from '../Common/PageBanner';
 import Arrow from "@/public/assets/brdcrbs.svg";
@@ -9,6 +9,7 @@ import Image from 'next/image';
 import Accordians from './Accordians/Accordians';
 import { motion } from 'framer-motion';
 import { assets } from '@/public/assets/images/assets';
+
 
 const Faqs = () => {
 

@@ -28,7 +28,7 @@ export default function Index() {
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
   
-  const { data, error, isLoading }:{data:AboutType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/about', fetcher)
+  const { data }:{data:AboutType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/about', fetcher)
 
 
   useEffect(()=>{

@@ -30,6 +30,9 @@ interface SectorFormState {
   setApplications: (applications: Application[]) => void;
 }
 
+
+
+
 export const useSectorStore = create<SectorFormState>()(
   persist(
     (set) => ({
@@ -66,3 +69,6 @@ export const useSectorStore = create<SectorFormState>()(
     }
   )
 );
+
+
+

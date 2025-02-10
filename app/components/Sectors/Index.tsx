@@ -9,7 +9,7 @@ import lfbt from "@/public/assets/images/home/lfbt.svg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import Image from "next/image";
 import BackGround from '@/public/assets/images/Background.jpg'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { menuItem } from "./data";
 import SectorSelector from "./Selections/SectorSelector";
 import ApplicationSelector from "./Selections/ApplicationSelector";
@@ -18,11 +18,14 @@ import { motion } from "framer-motion";
 
 
 
+
 const Sectors = () => {
     const breadcrumbs = [
         { label: "Home", href: "#" },
         { label: "Sectors", href: "#" },
     ];
+
+
 
 
     const [activeSector,setActiveSector] = useState(0)

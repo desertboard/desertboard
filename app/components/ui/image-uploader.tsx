@@ -40,6 +40,7 @@ export function ImageUploader({ value, onChange, className }: ImageUploaderProps
         }
 
         const data = await response.json();
+        
         onChange(data.url);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to upload image");

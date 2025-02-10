@@ -2,6 +2,9 @@ import mongoose from "mongoose";
 
 
 const HistorySchema = new mongoose.Schema({
+  image:{
+    type:String
+  },
   timeSpan: {
     type: String
   },
