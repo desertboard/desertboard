@@ -159,7 +159,7 @@ const TimeLineSlider: React.FC = () => {
 
         {/* Thumbnail slider with navigation */}
         <div className="timeline__years w-full md:w-1/3  absolute bottom-0 xl:top-10 right-0 z-10" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
-          {/* Navigation Buttons - Only visible on mobile */}
+          {/* Navigation Buttons - Only visible on mobile  */}
 
           <Swiper
             onSwiper={setThumbsSwiper}
@@ -168,7 +168,7 @@ const TimeLineSlider: React.FC = () => {
             breakpoints={{
               768: {
                 direction: "vertical",
-                slidesPerView: 5,
+                slidesPerView: 3.5,
                 spaceBetween: 20,
               },
             }}
@@ -185,7 +185,7 @@ const TimeLineSlider: React.FC = () => {
             slideToClickedSlide={true}
             speed={800}
             allowTouchMove={true}
-            centeredSlides={false}
+            centeredSlides={true}
             onSlideChange={(swiper) => {
               if (mainSwiperRef.current) {
                 mainSwiperRef.current.slideTo(swiper.realIndex);
