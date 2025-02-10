@@ -6,43 +6,33 @@
         position: relative;
         // min-height: 500px;
         overflow: hidden;
-        max-height: 50dvh;
-        @media (min-width:1800px){
-            min-height: max-content;
-            max-height: 50dvh;
+        @media (min-width: 1800px) {
+            // max-height: 40dvh;
+            // min-height: max-content;
         }
-        @media (max-width:768px){
-            max-height: 70dvh;
+        @media (max-width: 768px) {
+            // max-height: 70dvh;
         }
         h3 {
             width: max-content;
         }
-        p{
-            // min-height: 7em;
-            // transition-delay: 0;
-            // min-width: 900px;
-            // max-width: 40ch;
-            // height: 100px;
-            min-height: 90px;
-            max-height: 90px;
-            overflow: hidden;
-            transition: none;
-            @media (max-width: 768px) {
-                // min-width: 100%;
-                // max-width: 100%;
-                // min-height: 5em;
-                // max-height: 5em;
-                height: 5em;
-                max-height: min-content;
-            }
+    }
+    .mivi__desc{
+        display: none;
+        opacity: 0;
+        transition-delay: 4s;
+        height: 4em;
+        overflow: hidden;
+        @media (max-width: 768px) {
+            height: 15em;
         }
     }
     &__mi {
-        transition: .3s all ease-in-out;
+        transition: 0.3s flex ease-in-out;
         // width: 20%;
     }
     &__vi {
-        transition: .3s all ease-in-out;
+        transition: 0.3s flex ease-in-out;
         // width: 20%;
     }
     &__mibig {
@@ -61,25 +51,16 @@
                 right: -3%;
                 top: -30%;
             }
-            p{  
+            .mivi__desc {
                 display: block;
                 opacity: 1;
-                transition-delay: 4s;
-                height: 100%;
             }
         }
         .mivi__vi {
             flex: 1;
-            // width: 10%;
             background-color: var(--primary);
-            // transform: translateX(41%);
-            // display: flex;
-            // flex-direction: column;
-            // align-items: center;
-            // justify-content: center;
-            // padding-top: 6%;
             min-width: max-content;
-            z-index: 50;
+            z-index: 20;
             overflow: hidden;
             .mivi__icon {
                 img {
@@ -95,22 +76,25 @@
             }
             h3 {
                 color: #fff;
-                writing-mode: horizontal-tb;
-                // transform: rotate(270deg) translateX(-60px);
-                transform: rotate(-90deg) translateX(-20%);
+                // writing-mode: horizontal-tb;
+                transform: rotate(-90deg) translateX(-60px);
+                // transform: rotate(-90deg) ;
                 display: inline-block;
                 width: 100%;
                 margin: 0 auto;
                 margin-top: 60px;
                 display: flex;
-                transition: .3s all linear;
-                transition-delay: .1s;
+                transition: 0.2s all linear;
+                transition-delay: 0.1s;
+                @media (max-width: 768px) {
+                    transform: rotate(-90deg) translateX(-10%);
+                }
             }
-            p {
-                color: #fff;
-                opacity: 0;
+            
+            .mivi__desc {
                 display: none;
-                height: 0;
+                opacity: 0;
+                transition-delay: 4s;
             }
         }
     }
@@ -126,15 +110,16 @@
             @media (max-width: 992px) {
                 padding-inline: 15px;
             }
-            p{
+            .mivi__desc {
+                display: block;
                 opacity: 1;
+                transition-delay: 4s;
             }
         }
         .mivi__mi {
             flex: 1;
             min-width: max-content;
             background-color: var(--primary);
-            // transform: translateX(-41%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -156,19 +141,27 @@
                 display: inline-block;
                 margin: 0;
                 margin-top: 60px;
-                transition: .3s all linear;
+                transition: 0.2s all linear;
                 transition-delay: 0.1s;
+                 @media (max-width: 768px) {
+                    transform: rotate(-90deg) translateX(-0%);
+                }
+                
             }
-
-            p {
+             .mivi__desc {
                 display: none;
                 opacity: 0;
+                transition-delay: 4s;
             }
+            // p {
+            //     display: none;
+            //     opacity: 0;
+            // }
         }
     }
     &__desc {
         @media (max-width: 768px) {
-            min-height: 10em;
+            // min-height: 10em;
         }
     }
     &__vibig {
