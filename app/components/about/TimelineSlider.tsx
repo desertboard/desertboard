@@ -104,7 +104,7 @@ const TimeLineSlider: React.FC = () => {
     };
   }, []);
   return (
-    <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary">
+    <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary timeline__sec">
       <div className="container d-none" ref={nextContainerRef}></div>
       <div className="flex flex-col md:flex-row w-full gap-6 relative h-[38em] lg:h-[90dvh] xl:h-[90dvh] xxl:h-[70dvh]">
         <h2 className="text-white z-10 text-font48 nuber-next-heavy leading-[1] absolute top-10 lg:top-20 " style={{ left: `calc(100vw - (${divWidth})` }}>
@@ -126,14 +126,29 @@ const TimeLineSlider: React.FC = () => {
             effect="fade"
             fadeEffect={{ crossFade: true }}
             watchSlidesProgress={true}
-            allowTouchMove={false}
-            mousewheel={false}
-            noSwiping={true}
-            noSwipingClass="swiper-slide"
+            // allowTouchMove={true}
+            // mousewheel={false}
+            // noSwiping={true}
+            // noSwipingClass="swiper-slide"
+            
             observer={true}
             observeParents={true}
             watchOverflow={true}
-            preventInteractionOnTransition={true}>
+            // preventInteractionOnTransition={true}
+              // Add these new properties
+  allowTouchMove={true}
+  touchRatio={1}
+  touchAngle={45}
+  resistance={true}
+  resistanceRatio={0.85}
+  shortSwipes={true}
+  longSwipes={true}
+  longSwipesRatio={0.5}
+  touchStartPreventDefault={false}
+  touchMoveStopPropagation={true}
+  grabCursor={true}
+  cssMode={true}
+            >
             {timelineData.map((item, index) => (
               <SwiperSlide key={index} className="!h-full ">
                 <div className="timeline__bg flex-grow bg-cover bg-center absolute top-0 left-0 z-1 history__bg  w-full h-full">
@@ -149,7 +164,6 @@ const TimeLineSlider: React.FC = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-      
         </div>
 
         {/* Thumbnail slider with navigation */}
@@ -181,6 +195,7 @@ const TimeLineSlider: React.FC = () => {
             speed={800}
             allowTouchMove={true}
             centeredSlides={true}
+        
             onSlideChange={(swiper) => {
               if (mainSwiperRef.current) {
                 mainSwiperRef.current.slideTo(swiper.realIndex);

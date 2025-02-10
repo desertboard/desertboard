@@ -6,7 +6,6 @@ import { Button } from "@/app/components/ui/button";
 import { useSectorStore } from "@/app/store/useSectorStore";
 import { PencilIcon } from "lucide-react";
 import Image from "next/image";
-
 type Application = {
   id: number;
   title: string;
@@ -17,14 +16,14 @@ type Application = {
 type Finish = {
   id: number;
   title: string;
-  imageUrl: string;
+  image_url: string;
 };
 
 type Sectors = {
   _id: string;
   title: string;
   description: string;
-  imageUrl: string;
+  image_url: string;
   applications: Application[];
 };
 
@@ -92,7 +91,7 @@ const SectorsPage = () => {
           {sectors.map((sector, index) => (
             <Card key={index} className="overflow-hidden group">
               <div className="aspect-video relative">
-                <Image src={sector.imageUrl} alt={sector.title} className="object-cover w-full h-full" />
+                <Image src={sector.image_url} alt={sector.title} className="object-cover w-full h-full" fill />
               </div>
               <CardContent className="p-4">
                 <div className="flex justify-between items-start mb-2">
