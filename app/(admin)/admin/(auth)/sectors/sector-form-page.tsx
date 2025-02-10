@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import "react-quill/dist/quill.snow.css";
+import { ImageUploader } from "@/app/components/ui/image-uploader";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 interface Application {
@@ -60,7 +61,6 @@ const SectorFormPage = ({ sectorId }: Props) => {
       if (sectorId) {
         try {
           setIsLoading(true);
-          clearAll();
           const response = await fetch(`/api/admin/sector/byid?id=${sectorId}`);
           const data = await response.json();
           setValue("title", data.data.title);
@@ -157,12 +157,8 @@ const SectorFormPage = ({ sectorId }: Props) => {
           </div>
 
           <div className="space-y-2">
-            <Label className="text-sm font-medium">Image URL</Label>
-            <Input
-              {...register("image_url", { required: "Image URL is required" })}
-              className="w-full p-2 border rounded-md"
-              placeholder="Enter image URL"
-            />
+            <Label className="text-sm font-medium">Image</Label>
+            <ImageUploader value={getValues("image_url")} onChange={(url) => setValue("image_url", url)} />
             {errors.image_url && <p className="text-red-500 text-sm">{errors.image_url.message}</p>}
           </div>
 
