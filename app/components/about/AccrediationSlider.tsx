@@ -65,6 +65,28 @@ const AccrediationSlider:React.FC = () => {
             swiper.updateSlides();
             swiper.updateSlidesClasses();
           }}
+          // Slower speed for smoother transitions
+          speed={600}
+          // Reduce touch sensitivity for more controlled movements
+          touchRatio={1}
+          // Increase resistance for more controlled sliding
+          resistanceRatio={0.95}
+          // Enable smooth scroll simulation
+          simulateTouch={true}
+          // Enable hardware acceleration
+          watchSlidesProgress={true}
+          // Add smoother touch movement
+          touchStartPreventDefault={false}
+          touchMoveStopPropagation={true}
+          // Prevent unwanted slides movement
+          allowTouchMove={true}
+          threshold={5}
+          // Smooth autoplay
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true
+          }}
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log("slide change")}
           effect="coverflow"
@@ -75,18 +97,34 @@ const AccrediationSlider:React.FC = () => {
             modifier: 6,
             slideShadows: false,
           }}
+          // Add smooth transition timing function
+          cssMode={false}
           breakpoints={{
             320: {
-              slidesPerView: 1.4,
+              slidesPerView: 1,
+              spaceBetween:10
+            },
+            600: {
+              slidesPerView: 1.3,
+              spaceBetween:20
             },
             768: {
-              slidesPerView: 1.1,
+              slidesPerView:1.5,
+              spaceBetween: 20
+
+            },
+            991:{
+              slidesPerView:2.2,
+              spaceBetween: 10
             },
             1200: {
-              slidesPerView: 2.2,
+              slidesPerView: 2.1,
+              spaceBetween: 30
             },
             1400: {
-              slidesPerView: 2.2,
+              slidesPerView: 3.2,
+              spaceBetween: 40
+
             },
             1789: {
               slidesPerView: 3.2,

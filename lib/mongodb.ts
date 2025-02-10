@@ -10,7 +10,10 @@ declare global {
     | undefined;
 }
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/desertboard";
+
+const MONGODB_URI = process.env.NEXT_PUBLIC_MONGODB_URI ||  "mongodb://127.0.0.1:27017/desertboard";
+
+console.log(MONGODB_URI)
 
 if (!MONGODB_URI) {
   throw new Error("Please add your MONGODB_URI to .env.local");
@@ -45,7 +48,7 @@ async function connectDB(): Promise<mongoose.Connection> {
     cached.promise = null;
     throw e;
   }
-
+  
   return cached.conn;
 }
 

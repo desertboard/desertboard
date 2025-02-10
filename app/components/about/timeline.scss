@@ -1,5 +1,4 @@
-.thumbs-swiper .swiper-slide-thumb-active div {
-}
+.thumbs-swiper .swiper-slide-thumb-active div {}
 
 .thumbs-swiper .swiper-slide-thumb-active span {
     color: var(--secondary) !important;
@@ -23,6 +22,26 @@
 // }
 
 .timeline {
+    &__sec {
+        position: relative; // Ensure proper positioning
+        -webkit-overflow-scrolling: touch;
+        overflow: auto;
+
+        // Modified touch overlay
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 4; // Keep below the swiper navigation
+            pointer-events: auto; // Enable touch events
+            touch-action: pan-y; // Only allow vertical scrolling
+            -webkit-tap-highlight-color: transparent; // Remove tap highlight on mobile
+        }
+    }
+
     &__img {
         &::before {
             content: "";
@@ -41,23 +60,39 @@
             opacity: 1;
         }
     }
+
     &__years {
         padding-bottom: 2em;
+
         @media (min-width: 1200px) {
             height: 65dvh;
             overflow: hidden;
             padding-block: 3em;
         }
+
         @media (min-width: 1800px) {
             height: 58dvh;
             overflow: hidden;
             padding-block: 3em;
         }
     }
+
     &__thumb {
         @media (max-width: 768px) {
             width: fit-content;
             padding-inline: 1em;
         }
     }
+}
+
+
+.main-swiper {
+    touch-action: pan-y;
+    user-select: none;
+}
+
+.main-swiper .swiper-slide {
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
 }

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { FreeMode, Thumbs, Mousewheel, EffectFade } from "swiper/modules";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+// import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -104,9 +104,9 @@ const TimeLineSlider: React.FC = () => {
     };
   }, []);
   return (
-    <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary">
+    <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary timeline__sec">
       <div className="container d-none" ref={nextContainerRef}></div>
-      <div className="flex flex-col md:flex-row w-full gap-6 relative h-[35em] lg:h-[90dvh] xl:h-[90dvh] xxl:h-[70dvh]">
+      <div className="flex flex-col md:flex-row w-full gap-6 relative h-[38em] lg:h-[90dvh] xl:h-[90dvh] xxl:h-[70dvh]">
         <h2 className="text-white z-10 text-font48 nuber-next-heavy leading-[1] absolute top-10 lg:top-20 " style={{ left: `calc(100vw - (${divWidth})` }}>
           Our History <span className="text-[#FF671F]">.</span>
         </h2>
@@ -126,14 +126,28 @@ const TimeLineSlider: React.FC = () => {
             effect="fade"
             fadeEffect={{ crossFade: true }}
             watchSlidesProgress={true}
-            allowTouchMove={false}
+            allowTouchMove={true}
             mousewheel={false}
             noSwiping={true}
             noSwipingClass="swiper-slide"
             observer={true}
             observeParents={true}
             watchOverflow={true}
-            preventInteractionOnTransition={true}>
+            // preventInteractionOnTransition={true}
+              // Add these new properties
+  // allowTouchMove={true}
+  // touchRatio={1}
+  // touchAngle={45}
+  // resistance={true}
+  // resistanceRatio={0.85}
+  // shortSwipes={true}
+  // longSwipes={true}
+  // longSwipesRatio={0.5}
+  // touchStartPreventDefault={false}
+  // touchMoveStopPropagation={true}
+  // grabCursor={true}
+  // cssMode={true}
+            >
             {timelineData.map((item, index) => (
               <SwiperSlide key={index} className="!h-full ">
                 <div className="timeline__bg flex-grow bg-cover bg-center absolute top-0 left-0 z-1 history__bg  w-full h-full">
@@ -141,7 +155,7 @@ const TimeLineSlider: React.FC = () => {
                     <Image src={item.image} fill objectFit="cover" className="h-full w-full" alt="" />
                   </div>
                 </div>
-                <div className="rounded-lg shadow h-full flex flex-col justify-center xl:justify-end pb-20 relative z-30 xl:w-2/3 " style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
+                <div className="rounded-lg shadow h-full flex flex-col pt-28 lg:pt-0 lg:justify-center xl:justify-end pb-10 lg:pb-20 relative z-30 xl:w-2/3 " style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
                   <h3 className="text-4xl md:text-5xl lg:text-font72 helveticaBold text-white mb-10 nuber-next-heavy ">{item.year}</h3>
                   <h4 className="text-xl md:text-2xl lg:text-font28 leading-[1.2] opacity-75 nuber-next-heavy text-white mb-5">{item.subtitle}</h4>
                   <p className="text-white text-font20 leading-[1.3] opacity-75 font-normal">{item.description}</p>
@@ -149,22 +163,16 @@ const TimeLineSlider: React.FC = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <button className="absolute left-6 bottom-20 -translate-y-1/2 z-10 border border-white bg-tranparent p-1 rounded-full shadow md:hidden hover:bg-primary transition-colors duration-300" onClick={() => thumbsSwiper?.slidePrev()}>
-            <ChevronLeft className="w-6 h-6 text-white" />
-          </button>
-          <button className="absolute right-6 bottom-20 -translate-y-1/2 z-10 border border-white bg-transparent p-1 rounded-full shadow md:hidden hover:bg-primary transition-colors duration-300" onClick={() => thumbsSwiper?.slideNext()}>
-            <ChevronRight className="w-6 h-6 text-white" />
-          </button>
         </div>
 
         {/* Thumbnail slider with navigation */}
-        <div className="timeline__years w-full md:w-1/3  absolute bottom-0 xl:top-10 right-0 z-10" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
+        <div className="timeline__years w-full md:w-1/3  absolute bottom-10 xl:top-10 right-0 z-10" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
           {/* Navigation Buttons - Only visible on mobile  */}
 
           <Swiper
             onSwiper={setThumbsSwiper}
             direction={"horizontal"}
-            slidesPerView="auto"
+            slidesPerView={3}
             breakpoints={{
               768: {
                 direction: "vertical",
@@ -186,6 +194,7 @@ const TimeLineSlider: React.FC = () => {
             speed={800}
             allowTouchMove={true}
             centeredSlides={true}
+        
             onSlideChange={(swiper) => {
               if (mainSwiperRef.current) {
                 mainSwiperRef.current.slideTo(swiper.realIndex);
@@ -194,13 +203,25 @@ const TimeLineSlider: React.FC = () => {
             }}>
             {timelineData.map((item, index) => (
               <SwiperSlide key={index} className="!h-16 md:!h-24 cursor-pointer timeline__thumb">
-                <div className={`w-full h-full flex items-center justify-end rounded transition-all duration-300`}>
-                  <span className={`text-font20 text-right md:text-2xl font-normal transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-bold lg:min-w-max xl:text-font32 opacity-100" : "text-white opacity-50 text-font24 font-normal hover:text-gray-200"}`}>{item.year}</span>
+                <div className={`w-full h-full flex items-center justify-center lg:justify-end rounded transition-all duration-300`}>
+                  <span className={`text-font19 lg:text-font20 text-right font-normal transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-bold lg:min-w-max xl:text-font32 opacity-100" : "text-white opacity-50 lg:text-font24 font-normal hover:text-gray-200"}`}>{item.year}</span>
                   <div className={`hidden lg:block lg:ml-3 h-[4px] w-[68px] transition-all ease-linear duration-300 ${thumbsSwiper?.realIndex === index ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
+              <button className="absolute left-6 bottom-[-18%] -translate-y-1/2 z-10 shadow md:hidden transition-colors duration-300" onClick={() => thumbsSwiper?.slidePrev()}>
+            {/* <ChevronLeft className="w-6 h-6 text-white" /> */}
+             <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                <path d="M17.9879 2L2.98787 17L17.9879 32M22.9939 7.00392L12.9978 17L22.9939 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+          </button>
+          <button className="absolute right-6 bottom-[-18%] -translate-y-1/2 z-10 rounded-full shadow md:hidden transition-colors duration-300" onClick={() => thumbsSwiper?.slideNext()}>
+            {/* <ChevronRight className="w-6 h-6 text-white" /> */}
+            <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+          </button>
         </div>
       </div>
     </section>
