@@ -115,15 +115,13 @@ const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                                                 <div className="flex items-end  min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500  ">
 
                                                   <div className="p-5 transition-all duration-500 ease-in-out w-full  ">
-                                                    <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-in-out w-full  translate-y-[0px] delay-200 group-hover:translate-y-[-10px]">
+                                                    <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-linear w-full  translate-y-[0px] delay-200 group-hover:translate-y-[-10px]">
 
-                                                      <span className="  overflow-hidden transition-opacity duration-500 group-hover:delay-100 delay-0 ">
                                                         {item.title}
-                                                        </span>
                                                           </h3>
 
                                                           <p
-                                                          className="text-white overflow-hidden pt-3 min-w-[45ch] transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100  "
+                                                          className="text-white overflow-hidden pt-3   transition-all duration-500 ease-in-out   "
                                                           style={{
                                                             maxHeight: hoveredIndex === item.id ? `${contentRefs.current[item.id]?.scrollHeight  || 0}px` : "0px",
                                                                                       }}
@@ -133,7 +131,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                                                         >
                                                           <span
 
-                                                            className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:delay-100 delay-0 block"
+                                                            className="   duration-500 delay-0 block"
                                                           >
                                                             {item.desc}
                                                           </span>

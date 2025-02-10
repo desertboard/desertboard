@@ -130,14 +130,14 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                       onMouseEnter={() => setHoveredIndex(item.id)}
                       onMouseLeave={() => setHoveredIndex(null)}
                                     >
-                                      <div className="flex items-end pb-3 md:pb-5 xl:pb-5 min-h-[300px] lg:min-h-[426px]">
+                                      <div className="flex items-end pb-1 md:pb-3 xl:pb-3 min-h-[300px] lg:min-h-[426px]">
                                         <div className="px-4 md:px-5 xl:px-5 w-full">
-                                          <h3 className="nubernext28bold text-white translate-y-[5px] transition-all duration-500 delay-200 group-hover:translate-y-[-10px]">
+                                          <h3 className="nubernext28bold text-white translate-y-[0px] pb-2 transition-all duration-500 delay-200 group-hover:translate-y-[-10px]">
                                             {item.title}
                                           </h3>
 
 
-                                            <p className="text-white overflow-hidden pt-3 h-0 group-hover:h-full   group-hover:translate-y-[-10px]
+                                            <p className="text-white overflow-hidden   h-0 group-hover:h-full   group-hover:translate-y-[-10px]
                                             transition-all duration-500 ease-in-out  "
                                             style={{
                                               maxHeight: hoveredIndex === item.id ? `${contentRefs.current[item.id]?.scrollHeight  || 0}px` : "0px",
@@ -146,7 +146,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                                                                           contentRefs.current[item.id] = el;
                                                                         }}
                           >
-                                            <span className="opacity-0 group-hover:opacity-100  transition-opacity duration-500 group-hover:delay-100 delay-0">
+                                            <span className="">
                                               {item.desc}
                                               </span>
                                             </p>
