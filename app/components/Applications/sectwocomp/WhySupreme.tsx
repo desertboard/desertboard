@@ -20,7 +20,7 @@ const WhySupreme: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
 
         <div className="pb-7 md:pb-[60px] ">
         <div>
-          <p className=" helvetica-bold text-font28 leading-[1] text-Darkgreen mb-8" dangerouslySetInnerHTML={{ __html:   sectitle }}>
+          <p className=" helvetica-bold text-font28 leading-[1.2] text-Darkgreen mb-8" dangerouslySetInnerHTML={{ __html:   sectitle }}>
 
           </p>
         </div>
