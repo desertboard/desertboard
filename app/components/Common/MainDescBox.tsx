@@ -47,7 +47,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
       </motion.div>
       <div className="container m-auto">
         <div className="lg:flex flex-col lg:flex-row items-center justify-between adst relative xl:pr-[10em] xxl:pr-[20em]">
-          <div className="lg:w-1/2 text-left pl-5 lg:pl-6 xl:pl-16 py-5 lg:py-20 xl:py-20 opacity-[99%] mb-2 lg:mb-0">
+          <div className="lg:w-1/2 text-left px-5 lg:pl-6 xl:pl-16 py-5 lg:py-20 xl:py-20 opacity-[99%] mb-2 lg:mb-0">
             <motion.h2
               className="text-Darkgreen mb-4 text-[28px] md:text-[48px] nuber-next-heavy leading-[1.2] overflow-hidden"
               initial={{ opacity: 0, x: -30 }}

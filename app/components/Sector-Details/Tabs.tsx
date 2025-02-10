@@ -99,10 +99,10 @@ const Tabs: React.FC = () => {
                               />
                             </div>
                             <div className="w-full lg:w-1/2 text-justify items-center">
-                              <h3 className="heavydark mb-5 md:mb-10">
+                              <h3 className="heavydark mb-5 xl:mb-10">
                                 {tab.title}
                               </h3>
-                              <p className="texthelvetica20 clr15op75 mb-6 md:mb-10">
+                              <p className="texthelvetica20 clr15op75 mb-6 xl:mb-10">
                                 {tab.description}
                               </p>
                               <ul className="mb-0 lg:mb-10 mnsas">
@@ -154,7 +154,7 @@ const Tabs: React.FC = () => {
                           animate={{ scale: 1 }}
                           transition={{ duration: 0.5 }}
                         />
-                            <div className="p-4 pt-0">
+                            <div className=" pt-0">
                               {/* <h3 className="heavydark mb-5">{tab.title}</h3> */}
                               <p className="texthelvetica20 clr15op75 mb-6">
                                 {tab.description}
