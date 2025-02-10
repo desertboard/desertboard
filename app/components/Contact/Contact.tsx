@@ -1,11 +1,13 @@
+"use client"
 import React from 'react'
 import bannerImg from "@/public/assets/contactbanner.jpg";
 import PageBanner from '../Common/PageBanner';
 import Arrow from "@/public/assets/brdcrbs.svg";
 import AddressBar from './AddressBar';
 import Forms from './FormComponents/Forms';
-import BackGround from '@/public/assets/images/Background.jpg'
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { assets } from '@/public/assets/images/assets';
 
 const Contact = () => {
 
@@ -26,17 +28,25 @@ const Contact = () => {
                 bnrHeight="90dvh"
             />
 
-            <section className='h-fit p-2 relative'>
-              <Image src={BackGround} alt='background' className='absolute left-0 top-0 -z-10 inset-0 h-full w-full object-cover'/>
-                <div className='grid grid-cols-1 lg:grid-cols-5 container m-auto mt-[48px] h-full lg:gap-12 gap-y-6 pt-[15px] mb-[48px] z-10'>
+            <section className='h-fit py-10 md:py-20  relative insp-mn   inspbg'>
 
-                    <div className='lg:col-span-2 col-span-1 text-black flex flex-col gap-6 lg:border-r-2 border-b-2 lg:border-b-0 border-[#E3DED9] nuber-next-bold pb-5 lg:pb-0'>
-                        <h2 className='text-4xl'>Get in Touch<span className='text-orange'>.</span></h2>
-                        <p className='lg:w-3/4'>We’d love to hear from you! Whether you have questions, need assistance, or want to explore how we can work together,
+
+                   <motion.div
+                     className="ola ola-right absolute bottom-[43%] left-[-25%] md:left-[-15%] w-[20em] md:w-[40em]"
+                     animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
+                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                   >
+                     <Image className="absolute" src={assets.lfbt} alt="Description of the image" />
+                   </motion.div>
+                <div className='grid lg:grid-cols-9 grid-cols-1  container m-auto  h-full  gap-y-6 relative  z-1'>
+
+                    <div className='lg:col-span-3 col-span-1 pr-0 md-pr-7 lg:pr-20 text-black flex flex-col gap-6 lg:border-r-2 border-[#15151510] nuber-next-bold'>
+                        <h2 className='heavydark leading-[1.2]'>Get in Touch<span className='text-orange'>.</span></h2>
+                        <p className=' texthelvetica20'>We’d love to hear from you! Whether you have questions, need assistance, or want to explore how we can work together,
                             our team is here to help. Reach out to us through the contact form, email, or phone, and we’ll get back to you as soon as possible. </p>
                     </div>
 
-                    <div className='col-span-3 w-full flex flex-col gap-10'>
+                    <div className='lg:col-span-6 w-full flex flex-col gap-8 mt-3 md:mt-8 lg:mt-0 pl-0 md-pl-7 lg:pl-20'>
                         <AddressBar/>
                         <Forms/>
                     </div>

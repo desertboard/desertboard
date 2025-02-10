@@ -60,7 +60,7 @@ const Forms = () => {
             {!isMobile && <div>
                 <ul className='flex text-black text-font24'>
                     {menu.map((item,index)=>(
-                        <div key={index} className={`lg:px-7 px-2 py-2 ${menuIndex == index ? "bg-[#E3DED9]" : ""} cursor-pointer  nuber-next-bold`} onClick={()=>setMenuIndex(index)}><li>{item.title}</li></div>
+                        <div key={index} className={`xxl:px-8 px-4 py-5 ${menuIndex == index ? "bg-[#E3DED9] text-Darkgreen opacity-100" : "clr15op50"} cursor-pointer  nuber-next-heavy  text-font24 leading-[1.3]`} onClick={()=>setMenuIndex(index)}><li>{item.title}</li></div>
                     ))}
 
                 </ul>
@@ -70,7 +70,7 @@ const Forms = () => {
                         {menu.map((item,index)=>(
                             <div key={index}>
                             <button
-                            className={`w-full flex justify-between items-center  text-slate-800 py-4 bg-[#E3DED9] px-6`}
+                            className={`w-full flex justify-between items-center  text-slate-800 py-3 md:py-4 px-3 md:px-6 bg-[#E3DED9] `}
                             onClick={()=>setMenuIndex(index)}
                         >
                             <div className='helvetica-bold'>{item.title}</div>
@@ -79,10 +79,10 @@ const Forms = () => {
 
                             </span>
                             </button>
-                        
+
 
                         <div
-                            className={`overflow-hidden transition-all duration-300 pb-3 px-4 ${menuIndex === index ? "max-h-fit opacity-100 bg-[#E3DED9] mb-3" : "max-h-0 opacity-0"
+                            className={`overflow-hidden transition-all duration-300 pb-3 px-3 md:px-4 ${menuIndex === index ? "max-h-fit opacity-100 bg-[#E3DED9] mb-3" : "max-h-0 opacity-0"
                                 }`}
                         >
 
