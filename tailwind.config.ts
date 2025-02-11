@@ -11,9 +11,12 @@ module.exports = withMT({
   darkMode: ["class", "class"],
   theme: {
   	extend: {
-		fontFamily:{
-			helvetica:["Helvetica","sans-serif"]
-		},
+  		fontFamily: {
+  			helvetica: [
+  				'Helvetica',
+  				'sans-serif'
+  			]
+  		},
   		screens: {
   			xs: '480px',
   			sm: '606px',
@@ -41,16 +44,53 @@ module.exports = withMT({
   			}
   		},
   		colors: {
-  			primary: '#00594F',
-  			secondary: '#FFB549',
+  			primary: {
+  				DEFAULT: 'hsl(var(--primary))',
+  				foreground: 'hsl(var(--primary-foreground))'
+  			},
+  			secondary: {
+  				DEFAULT: 'hsl(var(--secondary))',
+  				foreground: 'hsl(var(--secondary-foreground))'
+  			},
   			Darkgreen: '#002D28',
   			litetext: '#151515',
   			orange: '#FF671F',
-  			accent: '#ff671f',
+  			accent: {
+  				DEFAULT: 'hsl(var(--accent))',
+  				foreground: 'hsl(var(--accent-foreground))'
+  			},
   			themebg: '#E5E0DC',
   			lightBlack: '#151515',
   			grayE3D: '#E3DED9',
-  			medBg: '#E3DED9'
+  			medBg: '#E3DED9',
+  			background: 'hsl(var(--background))',
+  			foreground: 'hsl(var(--foreground))',
+  			card: {
+  				DEFAULT: 'hsl(var(--card))',
+  				foreground: 'hsl(var(--card-foreground))'
+  			},
+  			popover: {
+  				DEFAULT: 'hsl(var(--popover))',
+  				foreground: 'hsl(var(--popover-foreground))'
+  			},
+  			muted: {
+  				DEFAULT: 'hsl(var(--muted))',
+  				foreground: 'hsl(var(--muted-foreground))'
+  			},
+  			destructive: {
+  				DEFAULT: 'hsl(var(--destructive))',
+  				foreground: 'hsl(var(--destructive-foreground))'
+  			},
+  			border: 'hsl(var(--border))',
+  			input: 'hsl(var(--input))',
+  			ring: 'hsl(var(--ring))',
+  			chart: {
+  				'1': 'hsl(var(--chart-1))',
+  				'2': 'hsl(var(--chart-2))',
+  				'3': 'hsl(var(--chart-3))',
+  				'4': 'hsl(var(--chart-4))',
+  				'5': 'hsl(var(--chart-5))'
+  			}
   		},
   		fontSize: {
   			font14: 'clamp(0.7rem,1.2vw,0.875rem)',

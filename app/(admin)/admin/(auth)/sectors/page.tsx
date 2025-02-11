@@ -6,6 +6,7 @@ import { Button } from "@/app/components/ui/button";
 import { useSectorStore } from "@/app/store/useSectorStore";
 import { PencilIcon } from "lucide-react";
 import Image from "next/image";
+import DeleteSectorDialog from "./components/DeleteSectorDialog";
 type Application = {
   id: number;
   title: string;
@@ -34,18 +35,18 @@ const SectorsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { clearApplications } = useSectorStore();
   const router = useRouter();
+  const fetchSectors = async () => {
+    try {
+      const response = await fetch("/api/admin/sector");
+      const data = await response.json();
+      setSectors(data.data);
+    } catch (error) {
+      console.error("Error fetching sectors:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchSectors = async () => {
-      try {
-        const response = await fetch("/api/admin/sector");
-        const data = await response.json();
-        setSectors(data.data);
-      } catch (error) {
-        console.error("Error fetching sectors:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
     fetchSectors();
   }, []);
 
@@ -98,14 +99,17 @@ const SectorsPage = () => {
               <CardContent className="p-4">
                 <div className="flex justify-between items-start mb-2">
                   <h2 className="text-xl font-semibold">{sector.title}</h2>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-8 w-8 text-gray-500 hover:text-primary hover:bg-primary/10"
-                    onClick={() => handleEditSector(sector._id)}
-                  >
-                    <PencilIcon className="h-4 w-4" />
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8 text-gray-500 hover:text-primary hover:bg-primary/10"
+                      onClick={() => handleEditSector(sector._id)}
+                    >
+                      <PencilIcon className="h-4 w-4" />
+                    </Button>
+                    <DeleteSectorDialog sectorId={sector._id} onDelete={fetchSectors} />
+                  </div>
                 </div>
                 <p className="text-gray-600 line-clamp-3">{sector.description}</p>
               </CardContent>
