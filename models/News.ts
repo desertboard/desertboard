@@ -6,6 +6,8 @@ const NewsSchema = new mongoose.Schema({
   images: [String],
   tags: [String],
   date: Date,
+  sector: String,
+  type: String,
 });
 
 const News = mongoose.models.News || mongoose.model("News", NewsSchema);

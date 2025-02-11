@@ -21,6 +21,8 @@ interface NewsFormData {
   tags: string[];
   date: string;
   images: string[];
+  sector: string;
+  type: string;
 }
 
 interface NewsFormProps {
@@ -44,6 +46,8 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
       tags: [],
       date: new Date().toISOString().split("T")[0],
       images: [],
+      sector: "",
+      type: "",
     },
   });
 
@@ -55,6 +59,8 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
       setValue("description", data.data.description);
       setValue("tags", data.data.tags);
       setValue("images", data.data.images);
+      setValue("sector", data.data.sector);
+      setValue("type", data.data.type);
       setImageUrls(data.data.images);
     };
     fetchNews();
@@ -115,6 +121,30 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
             className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
           />
           {errors.title && <p className="mt-1 text-sm text-red-600">{errors.title.message}</p>}
+        </div>
+
+        <div>
+          <Label htmlFor="sector" className="block text-sm font-medium text-gray-700">
+            Sector
+          </Label>
+          <Input
+            {...register("sector", { required: "Sector is required" })}
+            type="text"
+            id="sector"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+          />
+        </div>
+
+        <div>
+          <Label htmlFor="type" className="block text-sm font-medium text-gray-700">
+            Type
+          </Label>
+          <Input
+            {...register("type", { required: "Type is required" })}
+            type="text"
+            id="type"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+          />
         </div>
 
         {/* Description Field */}
