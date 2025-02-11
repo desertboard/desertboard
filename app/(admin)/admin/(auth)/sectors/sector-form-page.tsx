@@ -22,6 +22,8 @@ interface SectorFormData {
   description: string;
   image: string;
   applications: Application[];
+  icon: string;
+  bannerImage: string;
 }
 
 interface Props {
@@ -46,6 +48,8 @@ const SectorFormPage = ({ sectorId }: Props) => {
       description: "",
       image: "",
       applications: [],
+      icon: "",
+      bannerImage: "",
     },
   });
 
@@ -75,6 +79,8 @@ const SectorFormPage = ({ sectorId }: Props) => {
           setValue("description", data.data.description);
           setValue("image", data.data.image);
           setValue("applications", data.data.applications);
+          setValue("icon", data.data.icon);
+          setValue("bannerImage", data.data.bannerImage);
         } catch (error) {
           console.error("Error fetching sector:", error);
         } finally {
@@ -151,9 +157,57 @@ const SectorFormPage = ({ sectorId }: Props) => {
           </div>
 
           <div className="space-y-2">
-            <Label className="text-sm font-medium">Image</Label>
-            <ImageUploader value={getValues("image")} onChange={(url) => setValue("image", url)} />
+            <Label>Image</Label>
+            <Controller
+              name="image"
+              control={control}
+              render={({ field }) => (
+                <ImageUploader
+                  value={field.value}
+                  onChange={(url) => {
+                    field.onChange(url);
+                    setValue("image", url);
+                  }}
+                />
+              )}
+            />
             {errors.image && <p className="text-red-500 text-sm">{errors.image.message}</p>}
+          </div>
+
+          <div className="space-y-2">
+            <Label>Icon</Label>
+            <Controller
+              name="icon"
+              control={control}
+              render={({ field }) => (
+                <ImageUploader
+                  value={field.value}
+                  onChange={(url) => {
+                    field.onChange(url);
+                    setValue("icon", url);
+                  }}
+                />
+              )}
+            />
+            {errors.icon && <p className="text-red-500 text-sm">{errors.icon.message}</p>}
+          </div>
+
+          <div className="space-y-2">
+            <Label>Banner Image</Label>
+            <Controller
+              name="bannerImage"
+              control={control}
+              render={({ field }) => (
+                <ImageUploader
+                  value={field.value}
+                  onChange={(url) => {
+                    field.onChange(url);
+                    setValue("bannerImage", url);
+                  }}
+                />
+              )}
+            />
+            {errors.bannerImage && <p className="text-red-500 text-sm">{errors.bannerImage.message}</p>}
           </div>
 
           <div className="space-y-4">

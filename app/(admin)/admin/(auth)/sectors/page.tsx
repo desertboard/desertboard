@@ -23,8 +23,10 @@ type Sectors = {
   _id: string;
   title: string;
   description: string;
-  image_url: string;
+  image: string;
   applications: Application[];
+  icon: string;
+  bannerImage: string;
 };
 
 const SectorsPage = () => {
@@ -91,7 +93,7 @@ const SectorsPage = () => {
           {sectors.map((sector, index) => (
             <Card key={index} className="overflow-hidden group">
               <div className="aspect-video relative">
-                <Image src={sector.image_url} alt={sector.title} className="object-cover w-full h-full" fill />
+                <Image src={sector.image} alt={sector.title} className="object-cover w-full h-full" fill />
               </div>
               <CardContent className="p-4">
                 <div className="flex justify-between items-start mb-2">

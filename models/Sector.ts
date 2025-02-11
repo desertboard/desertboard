@@ -33,6 +33,14 @@ const SectorSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    icon: {
+      type: String,
+      required: true,
+    },
+    bannerImage: {
+      type: String,
+      required: false,
+    },
     applications: [ApplicationSchema],
   },
   {
