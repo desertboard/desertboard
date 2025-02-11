@@ -145,6 +145,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
       setValue("images", res.data.images);
       setValue("bannerImage", res.data.bannerImage);
       setValue("featuredImage", res.data.featuredImage);
+      setImageUrls(res.data.images);
     } catch (error) {
       console.error("Error fetching product:", error);
     }
