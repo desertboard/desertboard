@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PencilIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type News = {
   _id: string;
@@ -40,7 +41,7 @@ export default function AdminProducts() {
   };
 
   const handleEditNews = (newsId: string) => {
-    router.push(`/admin/news/${newsId}/edit`);
+    router.push(`/admin/news/${newsId}`);
   };
 
   if (isLoading) {
@@ -57,14 +58,14 @@ export default function AdminProducts() {
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Products</h1>
+        <h1 className="text-3xl font-bold">News</h1>
         <Button className="bg-primary text-white" onClick={handleClickNewNews}>
           <span className="mr-2">+</span>
           Add News
         </Button>
       </div>
 
-      {news.length === 0 ? (
+      {news?.length === 0 ? (
         <div className="text-center py-12 bg-gray-50 rounded-lg">
           <h3 className="text-xl font-semibold text-gray-600 mb-2">No news found</h3>
           <p className="text-gray-500 mb-4">Get started by creating your first news</p>
@@ -75,10 +76,10 @@ export default function AdminProducts() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {news.map((news, index) => (
+          {news?.map((news, index) => (
             <Card key={index} className="overflow-hidden group">
               <div className="aspect-video relative">
-                <img
+                <Image
                   width={100}
                   height={100}
                   src={news.images[0]}

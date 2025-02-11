@@ -11,9 +11,10 @@ interface ImageUploaderProps {
   value?: string;
   onChange: (url: string, imageData?: File) => void;
   className?: string;
+  deleteAfterUpload?: boolean;
 }
 
-export function ImageUploader({ value, onChange, className }: ImageUploaderProps) {
+export function ImageUploader({ value, onChange, className, deleteAfterUpload = false }: ImageUploaderProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [localImageUrl, setLocalImageUrl] = useState<string | null>(null);
@@ -51,6 +52,10 @@ export function ImageUploader({ value, onChange, className }: ImageUploaderProps
         setLocalImageUrl(data.url);
         onChange(data.url, file);
         setIsUploadComplete(true);
+        if (deleteAfterUpload) {
+          setLocalImageUrl(null);
+          setIsUploadComplete(false);
+        }
       } catch (err) {
         setLocalImageUrl(null);
         setError(err instanceof Error ? err.message : "Failed to upload image");
@@ -75,6 +80,8 @@ export function ImageUploader({ value, onChange, className }: ImageUploaderProps
     setIsUploadComplete(false);
     onChange("", undefined);
   }, [onChange, localImageUrl]);
+
+  console.log(value);
 
   const displayUrl = localImageUrl || value;
 

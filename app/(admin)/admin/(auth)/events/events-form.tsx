@@ -33,7 +33,6 @@ const EventsForm = ({ eventId }: EventsFormProps) => {
     handleSubmit,
     control,
     setValue,
-    getValues,
     formState: { errors },
   } = useForm<EventsFormData>({
     defaultValues: {
@@ -52,8 +51,12 @@ const EventsForm = ({ eventId }: EventsFormProps) => {
 
       const response = await fetch(`/api/admin/events/byid?id=${eventId}`);
       const data = await response.json();
+
+      // Format the date to YYYY-MM-DD
+      const eventDate = data.data.date ? new Date(data.data.date).toISOString().split("T")[0] : "";
+
       setValue("title", data.data.title);
-      setValue("date", data.data.date);
+      setValue("date", eventDate);
       setValue("time", data.data.time);
       setValue("location", data.data.location);
       setValue("description", data.data.description);
@@ -165,7 +168,19 @@ const EventsForm = ({ eventId }: EventsFormProps) => {
         {/* Image Field */}
         <div className="space-y-2">
           <Label>Image</Label>
-          <ImageUploader value={getValues("image")} onChange={(url) => setValue("image", url)} />
+          <Controller
+            name="image"
+            control={control}
+            render={({ field }) => (
+              <ImageUploader
+                value={field.value}
+                onChange={(url) => {
+                  field.onChange(url);
+                  setValue("image", url);
+                }}
+              />
+            )}
+          />
         </div>
       </div>
 

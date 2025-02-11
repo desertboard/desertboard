@@ -6,7 +6,7 @@ import { verifyAdmin } from "@/lib/verifyAdmin";
 export async function GET() {
   await connectDB();
   const news = await News.find();
-  return NextResponse.json(news);
+  return NextResponse.json({ data: news, success: true }, { status: 200 });
 }
 
 export async function POST(request: NextRequest) {
@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
     await connectDB();
     const { title, description, images, tags, date } = await request.json();
     const news = await News.create({ title, description, images, tags, date });
-    return NextResponse.json(news);
+    return NextResponse.json({ data: news, success: true }, { status: 200 });
   } catch (error) {
     console.error("Error creating news:", error);
     return NextResponse.json({ error: "Failed to create news" }, { status: 500 });

@@ -6,7 +6,7 @@ import { verifyAdmin } from "@/lib/verifyAdmin";
 export async function GET() {
   await connectDB();
   const events = await Event.find();
-  return NextResponse.json(events);
+  return NextResponse.json({ data: events, success: true }, { status: 200 });
 }
 
 export async function POST(request: NextRequest) {
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     await connectDB();
     const { title, date, time, location, description, image } = await request.json();
     const event = await Event.create({ title, date, time, location, description, image });
-    return NextResponse.json(event);
+    return NextResponse.json({ data: event, success: true }, { status: 200 });
   } catch (error) {
     console.error("Error creating event:", error);
     return NextResponse.json({ error: "Failed to create event" }, { status: 500 });

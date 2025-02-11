@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
 
   await connectDB();
   const news = await News.findById(id);
-  return NextResponse.json(news);
+  return NextResponse.json({ data: news, success: true }, { status: 200 });
 }
 
 export async function PATCH(request: NextRequest) {
@@ -21,7 +21,7 @@ export async function PATCH(request: NextRequest) {
   const id = searchParams.get("id");
   const { title, description, images, tags, date } = await request.json();
   const news = await News.findByIdAndUpdate(id, { title, description, images, tags, date });
-  return NextResponse.json(news);
+  return NextResponse.json({ data: news, success: true }, { status: 200 });
 }
 
 export async function DELETE(request: NextRequest) {
@@ -33,5 +33,5 @@ export async function DELETE(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   const news = await News.findByIdAndDelete(id);
-  return NextResponse.json(news);
+  return NextResponse.json({ data: news, success: true }, { status: 200 });
 }
