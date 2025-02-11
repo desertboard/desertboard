@@ -10,11 +10,19 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
   }
 
-  const { title, description, image_url, specifications } = await request.json();
+  const { title, subTitle, sector, specifications, subSections, bestPractices, finishes } = await request.json();
 
   await connectDB();
 
-  const product = await Product.create({ title, description, image_url, specifications });
+  const product = await Product.create({
+    title,
+    subTitle,
+    sector,
+    specifications,
+    subSections,
+    bestPractices,
+    finishes,
+  });
 
   return NextResponse.json({ success: true, data: product }, { status: 201 });
 }

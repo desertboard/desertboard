@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface NewsFormData {
   title: string;
@@ -57,7 +58,7 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
       setImageUrls(data.data.images);
     };
     fetchNews();
-  }, []);
+  }, [newsId]);
 
   const handleImageUpload = async (uploadedUrl: string) => {
     setImageUrls((prev) => [...prev, uploadedUrl]);
@@ -158,12 +159,18 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
         <div>
           <Label className="block text-sm font-medium text-gray-700">Images</Label>
           <div className="mt-2">
-            <ImageUploader onChange={handleImageUpload} />
+            <ImageUploader onChange={handleImageUpload} deleteAfterUpload={true} />
           </div>
           <div className="mt-4 grid grid-cols-3 gap-4">
             {imageUrls.map((url, index) => (
               <div key={index} className="relative h-40">
-                <img src={url} alt={`Uploaded image ${index + 1}`} className="h-full w-full object-cover rounded-lg" />
+                <Image
+                  src={url}
+                  alt={`Uploaded image ${index + 1}`}
+                  className="h-full w-full object-cover rounded-lg"
+                  width={100}
+                  height={100}
+                />
                 <button
                   type="button"
                   onClick={() => handleRemoveImage(index)}

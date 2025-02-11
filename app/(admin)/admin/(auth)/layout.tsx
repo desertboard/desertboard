@@ -6,6 +6,7 @@ import {
   UserGroupIcon,
   EnvelopeIcon,
   ArrowRightOnRectangleIcon,
+  CalendarIcon,
 } from "@heroicons/react/24/outline";
 import ClientSideLink from "../client-side-link";
 
@@ -15,7 +16,8 @@ const navItems = [
   { name: "Faqs", href: "/admin/faqs", icon: UserGroupIcon },
   { name: "Glossary", href: "/admin/glossary", icon: UserGroupIcon },
   { name: "Sustainability", href: "/admin/sustainability", icon: UserGroupIcon },
-  { name: "News & Events", href: "/admin/news", icon: NewspaperIcon },
+  { name: "News", href: "/admin/news", icon: NewspaperIcon },
+  { name: "Events", href: "/admin/events", icon: CalendarIcon },
   { name: "Products", href: "/admin/products", icon: CubeIcon },
   { name: "Sectors", href: "/admin/sectors", icon: BuildingOfficeIcon },
   { name: "Contact", href: "/admin/contact", icon: EnvelopeIcon },

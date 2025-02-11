@@ -11,7 +11,18 @@ const SpecificationSchema = new mongoose.Schema({
   },
 });
 
-const ProductSchema = new mongoose.Schema({
+const SubSectionSchema = new mongoose.Schema({
+  icon: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+});
+
+const BestPracticeSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -20,12 +31,46 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  image_url: {
+});
+
+const FinishSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+});
+
+const ProductSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  subTitle: {
     type: String,
     required: true,
   },
   specifications: {
     type: [SpecificationSchema],
+    required: true,
+  },
+  subSections: {
+    type: [SubSectionSchema],
+    required: true,
+  },
+  bestPractices: {
+    type: [BestPracticeSchema],
+    required: true,
+  },
+  finishes: {
+    type: [FinishSchema],
+    required: true,
+  },
+  sector: {
+    type: String,
     required: true,
   },
 });

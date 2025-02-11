@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PencilIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type Events = {
   _id: string;
@@ -41,7 +42,7 @@ export default function AdminProducts() {
   };
 
   const handleEditEvents = (eventsId: string) => {
-    router.push(`/admin/events/${eventsId}/edit`);
+    router.push(`/admin/events/${eventsId}`);
   };
 
   if (isLoading) {
@@ -58,14 +59,14 @@ export default function AdminProducts() {
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Products</h1>
+        <h1 className="text-3xl font-bold">Events</h1>
         <Button className="bg-primary text-white" onClick={handleClickNewEvents}>
           <span className="mr-2">+</span>
           Add Events
         </Button>
       </div>
 
-      {events.length === 0 ? (
+      {events?.length === 0 ? (
         <div className="text-center py-12 bg-gray-50 rounded-lg">
           <h3 className="text-xl font-semibold text-gray-600 mb-2">No events found</h3>
           <p className="text-gray-500 mb-4">Get started by creating your first events</p>
@@ -76,10 +77,10 @@ export default function AdminProducts() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {events.map((event, index) => (
+          {events?.map((event, index) => (
             <Card key={index} className="overflow-hidden group">
               <div className="aspect-video relative">
-                <img
+                <Image
                   width={100}
                   height={100}
                   src={event.image}

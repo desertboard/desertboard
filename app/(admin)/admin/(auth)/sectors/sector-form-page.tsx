@@ -1,8 +1,7 @@
 import { Card } from "@/app/components/ui/card";
-import { useSectorStore } from "@/app/store/useSectorStore";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, useFieldArray } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -14,16 +13,14 @@ const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 interface Application {
   title: string;
   description: string;
-  finishes: Array<{
-    title: string;
-    image_url: string;
-  }>;
+  image: string;
+  product: string;
 }
 
 interface SectorFormData {
   title: string;
   description: string;
-  image_url: string;
+  image: string;
   applications: Application[];
 }
 
@@ -33,12 +30,8 @@ interface Props {
 
 const SectorFormPage = ({ sectorId }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [products, setProducts] = useState<string[]>([]);
   const router = useRouter();
-  const applications = useSectorStore((state) => state.applications);
-  const clearAll = useSectorStore((state) => state.clearAll);
-  const { setTitle, setDescription, setImageUrl, setApplications, title, description, image_url } = useSectorStore(
-    (state) => state
-  );
 
   const {
     register,
@@ -49,12 +42,27 @@ const SectorFormPage = ({ sectorId }: Props) => {
     formState: { errors },
   } = useForm<SectorFormData>({
     defaultValues: {
-      title: title,
-      description: description,
-      image_url: image_url,
-      applications: applications,
+      title: "",
+      description: "",
+      image: "",
+      applications: [],
     },
   });
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "applications",
+  });
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await fetch("/api/admin/products");
+      const data = await response.json();
+      setProducts(data.data.map((product: { title: string }) => product.title));
+    };
+
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
     const fetchSector = async () => {
@@ -65,11 +73,8 @@ const SectorFormPage = ({ sectorId }: Props) => {
           const data = await response.json();
           setValue("title", data.data.title);
           setValue("description", data.data.description);
-          setValue("image_url", data.data.image_url);
-          setTitle(data.data.title);
-          setDescription(data.data.description);
-          setImageUrl(data.data.image_url);
-          setApplications(data.data.applications);
+          setValue("image", data.data.image);
+          setValue("applications", data.data.applications);
         } catch (error) {
           console.error("Error fetching sector:", error);
         } finally {
@@ -79,38 +84,26 @@ const SectorFormPage = ({ sectorId }: Props) => {
     };
 
     fetchSector();
-  }, [sectorId, setValue, setTitle, setDescription, setImageUrl, setApplications]);
-
-  useEffect(() => {
-    setValue("title", title);
-    setValue("description", description);
-    setValue("image_url", image_url);
-  }, [title, description, image_url, setValue]);
+  }, [sectorId, setValue]);
 
   const onSubmit = async (data: SectorFormData) => {
-    const newData = {
-      ...data,
-      applications: applications,
-    };
     try {
       setIsLoading(true);
       if (sectorId) {
         const response = await fetch(`/api/admin/sector?id=${sectorId}`, {
           method: "PATCH",
-          body: JSON.stringify(newData),
+          body: JSON.stringify(data),
         });
         const res = await response.json();
         console.log(res);
-        clearAll();
         router.push("/admin/sectors");
       } else {
         const response = await fetch(`/api/admin/sector`, {
           method: "POST",
-          body: JSON.stringify(newData),
+          body: JSON.stringify(data),
         });
         const res = await response.json();
         console.log(res);
-        clearAll();
         router.push("/admin/sectors");
       }
     } catch (error) {
@@ -120,11 +113,12 @@ const SectorFormPage = ({ sectorId }: Props) => {
     }
   };
 
-  const handleClickAddApplication = () => {
-    setTitle(getValues("title"));
-    setDescription(getValues("description"));
-    setImageUrl(getValues("image_url"));
-    router.push("/admin/sectors/create/application");
+  const handleAddApplication = () => {
+    append({ title: "", description: "", image: "", product: "" });
+  };
+
+  const handleRemoveApplication = (index: number) => {
+    remove(index);
   };
 
   return (
@@ -158,8 +152,8 @@ const SectorFormPage = ({ sectorId }: Props) => {
 
           <div className="space-y-2">
             <Label className="text-sm font-medium">Image</Label>
-            <ImageUploader value={getValues("image_url")} onChange={(url) => setValue("image_url", url)} />
-            {errors.image_url && <p className="text-red-500 text-sm">{errors.image_url.message}</p>}
+            <ImageUploader value={getValues("image")} onChange={(url) => setValue("image", url)} />
+            {errors.image && <p className="text-red-500 text-sm">{errors.image.message}</p>}
           </div>
 
           <div className="space-y-4">
@@ -168,48 +162,82 @@ const SectorFormPage = ({ sectorId }: Props) => {
               <Button
                 type="button"
                 className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                onClick={handleClickAddApplication}
+                onClick={handleAddApplication}
               >
                 Add Application
               </Button>
             </div>
 
-            {!applications || applications?.length === 0 ? (
-              <p className="text-gray-500 text-center py-4">No applications added yet</p>
-            ) : (
-              <div className="space-y-4">
-                {applications.map((app, index) => (
-                  <Card key={index} className="p-4">
-                    <h3 className="font-medium">{app.title}</h3>
-                    <p className="text-sm text-gray-600">{app.description}</p>
-                    <div className="mt-4">
-                      <div className="flex justify-between items-center mb-2">
-                        <p className="text-sm font-medium">Finishes ({app.finishes.length})</p>
-                        <Button
-                          type="button"
-                          onClick={() => router.push(`/admin/sectors/create/application/${index}/finish`)}
-                          className="text-sm bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600"
-                        >
-                          Add Finish
-                        </Button>
-                      </div>
-                      {app.finishes.length > 0 ? (
-                        <div className="grid grid-cols-2 gap-2">
-                          {app.finishes.map((finish, finishIndex) => (
-                            <div key={finishIndex} className="border rounded-md p-2">
-                              <p className="font-medium text-sm">{finish.title}</p>
-                              <p className="text-xs text-gray-500 truncate">{finish.image_url}</p>
-                            </div>
-                          ))}
-                        </div>
-                      ) : (
-                        <p className="text-sm text-gray-500">No finishes added yet</p>
-                      )}
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            )}
+            {fields.map((field, index) => (
+              <Card key={field.id} className="p-4 space-y-4">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-lg font-medium">Application {index + 1}</h3>
+                  <Button type="button" variant="destructive" onClick={() => handleRemoveApplication(index)}>
+                    Remove
+                  </Button>
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Title</Label>
+                  <Input
+                    {...register(`applications.${index}.title`, {
+                      required: "Title is required",
+                    })}
+                    className="w-full p-2 border rounded-md"
+                    placeholder="Enter application title"
+                  />
+                  {errors.applications?.[index]?.title && (
+                    <p className="text-red-500 text-sm">{errors.applications[index]?.title?.message}</p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Description</Label>
+                  <Controller
+                    name={`applications.${index}.description`}
+                    control={control}
+                    rules={{ required: "Description is required" }}
+                    render={({ field }) => (
+                      <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="mt-1" />
+                    )}
+                  />
+                  {errors.applications?.[index]?.description && (
+                    <p className="text-red-500 text-sm">{errors.applications[index]?.description?.message}</p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Image</Label>
+                  <ImageUploader
+                    value={getValues(`applications.${index}.image`)}
+                    onChange={(url) => setValue(`applications.${index}.image`, url)}
+                  />
+                  {errors.applications?.[index]?.image && (
+                    <p className="text-red-500 text-sm">{errors.applications[index]?.image?.message}</p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Product</Label>
+                  <select
+                    {...register(`applications.${index}.product`, {
+                      required: "Product is required",
+                    })}
+                    className="w-full p-2 border rounded-md"
+                  >
+                    <option value="">Select a product</option>
+                    {products.map((product) => (
+                      <option key={product} value={product}>
+                        {product}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.applications?.[index]?.product && (
+                    <p className="text-red-500 text-sm">{errors.applications[index]?.product?.message}</p>
+                  )}
+                </div>
+              </Card>
+            ))}
           </div>
 
           <Button type="submit" className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600">

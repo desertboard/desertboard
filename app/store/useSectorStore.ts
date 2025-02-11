@@ -6,10 +6,28 @@ interface Finish {
   image_url: string;
 }
 
-interface Application {
+interface BestPractice {
   title: string;
   description: string;
+}
+
+interface SubSection {
+  icon: string;
+  description: string;
+  best_practices: BestPractice[];
+}
+
+interface Specification {
+  name: string;
+  value: string;
+}
+
+interface Application {
+  title: string;
   finishes: Finish[];
+  sub_title: string;
+  sub_sections: SubSection[];
+  specifications: Specification[];
 }
 
 interface SectorFormState {
