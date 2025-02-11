@@ -15,8 +15,8 @@ type Specification = {
 type Product = {
   _id: string;
   title: string;
-  description: string;
-  image_url: string;
+  subtitle: string;
+  sector: string;
   specifications: Specification[];
 };
 
@@ -64,6 +64,8 @@ export default function AdminProducts() {
     router.push(`/admin/products/${productId}/edit`);
   };
 
+  console.log(products);
+
   if (isLoading) {
     return (
       <div className="p-6 flex justify-center items-center">
@@ -97,19 +99,20 @@ export default function AdminProducts() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product, index) => (
-            <Card key={index} className="overflow-hidden group">
-              <div className="aspect-video relative">
-                <Image
-                  width={100}
-                  height={100}
-                  src={product.image_url}
-                  alt={product.title}
-                  className="object-cover w-full h-full"
-                />
-              </div>
+            <Card key={index} className="group">
               <CardContent className="p-4">
                 <div className="flex justify-between items-start mb-2">
-                  <h2 className="text-xl font-semibold">{product.title}</h2>
+                  <div>
+                    <h2 className="text-xl font-semibold">{product.title}</h2>
+                    <p className="text-sm text-gray-500 mt-1">{product.subtitle}</p>
+                    {product.sector && (
+                      <div className="mt-2">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                          {product.sector}
+                        </span>
+                      </div>
+                    )}
+                  </div>
                   <Button
                     variant="ghost"
                     size="icon"
@@ -119,7 +122,6 @@ export default function AdminProducts() {
                     <PencilIcon className="h-4 w-4" />
                   </Button>
                 </div>
-                <p className="text-gray-600 line-clamp-3">{product.description}</p>
               </CardContent>
             </Card>
           ))}

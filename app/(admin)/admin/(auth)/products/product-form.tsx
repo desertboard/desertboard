@@ -184,18 +184,24 @@ const ProductForm = ({ productId }: ProductFormData) => {
             </div>
             <div className="space-y-2">
               <Label htmlFor="sector">Sector</Label>
-              <Select {...register("sector")}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select a sector" />
-                </SelectTrigger>
-                <SelectContent>
-                  {sectors.map((sector) => (
-                    <SelectItem key={sector} value={sector}>
-                      {sector}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <Controller
+                name="sector"
+                control={control}
+                render={({ field }) => (
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a sector" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {sectors.map((sector) => (
+                        <SelectItem key={sector} value={sector}>
+                          {sector}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                )}
+              />
             </div>
           </div>
           <div className="space-y-4">
