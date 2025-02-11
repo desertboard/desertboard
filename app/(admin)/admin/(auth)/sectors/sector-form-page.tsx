@@ -37,6 +37,9 @@ const SectorFormPage = ({ sectorId }: Props) => {
   const [products, setProducts] = useState<string[]>([]);
   const router = useRouter();
 
+  // Add loading state for products
+  const [isProductsLoading, setIsProductsLoading] = useState(true);
+
   const {
     register,
     handleSubmit,
@@ -63,9 +66,16 @@ const SectorFormPage = ({ sectorId }: Props) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch("/api/admin/products");
-      const data = await response.json();
-      setProducts(data.data.map((product: { title: string }) => product.title));
+      try {
+        setIsProductsLoading(true);
+        const response = await fetch("/api/admin/products");
+        const data = await response.json();
+        setProducts(data.data.map((product: { title: string }) => product.title));
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setIsProductsLoading(false);
+      }
     };
 
     fetchProducts();
@@ -78,13 +88,17 @@ const SectorFormPage = ({ sectorId }: Props) => {
           setIsLoading(true);
           const response = await fetch(`/api/admin/sector/byid?id=${sectorId}`);
           const data = await response.json();
-          setValue("title", data.data.title);
-          setValue("description", data.data.description);
-          setValue("image", data.data.image);
-          setValue("applications", data.data.applications);
-          setValue("icon", data.data.icon);
-          setValue("bannerImage", data.data.bannerImage);
-          setValue("shortDescription", data.data.shortDescription);
+
+          // Wait for products to load before setting sector data
+          if (!isProductsLoading) {
+            setValue("title", data.data.title);
+            setValue("description", data.data.description);
+            setValue("image", data.data.image);
+            setValue("applications", data.data.applications);
+            setValue("icon", data.data.icon);
+            setValue("bannerImage", data.data.bannerImage);
+            setValue("shortDescription", data.data.shortDescription);
+          }
         } catch (error) {
           console.error("Error fetching sector:", error);
         } finally {
@@ -94,7 +108,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
     };
 
     fetchSector();
-  }, [sectorId, setValue]);
+  }, [sectorId, setValue, isProductsLoading]); // Add isProductsLoading to dependencies
 
   const onSubmit = async (data: SectorFormData) => {
     try {
@@ -293,14 +307,20 @@ const SectorFormPage = ({ sectorId }: Props) => {
                       required: "Product is required",
                     })}
                     className="w-full p-2 border rounded-md"
+                    disabled={isProductsLoading}
                   >
                     <option value="">Select a product</option>
                     {products.map((product) => (
-                      <option key={product} value={product}>
+                      <option
+                        key={product}
+                        value={product}
+                        selected={getValues(`applications.${index}.product`) === product}
+                      >
                         {product}
                       </option>
                     ))}
                   </select>
+                  {isProductsLoading && <p className="text-gray-500 text-sm">Loading products...</p>}
                   {errors.applications?.[index]?.product && (
                     <p className="text-red-500 text-sm">{errors.applications[index]?.product?.message}</p>
                   )}
