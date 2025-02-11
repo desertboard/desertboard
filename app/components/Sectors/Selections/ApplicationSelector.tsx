@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { assets } from "@/public/assets/images/assets";
+import Link from "next/link";
 
 const ApplicationSelector = ({
   activeApplications,
@@ -8,6 +9,7 @@ const ApplicationSelector = ({
   activeApplications: {
     title: string;
     image: string;
+    product:string;
   }[];
 }) => {
   return (
@@ -19,7 +21,7 @@ const ApplicationSelector = ({
       </div>
 
       <div className="grid  lg:gap-10 gap-3 grid-cols-1 sm:grid-cols-2 xxl:grid-cols-3">
-        {activeApplications.map((application, index) => (
+        {activeApplications && activeApplications.map((application, index) => (
           <div className="flex flex-col gap-3 lg:gap-5" key={index}>
             <div className="relative md:h-[400px] h-[300px] w-full group">
               <figure className=" relative h-[100%] md:h-full  w-full  ">
@@ -40,13 +42,13 @@ const ApplicationSelector = ({
                 </p>
 
                 <p className="pb-3 md:pb-10 helvetica-bold text-font28 text-white">
-                  PSB<sub>®</sub> SUPREME
+                  {application.product}
                 </p>
 
                 <Image src={assets.tlse} className="pb-3 md:pb-10" alt="" />
 
-                <a
-                  href="#"
+                <Link
+                  href={`/product-details/${application.product}`}
                   className="nuber-next-heavy flex gap-2 max-w-fit w-[250px]
                                             group-hover:w-full transition-all duration-300
                                             text-[14px] md:text-font16 leading-[1.5] rmbtn pb-2"
@@ -59,7 +61,7 @@ const ApplicationSelector = ({
                     width={11}
                     height={16}
                   />
-                </a>
+                </Link>
               </div>
             </div>
             <div>

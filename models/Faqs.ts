@@ -7,19 +7,16 @@ const FaqsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  question: {
-    type: String,
-    required: true,
-  },
-  answer: {
-    type: String,
-    required: true,
-  },
-  customId:{
-    type:String,
-    unique:true,
-    required:true
-  }
+  contents:[{
+    question: {
+      type: String,
+      required: true,
+    },
+    answer: {
+      type: String,
+      required: true,
+    },
+  }]
 });
 
 

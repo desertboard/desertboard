@@ -2,10 +2,12 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { menuItem } from '../data'
 import Image from "next/image";
 import { assets } from '@/public/assets/images/assets';
+import { SectorType } from '@/types/SectorType';
 
-const SectorSelector = ({ setActiveSector, activeSector }: {
+const SectorSelector = ({ setActiveSector, activeSector,data }: {
     setActiveSector: Dispatch<SetStateAction<number>>;
     activeSector: number;
+    data:SectorType
 }) => {
 
     const [isMobile, setIsMobile] = useState(false)
@@ -69,7 +71,7 @@ const SectorSelector = ({ setActiveSector, activeSector }: {
 
             {!isMobile &&
 
-            menuItem.map((item, index) => (
+            data && data.data && data.data.map((item, index) => (
                 <div className={`text-font28 nuber-next-bold group border-b-[2px] border-[#00000010] flex justify-between py-6 lg:py-8 cursor-pointer ${activeSector == index ? "text-orange" : "text-[#151515BF]"}`} key={index} onClick={() => setActiveSector(index)}>
 
                     <h4 className='leading-[1]'>{item.title}</h4>

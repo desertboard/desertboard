@@ -9,23 +9,6 @@ import useSWR from 'swr'
 const Accordians = () => {
 
 
-    // const [addressBarIndex, setAddressBarIndex] = useState(0)
-
-    // const menu = [
-    //     {
-    //         title: "General",
-    //         component: ""
-    //     },
-    //     {
-    //         title: "Product",
-    //         component: <ProductAccordians />
-    //     },
-    //     //   {
-    //     //     title:"Glossary",
-    //     //     component:""
-    //     // }
-    // ]
-
     const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
     const { data } = useSWR('/api/admin/faqs', fetcher)
@@ -39,21 +22,21 @@ const Accordians = () => {
         console.log(data)
         if(data && data.faqs){
             setSections(
-                Array.from(new Set(data.faqs.map((item: { sectionName: string }) => item.sectionName)))
+                data.faqs.map((item:{sectionName:string})=>item.sectionName)
               );
         }
     }, [data])
 
     
-    useEffect(()=>{
-        setItems(()=>(
-            data && data.faqs && data.faqs.filter((item:{sectionName:string})=>(
-                item.sectionName == activeSession
-            ))
-        ))
-        console.log(activeSession)
-    },[activeSession])
-
+    useEffect(() => {
+        if (data && data.faqs) {
+            const filteredSection = data.faqs.find(
+                (item: { sectionName: string }) => item.sectionName === activeSession
+            );
+    
+            setItems(filteredSection ? filteredSection.contents : []);
+        }
+    }, [activeSession, data]);
 
 
     // const ActiveAccordian = menu[addressBarIndex].component
