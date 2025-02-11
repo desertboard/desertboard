@@ -22,8 +22,18 @@ export async function PATCH(request: NextRequest) {
   }
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
-  const { title, subTitle, sector, specifications, subSections, bestPractices, finishes, images, bannerImage } =
-    await request.json();
+  const {
+    title,
+    subTitle,
+    sector,
+    specifications,
+    subSections,
+    bestPractices,
+    finishes,
+    images,
+    bannerImage,
+    featuredImage,
+  } = await request.json();
 
   await connectDB();
 
@@ -37,6 +47,7 @@ export async function PATCH(request: NextRequest) {
     finishes,
     images,
     bannerImage,
+    featuredImage,
   });
 
   return NextResponse.json({ success: true, data: product }, { status: 200 });

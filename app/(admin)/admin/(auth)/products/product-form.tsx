@@ -39,6 +39,7 @@ type ProductData = {
   sector: string;
   images: string[];
   bannerImage: string;
+  featuredImage?: string;
 };
 
 interface ProductFormData {
@@ -61,6 +62,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
       sector: "",
       images: [],
       bannerImage: "",
+      featuredImage: "",
     },
   });
 
@@ -130,6 +132,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
     setValue("sector", res.data.sector);
     setValue("images", res.data.images);
     setValue("bannerImage", res.data.bannerImage);
+    setValue("featuredImage", res.data.featuredImage);
   };
 
   useEffect(() => {
@@ -335,6 +338,27 @@ const ProductForm = ({ productId }: ProductFormData) => {
                   onChange={(url) => {
                     field.onChange(url);
                     setValue("bannerImage", url);
+                  }}
+                />
+              )}
+            />
+          </div>
+
+          {/* Featured Image */}
+          <div className="space-y-2">
+            <Label>
+              Featured Image
+              <span className="text-sm text-muted-foreground ml-2">(Optional)</span>
+            </Label>
+            <Controller
+              name="featuredImage"
+              control={control}
+              render={({ field }) => (
+                <ImageUploader
+                  value={field.value}
+                  onChange={(url) => {
+                    field.onChange(url);
+                    setValue("featuredImage", url);
                   }}
                 />
               )}
