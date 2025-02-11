@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import AddFinishDialog from "./components/AddFinishDialog";
 import Image from "next/image";
+import DeleteProductDialog from "./components/DeleteProductDialog";
 type Specification = {
   name: string;
   value: string;
@@ -41,18 +42,19 @@ export default function AdminProducts() {
     fetchFinishes();
   }, []);
 
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch("/api/admin/products");
+      const data = await response.json();
+      setProducts(data.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("/api/admin/products");
-        const data = await response.json();
-        setProducts(data.data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
     fetchProducts();
   }, []);
 
@@ -113,14 +115,17 @@ export default function AdminProducts() {
                       </div>
                     )}
                   </div>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-8 w-8 text-gray-500 hover:text-primary hover:bg-primary/10"
-                    onClick={() => handleEditProduct(product._id)}
-                  >
-                    <PencilIcon className="h-4 w-4" />
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8 text-gray-500 hover:text-primary hover:bg-primary/10"
+                      onClick={() => handleEditProduct(product._id)}
+                    >
+                      <PencilIcon className="h-4 w-4" />
+                    </Button>
+                    <DeleteProductDialog productId={product._id} onDelete={fetchProducts} />
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -139,8 +144,9 @@ export default function AdminProducts() {
             <div className="aspect-video relative">
               <Image src={finish.image} alt={finish.name} className="object-cover w-full h-full" fill />
             </div>
-            <CardContent className="p-4">
+            <CardContent className="p-4 flex items-center justify-between">
               <h2 className="text-xl font-semibold">{finish.name}</h2>
+              <AddFinishDialog finishId={finish._id} />
             </CardContent>
           </Card>
         ))}

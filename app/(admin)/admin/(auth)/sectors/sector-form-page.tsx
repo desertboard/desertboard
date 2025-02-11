@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import "react-quill/dist/quill.snow.css";
 import { ImageUploader } from "@/app/components/ui/image-uploader";
+import { Textarea } from "@/components/ui/textarea";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 interface Application {
@@ -22,6 +23,9 @@ interface SectorFormData {
   description: string;
   image: string;
   applications: Application[];
+  icon: string;
+  bannerImage: string;
+  shortDescription: string;
 }
 
 interface Props {
@@ -32,6 +36,9 @@ const SectorFormPage = ({ sectorId }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState<string[]>([]);
   const router = useRouter();
+
+  // Add loading state for products
+  const [isProductsLoading, setIsProductsLoading] = useState(true);
 
   const {
     register,
@@ -46,6 +53,9 @@ const SectorFormPage = ({ sectorId }: Props) => {
       description: "",
       image: "",
       applications: [],
+      icon: "",
+      bannerImage: "",
+      shortDescription: "",
     },
   });
 
@@ -56,9 +66,16 @@ const SectorFormPage = ({ sectorId }: Props) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch("/api/admin/products");
-      const data = await response.json();
-      setProducts(data.data.map((product: { title: string }) => product.title));
+      try {
+        setIsProductsLoading(true);
+        const response = await fetch("/api/admin/products");
+        const data = await response.json();
+        setProducts(data.data.map((product: { title: string }) => product.title));
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setIsProductsLoading(false);
+      }
     };
 
     fetchProducts();
@@ -71,10 +88,17 @@ const SectorFormPage = ({ sectorId }: Props) => {
           setIsLoading(true);
           const response = await fetch(`/api/admin/sector/byid?id=${sectorId}`);
           const data = await response.json();
-          setValue("title", data.data.title);
-          setValue("description", data.data.description);
-          setValue("image", data.data.image);
-          setValue("applications", data.data.applications);
+
+          // Wait for products to load before setting sector data
+          if (!isProductsLoading) {
+            setValue("title", data.data.title);
+            setValue("description", data.data.description);
+            setValue("image", data.data.image);
+            setValue("applications", data.data.applications);
+            setValue("icon", data.data.icon);
+            setValue("bannerImage", data.data.bannerImage);
+            setValue("shortDescription", data.data.shortDescription);
+          }
         } catch (error) {
           console.error("Error fetching sector:", error);
         } finally {
@@ -84,7 +108,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
     };
 
     fetchSector();
-  }, [sectorId, setValue]);
+  }, [sectorId, setValue, isProductsLoading]); // Add isProductsLoading to dependencies
 
   const onSubmit = async (data: SectorFormData) => {
     try {
@@ -151,9 +175,68 @@ const SectorFormPage = ({ sectorId }: Props) => {
           </div>
 
           <div className="space-y-2">
+            <Label className="text-sm font-medium">Short Description</Label>
+            <Textarea
+              {...register("shortDescription", { required: "Short Description is required" })}
+              className="w-full p-2 border rounded-md"
+              placeholder="Enter sector short description"
+              rows={4}
+            />
+            {errors.shortDescription && <p className="text-red-500 text-sm">{errors.shortDescription.message}</p>}
+          </div>
+
+          <div className="space-y-2">
             <Label className="text-sm font-medium">Image</Label>
-            <ImageUploader value={getValues("image")} onChange={(url) => setValue("image", url)} />
+            <Controller
+              name="image"
+              control={control}
+              render={({ field }) => (
+                <ImageUploader
+                  value={field.value}
+                  onChange={(url) => {
+                    field.onChange(url);
+                    setValue("image", url);
+                  }}
+                />
+              )}
+            />
             {errors.image && <p className="text-red-500 text-sm">{errors.image.message}</p>}
+          </div>
+
+          <div className="space-y-2">
+            <Label className="text-sm font-medium">Icon</Label>
+            <Controller
+              name="icon"
+              control={control}
+              render={({ field }) => (
+                <ImageUploader
+                  value={field.value}
+                  onChange={(url) => {
+                    field.onChange(url);
+                    setValue("icon", url);
+                  }}
+                />
+              )}
+            />
+            {errors.icon && <p className="text-red-500 text-sm">{errors.icon.message}</p>}
+          </div>
+
+          <div className="space-y-2">
+            <Label className="text-sm font-medium">Banner Image</Label>
+            <Controller
+              name="bannerImage"
+              control={control}
+              render={({ field }) => (
+                <ImageUploader
+                  value={field.value}
+                  onChange={(url) => {
+                    field.onChange(url);
+                    setValue("bannerImage", url);
+                  }}
+                />
+              )}
+            />
+            {errors.bannerImage && <p className="text-red-500 text-sm">{errors.bannerImage.message}</p>}
           </div>
 
           <div className="space-y-4">
@@ -224,14 +307,20 @@ const SectorFormPage = ({ sectorId }: Props) => {
                       required: "Product is required",
                     })}
                     className="w-full p-2 border rounded-md"
+                    disabled={isProductsLoading}
                   >
                     <option value="">Select a product</option>
                     {products.map((product) => (
-                      <option key={product} value={product}>
+                      <option
+                        key={product}
+                        value={product}
+                        selected={getValues(`applications.${index}.product`) === product}
+                      >
                         {product}
                       </option>
                     ))}
                   </select>
+                  {isProductsLoading && <p className="text-gray-500 text-sm">Loading products...</p>}
                   {errors.applications?.[index]?.product && (
                     <p className="text-red-500 text-sm">{errors.applications[index]?.product?.message}</p>
                   )}

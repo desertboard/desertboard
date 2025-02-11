@@ -6,6 +6,7 @@ import { PencilIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import DeleteEventDialog from "./components/DeleteEventDialog";
 
 type Events = {
   _id: string;
@@ -22,18 +23,19 @@ export default function AdminProducts() {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
+  const fetchEvents = async () => {
+    try {
+      const response = await fetch("/api/admin/events");
+      const data = await response.json();
+      setEvents(data.data);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const response = await fetch("/api/admin/events");
-        const data = await response.json();
-        setEvents(data.data);
-      } catch (error) {
-        console.error("Error fetching events:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
     fetchEvents();
   }, []);
 
@@ -91,16 +93,18 @@ export default function AdminProducts() {
               <CardContent className="p-4">
                 <div className="flex justify-between items-start mb-2">
                   <h2 className="text-xl font-semibold">{event.title}</h2>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-8 w-8 text-gray-500 hover:text-primary hover:bg-primary/10"
-                    onClick={() => handleEditEvents(event._id)}
-                  >
-                    <PencilIcon className="h-4 w-4" />
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8 text-gray-500 hover:text-primary hover:bg-primary/10"
+                      onClick={() => handleEditEvents(event._id)}
+                    >
+                      <PencilIcon className="h-4 w-4" />
+                    </Button>
+                    <DeleteEventDialog eventId={event._id} onDelete={fetchEvents} />
+                  </div>
                 </div>
-                <p className="text-gray-600 line-clamp-3">{event.description}</p>
               </CardContent>
             </Card>
           ))}

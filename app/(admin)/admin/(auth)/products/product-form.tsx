@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ImageUploader } from "@/app/components/ui/image-uploader";
+import Image from "next/image";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 type FinishData = {
@@ -36,6 +37,9 @@ type ProductData = {
   }[];
   finishes: FinishData[];
   sector: string;
+  images: string[];
+  bannerImage: string;
+  featuredImage?: string;
 };
 
 interface ProductFormData {
@@ -46,6 +50,8 @@ const ProductForm = ({ productId }: ProductFormData) => {
   const [sectors, setSectors] = useState<string[]>([]);
   const [finishes, setFinishes] = useState<FinishData[]>([]);
   const router = useRouter();
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [isSectorsLoading, setIsSectorsLoading] = useState(true);
   const { register, handleSubmit, control, setValue } = useForm<ProductData>({
     defaultValues: {
       title: "",
@@ -55,6 +61,9 @@ const ProductForm = ({ productId }: ProductFormData) => {
       bestPractices: [],
       finishes: [],
       sector: "",
+      images: [],
+      bannerImage: "",
+      featuredImage: "",
     },
   });
 
@@ -96,12 +105,22 @@ const ProductForm = ({ productId }: ProductFormData) => {
 
   useEffect(() => {
     const fetchSectors = async () => {
-      const response = await fetch("/api/admin/sector");
-      const res = await response.json();
-      setSectors(res.data.map((sector: { title: string }) => sector.title));
+      setIsSectorsLoading(true);
+      try {
+        const response = await fetch("/api/admin/sector");
+        const res = await response.json();
+        setSectors(res.data.map((sector: { title: string }) => sector.title));
+        if (productId) {
+          await fetchProduct();
+        }
+      } catch (error) {
+        console.error("Error fetching sectors:", error);
+      } finally {
+        setIsSectorsLoading(false);
+      }
     };
     fetchSectors();
-  }, []);
+  }, [productId]);
 
   useEffect(() => {
     const fetchFinishes = async () => {
@@ -113,22 +132,24 @@ const ProductForm = ({ productId }: ProductFormData) => {
   }, []);
 
   const fetchProduct = async () => {
-    const response = await fetch(`/api/admin/products/byid?id=${productId}`);
-    const res = await response.json();
-    setValue("title", res.data.title);
-    setValue("subTitle", res.data.subTitle);
-    setValue("specifications", res.data.specifications);
-    setValue("subSections", res.data.subSections);
-    setValue("bestPractices", res.data.bestPractices);
-    setValue("finishes", res.data.finishes);
-    setValue("sector", res.data.sector);
-  };
-
-  useEffect(() => {
-    if (productId) {
-      fetchProduct();
+    try {
+      const response = await fetch(`/api/admin/products/byid?id=${productId}`);
+      const res = await response.json();
+      setValue("title", res.data.title);
+      setValue("subTitle", res.data.subTitle);
+      setValue("specifications", res.data.specifications);
+      setValue("subSections", res.data.subSections);
+      setValue("bestPractices", res.data.bestPractices);
+      setValue("finishes", res.data.finishes);
+      setValue("sector", res.data.sector);
+      setValue("images", res.data.images);
+      setValue("bannerImage", res.data.bannerImage);
+      setValue("featuredImage", res.data.featuredImage);
+      setImageUrls(res.data.images);
+    } catch (error) {
+      console.error("Error fetching product:", error);
     }
-  }, [productId]);
+  };
 
   const onSubmit = async (data: ProductData) => {
     try {
@@ -154,6 +175,19 @@ const ProductForm = ({ productId }: ProductFormData) => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleImageUpload = async (uploadedUrl: string) => {
+    setImageUrls((prev) => [...prev, uploadedUrl]);
+    setValue("images", [...imageUrls, uploadedUrl]);
+  };
+
+  const handleRemoveImage = (indexToRemove: number) => {
+    setImageUrls((prev) => prev.filter((_, index) => index !== indexToRemove));
+    setValue(
+      "images",
+      imageUrls.filter((_, index) => index !== indexToRemove)
+    );
   };
 
   const toggleFinish = (finish: FinishData) => {
@@ -189,7 +223,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
                 name="sector"
                 control={control}
                 render={({ field }) => (
-                  <Select onValueChange={field.onChange} value={field.value}>
+                  <Select onValueChange={field.onChange} value={field.value} disabled={isSectorsLoading}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a sector" />
                     </SelectTrigger>
@@ -300,6 +334,72 @@ const ProductForm = ({ productId }: ProductFormData) => {
                 </Button>
               </div>
             ))}
+          </div>
+
+          {/* Banner Image */}
+          <div className="space-y-2">
+            <Label>Banner Image</Label>
+            <Controller
+              name="bannerImage"
+              control={control}
+              render={({ field }) => (
+                <ImageUploader
+                  value={field.value}
+                  onChange={(url) => {
+                    field.onChange(url);
+                    setValue("bannerImage", url);
+                  }}
+                />
+              )}
+            />
+          </div>
+
+          {/* Featured Image */}
+          <div className="space-y-2">
+            <Label>
+              Featured Image
+              <span className="text-sm text-muted-foreground ml-2">(Optional)</span>
+            </Label>
+            <Controller
+              name="featuredImage"
+              control={control}
+              render={({ field }) => (
+                <ImageUploader
+                  value={field.value}
+                  onChange={(url) => {
+                    field.onChange(url);
+                    setValue("featuredImage", url);
+                  }}
+                />
+              )}
+            />
+          </div>
+          {/* Images */}
+          <div>
+            <Label className="block text-sm font-medium text-gray-700">Images</Label>
+            <div className="mt-2">
+              <ImageUploader onChange={handleImageUpload} deleteAfterUpload={true} />
+            </div>
+            <div className="mt-4 grid grid-cols-3 gap-4">
+              {imageUrls.map((url, index) => (
+                <div key={index} className="relative h-40">
+                  <Image
+                    src={url}
+                    alt={`Uploaded image ${index + 1}`}
+                    className="h-full w-full object-cover rounded-lg"
+                    width={100}
+                    height={100}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveImage(index)}
+                    className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+                  >
+                    ×
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="space-y-4">

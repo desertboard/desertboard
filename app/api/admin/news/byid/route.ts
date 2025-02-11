@@ -19,8 +19,8 @@ export async function PATCH(request: NextRequest) {
   }
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
-  const { title, description, images, tags, date } = await request.json();
-  const news = await News.findByIdAndUpdate(id, { title, description, images, tags, date });
+  const { title, description, images, tags, date, sector, type } = await request.json();
+  const news = await News.findByIdAndUpdate(id, { title, description, images, tags, date, sector, type });
   return NextResponse.json({ data: news, success: true }, { status: 200 });
 }
 
