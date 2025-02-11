@@ -99,7 +99,6 @@ export default function AdminProducts() {
                     <PencilIcon className="h-4 w-4" />
                   </Button>
                 </div>
-                <p className="text-gray-600 line-clamp-3">{news.description}</p>
               </CardContent>
             </Card>
           ))}
