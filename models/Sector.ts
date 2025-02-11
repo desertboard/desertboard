@@ -41,6 +41,10 @@ const SectorSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    shortDescription: {
+      type: String,
+      required: false,
+    },
     applications: [ApplicationSchema],
   },
   {

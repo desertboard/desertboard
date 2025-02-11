@@ -28,6 +28,7 @@ type Sectors = {
   applications: Application[];
   icon: string;
   bannerImage: string;
+  shortDescription: string;
 };
 
 const SectorsPage = () => {
@@ -111,7 +112,6 @@ const SectorsPage = () => {
                     <DeleteSectorDialog sectorId={sector._id} onDelete={fetchSectors} />
                   </div>
                 </div>
-                <p className="text-gray-600 line-clamp-3">{sector.description}</p>
               </CardContent>
             </Card>
           ))}

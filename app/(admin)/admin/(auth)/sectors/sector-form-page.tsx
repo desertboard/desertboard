@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import "react-quill/dist/quill.snow.css";
 import { ImageUploader } from "@/app/components/ui/image-uploader";
+import { Textarea } from "@/components/ui/textarea";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 interface Application {
@@ -24,6 +25,7 @@ interface SectorFormData {
   applications: Application[];
   icon: string;
   bannerImage: string;
+  shortDescription: string;
 }
 
 interface Props {
@@ -50,6 +52,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
       applications: [],
       icon: "",
       bannerImage: "",
+      shortDescription: "",
     },
   });
 
@@ -81,6 +84,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
           setValue("applications", data.data.applications);
           setValue("icon", data.data.icon);
           setValue("bannerImage", data.data.bannerImage);
+          setValue("shortDescription", data.data.shortDescription);
         } catch (error) {
           console.error("Error fetching sector:", error);
         } finally {
@@ -157,7 +161,18 @@ const SectorFormPage = ({ sectorId }: Props) => {
           </div>
 
           <div className="space-y-2">
-            <Label>Image</Label>
+            <Label className="text-sm font-medium">Short Description</Label>
+            <Textarea
+              {...register("shortDescription", { required: "Short Description is required" })}
+              className="w-full p-2 border rounded-md"
+              placeholder="Enter sector short description"
+              rows={4}
+            />
+            {errors.shortDescription && <p className="text-red-500 text-sm">{errors.shortDescription.message}</p>}
+          </div>
+
+          <div className="space-y-2">
+            <Label className="text-sm font-medium">Image</Label>
             <Controller
               name="image"
               control={control}
@@ -175,7 +190,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
           </div>
 
           <div className="space-y-2">
-            <Label>Icon</Label>
+            <Label className="text-sm font-medium">Icon</Label>
             <Controller
               name="icon"
               control={control}
@@ -193,7 +208,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
           </div>
 
           <div className="space-y-2">
-            <Label>Banner Image</Label>
+            <Label className="text-sm font-medium">Banner Image</Label>
             <Controller
               name="bannerImage"
               control={control}
