@@ -64,20 +64,20 @@ export default function FilesPage() {
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">News</h1>
+        <h1 className="text-3xl font-bold">Files</h1>
         <Button className="bg-primary text-white" onClick={handleClickAddTopic}>
           <span className="mr-2">+</span>
-          Add Topic
+          Add File Topic
         </Button>
       </div>
 
       {topics?.length === 0 ? (
         <div className="text-center py-12 bg-gray-50 rounded-lg">
-          <h3 className="text-xl font-semibold text-gray-600 mb-2">No news found</h3>
-          <p className="text-gray-500 mb-4">Get started by creating your first news</p>
+          <h3 className="text-xl font-semibold text-gray-600 mb-2">No topics found</h3>
+          <p className="text-gray-500 mb-4">Get started by creating your first file topic</p>
           <Button className="bg-primary text-white" onClick={handleClickAddTopic}>
             <span className="mr-2">+</span>
-            Add Topic
+            Add File Topic
           </Button>
         </div>
       ) : (
