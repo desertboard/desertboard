@@ -7,6 +7,7 @@ import {
   EnvelopeIcon,
   ArrowRightOnRectangleIcon,
   CalendarIcon,
+  FolderIcon,
 } from "@heroicons/react/24/outline";
 import ClientSideLink from "../client-side-link";
 
@@ -21,6 +22,7 @@ const navItems = [
   { name: "Products", href: "/admin/products", icon: CubeIcon },
   { name: "Sectors", href: "/admin/sectors", icon: BuildingOfficeIcon },
   { name: "Contact", href: "/admin/contact", icon: EnvelopeIcon },
+  { name: "Files", href: "/admin/files", icon: FolderIcon },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
