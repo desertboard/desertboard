@@ -77,6 +77,10 @@ const ProductSchema = new mongoose.Schema({
     type: [String],
     required: true,
   },
+  bannerImage: {
+    type: String,
+    required: true,
+  },
 });
 
 const Product = mongoose.models.Product || mongoose.model("Product", ProductSchema);
