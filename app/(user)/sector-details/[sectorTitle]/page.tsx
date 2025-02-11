@@ -1,6 +1,6 @@
 
 import React from 'react'
-import SectorDetails from '../../components/Sector-Details/Index'
+import SectorDetails from '../../../components/Sector-Details/Index'
 
 
 

@@ -1,15 +1,28 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import flogo from "@/public/assets/images/home/flogo.png";
 import logo from "@/public/assets/images/home/sticky-logo.png";
 import { Menu, MenuItem } from "./ui/navbar-menu";
 import MobileMenu from "./MobileMenu/MobileMenu";
 import { menuItems } from "../(user)/data/menuItems";
+import useSWR from "swr";
+import Link from "next/link";
 
 const Header = () => {
+
+  const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+  
+  const { data } = useSWR(`/api/admin/products`, fetcher)
+  const [products,setProducts] = useState([])
+
+  useEffect(()=>{
+    console.log(data && data.data)
+    setProducts(data && data.data)
+  },[data])
+
+
   const [active, setActive] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -63,10 +76,17 @@ const Header = () => {
             <ul className="flex space-x-6 uppercase text-sm tracking-widest group">
               <Menu setActive={setActive}>
                 {menuItems.map((item, index) => (
-                  <MenuItem item={item.title} setActive={setActive} active={active} noMenu key={index}>
-                    <div className="p-4">
+                  <MenuItem item={item.title} setActive={setActive} active={active} key={index} noMenu={item.title!=="Products"}>
+                    <div className="">
                       <Link href={item.href}>{item.title}</Link>
                     </div>
+                    {item.title=="Products" && 
+                    <div className="flex flex-col gap-2">
+                      {products && products.map((item:{title:string},index)=>(
+                          <Link className="text-black" href={`/product-details/${item.title}`} key={index}>{item.title}</Link>
+                      ))}
+                  </div>
+                  }
                   </MenuItem>
                 ))}
 

@@ -6,6 +6,7 @@ import lfbt from "@/public/assets/images/home/lfbt.svg";
 import { StaticImageData } from "next/image";
 import React, { JSX, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import parse from 'html-react-parser'
 
 interface MainDescBoxProps {
   secTitle: string;
@@ -80,7 +81,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
                     transition: { duration: 1, delay: 0.5 },
                   },
                 }}>
-                {paragraphs}
+                {typeof paragraphs == "string" ? parse(paragraphs) : paragraphs}
               </motion.div>
             
           </div>

@@ -6,20 +6,20 @@ import readarrow from "@/public/assets/images/read-arrow.svg";
 
 import SingleSlider from "../Applications/SingleSlider";
 import SuggestedProduct from "./sectwocomp/SuggestedProduct";
-import { suggestData, whySupreme } from "./data";
+import { suggestData } from "./data";
 import WhySupreme from "./sectwocomp/WhySupreme";
 import { motion } from "framer-motion";
 import { assets } from "@/public/assets/images/assets";
+import { IndiApplication } from "@/types/ApplicationType";
 
 interface SectionTwoProps {
-  suggested?: boolean; // Optional boolean prop
+  suggested?: boolean;
+  data:IndiApplication // Optional boolean prop
 }
 
-function SectionTwo({ suggested }: SectionTwoProps) {
+function SectionTwo({ suggested,data }: SectionTwoProps) {
 
-
-
-
+  console.log(data)
 
    const referenceDiv = useRef<HTMLDivElement | null>(null);
   const [divWidth, setDivWidth] = useState<number | null>(null);
@@ -100,7 +100,7 @@ function SectionTwo({ suggested }: SectionTwoProps) {
           <div className="lg:flex flex-col lg:flex-row  gap-10 md:gap-10  relative">
             <div className="lg:w-1/2 " ref={targetDivRef} >
            {suggested && <SuggestedProduct data={suggestData.data} />}
-                <WhySupreme {...whySupreme} />
+                <WhySupreme pageName="products" data={data} />
 
 
                 <div className="p-4 md:p-8 bg-[#E3DED9]">
@@ -108,20 +108,12 @@ function SectionTwo({ suggested }: SectionTwoProps) {
         Specifications
       </h3>
       <div className="border-t border-[#15151510] border-dashed pb-4 md:pb-8">
-        {[
-          { label: "Modulus of rupture", value: "16 – 22 N/mm2" },
-          { label: "Modulus of elasticity", value: "3,500 N/mm2" },
-          { label: "Internal Bonding", value: "0.29 – 0.34 N/mm2" },
-          { label: "Thickness Swelling", value: "5% - 15%" },
-          { label: "Width", value: "1,200 – 1,250 mm" },
-          { label: "Length", value: "1,830 – 3,048 mm" },
-          { label: "Thickness", value: "9 – 44 mm" },
-        ].map((item, index) => (
+        {data && data.data && data.data.specifications.map((item, index) => (
           <div
             key={index}
             className="flex justify-between py-2 md:py-5 border-b border-[#15151510] border-dashed"
           >
-            <p className="texthelvetica20 clr15op75">{item.label}</p>
+            <p className="texthelvetica20 clr15op75">{item.name}</p>
             <p className="texthelvetica20 clr15op75">{item.value}</p>
           </div>
         ))}
@@ -150,7 +142,7 @@ function SectionTwo({ suggested }: SectionTwoProps) {
               isStickydiv ? "fixed top-[110px] lg:w-2/6" : ""
                 }`}
                 style={{ width: divWidth ? `${divWidth}px` : "auto" }}>
-                  <SingleSlider />
+                  <SingleSlider data={data}/>
 
                   </div>
             </div>

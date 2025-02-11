@@ -9,12 +9,14 @@ import lfbt from "@/public/assets/images/home/lfbt.svg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import Image from "next/image";
 import BackGround from "@/public/assets/images/Background.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { menuItem } from "./data";
 import SectorSelector from "./Selections/SectorSelector";
 import ApplicationSelector from "./Selections/ApplicationSelector";
 import { assets } from "@/public/assets/images/assets";
 import { motion } from "framer-motion";
+import useSWR from "swr";
+import { IndiSectorType } from "@/types/IndiSector";
 
 const Sectors = () => {
   const breadcrumbs = [
@@ -24,6 +26,16 @@ const Sectors = () => {
 
   const [activeSector, setActiveSector] = useState(0);
   const activeApplications = menuItem[activeSector].applications;
+
+  const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+  
+  const { data }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/sector', fetcher)
+
+  useEffect(()=>{
+    console.log(data && data.data)
+    
+  },[data])
+
 
   return (
     <>

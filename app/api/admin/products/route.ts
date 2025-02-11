@@ -27,10 +27,22 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({ success: true, data: product }, { status: 201 });
 }
 
-export async function GET() {
+export async function GET(req:NextRequest) {
   await connectDB();
+  const {searchParams} = new URL(req.url)
+  const productName = searchParams.get("productName")
 
-  const products = await Product.find();
+  if(productName){
+    const product = await Product.findOne({title:productName})
+    if(product){
+      return NextResponse.json({ success: true, data: product }, { status: 200 }); 
+    }else{
+      return NextResponse.json({message:"No product found", success: false }, { status: 400 });
+    }
+  }else{
+    const products = await Product.find();
 
-  return NextResponse.json({ success: true, data: products }, { status: 200 });
+    return NextResponse.json({ success: true, data: products }, { status: 200 });
+  }
+
 }
