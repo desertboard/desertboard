@@ -51,6 +51,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
   const [finishes, setFinishes] = useState<FinishData[]>([]);
   const router = useRouter();
   const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [isSectorsLoading, setIsSectorsLoading] = useState(true);
   const { register, handleSubmit, control, setValue } = useForm<ProductData>({
     defaultValues: {
       title: "",
@@ -104,12 +105,22 @@ const ProductForm = ({ productId }: ProductFormData) => {
 
   useEffect(() => {
     const fetchSectors = async () => {
-      const response = await fetch("/api/admin/sector");
-      const res = await response.json();
-      setSectors(res.data.map((sector: { title: string }) => sector.title));
+      setIsSectorsLoading(true);
+      try {
+        const response = await fetch("/api/admin/sector");
+        const res = await response.json();
+        setSectors(res.data.map((sector: { title: string }) => sector.title));
+        if (productId) {
+          await fetchProduct();
+        }
+      } catch (error) {
+        console.error("Error fetching sectors:", error);
+      } finally {
+        setIsSectorsLoading(false);
+      }
     };
     fetchSectors();
-  }, []);
+  }, [productId]);
 
   useEffect(() => {
     const fetchFinishes = async () => {
@@ -121,25 +132,23 @@ const ProductForm = ({ productId }: ProductFormData) => {
   }, []);
 
   const fetchProduct = async () => {
-    const response = await fetch(`/api/admin/products/byid?id=${productId}`);
-    const res = await response.json();
-    setValue("title", res.data.title);
-    setValue("subTitle", res.data.subTitle);
-    setValue("specifications", res.data.specifications);
-    setValue("subSections", res.data.subSections);
-    setValue("bestPractices", res.data.bestPractices);
-    setValue("finishes", res.data.finishes);
-    setValue("sector", res.data.sector);
-    setValue("images", res.data.images);
-    setValue("bannerImage", res.data.bannerImage);
-    setValue("featuredImage", res.data.featuredImage);
-  };
-
-  useEffect(() => {
-    if (productId) {
-      fetchProduct();
+    try {
+      const response = await fetch(`/api/admin/products/byid?id=${productId}`);
+      const res = await response.json();
+      setValue("title", res.data.title);
+      setValue("subTitle", res.data.subTitle);
+      setValue("specifications", res.data.specifications);
+      setValue("subSections", res.data.subSections);
+      setValue("bestPractices", res.data.bestPractices);
+      setValue("finishes", res.data.finishes);
+      setValue("sector", res.data.sector);
+      setValue("images", res.data.images);
+      setValue("bannerImage", res.data.bannerImage);
+      setValue("featuredImage", res.data.featuredImage);
+    } catch (error) {
+      console.error("Error fetching product:", error);
     }
-  }, [productId]);
+  };
 
   const onSubmit = async (data: ProductData) => {
     try {
@@ -213,7 +222,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
                 name="sector"
                 control={control}
                 render={({ field }) => (
-                  <Select onValueChange={field.onChange} value={field.value}>
+                  <Select onValueChange={field.onChange} value={field.value} disabled={isSectorsLoading}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a sector" />
                     </SelectTrigger>
