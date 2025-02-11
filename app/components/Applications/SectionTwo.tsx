@@ -14,10 +14,11 @@ import { IndiApplication } from "@/types/ApplicationType";
 
 interface SectionTwoProps {
   suggested?: boolean;
-  data:IndiApplication // Optional boolean prop
+  data:IndiApplication 
+  pageName:string;// Optional boolean prop
 }
 
-function SectionTwo({ suggested,data }: SectionTwoProps) {
+function SectionTwo({ suggested,data,pageName }: SectionTwoProps) {
 
   console.log(data)
 
@@ -100,7 +101,7 @@ function SectionTwo({ suggested,data }: SectionTwoProps) {
           <div className="lg:flex flex-col lg:flex-row  gap-10 md:gap-10  relative">
             <div className="lg:w-1/2 " ref={targetDivRef} >
            {suggested && <SuggestedProduct data={suggestData.data} />}
-                <WhySupreme pageName="products" data={data} />
+                <WhySupreme pageName={pageName} data={data} />
 
 
                 <div className="p-4 md:p-8 bg-[#E3DED9]">

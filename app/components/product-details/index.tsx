@@ -55,7 +55,7 @@ const ProducrDetails = () => {
         bnrHeight="60dvh"
       />
 
-      <SectionTwo data={data} suggested={false}/>
+      <SectionTwo pageName="products" data={data} suggested={false}/>
       <div className="pt-10 md:pt-20 insp-mn relative inspbg"></div>
       <SectionThree {...slideses} />
       {/* actual thing which existed here */}

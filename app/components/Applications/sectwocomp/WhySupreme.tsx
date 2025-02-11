@@ -7,7 +7,7 @@ import { IndiApplication } from "@/types/ApplicationType";
 // Component to display the data
 const WhySupreme = ({ data,pageName }:{
   data:IndiApplication
-  pageName:string
+  pageName:string;
 }) => {
 
   console.log(data && data.data)
