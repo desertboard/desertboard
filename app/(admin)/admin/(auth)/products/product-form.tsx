@@ -16,6 +16,7 @@ const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 type FinishData = {
   name: string;
   image: string;
+  description: string;
 };
 
 type ProductData = {

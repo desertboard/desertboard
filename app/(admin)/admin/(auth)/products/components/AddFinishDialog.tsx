@@ -16,6 +16,7 @@ import { useState } from "react";
 interface Finish {
   name: string;
   image: string;
+  description: string;
 }
 
 export default function AddFinishDialog() {
@@ -26,6 +27,7 @@ export default function AddFinishDialog() {
     defaultValues: {
       name: "",
       image: "",
+      description: "",
     },
   });
 
@@ -33,6 +35,7 @@ export default function AddFinishDialog() {
     const newData = {
       name: data.name,
       image: image,
+      description: data.description,
     };
     setIsLoading(true);
     try {
@@ -74,6 +77,10 @@ export default function AddFinishDialog() {
             <div className="space-y-2">
               <Label htmlFor="image">Image</Label>
               <ImageUploader value={image} onChange={(url) => setImage(url)} />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="description">Description</Label>
+              <Input id="description" {...register("description")} />
             </div>
           </div>
           <Button className="my-2" type="submit" disabled={isLoading}>

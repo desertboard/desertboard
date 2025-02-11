@@ -8,11 +8,11 @@ export async function POST(req: NextRequest) {
   if (!isAdmin) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  const { name, image } = await req.json();
+  const { name, image, description } = await req.json();
 
   await connectDB();
 
-  const finish = await Finish.create({ name, image });
+  const finish = await Finish.create({ name, image, description });
 
   return NextResponse.json({ data: finish, success: true }, { status: 200 });
 }
