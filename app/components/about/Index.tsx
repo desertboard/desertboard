@@ -50,7 +50,7 @@ export default function Index() {
         subTitle=""
         // mainImg="/assets/images/mn.jpg"
         paragraphs={data && data.about[0] && parse(data.about[0].story)}
-        
+
         mainImg="/assets/images/about/about-main.jpg"
       />
       {/* <HistorySlider /> */}

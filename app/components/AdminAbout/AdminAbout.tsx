@@ -62,6 +62,7 @@ export default function AdminAbout() {
     const [timeSpan,setTimeSpan] = useState("")
     const [heading,setHeading] = useState("")
     const [description,setDescription] = useState("")
+   
   
 
     const [partnerImage,setPartnerImage] = useState("")
@@ -115,7 +116,7 @@ export default function AdminAbout() {
         }
     };
 
-    const [histories,setHistories] = useState<{timeSpan:string,heading:string,description:string,image:string}[] | []>([])
+    const [histories,setHistories] = useState<{_id?:string;timeSpan:string,heading:string,description:string,image:string}[] | []>([])
     const [partners,setPartners] = useState<{image:string,name:string,description:string}[] | []>([])
 
     const handleAddHistory = () =>{
@@ -145,11 +146,13 @@ export default function AdminAbout() {
         setTimeSpan(histories[index].timeSpan)
         setHeading(histories[index].heading)
         setDescription(histories[index].description)
+        setValue("image_url",histories[index].image)
     }
 
     const handleDeleteHistory = (index:number) =>{
+        console.log("Index",index)
         setHistories((prev)=>(
-            prev.splice(index-1,1)
+            prev.filter((_,i)=>i!==index)
         ))
     }
 
@@ -157,7 +160,7 @@ export default function AdminAbout() {
         setHistories((prev) => {
            
             return prev.map((item, i) => 
-                i === index ? { ...item, timeSpan, heading, description } : item
+                i === index ? { ...item, timeSpan, heading, description,image:getValues("image_url") } : item
             );
         });
     };
@@ -166,20 +169,21 @@ export default function AdminAbout() {
         setPartnerImage(partners[index].image)
         setPartnerName(partners[index].name)
         setPartnerDescription(partners[index].description)
+        setValue("partner_image_url",partners[index].image)
     }
 
     const handleConfirmEditPartner = (index: number) => {
         setPartners((prev) => {
            
             return prev.map((item, i) => 
-                i === index ? { ...item, image:partnerImage, name:partnerName, description:partnerDescription } : item
+                i === index ? { ...item, image:getValues("partner_image_url"), name:partnerName, description:partnerDescription } : item
             );
         });
     };
 
     const handleDeletePartner = (index:number)=>{
         setPartners((prev)=>(
-            prev.splice(index-1,1)
+            prev.filter((_,i)=>i!==index)
         ))
     } 
 
@@ -336,6 +340,9 @@ export default function AdminAbout() {
                                             <Label htmlFor="heading">Description</Label>
                                             <Input value={description} onChange={(e)=>setDescription(e.target.value)}/>
 
+                                            <Label htmlFor="heading">Image</Label>
+                                            <ImageUploader value={watch("image_url")} onChange={(url) => setValue("image_url", url)} />
+
                                             <SheetClose className="bg-blue-500 text-white p-3" onClick={()=>handleConfirmEdit(index)}>Confirm</SheetClose>
                                             </div>
 
@@ -444,10 +451,10 @@ export default function AdminAbout() {
                                             <SheetTitle>Edit Partner Data</SheetTitle>
                                         </SheetHeader>
                                             <div className="flex justify-center flex-col gap-3">
-                                            <Label htmlFor="timeSpan">Time-span</Label>
-                                            <Input value={partnerImage} onChange={(e)=>setPartnerImage(e.target.value)}/>
+                                            <Label htmlFor="timeSpan">Image</Label>
+                                            <ImageUploader value={watch("partner_image_url")} onChange={(url) => setValue("partner_image_url", url)} />
                                             
-                                            <Label htmlFor="heading">Heading</Label>
+                                            <Label htmlFor="heading">Name</Label>
                                             <Input value={partnerName} onChange={(e)=>setPartnerName(e.target.value)}/>
                                             
                                             <Label htmlFor="heading">Description</Label>

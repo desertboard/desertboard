@@ -12,6 +12,8 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { useForm } from 'react-hook-form'
+import { ImageUploader } from '../ui/image-uploader'
+
 
 type FormData = {
     title: string;
@@ -31,6 +33,8 @@ const RoleSection = () => {
         handleSubmit,
         register,
         setValue,
+        watch,
+        getValues,
     } = useForm<FormData>();
 
 
@@ -38,8 +42,8 @@ const RoleSection = () => {
         setIsSubmitting(true);
         const formData = new FormData();
         formData.append("title", data.title);
-        formData.append("image", "image");
-        formData.append("logo", "logo");
+        formData.append("image", getValues("image"));
+        formData.append("logo", getValues("logo"));
 
         try {
             const url = `/api/admin/sustainability/roles`;
@@ -166,11 +170,11 @@ const RoleSection = () => {
                             <form className='flex flex-col gap-2' onSubmit={handleSubmit(onSubmit)}>
 
                                 <Label>Image</Label>
-                                <Input {...register("image")}></Input>
+                                <ImageUploader value={watch("image")} onChange={(url) => setValue("image", url)} />
 
 
                                 <Label>Logo</Label>
-                                <Input {...register("logo")}></Input>
+                                <ImageUploader value={watch("logo")} onChange={(url) => setValue("logo", url)} />
 
                                 <Label>Title</Label>
                                 <Input {...register("title")}></Input>

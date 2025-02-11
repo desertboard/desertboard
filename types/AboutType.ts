@@ -9,6 +9,7 @@ export type AboutType = {
         description:string;
         heading:string;
         timeSpan:string;
+        image:string;
     }[]
     partners:{
         description:string;
