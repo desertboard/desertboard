@@ -107,6 +107,11 @@ const TimeLineSlider = ({data}:{
       window.removeEventListener("resize", updateDivWidth);
     };
   }, []);
+
+  useEffect(()=>{
+    console.log(activeIndex)
+  },[activeIndex])
+
   return (
     <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary timeline__sec">
       <div className="container d-none" ref={nextContainerRef}></div>
@@ -142,7 +147,7 @@ const TimeLineSlider = ({data}:{
               <SwiperSlide key={index} className="!h-full ">
                 <div className="timeline__bg flex-grow bg-cover bg-center absolute top-0 left-0 z-1 history__bg  w-full h-full">
                   <div className="timeline__img">
-                    <Image src={"/assets/images/timeline/dec14-2021.jpg"} fill objectFit="cover" className="h-full w-full" alt="" />
+                    <Image src={item.image} fill objectFit="cover" className="h-full w-full" alt="" />
                   </div>
                 </div>
                 <div className="rounded-lg shadow h-full flex flex-col justify-center xl:justify-end pb-20 relative z-30 xl:w-2/3 " style={{ paddingInline: `calc(100vw - (${divWidth})` }}>

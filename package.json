@@ -35,6 +35,7 @@
     "next": "15.1.6",
     "next-auth": "^4.24.11",
     "quill": "^2.0.3",
+    "quill-html-edit-button": "^3.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-dropzone": "^14.3.5",

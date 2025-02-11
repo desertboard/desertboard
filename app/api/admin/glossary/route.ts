@@ -12,6 +12,11 @@ export async function GET(req:NextRequest) {
     const { searchParams } = new URL(req.url)
     const alphabet = searchParams.get("alphabet") as string
 
+    if(!alphabet){
+      const glossary = await Glossary.find()
+      return NextResponse.json({glossary: formatDbResponse(glossary)})
+    }
+
     const glossary = await Glossary.findOne({alphabet});
 
 

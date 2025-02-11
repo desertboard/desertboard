@@ -24,14 +24,15 @@ const Filter = () => {
 
   useEffect(()=>{
     console.log(data)
+    // const filteredData = data && data.glossary && data.glossary.filter((item:{alphabet:string})=>item.alphabet=="A")
+    // console.log(filteredData && filteredData.map((item)=>(
+    //   item.contents
+    // )))
   },[data])
 
   const menuforA = {
     alphabet: "A",
-    items: [
-      { id: 1, name: "Al Sa’afat" },
-      { id: 2, name: "ASTM" },
-    ],
+    items: [{ id: 1, name: "BS" }],
     desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
   };
   const menuforB = {

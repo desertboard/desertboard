@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { ImageUploader } from '../ui/image-uploader'
 
 type FormData = {
     pageHeading: string;
@@ -13,6 +14,7 @@ type FormData = {
     image:string;
     heading:string;
     description:string;
+    image_url:string;
 }
 
 const AdminSustainability = () => {
@@ -29,6 +31,8 @@ const AdminSustainability = () => {
             handleSubmit,
             register,
             setValue,
+            watch,
+            getValues,
         } = useForm<FormData>();
 
     const onSubmit = async (data: FormData) => {
@@ -36,7 +40,7 @@ const AdminSustainability = () => {
             const formData = new FormData();
             formData.append("pageHeading", data.pageHeading);
             formData.append("pageDescription", data.pageDescription);
-            formData.append("image", "image");
+            formData.append("image", getValues("image_url"));
             formData.append("heading", data.heading);
             formData.append("description", data.description);
     
@@ -80,7 +84,7 @@ const AdminSustainability = () => {
                             setValue("pageDescription",data.sustainability.pageDescription)
                             setValue("heading",data.sustainability.heading)
                             setValue("description",data.sustainability.description)
-                            setValue("image",data.sustainability.image)
+                            setValue("image_url",data.sustainability.image)
                             setRoles(data.sustainability.roles)
                             setGoals(data.sustainability.goals)
                             setPartners(data.sustainability.partners)
@@ -134,7 +138,7 @@ const AdminSustainability = () => {
                 
                 <div>
                     <Label>Image</Label>
-                    <Input {...register("image")}></Input>
+                    <ImageUploader value={watch("image_url")} onChange={(url) => setValue("image_url", url)} />
                 </div>
                 
             

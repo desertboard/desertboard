@@ -6,6 +6,12 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button";
 import { FaPlusCircle } from "react-icons/fa";
 import { v4 as uuidv4 } from 'uuid';
+// import dynamic from "next/dynamic";
+// const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
+// import 'react-quill-new/dist/quill.snow.css';
+// import { Quill } from "react-quill-new";
+// import htmlEditButton from "quill-html-edit-button";
+// Quill.register("modules/htmlEditButton", htmlEditButton);
 
 import {
     Sheet,
@@ -21,6 +27,21 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 
+
+// const modules = {
+//     htmlEditButton: {
+//         msg: "Edit the content in HTML format", //Custom message to display in the editor, default: Edit HTML here, when you click "OK" the quill editor's contents will be replaced
+//         okText: "Ok", // Text to display in the OK button, default: Ok,
+//         cancelText: "Cancel", // Text to display in the cancel button, default: Cancel
+//         buttonHTML: "HTML", // Text to display in the toolbar button, default: <>
+//         buttonTitle: "Show HTML source", // Text to display as the tooltip for the toolbar button, default: Show HTML source
+//         syntax: false, // Show the HTML with syntax highlighting. Requires highlightjs on window.hljs (similar to Quill itself), default: false
+//         prependSelector: "div#myelement", // a string used to select where you want to insert the overlayContainer, default: null (appends to body),
+//         editorModules: {} // The default mod
+//       },
+// }
+
+
 export default function AdminFaqs() {
 
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -34,6 +55,7 @@ export default function AdminFaqs() {
     const [sectionName,setSectionName] = useState("")
     const [previousSectionName,setPreviousSectionName] = useState("")
     const [refetch,setRefetch] = useState(false)
+    
 
     const {
         handleSubmit,
@@ -274,8 +296,9 @@ export default function AdminFaqs() {
                                         <Label htmlFor="question">Question</Label>
                                         <Input value={question} onChange={(e) => setQuestion(e.target.value)} />
                                         <Label htmlFor="answer">Answer</Label>
-                                        <Input value={answer} onChange={(e) => setAnswer(e.target.value)} />
-                                        <SheetClose className="bg-blue-500 text-white p-2 rounded-lg" onClick={handleAddItem}>Confirm</SheetClose>
+                                        {/* <Input value={answer} onChange={(e) => setAnswer(e.target.value)} /> */}
+                                        {/* <ReactQuill theme="snow" value={answer} onChange={setAnswer} className="mt-1" modules={modules}/> */}
+                                        <SheetClose className="mt-20 bg-blue-500 text-white p-2 rounded-lg" onClick={handleAddItem}>Confirm</SheetClose>
                                     </div>
 
                                 </SheetContent>
@@ -305,8 +328,8 @@ export default function AdminFaqs() {
                                                 <Label htmlFor="question">Question</Label>
                                                 <Input value={question} onChange={(e) => setQuestion(e.target.value)} />
                                                 <Label htmlFor="answer">Answer</Label>
-                                                <Input value={answer} onChange={(e) => setAnswer(e.target.value)} />
-                                                <SheetClose className="bg-blue-500 text-white p-2 rounded-lg" onClick={()=>handleConfirmEditItem(item.customId ?? null)}>Confirm</SheetClose>
+                                                {/* <ReactQuill theme="snow" value={answer} onChange={setAnswer} className="mt-1" modules={modules}/> */}
+                                                <SheetClose className="mt-20 bg-blue-500 text-white p-2 rounded-lg" onClick={()=>handleConfirmEditItem(item.customId ?? null)}>Confirm</SheetClose>
                                             </div>
 
                                         </SheetContent>
