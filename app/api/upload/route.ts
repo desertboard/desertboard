@@ -21,6 +21,7 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File;
+    const fileType = formData.get("fileType") as string;
 
     if (!file) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
@@ -32,7 +33,12 @@ export async function POST(request: NextRequest) {
 
     // Generate unique filename
     const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-    const filename = `images/${uniqueSuffix}-${file.name}`;
+    let filename = "";
+    if (fileType === "file") {
+      filename = `files/${uniqueSuffix}-${file.name}`;
+    } else {
+      filename = `images/${uniqueSuffix}-${file.name}`;
+    }
 
     // Create a new blob in the bucket
     const blob = bucket.file(filename);
