@@ -22,11 +22,21 @@ export async function PATCH(request: NextRequest) {
   }
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
-  const { title, description, image_url, specifications } = await request.json();
+  const { title, subTitle, sector, specifications, subSections, bestPractices, finishes, images } =
+    await request.json();
 
   await connectDB();
 
-  const product = await Product.findByIdAndUpdate(id, { title, description, image_url, specifications });
+  const product = await Product.findByIdAndUpdate(id, {
+    title,
+    subTitle,
+    sector,
+    specifications,
+    subSections,
+    bestPractices,
+    finishes,
+    images,
+  });
 
   return NextResponse.json({ success: true, data: product }, { status: 200 });
 }
