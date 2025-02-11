@@ -139,8 +139,9 @@ export default function AdminProducts() {
             <div className="aspect-video relative">
               <Image src={finish.image} alt={finish.name} className="object-cover w-full h-full" fill />
             </div>
-            <CardContent className="p-4">
+            <CardContent className="p-4 flex items-center justify-between">
               <h2 className="text-xl font-semibold">{finish.name}</h2>
+              <AddFinishDialog finishId={finish._id} />
             </CardContent>
           </Card>
         ))}

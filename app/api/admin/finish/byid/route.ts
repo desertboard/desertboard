@@ -16,7 +16,9 @@ export async function PATCH(req: NextRequest) {
   if (!isAdmin) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  const { id, ...finishData } = await req.json();
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+  const { ...finishData } = await req.json();
   await connectDB();
   const finish = await Finish.findByIdAndUpdate(id, finishData, { new: true });
   return NextResponse.json({ success: true, data: finish }, { status: 200 });
