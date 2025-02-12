@@ -146,8 +146,8 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
                       onMouseLeave={() => setHoveredIndex(null)}
                       onTouchStart={() => setHoveredIndex(item.id)}  // For mobile devices
                     >
-                      {/* <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
-                    <h3 className="nubernext28bold   text-white " >{item.title}</h3></div> */}
+                      <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
+                    <h3 className="nubernext28bold   text-white " >{item.desc}</h3></div>
                       <div className="flex items-end  min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500  ">
                         <div className="p-5 transition-all duration-500 ease-in-out w-full  ">
                           <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-linear w-full  translate-y-[0px] delay-200 group-hover:translate-y-[-10px]">

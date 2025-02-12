@@ -10,7 +10,7 @@ declare global {
     | undefined;
 }
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/desertboard";
+const MONGODB_URI = process.env.NEXT_PUBLIC_MONGODB_URI || "mongodb://127.0.0.1:27017/desertboard";
 
 console.log(MONGODB_URI);
 

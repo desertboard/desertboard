@@ -48,7 +48,7 @@ const ApplicationSelector = ({
                 <Image src={assets.tlse} className="pb-3 md:pb-10" alt="" />
 
                 <Link
-                  href={`/product-details/${application.product}`}
+                  href={`/applications/${application.product}?application=${application.title}`}
                   className="nuber-next-heavy flex gap-2 max-w-fit w-[250px]
                                             group-hover:w-full transition-all duration-300
                                             text-[14px] md:text-font16 leading-[1.5] rmbtn pb-2"

@@ -67,7 +67,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
             </motion.h2>
             {subTitle && <p className="nuber-next md-6 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>}
 
-              <motion.div
+              <motion.p
 
                 className=" max-w-[100%] md:max-w-[98%]  "
                 initial={{ opacity: 0, x: -30 }}

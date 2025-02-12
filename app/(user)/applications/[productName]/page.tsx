@@ -61,7 +61,7 @@ const Sectors = () => {
       <SectionThree data={data}/>
       <SectionFour data={data} />
       <SectionFive {...relslideses} />
-     <Downloads title={"To Downloads"}/>
+     <Downloads title={"To Downloads"} url="/downloads"/>
     </>
   );
 };

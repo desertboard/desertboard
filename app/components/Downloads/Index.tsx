@@ -26,7 +26,7 @@ const Downloads = () => {
             />
 
         <Selections/>
-        <BeforeFooterTag title='Discover Industry Solutions'/>
+        <BeforeFooterTag title='Discover Industry Solutions' url="/"/>
     </>
 
   )
