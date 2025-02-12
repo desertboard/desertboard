@@ -44,14 +44,14 @@ module.exports = withMT({
   			}
   		},
   		colors: {
-			
+
   			primary: {
   				DEFAULT: '#00594F',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				foreground: '#00594F'
   			},
   			secondary: {
   				DEFAULT: '#FFB549',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				foreground: '#FFB549'
   			},
   			Darkgreen: '#002D28',
   			litetext: '#151515',
