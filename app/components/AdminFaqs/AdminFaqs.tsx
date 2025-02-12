@@ -73,6 +73,7 @@ export default function AdminFaqs() {
             if (response.ok) {
                 const data = await response.json()
                 alert(data.message)
+                setRefetch((prev)=>!prev)
                 // router.push('/admin/about')
             } else {
                 throw new Error("Failed to save faqs");

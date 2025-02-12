@@ -9,12 +9,12 @@ import { assets } from "@/public/assets/images/assets";
 
 interface MenuItem {
   id: number;
-  name: string;
+  title: string;
+  description: string;
 }
 
 interface AlphabetMenuProps {
   itemdata: {
-    desc: string;
     alphabet: string;
     items: MenuItem[];
   };
@@ -22,6 +22,8 @@ interface AlphabetMenuProps {
 
 const Searchresult: React.FC<AlphabetMenuProps> = ({ itemdata }) => {
 
+
+  console.log(itemdata?.items?.map((item)=>(item)))
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -39,7 +41,7 @@ const Searchresult: React.FC<AlphabetMenuProps> = ({ itemdata }) => {
                     </p>
                   </div>
                   <div className="flex flex-wrap mt-8">
-                    {itemdata.items.map((item, index) => (
+                    {itemdata?.items?.map((item, index) => (
                       <div className="w-full md:w-1/3 mb-4 md:mb-8 " key={index}>
 
 <div>
@@ -49,7 +51,7 @@ const Searchresult: React.FC<AlphabetMenuProps> = ({ itemdata }) => {
         onClick={() => toggleVisibility(index)}
       >
         <p className="nuber-next-heavy text-font20 leading-[1] text-Darkgreen">
-          {item.name}
+          {item.title}
         </p>
         <Image
           src={assets.grarrow}
@@ -77,7 +79,7 @@ const Searchresult: React.FC<AlphabetMenuProps> = ({ itemdata }) => {
               className={`texthelvetica20 clr15op75 transition-opacity duration-300 ${
                 activeIndex === index ? "opacity-100 max-h-[500px]" : "opacity-0 max-h-0"
               }`}
-            >{itemdata.desc}
+            >{item.description}
         </p>
       </div>
     </div>
