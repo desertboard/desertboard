@@ -4,7 +4,7 @@ export const SliderData = [
   {
     id: 1,
     title:"SDG 3",
-    desc:"DesertBoard’s zero-formaldehdye Palm Strand Boards ® improve indoor air quality",
+    desc:"DesertBoard’s zero-formaldehdye Palm Strand Boards PSB® improve indoor air quality",
     icon: assets.iconsl1,
     image:assets.sliconmn1
   },
@@ -39,7 +39,7 @@ export const SliderData = [
   {
     id: 6,
     title:"SDG 11",
-    desc:"DesertBoard honors and preserves Emirati heritage by upcycling palm frond biomass into innovative sustainable building solution.",
+    desc:"DesertBoard honors and preserves Gulf heritage by upcycling palm frond biomass into innovative sustainable building solution.",
     icon: assets.iconsl6,
     image:assets.sliconmn6
   },
