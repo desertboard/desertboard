@@ -65,6 +65,10 @@ import sl07 from "../images/sustainability/slideimgs7.jpg";
 import sl08 from "../images/sustainability/slideimgs8.jpg";
 import sl09 from "../images/sustainability/slideimgs9.jpg";
 import imgal from "../images/sustainability/img-al.jpg";
+import uae from "../images/sustainability/uae.jpg";
+import ksa from "../images/sustainability/ksa.jpg";
+import india from "../images/sustainability/india.jpg";
+import europe from "../images/sustainability/europe.jpg";
 import secim from "../images/sectors/sec2.png";
 import secdbanner from "../images/sectors/banner.jpg";
 import sec1 from "../images/sectors/sec1.png";
@@ -143,6 +147,10 @@ export const assets = {
     secdbanner,
     secim,
     imgal,
+    europe,
+    india,
+    ksa,
+    uae,
     sl01,
     sl02,
     sl03,

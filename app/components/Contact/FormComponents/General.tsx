@@ -7,23 +7,23 @@ const General = () => {
 
         <div className="relative float-label-input mb-4 md:mb-8 mt-0">
             <input type="text" id="name" placeholder=" " className="block w-full focus:shadow-outline  border-b border-gray-400 focus:outline-none focus:border-black bg-transparent texthelvetica20 clr15op50 lg:pl-3    py-3 px-3   appearance-none leading-normal   " />
-            <label   className="absolute font-helvetica text-font20 text-[#15151550] top-3 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Name</label>
+            <label   className="absolute font-helvetica text-font20 text-[#000]/50 top-3 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Name</label>
         </div>
         <div className="relative float-label-input mb-4 md:mb-8 mt-0">
             <input type="email" id="name" placeholder=" " className="block w-full focus:shadow-outline  border-b border-gray-400 focus:outline-none focus:border-black bg-transparent texthelvetica20 clr15op50 lg:pl-3    py-3 px-3   appearance-none leading-normal   " />
-            <label   className="absolute font-helvetica text-font20 text-[#15151550] top-3 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Email</label>
+            <label   className="absolute font-helvetica text-font20 text-[#000]/50 top-3 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Email</label>
         </div>
     </div>
 
     <div className="relative float-label-input mb-4 md:mb-8 mt-0">
             <input type="text" id="name" placeholder=" " className="block w-full focus:shadow-outline   border-b border-gray-400 focus:outline-none focus:border-black bg-transparent texthelvetica20 clr15op50 lg:pl-3    py-3 px-3   appearance-none leading-normal   " />
-            <label   className="absolute font-helvetica text-font20 text-[#15151550] top-3 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Phone</label>
+            <label   className="absolute font-helvetica text-font20 text-[#000]/50 top-3 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Phone</label>
     </div>
     <div className="relative float-label-input mb-4 md:mb-8 mt-0">
     <textarea
             className="border-b w-full border-gray-400 focus:outline-none focus:border-black bg-transparent h-[131px] resize-none"
         ></textarea>
-        <label className="absolute font-helvetica text-font20 text-[#15151550] top-1 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Message</label>
+        <label className="absolute font-helvetica text-font20 text-[#000]/50 top-1 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Message</label>
         </div>
 
 

@@ -17,7 +17,7 @@ const AddressBar = () => {
     }
 
     useEffect(()=>{
-        setActiveAccordian(1)
+        setActiveAccordian(0)
     },[])
 
     const [addressBarIndex,setAddressBarIndex] = useState(0)
@@ -45,11 +45,6 @@ const AddressBar = () => {
                     id: 1,
                     question: "India",
                     answer: "Material Tailwind is a framework that enhances Tailwind CSS with additional styles and components."
-                },
-                {
-                    id: 2,
-                    question: "Example",
-                    answer: "You can use Material Tailwind by importing its components into your Tailwind CSS project."
                 }
             ]
         }
@@ -75,7 +70,7 @@ const AddressBar = () => {
                     >
                         <div className='nuber-next-bold'><span className='nuber-next-heavy  text-Darkgreen text-font20'>{question}</span><span className='text-[#FF671F]'>.</span></div>
                         <span id="icon-1" className="text-slate-800 transition-transform duration-300">
-                            {id === activeAccordian ? <Image src={accordianArrow} alt='arrow'/> : <Image src={accordianArrow} alt='arrow' className='rotate-180'/>}
+                            {id === activeAccordian ? <Image src={accordianArrow} alt='arrow'/> : <Image src={accordianArrow} alt='arrow' className='rotate-180 w-[12px]'/>}
 
                         </span>
                     </button>

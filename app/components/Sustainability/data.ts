@@ -52,7 +52,7 @@ export const SliderData = [
   {
     id: 1,
     title:"Good Health And Well-Being ",
-    desc:"DesertBoard has designed its PSB® to be zero-emissions. This greener alternative to wood-based products (example: MDF, particleboard, and plywood) includes zero formaldehyde.",
+    desc:"DesertBoard has designed its PSB® to be zero-emissions. This greener alternative to wood-based products (example: MDF, particle board, and plywood) includes zero formaldehyde.",
     icon: assets.iconsl1,
     image:assets.sl01
   },
@@ -73,7 +73,7 @@ export const SliderData = [
   {
     id: 4,
     title:"Industry, Innovation, And Infrastructure",
-    desc:"Desert Board's engineered solutions are improving the construction industry while combating deforestation. Palm Strand Board®’s outstanding properties include high strength, versatility, fire resistance, sound isolation, among many more.",
+    desc:"Desert Board's engineered solutions are improving the construction industry while combating deforestation. Palm Strand Board’s outstanding properties include high strength, versatility, fire resistance, sound isolation, among many more.",
     icon: assets.iconsl4,
     image:assets.sl04
   },
@@ -152,7 +152,7 @@ export const tabData = {
       id: 1,
       tab:"United Arab Emirates",
       title: "United Arab Emirates",
-      image: assets.imgal,
+      image: assets.uae,
       description: "The UAE is known for its skyscrapers, luxury lifestyle, and rich cultural heritage.",
 
       list: ["DesertBoard’s Palm Strand Board, crafted from 100% sustainable agricultural palm biomass, aligns with India’s long-term low-carbon development strategy. PSB® boards act as an artificial carbon sink as they can store the carbon within their structure, addressing India’s goals for CO2 removal and net-zero emissions by 2070 vision. ",
@@ -163,7 +163,7 @@ export const tabData = {
       id: 2,
       tab:"European Union",
       title: "European Union",
-      image: assets.imgal,
+      image: assets.europe,
       description: "The UAE is known for its skyscrapers, luxury lifestyle, and rich cultural heritage.",
 
       list: ["DesertBoard’s Palm Strand Board, crafted from 100% sustainable agricultural palm biomass, aligns with India’s long-term low-carbon development strategy. PSB® boards act as an artificial carbon sink as they can store the carbon within their structure, addressing India’s goals for CO2 removal and net-zero emissions by 2070 vision. ",
@@ -175,7 +175,7 @@ export const tabData = {
       id: 3,
       tab:"Saudi Arabia",
       title: "Saudi Arabia",
-      image: assets.imgal,
+      image: assets.ksa,
       description: "The UAE is known for its skyscrapers, luxury lifestyle, and rich cultural heritage.",
 
       list: ["DesertBoard’s Palm Strand Board, crafted from 100% sustainable agricultural palm biomass, aligns with India’s long-term low-carbon development strategy. PSB® boards act as an artificial carbon sink as they can store the carbon within their structure, addressing India’s goals for CO2 removal and net-zero emissions by 2070 vision. ",
@@ -187,7 +187,7 @@ export const tabData = {
       id: 4,
       tab:"India",
       title: "Advancing Net-Zero by 2070",
-      image: assets.imgal,
+      image: assets.india,
       description: "The UAE is known for its skyscrapers, luxury lifestyle, and rich cultural heritage.",
 
       list: ["DesertBoard’s Palm Strand Board, crafted from 100% sustainable agricultural palm biomass, aligns with India’s long-term low-carbon development strategy. PSB® boards act as an artificial carbon sink as they can store the carbon within their structure, addressing India’s goals for CO2 removal and net-zero emissions by 2070 vision. ",
