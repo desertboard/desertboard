@@ -2,7 +2,7 @@ import Link from "next/link";
 
 interface UspsProps {
   title: string;
-  url: string;
+  url?: string;
 }
 
 export default function BeforeFooterTag({ title,url = "/" }: UspsProps) {
