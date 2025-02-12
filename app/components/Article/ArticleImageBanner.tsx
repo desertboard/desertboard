@@ -72,7 +72,7 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc,data }) => {
             src={bannerSrc}
 
             alt="Banner image"
-            width={400}
+            width={1500}
             height={500}
           />
         </div>
