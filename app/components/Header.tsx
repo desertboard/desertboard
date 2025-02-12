@@ -69,7 +69,7 @@ const Header = () => {
       <div className="container">
         <div className="py-5 z-10 border-b flex items-center justify-between">
           <div className="flex items-center">
-            <Image src={isSticky ? logo : flogo} alt="Logo" width={311} height={60} className={`logos`} />
+           <Link href={'/'} > <Image src={isSticky ? logo : flogo} alt="Logo" width={311} height={60} className={`logos`} /></Link>
           </div>
 
           <nav>
