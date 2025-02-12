@@ -10,11 +10,10 @@ import "@/app/components/home/goalcrd.scss";
 import { motion } from "framer-motion";
 
 import Accordion from "../Applications/Accordion";
+import { IndiApplication } from "@/types/ApplicationType";
+
 interface WhySupremeProps {
-  data: {
-    content: string;
-    title: string;
-  }[];
+  data:IndiApplication
 }
 
 // Component to display the data
@@ -78,7 +77,7 @@ const SectionFour: React.FC<WhySupremeProps> = ({ data }) => {
               },
             }}
           >
-            <Accordion accordionData={data} bg={"bg-[#ede8e3]"} bullet={true} />
+            <Accordion data={data ?? null} bg={"bg-[#ede8e3]"} bullet={true} />
 
           </motion.div>
         </div>

@@ -9,12 +9,14 @@ import lfbt from "@/public/assets/images/home/lfbt.svg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import Image from "next/image";
 import BackGround from "@/public/assets/images/Background.jpg";
-import { useState } from "react";
-import { menuItem } from "./data";
+import { useEffect, useState } from "react";
+
 import SectorSelector from "./Selections/SectorSelector";
 import ApplicationSelector from "./Selections/ApplicationSelector";
 import { assets } from "@/public/assets/images/assets";
 import { motion } from "framer-motion";
+import useSWR from "swr";
+import { SectorType } from "@/types/SectorType";
 
 const Sectors = () => {
   const breadcrumbs = [
@@ -22,8 +24,20 @@ const Sectors = () => {
     { label: "Sectors", href: "#" },
   ];
 
+
+
+  const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+  
+  const { data }:{data:SectorType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/sector', fetcher)
+
+  useEffect(()=>{
+    console.log(data && data.data)
+    
+  },[data])
+
   const [activeSector, setActiveSector] = useState(0);
-  const activeApplications = menuItem[activeSector].applications;
+  const activeApplications = data && data.data && data.data[activeSector].applications;
+
 
   return (
     <>
@@ -70,7 +84,7 @@ const Sectors = () => {
         <div className="container h-fit text-black">
           <div className="flex gap-6 lg:gap-0 flex-col lg:flex-row relative z-1">
             <div className={`w-full lg:w-1/3 lg:pr-20`}>
-              <SectorSelector
+              <SectorSelector data={data}
                 setActiveSector={setActiveSector}
                 activeSector={activeSector}
               />

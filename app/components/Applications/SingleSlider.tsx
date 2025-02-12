@@ -6,9 +6,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
-import { assets } from "@/public/assets/images/assets";
+// import { assets } from "@/public/assets/images/assets";
 import Image from "next/image";
-const SectionTwo = () => {
+import { IndiApplication } from "@/types/ApplicationType";
+const SectionTwo = ({data}:{
+  data:IndiApplication
+}) => {
 
 
   return (
@@ -46,21 +49,24 @@ const SectionTwo = () => {
 
         >
           {/* Slide 1 */}
-          <SwiperSlide>
+          {data && data.data && data.data.images.map((item,index)=>(
+            <SwiperSlide key={index}>
             <div>
 
             <figure className=" relative w-full h-[300px] md:h-[360px] lg:h-[85dvh] overflow-hidden  ">
               <Image
                 className="w-full h-full"
-                src={assets.sec2}
+                src={item}
                 fill
                 objectFit="cover"
                 alt=""
               />
               </figure>
               </div>
-          </SwiperSlide>
-          <SwiperSlide>
+            </SwiperSlide>
+          ))}
+          
+          {/* <SwiperSlide>
             <div>
               <figure className=" relative w-full h-[300px] md:h-[360px] lg:h-[85dvh] overflow-hidden  ">
                 <Image
@@ -72,7 +78,7 @@ const SectionTwo = () => {
                 />
               </figure>
             </div>
-          </SwiperSlide>
+          </SwiperSlide> */}
 
 
         </Swiper>

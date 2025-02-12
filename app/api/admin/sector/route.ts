@@ -24,12 +24,24 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({ success: true, data: sector }, { status: 201 });
 }
 
-export async function GET() {
+export async function GET(req:NextRequest) {
   await connectDB();
 
-  const sectors = await Sector.find();
+  const {searchParams} = new URL(req.url)
+  const title = searchParams.get("title")
 
-  return NextResponse.json({ success: true, data: sectors }, { status: 200 });
+  if(title){
+    const sector = await Sector.findOne({title})
+    if(sector){
+      return NextResponse.json({ success: true, data: sector }, { status: 200 });
+    }
+  }else{
+    const sectors = await Sector.find();
+
+    return NextResponse.json({ success: true, data: sectors }, { status: 200 });
+  }
+
+  
 }
 
 export async function PATCH(request: NextRequest) {

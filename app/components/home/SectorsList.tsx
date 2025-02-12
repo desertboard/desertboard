@@ -6,6 +6,8 @@ import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
 import { motion } from "framer-motion";
 import Image from "next/image";
+
+
 const SectorsList = () => {
   return (
     <>

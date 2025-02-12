@@ -1,4 +1,4 @@
-
+"use client"
 
 // Image imports
 import Arrow from "@/public/assets/brdcrbs.svg";
@@ -7,15 +7,33 @@ import MainDescBOx from "../Common/MainDescBox";
 import Tabs from "./Tabs";
 import BeforeFooterTag from "../Common/BeforeFooterTag";
 import { assets } from "@/public/assets/images/assets";
+import { useParams } from "next/navigation";
+import { useEffect } from "react";
+import useSWR from "swr";
+// import { SectorType } from "@/types/SectorType";
+import { IndiSectorType } from "@/types/IndiSector";
 
 
 
 const SectorDetails = () => {
+
+  const {sectorTitle} = useParams()
+
+  const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+  
+  const { data }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/sector?title=${sectorTitle}`, fetcher)
+
+
+  useEffect(()=>{
+    console.log(data && data.data)
+  },[data])
+
   const breadcrumbs = [
     { label: "Home", href: "#" },
     { label: "Sectors", href: "#" },
-    { label: "Engineering & Construction", href: "#" },
+    { label: `${data && data.data.title}`, href: "#" },
   ];
+
 
   return (
     <>
@@ -23,21 +41,19 @@ const SectorDetails = () => {
         bannerSrc={assets.secdbanner} // Corrected image import here
         arrowSrc={Arrow}
         desc=""
-        title="Engineering & Construction"
+        title={data && data.data.title}
         breadcrumbs={breadcrumbs}
         bnrHeight="60dvh"
       />
       <MainDescBOx
-        secTitle="Engineering & Construction"
+        secTitle={data && data.data.title}
         subTitle=""
-        paragraphs={[
-          "Desert Board proudly introduces Palm Strand Board (PSB®), a groundbreaking engineered solution redefining sustainability and performance in the construction industry. With zero formaldehyde emissions, PSB® ensures a healthier living environment, exemplifying our commitment to safety and well-being. Crafted from upcycled palm fronds, this locally manufactured material supports the region's bioeconomy while reducing environmental impact. Engineered for strength, durability, and versatility, PSB® thrives under challenging conditions, offering exceptional moisture resistance, fire safety, and sound isolation properties. From structural applications to fine furnishings, PSB® delivers unmatched quality and customization, empowering designers, architects, and builders to create with confidence and sustainability in mind.",
-        ]}
-         mainImg={assets.sec1}
+        paragraphs={data && data.data.description}
+         mainImg={data && data.data.image}
         // mainVdo={"../assets/images/home/liftvdo.mp4"}
         // vdoPoster="../assets/images/mn.jpg"
       />
-      <Tabs />
+      <Tabs applications={data && data.data.applications}/>
            <BeforeFooterTag title={"To Downloads"}/>
     </>
   );

@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button";
 import { FaPlusCircle } from "react-icons/fa";
-import { v4 as uuidv4 } from 'uuid';
+
 // import dynamic from "next/dynamic";
 // const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 // import 'react-quill-new/dist/quill.snow.css';
@@ -25,6 +25,7 @@ import {
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 
 
 
@@ -46,14 +47,9 @@ export default function AdminFaqs() {
 
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [section, setSection] = useState("")
-    const [sections, setSections] = useState<string[]>([])
-    const [answer, setAnswer] = useState("")
-    const [question, setQuestion] = useState("")
+    const [sections, setSections] = useState<{id:string,sectionName:string}[] | []>([])
     const [items, setItems] = useState<{customId:string,sectionName: string, question: string; answer: string }[]>([]);
-    const [selectedSection, setSelectedSection] = useState<string>("")
-    const [selectedItems, setSelectedItems] = useState<{customId:string,sectionName: string, question: string; answer: string }[]>([])
     const [sectionName,setSectionName] = useState("")
-    const [previousSectionName,setPreviousSectionName] = useState("")
     const [refetch,setRefetch] = useState(false)
     
 
@@ -62,24 +58,45 @@ export default function AdminFaqs() {
     } = useForm();
 
 
-    const handleAddSection = () => {
-        setSections((prev) => (
-            [...prev, section]
-        ))
-        setSection("")
+    const handleAddSection = async() => {
+        setIsSubmitting(true);
+        const formData = new FormData();
+        formData.append("sectionName", section);
+        try {
+            const url = `/api/admin/faqs/section`;
+            const method = "POST";
+            const response = await fetch(url, {
+                method: method,
+                body: formData,
+            });
+
+            if (response.ok) {
+                const data = await response.json()
+                alert(data.message)
+                // router.push('/admin/about')
+            } else {
+                throw new Error("Failed to save faqs");
+            }
+
+        } catch (error) {
+            console.error("Error editing faqs:", error);
+            alert("Failed to edit faqs. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     }
 
-    const handleAddItem = () => {
-        setItems((prev) => (
-            [...prev, { customId:uuidv4(),sectionName: selectedSection, question, answer }]
-        ))
-    }
+    // const handleAddItem = () => {
+    //     setItems((prev) => (
+    //         [...prev, { customId:uuidv4(),sectionName: selectedSection, question, answer }]
+    //     ))
+    // }
 
-    useEffect(() => {
-        const filteredItems = items.filter((item) => item.sectionName == selectedSection)
-        setSelectedItems(filteredItems)
+    // useEffect(() => {
+    //     const filteredItems = items.filter((item) => item.sectionName == selectedSection)
+    //     setSelectedItems(filteredItems)
 
-    }, [selectedSection, items])
+    // }, [selectedSection, items])
 
     const onSubmit = async () => {
         setIsSubmitting(true);
@@ -122,7 +139,7 @@ export default function AdminFaqs() {
 
                         console.log(data.faqs)
                         setItems(data.faqs)
-                        setSections([...new Set(data.faqs.map((item: { sectionName: string }) => item.sectionName))] as string[]);
+                        setSections(data.faqs);
                     }
 
                 } else {
@@ -136,44 +153,42 @@ export default function AdminFaqs() {
         fetchFaqData()
     }, [refetch])
 
-    const handleEditItem = (question:string,answer:string) =>{
-        setQuestion(question)
-        setAnswer(answer)
-    }
+    // const handleEditItem = (question:string,answer:string) =>{
+    //     setQuestion(question)
+    //     setAnswer(answer)
+    // }
 
-    const handleConfirmEditItem = (id:string|null) =>{
-        setItems((prev) =>
-            prev.map((item) =>
-                item.customId === id
-                    ? { ...item, question, answer }
-                    : item
-            )
-        );
-    }
+    // const handleConfirmEditItem = (id:string|null) =>{
+    //     setItems((prev) =>
+    //         prev.map((item) =>
+    //             item.customId === id
+    //                 ? { ...item, question, answer }
+    //                 : item
+    //         )
+    //     );
+    // }
 
-    const handleDeleteItem = (id:string) =>{
-        setItems((prev)=>(
-            prev.map((item)=>(
-                item.customId === id ? 
-                {...item,customId:item.customId + "DELETE"} 
-                : item
-            ))
-        ))
-    }
+    // const handleDeleteItem = (id:string) =>{
+    //     setItems((prev)=>(
+    //         prev.map((item)=>(
+    //             item.customId === id ? 
+    //             {...item,customId:item.customId + "DELETE"} 
+    //             : item
+    //         ))
+    //     ))
+    // }
 
     const handleSetEditSection = (item:string) =>{
-        setPreviousSectionName(item)
         setSectionName(item)
     }
 
-    const handleEditSection = async() =>{
+    const handleEditSection = async(id:string) =>{
         const formData = new FormData();
         
         formData.append("sectionName", sectionName);
-        formData.append("previousSectionName", previousSectionName);
-
+        
         try {
-            const url = `/api/admin/faqs/section`;
+            const url = `/api/admin/faqs/section?id=${id}`;
             const method = "PATCH";
             const response = await fetch(url, {
                 method: method,
@@ -196,11 +211,10 @@ export default function AdminFaqs() {
     }
 
 
-    const handleDeleteSection = async(item:string) =>{
+    const handleDeleteSection = async(id:string) =>{
         try {
             const formData = new FormData()
-            formData.append("sectionName",item)
-            const url = `/api/admin/faqs/section`;
+            const url = `/api/admin/faqs/section?id=${id}`;
             const method = "DELETE";
             const response = await fetch(url, {
                 method: method,
@@ -228,14 +242,8 @@ export default function AdminFaqs() {
             <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex justify-between">
                     <h1 className="text-3xl font-bold">Faqs</h1>
-                    <Button variant="outline" className="bg-blue-50" type="submit" disabled={isSubmitting}>Save Changes</Button>
-                </div>
-                <div className="grid grid-cols-3">
-                    <div className="col-span-1 flex flex-col w-full gap-2 border-r-2 h-screen px-2">
-                        <div className="flex gap-2 items-center">
-                            <h3>Sections</h3>
-                            <Sheet>
-                                <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button"><FaPlusCircle /></SheetTrigger>
+                    <Sheet>
+                                <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white flex gap-2 items-center" type="button">Add Section<FaPlusCircle /></SheetTrigger>
                                 <SheetContent className="flex flex-col gap-2">
 
                                     <SheetHeader>
@@ -250,14 +258,22 @@ export default function AdminFaqs() {
 
                                 </SheetContent>
                             </Sheet>
+                </div>
+                <div className="grid grid-cols-1">
+                    <div className="col-span-1 flex flex-col w-full gap-2 h-screen px-2">
+                        <div className="flex gap-2 items-center">
+                            <h3>Sections</h3>
+                            
 
                         </div>
                         {sections.map((item, index) => (
-                            <div className="border-b w-full p-6 bg-blue-50 flex justify-between" key={index} onClick={() => setSelectedSection(item)}>
-                                <div>{item}</div>
+                            
+                            <div className="border-b w-full p-6 bg-blue-50 flex justify-between" key={index}>
+                                <div>{item.sectionName}</div>
                                 <div className="flex items-center gap-2">
+                                <Link href={`/admin/faqs/${item.id}`}><Button>Add / Edit Contents</Button></Link>
                                 <Sheet>
-                                <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button" onClick={()=>handleSetEditSection(item)}>Edit</SheetTrigger>
+                                <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button" onClick={()=>handleSetEditSection(item.sectionName)}>Edit</SheetTrigger>
                                 <SheetContent className="flex flex-col gap-4">
 
                                     <SheetHeader>
@@ -267,79 +283,22 @@ export default function AdminFaqs() {
                                     <div className="flex justify-center flex-col gap-4">
                                         <Label htmlFor="question">Section Name</Label>
                                         <Input value={sectionName} onChange={(e) => setSectionName(e.target.value)} />
-                                        <SheetClose className="bg-blue-500 text-white p-2 rounded-lg" onClick={handleEditSection}>Confirm</SheetClose>
+                                        <SheetClose className="bg-blue-500 text-white p-2 rounded-lg" onClick={()=>handleEditSection(item.id)}>Confirm</SheetClose>
                                     </div>
 
                                 </SheetContent>
                             </Sheet>
 
-                            <Button className="max-h-8" type="button" onClick={()=>handleDeleteSection(item)}>Delete</Button>
+                            <Button className="max-h-8" disabled={isSubmitting} type="button" onClick={()=>handleDeleteSection(item.id)}>Delete</Button>
                                 </div>
                                 
                             </div>
+                            
                         ))}
 
                     </div>
 
-                    <div className="col-span-2 flex flex-col w-full gap-2 h-screen px-2">
-                        <div className="flex gap-2 items-center">
-                            <h3>Items</h3>
-                            {selectedSection !== "" && <Sheet>
-                                <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button"><FaPlusCircle /></SheetTrigger>
-                                <SheetContent className="flex flex-col gap-4">
-
-                                    <SheetHeader>
-                                        <SheetTitle>Add an item</SheetTitle>
-                                    </SheetHeader>
-
-                                    <div className="flex justify-center flex-col gap-4">
-                                        <Label htmlFor="question">Question</Label>
-                                        <Input value={question} onChange={(e) => setQuestion(e.target.value)} />
-                                        <Label htmlFor="answer">Answer</Label>
-                                        {/* <Input value={answer} onChange={(e) => setAnswer(e.target.value)} /> */}
-                                        {/* <ReactQuill theme="snow" value={answer} onChange={setAnswer} className="mt-1" modules={modules}/> */}
-                                        <SheetClose className="mt-20 bg-blue-500 text-white p-2 rounded-lg" onClick={handleAddItem}>Confirm</SheetClose>
-                                    </div>
-
-                                </SheetContent>
-                            </Sheet>}
-                        </div>
-                        {selectedItems.map((item, index) => (
-                            
-                            item.customId.slice(item.customId.length - 6,item.customId.length) == "DELETE" ? null 
-                            
-                            :
-
-
-                            <div className="border-b w-full p-6 bg-blue-50 flex justify-between" key={index}>
-                                <div>
-                                    {item.question}
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <Sheet>
-                                        <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button" onClick={()=>handleEditItem(item.question,item.answer)}>Edit</SheetTrigger>
-                                        <SheetContent className="gap-4 flex flex-col">
-
-                                            <SheetHeader>
-                                                <SheetTitle>Edit the item</SheetTitle>
-                                            </SheetHeader>
-
-                                            <div className="flex justify-center flex-col gap-3">
-                                                <Label htmlFor="question">Question</Label>
-                                                <Input value={question} onChange={(e) => setQuestion(e.target.value)} />
-                                                <Label htmlFor="answer">Answer</Label>
-                                                {/* <ReactQuill theme="snow" value={answer} onChange={setAnswer} className="mt-1" modules={modules}/> */}
-                                                <SheetClose className="mt-20 bg-blue-500 text-white p-2 rounded-lg" onClick={()=>handleConfirmEditItem(item.customId ?? null)}>Confirm</SheetClose>
-                                            </div>
-
-                                        </SheetContent>
-                                    </Sheet>
-                                    <Button className="max-h-8" onClick={()=>handleDeleteItem(item.customId)} type="button">Delete</Button>
-                                </div>
-                            </div>
-                        ))}
-
-                    </div>
+                    
                 </div>
             </form>
 

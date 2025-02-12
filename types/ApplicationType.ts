@@ -1,0 +1,32 @@
+export type IndiApplication = {
+    data:{
+        bannerImage:string;
+        bestPractices:{
+            title:string;
+            description:string;
+            _id:string;
+        }[],
+        finishes:{
+            image:string;
+            name:string;
+            _id:string;
+            id:number;
+            desc:string;
+        }[],
+        images:string[],
+        sector:string;
+        specifications:{
+            name:string;
+            value:string;
+            _id:string;
+        }[],
+        subSections:{
+            description:string;
+            icon:string;
+            _id:string;
+        }[],
+        subTitle:string;
+        title:string;
+        _id:string;
+    }
+}

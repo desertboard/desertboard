@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dialog"
 import { useForm } from 'react-hook-form'
 import { ImageUploader } from '../ui/image-uploader'
+import Image from 'next/image'
 
 
 type FormData = {
@@ -188,12 +189,12 @@ const RoleSection = () => {
                 </Dialog>
             </div>
 
-            {roles && roles.length > 0 ? roles.map((role:{_id:string,image:string,logo:string,title:string},key) => (
-                <div className='h-80 w-full border border-neutral-200 flex p-2  flex-col gap-5 rounded-xl' key={key}>
+            {roles && roles.length > 0 ? roles.map((role:{_id:string,image:string,logo:string,title:string}) => (
+                <div className='h-80 w-full border border-neutral-200 flex p-2  flex-col gap-5 rounded-xl' key={role._id}>
                     <div className='grid grid-cols-2 h-full w-full rounded-xl  border-neutral-200 gap-5'>
 
-                        <div className='flex items-center justify-center col-span-1 bg-blue-50'>
-                            {role.image}
+                        <div className='flex items-center justify-center col-span-1 bg-blue-500 h-full w-full relative'>
+                            {role.image!=="" ? <Image src={role.image} alt='role-image' fill className='absolute object-cover'/> : <span>No image</span>}
                         </div>
 
                         <div className='flex flex-col h-full px-4 gap-5'>
@@ -201,8 +202,8 @@ const RoleSection = () => {
 
                                 <Input placeholder='Title' defaultValue={role.title} onChange={(e)=>setTitle(e.target.value)}/>
                             </div>
-                            <div className='flex items-center justify-center h-3/4 bg-blue-50'>
-                                {role.logo}
+                            <div className='flex items-center justify-center h-3/4'>
+                            {role.logo!=="" ? <Image src={role.logo} alt='role-image' width={100} height={100}/> : <span>No logo</span>}
                             </div>
                             <div className='flex justify-end items-end h-1/3 gap-2'>
                                 <Button onClick={()=>handleEditRole(role._id)}>Save</Button>

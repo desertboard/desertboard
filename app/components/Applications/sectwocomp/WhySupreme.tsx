@@ -1,40 +1,36 @@
 import React from "react";
-import Image, { StaticImageData } from "next/image";
+import parse from 'html-react-parser'
+import Image from "next/image";
+import { IndiApplication } from "@/types/ApplicationType";
 
-
-interface WhySupremeProps {
-  sectitle: string;
-  data: {
-    id: number;
-    title: string;
-    icon: StaticImageData
-    boldtest: string;
-    description: string;
-  }[];
-}
 
 // Component to display the data
-const WhySupreme: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
+const WhySupreme = ({ data,pageName }:{
+  data:IndiApplication
+  pageName:string;
+}) => {
+
+  console.log(data && data.data)
   return (
     <>
 
         <div className="pb-7 md:pb-[60px] ">
         <div>
-          <p className=" helvetica-bold text-font28 leading-[1.2] text-Darkgreen mb-4 md:mb-8" dangerouslySetInnerHTML={{ __html:   sectitle }}>
-
+          <p className=" helvetica-bold text-font28 leading-[1.2] text-Darkgreen mb-4 md:mb-8">
+              {pageName==="products" ? `Key ${data && data.data.title} Information` : `Why ${data && data.data.title}`}
           </p>
         </div>
         <div   className="sts">
-        {data.map((framework) => (
-        <div key={framework.id}  className="sser" >
-          <div className="flex gap-3 md:gap-[18px] items-start mb-4 strs  ">
-            <Image src={framework.icon} alt="" />
-            <p className="texthelvetica20 clr15op75">
-              <span className="texthelvetica20bold opacity-[1] text-black">
+        {data && data.data && data.data.subSections && data.data.subSections.map((framework) => (
+        <div key={framework._id}  className="sser" >
+          <div className="flex gap-3 md:gap-[18px] items-start mb-4 strs">
+            <Image src={framework.icon} alt="icon-image" width={30} height={40}/>
+            
+              {/* <span className="texthelvetica20bold opacity-[1] text-black">
               {framework.boldtest}:
-              </span>
-                <span  > {framework.description}</span>
-            </p>
+              </span> */}
+                <span className="texthelvetica20 clr15op75"> {parse(framework.description)}</span>
+           
           </div>
         </div>
         ))}

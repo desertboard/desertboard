@@ -6,7 +6,14 @@ import lfbt from "@/public/assets/images/home/lfbt.svg";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { tabData } from "./data";
-const Tabs: React.FC = () => {
+import parse from 'html-react-parser'
+import readarrow from "@/public/assets/images/read-arrow.svg";
+import Link from "next/link";
+import { Applications } from "@/types/IndiSector";
+
+const Tabs = ({ applications }: {
+  applications?: Applications
+}) => {
   const [activeTab, setActiveTab] = useState<string>("tab1");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   // Toggle accordion
@@ -43,69 +50,68 @@ const Tabs: React.FC = () => {
             <div className="w-full">
               <div className="col-12 ">
                 <div className="hidden lg:block">
-                <div className="tabset pt-2 border-b border-[#1515151A] hidden lg:flex md:gap-[30px] gap-[10px] lg:gap-[50px] xxl:gap-[107px]">
-                  {tabData.data.map((tab, index) => (
-                    <React.Fragment key={`tab${index + 1}`}>
-                      <input
-                        type="radio"
-                        name="tabset"
-                        id={`tab${index + 1}`}
-                        aria-controls={`f${index + 1}`}
-                        checked={activeTab === `tab${index + 1}`}
-                        onChange={() => setActiveTab(`tab${index + 1}`)}
-                        className="hidden"
-                      />
-                      <label
-                        htmlFor={`tab${index + 1}`}
-                        className={`cursor-pointer py-4 border-b-[6px] text-[#15151580] ${
-                          activeTab === `tab${index + 1}`
+                  <div className="tabset pt-2 border-b border-[#1515151A] hidden lg:flex md:gap-[30px] gap-[10px] lg:gap-[50px] xxl:gap-[107px]">
+                    {applications && applications.map((tab, index) => (
+                      <React.Fragment key={`tab${index + 1}`}>
+                        <input
+                          type="radio"
+                          name="tabset"
+                          id={`tab${index + 1}`}
+                          aria-controls={`f${index + 1}`}
+                          checked={activeTab === `tab${index + 1}`}
+                          onChange={() => setActiveTab(`tab${index + 1}`)}
+                          className="hidden"
+                        />
+                        <label
+                          htmlFor={`tab${index + 1}`}
+                          className={`cursor-pointer py-4 border-b-[6px] text-[#15151580] ${activeTab === `tab${index + 1}`
                             ? "border-[#FF671F] nuber-next-heavy leading-[1] text-font28"
                             : "border-transparent nuber-next-bold leading-[1] text-font24"
-                        }`}
-                        style={{
-                          color:
-                            activeTab === `tab${index + 1}`
-                              ? "#002D28"
-                              : "#15151580",
-                        }}
-                      >
-                        {tab.tab}
-                      </label>
-                    </React.Fragment>
-                  ))}
-                </div>
-                <div className="tab-panels flex flex-wrap mt-6 lg:mt-20    ">
-                  <AnimatePresence mode="wait">
-                    {tabData.data.map(
-                      (tab, index) =>
-                        activeTab === `tab${index + 1}` && (
-                          <motion.section
-                            key={`tab${index + 1}`}
-                            id={`f${index + 1}`}
-                            className="tab-panel flex flex-col lg:flex-row w-full gap-10 lg:gap-20"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.5 }}
-                          >
-                            <div className="w-full lg:w-1/2">
-                              <motion.img
-                                src={tab.image.src}
-                                alt="New Tab Content"
-                                className="w-full h-350 lg:h-[552px] object-cover opacity-80 transition-opacity duration-300 hover:opacity-100"
-                                initial={{ scale: 0.9 }}
-                                animate={{ scale: 1 }}
-                                transition={{ duration: 0.5 }}
-                              />
-                            </div>
-                            <div className="w-full lg:w-1/2 text-justify items-center">
-                              <h3 className="heavydark mb-5 xl:mb-10">
-                                {tab.title}<span className="text-[#FF671F] leading-[1]">.</span>
-                              </h3>
-                              <p className="texthelvetica20 clr15op75 mb-6 xl:mb-10">
-                                {tab.description}
-                              </p>
-                              <ul className="mb-0 lg:mb-10 mnsas">
+                            }`}
+                          style={{
+                            color:
+                              activeTab === `tab${index + 1}`
+                                ? "#002D28"
+                                : "#15151580",
+                          }}
+                        >
+                          {tab.title}
+                        </label>
+                      </React.Fragment>
+                    ))}
+                  </div>
+                  <div className="tab-panels flex flex-wrap mt-6 lg:mt-20    ">
+                    <AnimatePresence mode="wait">
+                      {applications && applications.map(
+                        (tab, index) =>
+                          activeTab === `tab${index + 1}` && (
+                            <motion.section
+                              key={`tab${index + 1}`}
+                              id={`f${index + 1}`}
+                              className="tab-panel flex flex-col lg:flex-row w-full gap-10 lg:gap-20"
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -20 }}
+                              transition={{ duration: 0.5 }}
+                            >
+                              <div className="w-full lg:w-1/2">
+                                <motion.img
+                                  src={tab.image}
+                                  alt="New Tab Content"
+                                  className="w-full h-350 lg:h-[552px] object-cover opacity-80 transition-opacity duration-300 hover:opacity-100"
+                                  initial={{ scale: 0.9 }}
+                                  animate={{ scale: 1 }}
+                                  transition={{ duration: 0.5 }}
+                                />
+                              </div>
+                              <div className="w-full lg:w-1/2 text-justify items-center">
+                                <h3 className="heavydark mb-5 xl:mb-10">
+                                  {tab.title}
+                                </h3>
+                                <div className="texthelvetica20 clr15op75 mb-6 xl:mb-10">
+                                  {parse(tab.description)}
+                                </div>
+                                {/* <ul className="mb-0 lg:mb-10 mnsas">
                                 {tab.list.map((item, idx) => (
                                   <li
                                     key={idx}
@@ -115,13 +121,17 @@ const Tabs: React.FC = () => {
                                     {item}
                                   </li>
                                 ))}
-                              </ul>
-                            </div>
-                          </motion.section>
-                        )
-                    )}
-                  </AnimatePresence>
-                </div>
+                              </ul> */}
+                                <Link href={`/applications/${tab.product}?application=${tab.title}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-1 group-hover:opacity-100 w-[250px]
+                                    group-hover:w-full transition-opacity duration-300 text-[14px] md:text-font16   leading-[1.5] rmbtn pb-2 ">
+                                  Read More <Image src={readarrow} alt="icn1" className="transition-all duration-300 relative top-[2px]" width={11} height={16} />
+                                </Link>
+                              </div>
+                            </motion.section>
+                          )
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </div>
 
                 <div className="lg:hidden">
@@ -147,13 +157,13 @@ const Tabs: React.FC = () => {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           ><motion.img
-                          src={tab.image.src}
-                          alt="New Tab Content"
-                          className="w-full h-[200px] mb-5  object-cover opacity-80 transition-opacity duration-300 hover:opacity-100"
-                          initial={{ scale: 0.9 }}
-                          animate={{ scale: 1 }}
-                          transition={{ duration: 0.5 }}
-                        />
+                              src={tab.image.src}
+                              alt="New Tab Content"
+                              className="w-full h-[200px] mb-5  object-cover opacity-80 transition-opacity duration-300 hover:opacity-100"
+                              initial={{ scale: 0.9 }}
+                              animate={{ scale: 1 }}
+                              transition={{ duration: 0.5 }}
+                            />
                             <div className=" pt-0">
                               {/* <h3 className="heavydark mb-5">{tab.title}</h3> */}
                               <p className="texthelvetica20 clr15op75 mb-6">

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import ola from "@/public/assets/images/home/ola.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -11,19 +11,14 @@ import "swiper/css/effect-fade";
 
 import { Swiper as SwiperType } from "swiper";
 import { motion } from "framer-motion";
+import { IndiApplication } from "@/types/ApplicationType";
 
 interface WhySupremeProps {
-  sectitle: string;
-  data: {
-    id: number;
-    title: string;
-    image: StaticImageData;
-    desc: string;
-  }[];
+  data: IndiApplication
 }
 
 // Component to display the data
-const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
+const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const contentRefs = useRef<(HTMLSpanElement | null)[]>([]);
@@ -53,6 +48,8 @@ const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
     };
   }, []);
 
+  console.log(data)
+
 
   useEffect(() => {
     if (hoveredIndex !== null && contentRefs.current[hoveredIndex]) {
@@ -78,7 +75,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
         <div className="container ">
           <div>
             <h2 className="heavydark48 mb-6 md:mb-10">
-              {sectitle}
+            Customizable Finishes
               <span className="text-orange">.</span>
             </h2>
           </div>
@@ -140,11 +137,11 @@ const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={() => console.log("slide change")}
               >
-                {data.map((item) => (
-                  <SwiperSlide key={item.id}>
+                {data && data.data &&  data.data.finishes.map((item) => (
+                  <SwiperSlide key={item._id}>
                     <div
-                      className="relative group overflow-hidden transform goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
-                      style={{ backgroundImage: `url(${item.image.src})` }}
+                      className="relative group overflow-hidden transform goal-crd hrcd bg-center bg-cover transition-all duration-500 ease-in-out"
+                      style={{ backgroundImage: `url(${item.image})` }}
                       onMouseEnter={() => setHoveredIndex(item.id)}
                       onMouseLeave={() => setHoveredIndex(null)}
                       onTouchStart={() => setHoveredIndex(item.id)}  // For mobile devices
@@ -154,7 +151,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                       <div className="flex items-end  min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500  ">
                         <div className="p-5 transition-all duration-500 ease-in-out w-full  ">
                           <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-linear w-full  translate-y-[0px] delay-200 group-hover:translate-y-[-10px]">
-                            {item.title}
+                            {item.name}
                           </h3>
 
                           <p

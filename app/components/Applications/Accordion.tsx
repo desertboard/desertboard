@@ -3,6 +3,9 @@ import Image from "next/image";
 
 import arrow from "@/public/assets/images/applications/arrowdown.svg";
 import { assets } from "@/public/assets/images/assets";
+import parse from 'html-react-parser'
+// import { IndiSectorType } from "@/types/IndiSector";
+import { IndiApplication } from "@/types/ApplicationType";
 
 interface HeroSectionProps {
   title: string;
@@ -14,14 +17,8 @@ type AccordionProps = {
 
   bg: string;
   bullet: boolean;
-  accordionData: {
-
-    title: string;
-
-    content: string;
-
-  }[];
-
+  data?:IndiApplication | null
+  accordionData?:{ title: string; content: string; }[]
 };
 
 const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }) => {
@@ -54,17 +51,17 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }
           isOpen ? "max-h-[500px] opacity-100 lg:pl-8 pb-5" : "max-h-0 opacity-0"
         }`}
       >
-        <p className="helvetica text-font20  clr15op75 px-5">{content}</p>
+        <div className="helvetica text-font20  clr15op75 px-5">{parse(content)}</div>
       </div>
     </div>
   );
 };
 
-const Accordion : React.FC<AccordionProps> = ({ accordionData, bg, bullet}) => {
+const Accordion : React.FC<AccordionProps> = ({ data, bg, bullet}) => {
   return (
     <div className="w-full relative z-[1] ">
-      {accordionData && accordionData.map((item, index) => (
-        <AccordionItem key={index} bg={bg} bullet={bullet} title={item.title} content={item.content} />
+      {data && data.data && data.data.bestPractices.map((item, index) => (
+        <AccordionItem key={index} bg={bg} bullet={bullet} title={item.title} content={item.description} />
       ))}
     </div>
   );
