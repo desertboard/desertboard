@@ -17,21 +17,21 @@ const Filter = () => {
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
   const { data } = useSWR('/api/admin/glossary', fetcher)
-  const [filteredData,setFilteredData] = useState([])
+  
 
   // const [sections, setSections] = useState([])
   // const [activeSession,setActiveSection] = useState(null)
   // const [items,setItems] = useState([])
 
-  useEffect(()=>{
-    console.log(data && data.glossary && data.glossary.filter((item:{alphabet:string})=>item.alphabet=="A").map((item:{contents:string[]})=>item.contents))
-    setFilteredData(()=>(
-      data && data.glossary && data.glossary.filter((item:{alphabet:string})=>item.alphabet=="A")
-    ))
-    // console.log(filteredData && filteredData.map((item)=>(
-    //   item.contents
-    // )))
-  },[data])
+  // useEffect(()=>{
+  //   console.log(data && data.glossary && data.glossary.filter((item:{alphabet:string})=>item.alphabet=="A").map((item:{contents:string[]})=>item.contents))
+  //   setFilteredData(()=>(
+  //     data && data.glossary && data.glossary.filter((item:{alphabet:string})=>item.alphabet=="A")
+  //   ))
+  //   // console.log(filteredData && filteredData.map((item)=>(
+  //   //   item.contents
+  //   // )))
+  // },[data])
 
   const menuforA = {
     alphabet: "A",
