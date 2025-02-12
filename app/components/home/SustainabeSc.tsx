@@ -11,6 +11,7 @@ import Image from "next/image";
 import "@/app/components/home/goalcrd.scss";
 import { motion } from "framer-motion";
 import Slidersustain from "./Slidersustain";
+import Link from "next/link";
 
 const SustainabeSc = () => {
   return (
@@ -59,7 +60,7 @@ const SustainabeSc = () => {
             </div>
             <div className="flex gap-3 items-center group rmbtn pb-3">
               <div>
-                <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300       text-font20 md:min-w-[105px] nuber-next-heavy leading-[1.25] cursor-pointer">Read More</p>
+               <Link href="/sustainability"> <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300       text-font20 md:min-w-[105px] nuber-next-heavy leading-[1.25] cursor-pointer">Read More</p></Link>
               </div>{" "}
               <Image src={readarrow} alt="icn1" className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1 " />
             </div>

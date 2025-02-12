@@ -51,7 +51,7 @@ const BannerSr = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.4, ease: "easeInOut", delay: 0.6 }}
         >
-            <Link href="#" className="flex items-center nuber-next-heavy group w-fit text-font18  m-auto gap-4 rounded-none inline-block px-5 py-3 md:px-10 md:py-4
+            <Link href="/about" className="flex items-center nuber-next-heavy group w-fit text-font18  m-auto gap-4 rounded-none inline-block px-5 py-3 md:px-10 md:py-4
           border border-white text-white btnhs  hover:text-[#FF671F] hover:border-[#FF671F] transition rounded-md">
             Know More
             <Image src={readarrow} alt="icn1" width={16} height={24} className="fiterwt transition-all duration-300 group-hover:translate-x-2 " />
