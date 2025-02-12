@@ -1,13 +1,31 @@
-import React from "react";
+"use client"
+
+import React, { useEffect } from "react";
 import ArticleBanner from "./ArticleBanner";
 import ArticleImageBanner from "./ArticleImageBanner";
 
 import Arrow from "@/public/assets/brdcrbs.svg";
 import Downloads from "../Common/BeforeFooterTag";
 import RelatedArticles from "./RelatedArticles";
-import { assets } from "@/public/assets/images/assets";
+
+import useSWR from "swr";
+import { useParams } from "next/navigation";
+import { IndiNews } from "@/types/IndiNews";
 
 const Blogs = () => {
+
+  const {itemId} = useParams()
+
+  const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+
+  const { data }:{data:IndiNews,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/news/byid?id=${itemId}`, fetcher)
+
+
+  useEffect(()=>{
+    console.log(data)
+  },[data])
+
+  
   const breadcrumbs = [
     { label: "Home", href: "#" },
     { label: "News & Events", href: "#" },
@@ -15,8 +33,8 @@ const Blogs = () => {
   ];
   return (
     <>
-      <ArticleBanner arrowSrc={Arrow} title="DesertBoard® Stands Out at Big 5 Global with Its Unique Lineup of Sustainable Solutions " date="November 30, 2024" labeltext="Sustainability, Company News" breadcrumbs={breadcrumbs} bnrHeight="60dvh" />
-      <ArticleImageBanner bannerSrc={assets.articlebanner} />
+      <ArticleBanner arrowSrc={Arrow} title={data?.data?.title} date="November 30, 2024" labeltext={data?.data?.tags[0]} breadcrumbs={breadcrumbs} bnrHeight="60dvh" />
+      <ArticleImageBanner bannerSrc={data?.data?.images[0] || ""} data={data}/>
       <RelatedArticles />
       <Downloads title={"To Sustainability"} />
     </>

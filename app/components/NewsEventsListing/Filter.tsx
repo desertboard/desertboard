@@ -58,7 +58,7 @@ const Filter = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                   </svg> */}
                   <svg className="absolute right-3 top-5 transform -translate-y-1/2 w-4 h-4 text-gray-600" width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L7 7L13 1" stroke="#151515" strokeOpacity="0.5" stroke-width="2" stroke-linecap="round" />
+                    <path d="M1 1L7 7L13 1" stroke="#151515" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </Listbox.Button>
                 <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 overflow-auto">
@@ -76,7 +76,7 @@ const Filter = () => {
                 <Listbox.Button className="appearance-none bg-transparent flex border-b-[2px] border-[#002D28] outline-none rounded-none text-font20 text-black opacity-75 w-full lg:w-52 helvetica-500 pb-3 pl-3">
                   {sectorSelected.name}
                   <svg className="absolute right-3 top-5 transform -translate-y-1/2 w-4 h-4 text-gray-600" width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L7 7L13 1" stroke="#151515" strokeOpacity="0.5" stroke-width="2" stroke-linecap="round" />
+                    <path d="M1 1L7 7L13 1" stroke="#151515" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </Listbox.Button>
                 <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 overflow-auto">

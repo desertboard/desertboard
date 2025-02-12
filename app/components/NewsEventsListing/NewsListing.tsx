@@ -6,6 +6,7 @@ import useSWR from 'swr'
 import ListItem from "./NewsListItem";
 import { NewsType } from "@/types/NewsType";
 const Listing = () => {
+  
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
   const { data }:{data:NewsType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/news', fetcher)
 
