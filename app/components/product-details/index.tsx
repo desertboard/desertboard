@@ -9,7 +9,6 @@ import Downloads from "../Common/BeforeFooterTag";
 
 
 // Image imports
-import { assets } from "@/public/assets/images/assets";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import { slideses } from './data'
 import {relslideses } from "./data";
