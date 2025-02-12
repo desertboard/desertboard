@@ -6,7 +6,6 @@ import lfbt from "@/public/assets/images/home/lfbt.svg";
 import { StaticImageData } from "next/image";
 import React, { JSX, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import parse from 'html-react-parser'
 
 interface MainDescBoxProps {
   secTitle: string;
@@ -67,7 +66,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
             </motion.h2>
             {subTitle && <p className="nuber-next md-6 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>}
 
-              <motion.p
+              <motion.div
 
                 className=" max-w-[100%] md:max-w-[98%]  "
                 initial={{ opacity: 0, x: -30 }}
