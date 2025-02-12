@@ -17,14 +17,17 @@ const Filter = () => {
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
   const { data } = useSWR('/api/admin/glossary', fetcher)
+  const [filteredData,setFilteredData] = useState([])
 
   // const [sections, setSections] = useState([])
   // const [activeSession,setActiveSection] = useState(null)
   // const [items,setItems] = useState([])
 
   useEffect(()=>{
-    console.log(data)
-    // const filteredData = data && data.glossary && data.glossary.filter((item:{alphabet:string})=>item.alphabet=="A")
+    console.log(data && data.glossary && data.glossary.filter((item:{alphabet:string})=>item.alphabet=="A").map((item:{contents:string[]})=>item.contents))
+    setFilteredData(()=>(
+      data && data.glossary && data.glossary.filter((item:{alphabet:string})=>item.alphabet=="A")
+    ))
     // console.log(filteredData && filteredData.map((item)=>(
     //   item.contents
     // )))
@@ -32,83 +35,183 @@ const Filter = () => {
 
   const menuforA = {
     alphabet: "A",
-    items: [{ id: 1, name: "BS" }],
-    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "A")
+      .flatMap((item:{contents:string[]}) => item.contents),  // Flatten the contents array
   };
+
   const menuforB = {
     alphabet: "B",
-    items: [{ id: 1, name: "BS" }],
-    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "B")
+      .flatMap((item:{contents:string[]}) => item.contents),  // Flatten the contents array
   };
   const menuforC = {
     alphabet: "C",
-    items: [
-      { id: 1, name: "Carbon Footprint (CFP)" },
-      { id: 2, name: "CO2 (Carbon Dioxide)" },
-      { id: 3, name: "Carbon Sink" },
-    ],
-    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "C")
+      .flatMap((item:{contents:string[]}) => item.contents),  // Flatten the contents array
   };
   const menuforD = {
     alphabet: "D",
-    items: [
-      { id: 1, name: "Carbon Footprint (CFP)" },
-      { id: 2, name: "CO2 (Carbon Dioxide)" },
-      { id: 3, name: "Carbon Sink" },
-    ],
-    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "D")
+      .flatMap((item:{contents:string[]}) => item.contents),  // Flatten the contents array
   };
   const menuforE = {
     alphabet: "E",
-    items: [
-      { id: 1, name: "EGBC" },
-      { id: 2, name: "EN" },
-      { id: 3, name: "EPD" },
-      { id: 4, name: "EUDR" },
-      { id: 5, name: "Estidama" },
-      { id: 6, name: "ESL" },
-      { id: 7, name: "EST" },
-    ],
-    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "E")
+      .flatMap((item: { contents: string[] }) => item.contents),  
   };
+  
   const menuforF = {
     alphabet: "F",
-    items: [
-      { id: 1, name: "Fossil Fuels" },
-      { id: 2, name: "Forest Stewardship Council (FSC)" },
-    ],
-    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "F")
+      .flatMap((item: { contents: string[] }) => item.contents),  
   };
-
+  
   const menuforG = {
     alphabet: "G",
-    items: [
-      { id: 1, name: "Greenhouse Gas (GHG)" },
-      { id: 2, name: "Global Warming" },
-    ],
-    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-  };const menuforH = {
-    alphabet: "H",
-    items: [
-      { id: 1, name: "Greenhouse Gas (GHG)" },
-      { id: 2, name: "Global Warming" },
-    ],
-    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-  };const menuforI = {
-    alphabet: "I",
-    items: [
-      { id: 1, name: "Greenhouse Gas (GHG)" },
-      { id: 2, name: "Global Warming" },
-    ],
-    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-  };const menuforJ = {
-    alphabet: "J",
-    items: [
-      { id: 1, name: "Greenhouse Gas (GHG)" },
-      { id: 2, name: "Global Warming" },
-    ],
-    desc:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "G")
+      .flatMap((item: { contents: string[] }) => item.contents),  
   };
+  
+  const menuforH = {
+    alphabet: "H",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "H")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforI = {
+    alphabet: "I",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "I")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforJ = {
+    alphabet: "J",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "J")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforK = {
+    alphabet: "K",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "K")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforL = {
+    alphabet: "L",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "L")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforM = {
+    alphabet: "M",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "M")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforN = {
+    alphabet: "N",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "N")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforO = {
+    alphabet: "O",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "O")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforP = {
+    alphabet: "P",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "P")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforQ = {
+    alphabet: "Q",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "Q")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforR = {
+    alphabet: "R",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "R")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforS = {
+    alphabet: "S",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "S")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforT = {
+    alphabet: "T",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "T")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforU = {
+    alphabet: "U",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "U")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforV = {
+    alphabet: "V",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "V")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforW = {
+    alphabet: "W",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "W")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforX = {
+    alphabet: "X",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "X")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforY = {
+    alphabet: "Y",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "Y")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
+  const menuforZ = {
+    alphabet: "Z",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "Z")
+      .flatMap((item: { contents: string[] }) => item.contents),  
+  };
+  
 
   // const alphabet = [
   //   ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)),
@@ -116,8 +219,14 @@ const Filter = () => {
   // ];
   // const [activeLetter, setActiveLetter] = useState<string>("");
   const [isSticky, setIsSticky] = useState(false);
+
+
+
+  
+
+  
   const componentsList = [
-    { id: 1, name: "A", component: <Searchresult itemdata={menuforA}   /> },
+    { id: 1, name: "A", component: <Searchresult itemdata={menuforA} /> },
     { id: 2, name: "B", component: <Searchresult itemdata={menuforB} /> },
     { id: 3, name: "C", component: <Searchresult itemdata={menuforC} /> },
     { id: 4, name: "D", component: <Searchresult itemdata={menuforD} /> },
@@ -127,24 +236,25 @@ const Filter = () => {
     { id: 8, name: "H", component: <Searchresult itemdata={menuforH} /> },
     { id: 9, name: "I", component: <Searchresult itemdata={menuforI} /> },
     { id: 10, name: "J", component: <Searchresult itemdata={menuforJ} /> },
-    { id: 11, name: "K", component: <Searchresult itemdata={menuforC} /> },
-    { id: 12, name: "L", component: <Searchresult itemdata={menuforC} /> },
-    { id: 13, name: "M", component: <Searchresult itemdata={menuforC} /> },
-    { id: 14, name: "N", component: <Searchresult itemdata={menuforC} /> },
-    { id: 15, name: "O", component: <Searchresult itemdata={menuforC} /> },
-    { id: 16, name: "P", component: <Searchresult itemdata={menuforC} /> },
-    { id: 17, name: "Q", component: <Searchresult itemdata={menuforC} /> },
-    { id: 18, name: "R", component: <Searchresult itemdata={menuforC} /> },
-    { id: 19, name: "S", component: <Searchresult itemdata={menuforC} /> },
-    { id: 20, name: "T", component: <Searchresult itemdata={menuforC} /> },
-    { id: 21, name: "U", component: <Searchresult itemdata={menuforC} /> },
-    { id: 22, name: "V", component: <Searchresult itemdata={menuforC} /> },
-    { id: 23, name: "W", component: <Searchresult itemdata={menuforC} /> },
-    { id: 24, name: "X", component: <Searchresult itemdata={menuforC} /> },
-    { id: 25, name: "Y", component: <Searchresult itemdata={menuforC} /> },
-    { id: 26, name: "Z", component: <Searchresult itemdata={menuforC} /> },
+    { id: 11, name: "K", component: <Searchresult itemdata={menuforK} /> },
+    { id: 12, name: "L", component: <Searchresult itemdata={menuforL} /> },
+    { id: 13, name: "M", component: <Searchresult itemdata={menuforM} /> },
+    { id: 14, name: "N", component: <Searchresult itemdata={menuforN} /> },
+    { id: 15, name: "O", component: <Searchresult itemdata={menuforO} /> },
+    { id: 16, name: "P", component: <Searchresult itemdata={menuforP} /> },
+    { id: 17, name: "Q", component: <Searchresult itemdata={menuforQ} /> },
+    { id: 18, name: "R", component: <Searchresult itemdata={menuforR} /> },
+    { id: 19, name: "S", component: <Searchresult itemdata={menuforS} /> },
+    { id: 20, name: "T", component: <Searchresult itemdata={menuforT} /> },
+    { id: 21, name: "U", component: <Searchresult itemdata={menuforU} /> },
+    { id: 22, name: "V", component: <Searchresult itemdata={menuforV} /> },
+    { id: 23, name: "W", component: <Searchresult itemdata={menuforW} /> },
+    { id: 24, name: "X", component: <Searchresult itemdata={menuforX} /> },
+    { id: 25, name: "Y", component: <Searchresult itemdata={menuforY} /> },
+    { id: 26, name: "Z", component: <Searchresult itemdata={menuforZ} /> },
     { id: 27, name: "#", component: <Searchresult itemdata={menuforC} /> },
   ];
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 500) {
@@ -160,6 +270,7 @@ const Filter = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
   // Determine which components to show
@@ -262,7 +373,7 @@ const Filter = () => {
 
                   {componentsList.map((item) => (
 
-          <p
+          <div
             key={item.id}
             onClick={() => setSelectedId(item.id)}
             className={`texthelvetica20 font-bold
@@ -274,7 +385,7 @@ const Filter = () => {
           ><div className={`w-fit py-[5px] md:py-[6px] xxl:py-[9px] px-[10px] md:px-[6px] xxl:px-[13px] cursor-pointer transition-all duration-300`}>
             {item.name}
             </div>
-                      </p>
+                      </div>
 
         ))}
                       </div>
