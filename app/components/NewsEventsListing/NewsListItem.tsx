@@ -38,7 +38,7 @@ import PrimaryArrowBtn from '../Common/PrimaryArrowBtn';
             </ul>
           }
         </div>
-        <PrimaryArrowBtn btntitle={"Read More"} btnLink={`article/${listData._id}`}></PrimaryArrowBtn>
+        <PrimaryArrowBtn btntitle={"Read More"} btnLink={`article`}></PrimaryArrowBtn>
 
       </div>
     </div>
