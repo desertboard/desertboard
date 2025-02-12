@@ -18,7 +18,7 @@ const Listing = () => {
         <div className="container">
           <div className="news-list">
             {data && data.data.map((item)=>(
-                <ListItem listData={item}   />
+                <ListItem listData={item} key={item._id}  />
             ))}
           </div>
         </div>

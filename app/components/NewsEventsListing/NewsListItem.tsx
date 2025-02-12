@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import NewsIcon from "@/public/assets/images/News/pin.svg";
 import PrimaryArrowBtn from '../Common/PrimaryArrowBtn';
-import { NewsType } from '@/types/NewsType';
 
 
 // const ListItem = ({ listData }: ListItemProps) => {
