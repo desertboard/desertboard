@@ -66,7 +66,7 @@ const Faqs = () => {
                             <p className='font-helvetica font-[400] text-font18 clr15op50'>We’re here to help! If you didn’t find the answers you were looking for, feel free to reach out to us directly.</p>
                           <Link href="contact">  <button
                                 type="submit"
-                                className="mt-6    group items-center hover:border-b-2  border-[#FF671F] text-[#FF671F] pb-1 h-6 flex gap-1 nuber-next-heavy"
+                                className="mt-3 md:mt-6     group items-center hover:border-b-2  border-[#FF671F] text-[#FF671F] pb-1 h-6 flex gap-1 nuber-next-heavy"
                             >
                                 Contact Us <div className="transition-all duration-300 group-hover:translate-x-1">
                                     <svg width="20" height="15" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className='relative top-[2px]'>
