@@ -2,14 +2,15 @@ import Link from "next/link";
 
 interface UspsProps {
   title: string;
+  url: string;
 }
 
-export default function BeforeFooterTag({ title }: UspsProps) {
+export default function BeforeFooterTag({ title,url = "/" }: UspsProps) {
   return (
     <>
       <section className="bg-[#FFB549]  relative z-[1]">
         <div className="container m-auto">
-        <Link href="/sustainability">
+        <Link href={url}>
           <div className="flex items-center gap-3   py-6 md:py-10 group  justify-end">
           
             <p className="mb-0 nuber-next-bold text-font28    text-white nuber-next-heavy cursor-pointer">{title}</p>
