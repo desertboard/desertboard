@@ -41,7 +41,7 @@ const Index = () => {
       <NewsBlock newsEvent={latestExpertise} sectionTitle="Our Expertise" />
       <InstagramBlock instagramData={instagramPosts} />
       <UpcommingEvents commingEvents={upCommingEvents} />
-      <BeforeFooterTag title={"Discover Industry Solutions"} ur />
+      <BeforeFooterTag title={"Discover Industry Solutions"} url="/" />
     </>
   );
 };
