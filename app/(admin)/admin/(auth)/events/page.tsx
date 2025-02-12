@@ -82,13 +82,7 @@ export default function AdminProducts() {
           {events?.map((event, index) => (
             <Card key={index} className="overflow-hidden group">
               <div className="aspect-video relative">
-                <Image
-                  width={100}
-                  height={100}
-                  src={event.image}
-                  alt={event.title}
-                  className="object-cover w-full h-full"
-                />
+                <Image fill src={event.image} alt={event.title} className="object-cover w-full h-full" />
               </div>
               <CardContent className="p-4">
                 <div className="flex justify-between items-start mb-2">
