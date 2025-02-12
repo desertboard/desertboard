@@ -7,6 +7,7 @@ import Menu from './Menu';
 // import SubMenu from './SubMenu/SubMenu';
 import flogo from "@/public/assets/images/home/flogo.png";
 import Image from 'next/image';
+import Link from 'next/link';
 
 const MobileMenu = () => {
 
@@ -41,7 +42,7 @@ const MobileMenu = () => {
     <div ref={menuRef}>
 
       <div className='absolute z-20 left-5 top-6'>
-      <Image src={flogo} alt="Logo" width={200}  height={60} />
+      <Link href="/"><Image src={flogo} alt="Logo" width={200}  height={60} /></Link>
       </div>
 
 

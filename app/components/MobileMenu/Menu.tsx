@@ -11,8 +11,9 @@ import fb from "@/public/assets/images/home/fb.svg";
 import lin from "@/public/assets/images/home/lin.svg";
 import insta from "@/public/assets/images/home/inst.svg";
 import youtube from "@/public/assets/images/home/youtube.svg";
+import { menuItems } from '@/app/(user)/data/menuItems';
 
-const navItems = [
+/* const navItems = [
   {
     title: "Home",
     href: "/",
@@ -67,7 +68,7 @@ const navItems = [
     title: "Contact",
     href: "#",
   },
-]
+] */
 
 export default function Menu({setSubMenuActive,setIsActive}:{
   setSubMenuActive:Dispatch<SetStateAction<boolean>>
@@ -89,7 +90,7 @@ export default function Menu({setSubMenuActive,setIsActive}:{
             <div onMouseLeave={() => {setSelectedIndicator(pathname)}} className={styles.nav}>
 
                     {
-                      navItems.map( (data, index) => {
+                      menuItems.map( (data, index) => {
                         return <Link setSubMenuActive={setSubMenuActive} setIsActive={setIsActive}
                         key={index}
                         data={{...data, index}}
