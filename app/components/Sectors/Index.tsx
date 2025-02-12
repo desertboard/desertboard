@@ -44,7 +44,7 @@ const Sectors = () => {
       <PageBanner
         bannerSrc={assets.secbanner} // Corrected image import here
         arrowSrc={Arrow}
-        desc="PSB® boards' diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring. "
+        desc="PSB®   diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring. "
         title="Sectors"
         breadcrumbs={breadcrumbs}
         bnrHeight="90dvh"
@@ -99,7 +99,7 @@ const Sectors = () => {
         </div>
       </div>
       </motion.div>
-      <Downloads title={"Discover Industry Solutions"} />
+      <Downloads title={"To Downloads"} url='/downloads' />
     </>
   );
 };

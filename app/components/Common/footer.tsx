@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React ,{useState , useEffect} from "react";
 import { motion } from "framer-motion";
 
 import Image from "next/image";
@@ -13,8 +13,33 @@ import lin from "@/public/assets/images/home/lin.svg";
 import insta from "@/public/assets/images/home/inst.svg";
 import youtube from "@/public/assets/images/home/youtube.svg";
 import Link from "next/link";
+import { assets } from "@/public/assets/images/assets";
+
+
 
 const Footer = () => {
+
+const [isVisible, setIsVisible] = useState(false);
+
+useEffect(() => {
+  const toggleVisibility = () => {
+    if (window.scrollY > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  window.addEventListener("scroll", toggleVisibility);
+
+  return () => {
+    window.removeEventListener("scroll", toggleVisibility);
+  };
+}, []);
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
   return (
     <>
       <footer className="bg-[#00594F] fotersmn relative overflow-hidden *:">
@@ -377,6 +402,16 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
+        <button
+      onClick={scrollToTop}
+      className={`fixed bottom-5 right-20    transition-opacity duration-300 ${
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
+    >
+      <Image src={assets.arrowscroll} alt="" width={44} height={26}/>
+    </button>
+
       </footer>
     </>
   );

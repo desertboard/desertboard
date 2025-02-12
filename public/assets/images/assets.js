@@ -101,8 +101,7 @@ import ra2 from "../images/applications/ra2.jpg";
 import ra3 from "../images/applications/ra3.jpg";
 import ra4 from "../images/applications/ra4.jpg";
 import ra5 from "../images/applications/ra5.jpg";
-
-
+import arrowscroll from "../images/icons/arrowscroll.svg";
 
 
 
@@ -115,6 +114,7 @@ import ra5 from "../images/applications/ra5.jpg";
 
 
 export const assets = {
+    arrowscroll,
     ra1,
     ra2,
     ra3,

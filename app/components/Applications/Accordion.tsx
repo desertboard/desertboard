@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import arrow from "@/public/assets/images/applications/arrowdown.svg";
+import arrdns from "@/public/assets/images/icons/arrdns.svg";
 import { assets } from "@/public/assets/images/assets";
 import parse from 'html-react-parser'
 // import { IndiSectorType } from "@/types/IndiSector";
@@ -41,7 +41,7 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }
           }`}
         >
 
-       <Image src={arrow} alt="arrow" />
+       <Image src={arrdns} alt="arrow" />
         </div>
       </div>
 
