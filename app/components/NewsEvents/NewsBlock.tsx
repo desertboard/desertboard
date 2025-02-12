@@ -63,7 +63,7 @@ const NewsBlock = ({newsEvent, sectionTitle}:NewsEventsProps) => {
                           ))}
                         </ul>
                       </div>
-                      <PrimaryArrowBtn btntitle="Read more" btnLink={`article`} />
+                      <PrimaryArrowBtn btntitle="Read more" btnLink={`#git`} />
                     </div>
                   </>
                 ) : (

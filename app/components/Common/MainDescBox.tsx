@@ -67,7 +67,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
             </motion.h2>
             {subTitle && <p className="nuber-next md-6 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>}
 
-              <motion.div
+              <motion.p
 
                 className="text-font20 clr15op75 max-w-[100%] md:max-w-[98%] leading-[1.3] mb-4 last:mb-0 flex flex-col gap-3 md:gap-5"
                 initial={{ opacity: 0, x: -30 }}
@@ -82,7 +82,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
                   },
                 }}>
                 {typeof paragraphs == "string" ? parse(paragraphs) : paragraphs}
-              </motion.div>
+              </motion.p>
 
           </div>
 

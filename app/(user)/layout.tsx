@@ -3,6 +3,7 @@ import "../../app/globals.css";
 import "../../app/components/Common/common.scss";
 import Header from "../components/Header";
 import Footer from "../components/Common/footer";
+import RSymbolFix from "../components/Common/SuperscriptR";
 
 
 
@@ -23,6 +24,7 @@ export default function RootLayout({
       >
         <Header/>
           {children}
+       <RSymbolFix/>
           <Footer/>
       </body>
     </html>
