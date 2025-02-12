@@ -23,8 +23,8 @@ const Index = () => {
     .slice(0, 3);
 
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "News & Events", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "News & Events", href: "" },
   ];
   return (
     <>

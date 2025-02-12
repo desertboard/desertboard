@@ -32,9 +32,9 @@ const ProducrDetails = () => {
   const { data }:{data:IndiApplication,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/products?productName=${productName}`, fetcher)
 
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "Products", href: "#" },
-    { label: `${data && data.data.title}`, href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Products", href: "" },
+    { label: `${data && data.data.title}`, href: "" },
   ];
 
   useEffect(()=>{

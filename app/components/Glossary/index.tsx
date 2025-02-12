@@ -9,8 +9,8 @@ import BeforeFooterTag from '../Common/BeforeFooterTag';
 
 const Blogs = () => {
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "Glossary", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Glossary", href: "" },
   ];
   return (
     <>

@@ -29,20 +29,20 @@ const Sectors = () => {
   console.log(application)
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
-  
+
   const { data }:{data:IndiApplication,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/products?productName=${productName}`, fetcher)
 
 
   useEffect(()=>{
     console.log(data && data.data)
-  },[data]) 
+  },[data])
 
 
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "Sectors", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Sectors", href: "/sectors" },
     // { label: `${data && data.data.sector}`, href: "#" },
-    { label: `${application}`, href: "#" },
+    { label: `${application}`, href: "" },
   ];
 
   return (

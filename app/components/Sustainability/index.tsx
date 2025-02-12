@@ -15,8 +15,8 @@ import {tabData} from './data';
 
 const Blogs = () => {
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "Sustainability", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Sustainability", href: "" },
   ];
   return (
     <>

@@ -10,13 +10,13 @@ const WhySupreme = ({ data,pageName }:{
   pageName:string;
 }) => {
 
-  console.log(data && data.data)
+  // console.log(data && data.data)
   return (
     <>
 
         <div className="pb-7 md:pb-[60px] ">
         <div>
-          <p className=" helvetica-bold text-font28 leading-[1.2] text-Darkgreen mb-4 md:mb-8">
+          <p className=" helvetica-bold text-font28   text-Darkgreen mb-4 md:mb-8">
               {pageName==="products" ? `Key ${data && data.data.title} Information` : `Why ${data && data.data.title}`}
           </p>
         </div>
@@ -29,7 +29,9 @@ const WhySupreme = ({ data,pageName }:{
               {/* <span className="texthelvetica20bold opacity-[1] text-black">
               {framework.boldtest}:
               </span> */}
-                <span className="texthelvetica20 clr15op75"> {parse(framework.description)}</span>
+              <span className="texthelvetica20 clr15op75"> {parse(framework.description)}</span>
+
+              {/* <div className="texthelvetica20 clr15op75">{framework.description}</div> */}
 
           </div>
         </div>

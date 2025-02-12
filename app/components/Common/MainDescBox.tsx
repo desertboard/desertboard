@@ -69,7 +69,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
 
               <motion.div
 
-                className="text-font20 clr15op75 max-w-[100%] md:max-w-[98%] leading-[1.3] mb-4 last:mb-0 flex flex-col gap-3 md:gap-5"
+                className=" max-w-[100%] md:max-w-[98%]  "
                 initial={{ opacity: 0, x: -30 }}
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -81,7 +81,23 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
                     transition: { duration: 1, delay: 0.5 },
                   },
                 }}>
-                {typeof paragraphs == "string" ? parse(paragraphs) : paragraphs}
+              {/* {typeof paragraphs == "string" ? parse(paragraphs) : paragraphs} */}
+              {Array.isArray(paragraphs) ? (
+                paragraphs.map((paragraph, index) => (
+                  <p
+                    key={index}
+                    className="text-font20 clr15op75 leading-[1.3] mb-4 last:mb-0"
+
+                  >{paragraph}</p>
+                ))
+              ) : (
+                <p
+                  className="text-font20 clr15op75 leading-[1.3] mb-4 last:mb-0"
+
+                >{paragraphs}</p>
+              )}
+
+
               </motion.div>
 
           </div>

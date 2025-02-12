@@ -20,19 +20,19 @@ import { SectorType } from "@/types/SectorType";
 
 const Sectors = () => {
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "Sectors", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Sectors", href: "" },
   ];
 
 
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
-  
+
   const { data }:{data:SectorType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/sector', fetcher)
 
   useEffect(()=>{
     console.log(data && data.data)
-    
+
   },[data])
 
   const [activeSector, setActiveSector] = useState(0);

@@ -123,7 +123,7 @@ export const suggestData = {
   data: [
     {
       id: 1,
-      title: "PSB<sup>®</sup> SUPREME",
+      title: "PSB® SUPREME",
       image: assets.imgdust
      },
 
@@ -131,7 +131,7 @@ export const suggestData = {
 };
 
 export const whySupreme = {
-    sectitle: "WHY PSB<sup>®</sup> SUPREME?",
+    sectitle: "WHY PSB® SUPREME?",
     data: [
       {
         id: 1,
