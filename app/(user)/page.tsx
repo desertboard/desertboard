@@ -23,7 +23,7 @@ export default function Home() {
       <UspList secTitle={"Key USP's"} />
       <SectorsList />
       <SustainabeSc />
-      <BeforeFooterTag title={"To Sustainability"} />
+      <BeforeFooterTag title={"To Sustainability"} url={"/sustainability"} />
     </>
   );
 }

@@ -27,7 +27,7 @@ export const topicSelection = [
                 title: "Life Cycle Certificates",
                 result: [
                     {
-                        title: "Nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -40,7 +40,7 @@ export const topicSelection = [
                 title: "Product Declaration Certificates",
                 result: [
                     {
-                        title: "Nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -48,7 +48,7 @@ export const topicSelection = [
                         image: ""
                     },
                     {
-                        title: "nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -61,7 +61,7 @@ export const topicSelection = [
                 title: "Carbon Footprint Certificates",
                 result: [
                     {
-                        title: "Nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -69,7 +69,7 @@ export const topicSelection = [
                         image: ""
                     },
                     {
-                        title: "nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -82,7 +82,7 @@ export const topicSelection = [
                 title: "Management & Safety Certificates",
                 result: [
                     {
-                        title: "Nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -90,7 +90,7 @@ export const topicSelection = [
                         image: ""
                     },
                     {
-                        title: "nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -103,7 +103,7 @@ export const topicSelection = [
                 title: "Formaldehyde Content Certificates",
                 result: [
                     {
-                        title: "Nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -111,7 +111,7 @@ export const topicSelection = [
                         image: ""
                     },
                     {
-                        title: "nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -124,7 +124,7 @@ export const topicSelection = [
                 title: "Sound Tansmission Certificates",
                 result: [
                     {
-                        title: "Nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -132,7 +132,7 @@ export const topicSelection = [
                         image: ""
                     },
                     {
-                        title: "nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -145,7 +145,7 @@ export const topicSelection = [
                 title: "Technical Certificates",
                 result: [
                     {
-                        title: "Nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -153,7 +153,7 @@ export const topicSelection = [
                         image: ""
                     },
                     {
-                        title: "nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -166,7 +166,7 @@ export const topicSelection = [
                 title: "Environmental Certificates",
                 result: [
                     {
-                        title: "Nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -174,7 +174,7 @@ export const topicSelection = [
                         image: ""
                     },
                     {
-                        title: "nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {
@@ -213,7 +213,7 @@ export const topicSelection = [
                 title: "Life Cycle Certificates",
                 result: [
                     {
-                        title: " MArketing-Nived",
+                        title: " MArketing-Intertek",
                         image: ""
                     },
                     {
@@ -221,7 +221,7 @@ export const topicSelection = [
                         image: ""
                     },
                     {
-                        title: "nived",
+                        title: "Intertek",
                         image: ""
                     },
                     {

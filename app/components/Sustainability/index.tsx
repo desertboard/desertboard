@@ -40,7 +40,7 @@ const Blogs = () => {
       <Sustainslide />
       <Sustainabilitypartners />
       <Tabssustain data={tabData.data} />
-       <Downloads title={"To Downloads"}/>
+       <Downloads title={"To Downloads"} url='/downloads'/>
 
     </>
   )
