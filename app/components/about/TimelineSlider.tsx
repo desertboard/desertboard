@@ -8,71 +8,67 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import "swiper/css/effect-fade"; 
+import "swiper/css/effect-fade";
 import "@/app/components/about/timeline.scss";
-import { AboutType } from "@/types/AboutType";
-
-const TimeLineSlider = ({data}:{
-  data:AboutType
-}) => {
+const TimeLineSlider: React.FC = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   //   const [thumbsSwiper, setThumbsSwiper] = useState<Swiper | null>(null);
 
-  // const timelineData = [
-  //   { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
-  //   {
-  //     year: "2009 - 2021",
-  //     subtitle: "Resilience & Refined Visions",
-  //     description:
-  //       "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
-  //     image: "/assets/images/timeline/2009-2021.jpeg",
-  //   },
-  //   {
-  //     year: "Dec-14 2021",
-  //     subtitle: "Digital Transformation",
-  //     description:
-  //       "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
-  //     image: "/assets/images/timeline/dec14-2021.jpg",
-  //   },
+  const timelineData = [
+    { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
+    {
+      year: "2009 - 2021",
+      subtitle: "Resilience & Refined Visions",
+      description:
+        "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
+      image: "/assets/images/timeline/2009-2021.jpeg",
+    },
+    {
+      year: "Dec-14 2021",
+      subtitle: "Digital Transformation",
+      description:
+        "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
+      image: "/assets/images/timeline/dec14-2021.jpg",
+    },
 
-  //   { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
-  //   { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
-  //   {
-  //     year: "2009 - 2021",
-  //     subtitle: "Resilience & Refined Visions",
-  //     description:
-  //       "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
-  //     image: "/assets/images/timeline/2009-2021.jpeg",
-  //   },
-  //   {
-  //     year: "Dec-14 2021",
-  //     subtitle: "Digital Transformation",
-  //     description:
-  //       "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
-  //     image: "/assets/images/timeline/dec14-2021.jpg",
-  //   },
+    { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
+    { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
+    {
+      year: "2009 - 2021",
+      subtitle: "Resilience & Refined Visions",
+      description:
+        "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
+      image: "/assets/images/timeline/2009-2021.jpeg",
+    },
+    {
+      year: "Dec-14 2021",
+      subtitle: "Digital Transformation",
+      description:
+        "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
+      image: "/assets/images/timeline/dec14-2021.jpg",
+    },
 
-  //   { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
-  //   { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
-  //   {
-  //     year: "2009 - 2021",
-  //     subtitle: "Resilience & Refined Visions",
-  //     description:
-  //       "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
-  //     image: "/assets/images/timeline/2009-2021.jpeg",
-  //   },
-  //   {
-  //     year: "Dec-14 2021",
-  //     subtitle: "Digital Transformation",
-  //     description:
-  //       "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
-  //     image: "/assets/images/timeline/dec14-2021.jpg",
-  //   },
+    { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
+    { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
+    {
+      year: "2009 - 2021",
+      subtitle: "Resilience & Refined Visions",
+      description:
+        "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
+      image: "/assets/images/timeline/2009-2021.jpeg",
+    },
+    {
+      year: "Dec-14 2021",
+      subtitle: "Digital Transformation",
+      description:
+        "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
+      image: "/assets/images/timeline/dec14-2021.jpg",
+    },
 
-  //   { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
-  // ];
+    { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
+  ];
 
     // Ref for the next container (HTMLDivElement type)
     const nextContainerRef = useRef<HTMLDivElement | null>(null);
@@ -107,11 +103,6 @@ const TimeLineSlider = ({data}:{
       window.removeEventListener("resize", updateDivWidth);
     };
   }, []);
-
-  useEffect(()=>{
-    console.log(activeIndex)
-  },[activeIndex])
-
   return (
     <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary timeline__sec">
       <div className="container d-none" ref={nextContainerRef}></div>
@@ -142,17 +133,31 @@ const TimeLineSlider = ({data}:{
             observer={true}
             observeParents={true}
             watchOverflow={true}
-            preventInteractionOnTransition={true}>
-            {data && data.about[0] && data.about[0].history.map((item, index) => (
+            // preventInteractionOnTransition={true}
+              // Add these new properties
+  // allowTouchMove={true}
+  // touchRatio={1}
+  // touchAngle={45}
+  // resistance={true}
+  // resistanceRatio={0.85}
+  // shortSwipes={true}
+  // longSwipes={true}
+  // longSwipesRatio={0.5}
+  // touchStartPreventDefault={false}
+  // touchMoveStopPropagation={true}
+  // grabCursor={true}
+  // cssMode={true}
+            >
+            {timelineData.map((item, index) => (
               <SwiperSlide key={index} className="!h-full ">
                 <div className="timeline__bg flex-grow bg-cover bg-center absolute top-0 left-0 z-1 history__bg  w-full h-full">
                   <div className="timeline__img">
                     <Image src={item.image} fill objectFit="cover" className="h-full w-full" alt="" />
                   </div>
                 </div>
-                <div className="rounded-lg shadow h-full flex flex-col justify-center xl:justify-end pb-20 relative z-30 xl:w-2/3 " style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
-                  <h3 className="text-4xl md:text-5xl lg:text-font72 helveticaBold text-white mb-10 nuber-next-heavy ">{item.timeSpan}</h3>
-                  <h4 className="text-xl md:text-2xl lg:text-font28 leading-[1.2] opacity-75 nuber-next-heavy text-white mb-5">{item.heading}</h4>
+                <div className="rounded-lg shadow h-full flex flex-col pt-28 lg:pt-0 lg:justify-center xl:justify-end pb-10 lg:pb-20 relative z-30 xl:w-2/3 " style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
+                  <h3 className="text-4xl md:text-5xl lg:text-font72 helveticaBold text-white mb-10 nuber-next-heavy ">{item.year}</h3>
+                  <h4 className="text-xl md:text-2xl lg:text-font28 leading-[1.2] opacity-75 nuber-next-heavy text-white mb-5">{item.subtitle}</h4>
                   <p className="text-white text-font20 leading-[1.3] opacity-75 font-normal">{item.description}</p>
                 </div>
               </SwiperSlide>
@@ -189,17 +194,17 @@ const TimeLineSlider = ({data}:{
             speed={800}
             allowTouchMove={true}
             centeredSlides={true}
-        
+
             onSlideChange={(swiper) => {
               if (mainSwiperRef.current) {
                 mainSwiperRef.current.slideTo(swiper.realIndex);
                 setActiveIndex(swiper.realIndex);
               }
             }}>
-            {data && data.about[0] && data.about[0].history.map((item, index) => (
+            {timelineData.map((item, index) => (
               <SwiperSlide key={index} className="!h-16 md:!h-24 cursor-pointer timeline__thumb">
-                <div className={`w-full h-full flex items-center justify-end rounded transition-all duration-300`}>
-                  <span className={`text-font20 text-right md:text-2xl font-normal transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-bold lg:min-w-max xl:text-font32 opacity-100" : "text-white opacity-50 text-font24 font-normal hover:text-gray-200"}`}>{item.timeSpan}</span>
+                <div className={`w-full h-full flex items-center justify-center lg:justify-end rounded transition-all duration-300`}>
+                  <span className={`text-font19 lg:text-font20 text-right font-normal transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-bold lg:min-w-max xl:text-font32 opacity-100" : "text-white opacity-50 lg:text-font24 font-normal hover:text-gray-200"}`}>{item.year}</span>
                   <div className={`hidden lg:block lg:ml-3 h-[4px] w-[68px] transition-all ease-linear duration-300 ${thumbsSwiper?.realIndex === index ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
                 </div>
               </SwiperSlide>
