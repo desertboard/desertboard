@@ -51,7 +51,7 @@ import { SectorType } from "@/types/SectorType";
           <div className="absolute inset-0 sectorcrd-overlaygreen transition-all duration-500 ease-in-out "></div>
           <div className="absolute top-0 text-white w-full h-full transition-all duration-500 ease-in-out p-5 lg:p-8 ">
             <div className="w-full">
-              <Image src={framework.icon} alt="icn1" className="" width={20} height={20}/>
+              <Image src={framework.icon} alt="icn1" className="" width={34} height={34}/>
             </div>
             <hr className="opacity-10 border-t-2 mt-4 transition-all duration-500 delay-100 ease-in-out group-hover:mt-7" />
             <h3 className="opacity-[90%] text-font28 font-[400] leading-[1.3] transition-all duration-500 delay-100 mt-4 group-hover:mt-7 nuber-next-bold" dangerouslySetInnerHTML={{ __html: framework.title }}></h3>

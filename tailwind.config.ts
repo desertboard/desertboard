@@ -44,12 +44,13 @@ module.exports = withMT({
   			}
   		},
   		colors: {
+			
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
+  				DEFAULT: '#00594F',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
+  				DEFAULT: '#FFB549',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
   			Darkgreen: '#002D28',
