@@ -12,15 +12,18 @@ import Link from "next/link";
 
 const Header = () => {
 
-  const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
-  
-  const { data } = useSWR(`/api/admin/products`, fetcher)
-  const [products,setProducts] = useState([])
+  const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  useEffect(()=>{
-    console.log(data && data.data)
-    setProducts(data && data.data)
-  },[data])
+  const { data:productData } = useSWR(`/api/admin/products`, fetcher)
+  const [products, setProducts] = useState([])
+
+  const { data:sectorData } = useSWR(`/api/admin/sector`, fetcher)
+  const [sectors, setSectors] = useState([])
+
+  useEffect(() => {
+    console.log(productData && productData.data)
+    setProducts(productData && productData.data)
+  }, [productData,sectorData])
 
 
   const [active, setActive] = useState<string | null>(null);
@@ -69,24 +72,29 @@ const Header = () => {
       <div className="container">
         <div className="py-5 z-10 border-b flex items-center justify-between">
           <div className="flex items-center">
-           <Link href={'/'} > <Image src={isSticky ? logo : flogo} alt="Logo" width={311} height={60} className={`logos`} /></Link>
+            <Link href={'/'} > <Image src={isSticky ? logo : flogo} alt="Logo" width={311} height={60} className={`logos`} /></Link>
           </div>
 
           <nav>
             <ul className="flex space-x-6 uppercase text-sm tracking-widest group">
               <Menu setActive={setActive}>
                 {menuItems.map((item, index) => (
-                  <MenuItem item={item.title} href={item.href}  setActive={setActive} active={active} key={index} noMenu={item.title!=="Products"}>
-                    <div className="">
-                      <Link href={item.href}>{item.title}</Link>
-                    </div>
-                    {item.title=="Products" && 
-                    <div className="flex flex-col gap-2">
-                      {products && products.map((item:{title:string},index)=>(
+                  <MenuItem item={item.title} href={item.href} setActive={setActive} active={active} key={index} noMenu={item.title !== "Products" && item.title !== "Sectors"}>
+                    {item.title == "Products" &&
+                      <div className="flex flex-col gap-2">
+                        {products && products.map((item: { title: string }, index) => (
                           <Link className="text-black" href={`/product-details/${item.title}`} key={index}>{item.title}</Link>
-                      ))}
-                  </div>
-                  }
+                        ))}
+                      </div>
+                    }
+
+                    {item.title == "Sectors" &&
+                      <div className="flex flex-col gap-2">
+                        {products && products.map((item: { title: string }, index) => (
+                          <Link className="text-black" href={`/product-details/${item.title}`} key={index}>{item.title}</Link>
+                        ))}
+                      </div>
+                    }
                   </MenuItem>
                 ))}
 

@@ -37,7 +37,7 @@ export const MenuItem = ({
         className={`cursor-pointer hover:text-gray-500 text-[12px] xl:text-[14px]  xxl:text-font18 mitm nuber-next-bold tracking-normal`}
 
       >
-      <Link href={href}>  {item}</Link>
+      <Link href={href}>{item}</Link>
       </motion.p>
       {active !== null && !noMenu && (
         <motion.div
@@ -45,7 +45,7 @@ export const MenuItem = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={transition}
         >
-          {active === item && (
+          {active === item && !noMenu && (
             <div className="absolute top-[calc(100%_+_1rem)] left-1/2 transform -translate-x-1/2 pt-4">
               <motion.div
                 transition={transition}
