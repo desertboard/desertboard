@@ -69,14 +69,14 @@ const Header = () => {
       <div className="container">
         <div className="py-5 z-10 border-b flex items-center justify-between">
           <div className="flex items-center">
-            <Image src={isSticky ? logo : flogo} alt="Logo" width={311} height={60} className={`logos`} />
+           <Link href={'/'} > <Image src={isSticky ? logo : flogo} alt="Logo" width={311} height={60} className={`logos`} /></Link>
           </div>
 
           <nav>
             <ul className="flex space-x-6 uppercase text-sm tracking-widest group">
               <Menu setActive={setActive}>
                 {menuItems.map((item, index) => (
-                  <MenuItem item={item.title} setActive={setActive} active={active} key={index} noMenu={item.title!=="Products"}>
+                  <MenuItem item={item.title} href={item.href}  setActive={setActive} active={active} key={index} noMenu={item.title!=="Products"}>
                     <div className="">
                       <Link href={item.href}>{item.title}</Link>
                     </div>

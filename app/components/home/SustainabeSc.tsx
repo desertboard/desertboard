@@ -11,11 +11,12 @@ import Image from "next/image";
 import "@/app/components/home/goalcrd.scss";
 import { motion } from "framer-motion";
 import Slidersustain from "./Slidersustain";
+import Link from "next/link";
 
 const SustainabeSc = () => {
   return (
     <>
-      <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative inspbg  overflow-hidden">
+      <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner  overflow-hidden">
         <motion.div className="ola ola-right absolute top-5 right-[-20%] md:right-[-10%] w-[20em] md:w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, 3, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
           <Image className="absolute" src={lfbef} alt="Description of the image" />
         </motion.div>
@@ -59,7 +60,7 @@ const SustainabeSc = () => {
             </div>
             <div className="flex gap-3 items-center group rmbtn pb-3">
               <div>
-                <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300       text-font20 md:min-w-[105px] nuber-next-heavy leading-[1.25] cursor-pointer">Read More</p>
+               <Link href="/sustainability"> <p className="relative flex gap-2 max-w-fit    transition-opacity duration-300       text-font20 md:min-w-[105px] nuber-next-heavy leading-[1.25] cursor-pointer">Read More</p></Link>
               </div>{" "}
               <Image src={readarrow} alt="icn1" className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1 " />
             </div>

@@ -12,6 +12,7 @@ import fb from "@/public/assets/images/home/fb.svg";
 import lin from "@/public/assets/images/home/lin.svg";
 import insta from "@/public/assets/images/home/inst.svg";
 import youtube from "@/public/assets/images/home/youtube.svg";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -213,36 +214,36 @@ const Footer = () => {
                         </p>
                       </div>
                       <div className="flex flex-col linkq ">
-                        <a
-                          href="#"
+                        <Link
+                          href="/about"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
                           About
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          href="/sectors"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
                           Sectors
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          href="/sustainability"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
                           Sustainability
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          href="/downloads"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
                           Downloads
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          href="news-and-events"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
                           News & Events
-                        </a>
+                        </Link>
                       </div>
                     </motion.div>
                     <motion.div
@@ -264,24 +265,24 @@ const Footer = () => {
                         </p>
                       </div>
                       <div className="flex flex-col linkq">
-                        <a
-                          href="#"
+                        <Link
+                          href="/faqs"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
                           FAQS
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          href="/glossary"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
                           Glossary
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href="#"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
                           Download Brochure{" "}
-                        </a>
+                        </Link>
                       </div>
                     </motion.div>
 
@@ -304,8 +305,8 @@ const Footer = () => {
                         </p>
                       </div>
                       <div className="flex flex-col linkq">
-                        <a
-                          href="tel:+1"
+                        <Link
+                          href="tel:+97165610999"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
                           {" "}
@@ -325,8 +326,8 @@ const Footer = () => {
 
                             <span>+971 6 5610999</span>
                           </div>
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href="mailto:info@desertboard.ae"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
@@ -347,7 +348,7 @@ const Footer = () => {
                               Info@desertboard.ae
                             </span>
                           </div>
-                        </a>
+                        </Link>
                       </div>
                     </motion.div>
                   </div>
