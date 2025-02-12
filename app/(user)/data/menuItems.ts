@@ -5,11 +5,11 @@ export const menuItems = [
   },
   {
     title: "About",
-    href: "#",
+    href: "/about",
   },
   {
     title: "Sectors",
-    href: "#",
+    href: "/sectors",
     children:[
       {
         title: "Engineering & Construction",
@@ -31,26 +31,26 @@ export const menuItems = [
   },
   {
     title: "Products",
-    href: "/sustainability",
+    href: "#",
   },
   {
     title: "Sustainability",
-    href: "#",
+    href: "/sustainability",
   },
   {
     title: "Downloads",
-    href: "#",
+    href: "/downloads",
   },
   {
     title: "News & Events",
-    href: "#",
+    href: "/news-and-events",
   },
   {
     title: "Faqs",
-    href: "#",
+    href: "/faqs",
   },
   {
     title: "Contact",
-    href: "#",
+    href: "/contact",
   },
 ];

@@ -76,7 +76,7 @@ const Header = () => {
             <ul className="flex space-x-6 uppercase text-sm tracking-widest group">
               <Menu setActive={setActive}>
                 {menuItems.map((item, index) => (
-                  <MenuItem item={item.title} setActive={setActive} active={active} key={index} noMenu={item.title!=="Products"}>
+                  <MenuItem item={item.title} href={item.href}  setActive={setActive} active={active} key={index} noMenu={item.title!=="Products"}>
                     <div className="">
                       <Link href={item.href}>{item.title}</Link>
                     </div>

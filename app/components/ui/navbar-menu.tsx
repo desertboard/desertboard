@@ -17,12 +17,14 @@ export const MenuItem = ({
   setActive,
   active,
   item,
+  href,
   children,
   noMenu,
 }: {
   setActive: (item: string | null) => void;
   active: string | null;
   item: string;
+  href: string;
   children?: React.ReactNode;
   noMenu?:boolean;
 }) => {
@@ -35,7 +37,7 @@ export const MenuItem = ({
         className={`cursor-pointer hover:text-gray-500 text-[12px] xl:text-[14px]  xxl:text-font18 mitm nuber-next-bold tracking-normal`}
 
       >
-        {item}
+      <Link href={href}>  {item}</Link>
       </motion.p>
       {active !== null && !noMenu && (
         <motion.div
