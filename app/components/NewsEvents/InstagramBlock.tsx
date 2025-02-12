@@ -2,7 +2,7 @@ import React from "react";
 import CustomClrSection from "../Common/CustomClrSection";
 import PrimaryArrowBtn from "../Common/PrimaryArrowBtn";
 import "@/app/components/NewsEvents/instagram.scss";
-import Image from "next/image";
+
 
 interface InstagramData {
   id: number;
@@ -12,7 +12,7 @@ interface InstagramData {
 interface InstagramDataProps {
   instagramData: InstagramData[];
 }
-const InstagramBlock: React.FC<InstagramDataProps> = ({ instagramData }) => {
+const InstagramBlock: React.FC<InstagramDataProps> = ({ }) => {
   return (
     <>
       <CustomClrSection bgClr="ola-white bg-primary border-t-[6px] border-b-[6px] border-secondary">
@@ -21,12 +21,16 @@ const InstagramBlock: React.FC<InstagramDataProps> = ({ instagramData }) => {
             <h2 className="text-font48 heavydark text-white mb-2 xl:mb-10">Are you following us on Instagram?</h2>
             <PrimaryArrowBtn btntitle={"Visit Instagram"} btnLink="#" />
           </div>
-          <div className="grid grid-flow-row grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {instagramData.map((post) => (
+{/*           <div className="grid grid-flow-row grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"> */}
+          <div className="">
+       
+<script src="https://static.elfsight.com/platform/platform.js" async></script>
+<div className="elfsight-app-e9d9658e-5096-45db-893d-5486f2112f13" data-elfsight-app-lazy></div>
+            {/* {instagramData.map((post) => (
               <div key={post.id}>
                 <Image src={post.imgPost} alt="Instagram Image" className="w-full" width={200} height={200} objectFit="cover" quality={100} priority unoptimized />
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </CustomClrSection>

@@ -58,7 +58,7 @@ export default function Index() {
       <TimeLineSlider/>
       <MisionVision />
       <AccrediationSlider />
-       <BeforeFooterTag title={"Discover Industry Solutions"} url="/" />
+       <BeforeFooterTag title={"Discover Industry Solutions"} url="/downloads" />
     </>
   );
 }

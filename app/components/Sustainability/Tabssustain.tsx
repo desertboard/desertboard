@@ -25,6 +25,10 @@ const Tabssustain: React.FC<HeroSectionProps> = ({ data }) => {
   const handleAccordionClick = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+
+  const formatText = (text: string) => {
+    return text.replace(/®/g, "<sup>®</sup>");
+  };
   return (
     <section className="py-10 lg:py-20 insp-mn relative inspbg">
       <motion.div
@@ -103,7 +107,7 @@ const Tabssustain: React.FC<HeroSectionProps> = ({ data }) => {
                               exit={{ opacity: 0, y: -20 }}
                               transition={{ duration: 0.5 }}
                             >
-                              <div className="w-full lg:w-1/2 text-justify items-center] ">
+                              <div className="w-full lg:w-2/3 text-justify items-center] ">
                                 <h3 className="heavydark mb-5 xl:mb-10 text-left">
                                   {tab.title}
                                 </h3>
@@ -115,20 +119,20 @@ const Tabssustain: React.FC<HeroSectionProps> = ({ data }) => {
                                       key={index}
                                     >
                                       <span className="bg-[#FF671F] min-w-[8px] min-h-[8px] max-w-[8px] max-h-[8px] inline-block mr-[10px] relative top-2"></span>
-                                      {item}
+                                      <span dangerouslySetInnerHTML={{ __html: formatText(item) }} />
                                     </li>
                                   ))}
                                 </ul>
                               </div>
-                              <div className="w-full lg:w-1/2">
-                                <motion.img
-                                  src={tab.image.src}
-                                  alt="New Tab Content"
-                                  className="w-full   object-cover opacity-80 transition-opacity duration-300 hover:opacity-100"
-                                  initial={{ scale: 0.9 }}
+                              <div className="w-full lg:w-1/3">
+                              <motion.div className="h-full min-h-[300px] relative"  initial={{ scale: 0.9 }}
                                   animate={{ scale: 1 }}
-                                  transition={{ duration: 0.5 }}
-                                />
+                                  transition={{ duration: 0.5 }}>
+                                <Image src={tab.image.src}
+                                  alt="New Tab Content"
+                                  className="w-full  h-full absolute object-center  object-cover opacity-80 transition-opacity duration-300 hover:opacity-100" width={800} height={600}/>
+                            
+                              </motion.div>
                               </div>
                             </motion.section>
                           )

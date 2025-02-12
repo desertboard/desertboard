@@ -1,12 +1,12 @@
 import React from "react";
 import CustomClrSection from "../Common/CustomClrSection";
 import PrimaryArrowBtn from "../Common/PrimaryArrowBtn";
-import { Swiper, SwiperSlide } from "swiper/react";
+/* import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Navigation, Pagination } from "swiper/modules";
 
 // Images
-import LInkedInLogo from "@/public/assets/images/desert-board-linkedin-logo.png";
+import LInkedInLogo from "@/public/assets/images/desert-board-linkedin-logo.png"; */
 
 // Import Swiper styles
 import "swiper/css";
@@ -24,7 +24,7 @@ interface LinkedInSliderProps {
   }[];
 }
 
-const LinkedInSlider: React.FC<LinkedInSliderProps> = ({ data }) => {
+const LinkedInSlider: React.FC<LinkedInSliderProps> = ({  }) => {
   return (
     <>
       <CustomClrSection>
@@ -35,7 +35,9 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({ data }) => {
           </div>
         </div>
         <div className="container pb-[80px] !overflow-visible">
-          <Swiper
+        <script src="https://static.elfsight.com/platform/platform.js" async></script>
+        <div className="elfsight-app-c05896e8-7a2c-4cb4-9aa6-05947e9ae158" data-elfsight-app-lazy></div>
+         {/*  <Swiper
             className="linkedin-slider !overflow-visible"
             modules={[Navigation, Pagination]}
             loop={true}
@@ -116,8 +118,8 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({ data }) => {
                 </div>
               </SwiperSlide>
             ))}
-          </Swiper>
-          <div className="relative top-24">
+          </Swiper> */}
+          {/* <div className="relative top-24">
             <div className="absolute bottom-0 right-0 flex gap-4 z-10">
               <button className="custom-next cursor-pointer hover:opacity-80 transition-opacity p-2">
                 <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -130,7 +132,7 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({ data }) => {
                 </svg>
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </CustomClrSection>
     </>
