@@ -48,10 +48,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
                  initial={{ opacity: 0, y: 30 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
-               >
-                  <a href={breadcrumb.href} className={`text-[#FFFFFFBF] min-w-fit texthelvetica20 ${index === breadcrumbs.length - 1 ? "helveticaBold text-white " : "opacity-75"}`}>
+                >
+                  {breadcrumb.href ? (
+                  <a href={breadcrumb.href} className={`text-[#FFFFFFBF] min-w-fit texthelvetica20 opacity-75 hover:text-[#FF671F] hover:opacity-[1]`}>
                     {breadcrumb.label}
-                  </a>
+                    </a>
+                    ) : (
+                      <span className={`text-[#FFFFFFBF] min-w-fit texthelvetica20 ${index === breadcrumbs.length - 1 ? "helveticaBold text-white " : "opacity-75"}`}>{breadcrumb.label}</span>
+                    )}
                   {index < breadcrumbs.length - 1 && <Image src={arrowSrc} alt="Arrow" className="mx-2" />}
 
                 </motion.li>

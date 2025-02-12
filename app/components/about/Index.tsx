@@ -20,8 +20,8 @@ import parse from 'html-react-parser'
 // import SecondSec from "../components/Common/Second-sec";
 
 const breadcrumbs = [
-  { label: "Home", href: "#" },
-  { label: "About Us", href: "#" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "" },
 ];
 
 export default function Index() {

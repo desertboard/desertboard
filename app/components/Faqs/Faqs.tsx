@@ -14,8 +14,8 @@ import Link from 'next/link';
 const Faqs = () => {
 
     const breadcrumbs = [
-        { label: "Home", href: "#" },
-        { label: "FAQS", href: "#" },
+        { label: "Home", href: "/" },
+        { label: "FAQS", href: "" },
     ];
 
 

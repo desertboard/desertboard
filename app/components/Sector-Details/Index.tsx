@@ -20,7 +20,7 @@ const SectorDetails = () => {
   const {sectorTitle} = useParams()
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
-  
+
   const { data }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/sector?title=${sectorTitle}`, fetcher)
 
 
@@ -29,9 +29,9 @@ const SectorDetails = () => {
   },[data])
 
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "Sectors", href: "#" },
-    { label: `${data && data.data.title}`, href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Sectors", href: "/sectors" },
+    { label: `${data && data.data.title}`, href: "" },
   ];
 
 

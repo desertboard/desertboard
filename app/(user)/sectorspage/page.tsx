@@ -11,9 +11,9 @@ import BeforeFooterTag from "../../components/Common/BeforeFooterTag";
 
 const Sectors = () => {
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "Sectors", href: "#" },
-    { label: "Engineering & Construction", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Sectors", href: "/sectors" },
+    { label: "Engineering & Construction", href: "" },
   ];
 
   return (
