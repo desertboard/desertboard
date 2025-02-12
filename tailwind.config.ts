@@ -57,7 +57,7 @@ module.exports = withMT({
   			litetext: '#151515',
   			orange: '#FF671F',
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
+  				DEFAULT: '#FF671F',
   				foreground: 'hsl(var(--accent-foreground))'
   			},
   			themebg: '#E5E0DC',

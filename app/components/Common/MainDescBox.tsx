@@ -6,6 +6,7 @@ import lfbt from "@/public/assets/images/home/lfbt.svg";
 import { StaticImageData } from "next/image";
 import React, { JSX, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import parse from 'html-react-parser'
 
 interface MainDescBoxProps {
   secTitle: string;
@@ -36,7 +37,9 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
 
   const { scrollYProgress } = useScroll();
   const translateY = useTransform(scrollYProgress, [0, 1], [0, 100]);
-
+  const formatText = (text: string) => {
+    return text.replace(/®/g, "<sup>®</sup>");
+  };
   return (
     <section className="pt-10 lg:pt-20 pb-10 lg:pb-[110px] insp-mn relative inspbg overflow-hidden">
       <motion.div className="ola ola-right absolute top-0 right-[-25%] md:right-[-10%] w-[20em] md:w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
@@ -68,7 +71,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
 
               <motion.div
 
-                className=" max-w-[100%] md:max-w-[98%]  "
+                className=" max-w-[100%] md:max-w-[98%] flex flex-col gap-3 "
                 initial={{ opacity: 0, x: -30 }}
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -79,22 +82,11 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
                     x: 0,
                     transition: { duration: 1, delay: 0.5 },
                   },
-                }}>
-              {/* {typeof paragraphs == "string" ? parse(paragraphs) : paragraphs} */}
-              {Array.isArray(paragraphs) ? (
-                paragraphs.map((paragraph, index) => (
-                  <p
-                    key={index}
-                    className="text-font20 clr15op75 leading-[1.3] mb-4 last:mb-0"
+              }}>
 
-                  >{paragraph}</p>
-                ))
-              ) : (
-                <p
-                  className="text-font20 clr15op75 leading-[1.3] mb-4 last:mb-0"
+              {typeof paragraphs === "string" ? parse(formatText(paragraphs)) : paragraphs}
 
-                >{paragraphs}</p>
-              )}
+
 
 
               </motion.div>
