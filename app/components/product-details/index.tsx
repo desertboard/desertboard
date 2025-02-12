@@ -29,7 +29,7 @@ const ProducrDetails = () => {
   console.log(productName)
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
-  
+
   const { data }:{data:IndiApplication,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/products?productName=${productName}`, fetcher)
 
   const breadcrumbs = [
@@ -47,7 +47,7 @@ const ProducrDetails = () => {
   return (
     <>
        <PageBanner
-        bannerSrc={assets.appbanner} // Corrected image import here
+        bannerSrc={data && data.data.bannerImage}
         arrowSrc={Arrow}
         desc=""
         title={`${data && data.data.title}`}
@@ -61,7 +61,7 @@ const ProducrDetails = () => {
       {/* actual thing which existed here */}
 
       <SectionFour data={data} />
-      
+
       <SectionFive {...relslideses}/>
      <Downloads title={"To Downloads"}/>
     </>
