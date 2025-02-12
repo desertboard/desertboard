@@ -102,7 +102,7 @@ const ProductAccordians = ({items}:{
 
                             </div>
 
-                            <div>
+                            {/* <div>
                                 <button
                                     type="submit"
                                     className="mt-6 font-semibold text-sm  group items-center hover:border-b-2  border-[#FF671F] text-[#FF671F] pb-1 h-6 flex gap-1 nuber-next"
@@ -113,7 +113,7 @@ const ProductAccordians = ({items}:{
                                         </svg>
                                     </div>
                                 </button>
-                            </div>
+                            </div> */}
 
                         </div>
                     </div>
