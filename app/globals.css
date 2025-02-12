@@ -277,8 +277,8 @@ p {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#001c19",GradientType=1);
 }
 .hrcd:hover {
-  background-size: cover !important;
-  background-image: url(/assets/images/applications/bghr.jpg) !important;
+/*   background-size: cover !important; */
+ /*  background-image: url(/assets/images/applications/bghr.jpg) !important; */
 }
 .ouy .dst {
   margin-bottom: 0px !important;
