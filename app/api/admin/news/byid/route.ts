@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import News from "@/models/News";
 import connectDB from "@/lib/mongodb";
 import { verifyAdmin } from "@/lib/verifyAdmin";
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");

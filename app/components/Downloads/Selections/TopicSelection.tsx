@@ -34,7 +34,7 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile }: {
                         <div className="transition-all duration-300 group-hover:translate-x-1">
 
                             <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.33394 1L12.3339 9L4.33394 17M1.66406 3.66876L6.9953 8.99999L1.66406 14.3312" stroke={`${activeTopic == index ? "#FF671F" : "#151515"}`} stroke-opacity={`${activeTopic == index ? "1" : "0.5"}`} stroke-width="2" stroke-linecap="round"/>
+                            <path d="M4.33394 1L12.3339 9L4.33394 17M1.66406 3.66876L6.9953 8.99999L1.66406 14.3312" stroke={`${activeTopic == index ? "#FF671F" : "#151515"}`} stroke-opacity={`${activeTopic == index ? "1" : "0.5"}`} strokeWidth="2" strokeLinecap="round"/>
                             </svg>
 
                         </div>
