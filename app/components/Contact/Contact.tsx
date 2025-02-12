@@ -12,8 +12,8 @@ import { assets } from '@/public/assets/images/assets';
 const Contact = () => {
 
     const breadcrumbs = [
-        { label: "Home", href: "#" },
-        { label: "Contact", href: "#" },
+        { label: "Home", href: "/" },
+        { label: "Contact", href: "" },
       ];
 
 

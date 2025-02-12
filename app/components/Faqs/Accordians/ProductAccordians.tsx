@@ -97,7 +97,7 @@ const ProductAccordians = ({items}:{
                         >
 
                             <div className='text-black'>
-                                <div className='' dangerouslySetInnerHTML={{ __html: item.answer }}>
+                                <div className='' >{item.answer}
                                 </div>
 
                             </div>

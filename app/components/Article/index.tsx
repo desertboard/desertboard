@@ -25,11 +25,11 @@ const Blogs = () => {
     console.log(data)
   },[data])
 
-  
+
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "News & Events", href: "#" },
-    { label: "DesertBoard® Stands....", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "News & Events", href: "/news-and-events-listing" },
+    { label: "DesertBoard® Stands....", href: "" },
   ];
   return (
     <>

@@ -24,7 +24,7 @@ const SuggestedProduct: React.FC<HeroSectionProps> = ({ data }) => {
               </p>
             </div>
             <div className="  ">
-              <p className=" helvetica-bold text-font28 leading-[1] text-Darkgreen " dangerouslySetInnerHTML={{ __html: framework.title }}>
+              <p className=" helvetica-bold text-font28 leading-[1] text-Darkgreen ">{framework.title}
               </p>
             </div>
           </div>
