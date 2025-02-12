@@ -5,15 +5,23 @@ import SearchIcon from "@/public/assets/images/icons/search.svg";
 import { Fragment, useState } from "react";
 const types = [
   { id: 1, name: "Type" },
-  { id: 2, name: "Type 1" },
-  { id: 3, name: "Type 2" },
-  { id: 4, name: "Type 3" },
+  { id: 2, name: "Company News" },
+  { id: 3, name: "Expertise" },
+  { id: 4, name: "Events" },
 ];
 const sectors = [
   { id: 1, name: "Sector" },
-  { id: 2, name: "Sector 1" },
-  { id: 3, name: "Sector 2" },
-  { id: 4, name: "Sector 3" },
+  { id: 2, name: "Event Management" },
+  { id: 3, name: "Fit-out" },
+  { id: 4, name: "Joinery" },
+  { id: 5, name: "Construction & Contracting" },
+  { id: 6, name: "Hospitality" },
+  { id: 7, name: "Commercial" },
+  { id: 8, name: "Architecture" },
+  { id: 9, name: "Interior Design" },
+  { id: 9, name: "Furniture Manufacturing" },
+  { id: 9, name: "Packaging & Gifting" },
+
 ];
 const Filter = () => {
   const [typeSelected, setTypeSelected] = useState(types[0]);
