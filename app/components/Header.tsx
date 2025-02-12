@@ -18,7 +18,7 @@ const Header = () => {
   const [products, setProducts] = useState([])
 
   const { data:sectorData } = useSWR(`/api/admin/sector`, fetcher)
-  const [sectors, setSectors] = useState([])
+  // const [sectors, setSectors] = useState([])
 
   useEffect(() => {
     console.log(productData && productData.data)
