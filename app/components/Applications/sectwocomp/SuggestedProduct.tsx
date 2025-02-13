@@ -12,6 +12,9 @@ interface HeroSectionProps {
 
   data: FrameworkItem[];
 }
+const formatText = (text: string) => {
+  return text.replace(/®/g, "<sup>®</sup>");
+};
 const SuggestedProduct: React.FC<HeroSectionProps> = ({ data }) => {
   return (
     <>
@@ -24,8 +27,8 @@ const SuggestedProduct: React.FC<HeroSectionProps> = ({ data }) => {
               </p>
             </div>
             <div className="  ">
-              <p className=" helvetica-bold text-font28 leading-[1] text-Darkgreen ">{framework.title}
-              </p>
+
+              <p className=" helvetica-bold text-font28 leading-[1] text-Darkgreen " dangerouslySetInnerHTML={{ __html: formatText(framework.title) }} />
             </div>
           </div>
           <div className="  ">
