@@ -9,6 +9,7 @@ import AccrediationSlider from "./AccrediationSlider";
 // import Banner from "../components/Banner/Hero";
 // Image imports
 import bannerImg from "@/public/assets/images/sectors/abt-bnr.jpg";
+import baxnnerImg from "@/public/assets/images/about/about-main.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import BeforeFooterTag from "../Common/BeforeFooterTag";
 import TimeLineSlider from "./TimelineSlider";
@@ -20,8 +21,8 @@ import parse from 'html-react-parser'
 // import SecondSec from "../components/Common/Second-sec";
 
 const breadcrumbs = [
-  { label: "Home", href: "#" },
-  { label: "About Us", href: "#" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "" },
 ];
 
 export default function Index() {
@@ -51,13 +52,13 @@ export default function Index() {
         // mainImg="/assets/images/mn.jpg"
         paragraphs={data && data.about[0] && parse(data.about[0].story)}
 
-        mainImg="/assets/images/about/about-main.jpg"
+        mainImg={baxnnerImg}
       />
       {/* <HistorySlider /> */}
       <TimeLineSlider/>
       <MisionVision />
       <AccrediationSlider />
-       <BeforeFooterTag title={"Discover Industry Solutions"} />
+       <BeforeFooterTag title={"Discover Industry Solutions"} url="/downloads" />
     </>
   );
 }

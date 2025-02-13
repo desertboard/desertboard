@@ -9,8 +9,8 @@ import BeforeFooterTag from '../Common/BeforeFooterTag';
 
 const Blogs = () => {
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "Glossary", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Glossary", href: "" },
   ];
   return (
     <>
@@ -23,7 +23,7 @@ const Blogs = () => {
         bnrHeight="60dvh"
       />
       <Filter />
-      <BeforeFooterTag title={'Discover Industry Solutions'}  />
+      <BeforeFooterTag title={'Discover Industry Solutions'} url="/"  />
     </>
   )
 }

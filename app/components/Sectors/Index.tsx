@@ -20,19 +20,19 @@ import { SectorType } from "@/types/SectorType";
 
 const Sectors = () => {
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "Sectors", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Sectors", href: "" },
   ];
 
 
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
-  
+
   const { data }:{data:SectorType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/sector', fetcher)
 
   useEffect(()=>{
     console.log(data && data.data)
-    
+
   },[data])
 
   const [activeSector, setActiveSector] = useState(0);
@@ -45,7 +45,7 @@ const Sectors = () => {
       <PageBanner
         bannerSrc={assets.secbanner} // Corrected image import here
         arrowSrc={Arrow}
-        desc="PSB® boards' diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring. "
+        desc="PSB®   diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring. "
         title="Sectors"
         breadcrumbs={breadcrumbs}
         bnrHeight="90dvh"
@@ -101,7 +101,7 @@ const Sectors = () => {
         </div>
       </div>
       </motion.div>
-      <Downloads title={"Discover Industry Solutions"} />
+      <Downloads title={"To Downloads"} url='/downloads' />
     </>
   );
 };

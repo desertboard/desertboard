@@ -19,7 +19,7 @@ const RelatedItem = ({listData}:ListItemProps) => {
     <div key={listData.id} className="">
       <div className='h-[180px] md:h-[250px]  lg:h-[350px]'>
         <figure className=" relative  h-full md:h-full  w-full  ">
-            <Image className="w-full   object-cover h-full" src={listData.imageSrc} width={300} height={350}  alt="" />
+            <Image className="w-full   object-cover h-full" src={listData.imageSrc} width={900} height={350}  alt="" />
          </figure>
      </div>
       <p className="text-[#151515BF] text-[14px] uppercase font-bold nuber-next-heavy pt-5 pb-0 md:pb-4">{listData.date}</p>

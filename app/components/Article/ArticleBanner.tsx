@@ -61,10 +61,13 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labe
             <ul className="flex items-center gap-4  md:gap-0 flex-wrap">
               {breadcrumbs.map((breadcrumb, index) => (
                 <li key={index} className="inline-flex items-center">
-                  <a href={breadcrumb.href} className={`text-[#FFFFFFBF] min-w-fit texthelvetica20 ${index === breadcrumbs.length - 1 ? "helvetica-bold text-white " : "opacity-75"}`}>
+                  {breadcrumb.href ? (
+                  <a href={breadcrumb.href} className={`text-[#FFFFFFBF] min-w-fit texthelvetica20 opacity-75 hover:text-[#FF671F] hover:opacity-[1]}`}>
                     {breadcrumb.label}
                   </a>
-
+                  ) : (
+                    <span className={`text-[#FFFFFFBF] min-w-fit texthelvetica20 ${index === breadcrumbs.length - 1 ? "helveticaBold text-white " : "opacity-75"}`}>{breadcrumb.label}</span>
+                  )}
                   {index < breadcrumbs.length - 1 && <Image src={arrowSrc} alt="Arrow" className="mx-1  md:mx-2 w-[10px] md:w-[14px] h-[10px] md:h-[18px]" />}
                 </li>
               ))}

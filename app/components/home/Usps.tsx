@@ -34,7 +34,7 @@ export default function Usps({ secTitle }: UspsProps) {
         </h2>
         <div className="usp-crds">
           <Usp uspTitle="Deforestation Free" uspIcon={uspI1} uspDesc="100% sustainable boards made from the UAE’s annually regenerated palm frond biomass, eliminating the need to cut down trees, and reducing reliance on imported wood." order="1" mainImg={uspImg1} />
-          <Usp uspTitle="Zero Formaldehyde" uspIcon={uspI2} order="2" uspDesc="Designed for a healthier, eco-friendly indoorenvironment with zero formaldehyde emission. " mainImg={uspImg2} />
+          <Usp uspTitle="Zero Formaldehyde" uspIcon={uspI2} order="2" uspDesc="Designed for a healthier, eco-friendly indoor & environment with zero formaldehyde emission. " mainImg={uspImg2} />
           <Usp uspTitle="Carbon Sink" uspIcon={uspI3} order="3" uspDesc="PSB® boards act as an artificial carbon sink as they can store the carbon within their structure which would have otherwise been released to the atmosphere or incinerated, helping to mitigate climate change by reducing atmospheric CO₂ levels." mainImg={uspImg3} />
           <Usp uspTitle="Spearheading the Circular Economy" uspIcon={uspI4} order="4" uspDesc="PSB® boards are 100% reusable and recyclable, enabling a closed-loop lifecycle that minimizes waste and maximizes sustainability." mainImg={uspImg4} />
           <Usp uspTitle="Versatile" uspIcon={uspI5} order="5" uspDesc="Highly customizable boards with a variety of finishes, designed to meet the diverse needs of the construction & allied industries." mainImg={uspImg5} />

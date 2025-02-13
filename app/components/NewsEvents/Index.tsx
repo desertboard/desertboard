@@ -18,8 +18,8 @@ const Index = () => {
 
 
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "News & Events", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "News & Events", href: "" },
   ];
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())

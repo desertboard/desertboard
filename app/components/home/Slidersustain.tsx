@@ -28,6 +28,9 @@ interface LinkedInSliderProps {
 
 const Slidersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
   const swiperRef = useRef<SwiperType | null>(null);
+  const formatText = (text: string) => {
+    return text.replace(/®/g, "<sup>®</sup>");
+  };
   return (
     <>
       <Swiper
@@ -103,9 +106,7 @@ const Slidersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
                   <h3 className="nuber-next-bold text-font28  text-black">
                     {framework.title}
                   </h3>
-                  <p className="helvetica text-font20 text-black opacity-[75%] mt-2">
-                    {framework.desc}
-                  </p>
+                  <p className="helvetica text-font20 text-black opacity-[75%] mt-2" dangerouslySetInnerHTML={{ __html: formatText(framework.desc) }} />
                 </div>
               </div>
             </div>

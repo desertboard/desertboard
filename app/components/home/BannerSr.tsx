@@ -29,6 +29,7 @@ const BannerSr = () => {
           }}
         />
       </figure>
+      <div className="absolute w-full h-full bg-black/40 z-[2]"></div>
       <div className="relative z-10 text-white px-6 top-0 lg:top-[120px]">
         <motion.h1
           className="text-[45px] md:text-[96px] leading-none mb-4 lg:mb-[52px] max-w-[15.5ch] nuber-next-heavy m-auto"

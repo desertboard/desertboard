@@ -20,7 +20,9 @@ const Tabs = ({ applications }: {
   const handleAccordionClick = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
-
+  const formatText = (text: string) => {
+    return text.replace(/®/g, "<sup>®</sup>");
+  };
   return (
     <section className="py-10 lg:py-20 bg-[#E1DCD8] insp-mn relative">
       <motion.div
@@ -109,7 +111,7 @@ const Tabs = ({ applications }: {
                                   {tab.title}
                                 </h3>
                                 <div className="texthelvetica20 clr15op75 mb-6 xl:mb-10">
-                                  {parse(tab.description)}
+                                 {  parse(formatText(tab.description))  }
                                 </div>
                                 {/* <ul className="mb-0 lg:mb-10 mnsas">
                                 {tab.list.map((item, idx) => (

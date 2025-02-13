@@ -31,7 +31,7 @@ const Sectors = () => {
   console.log("secotr",sector)
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
-  
+
   const { data }:{data:IndiApplication,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/products?productName=${productName}`, fetcher)
   const { data:sectorData }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/sector/byid?sector=${sector?.replace(/-/g, " ")}`, fetcher)
 
@@ -41,10 +41,10 @@ const Sectors = () => {
 
 
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "Sectors", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Sectors", href: "/sectors" },
     // { label: `${data && data.data.sector}`, href: "#" },
-    { label: `${application}`, href: "#" },
+    { label: `${application}`, href: "" },
   ];
 
   return (

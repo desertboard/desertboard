@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { File, X, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -27,7 +27,22 @@ export function FileUploader({
 }: FileUploaderProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [fileName, setFileName] = useState<string>("");
+  const [fileName, setFileName] = useState<string>(() => {
+    if (value) {
+      const parts = value.split("/");
+      return parts[parts.length - 1];
+    }
+    return "";
+  });
+
+  useEffect(() => {
+    if (value) {
+      const parts = value.split("/");
+      setFileName(parts[parts.length - 1]);
+    } else {
+      setFileName("");
+    }
+  }, [value]);
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {

@@ -29,7 +29,7 @@ export default function UspList({ secTitle }: UspsProps) {
   const [activeOrder, setActiveOrder] = useState<string | null>("1");
   return (
     <section className=" py-10 lg:py-20  relative bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
-      <motion.div className="ola ola-right absolute top-5 right-[-20%] md:right-[-10%] w-[20em] md:w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }} 
+      <motion.div className="ola ola-right absolute top-5 right-[-20%] md:right-[-10%] w-[20em] md:w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
         <Image className="absolute" src={ola} alt="Description of the image"></Image>
       </motion.div>
@@ -53,20 +53,20 @@ export default function UspList({ secTitle }: UspsProps) {
           {secTitle}
           <span className="text-[#FF671F]">.</span>
         </motion.h2>
-        <motion.div className={`usp__list ${activeOrder ? "active-" + activeOrder : ""}`} 
+        <motion.div className={`usp__list ${activeOrder ? "active-" + activeOrder : ""}`}
           initial={{ opacity: 0, y: -30 }}
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={{
-                hidden: { opacity: 0, y: -30 }, 
+                hidden: { opacity: 0, y: -30 },
                 visible: {
                   opacity: 1,
                   y: 0,
                   transition: { duration: 1, delay: 0.5 },
-                }, 
+                },
               }}>
           <UspItem uspTitle="Deforestation Free" onMouseEnter={() => setActiveOrder("1")} uspIcon={uspI1} uspDesc="100% sustainable boards made from the UAE’s annually regenerated palm frond biomass, eliminating the need to cut down trees, and reducing reliance on imported wood." order="1" mainImg={uspImg1} />
-          <UspItem uspTitle="Zero Formaldehyde" onMouseEnter={() => setActiveOrder("2")} uspIcon={uspI2} order="2" uspDesc="Designed for a healthier, eco-friendly indoorenvironment with zero formaldehyde emission. " mainImg={uspImg2} />
+          <UspItem uspTitle="Zero Formaldehyde" onMouseEnter={() => setActiveOrder("2")} uspIcon={uspI2} order="2" uspDesc="Designed for a healthier, eco-friendly indoor & environment with zero formaldehyde emission. " mainImg={uspImg2} />
           <UspItem
             uspTitle="Carbon Sink"
             onMouseEnter={() => setActiveOrder("3")}

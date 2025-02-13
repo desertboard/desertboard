@@ -4,10 +4,10 @@ import Arrow from "@/public/assets/brdcrbs.svg";
 import Filter from "./Filter";
 import Listing from "./NewsListing";
 const Index = () => {
-    
+
   const breadcrumbs = [
-    { label: "Home", href: "#" },
-    { label: "News & Events", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "News & Events", href: "" },
   ];
     return (
       <>
@@ -24,5 +24,5 @@ const Index = () => {
       </>
     );
 }
- 
+
 export default Index;

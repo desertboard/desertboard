@@ -9,8 +9,8 @@ import { assets } from '@/public/assets/images/assets';
 const Downloads = () => {
 
     const breadcrumbs = [
-        { label: "Home", href: "#" },
-        { label: "Downloads", href: "#" },
+        { label: "Home", href: "/" },
+        { label: "Downloads", href: "" },
       ];
 
 
@@ -26,7 +26,7 @@ const Downloads = () => {
             />
 
         <Selections/>
-        <BeforeFooterTag title='Discover Industry Solutions'/>
+        <BeforeFooterTag title='Discover Industry Solutions' url="/"/>
     </>
 
   )

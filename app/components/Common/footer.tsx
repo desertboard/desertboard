@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React ,{useState , useEffect} from "react";
 import { motion } from "framer-motion";
 
 import Image from "next/image";
@@ -13,8 +13,33 @@ import lin from "@/public/assets/images/home/lin.svg";
 import insta from "@/public/assets/images/home/inst.svg";
 import youtube from "@/public/assets/images/home/youtube.svg";
 import Link from "next/link";
+import { assets } from "@/public/assets/images/assets";
+
+
 
 const Footer = () => {
+
+const [isVisible, setIsVisible] = useState(false);
+
+useEffect(() => {
+  const toggleVisibility = () => {
+    if (window.scrollY > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  window.addEventListener("scroll", toggleVisibility);
+
+  return () => {
+    window.removeEventListener("scroll", toggleVisibility);
+  };
+}, []);
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
   return (
     <>
       <footer className="bg-[#00594F] fotersmn relative overflow-hidden *:">
@@ -151,7 +176,7 @@ const Footer = () => {
                       className="w-1/2 md:w-[400px]"
                     />
                     <div className="flex gap-3">
-                      <a href="#" className="group">
+                      <Link href="https://www.facebook.com/atb.desertboard" target="_blank" className="group">
                         <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:bg-[#FF671F] group-hover:rounded-md">
                           <Image
                             src={fb}
@@ -159,9 +184,9 @@ const Footer = () => {
                             className="group-hover:brightness-0 group-hover:invert"
                           />
                         </div>
-                      </a>
+                      </Link>
 
-                      <a href="#" className="group">
+                      <Link href="https://www.linkedin.com/company/desertboard/" target="_blank" className="group">
                         <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:bg-[#FF671F] group-hover:rounded-md">
                           <Image
                             src={lin}
@@ -169,9 +194,9 @@ const Footer = () => {
                             className="group-hover:brightness-0 group-hover:invert"
                           />
                         </div>
-                      </a>
+                      </Link>
 
-                      <a href="#" className="group">
+                      <Link href="https://www.instagram.com/desertboard/" target="_blank" className="group">
                         <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:bg-[#FF671F] group-hover:rounded-md">
                           <Image
                             src={insta}
@@ -179,9 +204,9 @@ const Footer = () => {
                             className="group-hover:brightness-0 group-hover:invert"
                           />
                         </div>
-                      </a>
+                      </Link>
 
-                      <a href="#" className="group">
+                      <Link href="https://www.youtube.com/@DesertBoard" target="_blank" className="group">
                         <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:bg-[#FF671F] group-hover:rounded-md">
                           <Image
                             src={youtube}
@@ -189,7 +214,7 @@ const Footer = () => {
                             className="group-hover:brightness-0 group-hover:invert"
                           />
                         </div>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </motion.div>
@@ -269,7 +294,7 @@ const Footer = () => {
                           href="/faqs"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
-                          FAQS
+                          FAQs
                         </Link>
                         <Link
                           href="/glossary"
@@ -278,10 +303,10 @@ const Footer = () => {
                           Glossary
                         </Link>
                         <Link
-                          href="#"
+                          href="/downloads"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
-                          Download Brochure{" "}
+                          Download Brochure
                         </Link>
                       </div>
                     </motion.div>
@@ -377,6 +402,16 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
+        <button
+      onClick={scrollToTop}
+      className={`fixed bottom-5 right-20    transition-opacity duration-300 ${
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
+    >
+      <Image src={assets.arrowscroll} alt="" width={44} height={26}/>
+    </button>
+
       </footer>
     </>
   );
