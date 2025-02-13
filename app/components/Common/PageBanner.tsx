@@ -13,7 +13,9 @@ interface HeroSectionProps {
   breadcrumbs: { label: string; href: string }[];
   bnrHeight?: string;
 }
-
+const formatText = (text: string) => {
+  return text.replace(/®/g, "<sup>®</sup>");
+};
 const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,desc, breadcrumbs, bnrHeight }) => {
   return (
     // <section className="relative h-[75dvh] bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full">
@@ -54,7 +56,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
                     {breadcrumb.label}
                     </a>
                     ) : (
-                      <span className={`text-[#FFFFFFBF] min-w-fit texthelvetica20 ${index === breadcrumbs.length - 1 ? "helveticaBold text-white " : "opacity-75"}`}>{breadcrumb.label}</span>
+                      <span className={`text-[#FFFFFFBF] min-w-fit texthelvetica20 ${index === breadcrumbs.length - 1 ? "helveticaBold text-white " : "opacity-75"}`}dangerouslySetInnerHTML={{ __html: formatText(breadcrumb.label) }} />
                     )}
                   {index < breadcrumbs.length - 1 && <Image src={arrowSrc} alt="Arrow" className="mx-2" />}
 

@@ -34,7 +34,7 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({  }) => {
             <PrimaryArrowBtn btntitle={"Visit LinkedIn"} btnLink="#" />
           </div>
         </div>
-        <div className="container pb-[80px] !overflow-visible">
+        <div className="container  !overflow-visible">
         <script src="https://static.elfsight.com/platform/platform.js" async></script>
         <div className="elfsight-app-c05896e8-7a2c-4cb4-9aa6-05947e9ae158" data-elfsight-app-lazy></div>
          {/*  <Swiper

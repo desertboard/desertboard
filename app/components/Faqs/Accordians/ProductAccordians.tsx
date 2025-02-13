@@ -74,7 +74,9 @@ const ProductAccordians = ({items}:{
     //         answer: "<p>Answer</p>"
     //     }
     // ]
-
+    const formatText = (text: string) => {
+        return text.replace(/®/g, "<sup>®</sup>");
+      };
     return (
         <div className="mt-5 md:mt-8 mb-2 md:mb-6">
             <div className='flex flex-col gap-3'>
@@ -83,7 +85,7 @@ const ProductAccordians = ({items}:{
                         <button onClick={() => toggleAccordian(index)}
                             className={`w-full flex justify-between items-center  text-slate-800 p-2 md:p-4 bg-[#E3DED9] `}
                         >
-                            <div className='helvetica-bold clr15op75 text-font16 md:text-font20 text-left '>{item.question}</div>
+                            <div className='helvetica-bold clr15op75 text-font16 md:text-font20 text-left '  dangerouslySetInnerHTML={{ __html: formatText(item.question) }} ></div>
                             <span id="icon-1" className="text-slate-800 transition-transform duration-300">
                                 {activeAccordian == index ? <Image src={accordianArrow} alt='arrow' /> : <Image src={accordianArrow} alt='arrow' className='rotate-180' />}
 
@@ -97,8 +99,7 @@ const ProductAccordians = ({items}:{
                         >
 
                             <div className='text-black'>
-                                <div className='' >{item.answer}
-                                </div>
+        <div dangerouslySetInnerHTML={{ __html: formatText(item.answer) }} />
 
                             </div>
 

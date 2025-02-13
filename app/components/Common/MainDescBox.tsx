@@ -78,7 +78,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
 
               <motion.div
 
-                className=" max-w-[100%] md:max-w-[98%] flex flex-col gap-3 "
+                className=" max-w-[100%] md:max-w-[98%] flex flex-col gap-3 texthelvetica20 clr15op75"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -92,6 +92,7 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
               }}>
 
               {typeof paragraphs === "string" ? parse(formatText(paragraphs)) : paragraphs}
+
 
     {/* <div dangerouslySetInnerHTML={{ __html: (typeof paragraphs === "string" ? parse(formatText(paragraphs)) : paragraphs) }}></div> */}
     {/* {typeof paragraphs === "string"

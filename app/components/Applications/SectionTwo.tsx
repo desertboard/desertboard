@@ -76,7 +76,9 @@ function SectionTwo({ suggested,data,pageName }: SectionTwoProps) {
     { text: "Certificates", href: "/downloads" },
     { text: "Get InTouch", href: "/contact" },
   ];
-
+  const formatmm2Text = (text: string) => {
+    return text.replace(/mm2/g, "mm<sup>2</sup>");
+  };
   return (
     <>
       <section className="py-10 md:pt-20 pb-0 insp-mn relative inspbg">
@@ -120,7 +122,7 @@ function SectionTwo({ suggested,data,pageName }: SectionTwoProps) {
             className="flex justify-between py-2 md:py-5 border-b border-[#15151510] border-dashed"
           >
             <p className="texthelvetica20 clr15op75">{item.name}</p>
-            <p className="texthelvetica20 clr15op75">{item.value}</p>
+            <p className="texthelvetica20 clr15op75" dangerouslySetInnerHTML={{ __html: formatmm2Text(item.value) }} />
           </div>
         ))}
       </div>
