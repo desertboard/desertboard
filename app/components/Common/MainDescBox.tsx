@@ -6,7 +6,7 @@ import lfbt from "@/public/assets/images/home/lfbt.svg";
 import { StaticImageData } from "next/image";
 import React, { JSX, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import parse from 'html-react-parser'
+import parse from "html-react-parser";
 
 interface MainDescBoxProps {
   secTitle: string;
@@ -17,7 +17,14 @@ interface MainDescBoxProps {
   vdoPoster?: string;
 }
 
-const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraphs, mainImg, mainVdo, vdoPoster }) => {
+const MainDescBOx: React.FC<MainDescBoxProps> = ({
+  secTitle,
+  subTitle,
+  paragraphs,
+  mainImg,
+  mainVdo,
+  vdoPoster,
+}) => {
   const videoRef = useRef<HTMLVideoElement | null>(null); // Type the ref for HTMLVideoElement
   const [isPlaying, setIsPlaying] = useState(false); // State to track play/pause
   const togglePlay = () => {
@@ -35,24 +42,47 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
     }
   };
 
-
-// if (typeof paragraphs === "string") {
-//     parsevalue = parse(paragraphs);
-// } else {
-//     psvalues = paragraphs;
-//   }
-  console.log(paragraphs);
   const { scrollYProgress } = useScroll();
   const translateY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
   const formatText = (text: string) => {
     return text.replace(/®/g, "<sup>®</sup>");
   };
+
+  // Function to render paragraphs inside <p> tags
+  const renderParagraphs = (paragraphs: JSX.Element | string | JSX.Element[] | string[]) => {
+    if (typeof paragraphs === "string") {
+      // If it's a single string, wrap it in a <p> tag
+      return <p>{parse(formatText(paragraphs))}</p>;
+    } else if (Array.isArray(paragraphs)) {
+      // If it's an array, map through each item and wrap it in a <p> tag
+      return paragraphs.map((paragraph, index) => {
+        if (typeof paragraph === "string") {
+          return <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3] mb-3" key={index}>{parse(formatText(paragraph))}</p>;
+        } else {
+          return <p key={index}>{paragraph}</p>;
+        }
+      });
+    } else {
+      // If it's a JSX.Element, return it as is
+      return paragraphs;
+    }
+  };
+
   return (
     <section className="pt-10 lg:pt-20 pb-10 lg:pb-[110px] insp-mn relative inspbg overflow-hidden">
-      <motion.div className="ola ola-right absolute top-0 right-[-25%] md:right-[-10%] w-[20em] md:w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+      <motion.div
+        className="ola ola-right absolute top-0 right-[-25%] md:right-[-10%] w-[20em] md:w-[40em]"
+        animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
         <Image className="absolute" src={lfbef} alt="Description of the image" />
       </motion.div>
-      <motion.div className="ola ola-right absolute bottom-[43%] left-[-25%] md:left-[-15%] w-[20em] md:w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+      <motion.div
+        className="ola ola-right absolute bottom-[43%] left-[-25%] md:left-[-15%] w-[20em] md:w-[40em]"
+        animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
         <Image className="absolute" src={lfbt} alt="Description of the image" />
       </motion.div>
       <div className="container m-auto">
@@ -70,59 +100,75 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
                   x: 0,
                   transition: { duration: 1, delay: 0.3 },
                 },
-              }}>
+              }}
+            >
               {secTitle}
               <span className="text-[#FF671F]">.</span>
             </motion.h2>
-            {subTitle && <p className="nuber-next md-6 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">{subTitle}</p>}
+            {subTitle && (
+              <p className="nuber-next md-6 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">
+                {subTitle}
+              </p>
+            )}
 
-              <motion.div
-
-                className=" max-w-[100%] md:max-w-[98%] flex flex-col gap-3 "
-                initial={{ opacity: 0, x: -30 }}
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-                variants={{
-                  hidden: { opacity: 0, x: -30 }, // Start below and invisible
-                  visible: {
-                    opacity: 0.75,
-                    x: 0,
-                    transition: { duration: 1, delay: 0.5 },
-                  },
-              }}>
-
-            {/*   {typeof paragraphs === "string" ? parse(formatText(paragraphs)) : paragraphs} */}
-              {Array.isArray(paragraphs)
-  ? paragraphs.map((para, index) => <p className="text-font20 text-black/75 max-w-[100%] md:max-w-[88%] leading-[1.3] mb-3 " key={index}>{parse(formatText(para))}</p>)
-  : <p>{parse(formatText(paragraphs))}</p>}
-    {/* <div dangerouslySetInnerHTML={{ __html: (typeof paragraphs === "string" ? parse(formatText(paragraphs)) : paragraphs) }}></div> */}
-    {/* {typeof paragraphs === "string"
-  ? parse(formatText(paragraphs.replace(/®/g, "<sup>®</sup>")))
-  : paragraphs} */}
-
-
-              </motion.div>
-
+            <motion.div
+              className="max-w-[100%] md:max-w-[98%] flex flex-col"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+              variants={{
+                hidden: { opacity: 0, x: -30 }, // Start below and invisible
+                visible: {
+                  opacity: 0.75,
+                  x: 0,
+                  transition: { duration: 1, delay: 0.5 },
+                },
+              }}
+            >
+              {renderParagraphs(paragraphs)}
+            </motion.div>
           </div>
 
           <div className="flex lg:absolute w-full lg:w-1/2 xl:w-[58%] lg:right-0 lg:top-5 h-full">
-
-            {mainImg && <figure className=" relative h-[250px] lg:h-full  w-full   ">
-
-                <Image className="w-full object-cover h-[full]" src={mainImg} fill objectFit="cover" alt="Banner image" />
-
-            </figure>}
-            {/* <div className="relative"> */}
-            {/* Video element */}
+            {mainImg && (
+              <figure className="relative h-[250px] lg:h-full w-full">
+                <Image
+                  className="w-full object-cover h-[full]"
+                  src={mainImg}
+                  fill
+                  objectFit="cover"
+                  alt="Banner image"
+                />
+              </figure>
+            )}
             {mainVdo && (
               <>
                 <motion.div className="relative h-full" style={{ y: translateY }}>
-                  <video ref={videoRef} className="h-full object-cover" src={mainVdo} poster={vdoPoster} controls={false} width={1080} height={740} playsInline onEnded={() => setIsPlaying(false)} />
+                  <video
+                    ref={videoRef}
+                    className="h-full object-cover"
+                    src={mainVdo}
+                    poster={vdoPoster}
+                    controls={false}
+                    width={1080}
+                    height={740}
+                    playsInline
+                    onEnded={() => setIsPlaying(false)}
+                  />
                   {/* Play/Pause Button */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     {!isPlaying && ( // Show the button only if video is paused
-                      <button className="bg-white bg-opacity-20 rounded-sm px-6 py-3 md:px-10 md:py-6 transition duration-300 hover:bg-opacity-50" onClick={togglePlay}>
-                        <svg width="26" height="34" viewBox="0 0 26 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <button
+                        className="bg-white bg-opacity-20 rounded-sm px-6 py-3 md:px-10 md:py-6 transition duration-300 hover:bg-opacity-50"
+                        onClick={togglePlay}
+                      >
+                        <svg
+                          width="26"
+                          height="34"
+                          viewBox="0 0 26 34"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
                           <path d="M0.0114746 0.469116V33.5308L25.9885 17L0.0114746 0.469116Z" fill="white" />
                         </svg>
                       </button>
@@ -131,8 +177,6 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
                 </motion.div>
               </>
             )}
-            {/* </div> */}
-            {/* </div> */}
           </div>
         </div>
       </div>
