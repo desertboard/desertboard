@@ -37,6 +37,7 @@ const Sectors = () => {
 
   const [activeSector, setActiveSector] = useState(0);
   const activeApplications = data && data.data && data.data[activeSector].applications;
+  const [sectorName,setSectorName] = useState("")
 
 
   return (
@@ -87,13 +88,14 @@ const Sectors = () => {
               <SectorSelector data={data}
                 setActiveSector={setActiveSector}
                 activeSector={activeSector}
+                setSectorName={setSectorName}
               />
             </div>
 
             <div
               className={`w-full lg:w-2/3  lg:pl-20 flex flex-col gap-7 lg:border-l-2 border-[#15151510]`}
             >
-              <ApplicationSelector activeApplications={activeApplications} />
+              <ApplicationSelector activeApplications={activeApplications} sectorName={sectorName}/>
             </div>
           </div>
         </div>
