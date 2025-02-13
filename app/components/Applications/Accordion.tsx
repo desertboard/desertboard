@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import arrdns from "@/public/assets/images/icons/arrdns.svg";
 import { assets } from "@/public/assets/images/assets";
-import parse from 'html-react-parser'
+// import parse from 'html-react-parser'
 // import { IndiSectorType } from "@/types/IndiSector";
 import { IndiApplication } from "@/types/ApplicationType";
 

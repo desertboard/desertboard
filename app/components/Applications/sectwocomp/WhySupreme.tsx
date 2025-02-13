@@ -1,5 +1,5 @@
 import React from "react";
-import parse from 'html-react-parser'
+// import parse from 'html-react-parser'
 import Image from "next/image";
 import { IndiApplication } from "@/types/ApplicationType";
 
