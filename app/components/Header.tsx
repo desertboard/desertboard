@@ -92,16 +92,18 @@ const Header = () => {
                     }
 
                     {item.title == "Sectors" &&
-                      <div className="grid grid-cols-4 mx-auto w-1/2" key={index}>
-                        {sectors && sectors.map((item: { title: string,applications:{title:string}[] }, index) => (
+                      <div className="flex space-x-5 gap-8" key={index}>
+                        {sectors && sectors.map((item: { title: string,applications:{title:string,product:string}[] }, index) => (
                           
-                            <div className="col-span-1" key={index}>
-                              <div className="font-bold text-black text-xl">{item.title}</div>
+                            <div className="flex flex-col gap-3" key={index} >
+                              <div className="font-bold text-black text-[16px] xxl:text-[18px] mb-4">{item.title}</div>
                               {item.applications.map((application,index)=>(
-                                  
-                                  <div className="flex flex-col p-1" key={index}>
-                                    <Link className="text-black text-lg" href={`/product-details/${application.title}`} key={index}>{application.title}</Link>
+                                 
+                                  <div  key={index}>
+                                    <Link className="text-black/75 text-[12px] xl:text-[14px]  xxl:text-[16px]" href={`/applications/${application.product}?application=${application.title}&sector=${encodeURIComponent(item.title.replace(/\s+/g, "-"))}`} key={index}>{application.title}</Link>
                                   </div>
+                                 
+
                               ))}
                             </div>
                           
