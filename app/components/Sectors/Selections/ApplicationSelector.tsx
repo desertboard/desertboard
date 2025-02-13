@@ -11,7 +11,11 @@ const ApplicationSelector = ({
     image: string;
     product:string;
   }[];
-}) => {
+
+  }) => {
+    const formatText = (text: string) => {
+      return text.replace(/®/g, "<sup>®</sup>");
+    };
   return (
     <>
       <div className="border-b-[2px] pb-8 border-[#1515151A]">
@@ -40,11 +44,7 @@ const ApplicationSelector = ({
                 <p className="texthelvetica20 text-white opacity-75 mb-2">
                   Product Used:
                 </p>
-
-                <p className="pb-3 md:pb-10 helvetica-bold text-font28 text-white">
-                  {application.product}
-                </p>
-
+                 <p className="pb-3 md:pb-10 helvetica-bold text-font28 text-white" dangerouslySetInnerHTML={{ __html: formatText(application.product) }} />
                 <Image src={assets.tlse} className="pb-3 md:pb-10" alt="" />
 
                 <Link

@@ -55,7 +55,7 @@ const AccrediationSlider:React.FC = () => {
             nextEl: ".custom-next",
             prevEl: ".custom-prev",
           }}
-          slideToClickedSlide={true} 
+          slideToClickedSlide={true}
           spaceBetween={40}
           slidesPerView={2}
           // Number of slides to duplicate

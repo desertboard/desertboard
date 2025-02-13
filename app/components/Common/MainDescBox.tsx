@@ -35,6 +35,13 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
     }
   };
 
+
+// if (typeof paragraphs === "string") {
+//     parsevalue = parse(paragraphs);
+// } else {
+//     psvalues = paragraphs;
+//   }
+  console.log(paragraphs);
   const { scrollYProgress } = useScroll();
   const translateY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const formatText = (text: string) => {
@@ -86,7 +93,10 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
 
               {typeof paragraphs === "string" ? parse(formatText(paragraphs)) : paragraphs}
 
-
+    {/* <div dangerouslySetInnerHTML={{ __html: (typeof paragraphs === "string" ? parse(formatText(paragraphs)) : paragraphs) }}></div> */}
+    {/* {typeof paragraphs === "string"
+  ? parse(formatText(paragraphs.replace(/®/g, "<sup>®</sup>")))
+  : paragraphs} */}
 
 
               </motion.div>
