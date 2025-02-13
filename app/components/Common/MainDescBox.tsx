@@ -58,9 +58,9 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({
       // If it's an array, map through each item and wrap it in a <p> tag
       return paragraphs.map((paragraph, index) => {
         if (typeof paragraph === "string") {
-          return <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3] mb-3" key={index}>{parse(formatText(paragraph))}</p>;
+          return <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3] mb-4" key={index}>{parse(formatText(paragraph))}</p>;
         } else {
-          return <p key={index}>{paragraph}</p>;
+          return <p className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3] mb-4" key={index}>{paragraph}</p>;
         }
       });
     } else {
