@@ -4,7 +4,7 @@ import "@/app/components/NewsEvents/newsblock.scss";
 import tagIcon from "@/public/assets/images/News/pin.svg";
 import PrimaryArrowBtn from "../Common/PrimaryArrowBtn";
 import Link from "next/link";
-import parse from 'html-react-parser'
+// import parse from 'html-react-parser'
 
 
 
