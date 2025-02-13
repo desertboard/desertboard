@@ -12,6 +12,7 @@ import fb from "@/public/assets/images/home/fb.svg";
 import lin from "@/public/assets/images/home/lin.svg";
 import insta from "@/public/assets/images/home/inst.svg";
 import youtube from "@/public/assets/images/home/youtube.svg";
+import twx from "@/public/assets/images/home/twx.svg";
 import Link from "next/link";
 import { assets } from "@/public/assets/images/assets";
 
@@ -106,12 +107,13 @@ const scrollToTop = () => {
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 items-center">
                 <div>
+                  <Link href="mailto:marketing@desertboard.ae">
                   <p className=" mb-0 text-Darkgreen   text-[25px]  md:text-[36px] leading-[1.2] xxl:leading-none  nuber-next-heavy">
                     Stay Up To Date with DesertBoard
                     <span className="text-[#FF671F] mb-0     text-[25px]  md:text-[36px]  ">
                       .
                     </span>
-                  </p>
+                  </p></Link>
                 </div>
                 <div>
                   <div className="w-full flex items-center justify-between  ">
@@ -205,7 +207,15 @@ const scrollToTop = () => {
                           />
                         </div>
                       </Link>
-
+                      <Link href="https://x.com/desertboard_ae" target="_blank" className="group">
+                        <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:bg-[#FF671F] group-hover:rounded-md">
+                          <Image
+                            src={twx}
+                            alt="X"
+                            className="group-hover:brightness-0 group-hover:invert"
+                          />
+                        </div>
+                      </Link>
                       <Link href="https://www.youtube.com/@DesertBoard" target="_blank" className="group">
                         <div className="border border-[#FF671F] w-[47px] h-[47px] flex items-center justify-center transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:bg-[#FF671F] group-hover:rounded-md">
                           <Image

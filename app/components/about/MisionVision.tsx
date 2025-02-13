@@ -3,7 +3,11 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import "@/app/components/about/mivi.scss";
 import lfbef from "@/public/assets/images/home/leaf.svg";
-export default function MisionVision() {
+import { AboutType } from "@/types/AboutType";
+import parse from 'html-react-parser'
+export default function MisionVision({data}:{
+  data:AboutType
+}) {
   const [activeClass, setActiveClass] = useState("mivi__mibig");
 
   const handleMiClick = () => {
@@ -79,11 +83,8 @@ export default function MisionVision() {
               Mission <span className="text-[#FF671F]">.</span>
             </h3>
           </div>
-          <div className="mivi__desc text- leading-[1.3] text-18 lg:text-font20 text-black/75">
-            <p className="lg:text-font20 text-black/75">
-              Our mission is to leverage the UAE&apos;s rich heritage of palm fronds to create high-strength, zero-emission structural panels. By transforming local materials into sustainable building solutions, we aim to enhance indoor air quality, reduce carbon footprints, and contribute to the local bio-economy. As the first industrial plant in
-              the UAE dedicated to this innovation, we support the nation&apos;s industrial growth while promoting environmental sustainability.
-            </p>
+          <div className="mivi__desc text-black opacity-75 leading-[1.3] text-18 lg:text-font20 text-black/75">
+              {data && data.about[0] && parse(data.about[0].mission)}
           </div>
         </div>
         <div className="mivi__vi pt-8 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
@@ -99,8 +100,8 @@ export default function MisionVision() {
               Vision <span className="text-[#FF671F]">.</span>
             </h3>
           </div>
-          <div className="mivi__desc text-black opacity-75 leading-[1.3]">
-            <p className="lg:text-font20 text-black/75">To make the built environment more sustainable by providing locally produced engineered solutions, driving the circular economy forward, and setting new standards for eco-friendly, high-performance materials across sectors.</p>
+          <div className="mivi__desc text-black opacity-75 leading-[1.3] text-18 lg:text-font20">
+             {data && data.about[0] && parse(data.about[0].vision)}
           </div>
         </div>
       </div>
