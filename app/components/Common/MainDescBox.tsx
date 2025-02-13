@@ -111,22 +111,31 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({
               </p>
             )}
 
-            <motion.div
-              className="max-w-[100%] md:max-w-[98%] flex flex-col"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-              variants={{
-                hidden: { opacity: 0, x: -30 }, // Start below and invisible
-                visible: {
-                  opacity: 0.75,
-                  x: 0,
-                  transition: { duration: 1, delay: 0.5 },
-                },
-              }}
-            >
+              <motion.div
+
+                className=" max-w-[100%] md:max-w-[98%] flex flex-col gap-3 texthelvetica20 clr15op75"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                variants={{
+                  hidden: { opacity: 0, x: -30 }, // Start below and invisible
+                  visible: {
+                    opacity: 0.75,
+                    x: 0,
+                    transition: { duration: 1, delay: 0.5 },
+                  },
+              }}>
+
               {renderParagraphs(paragraphs)}
-            </motion.div>
+              {/* {typeof paragraphs === "string" ? parse(formatText(paragraphs)) : paragraphs} */}
+
+              {/* {Array.isArray(paragraphs)
+  ? paragraphs.map((para, index) => <p className="text-font20 text-black/75 max-w-[100%] md:max-w-[88%] leading-[1.3] mb-3 " key={index}>{parse(formatText(para))}</p>)
+  : <p>{parse(formatText(paragraphs))}</p>} */}
+
+
+              </motion.div>
+
           </div>
 
           <div className="flex lg:absolute w-full lg:w-1/2 xl:w-[58%] lg:right-0 lg:top-5 h-full">

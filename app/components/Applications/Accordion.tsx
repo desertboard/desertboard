@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import arrdns from "@/public/assets/images/icons/arrdns.svg";
 import { assets } from "@/public/assets/images/assets";
-import parse from 'html-react-parser'
+// import parse from 'html-react-parser'
 // import { IndiSectorType } from "@/types/IndiSector";
 import { IndiApplication } from "@/types/ApplicationType";
 
@@ -23,7 +23,9 @@ type AccordionProps = {
 
 const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const formatText = (text: string) => {
+    return text.replace(/®/g, "<sup>®</sup>");
+  };
   return (
        <div className={`mb-3 md:mb-5 ${bg}`}>
       {/* Accordion Header */}
@@ -51,7 +53,8 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }
           isOpen ? "max-h-[500px] opacity-100 lg:pl-8 pb-5" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="helvetica text-font20  clr15op75 px-5">{parse(content)}</div>
+        {/* <div >{parse(content)}</div> */}
+        <div className="helvetica text-font20  clr15op75 px-5" dangerouslySetInnerHTML={{ __html: formatText(content) }} />
       </div>
     </div>
   );
