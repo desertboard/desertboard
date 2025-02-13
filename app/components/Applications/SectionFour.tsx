@@ -9,7 +9,7 @@ import Image from "next/image";
 import "@/app/components/home/goalcrd.scss";
 import { motion } from "framer-motion";
 
-import Accordion from "../Applications/Accordion";
+import Accordion from "./Accordion";
 import { IndiApplication } from "@/types/ApplicationType";
 
 interface WhySupremeProps {

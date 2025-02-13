@@ -29,11 +29,13 @@ export default function Index() {
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data }:{data:AboutType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/about', fetcher)
+  const { data }: { data: AboutType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/about', fetcher)
+
 
 
   useEffect(()=>{
-    console.log(data)
+    console.log(data);
+    console.log('sdsdsds');
   },[data])
 
   return (
@@ -55,9 +57,9 @@ export default function Index() {
         mainImg={baxnnerImg}
       />
       {/* <HistorySlider /> */}
-      <TimeLineSlider/>
-      <MisionVision />
-      <AccrediationSlider />
+      <TimeLineSlider data={data}/>
+      <MisionVision data={data}/>
+      <AccrediationSlider data={data}/>
        <BeforeFooterTag title={"Discover Industry Solutions"} url="/downloads" />
     </>
   );
