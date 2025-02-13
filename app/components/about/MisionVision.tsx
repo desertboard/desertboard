@@ -83,13 +83,8 @@ export default function MisionVision({data}:{
               Mission <span className="text-[#FF671F]">.</span>
             </h3>
           </div>
-          <div className="mivi__desc text-black opacity-75 leading-[1.3] text-18 lg:text-font20">
-            {/* <p className="lg:text-font20">
-              Our mission is to leverage the UAE&apos;s rich heritage of palm fronds to create high-strength, zero-emission structural panels. By transforming local materials into sustainable building solutions, we aim to enhance indoor air quality, reduce carbon footprints, and contribute to the local bio-economy. As the first industrial plant in
-              the UAE dedicated to this innovation, we support the nation&apos;s industrial growth while promoting environmental sustainability.
-            </p> */}
-
-                        {data && data.about[0] && parse(data.about[0].mission)}
+          <div className="mivi__desc text-black opacity-75 leading-[1.3] text-18 lg:text-font20 text-black/75">
+              {data && data.about[0] && parse(data.about[0].mission)}
           </div>
         </div>
         <div className="mivi__vi pt-8 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
@@ -105,9 +100,8 @@ export default function MisionVision({data}:{
               Vision <span className="text-[#FF671F]">.</span>
             </h3>
           </div>
-          <div className="mivi__desc text-black opacity-75 leading-[1.3] text-font20">
-            {/* <p className="text-font20">To make the built environment more sustainable by providing locally produced engineered solutions, driving the circular economy forward, and setting new standards for eco-friendly, high-performance materials across sectors.</p> */}
-            {data && data.about[0] && parse(data.about[0].vision)}
+          <div className="mivi__desc text-black opacity-75 leading-[1.3] text-18 lg:text-font20">
+             {data && data.about[0] && parse(data.about[0].vision)}
           </div>
         </div>
       </div>
