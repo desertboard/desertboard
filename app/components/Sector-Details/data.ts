@@ -4,8 +4,8 @@ export const tabData = {
   data: [
     {
       id: 1,
-      tab:"Façade Cladding",
-      title: "Façade Cladding",
+      tab:"Facade Cladding",
+      title: "Facade Cladding",
       image: assets.secim,
       description: "DesertBoard’s PSB® provides the engineering and construction industry with sustainable, high-performance materials tailored for demanding applications. From durable formwork to fire-rated door cores, PSB® ensures strength, safety, and eco-responsibility in every",
 

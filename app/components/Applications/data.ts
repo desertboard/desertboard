@@ -8,7 +8,7 @@ export const relslideses = {
     {
       id:1,
       image: assets.ra1,
-      title: "Façade Cladding",
+      title: "Facade Cladding",
       desc: "A wide range of uncoated boards, used as a core material, offering flexibility for customization and finishing.",
     },
     {

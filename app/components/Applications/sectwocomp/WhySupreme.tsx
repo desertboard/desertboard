@@ -17,7 +17,8 @@ const WhySupreme = ({ data,pageName }:{
         <div className="pb-7 md:pb-[60px] ">
         <div>
           <p className=" helvetica-bold text-font28   text-Darkgreen mb-4 md:mb-8">
-              {pageName==="products" ? `Key ${data && data.data.title} Information` : `Why ${data && data.data.title}`}
+            {/* {pageName==="products" ? `Key ${data && data.data.title} Information` : `Why ${data && data.data.title}`} */}
+            {pageName==="products" ? `Key Information` : `Why ${data && data.data.title}`}
           </p>
         </div>
         <div   className="sts">

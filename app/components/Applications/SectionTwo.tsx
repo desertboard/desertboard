@@ -11,10 +11,11 @@ import WhySupreme from "./sectwocomp/WhySupreme";
 import { motion } from "framer-motion";
 import { assets } from "@/public/assets/images/assets";
 import { IndiApplication } from "@/types/ApplicationType";
+import Link from "next/link";
 
 interface SectionTwoProps {
   suggested?: boolean;
-  data:IndiApplication 
+  data:IndiApplication
   pageName:string;// Optional boolean prop
 }
 
@@ -70,7 +71,11 @@ function SectionTwo({ suggested,data,pageName }: SectionTwoProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
+  const links = [
+    { text: "Technical Datasheet", href: "/downloads" },
+    { text: "Certificates", href: "/downloads" },
+    { text: "Get InTouch", href: "/contact" },
+  ];
 
   return (
     <>
@@ -122,18 +127,24 @@ function SectionTwo({ suggested,data,pageName }: SectionTwoProps) {
 
       {/* Buttons */}
       <div className="flex justify-between gap-3 flex-wrap">
-        {["Technical Datasheet", "Certificates", "Get InTouch"].map((text, index) => (
-          <div key={index} className="flex gap-3 items-center group rmbtn pb-2 md:pb-3 cursor-pointer">
-            <p className="relative flex gap-2 max-w-fit transition-opacity duration-300 text-[16px] md:text-[18px] nuber-next-heavy leading-[1.25]">
-              {text}
-            </p>
-            <Image
-              src={readarrow}
-              alt="icon"
-              className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1"
-            />
-          </div>
-        ))}
+
+{links.map((item, index) => (
+  <Link
+    key={index}
+    href={item.href}
+    className="flex gap-3 items-center group rmbtn pb-2 md:pb-3 cursor-pointer"
+  >
+    <p className="relative flex gap-2 max-w-fit transition-opacity duration-300 text-[16px] md:text-[18px] nuber-next-heavy leading-[1.25]">
+      {item.text}
+    </p>
+    <Image
+      src={readarrow}
+      alt="icon"
+      className="relative top-[2px] transition-all duration-300 group-hover:translate-x-1"
+    />
+  </Link>
+))}
+
       </div>
     </div>
             </div>

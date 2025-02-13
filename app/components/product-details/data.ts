@@ -9,7 +9,7 @@ export const relslideses = {
     {
       id:1,
       image: assets.ras1,
-      title: "Façade Cladding",
+      title: "Facade Cladding",
       desc: "A wide range of uncoated boards, used as a core material, offering flexibility for customization and finishing.",
     },
     {
@@ -45,7 +45,7 @@ export const relslideses = {
   ],
 };
 export const slideses = {
-    sectitle: "PSB® Supreme Applications.",
+    sectitle: "PSB® Supreme Applications",
     data: [
       {
         id:1,
