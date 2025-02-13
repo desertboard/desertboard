@@ -1,6 +1,5 @@
 import React from "react";
 import CustomClrSection from "../Common/CustomClrSection";
-import PrimaryArrowBtn from "../Common/PrimaryArrowBtn";
 /* import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Navigation, Pagination } from "swiper/modules";
@@ -13,6 +12,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import Link from "next/link";
 
 interface LinkedInSliderProps {
   data: {
@@ -31,7 +31,15 @@ const LinkedInSlider: React.FC<LinkedInSliderProps> = ({  }) => {
         <div className="container">
           <div className="flex justify-between flex-wrap items-start relative z-10 gap-x-5 mb-5 ">
             <h2 className="text-font48 heavydark xl:mb-10 mb-5 md:mb-10 ">Are you following us on LinkedIn?</h2>
-            <PrimaryArrowBtn btntitle={"Visit LinkedIn"} btnLink="#" />
+
+            <Link href="https://www.linkedin.com/company/desertboard/" target="_blank" className="text-[#FF671F] w-fit pb-1 flex items-center justify-between border-[#FF671F] border-b-[2px] text-font18 font-bold group font-nuber-next">
+            Visit LinkedIn
+        <span className="ml-2">
+          <svg width="11" height="16" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-transform duration-300 ease-in-out group-hover:translate-x-1">
+            <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round"></path>
+          </svg>
+        </span>
+      </Link>
           </div>
         </div>
         <div className="container  !overflow-visible">

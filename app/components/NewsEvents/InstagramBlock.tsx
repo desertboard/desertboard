@@ -1,7 +1,7 @@
 import React from "react";
-import CustomClrSection from "../Common/CustomClrSection";
-import PrimaryArrowBtn from "../Common/PrimaryArrowBtn";
+import CustomClrSection from "../Common/CustomClrSection"; 
 import "@/app/components/NewsEvents/instagram.scss";
+import Link from "next/link";
 
 
 interface InstagramData {
@@ -19,7 +19,14 @@ const InstagramBlock: React.FC<InstagramDataProps> = ({ }) => {
         <div className="container">
           <div className="flex justify-between items-start relative z-50 flex-wrap gap-x-5 mb-5 lg:mb-10">
             <h2 className="text-font48 heavydark text-white mb-2 xl:mb-10">Are you following us on Instagram?</h2>
-            <PrimaryArrowBtn btntitle={"Visit Instagram"} btnLink="#" />
+            <Link href="https://www.instagram.com/desertboard/" target="_blank" className="text-[#FF671F] w-fit pb-1 flex items-center justify-between border-[#FF671F] border-b-[2px] text-font18 font-bold group font-nuber-next">
+            Visit Instagram
+        <span className="ml-2">
+          <svg width="11" height="16" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-transform duration-300 ease-in-out group-hover:translate-x-1">
+            <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round"></path>
+          </svg>
+        </span>
+      </Link>
           </div>
 {/*           <div className="grid grid-flow-row grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"> */}
           <div className="">
