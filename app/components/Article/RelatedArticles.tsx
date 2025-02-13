@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import CustomClrSection from "../Common/CustomClrSection";
 import { newsEvents } from "./data";
 import "@/app/components/NewsEventsListing/listing.scss";
@@ -16,6 +16,31 @@ import RelatedItem from "./RelatedItem";
 
 const RelatedArticles: React.FC = () => {
   const swiperRef = useRef<SwiperType | null>(null);
+
+  const [showNavButtons, setShowNavButtons] = useState(false);
+
+      useEffect(() => {
+        const updateNavVisibility = () => {
+          if (swiperRef.current) {
+            const slidesPerView = swiperRef.current.params.slidesPerView;
+            if (typeof slidesPerView === 'number') {
+              setShowNavButtons(slidesPerView < 4);
+            }
+          }
+        };
+
+        // Check on initialization and listen to resize events
+        if (swiperRef.current) {
+          updateNavVisibility();
+          swiperRef.current.on("resize", updateNavVisibility);
+        }
+
+        return () => {
+          if (swiperRef.current) {
+            swiperRef.current.off("resize", updateNavVisibility);
+          }
+        };
+      }, []);
 
   return (
     <CustomClrSection>
@@ -49,6 +74,7 @@ const RelatedArticles: React.FC = () => {
         </Swiper>
 
         {/* Navigation Buttons */}
+        {showNavButtons && (
         <div className="container relative">
           {/* Prev Button - Fix applied */}
           <div
@@ -99,7 +125,8 @@ const RelatedArticles: React.FC = () => {
               </svg>
             </div>
           </div>
-        </div>
+          </div>
+           )}
       </div>
     </CustomClrSection>
   );
