@@ -33,9 +33,11 @@ const ApplicationSelector = ({
 
 
   console.log(sectorName)
+  const formatText = (text: string) => {
+    return text.replace(/®/g, "<sup>®</sup>");
+  };
 
-  
-  
+
   return (
     <>
       <div className="border-b-[2px] pb-8 border-[#1515151A]">
@@ -65,9 +67,8 @@ const ApplicationSelector = ({
                   Product Used:
                 </p>
 
-                <p className="pb-3 md:pb-10 helvetica-bold text-font28 text-white">
-                  {application.product}
-                </p>
+                <p className="pb-3 md:pb-10 helvetica-bold text-font28 text-white" dangerouslySetInnerHTML={{ __html: formatText(application.product) }}>
+                  </p>
 
                 <Image src={productImage ?? assets.bghr} className="pb-3 md:pb-10 h-[150px]" alt="" width={300} height={50}/>
 
