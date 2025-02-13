@@ -91,14 +91,11 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({ secTitle, subTitle, paragraph
                   },
               }}>
 
-            {/*   {typeof paragraphs === "string" ? parse(formatText(paragraphs)) : paragraphs} */}
-              {Array.isArray(paragraphs)
+              {typeof paragraphs === "string" ? parse(formatText(paragraphs)) : paragraphs}
+
+              {/* {Array.isArray(paragraphs)
   ? paragraphs.map((para, index) => <p className="text-font20 text-black/75 max-w-[100%] md:max-w-[88%] leading-[1.3] mb-3 " key={index}>{parse(formatText(para))}</p>)
-  : <p>{parse(formatText(paragraphs))}</p>}
-    {/* <div dangerouslySetInnerHTML={{ __html: (typeof paragraphs === "string" ? parse(formatText(paragraphs)) : paragraphs) }}></div> */}
-    {/* {typeof paragraphs === "string"
-  ? parse(formatText(paragraphs.replace(/®/g, "<sup>®</sup>")))
-  : paragraphs} */}
+  : <p>{parse(formatText(paragraphs))}</p>} */}
 
 
               </motion.div>
