@@ -33,7 +33,9 @@ import { SectorType } from "@/types/SectorType";
 
     },[data])
 
-
+    const formatText = (text: string) => {
+      return text.replace(/®/g, "<sup>®</sup>");
+    };
   return (
     <motion.div className={`grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-10`} initial={{ opacity: 0, y: -30 }}
     whileInView="visible"
@@ -57,7 +59,7 @@ import { SectorType } from "@/types/SectorType";
             </div>
             <hr className="opacity-10 border-t-2 mt-4 transition-all duration-500 delay-100 ease-in-out group-hover:mt-7" />
             <h3 className="opacity-[90%] text-font28 font-[400] leading-[1.3] transition-all duration-500 delay-100 mt-4 group-hover:mt-7 nuber-next-bold" >{framework.title}</h3>
-            <p className="mt-5 w-full lg:opacity-0 group-hover:opacity-75 w-[250px] group-hover:w-full transition-opacity duration-500  delay-100 text-font20 leading-[1.5]" >{framework.shortDescription}</p>
+            <p className="mt-5 w-full lg:opacity-0 group-hover:opacity-75 w-[250px] group-hover:w-full transition-opacity duration-500  delay-100 text-font20 leading-[1.5]" dangerouslySetInnerHTML={{ __html: formatText(framework.shortDescription) }} />
             <Link href={`/sector-details/${framework.title}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-0 group-hover:opacity-100 w-[250px]
             group-hover:w-full transition-opacity duration-300 text-[14px] md:text-font18   leading-[1.5] rmbtn pb-2 ">
               Read More <Image src={readarrow} alt="icn1" className="transition-all duration-300 relative top-[2px]" width={11} height={16} />

@@ -8,7 +8,9 @@ interface UspProps {
   uspIcon: StaticImageData;
   onMouseEnter?: () => void;
 }
-
+const formatText = (text: string) => {
+  return text.replace(/®/g, "<sup>®</sup>");
+};
 const UspItem = ({ uspTitle, order, mainImg, uspDesc, uspIcon, onMouseEnter }: UspProps) => {
     return (
       <div className={`usp-item usp-${order} relative overflow-hidden hover:pb-7`} onMouseEnter={onMouseEnter}>
@@ -21,7 +23,7 @@ const UspItem = ({ uspTitle, order, mainImg, uspDesc, uspIcon, onMouseEnter }: U
 
         <div className="usp-item__content relative z-10 px-4 xxl:px-8">
           <h3 className="xxl:text-font28 leading-[1.3] nuber-next-bold">{uspTitle}</h3>
-          <p className="xxl:text-font20 leading-[1.3] usp-item__desc pt-4 xxl:pt-7 helvetica">{uspDesc}</p>
+          <p className="xxl:text-font20 leading-[1.3] usp-item__desc pt-4 xxl:pt-7 helvetica" dangerouslySetInnerHTML={{ __html: formatText(uspDesc) }} />
 
         </div>
       </div>
