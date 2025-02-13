@@ -11,7 +11,7 @@ import "swiper/css/effect-fade";
 import { Swiper as SwiperType } from "swiper";
 
 import { motion } from "framer-motion";
-import { SectorType } from "@/types/SectorType";
+
 
 interface WhySupremeProps {
   sectitle: string;
