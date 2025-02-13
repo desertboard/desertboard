@@ -19,7 +19,7 @@
         // padding-inline: 2em;
         @media (min-width:1550px) {
           width: 492px !important;
-          height: 307px;
+          height: min-content;
         }
 
         // height: 307px !important;
@@ -81,12 +81,12 @@
   min-height: max-content!important;
   @media (min-width:992px) {
     width: 350px;
-    height: 350px;
+    min-height: 350px;
   }
 
   @media (min-width: 1400px) {
     width: 550px !important;
-    height: 400px !important;
+    min-height: 400px !important;
   }
 
   @media (min-width: 1550px) {
@@ -96,7 +96,7 @@
 
   @media (min-width:1600px) {
     width: 609px !important;
-    height: 384px !important;
+    min-height: 384px !important;
   }
 
   &::before {

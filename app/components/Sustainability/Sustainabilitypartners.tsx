@@ -5,8 +5,8 @@ import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Accordion from "../Applications/Accordion";
 import { accordionData } from "./data";
+import Accordionsec from "../Common/Accordionsec";
 const Sustainabilitypartners: React.FC = () => {
   const formatText = (text: string) => {
     return text.replace(/®/g, "<sup>®</sup>");
@@ -46,7 +46,7 @@ const Sustainabilitypartners: React.FC = () => {
               <p className="texthelvetica20 clr15op75 pb-7 lg:pb-10">
         DesertBoard proudly collaborates with the Government of the UAE and internationally recognized sustainability organizations to drive impactful and sustainable solutions within the construction and allied industries.
       </p>
-      <Accordion accordionData={accordionData.data} bg={"bg-[#D1CCC8]"} bullet={false} />
+      <Accordionsec accordionData={accordionData.data} bg={"bg-[#D1CCC8]"} bullet={false} />
       <p className="texthelvetica20 clr15op75 pt-5" dangerouslySetInnerHTML={{ __html: formatText("PSB® zero-formaldehyde boards are aligned with global sustainability frameworks and green building standards, contributing to a significant reduction in the carbon footprint. Our association with these organizations fosters collaborative efforts with industry professionals, policymakers, and stakeholders to support a greener, more sustainable future.") }} />
               </div>
             </div>
