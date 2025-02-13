@@ -1,21 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { assets } from "@/public/assets/images/assets";
 import Link from "next/link";
+import useSWR from "swr";
+
 
 const ApplicationSelector = ({
   activeApplications,
+  sectorName
 }: {
   activeApplications: {
     title: string;
     image: string;
     product:string;
   }[];
+  sectorName:string
+}) => {
 
-  }) => {
-    const formatText = (text: string) => {
-      return text.replace(/®/g, "<sup>®</sup>");
-    };
+  const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+
+  const { data:productData } = useSWR('/api/admin/products', fetcher)
+
+  const [productImage,setProductImage] = useState(null)
+
+  const handleProductImageChange = (productName:string) =>{
+    const product = productData && productData.data.find((item:{title:string})=>(
+      item.title === productName
+    ))
+
+    setProductImage(product.images[0])
+  }
+
+
+  console.log(sectorName)
+
+  
+  
   return (
     <>
       <div className="border-b-[2px] pb-8 border-[#1515151A]">
@@ -40,15 +60,19 @@ const ApplicationSelector = ({
               <div className="absolute left-0 top-0 w-full h-full bg-Darkgreen p-4 md:p-10
                 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100
                 transition-all duration-500 ease-in-out
-                ">
+                " onMouseEnter={()=>handleProductImageChange(application.product)}>
                 <p className="texthelvetica20 text-white opacity-75 mb-2">
                   Product Used:
                 </p>
-                 <p className="pb-3 md:pb-10 helvetica-bold text-font28 text-white" dangerouslySetInnerHTML={{ __html: formatText(application.product) }} />
-                <Image src={assets.tlse} className="pb-3 md:pb-10" alt="" />
+
+                <p className="pb-3 md:pb-10 helvetica-bold text-font28 text-white">
+                  {application.product}
+                </p>
+
+                <Image src={productImage ?? assets.bghr} className="pb-3 md:pb-10 h-[150px]" alt="" width={300} height={50}/>
 
                 <Link
-                  href={`/applications/${application.product}?application=${application.title}`}
+                  href={`/applications/${application.product}?application=${application.title}&sector=${encodeURIComponent(sectorName.replace(/\s+/g, "-"))}`}
                   className="nuber-next-heavy flex gap-2 max-w-fit w-[250px]
                                             group-hover:w-full transition-all duration-300
                                             text-[14px] md:text-font16 leading-[1.5] rmbtn pb-2"

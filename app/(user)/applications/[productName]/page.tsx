@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import useSWR from "swr"
 // import { IndiSectorType } from "@/types/IndiSector";
 import { IndiApplication } from "@/types/ApplicationType";
+import { IndiSectorType } from "@/types/IndiSector";
 
 
 const Sectors = () => {
@@ -25,17 +26,18 @@ const Sectors = () => {
   const {productName} = useParams()
   const searchParams = useSearchParams()
   const application = searchParams.get("application")
+  const sector = searchParams.get("sector") ? decodeURIComponent(searchParams.get("sector")!) : "";
 
-  console.log(application)
+  console.log("secotr",sector)
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
   const { data }:{data:IndiApplication,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/products?productName=${productName}`, fetcher)
-
+  const { data:sectorData }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/sector/byid?sector=${sector?.replace(/-/g, " ")}`, fetcher)
 
   useEffect(()=>{
-    console.log(data && data.data)
-  },[data])
+    console.log("data",data && data.data)
+  },[data]) 
 
 
   const breadcrumbs = [
@@ -60,8 +62,8 @@ const Sectors = () => {
       <div className="pt-10 md:pt-20 insp-mn relative inspbg"></div>
       <SectionThree data={data}/>
       <SectionFour data={data} />
-      <SectionFive {...relslideses} />
-     <Downloads title={"To Downloads"} url="/downloads"/>
+      <SectionFive {...relslideses} sectorData={sectorData}/>
+     <Downloads title={"To Downloads"}/>
     </>
   );
 };

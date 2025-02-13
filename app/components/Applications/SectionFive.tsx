@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import Image, { StaticImageData } from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
 import { motion } from "framer-motion";
+import { IndiSectorType } from "@/types/IndiSector";
 interface WhySupremeProps {
   sectitle: string;
   data: {
@@ -19,20 +20,23 @@ interface WhySupremeProps {
     image: StaticImageData
     desc: string;
   }[];
+  sectorData:IndiSectorType
 }
 
 // Component to display the data
-const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
+const SectionFive: React.FC<WhySupremeProps> = ({ sectorData }) => {
   const swiperRef = useRef<SwiperType | null>(null);
-      const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-      const contentRefs = useRef<(HTMLSpanElement | null)[]>([]);
+      // const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+      // const contentRefs = useRef<(HTMLSpanElement | null)[]>([]);
+      
+      console.log("sectorData",sectorData)
 
-      useEffect(() => {
-        if (hoveredIndex !== null && contentRefs.current[hoveredIndex]) {
-          contentRefs.current[hoveredIndex]!.style.maxHeight =
-            contentRefs.current[hoveredIndex]!.scrollHeight + 20+ "px"; // Expand to content height
-        }
-      }, [hoveredIndex]); // Runs when hoveredIndex changes
+      // useEffect(() => {
+      //   if (hoveredIndex !== null && contentRefs.current[hoveredIndex]) {
+      //     contentRefs.current[hoveredIndex]!.style.maxHeight =
+      //       contentRefs.current[hoveredIndex]!.scrollHeight + 20+ "px"; // Expand to content height
+      //   }
+      // }, [hoveredIndex]); // Runs when hoveredIndex changes
   return (
     <>
 
@@ -59,7 +63,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
         <div className="container ">
           <div>
             <h2 className="heavydark mb-6 md:mb-10">
-            {sectitle}<span className="text-orange">.</span>
+            Related Applications<span className="text-orange">.</span>
             </h2>
           </div>
 
@@ -119,15 +123,15 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={() => console.log("slide change")}
               >
-               {data.map((item) => (
-                  <SwiperSlide key={item.id}>
+               {sectorData && sectorData.data && sectorData.data.applications && sectorData.data.applications.map((item) => (
+                  <SwiperSlide key={item._id}>
                     <div
                       className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
-                     style={{ backgroundImage: `url(${item.image.src})` }}
+                     style={{ backgroundImage: `url(${item.image})` }}
 
-                     onMouseEnter={() => setHoveredIndex(item.id)}
-                      onMouseLeave={() => setHoveredIndex(null)}
-                      onTouchStart={() => setHoveredIndex(item.id)}  // For mobile devices
+                    //  onMouseEnter={() => setHoveredIndex(item._id)}
+                    //   onMouseLeave={() => setHoveredIndex(null)}
+                    //   onTouchStart={() => setHoveredIndex(item._id)}  // For mobile devices
                     >
                       <div className="flex items-end pb-1 md:pb-4 xl:pb-8 min-h-[300px] lg:min-h-[462px]">
                         <div className="px-4 md:px-6 xl:px-10 w-full">
@@ -136,10 +140,10 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                           </h3>
 
 
-                          <p className="text-white overflow-hidden h-0 group-hover:h-full   group-hover:translate-y-[-10px]
+                          {/* <p className="text-white overflow-hidden h-0 group-hover:h-full   group-hover:translate-y-[-10px]
                                             transition-all duration-500 ease-in-out  "
                                             style={{
-                                              maxHeight: hoveredIndex === item.id ? `${contentRefs.current[item.id]?.scrollHeight  || 0}px` : "0px",
+                                              maxHeight: hoveredIndex === item._id ? `${contentRefs.current[item.id]?.scrollHeight  || 0}px` : "0px",
                                                                         }}
                                                                         ref={(el) => {
                                                                           contentRefs.current[item.id] = el;
@@ -147,7 +151,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                             <span className="">
                               {item.desc}
                               </span>
-                            </p>
+                            </p> */}
                         </div>
                       </div>
                     </div>

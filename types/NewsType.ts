@@ -6,6 +6,7 @@ images:string[];
 tags: string[];
         title: string;
         _id: string;
+        type:string;
     // history:{
     //     description:string;
     //     heading:string;
