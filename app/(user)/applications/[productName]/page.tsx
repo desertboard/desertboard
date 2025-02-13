@@ -50,7 +50,7 @@ const Sectors = () => {
   return (
     <>
        <PageBanner
-        bannerSrc={assets.appbanner} // Corrected image import here
+        bannerSrc={data && data.data ? data.data.bannerImage : assets.appbanner} // Corrected image import here
         arrowSrc={Arrow}
         desc=""
         title={application || ""}

@@ -2,7 +2,6 @@
 
 import React, { useRef } from "react";
 import CustomClrSection from "../Common/CustomClrSection";
-import { newsEvents } from "./data";
 import "@/app/components/NewsEventsListing/listing.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,8 +12,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import RelatedItem from "./RelatedItem";
+import { NewsType } from "@/types/NewsType";
 
-const RelatedArticles: React.FC = () => {
+const RelatedArticles = ({data}:{
+  data:NewsType
+}) => {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
@@ -39,8 +41,8 @@ const RelatedArticles: React.FC = () => {
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           onSlideChange={() => console.log("slide change")}
         >
-          {newsEvents.slice(0, 4).map((item) => (
-            <SwiperSlide key={item.id}>
+          {data && data.data.slice(0,4).map((item) => (
+            <SwiperSlide key={item._id}>
               <div>
                 <RelatedItem listData={item} />
               </div>

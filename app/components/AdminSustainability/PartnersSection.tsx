@@ -19,6 +19,7 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Textarea } from '@/components/ui/textarea'
+import { DialogClose } from '@radix-ui/react-dialog'
 
 type FormData = {
     title: string;
@@ -40,7 +41,7 @@ const PartnersSection = () => {
 
         const [isSubmitting, setIsSubmitting] = useState(false)
         const [refetch, setRefetch] = useState(false)
-        const [isOpen, setIsOpen] = useState(false)
+        
         const [partners, setPartners] = useState<{ _id: string, title: string, description: string }[]>([])
         const [editing,setEditing] = useState(false)
         const [editId,setEditId] = useState<null|string>(null)
@@ -79,7 +80,7 @@ const PartnersSection = () => {
             } finally {
                 setIsSubmitting(false);
                 setRefetch((prev) => !prev)
-                setIsOpen(false)
+                
                 setEditing(false)
                 setEditId(null)
             }
@@ -145,7 +146,7 @@ const PartnersSection = () => {
             } finally {
                 setIsSubmitting(false);
                 setRefetch((prev) => !prev)
-                setIsOpen(false)
+                
             }
         }
 
@@ -157,7 +158,7 @@ const PartnersSection = () => {
         const setEditContent = (id:string) =>{
             setEditing(true)
             setEditId(id)
-            setIsOpen(false)
+           
         }
 
         const handleEditContent = (title:string,description:string) =>{
@@ -217,7 +218,7 @@ const PartnersSection = () => {
             
 
             <div className='flex justify-end'>
-                <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                <Dialog>
                     <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4' onClick={handleAddRole}>Add Item</DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
@@ -232,7 +233,7 @@ const PartnersSection = () => {
                                 <Label>Description</Label>
                                 <Textarea {...register("description")} />
 
-                                <Button disabled={isSubmitting}>Save</Button>
+                                <DialogClose disabled={isSubmitting} className='bg-black text-white p-3' type='submit'>Save</DialogClose>
                             </form>
 
 
@@ -252,7 +253,7 @@ const PartnersSection = () => {
                             {partner.description}
                         </div>
                         <div className='flex gap-2'>
-                            <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                            <Dialog>
                                 <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4' onClick={()=>handleEditContent(partner.title,partner.description)}>Edit</DialogTrigger>
                                 <DialogContent>
                                     <DialogHeader>
@@ -268,7 +269,7 @@ const PartnersSection = () => {
 
                                             
 
-                                            <Button onClick={()=>setEditContent(partner._id)}>Save Content</Button>
+                                            <DialogClose type="submit" onClick={()=>setEditContent(partner._id)} className='bg-black text-white p-3'>Save Content</DialogClose>
                                         </form>
 
 

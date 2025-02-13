@@ -20,8 +20,8 @@ interface WhySupremeProps {
 // Component to display the data
 const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
   const swiperRef = useRef<SwiperType | null>(null);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const contentRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const [hoveredIndex, setHoveredIndex] = useState<string | null>(null);
+  const contentRefs = useRef(new Map());
 
   const [showNavButtons, setShowNavButtons] = useState(false);
 
@@ -52,11 +52,15 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
 
 
   useEffect(() => {
-    if (hoveredIndex !== null && contentRefs.current[hoveredIndex]) {
-      contentRefs.current[hoveredIndex]!.style.maxHeight =
-        contentRefs.current[hoveredIndex]!.scrollHeight + 20 + "px"; // Expand to content height
+    if (hoveredIndex !== null) {
+      const contentRef = contentRefs.current.get(hoveredIndex);
+      if (contentRef) {
+        contentRef.style.maxHeight = contentRef.scrollHeight + 20 + "px"; // Expand to content height
+      }
     }
-  }, [hoveredIndex]); // Runs when hoveredIndex changes
+  }, [hoveredIndex]);
+  
+   // Runs when hoveredIndex changes
   return (
     <>
       <section className="  pt-10 lg:pt-20 pb-[80px] lg:pb-[80px]    relative z-[1] bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
@@ -142,12 +146,12 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
                     <div
                       className="relative group overflow-hidden transform goal-crd hrcd bg-center bg-cover transition-all duration-500 ease-in-out"
                       style={{ backgroundImage: `url(${item.image})` }}
-                      onMouseEnter={() => setHoveredIndex(item.id)}
+                      onMouseEnter={() => setHoveredIndex(item._id)}
                       onMouseLeave={() => setHoveredIndex(null)}
-                      onTouchStart={() => setHoveredIndex(item.id)}  // For mobile devices
+                      onTouchStart={() => setHoveredIndex(item._id)}  // For mobile devices
                     >
                       <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
-                    <h3 className="nubernext28bold   text-white " >{item.desc}</h3></div>
+                    <h3 className="nubernext28bold  text-white " >{item.desc}</h3></div>
                       <div className="flex items-end  min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500  ">
                         <div className="p-5 transition-all duration-500 ease-in-out w-full  ">
                           <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-linear w-full  translate-y-[0px] delay-200 group-hover:translate-y-[-10px]">
@@ -155,18 +159,19 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
                           </h3>
 
                           <p
-                            className="text-white overflow-hidden pt-3   transition-all duration-500 ease-in-out   "
+                            className="text-white overflow-hidden pt-3 transition-all duration-500 ease-in-out   "
                             style={{
                               maxHeight:
-                                hoveredIndex === item.id
-                                  ? `${
-                                      contentRefs.current[item.id]
-                                        ?.scrollHeight || 0
-                                    }px`
+                                hoveredIndex === item._id
+                                  ? `${contentRefs.current.get(item._id)?.scrollHeight || 0}px`
                                   : "0px",
                             }}
                             ref={(el) => {
-                              contentRefs.current[item.id] = el;
+                              if (el) {
+                                contentRefs.current.set(item._id, el);
+                              } else {
+                                contentRefs.current.delete(item._id); // Clean up if the element is removed
+                              }
                             }}
                           >
                             <span className="   duration-500 delay-0 block">

@@ -69,10 +69,12 @@ export async function POST(req: NextRequest) {
       }else{
         const toEditItem = sustainability.roles.find((item:{_id:string})=>item._id==id)
         if(toEditItem){
-          if(updatedData.title!==""){
+          
             toEditItem.title = updatedData.title
+            toEditItem.image = updatedData.image
+            toEditItem.logo = updatedData.logo
             await sustainability.save()
-          } 
+          
             return NextResponse.json({ message: "Role updated successfully" }, { status: 200 });
         }
       }

@@ -13,6 +13,9 @@ import { Label } from '@/components/ui/label'
 import { useForm } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+import { ImageUploader } from '../ui/image-uploader'
+import Image from 'next/image'
+import { DialogClose } from '@radix-ui/react-dialog'
 
 
 type FormData = {
@@ -32,22 +35,22 @@ const GoalsSection = () => {
         register,
         setValue,
         getValues,
+        watch,
     } = useForm<FormData>();
 
-    const [isOpen, setIsOpen] = useState(false)
+    
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [refetch, setRefetch] = useState(false)
     const [goals, setGoals] = useState<{ _id: string, image: string, logo: string, heading: string, description: string }[]>([])
-    const [title, setTitle] = useState("")
-    const [description, setDescription] = useState("")
+    
 
 
     const onSubmit = async (data: FormData) => {
         setIsSubmitting(true);
         const formData = new FormData();
         formData.append("title", data.title);
-        formData.append("image", "image");
-        formData.append("logo", "logo");
+        formData.append("image", data.image);
+        formData.append("logo", data.logo);
         formData.append("description", data.description)
 
 
@@ -73,7 +76,7 @@ const GoalsSection = () => {
         } finally {
             setIsSubmitting(false);
             setRefetch((prev) => !prev)
-            setIsOpen(false)
+            
         }
 
     };
@@ -112,8 +115,10 @@ const GoalsSection = () => {
     const handleEditRole = async (id: string) => {
         try {
             const formData = new FormData()
-            formData.append("title", title)
-            formData.append("description", description)
+            formData.append("title", getValues("title"))
+            formData.append("description", getValues("description"))
+            formData.append("image", getValues("image"))
+            formData.append("logo", getValues("logo"))
 
             const url = `/api/admin/sustainability/goals?id=${id}`;
             const method = "PATCH";
@@ -134,7 +139,7 @@ const GoalsSection = () => {
             console.error("Error editing goal:", error);
             alert("Failed to edit goal. Please try again.");
         } finally {
-            setTitle("")
+            
             setRefetch((prev) => !prev)
         }
     }
@@ -200,8 +205,15 @@ const GoalsSection = () => {
         } finally {
             setIsSubmitting(false);
             setRefetch((prev) => !prev)
-            setIsOpen(false)
+            
         }
+    }
+
+    const handleSetEditGoal = (title:string,description:string,image:string,logo:string) => {
+        setValue("title",title)
+        setValue("description",description)
+        setValue("image",image)
+        setValue("logo",logo)
     }
 
     return (
@@ -227,7 +239,7 @@ const GoalsSection = () => {
             
 
             <div className='flex justify-end'>
-                <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                <Dialog>
                     <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4' onClick={handleAddRole}>Add Item</DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
@@ -236,11 +248,11 @@ const GoalsSection = () => {
                             <form className='flex flex-col gap-2' onSubmit={handleSubmit(onSubmit)}>
 
                                 <Label>Image</Label>
-                                <Input {...register("image")}></Input>
+                                <ImageUploader value={watch("image")} onChange={(url) => setValue("image", url)} />
 
 
                                 <Label>Logo</Label>
-                                <Input {...register("logo")}></Input>
+                                <ImageUploader value={watch("logo")} onChange={(url) => setValue("logo", url)} />
 
                                 <Label>Title</Label>
                                 <Input {...register("title")}></Input>
@@ -248,7 +260,7 @@ const GoalsSection = () => {
                                 <Label>Description</Label>
                                 <Textarea {...register("description")} />
 
-                                <Button disabled={isSubmitting}>Save</Button>
+                                <DialogClose disabled={isSubmitting} className='bg-black text-white p-3'>Save</DialogClose>
                             </form>
 
 
@@ -261,26 +273,54 @@ const GoalsSection = () => {
                 <div className='h-80 w-full border border-neutral-200 flex p-2  flex-col gap-5 rounded-xl' key={goal._id}>
                     <div className='grid grid-cols-2 h-full w-full rounded-xl  border-neutral-200 gap-5'>
 
-                        <div className='flex items-center justify-center col-span-1 bg-blue-50'>
-                            Image
+                        <div className='flex items-center justify-center col-span-1 bg-blue-50 relative'>
+                            {goal.image !== "" ? <Image src={goal.image} alt='role-image' fill className='absolute object-cover' /> : <span>No image</span>}
                         </div>
 
                         <div className='flex flex-col h-full px-4 gap-5'>
                             <div className='flex flex-col'>
 
-                                <Input placeholder='Title' defaultValue={goal.heading} onChange={(e) => setTitle(e.target.value)} />
+                                <Input placeholder='Title' value={goal.heading} readOnly />
                             </div>
                             <div className='grid grid-cols-2 h-3/4 gap-2'>
-                                <div className='col-span-1 bg-blue-50 h-full w-full flex items-center justify-center'>
-                                    Logo
+                                <div className='col-span-1 bg-blue-50 h-full w-full flex items-center justify-center relative'>
+                                    {goal.logo !== "" ? <Image src={goal.logo} alt='role-image' width={100} height={100} /> : <span>No logo</span>}
                                 </div>
                                 <div className='h-full'>
-                                    <Textarea className='h-full' defaultValue={goal.description} onChange={(e) => setDescription(e.target.value)} />
+                                    <Textarea className='h-full' value={goal.description} readOnly />
                                 </div>
                             </div>
                             <div className='flex justify-end items-end h-1/3 gap-2'>
-                                <Button onClick={() => handleEditRole(goal._id)}>Save</Button>
-                                <Button onClick={() => handleDeleteRole(goal._id)}>Delete</Button>
+                                {/* <Button onClick={() => handleEditRole(goal._id)}>Save</Button> */}
+                                <Dialog>
+                    <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4' onClick={()=>handleSetEditGoal(goal.heading,goal.description,goal.image,goal.logo)}>Edit</DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle>Edit the item</DialogTitle>
+
+                            <form className='flex flex-col gap-2'>
+
+                                <Label>Image</Label>
+                                <ImageUploader value={watch("image")} onChange={(url) => setValue("image", url)} />
+
+
+                                <Label>Logo</Label>
+                                <ImageUploader value={watch("logo")} onChange={(url) => setValue("logo", url)} />
+
+                                <Label>Title</Label>
+                                <Input {...register("title")}></Input>
+
+                                <Label>Description</Label>
+                                <Textarea {...register("description")} />
+
+                                <DialogClose disabled={isSubmitting} onClick={() => handleEditRole(goal._id)} className='bg-black p-3 text-white'>Save</DialogClose>
+                            </form>
+
+
+                        </DialogHeader>
+                    </DialogContent>
+                </Dialog>
+                                <Button onClick={() => handleDeleteRole(goal._id)} className='h-10'>Delete</Button>
                             </div>
                         </div>
 

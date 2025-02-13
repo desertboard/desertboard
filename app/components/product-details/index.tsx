@@ -56,7 +56,7 @@ const ProducrDetails = () => {
 
       <SectionTwo pageName="products" data={data} suggested={false}/>
       <div className="pt-10 md:pt-20 insp-mn relative inspbg"></div>
-      <SectionThree {...slideses} />
+      <SectionThree {...slideses} data={data}/>
       {/* actual thing which existed here */}
 
       <SectionFour data={data} />

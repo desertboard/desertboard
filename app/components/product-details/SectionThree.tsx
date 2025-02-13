@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useRef, useEffect } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import ola from "@/public/assets/images/home/ola.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -9,50 +9,77 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { Swiper as SwiperType } from "swiper";
+import parse from 'html-react-parser'
 
 import { motion } from "framer-motion";
+import useSWR from "swr";
+import { useParams } from "next/navigation";
+import { IndiApplication } from "@/types/ApplicationType";
 
 
 interface WhySupremeProps {
   sectitle: string;
-  data: {
-    id: number;
-    title: string;
-    image: StaticImageData
-    desc: string;
-  }[];
+  data: IndiApplication
 }
 
 // Component to display the data
 const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
 
+  const { productName } = useParams()
+
   const swiperRef = useRef<SwiperType | null>(null);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const contentRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const [hoveredIndex, setHoveredIndex] = useState<string | null>(null);
+  const contentRefs = useRef(new Map());
+  const [filteredApplications, setFilteredApplications] = useState<{ title: string; description: string; image: string; product: string; _id: string; }[]>([])
+
+
+  const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+
+  const { data: applications }: {
+    data: {
+      data: {
+        title: string;
+        description: string;
+        image: string;
+        product: string;
+        _id: string;
+      }[]
+    }
+    , error: Error | undefined, isLoading: boolean
+  } = useSWR(`/api/admin/sector?product=${data && data.data.title}`, fetcher)
+
+
+  useEffect(() => {
+    setFilteredApplications(applications && applications.data.flat())
+  }, [applications, productName])
+
+
 
 
 
   useEffect(() => {
-    if (hoveredIndex !== null && contentRefs.current[hoveredIndex]) {
-      contentRefs.current[hoveredIndex]!.style.maxHeight =
-        contentRefs.current[hoveredIndex]!.scrollHeight + 20+ "px"; // Expand to content height
+    if (hoveredIndex !== null) {
+      const contentRef = contentRefs.current.get(hoveredIndex);
+      if (contentRef) {
+        contentRef.style.maxHeight = contentRef.scrollHeight + 20 + "px"; // Expand to content height
+      }
     }
   }, [hoveredIndex]); // Runs when hoveredIndex changes
 
   return (
     <>
       <section className=" pt-10 lg:pt-20 pb-[80px] lg:pb-[80px]  relative z-[1] bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
-      <motion.div className="ola ola-right absolute top-[-200px] right-[-10%] w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
-        <Image className="absolute" src={ola} alt="Description of the image"></Image>
-      </motion.div>
+        <motion.div className="ola ola-right absolute top-[-200px] right-[-10%] w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+          <Image className="absolute" src={ola} alt="Description of the image"></Image>
+        </motion.div>
 
 
         <div className="container ">
           <div><h2 className="heavydark48 mb-6 md:mb-10">{sectitle}<span className="text-orange">.</span></h2></div>
 
           <div>
-          <motion.div className="ansm"  initial={{ opacity: 0, y: -30 }}
+            <motion.div className="ansm" initial={{ opacity: 0, y: -30 }}
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={{
@@ -64,89 +91,97 @@ const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                 },
               }}>
               <Swiper
-                              // install Swiper modules
-                              modules={[Navigation, Pagination]}
-                              spaceBetween={40}
-                              slidesPerView={5}
-                              loop={true}
-                              navigation={{
-                                nextEl: ".button-next", // Target the next button
-                                prevEl: ".button-next", // Target the previous button
-                              }}
-                              breakpoints={{
-                                0: {
-                                  slidesPerView: 1,
-                                  spaceBetween: 0,
-                                },
-                                410: {
-                                  slidesPerView: 2,
-                                  spaceBetween: 10,
-                                },
-                                700: {
-                                  slidesPerView: 3,
-                                  spaceBetween: 20,
-                                },
-                                1200: {
-                                  slidesPerView: 3,
-                                  spaceBetween: 20,
-                                },
-                                1700: {
-                                  slidesPerView: 4,
-                                  spaceBetween: 20,
-                                },
-                                1800: {
-                                  slidesPerView: 5,
-                                  spaceBetween: 40,
-                                },
-                              }}
-                              pagination={false}
-                              scrollbar={{ draggable: true }}
-                              onSwiper={(swiper) => (swiperRef.current = swiper)}
-                              onSlideChange={() => console.log("slide change")}
+                // install Swiper modules
+                modules={[Navigation, Pagination]}
+                spaceBetween={40}
+                slidesPerView={5}
+                loop={true}
+                navigation={{
+                  nextEl: ".button-next", // Target the next button
+                  prevEl: ".button-next", // Target the previous button
+                }}
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                  },
+                  410: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                  },
+                  700: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                  },
+                  1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                  },
+                  1700: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                  },
+                  1800: {
+                    slidesPerView: 5,
+                    spaceBetween: 40,
+                  },
+                }}
+                pagination={false}
+                scrollbar={{ draggable: true }}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
+                onSlideChange={() => console.log("slide change")}
+              >
+                {filteredApplications && filteredApplications.length > 0 && filteredApplications.map((item) => (
+
+                  <SwiperSlide key={item._id}>
+                    <div
+                      className="relative group slidehr overflow-hidden hcrd transform goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
+                      style={{ backgroundImage: `url(${item.image})` }}
+                      onMouseEnter={() => setHoveredIndex(item._id)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                      onTouchStart={() => setHoveredIndex(item._id)}  // For mobile devices
+                    >
+                      <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
+                        {/* <h3 className="nubernext28bold   text-white " >{item.title}</h3> */}
+                      </div>
+                      <div className="flex items-end  min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500  ">
+
+                        <div className="p-5 transition-all duration-500 ease-in-out w-full  ">
+                          <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-linear w-full  translate-y-[0px] delay-200 group-hover:translate-y-[-10px]">
+
+                            {item.title}
+                          </h3>
+
+                          <p
+                            className="text-white overflow-hidden pt-3   transition-all duration-500 ease-in-out   "
+                            style={{
+                              maxHeight:
+                                hoveredIndex === item._id
+                                  ? `${contentRefs.current.get(item._id)?.scrollHeight || 0}px`
+                                  : "0px",
+                            }}
+                            ref={(el) => {
+                              if (el) {
+                                contentRefs.current.set(item._id, el);
+                              } else {
+                                contentRefs.current.delete(item._id); // Clean up if the element is removed
+                              }
+                            }}
+                          >
+                            <span
+
+                              className="duration-500 delay-0 block"
                             >
-                             {data.map((item) => (
+                              {parse(item.description.slice(0, 200) + "...")}
+                            </span>
+                          </p>
 
-                                            <SwiperSlide key={item.id}>
-                                              <div
-                                                className="relative group slidehr overflow-hidden transform goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
-                                   style={{ backgroundImage: `url(${item.image.src})` }}
-                                   onMouseEnter={() => setHoveredIndex(item.id)}
-                                    onMouseLeave={() => setHoveredIndex(null)}
-                                    onTouchStart={() => setHoveredIndex(item.id)}  // For mobile devices
-                                              >
-                                                {/* <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
-                                                    <h3 className="nubernext28bold   text-white " >{item.title}</h3></div> */}
-                                                <div className="flex items-end  min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500  ">
-
-                                                  <div className="p-5 transition-all duration-500 ease-in-out w-full  ">
-                                                    <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-linear w-full  translate-y-[0px] delay-200 group-hover:translate-y-[-10px]">
-
-                                                        {item.title}
-                                                          </h3>
-
-                                                          <p
-                                                          className="text-white overflow-hidden pt-3   transition-all duration-500 ease-in-out   "
-                                                          style={{
-                                                            maxHeight: hoveredIndex === item.id ? `${contentRefs.current[item.id]?.scrollHeight  || 0}px` : "0px",
-                                                                                      }}
-                                                                                      ref={(el) => {
-                                                                                        contentRefs.current[item.id] = el;
-                                                                                      }}
-                                                        >
-                                                          <span
-
-                                                            className="   duration-500 delay-0 block"
-                                                          >
-                                                            {item.desc}
-                                                          </span>
-                                                        </p>
-
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </SwiperSlide>
-                              ))}
-                            </Swiper>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </motion.div>
             <div className="  relative">
               <div onClick={() => swiperRef.current?.slideNext()} className=" next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
@@ -167,7 +202,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                   </svg>
                 </div>
               </div>
-              <div onClick={() => swiperRef.current?.slidePrev()}className=" prev-style group cursor-pointer absolute bottom-[-70px]   right-[50px] transform -translate-y-1/2 text-white z-10">
+              <div onClick={() => swiperRef.current?.slidePrev()} className=" prev-style group cursor-pointer absolute bottom-[-70px]   right-[50px] transform -translate-y-1/2 text-white z-10">
                 {/* You can customize this icon as needed */}
                 <div className="transition-all duration-300 group-hover:translate-x-[-5px]">
                   <svg

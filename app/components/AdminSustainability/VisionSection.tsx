@@ -12,6 +12,9 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { useForm } from 'react-hook-form'
+import { ImageUploader } from '../ui/image-uploader'
+import { DialogClose } from '@radix-ui/react-dialog'
+import Image from 'next/image'
 
 type FormData = {
     title: string;
@@ -22,11 +25,7 @@ type FormData = {
 
 const VisionSection = () => {
 
-    const [isOpen,setIsOpen] = useState(false)
     const [visions, setVisions] = useState([])
-    const [title,setTitle] = useState("")
-    const [description,setDescription] = useState("")
-    const [region,setRegion] = useState("")
     const [refetch, setRefetch] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -34,6 +33,8 @@ const VisionSection = () => {
             handleSubmit,
             register,
             setValue,
+            watch,
+            getValues,
         } = useForm<FormData>();
 
         const handleAddRole = () =>{
@@ -75,7 +76,7 @@ const VisionSection = () => {
                 formData.append("title", data.title);
                 formData.append("description", data.description);
                 formData.append("region", data.region);
-                formData.append("image", "image");
+                formData.append("image", data.image);
         
                 try {
                     const url = `/api/admin/sustainability/vision`;
@@ -99,7 +100,6 @@ const VisionSection = () => {
                 } finally {
                     setIsSubmitting(false);
                     setRefetch((prev)=>!prev)
-                    setIsOpen(false)
                 }
         
             };
@@ -108,9 +108,10 @@ const VisionSection = () => {
         const handleEditVison = async(id:string) =>{
             try {
                 const formData = new FormData()
-                formData.append("title",title)
-                formData.append("description",description)
-                formData.append("region",region)
+                formData.append("title",getValues("title"))
+                formData.append("description",getValues("description"))
+                formData.append("region",getValues("region"))
+                formData.append("image",getValues("image"))
                 const url = `/api/admin/sustainability/vision?id=${id}`;
                 const method = "PATCH";
                 const response = await fetch(url, {
@@ -157,11 +158,18 @@ const VisionSection = () => {
             }
         }
 
+        const handleSetEditVision = (title:string,description:string,region:string,image:string) =>{
+            setValue("title",title)
+            setValue("description",description)
+            setValue("region",region)
+            setValue("image",image)
+        }
+
   return (
     <div className='flex flex-col gap-10'>
             <div className='flex justify-between'>
                 <div className='text-2xl font-bold'>Sustainability / VisionSection</div>
-                <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                <Dialog>
                     <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4'onClick={handleAddRole}>Add Item</DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
@@ -170,7 +178,7 @@ const VisionSection = () => {
                             <form className='flex flex-col gap-2' onSubmit={handleSubmit(onSubmit)}>
 
                                 <Label>Image</Label>
-                                <Input {...register("image")}></Input>
+                                <ImageUploader value={watch("image")} onChange={(url) => setValue("image", url)} />
 
 
                                 <Label>Region</Label>
@@ -182,7 +190,7 @@ const VisionSection = () => {
                                 <Label>Descripiton</Label>
                                 <Input {...register("description")}></Input>
 
-                                <Button disabled={isSubmitting}>Save</Button>
+                                <DialogClose disabled={isSubmitting} className='bg-black text-white p-3' type='submit'>Save</DialogClose>
                             </form>
 
 
@@ -195,25 +203,53 @@ const VisionSection = () => {
                 <div className='h-80 w-full border border-neutral-200 flex p-2  flex-col gap-5 rounded-xl' key={vision._id}>
                     <div className='grid grid-cols-2 h-full w-full rounded-xl  border-neutral-200 gap-5'>
 
-                        <div className='flex items-center justify-center col-span-1 bg-blue-50'>
-                            {vision.image}
+                        <div className='flex items-center justify-center col-span-1 bg-blue-50 relative'>
+                            {vision.image !== "" ? <Image src={vision.image} alt='role-image' fill className='absolute object-cover' /> : <span>No image</span>}
                         </div>
 
                         <div className='flex flex-col h-full px-4 gap-5'>
                             <div className='flex flex-col'>
 
-                                <Input placeholder='Title' defaultValue={vision.title} onChange={(e)=>setTitle(e.target.value)}/>
+                                <Input placeholder='Title' value={vision.title} readOnly/>
                             </div>
                             <div className='flex flex-col'>
 
-                                <Input placeholder='Description' defaultValue={vision.description} onChange={(e)=>setDescription(e.target.value)}/>
+                                <Input placeholder='Description' value={vision.description} readOnly/>
                             </div>
                             <div className='flex flex-col'>
 
-                                <Input placeholder='Description' defaultValue={vision.region} onChange={(e)=>setRegion(e.target.value)}/>
+                                <Input placeholder='Region' value={vision.region} readOnly/>
                             </div>
                             <div className='flex justify-end items-end h-1/3 gap-2'>
-                                <Button onClick={()=>handleEditVison(vision._id)}>Save</Button>
+                                {/* <Button onClick={()=>handleEditVison(vision._id)}>Save</Button> */}
+                                <Dialog>
+                    <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4' onClick={()=>handleSetEditVision(vision.title,vision.description,vision.region,vision.image)}>Edit</DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle>Edit the item</DialogTitle>
+
+                            <form className='flex flex-col gap-2'>
+
+                                <Label>Image</Label>
+                                <ImageUploader value={watch("image")} onChange={(url) => setValue("image", url)} />
+
+
+                                <Label>Region</Label>
+                                <Input {...register("region")}></Input>
+
+                                <Label>Title</Label>
+                                <Input {...register("title")}></Input>
+
+                                <Label>Descripiton</Label>
+                                <Input {...register("description")}></Input>
+
+                                <DialogClose disabled={isSubmitting} className='bg-black text-white p-3' onClick={()=>handleEditVison(vision._id)}>Save</DialogClose>
+                            </form>
+
+
+                        </DialogHeader>
+                    </DialogContent>
+                </Dialog>
                                 <Button onClick={()=>handleDeleteVision(vision._id)}>Delete</Button>
                             </div>
                         </div>

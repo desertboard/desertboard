@@ -69,15 +69,11 @@ export async function POST(req: NextRequest) {
       }else{
         const toEditItem = sustainability.vision.find((item:{_id:string})=>item._id==id)
         if(toEditItem){
-          if(updatedData.title!==""){
-            toEditItem.title = updatedData.title
-          }
-          if(updatedData.description!==""){
-            toEditItem.description = updatedData.description
-          }
-          if(updatedData.region!==""){
-            toEditItem.region = updatedData.region
-          }
+          toEditItem.title = updatedData.title
+          toEditItem.description = updatedData.description
+          toEditItem.region = updatedData.region
+          toEditItem.image = updatedData.image
+          
           await sustainability.save()
         } 
         return NextResponse.json({ message: "Vision updated successfully" }, { status: 200 });

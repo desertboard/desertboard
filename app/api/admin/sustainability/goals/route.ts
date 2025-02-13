@@ -88,12 +88,11 @@ export async function POST(req: NextRequest) {
         const toEditItem = sustainability.goals.goals.find((item:{_id:string})=>item._id==id)
         if(toEditItem){
             //to not override with empty string if content not present
-            if(updatedData.title!==""){
                 toEditItem.heading = updatedData.title
-            }
-            if(updatedData.description!==""){
                 toEditItem.description = updatedData.description
-            }
+                toEditItem.image = updatedData.image
+                toEditItem.logo = updatedData.logo
+          
             await sustainability.save()
             return NextResponse.json({ message: "Goal updated successfully" }, { status: 200 });
         }

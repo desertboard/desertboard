@@ -29,17 +29,38 @@ export async function GET(req:NextRequest) {
 
   const {searchParams} = new URL(req.url)
   const title = searchParams.get("title")
+  const product = searchParams.get("product")
+
+  console.log("PRODUCT",product)
 
   if(title){
     const sector = await Sector.findOne({title})
     if(sector){
       return NextResponse.json({ success: true, data: sector }, { status: 200 });
     }
+  }
+
+  else if(product){
+    const sectors = await Sector.find()
+    if(sectors){
+      const applications = sectors.map((item)=>(
+        item.applications.filter((item:{product:string})=>(
+          item.product == product
+        ))
+      ))
+
+      if(applications){
+        return NextResponse.json({success:true,data:applications})
+      }
+    }
+
+  
   }else{
     const sectors = await Sector.find();
 
     return NextResponse.json({ success: true, data: sectors }, { status: 200 });
   }
+
 
   
 }

@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
+import parse from 'html-react-parser'
 
 import { motion } from "framer-motion";
 import { IndiSectorType } from "@/types/IndiSector";
@@ -26,17 +27,20 @@ interface WhySupremeProps {
 // Component to display the data
 const SectionFive: React.FC<WhySupremeProps> = ({ sectorData }) => {
   const swiperRef = useRef<SwiperType | null>(null);
-      // const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-      // const contentRefs = useRef<(HTMLSpanElement | null)[]>([]);
+      const [hoveredIndex, setHoveredIndex] = useState<number | string | null>(null);
+      const contentRefs = useRef(new Map());
       
       console.log("sectorData",sectorData)
 
-      // useEffect(() => {
-      //   if (hoveredIndex !== null && contentRefs.current[hoveredIndex]) {
-      //     contentRefs.current[hoveredIndex]!.style.maxHeight =
-      //       contentRefs.current[hoveredIndex]!.scrollHeight + 20+ "px"; // Expand to content height
-      //   }
-      // }, [hoveredIndex]); // Runs when hoveredIndex changes
+        useEffect(() => {
+          if (hoveredIndex !== null) {
+            const contentRef = contentRefs.current.get(hoveredIndex);
+            if (contentRef) {
+              contentRef.style.maxHeight = contentRef.scrollHeight + 20 + "px"; // Expand to content height
+            }
+          }
+        }, [hoveredIndex]);
+       // Runs when hoveredIndex changes
   return (
     <>
 
@@ -129,9 +133,9 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectorData }) => {
                       className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
                      style={{ backgroundImage: `url(${item.image})` }}
 
-                    //  onMouseEnter={() => setHoveredIndex(item._id)}
-                    //   onMouseLeave={() => setHoveredIndex(null)}
-                    //   onTouchStart={() => setHoveredIndex(item._id)}  // For mobile devices
+                     onMouseEnter={() => setHoveredIndex(item._id)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                      onTouchStart={() => setHoveredIndex(item._id)}  // For mobile devices
                     >
                       <div className="flex items-end pb-1 md:pb-4 xl:pb-8 min-h-[300px] lg:min-h-[462px]">
                         <div className="px-4 md:px-6 xl:px-10 w-full">
@@ -140,18 +144,25 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectorData }) => {
                           </h3>
 
 
-                          {/* <p className="text-white overflow-hidden h-0 group-hover:h-full   group-hover:translate-y-[-10px]
+                          <div className="text-white overflow-hidden h-0 group-hover:h-full   group-hover:translate-y-[-10px]
                                             transition-all duration-500 ease-in-out  "
                                             style={{
-                                              maxHeight: hoveredIndex === item._id ? `${contentRefs.current[item.id]?.scrollHeight  || 0}px` : "0px",
-                                                                        }}
-                                                                        ref={(el) => {
-                                                                          contentRefs.current[item.id] = el;
-                                                                        }}>
-                            <span className="">
-                              {item.desc}
+                                              maxHeight:
+                                                hoveredIndex === item._id
+                                                  ? `${contentRefs.current.get(item._id)?.scrollHeight || 0}px`
+                                                  : "0px",
+                                            }}
+                                            ref={(el) => {
+                                              if (el) {
+                                                contentRefs.current.set(item._id, el);
+                                              } else {
+                                                contentRefs.current.delete(item._id); // Clean up if the element is removed
+                                              }
+                                            }}>
+                            <span className="text-white">
+                              {parse(item.description.slice(0,200))}
                               </span>
-                            </p> */}
+                            </div>
                         </div>
                       </div>
                     </div>

@@ -140,6 +140,10 @@ const ProductForm = ({ productId }: ProductFormData) => {
       setValue("specifications", res.data.specifications);
       setValue("subSections", res.data.subSections);
       setValue("bestPractices", res.data.bestPractices);
+
+      console.log("FINISHEs",res.data.finishes)
+
+      
       setValue("finishes", res.data.finishes);
       setValue("sector", res.data.sector);
       setValue("images", res.data.images);

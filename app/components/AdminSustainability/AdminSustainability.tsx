@@ -7,6 +7,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { ImageUploader } from '../ui/image-uploader'
+import Image from 'next/image'
 
 type FormData = {
     pageHeading: string;
@@ -155,14 +156,14 @@ const AdminSustainability = () => {
                 <div className='h-80 w-full border border-neutral-200 flex p-2 overflow-y-scroll flex-col gap-5 rounded-xl'>
                     {roles && roles.map((role:{image:string,logo:string,title:string},index)=>(
                         <div className='grid grid-cols-3 min-h-20 w-full bg-blue-50 rounded-xl border border-neutral-200' key={index}>
-                        <div className='flex items-center justify-center'>
-                            {role.image}
+                        <div className='flex items-center justify-center relative w-1/2'>
+                            {role.image !== "" ? <Image src={role.image} alt='role-image' fill className='absolute object-cover' /> : <span>No image</span>}
+                        </div>
+                        <div className='flex items-center justify-center relative w-3/4'>
+                            {role.logo !== "" ? <Image src={role.logo} alt='role-image' fill className='absolute object-cover' /> : <span>No image</span>}
                         </div>
                         <div className='flex items-center justify-center'>
-                            {role.logo}
-                        </div>
-                        <div className='flex items-center justify-center'>
-                            {role.title}
+                            {role.title.slice(0,20)+"..."}
                         </div>
                         </div>
                     ))}
@@ -192,17 +193,19 @@ const AdminSustainability = () => {
                 <div className='h-80 w-full border border-neutral-200 flex p-2 overflow-y-scroll flex-col gap-5 rounded-xl'>
                     {goals && goals.goals.map((goal:{image:string,logo:string,heading:string,description:string},index)=>(
                         <div className='grid grid-cols-4 min-h-20 w-full bg-blue-50 rounded-xl border border-neutral-200' key={index}>
-                        <div className='flex items-center justify-center'>
-                            {goal.image}
+                        
+                        <div className='flex items-center justify-center relative w-1/2'>
+                            {goal.image !== "" ? <Image src={goal.image} alt='role-image' fill className='absolute object-cover' /> : <span>No image</span>}
+                        </div>
+                        
+                        <div className='flex items-center justify-center relative w-3/4'>
+                            {goal.logo !== "" ? <Image src={goal.logo} alt='role-image' fill className='absolute object-cover' /> : <span>No image</span>}
                         </div>
                         <div className='flex items-center justify-center'>
-                            {goal.logo}
+                            {goal.heading.slice(0,20)+"..."}
                         </div>
                         <div className='flex items-center justify-center'>
-                            {goal.heading}
-                        </div>
-                        <div className='flex items-center justify-center'>
-                            {goal.description}
+                            {goal.description.slice(0,20)+"..."}
                         </div>
                     </div>
                     ))}
@@ -234,10 +237,10 @@ const AdminSustainability = () => {
                     {partners && partners.partners.map((partner:{title:string,description:string},index)=>(
                         <div className='grid grid-cols-2 min-h-20 w-full bg-blue-50 rounded-xl border border-neutral-200' key={index}>
                         <div className='flex items-center justify-center'>
-                            {partner.title}
+                            {partner.title.slice(0,20)+"..."}
                         </div>
                         <div className='flex items-center justify-center'>
-                            {partner.description}
+                            {partner.description.slice(0,20)+"..."}
                         </div>
                     </div>
                     ))}
@@ -258,14 +261,14 @@ const AdminSustainability = () => {
                 <div className='h-80 w-full border border-neutral-200 flex p-2 overflow-y-scroll flex-col gap-5 rounded-xl'>
                     {visions && visions.map((vision,index)=>(
                          <div className='grid grid-cols-4 min-h-20 w-full bg-blue-50 rounded-xl border border-neutral-200' key={index}>
-                         <div className='flex items-center justify-center'>
-                             {vision.image}
+                         <div className='flex items-center justify-center relative w-1/2'>
+                            {vision.image !== "" ? <Image src={vision.image} alt='role-image' fill className='absolute object-cover' /> : <span>No image</span>}
                          </div>
                          <div className='flex items-center justify-center'>
-                             {vision.title}
+                             {vision.title.slice(0,20)+"..."}
                          </div>
                          <div className='flex items-center justify-center'>
-                             {vision.description}
+                             {vision.description.slice(0,20)+"..."}
                          </div>
                          <div className='flex items-center justify-center'>
                              {vision.region}

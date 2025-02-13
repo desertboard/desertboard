@@ -2,24 +2,16 @@ import Image from 'next/image';
 import NewsIcon from "@/public/assets/images/News/pin.svg";
 import PrimaryArrowBtn from '../Common/PrimaryArrowBtn';
 
+
 interface ListItemProps {
-  listData: {
-    id: number;
-    type: string;
-    imageSrc: string;
-    date: string;
-    title: string;
-    desc: string;
-    categories: string[];
-    readMoreLink: string;
-  };
+  listData: { date: string; description: string; images: string[]; tags: string[]; title: string; _id: string; type: string; }
 }
 const RelatedItem = ({listData}:ListItemProps) => {
   return (
-    <div key={listData.id} className="">
+    <div key={listData._id} className="">
       <div className='h-[180px] md:h-[250px]  lg:h-[350px]'>
         <figure className=" relative  h-full md:h-full  w-full  ">
-            <Image className="w-full   object-cover h-full" src={listData.imageSrc} width={900} height={350}  alt="" />
+            <Image className="w-full   object-cover h-full" src={listData.images[0]} width={900} height={350}  alt="" />
          </figure>
      </div>
       <p className="text-[#151515BF] text-[14px] uppercase font-bold nuber-next-heavy pt-5 pb-0 md:pb-4">{listData.date}</p>
@@ -29,7 +21,7 @@ const RelatedItem = ({listData}:ListItemProps) => {
           <Image src={NewsIcon} alt=""  />
           {
             <ul className="news__category list-none text-black uppercase font-bold text-font14 leading-normal flex gap-3 opacity-75">
-              {listData.categories.map((category, index) => (
+              {listData.tags.map((category, index) => (
                 <li key={index}>
                   <a href="#" className="underline">
                     {category}
@@ -39,7 +31,7 @@ const RelatedItem = ({listData}:ListItemProps) => {
             </ul>
           }
         </div>
-        <PrimaryArrowBtn btntitle={"Read More"} btnLink={`article`}></PrimaryArrowBtn>
+        <PrimaryArrowBtn btntitle={"Read More"} btnLink={`/article/${listData._id}`}></PrimaryArrowBtn>
       </div>
     </div>
   );

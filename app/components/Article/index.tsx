@@ -11,6 +11,7 @@ import RelatedArticles from "./RelatedArticles";
 import useSWR from "swr";
 import { useParams } from "next/navigation";
 import { IndiNews } from "@/types/IndiNews";
+import { NewsType } from "@/types/NewsType";
 
 const Blogs = () => {
 
@@ -19,6 +20,8 @@ const Blogs = () => {
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
   const { data }:{data:IndiNews,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/news/byid?id=${itemId}`, fetcher)
+
+  const { data:relatedData }:{data:NewsType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/news`, fetcher)
 
 
   useEffect(()=>{
@@ -35,7 +38,7 @@ const Blogs = () => {
     <>
       <ArticleBanner arrowSrc={Arrow} title={data?.data?.title} date="November 30, 2024" labeltext={data?.data?.tags[0]} breadcrumbs={breadcrumbs} bnrHeight="60dvh" />
       <ArticleImageBanner bannerSrc={data?.data?.images[0] || ""} data={data}/>
-      <RelatedArticles />
+      <RelatedArticles data={relatedData}/>
       <Downloads title={"To Sustainability"} />
     </>
   );
