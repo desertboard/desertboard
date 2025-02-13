@@ -49,7 +49,7 @@ const AccrediationSlider = ({data}:{
                 </div> */}
         <p className="text-lightBlack text-font20 leading-[1.3] opacity-75" dangerouslySetInnerHTML={{ __html: formatText(" DesertBoard&apos;s Palm Strand Board (PSB®) is accredited by leading national and international regulatory bodies, holding over 30 global, regional, and local certifications, reflecting our commitment to excellence and quality. This positions us as a trusted partner for clients across the MENA region, Asia, and beyond. By providing clients with a high-quality, certified product, we empower them to confidently deliver sustainable and innovative construction projects that meet the highest industry standards.") }} />
       </div>
-      <div className="container mb-[50px] xxl:mb-[100px] !overflow-visible relative">
+      <div className="container mb-[50px] xxl:mb-[50px] !overflow-visible relative">
         <Swiper
           ref={swiperRef}
           className="accr__slider !overflow-visible"
