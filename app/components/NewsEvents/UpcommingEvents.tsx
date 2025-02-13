@@ -11,18 +11,10 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import LightSectionContainer from "../Common/LightSectionContainer";
+import { EventType } from "@/types/EventType";
 
 interface upCommingEventsProps {
-  commingEvents: {
-    id: number;
-    eventLogo: string;
-    eventTitle: string;
-    eventDate: string;
-    eventTime: string;
-    eventLocation: string;
-    eventTickets: string;
-    eventWebsite: string;
-  }[];
+  commingEvents: EventType
 }
 
 const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
@@ -69,14 +61,14 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
                 slidesPerView: 4.2,
               },
             }}>
-            {commingEvents.map((event) => (
-              <SwiperSlide className="upc-event__slide  border-r border-r-gray-300 px-6 xxl:px-8" key={event.id}>
+            {commingEvents && commingEvents.data.map((event) => (
+              <SwiperSlide className="upc-event__slide  border-r border-r-gray-300 px-6 xxl:px-8" key={event._id}>
                 <div className="upc-event-crd flex flex-col gap-4">
                   <div className="upc-event-crd__head bg-white flex items-center justify-center min-h-28">
-                    <Image src={event.eventLogo} className="object-contain" width={150} height={42} alt={event.eventTitle}></Image>
+                    <Image src={event.image} className="object-contain" width={150} height={42} alt={event.title}></Image>
                   </div>
                   <div className="upc-event-crd__body">
-                    <h3 className="text-Darkgreen nuber-next-heavy text-font24 leading-[1.3]">{event.eventTitle}</h3>
+                    <h3 className="text-Darkgreen nuber-next-heavy text-font24 leading-[1.3]">{event.title}</h3>
                     <ul className="upc-event__info flex flex-col gap-4 pt-6">
                       <li className="flex items-center gap-3 text-black opacity-75 font-bold text-font16 leading-normal">
                         <span className="flex">
@@ -87,7 +79,7 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
                             />
                           </svg>
                         </span>
-                        <p className="uppercase helvetica font-bold text-font16">{event.eventDate}</p>
+                        <p className="uppercase helvetica font-bold text-font16">{event.date}</p>
                       </li>
                       <li className="flex items-center gap-3 text-black opacity-75 font-bold text-font16 leading-normal">
                         <span className="flex">
@@ -98,20 +90,20 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
                             />
                           </svg>
                         </span>
-                        <p className="Uppercase helvetica font-bold text-font16">{event.eventTime}</p>
+                        <p className="Uppercase helvetica font-bold text-font16">{event.time}</p>
                       </li>
                       <li className="flex items-center gap-3 text-black opacity-75 font-bold text-font16 leading-normal">
                         <span className="flex">
                           <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                               fillRule="evenodd"
-                              clip-rule="evenodd"
+                              clipRule="evenodd"
                               d="M4.62208 13.5394C4.62208 13.5394 0 9.64671 0 5.81641C0 4.46598 0.536456 3.17086 1.49135 2.21596C2.44625 1.26107 3.74137 0.724609 5.0918 0.724609C6.44223 0.724609 7.73734 1.26107 8.69224 2.21596C9.64714 3.17086 10.1836 4.46598 10.1836 5.81641C10.1836 9.64671 5.56151 13.5394 5.56151 13.5394C5.30438 13.7762 4.88112 13.7736 4.62208 13.5394ZM5.0918 8.04407C5.38434 8.04407 5.67401 7.98645 5.94429 7.8745C6.21456 7.76255 6.46013 7.59846 6.66699 7.3916C6.87385 7.18474 7.03794 6.93917 7.14989 6.6689C7.26184 6.39862 7.31946 6.10895 7.31946 5.81641C7.31946 5.52387 7.26184 5.23419 7.14989 4.96392C7.03794 4.69364 6.87385 4.44807 6.66699 4.24121C6.46013 4.03435 6.21456 3.87027 5.94429 3.75832C5.67401 3.64637 5.38434 3.58875 5.0918 3.58875C4.50098 3.58875 3.93437 3.82344 3.5166 4.24121C3.09884 4.65898 2.86414 5.22559 2.86414 5.81641C2.86414 6.40722 3.09884 6.97383 3.5166 7.3916C3.93437 7.80937 4.50098 8.04407 5.0918 8.04407Z"
                               fill="#FF671F"
                             />
                           </svg>
                         </span>
-                        <p className="uppercase helvetica font-bold text-font16">{event.eventLocation}</p>
+                        <p className="uppercase helvetica font-bold text-font16">{event.location}</p>
                       </li>
                     </ul>
                   </div>

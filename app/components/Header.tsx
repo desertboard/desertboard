@@ -14,16 +14,19 @@ const Header = () => {
 
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data:productData } = useSWR(`/api/admin/products`, fetcher)
+  const { data: productData } = useSWR(`/api/admin/products`, fetcher)
   const [products, setProducts] = useState([])
 
-  const { data:sectorData } = useSWR(`/api/admin/sector`, fetcher)
-  // const [sectors, setSectors] = useState([])
+  const { data: sectorData } = useSWR(`/api/admin/sector`, fetcher)
+  const [sectors, setSectors] = useState([])
 
   useEffect(() => {
     console.log(productData && productData.data)
+    console.log(sectorData && sectorData.data)
+
     setProducts(productData && productData.data)
-  }, [productData,sectorData])
+    setSectors(sectorData && sectorData.data)
+  }, [productData, sectorData])
 
 
   const [active, setActive] = useState<string | null>(null);
@@ -89,12 +92,23 @@ const Header = () => {
                     }
 
                     {item.title == "Sectors" &&
-                      <div className="flex flex-col gap-2">
-                        {products && products.map((item: { title: string }, index) => (
-                          <Link className="text-black" href={`/product-details/${item.title}`} key={index}>{item.title}</Link>
+                      <div className="grid grid-cols-4 mx-auto gap-8" key={index}>
+                        {sectors && sectors.map((item: { title: string,applications:{title:string}[] }, index) => (
+                          
+                            <div className="col-span-1" key={index}>
+                              <div className="font-bold text-black text-xl">{item.title}</div>
+                              {item.applications.map((application,index)=>(
+                                  
+                                  <div className="flex flex-col p-1" key={index}>
+                                    <Link className="text-black text-lg" href={`/product-details/${application.title}`} key={index}>{application.title}</Link>
+                                  </div>
+                              ))}
+                            </div>
+                          
                         ))}
                       </div>
                     }
+
                   </MenuItem>
                 ))}
 
