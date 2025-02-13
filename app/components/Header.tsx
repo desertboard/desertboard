@@ -92,7 +92,7 @@ const Header = () => {
                     }
 
                     {item.title == "Sectors" &&
-                      <div className="grid grid-cols-4 mx-auto gap-8" key={index}>
+                      <div className="grid grid-cols-4 mx-auto w-1/2" key={index}>
                         {sectors && sectors.map((item: { title: string,applications:{title:string}[] }, index) => (
                           
                             <div className="col-span-1" key={index}>

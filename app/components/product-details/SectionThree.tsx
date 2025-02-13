@@ -11,6 +11,7 @@ import "swiper/css/effect-fade";
 import { Swiper as SwiperType } from "swiper";
 
 import { motion } from "framer-motion";
+import { SectorType } from "@/types/SectorType";
 
 interface WhySupremeProps {
   sectitle: string;
@@ -28,6 +29,8 @@ const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const contentRefs = useRef<(HTMLSpanElement | null)[]>([]);
+
+
 
   useEffect(() => {
     if (hoveredIndex !== null && contentRefs.current[hoveredIndex]) {

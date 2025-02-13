@@ -28,12 +28,12 @@ const Sectors = () => {
   const application = searchParams.get("application")
   const sector = searchParams.get("sector") ? decodeURIComponent(searchParams.get("sector")!) : "";
 
-  console.log("secotr",sector)
+  console.log("secotr",sector.replace(/-/g, " "))
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
   const { data }:{data:IndiApplication,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/products?productName=${productName}`, fetcher)
-  const { data:sectorData }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/sector/byid?sector=${sector?.replace(/-/g, " ")}`, fetcher)
+  const { data:sectorData }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/sector/byid?sector=${encodeURIComponent(sector?.replace(/-/g, " "))}`, fetcher)
 
   useEffect(()=>{
     console.log("data",data && data.data)
