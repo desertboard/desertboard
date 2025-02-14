@@ -79,14 +79,14 @@ const Header = () => {
           </div>
 
           <nav>
-            <ul className="flex space-x-6 uppercase text-sm tracking-widest group">
+            <ul className="flex space-x-5 3xl:space-x-6 uppercase text-sm tracking-widest group">
               <Menu setActive={setActive}>
                 {menuItems.map((item, index) => (
                   <MenuItem item={item.title} href={item.href} setActive={setActive} active={active} key={index} noMenu={item.title !== "Products" && item.title !== "Sectors"}>
                     {item.title == "Products" &&
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-3">
                         {products && products.map((item: { title: string }, index) => (
-                          <Link className="text-black" href={`/product-details/${item.title}`} key={index}>{item.title}</Link>
+                          <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/product-details/${item.title}`} key={index}>{item.title}</Link>
                         ))}
                       </div>
                     }
@@ -96,11 +96,11 @@ const Header = () => {
                         {sectors && sectors.map((item: { title: string,applications:{title:string,product:string}[] }, index) => (
                           
                             <div className="flex flex-col gap-3" key={index} >
-                              <div className="font-bold text-black text-[16px] xxl:text-[18px] mb-4">{item.title}</div>
+                              <div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div>
                               {item.applications.map((application,index)=>(
                                  
                                   <div  key={index}>
-                                    <Link className="text-black/75 text-[12px] xl:text-[14px]  xxl:text-[16px]" href={`/applications/${application.product}?application=${application.title}&sector=${encodeURIComponent(item.title.replace(/\s+/g, "-"))}`} key={index}>{application.title}</Link>
+                                    <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/applications/${application.product}?application=${application.title}&sector=${encodeURIComponent(item.title.replace(/\s+/g, "-"))}`} key={index}>{application.title}</Link>
                                   </div>
                                  
 

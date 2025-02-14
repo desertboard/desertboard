@@ -1,5 +1,6 @@
 
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 
 import { assets } from '@/public/assets/images/assets';
 import Arrow from "@/public/assets/brdcrbs.svg";
@@ -12,8 +13,21 @@ import Sustainslide from './Sustainslide';
 import Sustainabilitypartners from './Sustainabilitypartners';
 import Tabssustain from './Tabssustain';
 import {tabData} from './data';
+import useSWR from 'swr';
+import { SustainType } from '@/types/SustainType';
+
 
 const Blogs = () => {
+
+  const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+
+  const { data }:{data:SustainType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/sustainability', fetcher)
+
+
+  useEffect(()=>{
+    console.log(data)
+  },[data])
+
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Sustainability", href: "" },
