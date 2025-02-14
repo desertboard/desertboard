@@ -2,7 +2,7 @@
 import { motion, } from "framer-motion";
 
 import Image from "next/image";
-import Banner from "@/public/assets/banner2.jpg";
+/* import Banner from "@/public/assets/banner2.jpg"; */
 import Link from "next/link";
 import readarrow from "@/public/assets/images/read-arrow.svg";
 
@@ -13,7 +13,17 @@ const BannerSr = () => {
 
       className="relative h-[75vh] md:h-screen bg-cover bg-center flex items-center justify-center text-center"
     >
-      <figure className="absolute h-[75vh] md:h-screen top-0 w-full -z-40 bg-primary hr-figs">
+         <video 
+        autoPlay 
+        loop 
+        muted 
+        playsInline 
+        poster="/assets/images/home/banner.jpg"
+        className="absolute h-[75vh] md:h-screen w-full object-cover -z-50"
+      >
+        <source src="/assets/videos/brandvideo.mp4" type="video/mp4" />
+      </video>
+      {/* <figure className="absolute h-[75vh] md:h-screen top-0 w-full -z-40 bg-primary hr-figs">
         <motion.img
           className="h-[75vh] md:h-screen w-full absolute object-cover"
           src={Banner.src}
@@ -28,7 +38,7 @@ const BannerSr = () => {
             ease: "easeInOut",
           }}
         />
-      </figure>
+      </figure> */}
       <div className="absolute w-full h-full bg-black/40 z-[2]"></div>
       <div className="relative z-10 text-white px-6 top-0 lg:top-[120px]">
         <motion.h1

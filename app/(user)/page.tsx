@@ -18,7 +18,7 @@ export default function Home() {
         ]}
         // mainImg="/assets/images/mn.jpg"
         mainVdo="/assets/videos/brandvideo.mp4"
-        vdoPoster="/assets/images/videoposter.png"
+        vdoPoster="/assets/images/home/banner.jpg"
       />
       <UspList secTitle={"Key USP's"} />
       <SectorsList />

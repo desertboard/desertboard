@@ -66,7 +66,7 @@ export default function UspList({ secTitle }: UspsProps) {
                 },
               }}>
           <UspItem uspTitle="Deforestation Free" onMouseEnter={() => setActiveOrder("1")} uspIcon={uspI1} uspDesc="100% sustainable boards made from the UAE’s annually regenerated palm frond biomass, eliminating the need to cut down trees, and reducing reliance on imported wood." order="1" mainImg={uspImg1} />
-          <UspItem uspTitle="Zero Formaldehyde" onMouseEnter={() => setActiveOrder("2")} uspIcon={uspI2} order="2" uspDesc="Designed for a healthier, eco-friendly indoor & environment with zero formaldehyde emission. " mainImg={uspImg2} />
+          <UspItem uspTitle="Zero Formaldehyde" onMouseEnter={() => setActiveOrder("2")} uspIcon={uspI2} order="2" uspDesc="Designed for a healthier, eco-friendly indoor environment with zero formaldehyde emission." mainImg={uspImg2} />
           <UspItem
             uspTitle="Carbon Sink"
             onMouseEnter={() => setActiveOrder("3")}
