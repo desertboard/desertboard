@@ -16,6 +16,7 @@ type FormData = {
     heading:string;
     description:string;
     image_url:string;
+    banner_image:string;
 }
 
 const AdminSustainability = () => {
@@ -42,6 +43,7 @@ const AdminSustainability = () => {
             formData.append("pageHeading", data.pageHeading);
             formData.append("pageDescription", data.pageDescription);
             formData.append("image", getValues("image_url"));
+            formData.append("bannerImage", getValues("banner_image"));
             formData.append("heading", data.heading);
             formData.append("description", data.description);
     
@@ -86,6 +88,7 @@ const AdminSustainability = () => {
                             setValue("heading",data.sustainability.heading)
                             setValue("description",data.sustainability.description)
                             setValue("image_url",data.sustainability.image)
+                            setValue("banner_image",data.sustainability.bannerImage)
                             setRoles(data.sustainability.roles)
                             setGoals(data.sustainability.goals)
                             setPartners(data.sustainability.partners)
@@ -116,6 +119,12 @@ const AdminSustainability = () => {
         <div>
             
                 <div className='flex flex-col gap-3'>
+
+                    <div>
+                        <Label>Banner Image</Label>
+                        <ImageUploader value={watch("banner_image")} onChange={(url) => setValue("banner_image", url)} />
+                    </div>
+
                     <div>
                         <Label>Page Heading</Label>
                         <Input {...register("pageHeading")}/> 

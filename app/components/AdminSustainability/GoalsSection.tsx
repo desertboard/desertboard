@@ -260,7 +260,7 @@ const GoalsSection = () => {
                                 <Label>Description</Label>
                                 <Textarea {...register("description")} />
 
-                                <DialogClose disabled={isSubmitting} className='bg-black text-white p-3'>Save</DialogClose>
+                                <DialogClose disabled={isSubmitting} className='bg-black text-white p-3' type='submit'>Save</DialogClose>
                             </form>
 
 

@@ -1,5 +1,6 @@
+"use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { assets } from '@/public/assets/images/assets';
 import Arrow from "@/public/assets/brdcrbs.svg";
@@ -11,35 +12,46 @@ import Greenslider from './greenslider';
 import Sustainslide from './Sustainslide';
 import Sustainabilitypartners from './Sustainabilitypartners';
 import Tabssustain from './Tabssustain';
-import {tabData} from './data';
+import useSWR from 'swr';
+import { Sustainability } from '@/types/Sustainability';
 
 const Blogs = () => {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Sustainability", href: "" },
   ];
+
+  const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+
+  const { data }: { data: Sustainability, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/sustainability', fetcher)
+
+
+
+  useEffect(()=>{
+    console.log(data);
+  },[data])
+
+  
   return (
     <>
 <PageBanner
-        bannerSrc={assets.sumabanner} // Corrected image import here
+        bannerSrc={data && data.sustainability && data.sustainability.bannerImage!=="" && data.sustainability.bannerImage || assets.sumabanner} // Corrected image import here
         arrowSrc={Arrow}
-        desc="Sustainable and desert-sourced, palm strand board regenerates with nature. "
-        title="Sustainability Is At Our Core"
+        desc={data && data.sustainability && data.sustainability.pageDescription}
+        title={data && data.sustainability && data.sustainability.pageHeading}
         breadcrumbs={breadcrumbs}
         bnrHeight="90dvh"
       />
        <MainDescBOx
-        secTitle="Commitment to the Environment"
+        secTitle={data && data.sustainability && data.sustainability.heading}
         subTitle=""
-        paragraphs={[
-          "With the zero-deforestation supply chain, we protect natural ecosystems, preserve biodiversity and promote environmental sustainability for a greener future. At DesertBoard, we take pride in spearheading the bio-economy by optimizing our production processes to minimize material waste and energy consumption, ensuring efficient resource utilization throughout our products' lifecycle.",
-        ]}
-        mainImg={assets.sumain}
+        paragraphs={data && data.sustainability && data.sustainability.description}
+        mainImg={data && data.sustainability && data.sustainability.image!=="" && data.sustainability.image || assets.sumain}
       />
-      <Greenslider />
-      <Sustainslide />
-      <Sustainabilitypartners />
-      <Tabssustain data={tabData.data} />
+      <Greenslider data={data}/>
+      <Sustainslide data={data}/>
+      <Sustainabilitypartners data={data}/>
+      <Tabssustain data={data} />
        <Downloads title={"To Downloads"} url='/downloads'/>
 
     </>

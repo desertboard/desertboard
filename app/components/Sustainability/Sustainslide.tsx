@@ -4,15 +4,18 @@ import React from "react";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
 
-import {  SliderData } from "./data";
+
 // Import Swiper styles
 import "swiper/css";
 import Image from "next/image";
 import "@/app/components/home/goalcrd.scss";
 import { motion } from "framer-motion";
 import Slidersustain from "./swipersustain";
+import { Sustainability } from "@/types/Sustainability";
 
-const Sustainslide = () => {
+const Sustainslide = ({data}:{
+  data:Sustainability
+}) => {
   return (
     <>
       <section className="pt-10 lg:pt-20  pb-20 3xl:pb-0 insp-mn relative inspbg  overflow-hidden">
@@ -38,7 +41,7 @@ const Sustainslide = () => {
                     transition: { duration: 1, delay: 0.3 },
                   },
                 }}>
-                Sustainable Development Goals
+                {data && data.sustainability && data.sustainability.goals.heading}
                 <span className="text-[#FF671F]">.</span>
               </motion.h2>
               <motion.p
@@ -54,7 +57,7 @@ const Sustainslide = () => {
                     transition: { duration: 1, delay: 0.5 },
                   },
                 }}>
-                DesertBoard&apos;s practices align with nine of the United Nations&apos; Sustainable Development Goals (SDGs), focusing on minimizing environmental impact, fostering inclusivity, and ensuring responsible resource use.
+                  {data && data.sustainability && data.sustainability.goals.description}
               </motion.p>
             </div>
 
@@ -73,7 +76,7 @@ const Sustainslide = () => {
               transition: { duration: 1, delay: 0.5 },
             },
           }}>
-          <Slidersustain data={SliderData} />
+          <Slidersustain data={data} />
 
         </motion.div>
 

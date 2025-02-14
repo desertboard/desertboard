@@ -3,22 +3,14 @@
 import React, { useState } from "react";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { Sustainability } from "@/types/Sustainability";
 
-interface FrameworkItem {
-  id: number;
-  tab: string;
-  title: string;
-  image: StaticImageData;
-  description: string;
-  list: string[];
-}
 
-interface HeroSectionProps {
-  data: FrameworkItem[];
-}
-const Tabssustain: React.FC<HeroSectionProps> = ({ data }) => {
+const Tabssustain = ({ data }:{
+  data:Sustainability
+}) => {
   const [activeTab, setActiveTab] = useState<string>("tab1");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   // Toggle accordion
@@ -61,7 +53,7 @@ const Tabssustain: React.FC<HeroSectionProps> = ({ data }) => {
                 <div className="hidden lg:block">
                   {/* Tab Buttons */}
                   <div className="tabset pt-2 border-b border-[#1515151A] flex  justify-between">
-                    {data.map((tab, index) => (
+                    {data && data.sustainability && data.sustainability.vision.map((tab, index) => (
                       <React.Fragment key={`tab${index + 1}`}>
                         <input
                           type="radio"
@@ -86,7 +78,7 @@ const Tabssustain: React.FC<HeroSectionProps> = ({ data }) => {
                                 : "#15151580",
                           }}
                         >
-                          {tab.tab}
+                          {tab.region}
                         </label>
                       </React.Fragment>
                     ))}
@@ -95,7 +87,7 @@ const Tabssustain: React.FC<HeroSectionProps> = ({ data }) => {
                   {/* Tab Content with Framer Motion */}
                   <div className="tab-panels flex flex-wrap mt-6  lg:mt-10 xxl:mt-20">
                     <AnimatePresence mode="wait">
-                      {data.map(
+                      {data && data.sustainability && data.sustainability.vision.map(
                         (tab, index) =>
                           activeTab === `tab${index + 1}` && (
                             <motion.section
@@ -113,7 +105,7 @@ const Tabssustain: React.FC<HeroSectionProps> = ({ data }) => {
                                 </h3>
 
                                 <ul className="mb-0 lg:mb-10 mnsas ">
-                                  {tab.list.map((item, index) => (
+                                  {tab && data.sustainability && tab.description.split(".").map((item, index) => (
                                     <li
                                       className="flex   texthelvetica20 clr15op75 mb-[16px] "
                                       key={index}
@@ -128,9 +120,9 @@ const Tabssustain: React.FC<HeroSectionProps> = ({ data }) => {
                               <motion.div className="h-full min-h-[300px] relative"  initial={{ scale: 0.9 }}
                                   animate={{ scale: 1 }}
                                   transition={{ duration: 0.5 }}>
-                                <Image src={tab.image.src}
+                                {tab.image!=="" && <Image src={tab.image}
                                   alt="New Tab Content"
-                                  className="w-full  h-full absolute object-center  object-cover opacity-80 transition-opacity duration-300 hover:opacity-100" width={800} height={600}/>
+                                  className="w-full  h-full absolute object-center  object-cover opacity-80 transition-opacity duration-300 hover:opacity-100" width={800} height={600}/>}
                             
                               </motion.div>
                               </div>
@@ -140,8 +132,9 @@ const Tabssustain: React.FC<HeroSectionProps> = ({ data }) => {
                     </AnimatePresence>
                   </div>
                 </div>
+                
                 <div className="lg:hidden">
-                {data.map(
+                {data && data.sustainability && data.sustainability.vision.map(
                         (tab, index) =>
                            (
                     <div key={index} className="border-b border-[#1515151A]">
@@ -150,7 +143,7 @@ const Tabssustain: React.FC<HeroSectionProps> = ({ data }) => {
                         onClick={() => handleAccordionClick(index)}
                       >
                         <span className="cursor-pointer py-2 md:py-4 heavydark border-transparent nuber-next-bold leading-[1] text-font24">
-                          {tab.tab}
+                          {tab.region}
                         </span>
                         <span className="text-xl">
                           {activeIndex === index ? "−" : "+"}
@@ -165,21 +158,21 @@ const Tabssustain: React.FC<HeroSectionProps> = ({ data }) => {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden pt-2"
                           >
-                            <motion.img
-                              src={tab.image.src}
+                            {tab.image !=="" && <motion.img
+                              src={tab.image}
                               alt="New Tab Content"
                               className="w-full h-[200px] mb-5  object-cover opacity-80 transition-opacity duration-300 hover:opacity-100"
                               initial={{ scale: 0.9 }}
                               animate={{ scale: 1 }}
                               transition={{ duration: 0.5 }}
-                            />
+                            />}
                             <div className=" pt-0">
                               {/* <h3 className="heavydark mb-5">{tab.title}</h3> */}
                               <p className="texthelvetica20 clr15op75 mb-6">
                                 {tab.description}
                               </p>
                               <ul>
-                                {tab.list.map((item, idx) => (
+                                {/* {tab.map((item, idx) => (
                                   <li
                                     key={idx}
                                     className="flex texthelvetica20 clr15op75 mb-[16px]"
@@ -187,7 +180,7 @@ const Tabssustain: React.FC<HeroSectionProps> = ({ data }) => {
                                     <span className="bg-[#FF671F] min-w-[8px] min-h-[8px] max-w-[8px] max-h-[8px] inline-block mr-[10px] relative top-2"></span>
                                     {item}
                                   </li>
-                                ))}
+                                ))} */}
                               </ul>
                             </div>
                           </motion.div>

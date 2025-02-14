@@ -13,19 +13,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { StaticImageData } from "next/image";
+import { Sustainability } from "@/types/Sustainability";
 
-interface LinkedInSliderProps {
-  data: {
-    id: number;
-    title: string;
-    desc: string;
-    icon: StaticImageData;
-    image: StaticImageData;
-  }[];
-}
 
-const Swipersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
+
+const Swipersustain = ({ data }:{
+  data:Sustainability
+}) => {
   const swiperRef = useRef<SwiperType | null>(null);
 
 
@@ -54,11 +48,11 @@ const Swipersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={() => console.log("slide change")}
       >
-        {data.map((framework) => (
+        {data && data.sustainability && data.sustainability.goals.goals.map((framework) => (
           <SwiperSlide
-            key={framework.id}
+            key={framework._id}
             className="suscard bg-cover bg-center flex-shrink-0"
-            style={{ backgroundImage: `url(${framework.image.src})` }}
+            style={{ backgroundImage: `url(${framework.image})` }}
           >
             <div className="relative group overflow-hidden transform growf goal-crd bg-center delay-0">
               <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
@@ -67,19 +61,19 @@ const Swipersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
               <div className="flex items-center justify-center min-h-[484px] max-h-[484px]">
                 <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                   <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-                    <Image
-                      src={framework.icon}
+                    {framework.logo !== "" && <Image
+                      src={framework.logo}
                       width={131}
                       height={131}
                       alt="Thumbnail"
                       className="transform transition-all duration-500"
-                    />
+                    />}
                   </div>
                 </div>
                 <div className="p-6">
                   <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="nuber-next-bold text-font28 text-black" dangerouslySetInnerHTML={{ __html: formatText(framework.title) }} />
-                    <p className="helvetica text-font20 text-black opacity-[75%] mt-2" dangerouslySetInnerHTML={{ __html: formatText(framework.desc) }} />
+                    <h3 className="nuber-next-bold text-font28 text-black" dangerouslySetInnerHTML={{ __html: formatText(framework.heading) }} />
+                    <p className="helvetica text-font20 text-black opacity-[75%] mt-2" dangerouslySetInnerHTML={{ __html: formatText(framework.description) }} />
                   </div>
                 </div>
               </div>
