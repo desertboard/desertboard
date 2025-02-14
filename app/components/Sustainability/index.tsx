@@ -16,6 +16,9 @@ import useSWR from 'swr';
 import { Sustainability } from '@/types/Sustainability';
 
 const Blogs = () => {
+
+
+
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Sustainability", href: "" },

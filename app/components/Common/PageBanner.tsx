@@ -23,7 +23,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
       {/* <div className="absolute inset-0 bg-black opacity-60 -z-10"></div>
       <div className="absolute inset-0 bg-primary opacity-20 -z-20"></div>  */}
       <figure className="absolute left-0 top-0 h-full w-full -z-40">
-        <Image className="w-full h-full absolute top-0 left-0 object-cover object-center" src={bannerSrc} fill objectFit="cover" alt="Banner image" />
+        <Image className="w-full h-full absolute top-0 left-0 object-cover object-center" src={bannerSrc} width={1600} height={700} alt="Banner image" />
       </figure>
       <div className="container relative">
         <div className="pg-bnr__div absolute bottom-0 pb-4 md:pb-10 lg:pb-20">
