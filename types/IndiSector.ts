@@ -3,7 +3,7 @@ export type IndiSectorType = {
         applications:{
             title:string;
             description:string;
-            bannerImage:string;
+           
             image:string;
             product:string;
             _id:string;
@@ -12,6 +12,7 @@ export type IndiSectorType = {
         description:string;
         icon:string;
         image:string;
+        bannerImage:string;
         image_url:string;
         shortDescription:string;
         _id:string;
