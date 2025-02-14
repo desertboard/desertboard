@@ -2,7 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import ola from "@/public/assets/images/home/ola.svg";
-  import { secarlsldata } from "./data";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -10,8 +9,11 @@ import "swiper/css/effect-fade";
 
 import { motion } from "framer-motion";
 import CardFiveFlow from "../Common/CardfiveFlow";
+import { Sustainability } from "@/types/Sustainability";
 
-const greenslider = () => {
+const greenslider = ({data}:{
+  data:Sustainability
+}) => {
   return (
     <>
       <section className=" py-10 lg:py-20  relative bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
@@ -38,7 +40,7 @@ const greenslider = () => {
                   transition: { duration: 1, delay: 0.5 },
                 },
               }}>
-         <CardFiveFlow data={secarlsldata.data}   />
+         <CardFiveFlow data={data}   />
         </motion.div>
           </div>
         </div>

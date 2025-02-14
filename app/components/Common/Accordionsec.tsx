@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import arrdns from "@/public/assets/images/icons/arrdns.svg";
 import { assets } from "@/public/assets/images/assets";
+import { Sustainability } from "@/types/Sustainability";
 
 interface HeroSectionProps {
   title: string;
@@ -14,13 +15,7 @@ type AccordionProps = {
 
   bg: string;
   bullet: boolean;
-  accordionData: {
-
-    title: string;
-
-    content: string;
-
-  }[];
+  data:Sustainability
 
 };
 
@@ -60,11 +55,11 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }
   );
 };
 
-const Accordionsec : React.FC<AccordionProps> = ({ accordionData, bg, bullet}) => {
+const Accordionsec : React.FC<AccordionProps> = ({ data, bg, bullet}) => {
   return (
     <div className="w-full relative z-[1] ">
-      {accordionData && accordionData.map((item, index) => (
-        <AccordionItem key={index} bg={bg} bullet={bullet} title={item.title} content={item.content} />
+      {data && data.sustainability.partners.partners.map((item, index) => (
+        <AccordionItem key={index} bg={bg} bullet={bullet} title={item.title} content={item.description} />
       ))}
     </div>
   );

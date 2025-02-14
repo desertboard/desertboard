@@ -31,6 +31,8 @@ export async function GET() {
         
       const sustainability = await Sustainability.findOne();
 
+      console.log(updatedData)
+
       if (!sustainability) {
         return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
       }else{
@@ -39,6 +41,7 @@ export async function GET() {
         sustainability.heading = updatedData.heading
         sustainability.description = updatedData.description
         sustainability.image = updatedData.image
+        sustainability.bannerImage = updatedData.bannerImage
         await sustainability.save()
         return NextResponse.json({ message: "Sustainability updated successfully" }, { status: 200 });
         }   
