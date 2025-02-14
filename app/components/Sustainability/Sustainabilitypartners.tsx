@@ -12,9 +12,11 @@ const Sustainabilitypartners = ({data}:{
   data:Sustainability
 }) => {
 
-  // const formatText = (text: string) => {
-  //   return text.replace(/®/g, "<sup>®</sup>");
-  // };
+  const formatText = (text?: string) => {
+    if (!text) return "";
+    return text.replace(/®/g, "<sup>®</sup>");
+  };
+  
 
   return (
     <section className="py-10 lg:py-20 bg-[#E1DCD8] insp-mn relative ">
@@ -48,11 +50,29 @@ const Sustainabilitypartners = ({data}:{
               </div>
             </div><div className="w-full lg:w-3/4">
               <div>
-              <p className="texthelvetica20 clr15op75 pb-7 lg:pb-10">
-        {data && data.sustainability && data.sustainability.partners.description.split(".").slice(0,1).join('')}
-      </p>
+              <p
+                  className="texthelvetica20 clr15op75 pb-7 lg:pb-10"
+                  dangerouslySetInnerHTML={{
+                    __html: formatText(
+                      data?.sustainability?.partners.description
+                        .split(".")
+                        .slice(0, 1)
+                        .join("")
+                    ),
+                  }}
+                />
       <Accordionsec data={data} bg={"bg-[#D1CCC8]"} bullet={false} />
-      <p className="texthelvetica20 clr15op75 pt-5" dangerouslySetInnerHTML={{ __html: (data && data.sustainability && data.sustainability.partners.description.split(".").slice(1).join('')) }} />
+      <p
+                  className="texthelvetica20 clr15op75 pt-5"
+                  dangerouslySetInnerHTML={{
+                    __html: formatText(
+                      data?.sustainability?.partners.description
+                        .split(".")
+                        .slice(1)
+                        .join("")
+                    ),
+                  }}
+                />
               </div>
             </div>
           </div>

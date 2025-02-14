@@ -125,8 +125,9 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({
                     transition: { duration: 1, delay: 0.5 },
                   },
               }}>
-
+                <div className="text-black/75">
               {renderParagraphs(paragraphs)}
+              </div>
               {/* {typeof paragraphs === "string" ? parse(formatText(paragraphs)) : paragraphs} */}
 
               {/* {Array.isArray(paragraphs)
