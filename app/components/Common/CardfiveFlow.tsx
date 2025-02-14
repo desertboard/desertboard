@@ -33,7 +33,7 @@ const formatText = (text: string) => {
           <div className="absolute inset-0 sectorcrd-overlaygreen transition-all duration-500 ease-in-out "></div>
           <div className="absolute top-0 text-white w-full h-full transition-all duration-500 ease-in-out p-5 lg:p-8 ">
             <div className="w-full ">
-              {framework.logo !=="" && <Image src={framework.logo} alt="icn1" className="" width={100} height={100}/>}
+              {framework.logo !=="" && <Image src={framework.logo} alt="icn1" className="h-[40px] w-auto" width={100} height={100}/>}
             </div>
             <hr className="opacity-10 border-t-2 mt-4 transition-all duration-500 delay-100 ease-in-out group-hover:mt-7" />
             <h3 className="opacity-[90%] nuber-next-heavy text-font20   leading-[1.3] transition-all duration-500 delay-100 mt-4 group-hover:mt-7 nuber-next-bold" dangerouslySetInnerHTML={{ __html: formatText(framework.title) }}></h3>

@@ -83,6 +83,7 @@ import appbanner from "../images/applications/banner.jpg"
 import grarrow from "../images/icons/greenarrow.svg"
 import line from "../images/icons/line.svg"
 import secbanner from "../images/sectors/secbanner.jpg"
+import secbnr from "../images/sectors/sectors-landing-banner.jpg"
 import tlse from "../images/sectors/tlse.jpg"
 import readarrow from "../images/read-arrow.svg";
 import dbanner from "../images/downloads/banner.jpg";
@@ -133,6 +134,7 @@ export const assets = {
     readarrow,
     tlse,
     secbanner,
+    secbnr,
     appbanner,
     grarrow,
     line,

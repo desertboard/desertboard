@@ -43,7 +43,7 @@ const Sectors = () => {
   return (
     <>
       <PageBanner
-        bannerSrc={assets.secbanner} // Corrected image import here
+        bannerSrc={assets.secbnr} // Corrected image import here
         arrowSrc={Arrow}
         desc="PSB®   diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring. "
         title="Sectors"
