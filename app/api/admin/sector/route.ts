@@ -71,10 +71,12 @@ export async function PATCH(request: NextRequest) {
   if (!isAdmin) {
     return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
   }
+
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   const { title, description, image, applications, icon, bannerImage, shortDescription } = await request.json();
 
+  console.log("applications",applications)
   await connectDB();
 
   const sector = await Sector.findByIdAndUpdate(id, {

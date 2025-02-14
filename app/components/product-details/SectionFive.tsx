@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -14,51 +14,55 @@ import { motion } from "framer-motion";
 interface WhySupremeProps {
   sectitle: string;
   data: {
-    id: number;
-    title: string;
-    image: StaticImageData
-    desc: string;
-  }[];
+    data: {
+      _id: string;
+      name: string;
+      image: string;
+      description: string
+    }[]
+  }
 }
 
 // Component to display the data
 const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
   const swiperRef = useRef<SwiperType | null>(null);
 
-   const [showNavButtons, setShowNavButtons] = useState(false);
+  const [showNavButtons, setShowNavButtons] = useState(false);
 
-    useEffect(() => {
-      const updateNavVisibility = () => {
-        if (swiperRef.current) {
-          const slidesPerView = swiperRef.current.params.slidesPerView;
-          if (typeof slidesPerView === 'number') {
-            setShowNavButtons(slidesPerView < 6);
-          }
-        }
-      };
-
-      // Check on initialization and listen to resize events
+  useEffect(() => {
+    const updateNavVisibility = () => {
       if (swiperRef.current) {
-        updateNavVisibility();
-        swiperRef.current.on("resize", updateNavVisibility);
-      }
-
-      return () => {
-        if (swiperRef.current) {
-          swiperRef.current.off("resize", updateNavVisibility);
+        const slidesPerView = swiperRef.current.params.slidesPerView;
+        if (typeof slidesPerView === 'number') {
+          setShowNavButtons(slidesPerView < 6);
         }
-      };
-    }, []);
-
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-    const contentRefs = useRef<(HTMLSpanElement | null)[]>([]);
-
-    useEffect(() => {
-      if (hoveredIndex !== null && contentRefs.current[hoveredIndex]) {
-        contentRefs.current[hoveredIndex]!.style.maxHeight =
-          contentRefs.current[hoveredIndex]!.scrollHeight + 20+ "px"; // Expand to content height
       }
-    }, [hoveredIndex]); // Runs when hoveredIndex changes
+    };
+
+    // Check on initialization and listen to resize events
+    if (swiperRef.current) {
+      updateNavVisibility();
+      swiperRef.current.on("resize", updateNavVisibility);
+    }
+
+    return () => {
+      if (swiperRef.current) {
+        swiperRef.current.off("resize", updateNavVisibility);
+      }
+    };
+  }, []);
+
+  const [hoveredIndex, setHoveredIndex] = useState<number | string | null>(null);
+  const contentRefs = useRef(new Map());
+
+  useEffect(() => {
+    if (hoveredIndex !== null) {
+      const contentRef = contentRefs.current.get(hoveredIndex);
+      if (contentRef) {
+        contentRef.style.maxHeight = contentRef.scrollHeight + 20 + "px"; // Expand to content height
+      }
+    }
+  }, [hoveredIndex]); // Runs when hoveredIndex changes
 
   return (
     <>
@@ -86,7 +90,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
         <div className="container ">
           <div>
             <h2 className="heavydark mb-6 md:mb-10">
-            {sectitle}<span className="text-orange">.</span>
+              {sectitle}<span className="text-orange">.</span>
             </h2>
           </div>
 
@@ -106,85 +110,92 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
               }}
             >
 
-          <Swiper
+              <Swiper
                 // install Swiper modules
                 className="swpstss  "
-            modules={[Navigation, Pagination]}
-            spaceBetween={0}
-            // slidesPerView='auto'
-            loop={true}
-            navigation={{
-              nextEl: ".swiper-button-next", // Target the next button
-              prevEl: ".swiper-button-prev", // Target the previous button
-            }}
-            breakpoints={{
-              0: {
-                slidesPerView: 1,
-                spaceBetween: 0,
-              },
-              410: {
-                slidesPerView: 2,
-                spaceBetween: 0,
-              },
-              700: {
-                slidesPerView: 3,
-                spaceBetween: 0,
-              },
-              1200: {
-                slidesPerView: 3,
-                spaceBetween: 0,
-              },
-              1700: {
-                slidesPerView: 5,
-                spaceBetween: 0,
-              },
-              1800: {
-                slidesPerView: 6,
-                spaceBetween: 0,
-              },
-            }}
-            // pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => (swiperRef.current = swiper)}
+                modules={[Navigation, Pagination]}
+                spaceBetween={0}
+                // slidesPerView='auto'
+                loop={true}
+                navigation={{
+                  nextEl: ".swiper-button-next", // Target the next button
+                  prevEl: ".swiper-button-prev", // Target the previous button
+                }}
+                breakpoints={{
+                  0: {
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                  },
+                  410: {
+                    slidesPerView: 2,
+                    spaceBetween: 0,
+                  },
+                  700: {
+                    slidesPerView: 3,
+                    spaceBetween: 0,
+                  },
+                  1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 0,
+                  },
+                  1700: {
+                    slidesPerView: 5,
+                    spaceBetween: 0,
+                  },
+                  1800: {
+                    slidesPerView: 6,
+                    spaceBetween: 0,
+                  },
+                }}
+                // pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={() => console.log("slide change")}>
-                {data.map((item) => (
-  <SwiperSlide key={item.id}>
-                                    <div
-                                      className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
-                      style={{ backgroundImage: `url(${item.image.src})` }}
-                      onMouseEnter={() => setHoveredIndex(item.id)}
+                {data && data.data && data.data.map((item) => (
+                  <SwiperSlide key={item._id}>
+                    <div
+                      className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
+                      style={{ backgroundImage: `url(${item.image})` }}
+                      onMouseEnter={() => setHoveredIndex(item._id)}
                       onMouseLeave={() => setHoveredIndex(null)}
-                      onTouchStart={() => setHoveredIndex(item.id)}  // For mobile devices
-                                    >
-                                      <div className="flex items-end pb-1 md:pb-3 xl:pb-3 min-h-[300px] lg:min-h-[426px]">
-                                        <div className="px-4 md:px-5 xl:px-5 w-full">
-                                          <h3 className="nubernext28bold text-white translate-y-[0px] pb-3 transition-all duration-500 delay-200 group-hover:translate-y-[-10px]">
-                                            {item.title}
-                                          </h3>
+                      onTouchStart={() => setHoveredIndex(item._id)}  // For mobile devices
+                    >
+                      <div className="flex items-end pb-1 md:pb-3 xl:pb-3 min-h-[300px] lg:min-h-[426px]">
+                        <div className="px-4 md:px-5 xl:px-5 w-full">
+                          <h3 className="nubernext28bold text-white translate-y-[0px] pb-3 transition-all duration-500 delay-200 group-hover:translate-y-[-10px]">
+                            {item.name}
+                          </h3>
 
 
-                                            <p className="text-white overflow-hidden   h-0 group-hover:h-full   group-hover:translate-y-[-10px]
+                          <p className="text-white overflow-hidden   h-0 group-hover:h-full   group-hover:translate-y-[-10px]
                                             transition-all duration-500 ease-in-out  "
                                             style={{
-                                              maxHeight: hoveredIndex === item.id ? `${contentRefs.current[item.id]?.scrollHeight  || 0}px` : "0px",
-                                                                        }}
-                                                                        ref={(el) => {
-                                                                          contentRefs.current[item.id] = el;
-                                                                        }}
+                                              maxHeight:
+                                                hoveredIndex === item._id
+                                                  ? `${contentRefs.current.get(item._id)?.scrollHeight || 0}px`
+                                                  : "0px",
+                                            }}
+                                            ref={(el) => {
+                                              if (el) {
+                                                contentRefs.current.set(item._id, el);
+                                              } else {
+                                                contentRefs.current.delete(item._id); // Clean up if the element is removed
+                                              }
+                                            }}
                           >
-                                            <span className="">
-                                              {item.desc}
-                                              </span>
-                                            </p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </SwiperSlide>
-          ))}
+                            <span className="">
+                              {item.description}
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
 
 
 
-          </Swiper>
+              </Swiper>
             </motion.div>
             {showNavButtons && (
               <div className="  relative">

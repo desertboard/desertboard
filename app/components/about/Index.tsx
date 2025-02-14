@@ -41,7 +41,7 @@ export default function Index() {
   return (
     <>
       <PageBanner
-        bannerSrc={bannerImg} // Corrected image import here
+        bannerSrc={data && data.about[0] && data.about[0].bannerImage ? data.about[0].bannerImage : bannerImg} // Corrected image import here
         arrowSrc={Arrow}
         desc={data && data.about[0] && data.about[0].description}
         title={data && data.about[0] && data.about[0].title}

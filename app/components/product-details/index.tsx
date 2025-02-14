@@ -14,22 +14,25 @@ import { slideses } from './data'
 import {relslideses } from "./data";
 import { useParams } from "next/navigation";
 
-import { IndiApplication } from "@/types/ApplicationType";
 import useSWR from "swr";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
 
 
 const ProducrDetails = () => {
 
+  const { productName } = useParams();
 
+  const [finishes, setFinishes] = useState<string[]>([]);
+  
+  const fetcher = (...args: Parameters<typeof fetch>) =>
+    fetch(...args).then((res) => res.json());
 
-  const {productName} = useParams()
-
-  console.log(productName)
-
-  const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
-
-  const { data }:{data:IndiApplication,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/products?productName=${productName}`, fetcher)
+  // First API Call: Fetch product details
+  const { data } = useSWR(
+    productName ? `/api/admin/products?productName=${productName}` : null,
+    fetcher
+  );
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -37,10 +40,23 @@ const ProducrDetails = () => {
     { label: `${data && data.data.title}`, href: "" },
   ];
 
-  useEffect(()=>{
-    console.log(data && data.data)
-  },[data])
 
+  // Update finishes state when data is available
+  useEffect(() => {
+    if (data?.data?.finishes) {
+      setFinishes(data.data.finishes.map((item:{name:string}) => item.name));
+    }
+  }, [data]);
+
+  // Second API Call: Fetch finishes details once finishes are set
+  const { data: finishesData } = useSWR(
+    finishes.length > 0 ? `/api/admin/finish?finishes=${encodeURIComponent(finishes.join(","))}` : null,
+    fetcher
+  );
+
+  useEffect(() => {
+    console.log("Finishes Data:", finishes);
+  }, [finishes]);
 
 
   return (
@@ -61,7 +77,7 @@ const ProducrDetails = () => {
 
       <SectionFour data={data} />
 
-      <SectionFive {...relslideses}/>
+      <SectionFive {...relslideses} data={finishesData}/>
      <Downloads title={"To Downloads"} url="/downloads"/>
     </>
   );

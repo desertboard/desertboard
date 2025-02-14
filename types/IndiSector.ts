@@ -7,6 +7,7 @@ export type IndiSectorType = {
             image:string;
             product:string;
             _id:string;
+            bannerImage:string;
         }[],
         title:string;
         description:string;

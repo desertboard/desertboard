@@ -36,8 +36,8 @@ const Sectors = () => {
   const { data:sectorData }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/sector/byid?sector=${encodeURIComponent(sector?.replace(/-/g, " "))}`, fetcher)
 
   useEffect(()=>{
-    console.log("data",data && data.data)
-  },[data]) 
+    console.log("data",sectorData && sectorData.data)
+  },[sectorData]) 
 
 
   const breadcrumbs = [
@@ -50,7 +50,7 @@ const Sectors = () => {
   return (
     <>
        <PageBanner
-        bannerSrc={data && data.data ? data.data.bannerImage : assets.appbanner} // Corrected image import here
+        bannerSrc={sectorData?.data?.applications.find((item) => item.title === application)?.bannerImage || assets.appbanner} // Corrected image import here
         arrowSrc={Arrow}
         desc=""
         title={application || ""}

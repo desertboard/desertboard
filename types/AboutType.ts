@@ -2,6 +2,7 @@ export type AboutType = {
     about:{
         title:string;
     description:string;
+    bannerImage:string;
     story:string;
     mission:string;
     vision:string;

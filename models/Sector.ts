@@ -9,6 +9,10 @@ const ApplicationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  bannerImage:{
+    type:String,
+    required:true
+  },
   product: {
     type: String,
     required: true,
