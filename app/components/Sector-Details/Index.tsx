@@ -6,7 +6,6 @@ import PageBanner from "../Common/PageBanner";
 import MainDescBOx from "../Common/MainDescBox";
 import Tabs from "./Tabs";
 import BeforeFooterTag from "../Common/BeforeFooterTag";
-import { assets } from "@/public/assets/images/assets";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
 import useSWR from "swr";
@@ -38,7 +37,7 @@ const SectorDetails = () => {
   return (
     <>
       <PageBanner
-        bannerSrc={assets.secdbanner} // Corrected image import here
+        bannerSrc={data && data.data.bannerImage} // Corrected image import here
         arrowSrc={Arrow}
         desc=""
         title={data && data.data.title}
