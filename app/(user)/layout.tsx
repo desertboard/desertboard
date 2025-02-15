@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "../../app/globals.css";
 import "../../app/components/Common/common.scss";
-import Header from "../components/Header";
 import Footer from "../components/Common/footer";
+import Header from "../components/Headernew";
 
 
 
