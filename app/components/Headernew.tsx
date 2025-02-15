@@ -51,14 +51,18 @@ const Header = () => {
     setHoveredMenuItem(menuItem);
     setSubmenuVisible(true);
   };
-
+  
   const handleMouseLeave = () => {
     timeoutId = setTimeout(() => {
       setHoveredMenuItem(null);
       setSubmenuVisible(false);
     }, 200);
   };
-
+  
+  const handleMenuItemClick = () => {
+    setHoveredMenuItem(null);
+    setSubmenuVisible(false);
+  };
   if (isMobile) return <MobileMenu />;
 
   const formatText = (text: string) => {
@@ -89,6 +93,7 @@ const Header = () => {
                 >
                   <Link
                     href={item.href}
+                    onClick={handleMenuItemClick} 
                     className="cursor-pointer hover:text-gray-500 text-[12px] xl:text-[14px] xxl:text-font18 mitm nuber-next-bold tracking-normal py-[38px] uppercase"
                   >
                     {item.title}
@@ -105,6 +110,7 @@ const Header = () => {
                     >
                       {products.map((product: { title: string }, index) => (
                         <Link
+                        onClick={handleMenuItemClick} 
                           className="block px-4 py-2 text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
                           href={`/product-details/${product.title}`}
                           key={index}
@@ -150,6 +156,7 @@ const Header = () => {
                     </div>
                     {sector.applications.map((application, appIndex) => (
                       <Link
+                      onClick={handleMenuItemClick} 
                         className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
                         href={`/applications/${application.product}?application=${application.title}&sector=${encodeURIComponent(sector.title.replace(/\s+/g, "-"))}`}
                         key={appIndex}
