@@ -7,6 +7,7 @@ import { StaticImageData } from "next/image";
 import React, { JSX, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import parse from "html-react-parser";
+import { assets } from "@/public/assets/images/assets";
 
 interface MainDescBoxProps {
   secTitle: string;
@@ -58,9 +59,9 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({
       // If it's an array, map through each item and wrap it in a <p> tag
       return paragraphs.map((paragraph, index) => {
         if (typeof paragraph === "string") {
-          return <div  className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3] mb-4" key={index}>{parse(formatText(paragraph))}</div>;
+          return <div  className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] 3xl:max-w-[89%] leading-[1.3] mb-4" key={index}>{parse(formatText(paragraph))}</div>;
         } else {
-          return <div  className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] md:max-w-[88%] leading-[1.3] mb-4" key={index}>{paragraph}</div>;
+          return <div  className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] 3xl:max-w-[89%] leading-[1.3] mb-4" key={index}>{paragraph}</div>;
         }
       });
     } else {
@@ -152,11 +153,11 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({
               </figure>
             )}
             {mainVdo && (
-              <>
-                <motion.div className="relative h-full" style={{ y: translateY }}>
+              <div >
+                <motion.div className="relative h-full group" style={{ y: translateY }}>
                   <video
                     ref={videoRef}
-                    className="h-full object-cover"
+                    className="h-full object-cover "
                     src={mainVdo}
                     poster={vdoPoster}
                     controls={false}
@@ -183,9 +184,17 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({
                         </svg>
                       </button>
                     )}
+                     {isPlaying && ( // Show the button only if video is paused
+                      <button
+                        className="bg-white bg-opacity-20 rounded-sm px-6 py-3 md:px-10 md:py-6 transition duration-300 group-hover:opacity-[1] opacity-0"
+                        onClick={togglePlay}
+                      >
+                        <Image src={assets.pause} alt="pause" className="invert" width={26} height={34} />
+                      </button>
+                    )}
                   </div>
                 </motion.div>
-              </>
+              </div>
             )}
           </div>
         </div>
