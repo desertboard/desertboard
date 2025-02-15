@@ -9,6 +9,9 @@ interface HeroSectionProps {
   data: IndiApplication;
 }
 const formatText = (text: string) => {
+  if(!text){
+    return "";
+  }
   return text.replace(/®/g, "<sup>®</sup>");
 };
 const SuggestedProduct: React.FC<HeroSectionProps> = ({ data }) => {
@@ -24,7 +27,7 @@ const SuggestedProduct: React.FC<HeroSectionProps> = ({ data }) => {
             </div>
             <div className="  ">
 
-              <p className=" helvetica-bold text-font28 leading-[1] text-Darkgreen " dangerouslySetInnerHTML={{ __html: formatText(data && data.data.title) }} />
+              <p className=" helvetica-bold text-font28 leading-[1] text-Darkgreen " dangerouslySetInnerHTML={{ __html: formatText(data && data.data && data.data.title) }} />
             </div>
           </div>
           <div className="  ">
