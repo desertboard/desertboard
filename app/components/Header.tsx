@@ -94,19 +94,19 @@ const Header = () => {
                     {item.title == "Sectors" &&
                       <div className="flex space-x-5 gap-8" key={index}>
                         {sectors && sectors.map((item: { title: string,applications:{title:string,product:string}[] }, index) => (
-                          
+
                             <div className="flex flex-col gap-3" key={index} >
                               <div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div>
                               {item.applications.map((application,index)=>(
-                                 
+
                                   <div  key={index}>
                                     <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/applications/${application.product}?application=${application.title}&sector=${encodeURIComponent(item.title.replace(/\s+/g, "-"))}`} key={index}>{application.title}</Link>
                                   </div>
-                                 
+
 
                               ))}
                             </div>
-                          
+
                         ))}
                       </div>
                     }
@@ -166,7 +166,7 @@ const Header = () => {
                     title="Engineering & Construction"
                      href="#"
                   />
-                
+
                 </div>
               </MenuItem>
 

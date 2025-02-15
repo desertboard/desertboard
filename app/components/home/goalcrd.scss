@@ -74,3 +74,57 @@
     }
 
 }
+
+.suscard-mn .swiper-slide{width: 10% !important;}
+// .suscard-mn .swiper-slide.swiper-slide-active{width: 20% !important;}
+
+.w800w .suscard-mn .swiper-slide:hover {
+    width: 20% !important;
+}.active-div .swiper-wrapper .swiper-slide:nth-child(1){
+    width: 20% !important;}
+
+    .nav > ul > li {
+        display: inline-block;
+        position: relative;
+        padding: 3px 10px 3px 0;
+        z-index: 100;
+      }
+
+      /* SECOND LEVEL */
+
+      .nav > .ulone > .lione  ul {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        padding: 0 1000em; /* trick from css-tricks comments */
+        margin: 0 -1000em; /* trick from css-tricks comments */
+        z-index: 101;
+        visibility: hidden;
+        opacity: 0;
+        background: rgba(255, 240, 240, 0.8);
+      }
+
+      .nav > .ulone > .lione:hover   ul {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .nav > .ulone > .lione   ul > li {
+        padding: 3px 0;
+      }
+      .firstmenu:hover + .firstitem {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .firstitem {
+
+        background: white;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+// .afic::after{content: url(/assets/images/applications/arrowdown.svg);
+//     position: absolute;
+//     top: 15px;
+//     left: 20px;}
