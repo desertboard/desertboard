@@ -312,12 +312,12 @@ const scrollToTop = () => {
                         >
                           Glossary
                         </Link>
-                        <Link
+                        {/* <Link
                           href="/downloads"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
                           Download Brochure
-                        </Link>
+                        </Link> */}
                       </div>
                     </motion.div>
 
@@ -419,7 +419,7 @@ const scrollToTop = () => {
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      <Image src={assets.arrowscroll} alt="" width={44} height={26}/>
+      <Image src={assets.arrowscroll} alt="" width={44} height={26}  />
     </button>
 
       </footer>

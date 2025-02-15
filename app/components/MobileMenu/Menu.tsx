@@ -12,6 +12,7 @@ import lin from "@/public/assets/images/home/lin.svg";
 import insta from "@/public/assets/images/home/inst.svg";
 import youtube from "@/public/assets/images/home/youtube.svg";
 import { menuItems } from '@/app/(user)/data/menuItems';
+import twx from "@/public/assets/images/home/twx.svg";
 
 /* const navItems = [
   {
@@ -102,24 +103,31 @@ export default function Menu({setSubMenuActive,setIsActive}:{
             </div>
             <div className={styles.footer}>
               <div className='flex items-center gap-5'>
-                <a>  <Image
+              <a href="https://www.facebook.com/atb.desertboard" target="_blank" className="group">
+              <Image
                             src={fb}
                             alt="Facebook"
                             className="group-hover:brightness-2 brightness-0 invert group-hover:invert-0 h-4"
-                          /></a>
-                <a>  <Image
+              />
+            </a>
+                <a href="https://www.linkedin.com/company/desertboard/" target="_blank" >  <Image
                             src={lin}
-                            alt="Facebook"
+                            alt="LinkedIn"
                             className="group-hover:brightness-2 brightness-0 invert group-hover:invert-0 h-4"
                           /></a>
-                <a>  <Image
+                <a href="https://www.instagram.com/desertboard/" target="_blank" >  <Image
                             src={insta}
-                            alt="Facebook"
+                            alt="Instagram"
+                            className="group-hover:brightness-2 brightness-0 invert group-hover:invert-0 h-4"
+            /></a>
+            <a href="https://x.com/desertboard_ae" target="_blank"  >  <Image
+                            src={twx}
+                            alt="X"
                             className="group-hover:brightness-2 brightness-0 invert group-hover:invert-0 h-4"
                           /></a>
-                <a>  <Image
+                <a href="https://www.youtube.com/@DesertBoard" target="_blank">  <Image
                             src={youtube}
-                            alt="Facebook"
+                            alt="youtube"
                             className="group-hover:brightness-2 brightness-0 invert group-hover:invert-0 h-4"
                           /></a>
                </div>

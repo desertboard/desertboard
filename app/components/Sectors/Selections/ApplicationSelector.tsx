@@ -56,7 +56,7 @@ const ApplicationSelector = ({
                 <Image
                   className="w-full   object-cover h-full"
                   src={application.image}
-                  width={320}
+                  width={800}
                   height={500}
                   alt=""
                 />

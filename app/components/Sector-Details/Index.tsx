@@ -53,7 +53,7 @@ const SectorDetails = () => {
         // vdoPoster="../assets/images/mn.jpg"
       />
       <Tabs applications={data && data.data.applications}/>
-           <BeforeFooterTag title={"To Downloads"}/>
+      <BeforeFooterTag title={"To Downloads"} url={'/downloads'} />
     </>
   );
 };
