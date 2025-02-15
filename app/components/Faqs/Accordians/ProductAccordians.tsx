@@ -11,18 +11,8 @@ const ProductAccordians = ({items}:{
     const [activeAccordian, setActiveAccordian] = useState<null | number>(null)
 
     const toggleAccordian = (index: number) => {
-
-        if (activeAccordian == 0) {
-            setActiveAccordian(null)
-            return
-        }
-
-        if (activeAccordian) {
-            setActiveAccordian(null)
-        } else {
-            setActiveAccordian(index)
-        }
-    }
+        setActiveAccordian(prevIndex => (prevIndex === index ? null : index));
+    };
 
     console.log(items)
 

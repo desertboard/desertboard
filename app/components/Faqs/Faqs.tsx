@@ -15,7 +15,7 @@ const Faqs = () => {
 
     const breadcrumbs = [
         { label: "Home", href: "/" },
-        { label: "FAQS", href: "" },
+        { label: "FAQs", href: "" },
     ];
 
 
