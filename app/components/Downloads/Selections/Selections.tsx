@@ -3,24 +3,34 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import BackGround from '@/public/assets/images/Background.jpg'
-import { topicSelection } from '../selectionData'
 import TopicSelection from './TopicSelection'
 import TypeSelection from './TypeSelection'
 import ResultSelection from './ResultSelection'
 import { motion } from 'framer-motion'
 import { assets } from '@/public/assets/images/assets'
+import useSWR from 'swr'
+import { Downloads } from '@/types/Downloads'
 
 
 const Selections = () => {
 
+    const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+
+    const { data }: { data: Downloads, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/files', fetcher)
+  
+    useEffect(()=>{
+      console.log("files",data);
+    },[data])
+
+
     const [activeTopic,setActiveTopic] = useState(0)
-    const activeTypes = topicSelection[activeTopic].types
+    const activeTypes = data && data.data[activeTopic].types
     const [activeType,setActiveType] = useState(0)
     const [isMobile,setIsMobile] = useState(false)
 
+    
 
-
-    const [activeResult,setActiveResult] = useState<{ title: string; image: string; }[]>([])
+    const [activeResult,setActiveResult] = useState<{ file: string; name: string; thumbnail: string; _id: string; }[] | []>([])
 
     useEffect(()=>{
 
@@ -44,35 +54,37 @@ const Selections = () => {
 
 
     useEffect(() => {
-        const currentTopic = topicSelection[activeTopic];
-        console.log(currentTopic.types[activeType])
+        const currentTopic = data && data.data[activeTopic];
+        if (!data?.data) {
+            if(!data?.data[activeTopic] || !data?.data[activeTopic]?.types){
+                return;
+            }         
 
-        if (!currentTopic || !currentTopic.types) {
-            return;
+        }else if(data && data.data && data.data[activeTopic].types[activeType] == undefined){
 
-        }else if(currentTopic.types[activeType] == undefined){
-            setActiveType(currentTopic.types.findIndex((item)=>item.title == currentTopic.types[0].title))
-            const currentType: {result:{ title: string; image: string; }[]} = currentTopic.types[0];
-            console.log(currentType.result)
-            if (currentType.result === undefined) {
+            setActiveType(data && data.data[activeTopic] && data.data[activeTopic].types.findIndex((item)=>item.title == data.data[activeTopic].types[0].title))
+            const currentType = data.data[activeTopic].types[0];
+            if (currentType.files === undefined) {
                 setActiveType(0);
-                setActiveResult(currentTopic.types[0]?.result || []);
+                setActiveResult(currentTopic.types[0]?.files || []);
             } else {
-                setActiveResult(currentType.result);
+                setActiveResult(currentType.files);
             }
 
         }else{
-            const currentType =currentTopic.types[activeType];
-            if (currentType.result === undefined) {
+
+            const currentType = data && data.data && data.data[activeTopic]?.types[activeType];
+
+            if (data && data.data && currentType.files === undefined) {
                 setActiveType(0);
-                setActiveResult(currentTopic.types[0]?.result || []);
+                setActiveResult(currentTopic.types[0]?.files || []);
             } else {
-                setActiveResult(currentType.result);
+                setActiveResult(data && data.data && currentType.files);
             }
         }
 
+    }, [activeType,activeTopic,data]);
 
-    }, [activeType,activeTopic]);
 
 
 
@@ -102,11 +114,11 @@ const Selections = () => {
                 <div className='grid lg:grid-cols-3 gap-3 relative'>
 
                     <div className={`col-span-1 pr-8 border-[#00000010] ${!isMobile ? "border-r-2" : ""}`}>
-                        <TopicSelection activeTopic={activeTopic} setActiveTopic={setActiveTopic} isMobile={isMobile}/>
+                        <TopicSelection activeTopic={activeTopic} setActiveTopic={setActiveTopic} isMobile={isMobile} data={data}/>
                     </div>
 
                     <div className={`col-span-1 pr-8 border-[#00000010] ${!isMobile ? "pl-4 border-r-2" : "mt-5"}`}>
-                        <TypeSelection activeTypes={activeTypes} activeType={activeType} setActiveType={setActiveType} isMobile={isMobile} activeTopic={activeTopic}/>
+                        <TypeSelection activeTypes={activeTypes} activeType={activeType} setActiveType={setActiveType} isMobile={isMobile} activeTopic={activeTopic} data={data}/>
                     </div>
 
                     <div className={`col-span-1 ${!isMobile ? "pl-4" : "mt-5 pr-8"}`}>
