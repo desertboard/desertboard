@@ -34,7 +34,8 @@ export async function DELETE(request: NextRequest) {
   }
   try {
     await connectDB();
-    const { id } = await request.json();
+    const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
     await Event.findByIdAndDelete(id);
     return NextResponse.json({ success: true, message: "Event deleted successfully" }, { status: 200 });
   } catch (error) {

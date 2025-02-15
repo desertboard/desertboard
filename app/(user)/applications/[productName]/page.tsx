@@ -19,6 +19,7 @@ import useSWR from "swr"
 // import { IndiSectorType } from "@/types/IndiSector";
 import { IndiApplication } from "@/types/ApplicationType";
 import { IndiSectorType } from "@/types/IndiSector";
+import { RelatedApps } from "@/types/RelatedApps";
 
 
 const Sectors = () => {
@@ -33,11 +34,17 @@ const Sectors = () => {
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
   const { data }:{data:IndiApplication,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/products?productName=${productName}`, fetcher)
-  const { data:sectorData }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/sector/byid?sector=${encodeURIComponent(sector?.replace(/-/g, " "))}`, fetcher)
+  const { data:sectorData }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(sector && `/api/admin/sector/byid?sector=${encodeURIComponent(sector?.replace(/-/g, " "))}`, fetcher)
+  const {data:relatedApps}:{data:RelatedApps} = useSWR(`/api/admin/sector?product=${productName}`, fetcher)
+  
+  
+  // useEffect(()=>{
+  //   console.log("data",sectorData && sectorData.data)
+  // },[sectorData]) 
 
   useEffect(()=>{
-    console.log("data",sectorData && sectorData.data)
-  },[sectorData]) 
+    console.log("data data",data)
+  },[data])
 
 
   const breadcrumbs = [
@@ -62,7 +69,7 @@ const Sectors = () => {
       <div className="pt-10 md:pt-20 insp-mn relative inspbg"></div>
       <SectionThree data={data}/>
       <SectionFour data={data} />
-      <SectionFive {...relslideses} sectorData={sectorData}/>
+      <SectionFive {...relslideses} relatedApps={relatedApps}/>
      <Downloads title={"To Downloads"}/>
     </>
   );

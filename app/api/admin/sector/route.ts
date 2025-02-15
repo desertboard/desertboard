@@ -31,8 +31,7 @@ export async function GET(req:NextRequest) {
   const title = searchParams.get("title")
   const product = searchParams.get("product")
 
-  console.log("PRODUCT",product)
-
+console.log("product",product)
   if(title){
     const sector = await Sector.findOne({title})
     if(sector){
@@ -43,7 +42,7 @@ export async function GET(req:NextRequest) {
   else if(product){
     const sectors = await Sector.find()
     if(sectors){
-      const applications = sectors.map((item)=>(
+      const applications = sectors.flatMap((item)=>(
         item.applications.filter((item:{product:string})=>(
           item.product == product
         ))

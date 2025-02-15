@@ -6,7 +6,6 @@ import readarrow from "@/public/assets/images/read-arrow.svg";
 
 import SingleSlider from "../Applications/SingleSlider";
 import SuggestedProduct from "./sectwocomp/SuggestedProduct";
-import { suggestData } from "./data";
 import WhySupreme from "./sectwocomp/WhySupreme";
 import { motion } from "framer-motion";
 import { assets } from "@/public/assets/images/assets";
@@ -107,7 +106,7 @@ function SectionTwo({ suggested,data,pageName }: SectionTwoProps) {
         <div className="container overflow-hidden" >
           <div className="lg:flex flex-col lg:flex-row  gap-10 md:gap-10  relative">
             <div className="lg:w-1/2 " ref={targetDivRef} >
-           {suggested && <SuggestedProduct data={suggestData.data} />}
+           {suggested && <SuggestedProduct data={data} />}
                 <WhySupreme pageName={pageName} data={data} />
 
 

@@ -31,7 +31,7 @@ export const menuItems = [
   },
   {
     title: "Products",
-    href: "#",
+    href: "/products",
   },
   {
     title: "Sustainability",

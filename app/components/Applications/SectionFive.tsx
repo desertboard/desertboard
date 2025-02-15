@@ -12,7 +12,7 @@ import "swiper/css/effect-fade";
 import parse from 'html-react-parser'
 
 import { motion } from "framer-motion";
-import { IndiSectorType } from "@/types/IndiSector";
+import { RelatedApps } from "@/types/RelatedApps";
 interface WhySupremeProps {
   sectitle: string;
   data: {
@@ -21,16 +21,15 @@ interface WhySupremeProps {
     image: StaticImageData
     desc: string;
   }[];
-  sectorData:IndiSectorType
+  relatedApps:RelatedApps
 }
 
 // Component to display the data
-const SectionFive: React.FC<WhySupremeProps> = ({ sectorData }) => {
+const SectionFive: React.FC<WhySupremeProps> = ({ relatedApps }) => {
   const swiperRef = useRef<SwiperType | null>(null);
       const [hoveredIndex, setHoveredIndex] = useState<number | string | null>(null);
       const contentRefs = useRef(new Map());
       
-      console.log("sectorData",sectorData)
 
         useEffect(() => {
           if (hoveredIndex !== null) {
@@ -127,7 +126,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectorData }) => {
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={() => console.log("slide change")}
               >
-               {sectorData && sectorData.data && sectorData.data.applications && sectorData.data.applications.map((item) => (
+               {relatedApps && relatedApps.data.map((item) => (
                   <SwiperSlide key={item._id}>
                     <div
                       className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"

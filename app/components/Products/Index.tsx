@@ -11,38 +11,79 @@ import Image from "next/image";
 import BackGround from "@/public/assets/images/Background.jpg";
 import { useEffect, useState } from "react";
 
-import SectorSelector from "./Selections/SectorSelector";
-import ApplicationSelector from "./Selections/ApplicationSelector";
+import SectorSelector from "../Sectors/Selections/SectorSelector";
+import ApplicationSelector from "../Sectors/Selections/ApplicationSelector";
 import { assets } from "@/public/assets/images/assets";
 import { motion } from "framer-motion";
 import useSWR from "swr";
 import { SectorType } from "@/types/SectorType";
 
-const Sectors = () => {
+type StructuredData = {
+  title:string;
+  applications:{
+    description:string;
+    image:string;
+    product:string;
+    title:string;
+    _id:string;
+  }[];
+}[]
+
+const Products = () => {
   const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: "Sectors", href: "" },
+    { label: "Products", href: "" },
   ];
 
-
+  const [structuredData,setStructuredData] = useState<StructuredData>([])
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data }:{data:SectorType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/sector', fetcher)
+  const { data:productData }:{data:SectorType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/products', fetcher)
 
-  useEffect(()=>{
-    console.log(data && data.data)
+  const {data:sectorData}:{data:SectorType} = useSWR(
+    productData ? `/api/admin/sector` : null, fetcher
+  )
 
-  },[data])
+  useEffect(() => {
+    if (!productData || !sectorData) return;
+  
+    const mappedData = productData.data.map((productItem) => {
+      const matchingSectors = sectorData.data.filter((sector) =>
+        sector.applications.some((app) => app.product === productItem.title)
+      );
+    
+      const applications = matchingSectors.flatMap((sector) =>
+        sector.applications.filter((app) => app.product === productItem.title)
+      );
+    
+      return {
+        title: productItem.title,
+        applications,
+        sectorName: matchingSectors.length > 0 ? matchingSectors[0].title : "Unknown Sector", // Pick the first sector name or default
+      };
+    });
+  
+    setStructuredData(mappedData);
 
+  }, [productData, sectorData]);
+  
+
+  const [sectorName,setSectorName] = useState("")
   const [activeSector, setActiveSector] = useState(0);
-  const activeApplications = data && data.data && data.data[activeSector].applications;
-  const [sectorName,setSectorName] = useState(data && data.data && data.data[0].title)
 
-useEffect(()=>{
-  console.log(data && data.data && data.data[0].title)
-  setSectorName(data && data.data && data.data[0].title)
-},[data])
+  useEffect(() => {
+    if (structuredData.length > 0) {
+      setSectorName(structuredData[0].title);
+    }
+  }, [structuredData]);
+
+
+
+
+  const activeApplications =  productData &&
+  structuredData.length > 0 &&
+  structuredData.find((item) => item.title === sectorName)?.applications || [];
 
 
   return (
@@ -51,7 +92,7 @@ useEffect(()=>{
         bannerSrc={assets.secbnr} // Corrected image import here
         arrowSrc={Arrow}
         desc="PSB®   diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring. "
-        title="Sectors"
+        title="Products"
         breadcrumbs={breadcrumbs}
         bnrHeight="90dvh"
       />
@@ -90,7 +131,7 @@ useEffect(()=>{
         <div className="container h-fit text-black">
           <div className="flex gap-6 lg:gap-0 flex-col lg:flex-row relative z-1">
             <div className={`w-full lg:w-1/3 lg:pr-20`}>
-              <SectorSelector data={data}
+              <SectorSelector data={productData} page="product"
                 setActiveSector={setActiveSector}
                 activeSector={activeSector}
                 setSectorName={setSectorName}
@@ -100,7 +141,7 @@ useEffect(()=>{
             <div
               className={`w-full lg:w-2/3  lg:pl-20 flex flex-col gap-7 lg:border-l-2 border-[#15151510]`}
             >
-              <ApplicationSelector activeApplications={activeApplications} sectorName={sectorName}/>
+              <ApplicationSelector activeApplications={activeApplications} sectorName={sectorName} page="product"/>
             </div>
           </div>
         </div>
@@ -111,4 +152,4 @@ useEffect(()=>{
   );
 };
 
-export default Sectors;
+export default Products;

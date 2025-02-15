@@ -7,7 +7,8 @@ import useSWR from "swr";
 
 const ApplicationSelector = ({
   activeApplications,
-  sectorName
+  sectorName,
+  page
 }: {
   activeApplications: {
     title: string;
@@ -15,6 +16,7 @@ const ApplicationSelector = ({
     product:string;
   }[];
   sectorName:string
+  page?:string
 }) => {
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
@@ -73,7 +75,7 @@ const ApplicationSelector = ({
                 <Image src={productImage ?? assets.bghr} className="pb-3 md:pb-10 h-[150px]" alt="" width={300} height={50}/>
 
                 <Link
-                  href={`/applications/${application.product}?application=${application.title}&sector=${encodeURIComponent(sectorName.replace(/\s+/g, "-"))}`}
+                  href={page=="product" ? `/applications/${application.product}?application=${application.title}` : `/applications/${application.product}?application=${application.title}&sector=${encodeURIComponent(sectorName.replace(/\s+/g, "-"))}`}
                   className="nuber-next-heavy flex gap-2 max-w-fit w-[250px]
                                             group-hover:w-full transition-all duration-300
                                             text-[14px] md:text-font16 leading-[1.5] rmbtn pb-2"
