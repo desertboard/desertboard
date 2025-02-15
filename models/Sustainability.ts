@@ -10,6 +10,9 @@ const RoleSchema = new mongoose.Schema({
     },
     title: {
         type: String
+    },
+    description:{
+        type:String
     }
 })
 
@@ -31,6 +34,9 @@ const VisionSchema = new mongoose.Schema({
 
 
 const SustainabilitySchema = new mongoose.Schema({
+    bannerImage:{
+        type:String
+    },
     pageHeading: {
         type: String,
         required: true,

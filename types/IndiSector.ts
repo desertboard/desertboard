@@ -3,14 +3,17 @@ export type IndiSectorType = {
         applications:{
             title:string;
             description:string;
+           
             image:string;
             product:string;
             _id:string;
+            bannerImage:string;
         }[],
         title:string;
         description:string;
         icon:string;
         image:string;
+        bannerImage:string;
         image_url:string;
         shortDescription:string;
         _id:string;

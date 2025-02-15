@@ -25,22 +25,6 @@ const SalesForm = () => {
                 ></textarea>
                 <label className="absolute font-helvetica text-font20 text-[#000]/50 top-1 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Message</label>
                 </div>
-
-
-                <div className="mt-6  border-gray-400  bg-[#D8D4CF] rounded-xs text-font20">
-                <div className="flex items-start md:items-center flex-col md:flex-row py-3 rounded-md  lg:w-1/2 px-3 md:px-4 lg:gap-14 gap-3">
-                    <label className="font-helvetica text-font20 text-[#000]/50">Resume</label>
-                    <div>
-                        <label className="font-helvetica font-bold text-font20   text-Darkgreen  cursor-pointer">
-                            Choose File
-                            <input type="file" className="hidden" />
-                        </label>
-                        <span className="ml-4 font-helvetica text-font20 text-[#000]/50">skzresume.pdf</span>
-                    </div>
-
-                </div>
-            </div>
-
             <button
                 type="submit"
                 className="mt-6    group items-center hover:border-b-2  border-[#FF671F] text-[#FF671F] pb-2   flex gap-1 nuber-next-heavy text-font18"

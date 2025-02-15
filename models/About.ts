@@ -46,6 +46,9 @@ const AboutSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  bannerImage:{
+    type:String
+  },
   story: {
     type: String,
     required: true,

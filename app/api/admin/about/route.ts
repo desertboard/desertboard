@@ -45,6 +45,8 @@ export async function GET() {
         console.log("partnersData",partnerData)
       }
 
+      console.log("updatedData",updatedData)
+
         
       //todo - need to change this
       console.log("update data final", updatedData);

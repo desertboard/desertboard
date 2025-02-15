@@ -17,7 +17,19 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ data: finish, success: true }, { status: 200 });
 }
 
-export async function GET() {
-  const finishes = await Finish.find();
-  return NextResponse.json({ data: finishes, success: true }, { status: 200 });
+export async function GET(req:NextRequest) {
+
+  const {searchParams} = new URL(req.url)
+  const finishes = searchParams.get("finishes")?.split(",")
+
+  if(finishes){
+    const filteredFinishes = await Finish.find({name:{$in:finishes}});
+
+    console.log("filteredFinishes",filteredFinishes)
+    return NextResponse.json({ data: filteredFinishes, success: true }, { status: 200 });
+  }else{
+    const finishes = await Finish.find();
+    return NextResponse.json({ data: finishes, success: true }, { status: 200 });
+  }
+  
 }

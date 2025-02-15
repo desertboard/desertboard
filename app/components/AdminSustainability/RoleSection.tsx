@@ -15,10 +15,12 @@ import { useForm } from 'react-hook-form'
 import { ImageUploader } from '../ui/image-uploader'
 import Image from 'next/image'
 import { DialogClose } from '@radix-ui/react-dialog'
+import { Textarea } from '@/components/ui/textarea'
 
 
 type FormData = {
     title: string;
+    description:string;
     image: string;
     logo: string;
 }
@@ -44,6 +46,7 @@ const RoleSection = () => {
         setIsSubmitting(true);
         const formData = new FormData();
         formData.append("title", data.title);
+        formData.append("description", data.description);
         formData.append("image", data.image);
         formData.append("logo", data.logo);
 
@@ -107,6 +110,7 @@ const RoleSection = () => {
             console.log("PATCH WORKS")
             const formData = new FormData()
             formData.append("title", getValues("title"))
+            formData.append("description", getValues("description"))
             formData.append("image",getValues("image"))
             formData.append("logo",getValues("logo"))
             const url = `/api/admin/sustainability/roles?id=${id}`;
@@ -159,13 +163,15 @@ const RoleSection = () => {
 
     const handleAddRole = () => {
         setValue("title", "")
+        setValue("description", "")
         setValue("image", "")
         setValue("logo", "")
     }
 
-    const handleSetEditRole = (roleTitle:string,roleImage:string,roleLogo:string) =>{
+    const handleSetEditRole = (roleTitle:string,roleDescription:string,roleImage:string,roleLogo:string) =>{
         setValue("image",roleImage)
         setValue("title",roleTitle)
+        setValue("description",roleDescription)
         setValue("logo",roleLogo)
     }
 
@@ -192,7 +198,10 @@ const RoleSection = () => {
                                 <Label>Title</Label>
                                 <Input {...register("title")}></Input>
 
-                                <DialogClose disabled={isSubmitting} className='bg-black text-white p-3'>Save</DialogClose>
+                                <Label>Description</Label>
+                                <Textarea {...register("description")}></Textarea>
+
+                                <DialogClose disabled={isSubmitting} className='bg-black text-white p-3' type='submit'>Save</DialogClose>
                             </form>
 
 
@@ -201,7 +210,7 @@ const RoleSection = () => {
                 </Dialog>
             </div>
 
-            {roles && roles.length > 0 ? roles.map((role: { _id: string, image: string, logo: string, title: string }) => (
+            {roles && roles.length > 0 ? roles.map((role: { _id: string, image: string, logo: string, title: string ,description:string}) => (
                 <div className='h-80 w-full border border-neutral-200 flex p-2  flex-col gap-5 rounded-xl' key={role._id}>
                     <div className='grid grid-cols-2 h-full w-full rounded-xl  border-neutral-200 gap-5'>
 
@@ -214,13 +223,19 @@ const RoleSection = () => {
 
                                 <Input placeholder='Title' value={role.title} readOnly />
                             </div>
-                            <div className='flex items-center justify-center h-3/4'>
-                                {role.logo !== "" ? <Image src={role.logo} alt='role-image' width={100} height={100} /> : <span>No logo</span>}
+                            <div className='flex items-center justify-between h-3/4'>
+                                <div>
+                                    {role.logo !== "" ? <Image src={role.logo} alt='role-image' width={100} height={100} /> : <span>No logo</span>}
+                                </div>
+                                <div>
+                                    <Textarea value={role.description} readOnly></Textarea>
+                                    
+                                </div>
                             </div>
                             <div className='flex justify-end items-end h-1/3 gap-2'>
                                 {/* <Button onClick={()=>handleEditRole(role._id)}>Save</Button> */}
                                 <Dialog>
-                                    <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4' onClick={()=>handleSetEditRole(role.title,role.image,role.logo)}>Edit</DialogTrigger>
+                                    <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4' onClick={()=>handleSetEditRole(role.title,role.description,role.image,role.logo)}>Edit</DialogTrigger>
                                     <DialogContent>
                                         <DialogHeader>
                                             <DialogTitle>Edit the item</DialogTitle>
@@ -236,6 +251,9 @@ const RoleSection = () => {
 
                                                 <Label>Title</Label>
                                                 <Input {...register("title")}></Input>
+
+                                                <Label>Description</Label>
+                                                <Textarea {...register("description")}></Textarea>
 
                                                 <DialogClose className="bg-black text-white p-3" disabled={isSubmitting} onClick={()=>handleEditRole(role._id)} type='button'>Save</DialogClose>
                                             </form>

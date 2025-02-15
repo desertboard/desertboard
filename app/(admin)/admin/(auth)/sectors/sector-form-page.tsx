@@ -16,6 +16,7 @@ interface Application {
   description: string;
   image: string;
   product: string;
+  bannerImage:string;
 }
 
 interface SectorFormData {
@@ -138,7 +139,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
   };
 
   const handleAddApplication = () => {
-    append({ title: "", description: "", image: "", product: "" });
+    append({ title: "", description: "", image: "", product: "",bannerImage:"" });
   };
 
   const handleRemoveApplication = (index: number) => {
@@ -289,15 +290,29 @@ const SectorFormPage = ({ sectorId }: Props) => {
                   )}
                 </div>
 
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium">Image</Label>
-                  <ImageUploader
-                    value={getValues(`applications.${index}.image`)}
-                    onChange={(url) => setValue(`applications.${index}.image`, url)}
-                  />
-                  {errors.applications?.[index]?.image && (
-                    <p className="text-red-500 text-sm">{errors.applications[index]?.image?.message}</p>
-                  )}
+                <div className="space-y-2 grid grid-cols-2">
+                  <div className="w-full">
+                    <Label className="text-sm font-medium">Image</Label>
+                    <ImageUploader className="w-full"
+                      value={getValues(`applications.${index}.image`)}
+                      onChange={(url) => setValue(`applications.${index}.image`, url)}
+                    />
+                    {errors.applications?.[index]?.image && (
+                      <p className="text-red-500 text-sm">{errors.applications[index]?.image?.message}</p>
+                    )}
+                  </div>
+
+                  <div className="">
+                    <Label className="text-sm font-medium">Banner Image</Label>
+                    <ImageUploader className="w-full"
+                      value={getValues(`applications.${index}.bannerImage`)}
+                      onChange={(url) => setValue(`applications.${index}.bannerImage`, url)}
+                    />
+                    {errors.applications?.[index]?.image && (
+                      <p className="text-red-500 text-sm">{errors.applications[index]?.image?.message}</p>
+                    )}
+                  </div>
+
                 </div>
 
                 <div className="space-y-2">

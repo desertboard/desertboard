@@ -41,6 +41,7 @@ type FormData = {
     partnerDescription:string;
     image_url:string;
     partner_image_url:string;
+    bannerImage:string;
 };
 
 
@@ -80,6 +81,7 @@ export default function AdminAbout() {
         formData.append("title", data.title);
         formData.append("description", data.description);
         formData.append("story", data.story);
+        formData.append("bannerImage",data.bannerImage)
         formData.append("mission", data.mission);
         formData.append("vision", data.vision);
         formData.append("history",JSON.stringify(histories))
@@ -204,6 +206,7 @@ export default function AdminAbout() {
 
                         setValue("title", data.about[0].title);
                         setValue("description", data.about[0].description);
+                        setValue("bannerImage", data.about[0].bannerImage);
                         setValue("story", data.about[0].story);
                         setValue("mission", data.about[0].mission)
                         setValue("vision", data.about[0].vision)
@@ -247,6 +250,11 @@ export default function AdminAbout() {
             <div className="flex justify-between">
                 <h1 className="text-3xl font-bold">About Page</h1>
                 <Button variant="outline" className="bg-blue-50" type="submit" disabled={isSubmitting}>Save Changes</Button>
+            </div>
+
+            <div>
+                <Label htmlFor="bannerImage">Banner Image</Label>
+                <ImageUploader value={watch("bannerImage")} onChange={(url) => setValue("bannerImage", url)} />
             </div>
 
             <div>
