@@ -18,14 +18,14 @@ module.exports = withMT({
   			]
   		},
   		screens: {
-  			xs: '480px',
-  			sm: '606px',
-  			md: '798px',
-  			lg: '1022px',
-  			xl: '1230px',
-  			xxl: '1430px',
-  			'3xl': '1630px',
-  			'4xl': '1790px'
+			xs: '480px',
+			sm: '606px',
+			md: '798px',
+			lg: '1022px',
+			xl: '1230px',
+			xxl: '1430px',
+			'3xl': '1630px',
+			'4xl': '1790px'
   		},
   		container: {
   			center: true,
