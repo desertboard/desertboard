@@ -1,11 +1,13 @@
 
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { topicSelection } from '../selectionData'
+import { Downloads } from '@/types/Downloads'
 
-const TopicSelection = ({ activeTopic, setActiveTopic, isMobile }: {
+const TopicSelection = ({ activeTopic, setActiveTopic, isMobile,data }: {
     activeTopic: number,
     setActiveTopic: Dispatch<SetStateAction<number>>
     isMobile: boolean
+    data:Downloads
 }) => {
 
     const [dropDownOpen,setDropDownOpen] = useState(false)
@@ -25,7 +27,7 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile }: {
             </div>
             <div>
 
-                {!isMobile && topicSelection.map((topic, index) => (
+                {!isMobile && data && data.data.map((topic, index) => (
                     <div className={`group border-b-[2px] border-[#1515151A] flex justify-between py-5 md:py-8 cursor-pointer`} key={index} onClick={() => setActiveTopic(index)}>
 
                         <h4 className={`${activeTopic == index ? "font-helvetica font-bold" : "texthelvetica20 clr15op75"} text-font20 leading-[1.1]`}>{topic.title}</h4>
@@ -34,7 +36,7 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile }: {
                         <div className="transition-all duration-300 group-hover:translate-x-1">
 
                             <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.33394 1L12.3339 9L4.33394 17M1.66406 3.66876L6.9953 8.99999L1.66406 14.3312" stroke={`${activeTopic == index ? "#FF671F" : "#151515"}`} stroke-opacity={`${activeTopic == index ? "1" : "0.5"}`} strokeWidth="2" strokeLinecap="round"/>
+                            <path d="M4.33394 1L12.3339 9L4.33394 17M1.66406 3.66876L6.9953 8.99999L1.66406 14.3312" stroke={`${activeTopic == index ? "#FF671F" : "#151515"}`} strokeOpacity={`${activeTopic == index ? "1" : "0.5"}`} strokeWidth="2" strokeLinecap="round"/>
                             </svg>
 
                         </div>
@@ -57,7 +59,7 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile }: {
                     </div>
 
                     {dropDownOpen && <div>
-                       {topicSelection.map((topic,index)=>(
+                       {data && data.data.map((topic,index)=>(
 
                             topic.title == selectedValue ? null
 

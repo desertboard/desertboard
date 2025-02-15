@@ -1,16 +1,17 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { topicSelection } from '../selectionData';
+import { Downloads } from '@/types/Downloads';
 
-const TypeSelection = ({ activeTypes, setActiveType, activeType, isMobile, activeTopic }: {
-    activeTypes: { title: string; result: { title: string; image: string; }[]; }[]
+const TypeSelection = ({ activeTypes, setActiveType, activeType, isMobile ,data }: {
+    activeTypes: { title: string; _id: string; files: { file: string; name: string; thumbnail: string; _id: string; }[]; }[]
     activeType: number,
     setActiveType: Dispatch<SetStateAction<number>>
     isMobile: boolean
     activeTopic: number
+    data:Downloads
 }) => {
 
     const [dropDownOpen, setDropDownOpen] = useState(false)
-    const [selectedValue, setSelectedValue] = useState(activeTypes[0].title)
+    const [selectedValue, setSelectedValue] = useState(data && data.data && data.data[0].types[0].title)
 
     const handleSelection = (title: string, index: number) => {
         setSelectedValue(title)
@@ -18,17 +19,16 @@ const TypeSelection = ({ activeTypes, setActiveType, activeType, isMobile, activ
         setActiveType(index)
     }
 
-    useEffect(() => {
-        setSelectedValue(topicSelection[activeTopic].types[activeType].title)
-    }, [activeType,activeTopic])
-
+useEffect(()=>{
+    setSelectedValue(data && data.data && data.data[0].types[0].title)
+},[data])
 
     return (
         <>
             <div className='border-b-[2px] pb-5 md:pb-8 border-[#1515151A]  '>
                 <h3 className='nuber-next-heavy text-font28 text-Darkgreen'>Select Type<span className='text-orange'>.</span></h3>
             </div>
-            {!isMobile && activeTypes.map((type, index) => (
+            {!isMobile && data && data.data && activeTypes.map((type, index) => (
                 <div key={index} className='group cursor-pointer' onClick={() => setActiveType(index)}>
                     <div className={`border-b-[2px] border-[#1515151A] flex justify-between py-5 md:py-8  `}>
 
@@ -37,7 +37,7 @@ const TypeSelection = ({ activeTypes, setActiveType, activeType, isMobile, activ
 
                         <div className="transition-all duration-300 group-hover:translate-x-1">
                             <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.33394 1L12.3339 9L4.33394 17M1.66406 3.66876L6.9953 8.99999L1.66406 14.3312" stroke={`${activeType == index ? "#FF671F" : "#151515"}`} stroke-opacity={`${activeType == index ? "1" : "0.5"}`} strokeWidth="2" strokeLinecap="round"/>
+                            <path d="M4.33394 1L12.3339 9L4.33394 17M1.66406 3.66876L6.9953 8.99999L1.66406 14.3312" stroke={`${activeType == index ? "#FF671F" : "#151515"}`} strokeOpacity={`${activeType == index ? "1" : "0.5"}`} strokeWidth="2" strokeLinecap="round"/>
                             </svg>
                         </div>
 
@@ -61,7 +61,7 @@ const TypeSelection = ({ activeTypes, setActiveType, activeType, isMobile, activ
                     </div>
 
                     {dropDownOpen && <div>
-                        {activeTypes.map((type, index) => (
+                        {data && data.data && activeTypes.map((type, index) => (
 
                             type.title == selectedValue ? null
 
