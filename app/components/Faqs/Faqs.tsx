@@ -81,9 +81,6 @@ const Faqs = () => {
                 </div>
             </section>
 
-
-
-
         </>
     )
 }
