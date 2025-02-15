@@ -2,6 +2,8 @@ import Image from 'next/image';
 import NewsIcon from "@/public/assets/images/News/pin.svg";
 import PrimaryArrowBtn from '../Common/PrimaryArrowBtn';
 import moment from 'moment';
+import { useEffect } from 'react';
+import { assets } from '@/public/assets/images/assets';
 
 
 
@@ -17,12 +19,27 @@ import moment from 'moment';
   }
   }) => {
 
+    useEffect(()=>{
+      console.log(listData)
+    },[listData])
+
 
   return (
     <div key={listData.date} className="news-list__item">
       {/* <Image src={listData.images} alt="" className="news-list__img  flex w-full h-full object-cover" width={300} height={350} quality={100} priority unoptimized /> */}
 
-                    <Image src={listData.images[0]} alt="" className="news-list__img  flex w-full h-full object-cover" width={300} height={350} quality={100} priority unoptimized />
+      {listData ? (
+  <Image
+    src={listData.images?.[0] ? listData.images[0] : assets.articlesec1}
+    alt=""
+    className="news-list__img flex w-full h-full object-cover"
+    width={300}
+    height={350}
+    quality={100}
+    priority
+    unoptimized
+  />
+) : null}
 
                 <p className="text-[#151515BF] text-[14px] uppercase font-bold nuber-next-heavy">{moment(listData.date).format('LL')}</p>
       <h3 className="text-font24 leading-[1.3] font-bold nuber-next-heavy text-[#002D28] max-w-[45ch] overflow-hidden text-ellipsis display-webkit-box line-clamp-2 webkit-box-orient-vertical">{listData.title}</h3>
@@ -31,7 +48,7 @@ import moment from 'moment';
           <Image src={NewsIcon} alt="" />
           {
             <ul className="news__category list-none text-black uppercase font-bold text-font14 leading-normal flex gap-3 opacity-75 flex-wrap">
-              {listData.tags.map((category, index) => (
+              {listData && listData.tags && listData.tags.map((category, index) => (
                 <li key={index}>
                   <a href="#" className="underline">
                     {category}

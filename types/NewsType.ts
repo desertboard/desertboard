@@ -7,6 +7,7 @@ tags: string[];
         title: string;
         _id: string;
         type:string;
+        sector:string;
     // history:{
     //     description:string;
     //     heading:string;

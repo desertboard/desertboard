@@ -2,30 +2,22 @@
 import Image from "next/image";
 import { Listbox } from "@headlessui/react";
 import SearchIcon from "@/public/assets/images/icons/search.svg";
-import { Fragment, useState } from "react";
-const types = [
-  { id: 1, name: "Type" },
-  { id: 2, name: "Company News" },
-  { id: 3, name: "Expertise" },
-  { id: 4, name: "Events" },
-];
-const sectors = [
-  { id: 1, name: "Sector" },
-  { id: 2, name: "Event Management" },
-  { id: 3, name: "Fit-out" },
-  { id: 4, name: "Joinery" },
-  { id: 5, name: "Construction & Contracting" },
-  { id: 6, name: "Hospitality" },
-  { id: 7, name: "Commercial" },
-  { id: 8, name: "Architecture" },
-  { id: 9, name: "Interior Design" },
-  { id: 9, name: "Furniture Manufacturing" },
-  { id: 9, name: "Packaging & Gifting" },
+import { Dispatch, Fragment, SetStateAction } from "react";
 
-];
-const Filter = () => {
-  const [typeSelected, setTypeSelected] = useState(types[0]);
-  const [sectorSelected, setSectorSelected] = useState(sectors[0])
+
+const Filter = ({typeSelected,setTypeSelected,types,setSectorSelected,sectorSelected,sectors,setSearchItem,searchItem}:{
+  typeSelected:{ id: number; name: string; };
+  setTypeSelected:Dispatch<SetStateAction<{ id: number; name: string; }>>
+  types:{ id: number; name: string; }[]
+  setSectorSelected:Dispatch<SetStateAction<{ id: number; name: string; }>>
+  sectorSelected:{ id: number; name: string; };
+  sectors:{ id: number; name: string; }[]
+  setSearchItem:Dispatch<SetStateAction<string>>;
+  searchItem:string;
+}) => {
+
+  // const [typeSelected, setTypeSelected] = useState(types[0]);
+  // const [sectorSelected, setSectorSelected] = useState(sectors[0])
   return (
     <section className="bg-grayE3D py-[41px]">
       <div className="container mx-auto">
@@ -104,7 +96,7 @@ const Filter = () => {
 
           <div className="relative flex gap-3 items-center border-b-[2px] border-[#002D28]  pb-2 w-full  md:w-auto xxl:w-[25%] px-3">
             <Image src={SearchIcon} alt="" width={20} height={20}></Image>
-            <input type="text" placeholder="Search" className="bg-transparent focus:outline-none font-helvetica placeholder-lightBlack placeholder-opacity-50 placeholder:font-helvetica placeholder:font-[500] text-[20px] " />
+            <input type="text" value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} placeholder="Search" className="bg-transparent focus:outline-none font-helvetica placeholder-lightBlack placeholder-opacity-50 placeholder:font-helvetica placeholder:font-[500] text-[20px] " />
           </div>
         </div>
       </div>

@@ -16,7 +16,38 @@ interface HeroSectionProps {
   bnrHeight?: string;
 }
 
+
+
 const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labeltext ,  breadcrumbs }) => {
+
+  const handleShareArticle = () =>{
+    console.log(navigator.share)
+    if (navigator.share) {
+      const shareButton = document.getElementById('shareButton');
+      console.log(shareButton)
+      if(shareButton){
+        shareButton.addEventListener('click', async () => {
+          try {
+            // Use the Web Share API to trigger the native sharing dialog
+            await navigator.share({
+              title: title,
+              text: 'Check out this awesome content!',
+              url: window.location.href
+            });
+      
+            console.log('Shared successfully');
+          } catch (error) {
+            console.error('Error sharing:', error);
+          }
+        });
+      }
+    
+      
+    } else {
+      console.warn('Web Share API not supported on this browser');
+    }
+  }
+
   return (
     // <section className="relative h-[75dvh] bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full">
     <section className="relative bg-cover bg-Darkgreen flex items-center justify-center text-center bnr-pg   article-banner w-full" >
@@ -53,7 +84,7 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labe
               </div>
               <div className="flex items-center gap-2">
                     <Image src={assets.share} alt=""></Image>
-                    <p className="nuber-next-bold text-font20 text-[#fff] leading-[1] opacity-[75%]">Share Article</p>
+                    <p className="nuber-next-bold text-font20 text-[#fff] leading-[1] opacity-[75%] cursor-pointer" id="shareButton" onClick={handleShareArticle}>Share Article</p>
                   </div>
 
           </div>
