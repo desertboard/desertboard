@@ -23,7 +23,6 @@ const Swipersustain = ({ data }:{
   const swiperRef = useRef<SwiperType | null>(null);
 
 
-  const [active, setActive] = useState(true); // Initially set active class
 
 
 
