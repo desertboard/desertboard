@@ -18,7 +18,7 @@
 
         // padding-inline: 2em;
         @media (min-width:1550px) {
-          width: 492px !important;
+          width: 29% !important;
           height: min-content;
         }
 
@@ -95,8 +95,10 @@
   }
 
   @media (min-width:1600px) {
-    width: 609px !important;
-    min-height: 384px !important;
+    width: 37% !important;
+    min-height: 500px !important;
+    display: flex;
+    align-items: center;
   }
 
   &::before {

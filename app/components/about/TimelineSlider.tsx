@@ -206,7 +206,7 @@ const TimeLineSlider = ({data}:{
                         slideToClickedSlide={true}
                         speed={800}
                         allowTouchMove={true}
-                        centeredSlides={true}
+                        centeredSlides={false}
 
                         onSlideChange={(swiper) => {
                           if (mainSwiperRef.current) {
