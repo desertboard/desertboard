@@ -21,6 +21,7 @@ const ApplicationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  gallery:[String]
 });
 
 const SectorSchema = new mongoose.Schema(

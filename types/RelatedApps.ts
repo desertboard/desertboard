@@ -5,6 +5,7 @@ export type RelatedApps = {
         image:string;
         product:string;
         title:string;
-        _id:string
+        _id:string;
+        gallery:string[]
     }[]
 }

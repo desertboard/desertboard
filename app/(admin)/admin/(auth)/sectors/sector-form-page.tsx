@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import "react-quill/dist/quill.snow.css";
+import Image from "next/image";
 import { ImageUploader } from "@/app/components/ui/image-uploader";
 import { Textarea } from "@/components/ui/textarea";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
@@ -16,7 +17,8 @@ interface Application {
   description: string;
   image: string;
   product: string;
-  bannerImage:string;
+  bannerImage: string;
+  gallery: string[]
 }
 
 interface SectorFormData {
@@ -27,6 +29,7 @@ interface SectorFormData {
   icon: string;
   bannerImage: string;
   shortDescription: string;
+
 }
 
 interface Props {
@@ -114,6 +117,8 @@ const SectorFormPage = ({ sectorId }: Props) => {
   const onSubmit = async (data: SectorFormData) => {
     try {
       setIsLoading(true);
+      console.log("applications",data.applications)
+      
       if (sectorId) {
         const response = await fetch(`/api/admin/sector?id=${sectorId}`, {
           method: "PATCH",
@@ -139,11 +144,38 @@ const SectorFormPage = ({ sectorId }: Props) => {
   };
 
   const handleAddApplication = () => {
-    append({ title: "", description: "", image: "", product: "",bannerImage:"" });
+    append({ title: "", description: "", image: "", product: "", bannerImage: "", gallery: [] });
   };
 
   const handleRemoveApplication = (index: number) => {
     remove(index);
+  };
+
+
+
+  const handleApplicationImageUpload = (index: number, uploadedUrl: string) => {
+
+    console.log("index",index)
+    // Ensure the gallery exists for the specific application
+    const currentGallery = [...(getValues(`applications.${index}.gallery`) || [])];
+  
+    // Add new image to that specific application's gallery
+    currentGallery.push(uploadedUrl);
+
+    console.log("currentGallery",currentGallery)
+  
+    // Set the new gallery state only for that specific application
+    setValue(`applications.${index}.gallery`, currentGallery, { shouldValidate: true, shouldDirty: true });
+  };
+  
+
+  const handleRemoveApplicationImage = (appIndex: number, imgIndex: number) => {
+    const currentGallery = [...(getValues(`applications.${appIndex}.gallery`) || [])];
+  
+    // Remove the selected image from the correct application
+    currentGallery.splice(imgIndex, 1);
+  
+    setValue(`applications.${appIndex}.gallery`, currentGallery, { shouldValidate: true, shouldDirty: true });
   };
 
   return (
@@ -313,6 +345,33 @@ const SectorFormPage = ({ sectorId }: Props) => {
                     )}
                   </div>
 
+                </div>
+
+                <div>
+                  <Label className="block text-sm font-medium text-gray-700">Gallery</Label>
+                  <div className="mt-2">
+                    <ImageUploader onChange={(url) => handleApplicationImageUpload(index, url)} deleteAfterUpload={true} />
+                  </div>
+                  <div className="mt-4 grid grid-cols-3 gap-4">
+                    {getValues(`applications.${index}.gallery`)?.map((url, imgIndex) => (
+                      <div key={imgIndex} className="relative h-40">
+                        <Image
+                          src={url}
+                          alt={`Uploaded image ${imgIndex + 1}`}
+                          className="h-full w-full object-cover rounded-lg"
+                          width={100}
+                          height={100}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveApplicationImage(index, imgIndex)}
+                          className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+                        >
+                          ×
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="space-y-2">

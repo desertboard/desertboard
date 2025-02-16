@@ -24,16 +24,17 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
     setIsUploadComplete(!!value);
   }, [value]);
 
+  
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       const file = acceptedFiles[0];
       if (!file) return;
-
+      
       try {
         setIsUploading(true);
         setError(null);
         setIsUploadComplete(false);
-
+        
         const formData = new FormData();
         formData.append("file", file);
 
@@ -50,6 +51,7 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
 
         const data = await response.json();
         setLocalImageUrl(data.url);
+        console.log("Image",data.url)
         onChange(data.url, file);
         setIsUploadComplete(true);
         if (deleteAfterUpload) {

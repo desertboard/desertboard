@@ -9,9 +9,11 @@ export async function POST(request: NextRequest) {
   if (!isAdmin) {
     return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
   }
-  const { title, description, image, applications, icon, bannerImage, shortDescription } = await request.json();
+  const { title, description, image, applications, icon, bannerImage, shortDescription,gallery } = await request.json();
 
   await connectDB();
+
+  console.log("gallery",applications)
 
   const existingSector = await Sector.findOne({ title });
 
@@ -19,7 +21,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: false, message: "Sector already exists" }, { status: 400 });
   }
 
-  const sector = await Sector.create({ title, description, image, applications, icon, bannerImage, shortDescription });
+  const sector = await Sector.create({ title, description, image, applications, icon, bannerImage, shortDescription,gallery });
 
   return NextResponse.json({ success: true, data: sector }, { status: 201 });
 }
@@ -73,9 +75,10 @@ export async function PATCH(request: NextRequest) {
 
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
-  const { title, description, image, applications, icon, bannerImage, shortDescription } = await request.json();
+  const { title, description, image, applications, icon, bannerImage, shortDescription,gallery } = await request.json();
 
-  console.log("applications",applications)
+  console.log("gallery",applications)
+
   await connectDB();
 
   const sector = await Sector.findByIdAndUpdate(id, {
@@ -84,6 +87,7 @@ export async function PATCH(request: NextRequest) {
     image,
     applications,
     icon,
+    gallery,
     bannerImage,
     shortDescription,
   });
