@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import bannerImg from "@/public/assets/contactbanner.jpg";
 import PageBanner from '../Common/PageBanner';
 import Arrow from "@/public/assets/brdcrbs.svg";
@@ -8,6 +8,8 @@ import Forms from './FormComponents/Forms';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { assets } from '@/public/assets/images/assets';
+import useSWR from 'swr';
+import { ContactDataType } from '@/types/ContactDataType';
 
 const Contact = () => {
 
@@ -15,6 +17,17 @@ const Contact = () => {
         { label: "Home", href: "/" },
         { label: "Contact", href: "" },
       ];
+
+      const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+
+      const { data }: { data: ContactDataType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/contact', fetcher)
+    
+    
+    
+      useEffect(()=>{
+        console.log(data);
+        console.log('sdsdsds');
+      },[data])
 
 
     return (
@@ -47,7 +60,7 @@ const Contact = () => {
                     </div>
 
                     <div className='lg:col-span-6 w-full flex flex-col gap-8 mt-3 md:mt-8 lg:mt-0 pl-0 md-pl-7 lg:pl-20'>
-                        <AddressBar/>
+                        <AddressBar data={data}/>
                         <Forms/>
                     </div>
 

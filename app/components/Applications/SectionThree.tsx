@@ -11,10 +11,16 @@ import "swiper/css/effect-fade";
 
 import { Swiper as SwiperType } from "swiper";
 import { motion } from "framer-motion";
-import { IndiApplication } from "@/types/ApplicationType";
 
 interface WhySupremeProps {
-  data: IndiApplication
+  data:  {
+    data: {
+      _id: string;
+      name: string;
+      image: string;
+      description: string
+    }[]
+  }
 }
 
 // Component to display the data
@@ -141,7 +147,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={() => console.log("slide change")}
               >
-                {data && data.data &&  data.data.finishes.map((item) => (
+                {data && data.data &&  data.data.map((item) => (
                   <SwiperSlide key={item._id}>
                     <div
                       className="relative group overflow-hidden transform goal-crd hrcd bg-center bg-cover transition-all duration-500 ease-in-out"
@@ -150,8 +156,8 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
                       onMouseLeave={() => setHoveredIndex(null)}
                       onTouchStart={() => setHoveredIndex(item._id)}  // For mobile devices
                     >
-                      <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
-                    <h3 className="nubernext28bold  text-white " >{item.desc}</h3></div>
+                      {/* <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
+                    <h3 className="nubernext28bold  text-white " >{item.description}</h3></div> */}
                       <div className="flex items-end  min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500  ">
                         <div className="p-5 transition-all duration-500 ease-in-out w-full  ">
                           <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-linear w-full  translate-y-[0px] delay-200 group-hover:translate-y-[-10px]">
@@ -175,7 +181,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
                             }}
                           >
                             <span className="   duration-500 delay-0 block">
-                              {item.desc}
+                              {item.description}
                             </span>
                           </p>
                         </div>

@@ -1,12 +1,9 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
-import SalesForm from './SalesForm'
-import MarketingForm from './MarketingForm'
-import Careers from './Careers'
-import General from './General'
 import Image from 'next/image'
 import accordianArrow from '@/public/assets/images/accordian-arrow.svg'
+import FormComponent from './FormComponent'
 
 const Forms = () => {
 
@@ -36,19 +33,19 @@ const Forms = () => {
     const menu = [
         {
             title:"Sales",
-            component:<SalesForm/>
+            component:<FormComponent department='sales'/>
         },
         {
             title:"Marketing & Press",
-            component:<MarketingForm/>
+            component:<FormComponent department='marketing'/>
         },
         {
             title:"Careers",
-            component:<Careers/>
+            component:<FormComponent department='careers'/>
         },
         {
             title:"General Enquiries",
-            component:<General/>
+            component:<FormComponent department='general'/>
         }
     ]
 
