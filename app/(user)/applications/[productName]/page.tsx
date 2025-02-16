@@ -14,7 +14,7 @@ import Arrow from "@/public/assets/brdcrbs.svg";
 import { relslideses } from "../../../components/Applications/data";
 import { useParams } from "next/navigation";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useSWR from "swr"
 // import { IndiSectorType } from "@/types/IndiSector";
 import { IndiApplication } from "@/types/ApplicationType";
@@ -28,6 +28,7 @@ const Sectors = () => {
   const searchParams = useSearchParams()
   const application = searchParams.get("application")
   const sector = searchParams.get("sector") ? decodeURIComponent(searchParams.get("sector")!) : "";
+  const [finishes, setFinishes] = useState<string[]>([]);
 
   console.log("secotr",sector.replace(/-/g, " "))
 
@@ -37,7 +38,17 @@ const Sectors = () => {
   const { data:sectorData }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(sector && `/api/admin/sector/byid?sector=${encodeURIComponent(sector?.replace(/-/g, " "))}`, fetcher)
   const {data:relatedApps}:{data:RelatedApps} = useSWR(`/api/admin/sector?product=${productName}`, fetcher)
   
-  
+  useEffect(() => {
+    if (data?.data?.finishes) {
+      setFinishes(data.data.finishes.map((item:{name:string}) => item.name));
+    }
+  }, [data]);
+
+  const { data: finishesData } = useSWR(
+    finishes.length > 0 ? `/api/admin/finish?finishes=${encodeURIComponent(finishes.join(","))}` : null,
+    fetcher
+  );
+
   // useEffect(()=>{
   //   console.log("data",sectorData && sectorData.data)
   // },[sectorData]) 
@@ -67,7 +78,7 @@ const Sectors = () => {
 
       <SectionTwo pageName="applications" suggested={true} data={data}/>
       <div className="pt-10 md:pt-20 insp-mn relative inspbg"></div>
-      <SectionThree data={data}/>
+      <SectionThree data={finishesData}/>
       <SectionFour data={data} />
       <SectionFive {...relslideses} relatedApps={relatedApps}/>
      <Downloads title={"To Downloads"}/>

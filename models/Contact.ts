@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+
+
 const ContentSchema = new mongoose.Schema({
     area:{
         type:String

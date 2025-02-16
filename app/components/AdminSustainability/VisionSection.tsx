@@ -15,6 +15,7 @@ import { useForm } from 'react-hook-form'
 import { ImageUploader } from '../ui/image-uploader'
 import { DialogClose } from '@radix-ui/react-dialog'
 import Image from 'next/image'
+import { Textarea } from '@/components/ui/textarea'
 
 type FormData = {
     title: string;
@@ -188,7 +189,7 @@ const VisionSection = () => {
                                 <Input {...register("title")}></Input>
 
                                 <Label>Descripiton</Label>
-                                <Input {...register("description")}></Input>
+                                <Textarea {...register("description")}></Textarea>
 
                                 <DialogClose disabled={isSubmitting} className='bg-black text-white p-3' type='submit'>Save</DialogClose>
                             </form>
@@ -241,7 +242,7 @@ const VisionSection = () => {
                                 <Input {...register("title")}></Input>
 
                                 <Label>Descripiton</Label>
-                                <Input {...register("description")}></Input>
+                                <Textarea {...register("description")}></Textarea>
 
                                 <DialogClose disabled={isSubmitting} className='bg-black text-white p-3' onClick={()=>handleEditVison(vision._id)}>Save</DialogClose>
                             </form>
