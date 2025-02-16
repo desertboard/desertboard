@@ -537,3 +537,6 @@ body {
   background-image: url(../public/assets/images/maindescbox-bg.jpg);
   background-size: cover;
 }
+.insp-mn .swiper-scrollbar {
+  display: none;
+}
