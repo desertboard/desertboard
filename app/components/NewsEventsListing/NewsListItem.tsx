@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import NewsIcon from "@/public/assets/images/News/pin.svg";
-import PrimaryArrowBtn from '../Common/PrimaryArrowBtn';
 import moment from 'moment';
 import { useEffect } from 'react';
 import { assets } from '@/public/assets/images/assets';
+import Link from 'next/link';
 
 
 
@@ -25,7 +25,7 @@ import { assets } from '@/public/assets/images/assets';
 
 
   return (
-    <div key={listData.date} className="news-list__item">
+    <div key={listData.date} className="news-list__item flex flex-col">
       {/* <Image src={listData.images} alt="" className="news-list__img  flex w-full h-full object-cover" width={300} height={350} quality={100} priority unoptimized /> */}
 
       {listData ? (
@@ -58,9 +58,18 @@ import { assets } from '@/public/assets/images/assets';
             </ul>
           }
         </div>
-        <PrimaryArrowBtn btntitle={"Read More"} btnLink={`/article/${listData._id}`}></PrimaryArrowBtn>
 
+       
+      
       </div>
+      <Link className="text-[#FF671F] w-fit pb-1 flex items-center justify-between border-[#FF671F] border-b-[2px] text-font18 font-bold group font-nuber-next mt-auto" href={`/article/${listData._id}`}>
+        Read More
+        <span className="ml-2">
+          <svg width="11" height="16" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-transform duration-300 ease-in-out group-hover:translate-x-1">
+            <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke={"#FF671F"} strokeWidth="3" strokeLinecap="round"></path>
+          </svg>
+        </span>
+      </Link>
     </div>
   );
 };

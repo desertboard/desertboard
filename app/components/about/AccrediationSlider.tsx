@@ -54,6 +54,8 @@ const AccrediationSlider = ({data}:{
           ref={swiperRef}
           className="accr__slider !overflow-visible"
           modules={[Navigation, Pagination]}
+          observer={true} 
+  observeParents={true}
           loop={true}
           centeredSlides={true}
           navigation={{
@@ -62,7 +64,7 @@ const AccrediationSlider = ({data}:{
           }}
           slideToClickedSlide={true}
           spaceBetween={40}
-          slidesPerView={2}
+          slidesPerView="auto"
           // Number of slides to duplicate
           // loopedSlides={4}
           // loopAdditionalSlides={3}

@@ -28,7 +28,7 @@
         overflow: auto;
 
         // Modified touch overlay
-        &::before {
+       /*  &::before {
             content: "";
             position: absolute;
             top: 0;
@@ -39,7 +39,7 @@
             pointer-events: auto; // Enable touch events
             touch-action: pan-y; // Only allow vertical scrolling
             -webkit-tap-highlight-color: transparent; // Remove tap highlight on mobile
-        }
+        } */
     }
 
     &__img {

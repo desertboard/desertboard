@@ -130,7 +130,7 @@ const TimeLineSlider = ({data}:{
   }
 
   return (
-   <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary timeline__sec">
+   <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary timeline__sec relative">
          <div className="container d-none" ref={nextContainerRef}></div>
          <div className="flex flex-col md:flex-row w-full gap-6 relative h-[38em] lg:h-[90dvh] xl:h-[90dvh] xxl:h-[80dvh] 3xl:h-[70dvh]">
            <h2 className="text-white z-10 text-font48 nuber-next-heavy leading-[1] absolute top-10 lg:top-20 " style={{ left: `calc(100vw - (${divWidth})` }}>
@@ -179,7 +179,7 @@ const TimeLineSlider = ({data}:{
            </div>
 
            {/* Thumbnail slider with navigation */}
-           <div className="timeline__years w-full md:w-1/3  absolute bottom-10 xl:top-10 right-0 z-10" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
+           <div className="timeline__years w-full md:w-1/3  absolute bottom-10 xl:top-10 right-0 z-1" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
              {/* Navigation Buttons - Only visible on mobile  */}
 
              <Swiper
@@ -206,7 +206,7 @@ const TimeLineSlider = ({data}:{
                         slideToClickedSlide={true}
                         speed={800}
                         allowTouchMove={true}
-                        centeredSlides={true}
+                        centeredSlides={false}
 
                         onSlideChange={(swiper) => {
                           if (mainSwiperRef.current) {

@@ -8,6 +8,7 @@ import React, { JSX, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import parse from "html-react-parser";
 import { assets } from "@/public/assets/images/assets";
+/* import { assets } from "@/public/assets/images/assets"; */
 
 interface MainDescBoxProps {
   secTitle: string;
@@ -18,7 +19,7 @@ interface MainDescBoxProps {
   vdoPoster?: string;
 }
 
-const MainDescBOx: React.FC<MainDescBoxProps> = ({
+const MainDescBox: React.FC<MainDescBoxProps> = ({
   secTitle,
   subTitle,
   paragraphs,
@@ -26,8 +27,9 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({
   mainVdo,
   vdoPoster,
 }) => {
-  const videoRef = useRef<HTMLVideoElement | null>(null); // Type the ref for HTMLVideoElement
-  const [isPlaying, setIsPlaying] = useState(false); // State to track play/pause
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const togglePlay = () => {
     const video = videoRef.current;
     if (video) {
@@ -50,22 +52,32 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({
     return text.replace(/®/g, "<sup>®</sup>");
   };
 
-  // Function to render paragraphs inside <p> tags
   const renderParagraphs = (paragraphs: JSX.Element | string | JSX.Element[] | string[]) => {
     if (typeof paragraphs === "string") {
-      // If it's a single string, wrap it in a <p> tag
       return <p>{parse(formatText(paragraphs))}</p>;
     } else if (Array.isArray(paragraphs)) {
-      // If it's an array, map through each item and wrap it in a <p> tag
       return paragraphs.map((paragraph, index) => {
         if (typeof paragraph === "string") {
-          return <div  className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] 3xl:max-w-[89%] leading-[1.3] mb-4" key={index}>{parse(formatText(paragraph))}</div>;
+          return (
+            <div
+              className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] 3xl:max-w-[89%] leading-[1.3] mb-4"
+              key={index}
+            >
+              {parse(formatText(paragraph))}
+            </div>
+          );
         } else {
-          return <div  className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] 3xl:max-w-[89%] leading-[1.3] mb-4" key={index}>{paragraph}</div>;
+          return (
+            <div
+              className="text-font20 text-[#151515] opacity-[75%] max-w-[100%] 3xl:max-w-[89%] leading-[1.3] mb-4"
+              key={index}
+            >
+              {parse(formatText(paragraph.props.children))}
+            </div>
+          );
         }
       });
     } else {
-      // If it's a JSX.Element, return it as is
       return paragraphs;
     }
   };
@@ -93,9 +105,9 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({
               className="text-Darkgreen mb-4 text-[28px] md:text-[48px] nuber-next-heavy leading-[1.2] overflow-hidden"
               initial={{ opacity: 0, x: -30 }}
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+              viewport={{ once: true, amount: 0.3 }}
               variants={{
-                hidden: { opacity: 0, x: -30 }, // Start below and invisible
+                hidden: { opacity: 0, x: -30 },
                 visible: {
                   opacity: 1,
                   x: 0,
@@ -112,32 +124,22 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({
               </p>
             )}
 
-              <motion.div
-
-                className=" max-w-[100%] md:max-w-[98%] flex flex-col gap-3 texthelvetica20 clr15op75"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-                variants={{
-                  hidden: { opacity: 0, x: -30 }, // Start below and invisible
-                  visible: {
-                    opacity: 0.75,
-                    x: 0,
-                    transition: { duration: 1, delay: 0.5 },
-                  },
-              }}>
-                <div className="text-black/75">
-              {renderParagraphs(paragraphs)}
-              </div>
-              {/* {typeof paragraphs === "string" ? parse(formatText(paragraphs)) : paragraphs} */}
-
-              {/* {Array.isArray(paragraphs)
-  ? paragraphs.map((para, index) => <p className="text-font20 text-black/75 max-w-[100%] md:max-w-[88%] leading-[1.3] mb-3 " key={index}>{parse(formatText(para))}</p>)
-  : <p>{parse(formatText(paragraphs))}</p>} */}
-
-
-              </motion.div>
-
+            <motion.div
+              className="max-w-[100%] md:max-w-[98%] flex flex-col gap-3 texthelvetica20 clr15op75"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{
+                hidden: { opacity: 0, x: -30 },
+                visible: {
+                  opacity: 0.75,
+                  x: 0,
+                  transition: { duration: 1, delay: 0.5 },
+                },
+              }}
+            >
+              <div className="text-black/75">{renderParagraphs(paragraphs)}</div>
+            </motion.div>
           </div>
 
           <div className="flex lg:absolute w-full lg:w-1/2 xl:w-[58%] lg:right-0 lg:top-5 h-full">
@@ -153,11 +155,11 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({
               </figure>
             )}
             {mainVdo && (
-              <div >
+              <div>
                 <motion.div className="relative h-full group" style={{ y: translateY }}>
                   <video
                     ref={videoRef}
-                    className="h-full object-cover "
+                    className="h-full object-cover"
                     src={mainVdo}
                     poster={vdoPoster}
                     controls={false}
@@ -166,30 +168,23 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({
                     playsInline
                     onEnded={() => setIsPlaying(false)}
                   />
-                  {/* Play/Pause Button */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    {!isPlaying && ( // Show the button only if video is paused
+                  {!isPlaying && (
                       <button
                         className="bg-white bg-opacity-20 rounded-sm px-6 py-3 md:px-10 md:py-6 transition duration-300 hover:bg-opacity-50"
                         onClick={togglePlay}
                       >
-                        <svg
-                          width="26"
-                          height="34"
-                          viewBox="0 0 26 34"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+                        <svg width="26" height="34" viewBox="0 0 26 34" fill="none">
                           <path d="M0.0114746 0.469116V33.5308L25.9885 17L0.0114746 0.469116Z" fill="white" />
                         </svg>
                       </button>
                     )}
-                     {isPlaying && ( // Show the button only if video is paused
+                     {isPlaying && (
                       <button
-                        className="bg-white bg-opacity-20 rounded-sm px-6 py-3 md:px-10 md:py-6 transition duration-300 group-hover:opacity-[1] opacity-0"
+                        className="bg-white bg-opacity-20 opacity-0 group-hover:opacity-[1] rounded-sm px-6 py-3 md:px-10 md:py-6 transition duration-300 hover:bg-opacity-50"
                         onClick={togglePlay}
                       >
-                        <Image src={assets.pause} alt="pause" className="invert" width={26} height={34} />
+                     <Image src={assets.pause} alt="image" className="invert"></Image>
                       </button>
                     )}
                   </div>
@@ -203,4 +198,4 @@ const MainDescBOx: React.FC<MainDescBoxProps> = ({
   );
 };
 
-export default MainDescBOx;
+export default MainDescBox;

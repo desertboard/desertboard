@@ -20,9 +20,9 @@
         .sectorcrd-overlaygreen {
             height: 100%;
             background: rgb(0, 45, 40);
-            background: -moz-linear-gradient(180deg, rgba(0, 45, 40, 1) 0%, rgba(0, 45, 40, 0) 100%);
-            background: -webkit-linear-gradient(180deg, rgba(0, 45, 40, 1) 0%, rgba(0, 45, 40, 0) 100%);
-            background: linear-gradient(180deg, rgba(0, 45, 40, 1) 0%, rgba(0, 45, 40, 0) 100%);
+            background: -moz-linear-gradient(180deg, rgba(0, 45, 40, 1) 0%, rgba(0, 45, 40, 0.5) 100%);
+            background: -webkit-linear-gradient(180deg, rgba(0, 45, 40, 1) 0%, rgba(0, 45, 40, 0.5) 100%);
+            background: linear-gradient(180deg, rgba(0, 45, 40, 1) 0%, rgba(0, 45, 40, 0.5) 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#002d28",endColorstr="#002d28",GradientType=1);
         }
         // &::before {
