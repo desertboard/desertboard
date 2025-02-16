@@ -25,16 +25,7 @@ const Swipersustain = ({ data }:{
 
   const [active, setActive] = useState(true); // Initially set active class
 
-  useEffect(() => {
-    const handleHover = () => setActive(false); // Remove class on any hover
 
-    // Listen for mouse movement anywhere on the page
-    window.addEventListener(".mousemove", handleHover);
-
-    return () => {
-      window.removeEventListener(".mousemove", handleHover);
-    };
-  }, []);
 
 
   const formatText = (text: string) => {
@@ -44,7 +35,7 @@ const Swipersustain = ({ data }:{
   return (
     <>
       <Swiper
-        className={`suscard-mn mousemove ${active ? "active-div" : ""}`}
+        className={`suscard-mn mousemove `}
 
         modules={[Navigation, Pagination]}
         slidesPerView="auto"
