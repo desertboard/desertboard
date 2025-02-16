@@ -51,16 +51,16 @@ const Sustainabilitypartners = ({data}:{
             </div><div className="w-full lg:w-3/4">
               <div>
               <p
-                  className="texthelvetica20 clr15op75 pb-7 lg:pb-10"
-                  dangerouslySetInnerHTML={{
-                    __html: formatText(
-                      data?.sustainability?.partners.description
-                        .split(".")
-                        .slice(0, 1)
-                        .join("")
-                    ),
-                  }}
-                />
+  className="texthelvetica20 clr15op75 pb-7 lg:pb-10"
+  dangerouslySetInnerHTML={{
+    __html: formatText(
+      data?.sustainability?.partners.description
+        .split(".")
+        .slice(0, 1)
+        .join("") + "." 
+    ),
+  }}
+/>
       <Accordionsec data={data} bg={"bg-[#D1CCC8]"} bullet={false} />
       <p
                   className="texthelvetica20 clr15op75 pt-5"
@@ -69,7 +69,7 @@ const Sustainabilitypartners = ({data}:{
                       data?.sustainability?.partners.description
                         .split(".")
                         .slice(1)
-                        .join("")
+                        .join("") + "." 
                     ),
                   }}
                 />

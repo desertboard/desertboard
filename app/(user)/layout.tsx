@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "../../app/globals.css";
 import "../../app/components/Common/common.scss";
 import Footer from "../components/Common/footer";
-import Header from "../components/Headernew";
+import Header from "../components/Header";
 
 
 

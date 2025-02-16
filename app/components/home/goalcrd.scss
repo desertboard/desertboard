@@ -124,7 +124,21 @@
         padding: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
-// .afic::after{content: url(/assets/images/applications/arrowdown.svg);
-//     position: absolute;
-//     top: 15px;
-//     left: 20px;}
+
+.afic::before{
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid #ffffff;
+    clear: both;
+    z-index: 9999999;
+    margin-left: auto;}
+    @media (min-width: 1630px) and (max-width: 1789px) {
+.csgap{gap:40px !important}
+    }
