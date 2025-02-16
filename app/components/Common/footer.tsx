@@ -415,7 +415,7 @@ const scrollToTop = () => {
 
         <button
       onClick={scrollToTop}
-      className={`fixed bottom-5 right-20    transition-opacity duration-300 z-20 ${
+      className={`fixed bottom-5 right-20    transition-opacity duration-300 z-50 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
