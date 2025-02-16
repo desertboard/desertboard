@@ -4,32 +4,13 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import flogo from "@/public/assets/images/home/flogo.png";
 import logo from "@/public/assets/images/home/sticky-logo.png";
-import { Menu, MenuItem } from "./ui/navbar-menu";
 import MobileMenu from "./MobileMenu/MobileMenu";
-import { menuItems } from "../(user)/data/menuItems";
-import useSWR from "swr";
 import Link from "next/link";
 
 const Header = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [hoveredDiv, setHoveredDiv] = useState<string | null>(null);
 
-  const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
-
-  const { data: productData } = useSWR(`/api/admin/products`, fetcher)
-  const [products, setProducts] = useState([])
-
-  const { data: sectorData } = useSWR(`/api/admin/sector`, fetcher)
-  const [sectors, setSectors] = useState([])
-
-  useEffect(() => {
-    console.log(productData && productData.data)
-    console.log(sectorData && sectorData.data)
-
-    setProducts(productData && productData.data)
-    setSectors(sectorData && sectorData.data)
-  }, [productData, sectorData])
-
-
-  const [active, setActive] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -71,177 +52,401 @@ const Header = () => {
   }
 
   return (
-    <header className={`w-full ${isSticky ? "fixed bg-white text-primary header" : "absolute bg-transparent text-white"} top-0 z-40`}>
+    <header
+      className={`w-full ${
+        isSticky
+          ? "fixed bg-white text-primary header"
+          : "absolute bg-transparent text-white"
+      } top-0 z-40`}
+    >
       <div className="container">
         <div className="py-5 z-10 border-b flex items-center justify-between">
           <div className="flex items-center">
-            <Link href={'/'} > <Image src={isSticky ? logo : flogo} alt="Logo" width={311} height={60} className={`logos`} /></Link>
+            <Link href={"/"}>
+              {" "}
+              <Image
+                src={isSticky ? logo : flogo}
+                alt="Logo"
+                width={311}
+                height={60}
+                className={`logos`}
+              />
+            </Link>
           </div>
 
-          <nav>
-            <ul className="flex space-x-5 3xl:space-x-6 uppercase text-sm tracking-widest group">
-              <Menu setActive={setActive}>
-                {menuItems.map((item, index) => (
-                  <MenuItem item={item.title} href={item.href} setActive={setActive} active={active} key={index} noMenu={item.title !== "Products" && item.title !== "Sectors"}>
-                    {item.title == "Products" &&
-                      <div className="flex flex-col gap-3">
-                        {products && products.map((item: { title: string }, index) => (
-                          <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/product-details/${item.title}`} key={index}>{item.title}</Link>
-                        ))}
-                      </div>
-                    }
+          <div className="nav ">
+            {/* Main Menu */}
+            <div className="flex   items-center csgap gap-[10px] lg:gap-[25px] xxl:gap-6 3xl:gap-[52px] py-4">
+              <div>
+                <a
+                  href="#"
+                  className="py-4 cursor-pointer hover:text-gray-500 text-[12px] xl:text-[14px]  xxl:text-font18 mitm nuber-next-bold tracking-normal uppercase"
+                >
+                  Home
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="py-4 cursor-pointer hover:text-gray-500 text-[12px] xl:text-[14px]  xxl:text-font18 mitm nuber-next-bold tracking-normal uppercase"
+                >
+                  About
+                </a>
+              </div>
 
-                    {item.title == "Sectors" &&
-                      <div className="flex space-x-5 gap-8" key={index}>
-                        {sectors && sectors.map((item: { title: string,applications:{title:string,product:string}[] }, index) => (
+              <div
+                className={`lione firstmenu relative   ${
+                  hoveredDiv === "first" ? "afic " : "  "
+                }`}
+                onMouseEnter={() => setHoveredDiv("first")}
+                onMouseLeave={() => setHoveredDiv(null)}
+              >
+                <a
+                  href="#"
+                  className="py-4 cursor-pointer hover:text-gray-500 text-[12px] xl:text-[14px]  xxl:text-font18 mitm nuber-next-bold tracking-normal  uppercase"
+                >
+                  Sectors
+                </a>
+              </div>
+              <div
+                className={`lione firstmenu relative   ${
+                  hoveredDiv === "second" ? "afic " : "  "
+                }`}
+                onMouseEnter={() => setHoveredDiv("second")}
+                onMouseLeave={() => setHoveredDiv(null)}
+              >
+                <a
+                  href="#"
+                  className="py-4 cursor-pointer hover:text-gray-500 text-[12px] xl:text-[14px]  xxl:text-font18 mitm nuber-next-bold tracking-normal  uppercase"
+                >
+                  Products
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="py-4 cursor-pointer hover:text-gray-500 text-[12px] xl:text-[14px]  xxl:text-font18 mitm nuber-next-bold tracking-normal  uppercase"
+                >
+                  Sustainability
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="py-4 cursor-pointer hover:text-gray-500 text-[12px] xl:text-[14px]  xxl:text-font18 mitm nuber-next-bold tracking-normal  uppercase"
+                >
+                  Downloads
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="py-4 cursor-pointer hover:text-gray-500 text-[12px] xl:text-[14px]  xxl:text-font18 mitm nuber-next-bold tracking-normal  uppercase"
+                >
+                  News & Events
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="py-4 cursor-pointer hover:text-gray-500 text-[12px] xl:text-[14px]  xxl:text-font18 mitm nuber-next-bold tracking-normal  uppercase"
+                >
+                  FAQS
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="py-4 cursor-pointer hover:text-gray-500 text-[12px] xl:text-[14px]  xxl:text-font18 mitm nuber-next-bold tracking-normal  uppercase"
+                >
+                  Contact
+                </a>
+              </div>
+            </div>
 
-                            <div className="flex flex-col gap-3" key={index} >
-                              <div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div>
-                              {item.applications.map((application,index)=>(
+            {/* Submenu */}
+          </div>
+        </div>
+      </div>
+      <div
+        className={`firstitem  transition-all duration-500 absolute w-full   ${
+          hoveredDiv === "first"
+            ? "opacity-100 visible translate-y-[-3px]"
+            : "opacity-0 invisible translate-y-[-20px]"
+        }`}
+        onMouseEnter={() => setHoveredDiv("first")}
+        onMouseLeave={() => setHoveredDiv(null)}
+      >
+        <div className="container relative bg-white p-4  ">
+          <div className="grid   md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="flex flex-col gap-3">
+              <div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">
+                Engineering & Construction
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Facade Cladding
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Wall Cladding
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Partitional Walls
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Sub-Flooring
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Roofing
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Concrete Forming
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Site Hoarding
+                </a>
+              </div>
+            </div>
 
-                                  <div  key={index}>
-                                    <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/applications/${application.product}?application=${application.title}&sector=${encodeURIComponent(item.title.replace(/\s+/g, "-"))}`} key={index}>{application.title}</Link>
-                                  </div>
+            <div className="flex flex-col gap-3">
+              <div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">
+                Landscape
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Exterior Pergolas
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Fencing
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Outdoor Furniture
+                </a>
+              </div>
+            </div>
 
+            <div className="flex flex-col gap-3">
+              <div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">
+                Interior Design
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Fire-Rated Door Cores
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Flooring Parquet
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Furniture & Fixed Furniture
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Interior Decoration
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Commercial Displays
+                </a>
+              </div>
+            </div>
 
-                              ))}
-                            </div>
-
-                        ))}
-                      </div>
-                    }
-
-                  </MenuItem>
-                ))}
-
-                {/* <MenuItem item="About" setActive={setActive} active={active} noMenu>
-                <div className="p-4">
-                  <Link href="/">About</Link>
-                </div>
-              </MenuItem> */}
-
-                {/* <MenuItem setActive={setActive} active={active} item="Sectors" noMenu>
-                <div className="grid grid-cols-2 gap-4 p-4">
-                  <ProductItem
-                    title="Engineering & Construction"
-                    description=" "
-                    href="#"
-                    src={"/assets/images/gd-im1.jpg"}
-                  />
-                  <ProductItem
-                    title="Landscape"
-                    description=""
-                    href="#"
-                    src="/assets/images/gd-im2.jpg"
-                  />
-                  <ProductItem
-                    title="Interior Design"
-                    description=""
-                    href="#"
-                    src="/assets/images/gd-im3.jpg"
-                  />
-                  <ProductItem
-                    title="Events & Exhibitions"
-                    description=""
-                    href="#"
-                    src="/assets/images/gd-im4.jpg"
-                  />
-                </div>
-              </MenuItem>
-              <MenuItem setActive={setActive} active={active} item="Products" noMenu>
-                <div className="grid grid-cols-1 gap-2">
-                  <ProductItemL
-                    title="Engineering & Construction"
-                     href="#"
-                  />
-                  <ProductItemL
-                    title="Engineering & Construction"
-                     href="#"
-                  />
-                  <ProductItemL
-                    title="Engineering & Construction"
-                     href="#"
-                  />
-                  <ProductItemL
-                    title="Engineering & Construction"
-                     href="#"
-                  />
-
-                </div>
-              </MenuItem>
-
-              <MenuItem item="Sustainability" setActive={setActive} active={active} noMenu>
-                <div className="p-4">
-                  <Link href="/">Sustainability</Link>
-                </div>
-              </MenuItem>
-
-              <MenuItem item="Downloads" setActive={setActive} active={active} noMenu>
-                <div className="p-4">
-                  <Link href="/">Downloads</Link>
-                </div>
-              </MenuItem>
-
-              <MenuItem item="News & Events" setActive={setActive} active={active} noMenu>
-                <div className="p-4">
-                  <Link href="/">News & Events</Link>
-                </div>
-              </MenuItem>
-
-              <MenuItem item="FAQS" setActive={setActive} active={active} noMenu>
-                <div className="p-4">
-                  <Link href="/">FAQS</Link>
-                </div>
-              </MenuItem>
-
-              <MenuItem item="Contact" setActive={setActive} active={active} noMenu>
-                <div className="p-4">
-                  <Link href="/">Contact</Link>
-                </div>
-              </MenuItem> */}
-              </Menu>
-              {/* <li>
-              <Link href="#home">
-                <span>Home</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="#about">
-                <span>About</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="#sectors">
-                <span>Sectors</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="#sustainability">
-                <span>Sustainability</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="#downloads">
-                <span>Downloads</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="#news-events">
-                <span>News & Events</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="#faqs">
-                <span>FAQs</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="#contact">
-                <span>Contact</span>
-              </Link>
-            </li> */}
-            </ul>
-          </nav>
+            <div className="flex flex-col gap-3">
+              <div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">
+                Events & Exhibitions
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Stands & Booths
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Prefabricated Structures
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Totems & Signages
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className={` firstitem  transition-all duration-500  absolute min-w-[300px] left-[41%] rounded-md    ${
+          hoveredDiv === "second"
+            ? "opacity-100 visible translate-y-[-3px]"
+            : "opacity-0 invisible translate-y-[-20px]"
+        }`}
+        onMouseEnter={() => setHoveredDiv("second")}
+        onMouseLeave={() => setHoveredDiv(null)}
+      >
+        <div className="container relative  p-4  ">
+          <div className="grid     gap-5">
+            <div className="flex flex-col gap-3">
+              <div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">
+                second
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Facade Cladding
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Wall Cladding
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Partitional Walls
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Sub-Flooring
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Roofing
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Concrete Forming
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300
+       text-[12px] xl:text-[14px] xxl:text-[16px] tracking-normal"
+                  href="#"
+                >
+                  Site Hoarding
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
