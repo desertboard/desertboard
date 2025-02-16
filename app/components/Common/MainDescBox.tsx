@@ -7,6 +7,7 @@ import { StaticImageData } from "next/image";
 import React, { JSX, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import parse from "html-react-parser";
+import { assets } from "@/public/assets/images/assets";
 /* import { assets } from "@/public/assets/images/assets"; */
 
 interface MainDescBoxProps {
@@ -168,7 +169,7 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
                     onEnded={() => setIsPlaying(false)}
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    {!isPlaying && (
+                  {!isPlaying && (
                       <button
                         className="bg-white bg-opacity-20 rounded-sm px-6 py-3 md:px-10 md:py-6 transition duration-300 hover:bg-opacity-50"
                         onClick={togglePlay}
@@ -176,6 +177,14 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
                         <svg width="26" height="34" viewBox="0 0 26 34" fill="none">
                           <path d="M0.0114746 0.469116V33.5308L25.9885 17L0.0114746 0.469116Z" fill="white" />
                         </svg>
+                      </button>
+                    )}
+                     {isPlaying && (
+                      <button
+                        className="bg-white bg-opacity-20 opacity-0 group-hover:opacity-[1] rounded-sm px-6 py-3 md:px-10 md:py-6 transition duration-300 hover:bg-opacity-50"
+                        onClick={togglePlay}
+                      >
+                     <Image src={assets.pause} alt="image" className="invert"></Image>
                       </button>
                     )}
                   </div>
