@@ -101,7 +101,8 @@ const Tabs = ({ applications,data }: {
                                 <motion.img
                                   src={tab.image}
                                   alt="New Tab Content"
-                                  className="w-full h-350 lg:h-[552px] object-cover opacity-80 transition-opacity duration-300 hover:opacity-100"
+                                  className="w-full h-350 lg:h-[552px] object-cover transition-opacity duration-300"
+                                  width={1500} height={900}
                                   initial={{ scale: 0.9 }}
                                   animate={{ scale: 1 }}
                                   transition={{ duration: 0.5 }}
