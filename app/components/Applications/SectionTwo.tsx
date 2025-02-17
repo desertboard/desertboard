@@ -83,7 +83,7 @@ function SectionTwo({ suggested,data,pageName,sectorData }: SectionTwoProps) {
     }
 
     return ""
-    
+
   };
   return (
     <>
@@ -157,14 +157,15 @@ function SectionTwo({ suggested,data,pageName,sectorData }: SectionTwoProps) {
     </div>
             </div>
             <div className="lg:w-1/2 " ref={referenceDiv}>
-              <div
-            className={`transition-all duration-300 mt-10 lg:mt-0 ${
-              isStickydiv ? "fixed top-[110px] lg:w-2/6" : ""
-                }`}
-                style={{ width: divWidth ? `${divWidth}px` : "auto" }}>
-                  <SingleSlider data={data} sectorData={sectorData}/>
+            <div
+  className={`transition-all duration-700 mt-10 lg:mt-0 ${
+    isStickydiv ? "fixed top-[110px] lg:w-2/6  translate-y-0" : " translate-y-[-30px]"
+  }`}
+  style={{ width: divWidth ? `${divWidth}px` : "auto" }}
+>
+  <SingleSlider data={data} sectorData={sectorData} />
+</div>
 
-                  </div>
             </div>
           </div>
         </div>
