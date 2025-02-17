@@ -14,6 +14,8 @@ import { useParams } from 'next/navigation'
 type FormData = {
     question: string;
     answer: string;
+    linkLabel:string;
+    link:string;
 };
 
 
@@ -42,6 +44,8 @@ const ItemForm = ({sectionId,editMode}:{
         const formData = new FormData();
         formData.append("question", data.question);
         formData.append("answer", data.answer);
+        formData.append("linkLabel", data.linkLabel);
+        formData.append("link", data.link);
 
         try {
                 
@@ -84,6 +88,8 @@ useEffect(() => {
                         console.log(data.content)
                         setValue("question", data.content.question);
                         setValue("answer", data.content.answer);
+                        setValue("linkLabel", data.content.linkLabel);
+                        setValue("link", data.content.link);
 
                     }
 
@@ -120,6 +126,17 @@ useEffect(() => {
                     />
                     {errors.answer && <span className="text-red-500">{errors.answer.message}</span>}
                 </div>
+
+                <div>
+                    <Label>Link-label</Label>
+                    <Input {...register("linkLabel")}/>
+                </div>
+
+                <div>
+                    <Label>Link</Label>
+                    <Input {...register("link")}/>
+                </div>
+
                 <Button disabled={isSubmitting} className='w-1/3 mx-auto'>Save</Button>
             </form>
         </div>

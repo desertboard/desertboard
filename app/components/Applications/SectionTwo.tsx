@@ -78,7 +78,12 @@ function SectionTwo({ suggested,data,pageName,sectorData }: SectionTwoProps) {
     { text: "Get InTouch", href: "/contact" },
   ];
   const formatmm2Text = (text: string) => {
-    return text.replace(/mm2/g, "mm<sup>2</sup>");
+    if(text!==""){
+      return text.replace(/mm2/g, "mm<sup>2</sup>");
+    }
+
+    return ""
+    
   };
   return (
     <>

@@ -10,6 +10,9 @@ const WhySupreme = ({ data,pageName }:{
   pageName:string;
 }) => {
   const formatText = (text: string) => {
+    if(!text){
+      return ""
+    }
     return text.replace(/®/g, "<sup>®</sup>");
   };
   // console.log(data && data.data)

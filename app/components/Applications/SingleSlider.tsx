@@ -22,11 +22,16 @@ const SectionTwo = ({data,sectorData}:{
 
   useEffect(()=>{
     if(sectorData && data){
+      
       const filteredApp = sectorData.data.applications.filter((item)=>(
         item.title == application
       ))
-      
-      setGalleryImage(filteredApp[0].gallery)
+
+      if(filteredApp[0]?.gallery.length>0){
+        setGalleryImage(filteredApp && filteredApp[0]?.gallery)
+      }else{
+        setGalleryImage([])
+      }
       
     }
     
@@ -85,7 +90,7 @@ const SectionTwo = ({data,sectorData}:{
             </SwiperSlide>
           ))}
 
-{data && data.data && galleryImages.length > 0 && galleryImages.map((item,index)=>(
+{data && data.data && galleryImages && galleryImages.length > 0 && galleryImages.map((item,index)=>(
             <SwiperSlide key={index}>
             <div>
 
