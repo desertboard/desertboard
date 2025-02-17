@@ -16,6 +16,12 @@ const FaqsSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
+    linkLabel:{
+      type:String
+    },
+    link:{
+      type:String
+    }
   }]
 });
 

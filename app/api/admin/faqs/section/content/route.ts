@@ -45,6 +45,8 @@ export async function PATCH(req: NextRequest) {
       const formData = await req.formData();
       const question = formData.get("question");
       const answer = formData.get("answer");
+      const linkLabel = formData.get("linkLabel")
+      const link = formData.get("link")
  
         const faqs = await Faqs.findById({_id:sectionid})
         if(faqs){
@@ -52,6 +54,8 @@ export async function PATCH(req: NextRequest) {
             if(foundItem){
                 foundItem.question = question
                 foundItem.answer = answer
+                foundItem.linkLabel = linkLabel
+                foundItem.link = link
                 await faqs.save()
                 return NextResponse.json({ message: "Content updated successfully" }, { status: 200 }); 
             }else{
@@ -81,10 +85,12 @@ export async function PATCH(req: NextRequest) {
       const formData = await req.formData();
       const question = formData.get("question");
       const answer = formData.get("answer");
+      const linkLabel = formData.get("linkLabel")
+      const link = formData.get("link")
  
         const faqs = await Faqs.findById({_id:id})
         if(faqs){
-            faqs.contents.push({question,answer})
+            faqs.contents.push({question,answer,linkLabel,link})
             await faqs.save()
             return NextResponse.json({ message: "Content added successfully" }, { status: 200 }); 
         }else{

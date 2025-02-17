@@ -7,6 +7,8 @@ const ProductAccordians = ({items}:{
     items:{
         question:string;
         answer:string;
+        linkLabel:string;
+        link:string;
     }[]
 }) => {
     const [activeAccordian, setActiveAccordian] = useState<null | number>(null)
@@ -94,18 +96,20 @@ const ProductAccordians = ({items}:{
 
                             </div>
 
-                            <div className='flex'>
-                                <Link
-                                    href={'/'}
-                                    className="mt-6 font-semibold text-sm  group items-center hover:border-b-2  border-[#FF671F] text-[#FF671F] pb-1 h-6 nuber-next flex"
+                            {item.linkLabel && item.link &&<div>
+                                <Link href={item.link}>
+                                <button
+                                    type="submit"
+                                    className="mt-6 font-semibold text-sm  group items-center hover:border-b-2  border-[#FF671F] text-[#FF671F] pb-1 h-6 flex gap-1 nuber-next"
                                 >
-                                    View fire-rated certifications  <div className="transition-all duration-300 group-hover:translate-x-1">
+                                    {item.linkLabel}  <div className="transition-all duration-300 group-hover:translate-x-1">
                                         <svg width="20" height="15" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
                                         </svg>
                                     </div>
+                                </button>
                                 </Link>
-                            </div> 
+                            </div>}
 
                         </div>
                     </div>
