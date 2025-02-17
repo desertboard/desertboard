@@ -4,7 +4,7 @@ export const SliderData = [
   {
     id: 1,
     title:"SDG 3",
-    desc:"DesertBoard’s zero-formaldehdye Palm Strand Boards ( PSB® ) improve indoor air quality",
+    desc:"DesertBoard’s zero-formaldehdye Palm Strand Boards ( PSB® ) improve indoor air quality.",
     icon: assets.iconsl1,
     image:assets.sliconmn1
   },
