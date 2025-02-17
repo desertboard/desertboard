@@ -30,7 +30,7 @@ const SectionTwo = ({data,sectorData}:{
       
     }
     
-  },[sectorData,data])
+  },[sectorData,data,application])
 
 
   return (
