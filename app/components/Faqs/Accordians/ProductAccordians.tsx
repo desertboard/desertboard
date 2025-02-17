@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import accordianArrow from '@/public/assets/images/accordian-arrow.svg'
+import Link from 'next/link'
 
 const ProductAccordians = ({items}:{
     items:{
@@ -73,7 +74,7 @@ const ProductAccordians = ({items}:{
                 {items && items.map((item, index) => (
                     <div key={index}>
                         <button onClick={() => toggleAccordian(index)}
-                            className={`w-full flex justify-between items-center  text-slate-800 p-2 md:p-4 bg-[#E3DED9] hover:bg-black/30 `}
+                            className={`w-full flex justify-between items-center  text-slate-800 p-2 md:p-4 bg-[#E3DED9] `}
                         >
                             <div className='helvetica-bold clr15op75 text-font16 md:text-font20 text-left '  dangerouslySetInnerHTML={{ __html: formatText(item.question) }} ></div>
                             <span id="icon-1" className="text-slate-800 transition-transform duration-300">
@@ -93,17 +94,17 @@ const ProductAccordians = ({items}:{
 
                             </div>
 
-                            {/* <div>
-                                <button
-                                    type="submit"
-                                    className="mt-6 font-semibold text-sm  group items-center hover:border-b-2  border-[#FF671F] text-[#FF671F] pb-1 h-6 flex gap-1 nuber-next"
+                           {/*  <div className='flex'>
+                                <Link
+                                    href={'/'}
+                                    className="mt-6 font-semibold text-sm  group items-center hover:border-b-2  border-[#FF671F] text-[#FF671F] pb-1 h-6 nuber-next flex"
                                 >
                                     View fire-rated certifications  <div className="transition-all duration-300 group-hover:translate-x-1">
                                         <svg width="20" height="15" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
                                         </svg>
                                     </div>
-                                </button>
+                                </Link>
                             </div> */}
 
                         </div>
