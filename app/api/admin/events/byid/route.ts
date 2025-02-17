@@ -18,7 +18,10 @@ export async function PATCH(request: NextRequest) {
   }
   try {
     await connectDB();
-    const { id, ...eventData } = await request.json();
+    const {...eventData } = await request.json();
+
+    const {searchParams} = new URL(request.url)
+    const  id = searchParams.get("id")
     const updatedEvent = await Event.findByIdAndUpdate(id, eventData, { new: true });
     return NextResponse.json({ data: updatedEvent, success: true }, { status: 200 });
   } catch (error) {

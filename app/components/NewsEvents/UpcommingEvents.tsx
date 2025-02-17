@@ -108,8 +108,8 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
                     </ul>
                   </div>
                   <div className="upc-event-crd__footer mt-auto flex gap-6 pt-6">
-                    <PrimaryArrowBtn btntitle={"Tickets"} btnLink={"#"} />
-                    <PrimaryArrowBtn btntitle={"Website"} btnLink={"#"} />
+                    <PrimaryArrowBtn btntitle={"Tickets"} btnLink={event.tickets} />
+                    <PrimaryArrowBtn btntitle={"Website"} btnLink={event.website} />
                   </div>
                 </div>
               </SwiperSlide>

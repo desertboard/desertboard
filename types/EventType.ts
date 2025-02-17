@@ -7,6 +7,8 @@ export type EventType = {
         time:string;
         title:string;
         _id:string;
+        tickets:string;
+        website:string;
     }[]
     
 }

@@ -18,6 +18,8 @@ interface EventsFormData {
   location: string;
   description: string;
   image: string;
+  tickets:string;
+  website:string;
 }
 
 interface EventsFormProps {
@@ -42,6 +44,8 @@ const EventsForm = ({ eventId }: EventsFormProps) => {
       location: "",
       description: "",
       image: "",
+      tickets:"",
+      website:""
     },
   });
 
@@ -61,6 +65,8 @@ const EventsForm = ({ eventId }: EventsFormProps) => {
       setValue("location", data.data.location);
       setValue("description", data.data.description);
       setValue("image", data.data.image);
+      setValue("tickets",data.data.tickets)
+      setValue("website",data.data.website)
     };
     fetchEvent();
   }, [eventId, setValue]);
@@ -163,6 +169,32 @@ const EventsForm = ({ eventId }: EventsFormProps) => {
             )}
           />
           {errors.description && <p className="mt-1 text-sm text-red-600">{errors.description.message}</p>}
+        </div>
+
+        <div>
+          <Label htmlFor="location" className="block text-sm font-medium text-gray-700">
+            Tickets
+          </Label>
+          <Input
+            {...register("tickets", { required: "Tickets is required" })}
+            type="text"
+            id="location"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+          />
+          {errors.tickets && <p className="mt-1 text-sm text-red-600">{errors.tickets.message}</p>}
+        </div>
+
+        <div>
+          <Label htmlFor="location" className="block text-sm font-medium text-gray-700">
+            Website
+          </Label>
+          <Input
+            {...register("website", { required: "Website is required" })}
+            type="text"
+            id="location"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+          />
+          {errors.website && <p className="mt-1 text-sm text-red-600">{errors.website.message}</p>}
         </div>
 
         {/* Image Field */}

@@ -16,8 +16,8 @@ export async function POST(request: NextRequest) {
   }
   try {
     await connectDB();
-    const { title, date, time, location, description, image } = await request.json();
-    const event = await Event.create({ title, date, time, location, description, image });
+    const { title, date, time, location, description, image,tickets,website } = await request.json();
+    const event = await Event.create({ title, date, time, location, description, image,tickets,website });
     return NextResponse.json({ data: event, success: true }, { status: 200 });
   } catch (error) {
     console.error("Error creating event:", error);
