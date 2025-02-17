@@ -17,8 +17,8 @@ export default function Home() {
           "For centuries, date palm trees have been a vital resource in the Middle East, historically used to construct Barasti houses that provided essential shelter in the harsh desert climate. Inspired by the rich legacy and the vision of the UAE's founding father, Sheikh Zayed bin Sultan Al Nahyan, DesertBoard successfully produced the first engineered board in 2021.",
         ]}
         // mainImg="/assets/images/mn.jpg"
-        mainVdo="/assets/videos/brandvideo.mp4"
-        vdoPoster="/assets/images/home/banner.jpg"
+        mainVdo="/assets/videos/Desertboard_About_sec.mp4"
+        vdoPoster="/assets/images/home/abt-vid.jpg"
       />
       <UspList secTitle={"Key USP's"} />
       <SectorsList />
