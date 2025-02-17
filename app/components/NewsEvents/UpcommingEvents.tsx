@@ -12,6 +12,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import LightSectionContainer from "../Common/LightSectionContainer";
 import { EventType } from "@/types/EventType";
+import moment from 'moment'
 
 interface upCommingEventsProps {
   commingEvents: EventType
@@ -99,7 +100,7 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
                             />
                           </svg>
                         </span>
-                        <p className="Uppercase helvetica font-bold text-font16">{event.time}</p>
+                        <p className="Uppercase helvetica font-bold text-font16">{moment(event.time).format('LT')}</p>
                       </li>
                       <li className="flex items-center gap-3 text-black opacity-75 font-bold text-font16 leading-normal">
                         <span className="flex">

@@ -22,6 +22,7 @@ export async function PATCH(request: NextRequest) {
 
     const {searchParams} = new URL(request.url)
     const  id = searchParams.get("id")
+    console.log("Eventdata",eventData)
     const updatedEvent = await Event.findByIdAndUpdate(id, eventData, { new: true });
     return NextResponse.json({ data: updatedEvent, success: true }, { status: 200 });
   } catch (error) {

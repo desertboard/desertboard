@@ -10,6 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ImageUploader } from "@/app/components/ui/image-uploader";
 import { useRouter } from "next/navigation";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 interface EventsFormData {
   title: string;
@@ -18,8 +20,8 @@ interface EventsFormData {
   location: string;
   description: string;
   image: string;
-  tickets:string;
-  website:string;
+  tickets: string;
+  website: string;
 }
 
 interface EventsFormProps {
@@ -29,6 +31,13 @@ interface EventsFormProps {
 const EventsForm = ({ eventId }: EventsFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const [selectedTime, setSelectedTime] = useState<Date | null>(null);
+
+  const handleTimeChange = (time:Date) =>{  
+    console.log("selectedTime",time)
+    setSelectedTime(time)
+    setValue("time", time.toISOString());
+  }
 
   const {
     register,
@@ -44,8 +53,8 @@ const EventsForm = ({ eventId }: EventsFormProps) => {
       location: "",
       description: "",
       image: "",
-      tickets:"",
-      website:""
+      tickets: "",
+      website: ""
     },
   });
 
@@ -61,12 +70,18 @@ const EventsForm = ({ eventId }: EventsFormProps) => {
 
       setValue("title", data.data.title);
       setValue("date", eventDate);
-      setValue("time", data.data.time);
+      // setValue("time", data.data.time);
       setValue("location", data.data.location);
       setValue("description", data.data.description);
       setValue("image", data.data.image);
-      setValue("tickets",data.data.tickets)
-      setValue("website",data.data.website)
+      setValue("tickets", data.data.tickets)
+      setValue("website", data.data.website)
+      if(data.data.time){
+        setSelectedTime(new Date(data.data.time));
+        const time = new Date(data.data.time) // Convert string to Date
+        const parsedTime = time?.toISOString()
+        setValue("time",parsedTime ?? "")
+      }
     };
     fetchEvent();
   }, [eventId, setValue]);
@@ -134,10 +149,20 @@ const EventsForm = ({ eventId }: EventsFormProps) => {
           <Label htmlFor="time" className="block text-sm font-medium text-gray-700">
             Time
           </Label>
-          <Input
+          {/* <Input
             {...register("time", { required: "Time is required" })}
             type="time"
             id="time"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+          /> */}
+          <DatePicker
+            selected={selectedTime}
+            onChange={(time) => time ? handleTimeChange(time) : null}
+            showTimeSelect
+            showTimeSelectOnly
+            timeIntervals={1}
+            timeCaption="Time"
+            dateFormat="h:mm aa" // 12-hour format with AM/PM
             className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
           />
           {errors.time && <p className="mt-1 text-sm text-red-600">{errors.time.message}</p>}
