@@ -132,7 +132,7 @@ const TimeLineSlider = ({data}:{
   return (
    <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary timeline__sec relative">
          <div className="container d-none" ref={nextContainerRef}></div>
-         <div className="flex flex-col md:flex-row w-full gap-6 relative h-[38em] lg:h-[90dvh] xl:h-[90dvh] xxl:h-[80dvh] 3xl:h-[70dvh]">
+         <div className="flex flex-col xl:flex-row w-full gap-6 relative h-[38em] lg:h-[70dvh] xl:h-[70dvh] xxl:h-[80dvh] 3xl:h-[70dvh]">
            <h2 className="text-white z-10 text-font48 nuber-next-heavy leading-[1] absolute top-10 lg:top-20 " style={{ left: `calc(100vw - (${divWidth})` }}>
              Our History<span className="text-[#FF671F]">.</span>
            </h2>
@@ -169,8 +169,8 @@ const TimeLineSlider = ({data}:{
                   </div>
                 </div>
                 <div className="rounded-lg shadow h-full flex flex-col justify-center xl:justify-end pb-20 relative z-30 xl:w-2/3 " style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
-                  <h3 className="text-4xl md:text-5xl lg:text-font72 helveticaBold text-white mb-10 nuber-next-heavy ">{item.timeSpan}</h3>
-                  <h4 className="text-xl md:text-2xl lg:text-font28 leading-[1.2] opacity-75 nuber-next-heavy text-white mb-5">{item.heading}</h4>
+                  <h3 className="text-4xl lg:text-5xl lg:text-font72 helveticaBold text-white mb-2 md:mb-10 nuber-next-heavy ">{item.timeSpan}</h3>
+                  <h4 className="text-xl lg:text-2xl lg:text-font28 leading-[1.2] opacity-75 nuber-next-heavy text-white mb-2 md:mb-5">{item.heading}</h4>
                   <p className="text-white text-font20 leading-[1.3] opacity-75 font-normal">{item.description}</p>
                 </div>
               </SwiperSlide>
@@ -178,16 +178,36 @@ const TimeLineSlider = ({data}:{
           </Swiper>
            </div>
 
-           {/* Thumbnail slider with navigation */}
-           <div className="timeline__years w-full md:w-1/3  absolute bottom-10 xl:top-10 right-0 z-1" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
+        {/* Thumbnail slider with navigation */}
+           <div className="timeline__years w-full xl:w-1/3  absolute bottom-10 xxl:top-10 right-0 z-1" style={{ paddingInline: `calc(100vw - (${divWidth})` }}>
              {/* Navigation Buttons - Only visible on mobile  */}
 
+             <div className="hidden  w-full  relative  z-[1] xl:flex items-center justify-end rounded transition-all duration-300">
+               <button   onClick={() => thumbsSwiper?.slidePrev()}>
+               {/* <ChevronRight className="w-6 h-6 text-white" /> */}
+               <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full rotate-[-90deg]">
+                   <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
+                 </svg>
+             </button>
+            <div className="hidden xl:block lg:ml-3 h-[4px] w-[68px] transition-all ease-linear duration-300 opacity-0 group-hover:opacity-50 ">
+            </div>
+          </div>
              <Swiper
                         onSwiper={setThumbsSwiper}
                         direction={"horizontal"}
-                        slidesPerView={4}
+                        // slidesPerView={4}
                         breakpoints={{
-                          768: {
+
+                          320: {
+                            spaceBetween:15,
+                            slidesPerView: 3,
+                          },
+
+                          678: {
+                            spaceBetween:20,
+                            slidesPerView: 4,
+                          },
+                          1230: {
                             direction: "vertical",
                             slidesPerView: 3.5,
                             spaceBetween: 20,
@@ -206,7 +226,7 @@ const TimeLineSlider = ({data}:{
                         slideToClickedSlide={true}
                         speed={800}
                         allowTouchMove={true}
-                        centeredSlides={false}
+                        centeredSlides={true}
 
                         onSlideChange={(swiper) => {
                           if (mainSwiperRef.current) {
@@ -215,21 +235,31 @@ const TimeLineSlider = ({data}:{
                           }
                         }}>
                {data && data.about[0] && data.about[0].history.map((item, index) => (
-                 <SwiperSlide key={index} className="!h-16 md:!h-24 cursor-pointer timeline__thumb">
-                   <div className={`w-full h-full flex items-center justify-end rounded transition-all duration-300`}>
-                     <span className={`text-font20 text-right md:text-2xl font-normal transition-colors duration-300 ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-bold lg:min-w-max xl:text-font32 opacity-100" : "text-white opacity-50 text-font24 font-normal hover:text-gray-200"}`}>{item.timeSpan}</span>
-                     <div className={`hidden lg:block lg:ml-3 h-[4px] w-[68px] transition-all ease-linear duration-300 ${thumbsSwiper?.realIndex === index ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
+                 <SwiperSlide key={index} className="!h-16 lg:!h-24 cursor-pointer timeline__thumb">
+                   <div className={`w-full h-full flex items-center justify-center xl:justify-end rounded transition-all duration-300`}>
+                     <span className={` nuber-next-bold font-[400] text-font24 leading-[1.3] transition-colors duration-300 text-center xl:text-right ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-heavy  text-font32 opacity-100" : "text-white opacity-50   hover:text-gray-200"}`}>{item.timeSpan}</span>
+                     <div className={`hidden xl:block lg:ml-3 h-[4px] w-[68px] transition-all ease-linear duration-300 stylefirst ${thumbsSwiper?.realIndex === index ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
                    </div>
                  </SwiperSlide>
                ))}
-             </Swiper>
-                 <button className="absolute left-6 bottom-[-18%] -translate-y-1/2 z-10 shadow md:hidden transition-colors duration-300" onClick={() => thumbsSwiper?.slidePrev()}>
+          </Swiper>
+          <div className="hidden  w-full  relative top-[-8px] z-[1] xl:flex items-center justify-end rounded transition-all duration-300">
+               <button   onClick={() => thumbsSwiper?.slideNext()}>
+               {/* <ChevronRight className="w-6 h-6 text-white" /> */}
+               <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full rotate-90">
+                   <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
+                 </svg>
+             </button>
+            <div className="hidden xl:block lg:ml-3 h-[4px] w-[68px] transition-all ease-linear duration-300 opacity-0 group-hover:opacity-50  ">
+            </div>
+          </div>
+                 <button className="absolute left-6 bottom-[-18%] -translate-y-1/2 z-10 shadow xl:hidden transition-colors duration-300" onClick={() => thumbsSwiper?.slidePrev()}>
                {/* <ChevronLeft className="w-6 h-6 text-white" /> */}
                 <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                    <path d="M17.9879 2L2.98787 17L17.9879 32M22.9939 7.00392L12.9978 17L22.9939 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
                  </svg>
              </button>
-             <button className="absolute right-6 bottom-[-18%] -translate-y-1/2 z-10 rounded-full shadow md:hidden transition-colors duration-300" onClick={() => thumbsSwiper?.slideNext()}>
+             <button className="absolute right-6 bottom-[-18%] -translate-y-1/2 z-10 rounded-full shadow xl:hidden transition-colors duration-300" onClick={() => thumbsSwiper?.slideNext()}>
                {/* <ChevronRight className="w-6 h-6 text-white" /> */}
                <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                    <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />
