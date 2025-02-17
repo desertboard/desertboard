@@ -94,7 +94,7 @@ const ProductAccordians = ({items}:{
 
                             </div>
 
-                           {/*  <div className='flex'>
+                            <div className='flex'>
                                 <Link
                                     href={'/'}
                                     className="mt-6 font-semibold text-sm  group items-center hover:border-b-2  border-[#FF671F] text-[#FF671F] pb-1 h-6 nuber-next flex"
@@ -105,7 +105,7 @@ const ProductAccordians = ({items}:{
                                         </svg>
                                     </div>
                                 </Link>
-                            </div> */}
+                            </div> 
 
                         </div>
                     </div>

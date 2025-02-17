@@ -17,6 +17,15 @@ interface upCommingEventsProps {
   commingEvents: EventType
 }
 
+const formatDate = (dateString: string) => {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    month: "long",
+    day: "2-digit",
+    year: "numeric",
+  });
+};
+
+
 const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
   return (
     <>
@@ -79,7 +88,7 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
                             />
                           </svg>
                         </span>
-                        <p className="uppercase helvetica font-bold text-font16">{event.date}</p>
+                        <p className="uppercase helvetica font-bold text-font16">{formatDate(event.date)}</p>
                       </li>
                       <li className="flex items-center gap-3 text-black opacity-75 font-bold text-font16 leading-normal">
                         <span className="flex">
