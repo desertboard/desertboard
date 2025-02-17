@@ -17,8 +17,8 @@ const InstagramBlock: React.FC<InstagramDataProps> = ({ }) => {
     <>
       <CustomClrSection bgClr="ola-white bg-primary border-t-[6px] border-b-[6px] border-secondary">
         <div className="container">
-          <div className="flex justify-between items-start relative z-50 flex-wrap gap-x-5 mb-5 lg:mb-10">
-            <h2 className="text-font48 heavydark text-white mb-2 xl:mb-10">Are you following us on Instagram?</h2>
+          <div className="flex justify-between items-start relative flex-wrap gap-x-5 mb-5 lg:mb-10">
+            <h2 className="text-font48 text-white mb-2 xl:mb-10">Are you following us on Instagram?</h2>
             <Link href="https://www.instagram.com/desertboard/" target="_blank" className="text-[#FF671F] w-fit pb-1 flex items-center justify-between border-[#FF671F] border-b-[2px] text-font18 font-bold group font-nuber-next">
             Visit Instagram
         <span className="ml-2">

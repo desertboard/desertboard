@@ -55,7 +55,7 @@ useEffect(()=>{
       <NewsBlock  sectionTitle="Our Expertise" data={latestExpertise}/>
       <InstagramBlock instagramData={instagramPosts} />
       <UpcommingEvents commingEvents={eventsData} />
-      <BeforeFooterTag title={"Discover Industry Solutions"} />
+      <BeforeFooterTag title={"Discover Industry Solutions"} url="/sectors" />
     </>
   );
 };
