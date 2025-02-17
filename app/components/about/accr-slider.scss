@@ -19,7 +19,7 @@
         // padding-inline: 2em;
         @media (min-width:1550px) {
           width: 29% !important;
-          height: min-content;
+          height: 450px;
         }
 
         // height: 307px !important;
@@ -89,14 +89,11 @@
     min-height: 400px !important;
   }
 
-  @media (min-width: 1550px) {
-    width: 500px !important;
-    height: min-content !important;
-  }
+
 
   @media (min-width:1600px) {
     width: 37% !important;
-    min-height: 500px !important;
+    min-height: 520px !important;
     display: flex;
     align-items: center;
   }
@@ -177,4 +174,59 @@
   backface-visibility: hidden;
   perspective: 1000px;
   will-change: transform;
+}
+.accr__slide {
+  height: 500px !important; /* Default height for all slides */
+  transition: all 0.4s ease-in-out;
+}
+
+.accr__slide.swiper-slide-active {
+  height: 530px !important; /* Make the center slide taller */
+}
+
+@media (max-width:1400px) {
+  .accr__slide {
+    height: 450px !important; /* Default height for all slides */
+    transition: all 0.4s ease-in-out;
+  }
+
+  .accr__slide.swiper-slide-active {
+    height: 480px !important; /* Make the center slide taller */
+  }
+}
+
+@media (max-width:1199px) {
+  .accr__slider .swiper-wrapper .swiper-slide.accr__slide.swiper-slide-active .accr__title {
+    font-size: clamp(1.2rem, 10vw, 2.5rem);
+}
+}
+@media (max-width:992px) {
+  .accr__slide {
+    height: 400px !important; /* Default height for all slides */
+    transition: all 0.4s ease-in-out;
+  }
+
+  .accr__slide.swiper-slide-active {
+    height: 430px !important; /* Make the center slide taller */
+  }
+}
+@media (max-width:768px) {
+  .accr__slide {
+    height: 350px !important; /* Default height for all slides */
+    transition: all 0.4s ease-in-out;
+  }
+
+  .accr__slide.swiper-slide-active {
+    height: 380px !important; /* Make the center slide taller */
+  }
+}
+@media (max-width:450px) {
+  .accr__slide {
+    height: 400px !important; /* Default height for all slides */
+    transition: all 0.4s ease-in-out;
+  }
+
+  .accr__slide.swiper-slide-active {
+    height: 430px !important; /* Make the center slide taller */
+  }
 }
