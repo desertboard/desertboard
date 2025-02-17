@@ -23,7 +23,7 @@ interface WhySupremeProps {
 }
 
 // Component to display the data
-const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
+const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
 
   const { productName } = useParams()
 
@@ -66,6 +66,10 @@ const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
     }
   }, [hoveredIndex]); // Runs when hoveredIndex changes
 
+  const formatText = (text: string) => {
+    return text.replace(/®/g, "<sup>®</sup>");
+  };
+
   return (
     <>
       <section className=" pt-10 lg:pt-20 pb-[80px] lg:pb-[80px]  relative z-[1] bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
@@ -76,7 +80,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
 
 
         <div className="container ">
-          <div><h2 className="heavydark48 mb-6 md:mb-10">{sectitle}<span className="text-orange">.</span></h2></div>
+          <div><h2 className="heavydark48 mb-6 md:mb-10"><span dangerouslySetInnerHTML={{ __html: formatText(`${data && data.data.title}`) }} /> Applications<span className="text-orange">.</span></h2></div>
 
           <div>
             <motion.div className="ansm" initial={{ opacity: 0, y: -30 }}
