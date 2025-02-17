@@ -540,3 +540,23 @@ body {
 .insp-mn .swiper-scrollbar {
   display: none;
 }
+.liststyl {
+  ol{
+    margin-top: 1rem;
+    >li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: #FF671F;
+        top: 8px;
+        left: 0;
+        border-radius: 100px;
+      }
+    }
+  }
+}
