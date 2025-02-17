@@ -9,10 +9,11 @@ import { tabData } from "./data";
 import parse from 'html-react-parser'
 import readarrow from "@/public/assets/images/read-arrow.svg";
 import Link from "next/link";
-import { Applications } from "@/types/IndiSector";
+import { Applications, IndiSectorType } from "@/types/IndiSector";
 
-const Tabs = ({ applications }: {
+const Tabs = ({ applications,data }: {
   applications?: Applications
+  data:IndiSectorType
 }) => {
   const [activeTab, setActiveTab] = useState<string>("tab1");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -124,7 +125,7 @@ const Tabs = ({ applications }: {
                                   </li>
                                 ))}
                               </ul> */}
-                                <Link href={`/applications/${tab.product}?application=${tab.title}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-1 group-hover:opacity-100 w-[250px]
+                                <Link href={`/applications/${tab.product}?application=${tab.title}&sector=${encodeURIComponent(data.data.title.replace(/\s+/g, "-"))}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-1 group-hover:opacity-100 w-[250px]
                                     group-hover:w-full transition-opacity duration-300 text-[14px] md:text-font16   leading-[1.5] rmbtn pb-2 ">
                                   Read More <Image src={readarrow} alt="icn1" className="transition-all duration-300 relative top-[2px]" width={11} height={16} />
                                 </Link>

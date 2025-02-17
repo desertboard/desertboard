@@ -126,7 +126,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ relatedApps }) => {
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={() => console.log("slide change")}
               >
-               {relatedApps && relatedApps.data.map((item) => (
+               {relatedApps && relatedApps.map((item) => (
                   <SwiperSlide key={item._id}>
                     <div
                       className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"

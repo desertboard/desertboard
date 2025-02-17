@@ -19,7 +19,6 @@ import useSWR from "swr"
 // import { IndiSectorType } from "@/types/IndiSector";
 import { IndiApplication } from "@/types/ApplicationType";
 import { IndiSectorType } from "@/types/IndiSector";
-import { RelatedApps } from "@/types/RelatedApps";
 
 
 const Sectors = () => {
@@ -36,8 +35,9 @@ const Sectors = () => {
 
   const { data }:{data:IndiApplication,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/products?productName=${productName}`, fetcher)
   const { data:sectorData }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(sector && `/api/admin/sector/byid?sector=${encodeURIComponent(sector?.replace(/-/g, " "))}`, fetcher)
-  const {data:relatedApps}:{data:RelatedApps} = useSWR(`/api/admin/sector?product=${productName}`, fetcher)
+  // const {data:relatedApps}:{data:RelatedApps} = useSWR(`/api/admin/sector?product=${productName}`, fetcher)
   
+  const [relatedApps,setRelatedApps] = useState<{ title: string; description: string; image: string; product: string; _id: string; bannerImage: string; gallery: string[]; }[]>([])
   useEffect(() => {
     if (data?.data?.finishes) {
       setFinishes(data.data.finishes.map((item:{name:string}) => item.name));
@@ -49,9 +49,10 @@ const Sectors = () => {
     fetcher
   );
 
-  // useEffect(()=>{
-  //   console.log("data",sectorData && sectorData.data)
-  // },[sectorData]) 
+  useEffect(()=>{
+    console.log("data",sectorData && sectorData.data)
+    setRelatedApps(sectorData && sectorData.data && sectorData.data.applications)
+  },[sectorData]) 
 
   useEffect(()=>{
     console.log("data data",data)

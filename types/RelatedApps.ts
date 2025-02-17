@@ -1,5 +1,4 @@
 export type RelatedApps = {
-    data:{
         bannerImage:string;
         description:string;
         image:string;
@@ -8,4 +7,3 @@ export type RelatedApps = {
         _id:string;
         gallery:string[]
     }[]
-}
