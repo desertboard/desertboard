@@ -42,7 +42,7 @@ const AccrediationSlider = ({data}:{
     <LightSectionContainer>
       <div className="container mb-5 lg:mb-20">
         <h2 className="heavydark mb-2 xl:mb-10">
-          Our Accreditation Partners <span className="text-[#FF671F] leading-[1]">.</span>
+          Our Accreditation Partners<span className="text-[#FF671F] leading-[1]">.</span>
         </h2>
         {/* <div className="text-lightBlack text-font20 leading-[1.3] opacity-75">
                   {data && data.about[0] && parse(data.about[0].partners.description)}

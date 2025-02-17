@@ -80,7 +80,7 @@ export default function MisionVision({data}:{
               <Image src="assets/images/about/mi-icon.svg" className="xl:mb-[60px]" alt="Mission Icon" width={50} height={50} />
             </div>
             <h3 className="mivi__title text-font48 text-Darkgreen leading-[1] nuber-next-heavy mb-0  xl:mb-[60px]">
-              Mission <span className="text-[#FF671F]">.</span>
+              Mission<span className="text-[#FF671F]">.</span>
             </h3>
           </div>
           <div className="mivi__desc text-black opacity-75 leading-[1.3] text-18 lg:text-font20 text-black/75" style={{ "--containerWidth": divWidth } as React.CSSProperties}>
@@ -97,7 +97,7 @@ export default function MisionVision({data}:{
               <Image src="assets/images/about/vi-icon.svg" className="mb-0 xl:mb-[60px]" alt="Mission Icon" width={50} height={50} />
             </div>
             <h3 className="mivi__title text-font48 text-Darkgreen leading-[1] nuber-next-heavy mb-0  xl:mb-[60px]">
-              Vision <span className="text-[#FF671F]">.</span>
+              Vision<span className="text-[#FF671F]">.</span>
             </h3>
           </div>
           <div className="mivi__desc text-black opacity-75 leading-[1.3] text-18 lg:text-font20" style={{ "--containerWidth": divWidth } as React.CSSProperties}>

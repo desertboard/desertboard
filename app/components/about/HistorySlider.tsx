@@ -87,7 +87,7 @@ const HistorySlider: React.FC<HistorySliderProps> = ({ className = "" }) => {
       />
       <div className="container relative">
         <h2 className="relative text-white z-10 text-font48 nuber-next-heavy pt-20 leading-[1]">
-          Our History <span className="text-[#FF671F]">.</span>
+          Our History<span className="text-[#FF671F]">.</span>
         </h2>
         <div className="flex relative z-10 min-h-[50dvh]">
           <div className="flex-grow flex items-end relative overflow-hidden history__content">
