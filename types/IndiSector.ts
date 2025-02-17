@@ -9,6 +9,7 @@ export type IndiSectorType = {
             _id:string;
             bannerImage:string;
             gallery:string[];
+            shortDescription:string;
         }[],
         title:string;
         description:string;

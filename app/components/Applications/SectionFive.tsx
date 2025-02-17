@@ -159,7 +159,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ relatedApps }) => {
                                               }
                                             }}>
                             <span className="text-white">
-                              {parse(item.description ? item.description.slice(0,200):"")}
+                              {parse(item.shortDescription ? item.shortDescription:"")}
                               </span>
                             </div>
                         </div>

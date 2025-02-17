@@ -30,7 +30,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<string | null>(null);
   const contentRefs = useRef(new Map());
-  const [filteredApplications, setFilteredApplications] = useState<{ title: string; description: string; image: string; product: string; _id: string; }[]>([])
+  const [filteredApplications, setFilteredApplications] = useState<{ title: string; description: string; image: string; product: string; _id: string;shortDescription:string }[]>([])
 
 
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
@@ -43,6 +43,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
         image: string;
         product: string;
         _id: string;
+        shortDescription:string;
       }[]
     }
     , error: Error | undefined, isLoading: boolean
@@ -176,7 +177,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
 
                               className="duration-500 delay-0 block"
                             >
-                              {parse(item.description.slice(0, 200) + "...")}
+                              {parse(item.shortDescription ? item.shortDescription : "")}
                             </span>
                           </p>
 

@@ -39,7 +39,7 @@ const Sectors = () => {
   const { data:sectorData }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(sector && `/api/admin/sector/byid?sector=${encodeURIComponent(sector?.replace(/-/g, " "))}`, fetcher)
   // const {data:relatedApps}:{data:RelatedApps} = useSWR(`/api/admin/sector?product=${productName}`, fetcher)
   
-  const [relatedApps,setRelatedApps] = useState<{ title: string; description: string; image: string; product: string; _id: string; bannerImage: string; gallery: string[]; }[]>([])
+  const [relatedApps,setRelatedApps] = useState<{ title: string; description: string; image: string; product: string; _id: string; bannerImage: string; gallery: string[]; shortDescription:string; }[]>([])
   useEffect(() => {
     if (data?.data?.finishes) {
       setFinishes(data.data.finishes.map((item:{name:string}) => item.name));
