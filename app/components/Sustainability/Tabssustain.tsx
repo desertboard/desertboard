@@ -105,7 +105,7 @@ const Tabssustain = ({ data }:{
                                   {tab.title}
                                 </h3>
 
-                                <div className="mb-0 lg:mb-10 mnsas texthelvetica20 clr15op75">
+                                <div className="mb-0 lg:mb-10 mnsas texthelvetica20 clr15op75 liststyl">
                                   {/* {tab && data.sustainability && tab.description.split(".").map((item, index) => (
                                     // <li
                                     //   className="flex texthelvetica20 clr15op75 mb-[16px] "
