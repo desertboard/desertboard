@@ -11,6 +11,7 @@ const Listing = ({typeSelected,sectorSelected,searchItem}:{
   sectorSelected:{ id: number; name: string; }
   searchItem:string
 }) => {
+
   
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
   const { data }:{data:NewsType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/news', fetcher)
@@ -30,25 +31,33 @@ const Listing = ({typeSelected,sectorSelected,searchItem}:{
 
 
   useEffect(() => {
-    if (!data?.data?.length) return;
+
+    const handleFilter = async() =>{
+      await new Promise((resolve)=>setTimeout(resolve,0))
+      if (!data?.data?.length || !typeSelected.name) return;
   
-    console.log("Original Data:", data.data);
-    
-    if (typeSelected.name === "Type" && sectorSelected.name === "Sector") {
-      console.log("in if - Returning all data");
-      setFilteredData(data.data);
-    } else if (typeSelected.name !== "Type" && sectorSelected.name === "Sector") {
-      console.log("in else if - Filtering by type only");
-      setFilteredData(data.data.filter((item) => item.type === typeSelected.name));
-    } else if (sectorSelected.name !== "Sector" && typeSelected.name === "Type") {
-      console.log("Filtering by sector only");
-      setFilteredData(data.data.filter((item) => item.sector === sectorSelected.name));
-    } else {
-      console.log("Filtering by both type and sector");
-      setFilteredData(data.data.filter((item) => 
-        item.type === typeSelected.name && item.sector === sectorSelected.name
-      ));
+      console.log("Original Data:", data.data);
+      
+      if (typeSelected.name === "Type" && sectorSelected.name === "Sector") {
+        console.log("in if - Returning all data");
+        setFilteredData(data.data);
+      } else if (typeSelected.name !== "Type" && sectorSelected.name === "Sector") {
+        console.log("in else if - Filtering by type only");
+        console.log(typeSelected.name)
+        setFilteredData(data.data.filter((item) => item.type === typeSelected.name));
+      } else if (sectorSelected.name !== "Sector" && typeSelected.name === "Type") {
+        console.log("Filtering by sector only");
+        setFilteredData(data.data.filter((item) => item.sector === sectorSelected.name));
+      } else {
+        console.log("Filtering by both type and sector");
+        setFilteredData(data.data.filter((item) => 
+          item.type === typeSelected.name && item.sector === sectorSelected.name
+        ));
+      }
     }
+
+    handleFilter()
+   
   }, [data, typeSelected, sectorSelected]);
 
   useEffect(()=>{

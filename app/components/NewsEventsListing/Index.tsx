@@ -5,14 +5,18 @@ import bannerImg from "@/public/assets/images/banners/news-evnets-listing.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import Filter from "./Filter";
 import Listing from "./NewsListing";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+
 const Index = () => {
+
+
+
 
   const types = [
     { id: 1, name: "Type" },
     { id: 2, name: "Company news" },
     { id: 3, name: "Expertise" },
-    { id: 4, name: "Events" },
   ];
 
   const sectors = [
@@ -35,10 +39,23 @@ const Index = () => {
     { label: "News & Events", href: "" },
   ];
 
+  const searchParams = useSearchParams()
+  const type = decodeURIComponent(searchParams.get("type") || "")
+
   const [typeSelected, setTypeSelected] = useState(types[0]);
   const [sectorSelected, setSectorSelected] = useState(sectors[0])
   const [searchItem,setSearchItem] = useState("")
 
+
+  useEffect(()=>{
+    if (type === "company") {
+      setTypeSelected(types[1]);
+    } else if (type === "expertise") {
+      setTypeSelected(types[2]);
+    } else {
+      setTypeSelected(types[0]); // Default fallback if `type` isn't recognized
+    }
+  },[type])
   
     return (
       <>

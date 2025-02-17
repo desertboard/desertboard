@@ -51,7 +51,7 @@ const NewsBlock = ({ sectionTitle,data}:NewsEventsProps) => {
               {sectionTitle}
               <span className="text-[#FF671F] leading-[1]">.</span>
             </h2>
-            <PrimaryArrowBtn btntitle={"View All News"} btnLink="news-and-events-listing" />
+            <PrimaryArrowBtn btntitle={"View All News"} btnLink={sectionTitle == "Company News" ? `news-and-events-listing?type=company`:`news-and-events-listing?type=expertise`} />
           </div>
           <div className="news-crd__wrapper">
             {data && data && data.slice(0,3).map((news, index) => (
