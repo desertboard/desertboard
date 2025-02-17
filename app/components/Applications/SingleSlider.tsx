@@ -1,17 +1,36 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
+import { useSearchParams } from "next/navigation";
 // import { assets } from "@/public/assets/images/assets";
 import Image from "next/image";
 import { IndiApplication } from "@/types/ApplicationType";
-const SectionTwo = ({data}:{
+import { IndiSectorType } from "@/types/IndiSector";
+const SectionTwo = ({data,sectorData}:{
   data:IndiApplication
+  sectorData?:IndiSectorType
 }) => {
+
+  const searchParams = useSearchParams()
+  const application = searchParams.get("application")
+  const [galleryImages,setGalleryImage] = useState<string[]>([])
+
+  useEffect(()=>{
+    if(sectorData && data){
+      const filteredApp = sectorData.data.applications.filter((item)=>(
+        item.title == application
+      ))
+      
+      setGalleryImage(filteredApp[0].gallery)
+      
+    }
+    
+  },[sectorData,data])
 
 
   return (
@@ -49,7 +68,24 @@ const SectionTwo = ({data}:{
 
         >
           {/* Slide 1 */}
-          {data && data.data && data.data.images.map((item,index)=>(
+          {data && data.data && galleryImages.length == 0 && data.data.images.map((item,index)=>(
+            <SwiperSlide key={index}>
+            <div>
+
+            <figure className=" relative w-full h-[300px] md:h-[360px] lg:h-[85dvh] overflow-hidden  ">
+              <Image
+                className="w-full h-full"
+                src={item}
+                fill
+                objectFit="cover"
+                alt=""
+              />
+              </figure>
+              </div>
+            </SwiperSlide>
+          ))}
+
+{data && data.data && galleryImages.length > 0 && galleryImages.map((item,index)=>(
             <SwiperSlide key={index}>
             <div>
 

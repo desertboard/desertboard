@@ -6,6 +6,7 @@ import lfbt from "@/public/assets/images/home/lfbt.svg";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sustainability } from "@/types/Sustainability";
+import parse from 'html-react-parser'
 
 
 const Tabssustain = ({ data }:{
@@ -104,17 +105,19 @@ const Tabssustain = ({ data }:{
                                   {tab.title}
                                 </h3>
 
-                                <ul className="mb-0 lg:mb-10 mnsas ">
-                                  {tab && data.sustainability && tab.description.split(".").map((item, index) => (
-                                    <li
-                                      className="flex   texthelvetica20 clr15op75 mb-[16px] "
-                                      key={index}
-                                    >
-                                      <span className="bg-[#FF671F] min-w-[8px] min-h-[8px] max-w-[8px] max-h-[8px] inline-block mr-[10px] relative top-2"></span>
-                                      <span dangerouslySetInnerHTML={{ __html: formatText(item) }} />
-                                    </li>
-                                  ))}
-                                </ul>
+                                <div className="mb-0 lg:mb-10 mnsas texthelvetica20 clr15op75">
+                                  {/* {tab && data.sustainability && tab.description.split(".").map((item, index) => (
+                                    // <li
+                                    //   className="flex texthelvetica20 clr15op75 mb-[16px] "
+                                    //   key={index}
+                                    // >
+                                    //   <span className="bg-[#FF671F] min-w-[8px] min-h-[8px] max-w-[8px] max-h-[8px] inline-block mr-[10px] relative top-2"></span>
+                                    //   <span dangerouslySetInnerHTML={{ __html: formatText(item) }} />
+                                    // </li>
+                                    
+                                  ))} */}
+                                  {parse(formatText(tab.description))}
+                                </div>
                               </div>
                               <div className="w-full lg:w-1/3">
                               <motion.div className="h-full min-h-[300px] relative"  initial={{ scale: 0.9 }}

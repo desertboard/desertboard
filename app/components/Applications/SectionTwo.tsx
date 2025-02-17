@@ -11,14 +11,16 @@ import { motion } from "framer-motion";
 import { assets } from "@/public/assets/images/assets";
 import { IndiApplication } from "@/types/ApplicationType";
 import Link from "next/link";
+import { IndiSectorType } from "@/types/IndiSector";
 
 interface SectionTwoProps {
   suggested?: boolean;
   data:IndiApplication
-  pageName:string;// Optional boolean prop
+  pageName:string;
+  sectorData?:IndiSectorType// Optional boolean prop
 }
 
-function SectionTwo({ suggested,data,pageName }: SectionTwoProps) {
+function SectionTwo({ suggested,data,pageName,sectorData }: SectionTwoProps) {
 
   console.log(data)
 
@@ -155,7 +157,7 @@ function SectionTwo({ suggested,data,pageName }: SectionTwoProps) {
               isStickydiv ? "fixed top-[110px] lg:w-2/6" : ""
                 }`}
                 style={{ width: divWidth ? `${divWidth}px` : "auto" }}>
-                  <SingleSlider data={data}/>
+                  <SingleSlider data={data} sectorData={sectorData}/>
 
                   </div>
             </div>

@@ -76,7 +76,7 @@ const Sectors = () => {
         bnrHeight="60dvh"
       />
 
-      <SectionTwo pageName="applications" suggested={true} data={data}/>
+      <SectionTwo pageName="applications" suggested={true} data={data} sectorData={sectorData}/>
       <div className="pt-10 md:pt-20 insp-mn relative inspbg"></div>
       <SectionThree data={finishesData}/>
       <SectionFour data={data} />
