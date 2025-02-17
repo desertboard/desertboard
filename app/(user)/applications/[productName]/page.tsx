@@ -25,11 +25,13 @@ const Sectors = () => {
 
   const {productName} = useParams()
   const searchParams = useSearchParams()
-  const application = searchParams.get("application")
+  const application = searchParams.get("application") ? decodeURIComponent(searchParams.get("application")||"") : ""
   const sector = searchParams.get("sector") ? decodeURIComponent(searchParams.get("sector")!) : "";
   const [finishes, setFinishes] = useState<string[]>([]);
 
   console.log("secotr",sector.replace(/-/g, " "))
+
+  console.log("applic",application)
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
