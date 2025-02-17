@@ -534,7 +534,8 @@ body {
   }
 }
 .mnbg {
-  background-image: url(../public/assets/images/maindescbox-bg.jpg);
+  background-image: url(../public/assets/images/home/Light02.png);
+ /*  background-image: url(../public/assets/images/maindescbox-bg.jpg); */
   background-size: cover;
 }
 .insp-mn .swiper-scrollbar {
