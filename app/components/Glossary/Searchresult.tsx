@@ -63,7 +63,7 @@ const Searchresult: React.FC<AlphabetMenuProps> = ({ itemdata }) => {
           height={8}
                             />
              <Image
-        src={assets.line}
+        src={assets.grarrow}
         alt="arrow"
       className= {`relative top-[2px] transition-opacity duration-300 ${
                                 activeIndex === index ? "hidden" : "block"

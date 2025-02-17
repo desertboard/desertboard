@@ -20,7 +20,7 @@ export default function Home() {
         mainVdo="/assets/videos/Desertboard_About_sec.mp4"
         vdoPoster="/assets/images/home/abt-vid.jpg"
       />
-      <UspList secTitle={"Key USP's"} />
+      <UspList secTitle={"Key USPs"} />
       <SectorsList />
       <SustainabeSc />
       <BeforeFooterTag title={"To Sustainability"} url={"/sustainability"} />
