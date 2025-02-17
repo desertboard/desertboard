@@ -76,7 +76,7 @@ const ProductAccordians = ({items}:{
                 {items && items.map((item, index) => (
                     <div key={index}>
                         <button onClick={() => toggleAccordian(index)}
-                            className={`w-full flex justify-between items-center  text-slate-800 p-2 md:p-4 bg-[#E3DED9] hover:bg-black/30 `}
+                            className={`w-full flex justify-between items-center  text-slate-800 p-2 md:p-4 bg-[#E3DED9] `}
                         >
                             <div className='helvetica-bold clr15op75 text-font16 md:text-font20 text-left '  dangerouslySetInnerHTML={{ __html: formatText(item.question) }} ></div>
                             <span id="icon-1" className="text-slate-800 transition-transform duration-300">
