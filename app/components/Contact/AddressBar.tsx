@@ -45,7 +45,7 @@ const AddressBar = ({data}:{data:ContactDataType}) => {
                     >
                         <div className='nuber-next-bold'><span className='nuber-next-heavy  text-Darkgreen text-font20'>{item.area}</span><span className='text-[#FF671F]'>.</span></div>
                         <span id="icon-1" className="text-slate-800 transition-transform duration-300">
-                            {item._id === activeAccordian ? <Image src={accordianArrow} alt='arrow'/> : <Image src={accordianArrow} alt='arrow' className='rotate-180 w-[12px]'/>}
+                            {item._id === activeAccordian ? <Image src={accordianArrow} className='w-[16px]' alt='arrow'/> : <Image src={accordianArrow} alt='arrow' className='rotate-180 w-[16px]'/>}
 
                         </span>
                     </button>

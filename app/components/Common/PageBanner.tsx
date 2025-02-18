@@ -19,10 +19,10 @@ const formatText = (text: string) => {
 const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,desc, breadcrumbs, bnrHeight }) => {
   return (
     // <section className="relative h-[75dvh] bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full">
-    <section className="relative bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full bg-primary" style={ { "--banner-height": bnrHeight } as React.CSSProperties}>
+    <section className="relative bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full" style={ { "--banner-height": bnrHeight } as React.CSSProperties}>
       {/* <div className="absolute inset-0 bg-black opacity-60 -z-10"></div>
       <div className="absolute inset-0 bg-primary opacity-20 -z-20"></div>  */}
-      <figure className="absolute left-0 top-0 h-full w-full -z-40">
+      <figure className="absolute left-0 top-0 h-full w-full -z-40 bg-primary">
         <Image className="w-full h-full absolute top-0 left-0 object-cover object-center" src={bannerSrc} width={1600} height={700} alt="Banner image" />
       </figure>
       <div className="container relative">
