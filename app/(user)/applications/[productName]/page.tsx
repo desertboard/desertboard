@@ -122,7 +122,7 @@ const Sectors = () => {
       <div className="pt-10 md:pt-20 insp-mn relative inspbg"></div>
       <SectionThree data={finishesData} />
       <SectionFour data={data} />
-      <SectionFive {...relslideses} relatedApps={relatedApps} />
+      <SectionFive {...relslideses} relatedApps={relatedApps} currentApplication={application} />
       <section className="bg-[#FFB549]  relative z-[1]">
         <div className="container flex justify-between m-auto">
           <Link href={"/sectors"}>

@@ -22,10 +22,13 @@ interface WhySupremeProps {
     desc: string;
   }[];
   relatedApps:RelatedApps
+  currentApplication: string; // Add this prop
+
+ 
 }
 
 // Component to display the data
-const SectionFive: React.FC<WhySupremeProps> = ({ relatedApps }) => {
+const SectionFive: React.FC<WhySupremeProps> = ({ relatedApps, currentApplication }) => {
   const swiperRef = useRef<SwiperType | null>(null);
       const [hoveredIndex, setHoveredIndex] = useState<number | string | null>(null);
       const contentRefs = useRef(new Map());
@@ -64,6 +67,11 @@ const SectionFive: React.FC<WhySupremeProps> = ({ relatedApps }) => {
           }
         }, [hoveredIndex]);
        // Runs when hoveredIndex changes
+
+       const filteredRelatedApps = Array.isArray(relatedApps)
+  ? relatedApps.filter(app => app.title !== currentApplication)
+  : []; 
+       
   return (
     <>
 
@@ -150,7 +158,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ relatedApps }) => {
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={() => console.log("slide change")}
               >
-               {relatedApps && relatedApps.map((item) => (
+                {filteredRelatedApps.map(item => (
                   <SwiperSlide key={item._id}>
                     <div
                       className="relative group overflow-hidden transform hrcd goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"

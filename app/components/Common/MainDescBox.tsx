@@ -146,10 +146,9 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
             {mainImg && (
               <figure className="relative h-[250px] lg:h-full w-full">
                 <Image
-                  className="w-full object-cover h-[full]"
+                  className="w-full object-cover  h-full object-center"
                   src={mainImg}
-                  fill
-                  objectFit="cover"
+                 width={1500} height={1000}
                   alt="Banner image"
                 />
               </figure>
