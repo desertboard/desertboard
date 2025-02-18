@@ -559,3 +559,52 @@ body {
     }
   }
 }
+@media screen and (min-width: 1200px){
+.suscard-mn .swiper-slide{width: 7.5% !important;}
+ /* .suscard-mn .swiper-slide.swiper-slide-active{width: 20% !important;} */
+
+.w800w .suscard-mn .swiper-slide:hover {
+    width: 40% !important;
+}
+.suscard-mn .activsw{
+    width: 40% !important;}
+    .activsw .goal-crd__ibox {
+      top: 9% !important;
+      left: 25px;
+      transform: none;
+      width: 75px;
+      height: 75px;
+  }
+  .suscard-mn .activsw .growf {
+    background: url(/assets/images/home/slidepattern.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+}
+.suscard-mn .activsw .textvisible{opacity: 1;}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .textvisible h3{
+    line-height: 1.1;
+    }
+    .textvisible p{
+      line-height: 1.2;
+      }
+      .textvisible{    padding-top: 40px;}
+      .suscard .goal-crd:hover .goal-crd__ibox {
+        top: 4%;
+        width: 60px;
+        height: 60px;
+    }
+}
+@media screen and (min-width: 560px) and (max-width: 767px) {
+  .textvisible h3{
+    line-height: 1.1;
+    }
+    .suscard .goal-crd:hover .goal-crd__ibox {
+      top: 4%;
+      width: 60px;
+      height: 60px;
+  }
+}

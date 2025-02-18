@@ -120,7 +120,7 @@ const TimeLineSlider = ({data}:{
     // Add a 2-second delay before showing content
     const timer = setTimeout(() => {
       setLoaded(true);
-    }, 1000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -209,7 +209,7 @@ const TimeLineSlider = ({data}:{
                           },
                           1230: {
                             direction: "vertical",
-                            slidesPerView: 3.5,
+                            slidesPerView: 4,
                             spaceBetween: 20,
                           },
                         }}

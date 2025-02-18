@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Navigation, Pagination } from "swiper/modules";
@@ -22,8 +22,9 @@ const Swipersustain = ({ data }:{
 }) => {
   const swiperRef = useRef<SwiperType | null>(null);
 
+  const [activeSlide, setActiveSlide] = useState<number | null>(0); // Start with the first slide active
 
-
+  // Set active slide on hover and reset on mouse leave
 
 
 
@@ -34,31 +35,35 @@ const Swipersustain = ({ data }:{
   return (
     <>
       <Swiper
-        className={`suscard-mn mousemove `}
-
-        modules={[Navigation, Pagination]}
-        slidesPerView="auto"
-        loop={true}
-        navigation={{
-          nextEl: ".button-next",
-          prevEl: ".button-prev",
-        }}
-        breakpoints={{
-          0: { slidesPerView: 1, spaceBetween: 0 },
-          560: { slidesPerView: 2, spaceBetween: 0 },
-          640: { slidesPerView: 3, spaceBetween: 0 },
-          768: { slidesPerView: 3, spaceBetween: 0 },
-          1200: { slidesPerView: 4, spaceBetween: 0 },
-          1634: { slidesPerView: 9, spaceBetween: 0 },
-        }}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-        onSlideChange={() => console.log("slide change")}
-      >
-        {data && data.sustainability && data.sustainability.goals.goals.map((framework) => (
+      className={`suscard-mn mousemove`}
+      modules={[Navigation, Pagination]}
+      slidesPerView="auto"
+      loop={true}
+      navigation={{
+        nextEl: ".button-next",
+        prevEl: ".button-prev",
+      }}
+      breakpoints={{
+        0: { slidesPerView: 1, spaceBetween: 0 },
+        560: { slidesPerView: 2, spaceBetween: 0 },
+        768: { slidesPerView: 3, spaceBetween: 0 },
+        992: { slidesPerView: 3, spaceBetween: 0 },
+        // 1200: { slidesPerView: 4, spaceBetween: 0 },
+        1200: { slidesPerView: 9, spaceBetween: 0 },
+      }}
+      onSwiper={(swiper) => (swiperRef.current = swiper)}
+      onSlideChange={() => console.log("slide change")}
+    >
+      {data &&
+        data.sustainability &&
+        data.sustainability.goals.goals.map((framework, index) => (
           <SwiperSlide
             key={framework._id}
-            className="suscard bg-cover bg-center flex-shrink-0"
+            className={`suscard bg-cover bg-center flex-shrink-0 ${
+              activeSlide === index ? "swiper-slide-active activsw" : ""
+            }`}
             style={{ backgroundImage: `url(${framework.image})` }}
+            onMouseEnter={() => setActiveSlide(index)}
           >
             <div className="relative group overflow-hidden transform growf goal-crd bg-center delay-0">
               <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
@@ -67,26 +72,34 @@ const Swipersustain = ({ data }:{
               <div className="flex items-center justify-center min-h-[484px] max-h-[484px]">
                 <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                   <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
-                    {framework.logo !== "" && <Image
-                      src={framework.logo}
-                      width={131}
-                      height={131}
-                      alt="Thumbnail"
-                      className="transform transition-all duration-500"
-                    />}
+                    {framework.logo !== "" && (
+                      <Image
+                        src={framework.logo}
+                        width={131}
+                        height={131}
+                        alt="Thumbnail"
+                        className="transform transition-all duration-500"
+                      />
+                    )}
                   </div>
                 </div>
                 <div className="p-6">
-                  <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
-                    <h3 className="nuber-next-bold text-font28 text-black" dangerouslySetInnerHTML={{ __html: formatText(framework.heading) }} />
-                    <p className="helvetica text-font20 text-black opacity-[75%] mt-2" dangerouslySetInnerHTML={{ __html: formatText(framework.description) }} />
+                  <div className="textvisible opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
+                    <h3
+                      className="nuber-next-bold text-font28 text-black"
+                      dangerouslySetInnerHTML={{ __html: formatText(framework.heading) }}
+                    />
+                    <p
+                      className="helvetica text-font20 text-black opacity-[75%] mt-2"
+                      dangerouslySetInnerHTML={{ __html: formatText(framework.description) }}
+                    />
                   </div>
                 </div>
               </div>
             </div>
           </SwiperSlide>
         ))}
-      </Swiper>
+    </Swiper>
 
       <div className="container relative">
         <div onClick={() => swiperRef.current?.slideNext()} className="next-style cursor-pointer group absolute bottom-[-70px] right-[15px] transform -translate-y-1/2 text-white z-10">
