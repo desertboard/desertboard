@@ -80,7 +80,7 @@ import wh3 from "../images/applications/wh3.svg";
 import accic from "../images/icons/accic.svg";
 import bghr from "../images/applications/bghr.jpg"
 import appbanner from "../images/banners/about.jpg"
-import bggrn from "../images/banners/about.jpg"
+import bggrn from "../images/banners/bggrn.jpg"
 import grarrow from "../images/icons/greenarrow.svg"
 import line from "../images/icons/line.svg"
 import secbanner from "../images/sectors/secbanner.jpg"
