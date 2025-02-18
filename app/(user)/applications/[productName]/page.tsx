@@ -94,7 +94,7 @@ const Sectors = () => {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Sectors", href: "/sectors" },
-    { label: `${sector.replace(/-/g, " ")}`, href: "#" },
+    { label: `${sector.replace(/-/g, " ")}`, href: `/sector-details/${sector.replace(/-/g, " ")}` },
     { label: `${application}`, href: "" },
   ];
 
