@@ -39,7 +39,15 @@ const ApplicationSelector = ({
     <>
       <div className="border-b-[2px] pb-8 border-[#1515151A]">
         <h3 className="nuber-next-heavy text-font28 text-Darkgreen leading-[1]">
-          {sectorName ?? ""} is suitable for <span className="text-orange">:</span>
+          {page !== "sectors" && sectorName ? (
+            <>
+              {sectorName} is suitable for <span className="text-orange">:</span>
+            </>
+          ) : (
+            <>
+              Select Application <span className="text-orange">:</span>
+            </>
+          )}
         </h3>
       </div>
 

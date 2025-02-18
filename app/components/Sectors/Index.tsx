@@ -100,7 +100,7 @@ useEffect(()=>{
             <div
               className={`w-full lg:w-2/3  lg:pl-20 flex flex-col gap-7 lg:border-l-2 border-[#15151510]`}
             >
-              <ApplicationSelector activeApplications={activeApplications} sectorName={sectorName}/>
+              <ApplicationSelector activeApplications={activeApplications} sectorName={sectorName} page="sectors"/>
             </div>
           </div>
         </div>
