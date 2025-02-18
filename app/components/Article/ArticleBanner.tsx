@@ -5,6 +5,7 @@ import Image from "next/image";
 import '@/app/components/Common/pgbnr.scss';
 import { assets } from "@/public/assets/images/assets";
 import { motion } from "framer-motion";
+import ShareArticle from "./ShareArticle";
 
 interface HeroSectionProps {
   arrowSrc: string;
@@ -82,10 +83,11 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labe
                     <p className="nuber-next-bold text-font20 text-[#fff] leading-[1.2] opacity-[75%] uppercase underline text-left">{labeltext} </p>
                     </div>
               </div>
-              <div className="flex items-center gap-2">
+    {/*           <div className="flex items-center gap-2">
                     <Image src={assets.share} alt=""></Image>
                     <p className="nuber-next-bold text-font20 text-[#fff] leading-[1] opacity-[75%] cursor-pointer" id="shareButton" onClick={handleShareArticle}>Share Article</p>
-                  </div>
+                  </div> */}
+                  <ShareArticle/>
 
           </div>
           <div className="pg-bnr__txt flex items-center flex-wrap gap-[3px] md:gap-0 ">

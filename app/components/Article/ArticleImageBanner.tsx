@@ -9,6 +9,7 @@ import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
 import { IndiNews } from "@/types/IndiNews";
 import parse from 'html-react-parser';
+import ShareArticle from "./ShareArticle";
 
 interface HeroSectionProps {
   bannerSrc: StaticImageData | string;
@@ -25,7 +26,7 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc, data }) => 
   };
 
   return (
-    <section className="insp-mn inspbg">
+    <section className="insp-mn inspbg pb-[80px]">
       <motion.div
         className="ola ola-right absolute right-[-10%] top-[13%] w-[20em] md:w-[40em]"
         animate={{ y: [0, -20, 0], rotate: [0, 3, 0] }}
@@ -98,10 +99,11 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc, data }) => 
             <Image src={assets.label} alt="" />
             <p className="nuber-next-bold texthelvetica20bold text-Darkgreen leading-[1] uppercase underline">{data?.data?.tags[0]}</p>
           </div>
-          <div className="flex items-center gap-2 pb-6 lg:pb-20">
+          <ShareArticle/>
+          {/* <div className="flex items-center gap-2 pb-6 lg:pb-20">
             <Image src={assets.share} alt="" />
             <p className="nuber-next-bold text-font18 text-Darkgreen leading-[1]">Share Article</p>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
