@@ -99,10 +99,8 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc, data }) => 
             <Image src={assets.label} alt="" />
             <p className="nuber-next-bold texthelvetica20bold text-Darkgreen leading-[1] uppercase underline">{data?.data?.tags[0]}</p>
           </div>
-          <div className="text-white">
+          
           <ShareArticle/>
-          </div>
-       
           {/* <div className="flex items-center gap-2 pb-6 lg:pb-20">
             <Image src={assets.share} alt="" />
             <p className="nuber-next-bold text-font18 text-Darkgreen leading-[1]">Share Article</p>

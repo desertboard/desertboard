@@ -87,7 +87,9 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labe
                     <Image src={assets.share} alt=""></Image>
                     <p className="nuber-next-bold text-font20 text-[#fff] leading-[1] opacity-[75%] cursor-pointer" id="shareButton" onClick={handleShareArticle}>Share Article</p>
                   </div> */}
+                  <div className="text-white">
                   <ShareArticle/>
+                  </div>
 
           </div>
           <div className="pg-bnr__txt flex items-center flex-wrap gap-[3px] md:gap-0 ">
