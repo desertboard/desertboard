@@ -19,6 +19,7 @@ interface Application {
   product: string;
   bannerImage: string;
   gallery: string[]
+  shortDescription:string;
 }
 
 interface SectorFormData {
@@ -144,7 +145,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
   };
 
   const handleAddApplication = () => {
-    append({ title: "", description: "", image: "", product: "", bannerImage: "", gallery: [] });
+    append({ title: "", description: "", image: "", product: "", bannerImage: "", gallery: [], shortDescription:"" });
   };
 
   const handleRemoveApplication = (index: number) => {
@@ -319,6 +320,21 @@ const SectorFormPage = ({ sectorId }: Props) => {
                   />
                   {errors.applications?.[index]?.description && (
                     <p className="text-red-500 text-sm">{errors.applications[index]?.description?.message}</p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Short description</Label>
+                  <Controller
+                    name={`applications.${index}.shortDescription`}
+                    control={control}
+                    rules={{ required: "Short description is required" }}
+                    render={({ field }) => (
+                      <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="mt-1" />
+                    )}
+                  />
+                  {errors.applications?.[index]?.shortDescription && (
+                    <p className="text-red-500 text-sm">{errors.applications[index]?.shortDescription?.message}</p>
                   )}
                 </div>
 

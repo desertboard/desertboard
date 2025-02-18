@@ -19,6 +19,7 @@ const ApplicationSelector = ({
   page?:string
 }) => {
 
+
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
   const { data:productData } = useSWR('/api/admin/products', fetcher)
@@ -36,6 +37,10 @@ const ApplicationSelector = ({
 
   console.log(sectorName)
   const formatText = (text: string) => {
+    if(!text){
+      return;
+    }
+
     return text.replace(/®/g, "<sup>®</sup>");
   };
 
@@ -44,7 +49,7 @@ const ApplicationSelector = ({
     <>
       <div className="border-b-[2px] pb-8 border-[#1515151A]">
         <h3 className="nuber-next-heavy text-font28 text-Darkgreen leading-[1]">
-          Select Application<span className="text-orange">.</span>
+          {sectorName ?? ""} is suitable for <span className="text-orange">:</span>
         </h3>
       </div>
 
@@ -69,13 +74,13 @@ const ApplicationSelector = ({
                   Product Used:
                 </p>
 
-                <p className="pb-3 md:pb-10 helvetica-bold text-font28 text-white" dangerouslySetInnerHTML={{ __html: formatText(application.product) }}>
+                <p className="pb-3 md:pb-10 helvetica-bold text-font28 text-white" dangerouslySetInnerHTML={{ __html: formatText(application.product) || "" }}>
                   </p>
 
                 <Image src={productImage ?? assets.bghr} className="pb-3 md:pb-10 h-[150px]" alt="" width={300} height={50}/>
 
                 <Link
-                  href={page=="product" ? `/product-details/${application.product}` : `/applications/${application.product}?application=${application.title}&sector=${encodeURIComponent(sectorName.replace(/\s+/g, "-"))}`}
+                  href={page=="product" ? `/product-details/${application.product}` : `/applications/${application.product}?application=${encodeURIComponent(application.title)}&sector=${encodeURIComponent(sectorName?.replace(/\s+/g, "-"))}`}
                   className="nuber-next-heavy flex gap-2 max-w-fit w-[250px]
                                             group-hover:w-full transition-all duration-300
                                             text-[14px] md:text-font16 leading-[1.5] rmbtn pb-2"

@@ -113,7 +113,7 @@ const Header = () => {
                               {item.applications.map((application,index)=>(
 
                                   <div  key={index}>
-                                    <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/applications/${application.product}?application=${application.title}&sector=${encodeURIComponent(item.title.replace(/\s+/g, "-"))}`} key={index}>        <motion.span
+                                    <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/applications/${application.product}?application=${encodeURIComponent(application.title)}&sector=${encodeURIComponent(item.title.replace(/\s+/g, "-"))}`} key={index}>        <motion.span
             whileHover={{ scale: 1.1, color: "#000" }}
             transition={{ duration: 0.2 }}
             className="inline-block"

@@ -6,4 +6,5 @@ export type RelatedApps = {
         title:string;
         _id:string;
         gallery:string[]
+        shortDescription:string;
     }[]

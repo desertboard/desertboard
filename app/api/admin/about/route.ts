@@ -1,5 +1,6 @@
 import { formatDbResponse } from "@/lib/formatDbResponse";
 import connectDB from "@/lib/mongodb";
+import { verifyAdmin } from "@/lib/verifyAdmin";
 import About from "@/models/About";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -23,7 +24,13 @@ export async function GET() {
   }
   
   export async function PATCH(req: NextRequest) {
+
+      const isAdmin = await verifyAdmin(req);
     
+      if (!isAdmin) {
+        return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
+      }
+
     await connectDB();
   
     try {

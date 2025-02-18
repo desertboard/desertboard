@@ -25,11 +25,13 @@ const Sectors = () => {
 
   const {productName} = useParams()
   const searchParams = useSearchParams()
-  const application = searchParams.get("application")
+  const application = searchParams.get("application") ? decodeURIComponent(searchParams.get("application")||"") : ""
   const sector = searchParams.get("sector") ? decodeURIComponent(searchParams.get("sector")!) : "";
   const [finishes, setFinishes] = useState<string[]>([]);
 
   console.log("secotr",sector.replace(/-/g, " "))
+
+  console.log("applic",application)
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
@@ -37,7 +39,7 @@ const Sectors = () => {
   const { data:sectorData }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(sector && `/api/admin/sector/byid?sector=${encodeURIComponent(sector?.replace(/-/g, " "))}`, fetcher)
   // const {data:relatedApps}:{data:RelatedApps} = useSWR(`/api/admin/sector?product=${productName}`, fetcher)
   
-  const [relatedApps,setRelatedApps] = useState<{ title: string; description: string; image: string; product: string; _id: string; bannerImage: string; gallery: string[]; }[]>([])
+  const [relatedApps,setRelatedApps] = useState<{ title: string; description: string; image: string; product: string; _id: string; bannerImage: string; gallery: string[]; shortDescription:string; }[]>([])
   useEffect(() => {
     if (data?.data?.finishes) {
       setFinishes(data.data.finishes.map((item:{name:string}) => item.name));
