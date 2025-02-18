@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from 'react'
+import React from 'react'
 import bannerImg from "@/public/assets/contactbanner.jpg";
 import PageBanner from '../Common/PageBanner';
 import Arrow from "@/public/assets/brdcrbs.svg";
