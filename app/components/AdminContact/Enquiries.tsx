@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import Link from 'next/link'
+import { FaFilePdf } from "react-icons/fa6";
 
 
 const Enquiries = () => {
@@ -88,8 +90,8 @@ const Enquiries = () => {
                                 <div>
                                     Message : {item.message}
                                 </div>
-                                <div>
-                                    Resume : {item.resume}
+                                <div className='flex gap-2 items-center'>
+                                    Resume : {item.resume !== "" && <Link href={item.resume} target='_blank'><FaFilePdf className='text-xl'/></Link>}
                                 </div>
                                 <div className='flex gap-2 justify-end w-full'>
                                     {/* <Link href={`/admin/faqs/${sectionId}/edit/${item._id}`}><Button>Edit</Button></Link> */}

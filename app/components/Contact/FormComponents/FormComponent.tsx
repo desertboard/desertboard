@@ -1,5 +1,9 @@
-import React from 'react'
+"use client"
+
+import React, { useEffect, useState } from 'react'
 import {useForm} from 'react-hook-form'
+import { FileUploader } from '../../ui/file-uploader';
+
 
 type FormData = {
     name:string;
@@ -13,7 +17,10 @@ const FormComponent = ({department}:{
     department:string;
 }) => {
 
-    const {register,formState:{errors},handleSubmit} = useForm<FormData>()
+    const {register,formState:{errors},handleSubmit,reset,watch,setValue} = useForm<FormData>()
+    const [file,setFile] = useState<string>("")
+    const [fileName,setFileName] = useState("")
+    
 
     const onSubmit = async(data:FormData) =>{
         try {
@@ -22,7 +29,7 @@ const FormComponent = ({department}:{
             formData.append("email",data.email)
             formData.append("phone",data.phone)
             formData.append("message",data.message)
-            formData.append("resume","")
+            formData.append("resume",file)
 
             const url = `/api/admin/contact/enquiries?department=${department}`;
             const method = "POST";
@@ -34,7 +41,9 @@ const FormComponent = ({department}:{
             if (response.ok) {
                 const data = await response.json()
                 alert(data.message)
-                // router.push('/admin/about')
+                reset()
+                setFile("")
+                setFileName("")
             } else {
                 const data = await response.json()
                 alert(data.error)
@@ -45,6 +54,19 @@ const FormComponent = ({department}:{
             console.log("Error submiting enquiry form:",error)
         }
     }
+
+    const handleFileUpload = (url:string) =>{
+        setFile(url)
+        setFileName(()=>{
+           const parts = url.split("-")
+            return parts[parts.length - 1]
+        })
+    }
+
+
+    useEffect(()=>{
+        setValue("phone",/^\d*$/.test(watch("phone")) ? watch("phone") : "")
+    },[watch("phone")])
 
     return (
         <form className="mx-auto bg-[#E3DED9] md:px-6 px-0   py-0 md:py-8 text-black" onSubmit={handleSubmit(onSubmit)}>
@@ -65,13 +87,20 @@ const FormComponent = ({department}:{
             <div className="relative float-label-input mb-4 md:mb-8 mt-0">
                     <input type="text" id="phone" placeholder=" "  {...register("phone",{required:"Phone is required"})} className="block w-full focus:shadow-outline   border-b border-gray-400 focus:outline-none focus:border-black bg-transparent texthelvetica20 clr15op50 lg:pl-3    py-3 px-3   appearance-none leading-normal   " />
                     <label   className="absolute font-helvetica text-font20 text-[#000]/50 top-3 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Phone</label>
+                    {errors.phone && <span className='text-red-500'>{errors.phone.message}</span>}
             </div>
 
             <div className="relative float-label-input mb-4 md:mb-8 mt-0">
-            <textarea {...register("message")}
+            <textarea {...register("message",{
+                validate: (value) => {
+                const wordCount = value.trim().split(/\s+/).length;
+                return wordCount <= 50 || "Maximum length is 50 words"
+                }
+            })}
                     className="border-b w-full border-gray-400 focus:outline-none focus:border-black bg-transparent h-[131px] resize-none"
                 ></textarea>
                 <label className="absolute font-helvetica text-font20 text-[#000]/50 top-1 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Message</label>
+                {errors.message && <span className='text-red-500'>{errors.message.message}</span>}
                 </div>
 
                 {department == "careers" && <div className="mt-6  border-gray-400  bg-[#D8D4CF] rounded-xs text-font20">
@@ -80,10 +109,13 @@ const FormComponent = ({department}:{
                     <div>
                         <label className="font-helvetica font-bold text-font20   text-Darkgreen  cursor-pointer">
                             Choose File
-                            <input type="file" className="hidden" />
+                            <FileUploader className='hidden' type="resume"
+                            value={file}
+                            onChange={(url) => handleFileUpload( url)}
+                            />
                         </label>
                         
-                        <span className="ml-4 font-helvetica text-font20 text-[#000]/50">skzresume.pdf</span>
+                        {<span className="ml-4 font-helvetica text-font20 text-[#000]/50">{fileName}</span>}
                     </div>
 
                 </div>

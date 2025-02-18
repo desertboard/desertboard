@@ -11,13 +11,15 @@ interface FileUploaderProps {
   onChange: (url: string, fileName: string) => void;
   className?: string;
   accept?: Record<string, string[]>;
+  type?:string;
 }
 
 export function FileUploader({
   value,
   onChange,
   className,
-  accept = {
+  type,
+  accept = type == "resume" ? {"application/pdf": [".pdf"],} : {
     "application/pdf": [".pdf"],
     "application/msword": [".doc"],
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [".docx"],
@@ -113,7 +115,7 @@ export function FileUploader({
             isUploading && "pointer-events-none opacity-60"
           )}
         >
-          <input {...getInputProps()} />
+          <input {...getInputProps()} className={className}/>
           {isUploading ? (
             <>
               <Loader2 className="h-10 w-10 animate-spin text-gray-400" />
