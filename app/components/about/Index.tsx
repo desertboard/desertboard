@@ -8,7 +8,7 @@ import AccrediationSlider from "./AccrediationSlider";
 
 // import Banner from "../components/Banner/Hero";
 // Image imports
-import bannerImg from "@/public/assets/images/sectors/abt-bnr.jpg";
+import bannerImg from "@/public/assets/images/banners/about.jpg";
 import baxnnerImg from "@/public/assets/images/about/about-main.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import BeforeFooterTag from "../Common/BeforeFooterTag";
