@@ -4,7 +4,6 @@ import { assets } from "@/public/assets/images/assets";
 import Link from "next/link";
 import useSWR from "swr";
 
-
 const ApplicationSelector = ({
   activeApplications,
   sectorName,
@@ -13,37 +12,28 @@ const ApplicationSelector = ({
   activeApplications: {
     title: string;
     image: string;
-    product:string;
+    product: string;
   }[];
-  sectorName:string
-  page?:string
+  sectorName: string;
+  page?: string;
 }) => {
+  const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json());
 
+  const { data: productData } = useSWR('/api/admin/products', fetcher);
 
-  const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+  const [productImage, setProductImage] = useState(null);
 
-  const { data:productData } = useSWR('/api/admin/products', fetcher)
-
-  const [productImage,setProductImage] = useState(null)
-
-  const handleProductImageChange = (productName:string) =>{
-    const product = productData && productData.data.find((item:{title:string})=>(
-      item.title === productName
-    ))
-
-    setProductImage(product.images[0])
-  }
-
-
-  console.log(sectorName)
-  const formatText = (text: string) => {
-    if(!text){
-      return;
-    }
-
-    return text.replace(/®/g, "<sup>®</sup>");
+  const handleProductImageChange = (productName: string) => {
+    const product = productData && productData.data.find((item: { title: string }) => item.title === productName);
+    setProductImage(product?.images[0]);
   };
 
+  const formatText = (text: string) => {
+    if (!text) {
+      return;
+    }
+    return text.replace(/®/g, "<sup>®</sup>");
+  };
 
   return (
     <>
@@ -53,39 +43,41 @@ const ApplicationSelector = ({
         </h3>
       </div>
 
-      <div className="grid  lg:gap-10 gap-3 grid-cols-1 sm:grid-cols-2 xxl:grid-cols-3">
+      <div className="grid lg:gap-10 gap-3 grid-cols-1 sm:grid-cols-2 xxl:grid-cols-3">
         {activeApplications && activeApplications.map((application, index) => (
           <div className="flex flex-col gap-3 lg:gap-5" key={index}>
             <div className="relative md:h-[400px] h-[300px] w-full group">
-              <figure className=" relative h-[100%] md:h-full  w-full">
+              <figure className="relative h-[100%] md:h-full w-full">
                 <Image
-                  className="w-full   object-cover h-full"
+                  className="w-full object-cover h-full"
                   src={application.image}
                   width={800}
                   height={500}
                   alt=""
                 />
               </figure>
-              <div className="absolute left-0 top-0 w-full h-full bg-Darkgreen p-4 md:p-10
+              <div
+                className="absolute left-0 top-0 w-full h-full bg-Darkgreen p-4 md:p-10
                 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100
-                transition-all duration-500 ease-in-out
-                " onMouseEnter={()=>handleProductImageChange(application.product)}>
+                transition-all duration-500 ease-in-out"
+                onMouseEnter={() => handleProductImageChange(application.product)}
+              >
                 <p className="texthelvetica20 text-white opacity-75 mb-2">
                   Product Used:
                 </p>
 
                 <p className="pb-3 md:pb-10 helvetica-bold text-font28 text-white" dangerouslySetInnerHTML={{ __html: formatText(application.product) || "" }}>
-                  </p>
+                </p>
 
-                <Image src={productImage ?? assets.bghr} className="pb-3 md:pb-10 h-[150px]" alt="" width={300} height={50}/>
+                <Image src={productImage ?? assets.bghr} className="pb-3 md:pb-10 h-[150px]" alt="" width={300} height={50} />
 
                 <Link
-                  href={page=="product" ? `/product-details/${application.product}` : `/applications/${application.product}?application=${encodeURIComponent(application.title)}&sector=${encodeURIComponent(sectorName?.replace(/\s+/g, "-"))}`}
+                  href={page === "product" ? `/product-details/${application.product}` : `/applications/${application.product}?application=${encodeURIComponent(application.title)}&sector=${encodeURIComponent(sectorName?.replace(/\s+/g, "-"))}`}
                   className="nuber-next-heavy flex gap-2 max-w-fit w-[250px]
                                             group-hover:w-full transition-all duration-300
                                             text-[14px] md:text-font16 leading-[1.5] rmbtn pb-2"
                 >
-                  Read More
+                  {page === "product" ? `Discover ${application.product}` : "Read More"}
                   <Image
                     src={assets.readarrow}
                     alt="icn1"

@@ -44,7 +44,7 @@ import label from "../images/icons/label.svg";
 import share from "../images/icons/share.svg";
 import sumain from "../images/sustainability/su-main.jpg";
 import sumainbg from "../images/sustainability/su-mainbg.jpg";
-import sumabanner from "../images/sustainability/sus-banner.jpg";
+import sumabanner from "../images/banners/sustanable.jpg";
 import slidericon1 from "../images/sustainability/slider-icon1.svg";
 import slidericon2 from "../images/sustainability/slider-icon2.svg";
 import slidericon3 from "../images/sustainability/slider-icon3.svg";
@@ -79,7 +79,7 @@ import wh2 from "../images/applications/wh2.svg";
 import wh3 from "../images/applications/wh3.svg";
 import accic from "../images/icons/accic.svg";
 import bghr from "../images/applications/bghr.jpg"
-import appbanner from "../images/applications/banner.jpg"
+import appbanner from "../images/banners/about.jpg"
 import grarrow from "../images/icons/greenarrow.svg"
 import line from "../images/icons/line.svg"
 import secbanner from "../images/sectors/secbanner.jpg"
