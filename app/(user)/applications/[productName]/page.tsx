@@ -7,7 +7,7 @@ import PageBanner from "../../../components/Common/PageBanner";
 import SectionFour from "../../../components/Applications/SectionFour";
 
 // Image imports
-import { assets } from "@/public/assets/images/assets";
+/* import { assets } from "@/public/assets/images/assets"; */
 import Arrow from "@/public/assets/brdcrbs.svg";
 import { relslideses } from "../../../components/Applications/data";
 import { useParams } from "next/navigation";
@@ -97,21 +97,22 @@ const Sectors = () => {
     { label: `${sector.replace(/-/g, " ")}`, href: "#" },
     { label: `${application}`, href: "" },
   ];
+  const bannerImage = sectorData?.data?.applications.find(
+    (item) => item.title === application
+  )?.bannerImage;
 
   return (
     <>
-      <PageBanner
-        bannerSrc={
-          sectorData?.data?.applications.find(
-            (item) => item.title === application
-          )?.bannerImage || assets.appbanner
-        } // Corrected image import here
-        arrowSrc={Arrow}
-        desc=""
-        title={application || ""}
-        breadcrumbs={breadcrumbs}
-        bnrHeight="60dvh"
-      />
+ {bannerImage && (
+  <PageBanner
+    bannerSrc={bannerImage}
+    arrowSrc={Arrow}
+    desc=""
+    title={application || ""}
+    breadcrumbs={breadcrumbs}
+    bnrHeight="60dvh"
+  />
+)}
 
       <SectionTwo
         pageName="applications"
