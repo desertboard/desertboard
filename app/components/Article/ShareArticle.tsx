@@ -44,7 +44,7 @@ const ShareArticle = () => {
         whileTap={{ scale: 0.9 }}
       >
         <Image src={assets.share} alt="Share Icon" />
-        <p className="nuber-next-bold text-font18 text-Darkgreen leading-[1]">
+        <p className="nuber-next-bold text-font18 leading-[1]">
           Share Article
         </p>
       </motion.button>
