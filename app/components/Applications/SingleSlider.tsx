@@ -79,11 +79,9 @@ const SectionTwo = ({data,sectorData}:{
 
             <figure className=" relative w-full h-[300px] md:h-[360px] lg:h-[85dvh] overflow-hidden  ">
               <Image
-                className="w-full h-full"
+                className="w-full h-full object-cover object-center"
                 src={item}
-                fill
-                objectFit="cover"
-                alt=""
+                alt="" width={1500} height={1000}
               />
               </figure>
               </div>
@@ -96,11 +94,9 @@ const SectionTwo = ({data,sectorData}:{
 
             <figure className=" relative w-full h-[300px] md:h-[360px] lg:h-[85dvh] overflow-hidden  ">
               <Image
-                className="w-full h-full"
-                src={item}
-                fill
-                objectFit="cover"
-                alt=""
+               className="w-full h-full object-cover object-center ss"
+               src={item}
+               alt="" width={1500} height={1000}
               />
               </figure>
               </div>

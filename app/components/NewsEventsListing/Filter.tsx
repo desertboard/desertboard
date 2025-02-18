@@ -5,7 +5,7 @@ import SearchIcon from "@/public/assets/images/icons/search.svg";
 import { Dispatch, Fragment, SetStateAction } from "react";
 
 
-const Filter = ({typeSelected,setTypeSelected,types,setSectorSelected,sectorSelected,sectors,setSearchItem,searchItem}:{
+const Filter = ({typeSelected,setTypeSelected,types,/* setSectorSelected,sectorSelected,sectors */setSearchItem,searchItem}:{
   typeSelected:{ id: number; name: string; };
   setTypeSelected:Dispatch<SetStateAction<{ id: number; name: string; }>>
   types:{ id: number; name: string; }[]
@@ -63,7 +63,7 @@ const Filter = ({typeSelected,setTypeSelected,types,setSectorSelected,sectorSele
               </Listbox>
             </div>
 
-            <div className="relative w-full lg:w-auto">
+          {/*   <div className="relative w-full lg:w-auto">
               <Listbox value={sectorSelected} onChange={setSectorSelected}>
                 <Listbox.Button className="appearance-none bg-transparent flex border-b-[2px] border-[#002D28] outline-none rounded-none text-font20 text-black opacity-75 w-full lg:w-52 helvetica-500 pb-3 pl-3">
                   {sectorSelected.name}
@@ -79,7 +79,7 @@ const Filter = ({typeSelected,setTypeSelected,types,setSectorSelected,sectorSele
                   ))}
                 </Listbox.Options>
               </Listbox>
-            </div>
+            </div> */}
 
             {/* <div className="relative w-full lg:w-auto">
               <select id="country" name="country" autoComplete="country-name" className="appearance-none bg-transparent py-1.5 pr-8 pl-3 border-b-[2px] border-[#002D28] outline-none rounded-none  text-font20 text-black opacity-75 w-full lg:w-52 helvetica leading-[1.3]">

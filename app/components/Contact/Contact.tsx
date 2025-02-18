@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from 'react'
+import React from 'react'
 import bannerImg from "@/public/assets/contactbanner.jpg";
 import PageBanner from '../Common/PageBanner';
 import Arrow from "@/public/assets/brdcrbs.svg";
@@ -23,11 +23,6 @@ const Contact = () => {
       const { data }: { data: ContactDataType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/contact', fetcher)
     
     
-    
-      useEffect(()=>{
-        console.log(data);
-        console.log('sdsdsds');
-      },[data])
 
 
     return (

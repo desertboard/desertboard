@@ -64,7 +64,7 @@ const Sectors = () => {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Sectors", href: "/sectors" },
-    // { label: `${data && data.data.sector}`, href: "#" },
+    { label: `${sector.replace(/-/g," ")}`, href: `/sector-details/${encodeURIComponent(sector.replace(/-/g," "))}` },
     { label: `${application}`, href: "" },
   ];
 

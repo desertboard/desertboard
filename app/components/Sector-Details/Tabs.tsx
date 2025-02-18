@@ -5,7 +5,7 @@ import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { tabData } from "./data";
+/* import { tabData } from "./data"; */
 import parse from 'html-react-parser'
 import readarrow from "@/public/assets/images/read-arrow.svg";
 import Link from "next/link";
@@ -139,14 +139,14 @@ const Tabs = ({ applications,data }: {
                 </div>
 
                 <div className="lg:hidden">
-                  {tabData.data.map((tab, index) => (
-                    <div key={index} className="border-b border-[#1515151A]">
+                  {applications && applications.map((tab, index) => (
+                    <div key={index} className="border-b border-[#1515151A] mt-5">
                       <button
                         className="w-full text-left py-2 md:py-4 flex justify-between items-center"
                         onClick={() => handleAccordionClick(index)}
                       >
                         <span className="cursor-pointer py-2 md:py-4 heavydark border-transparent nuber-next-bold leading-[1] text-font24">
-                          {tab.tab}
+                          {tab.title}
                         </span>
                         <span className="text-xl">
                           {activeIndex === index ? "−" : "+"}
@@ -161,19 +161,19 @@ const Tabs = ({ applications,data }: {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           ><motion.img
-                              src={tab.image.src}
+                              src={tab.image}
                               alt="New Tab Content"
                               className="w-full h-[200px] mb-5  object-cover opacity-80 transition-opacity duration-300 hover:opacity-100"
                               initial={{ scale: 0.9 }}
                               animate={{ scale: 1 }}
                               transition={{ duration: 0.5 }}
                             />
-                            <div className=" pt-0">
+                            <div className=" pt-0 texthelvetica20 clr15op75 mb-6">
                               {/* <h3 className="heavydark mb-5">{tab.title}</h3> */}
-                              <p className="texthelvetica20 clr15op75 mb-6">
-                                {tab.description}
-                              </p>
-                              <ul>
+                              {  parse(formatText(tab.description))  }
+                              
+                              
+                              {/* <ul>
                                 {tab.list.map((item, idx) => (
                                   <li
                                     key={idx}
@@ -183,8 +183,12 @@ const Tabs = ({ applications,data }: {
                                     {item}
                                   </li>
                                 ))}
-                              </ul>
+                              </ul> */}
                             </div>
+                            <Link href={`/applications/${tab.product}?application=${tab.title}&sector=${encodeURIComponent(data.data.title.replace(/\s+/g, "-"))}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-1 group-hover:opacity-100 w-[250px]
+                                    group-hover:w-full transition-opacity duration-300 text-[14px] md:text-font16   leading-[1.5] rmbtn pb-2 mb-4">
+                                  Read More <Image src={readarrow} alt="icn1" className="transition-all duration-300 relative top-[2px]" width={11} height={16} />
+                                </Link>
                           </motion.div>
                         )}
                       </AnimatePresence>
