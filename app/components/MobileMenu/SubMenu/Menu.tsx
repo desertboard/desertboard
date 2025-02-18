@@ -10,21 +10,24 @@ import Curve from './Curve';
 const navItems = [
   {
     title: "Engineering & Construction",
-    href: "/",
+    href: "/sector-details/Engineering & Construction",
   },
   {
     title: "Landscape",
-    href: "/",
+    href: "/sector-details/Landscape",
   },
   {
     title: "Interior Design",
-    href: "/",
+    href: "/sector-details/Interior Design",
   },
   {
     title: "Events & Exhibitions",
-    href: "/",
+    href: "/sector-details/Events & Exhibitions",
   },
-
+  {
+    title: "View All",
+    href: "/sectors",
+  },
 ]
 
 export default function Menu({setSubMenuActive,setIsActive}:{
@@ -52,7 +55,8 @@ export default function Menu({setSubMenuActive,setIsActive}:{
 
                     {
                       navItems.map( (data, index) => {
-                        return <Link
+                        return <Link setIsActive={setIsActive}
+                        setSubMenuActive={setSubMenuActive}
                         key={index}
                         data={{...data, index}}
                         isActive={selectedIndicator == data.href}

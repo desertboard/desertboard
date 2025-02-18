@@ -18,7 +18,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title, b
         <Image className="w-full h-[60vh] absolute object-cover" src={bannerSrc} width={1000} height={800} alt="Banner image" />
       </figure>
       <div className="container  ">
-        <div className="pg-bnr__div absolute bottom-0 pb-4 md:pb-10 lg:pb-20">
+        <div className="pg-bnr__div absolute bottom-0 pb-8 md:pb-10 lg:pb-20">
           <h1 className="pg-bnr__ttl  heavywhite  mb-6 md:mb-10">
             {title}
             <span className="text-[#FF671F]">.</span>

@@ -109,7 +109,7 @@ const Header = () => {
                         {sectors && sectors.map((item: { title: string,applications:{title:string,product:string}[] }, index) => (
 
                             <div className="flex flex-col gap-3" key={index} >
-                              <div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div>
+                              <Link href={`/sector-details/${item.title}`}><div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div></Link>
                               {item.applications.map((application,index)=>(
 
                                   <div  key={index}>

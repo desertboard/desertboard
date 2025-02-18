@@ -27,6 +27,10 @@ export const menuItems = [
         title: "Events & Exhibitions",
         href: "#",
       },
+      {
+        title: "View All",
+        href: "#",
+      },
     ]
   },
   {

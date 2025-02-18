@@ -64,10 +64,10 @@ const Listing = ({
   useEffect(() => {
     setFilteredData(() => (
       data && data ?
-      data.data.filter((item) => item.title.toLowerCase().includes(searchItem))
+      data.data.filter((item) => item.title.toLowerCase().includes(searchItem) && item.type == typeSelected.name)
       : []
     ));
-  }, [searchItem, data]);
+  }, [searchItem, data,typeSelected,sectorSelected]);
 
   const handleLoadMore = () => {
     setItemsToShow((prev) => prev + 3); // Load 2 more items
