@@ -128,7 +128,7 @@ const Sectors = () => {
           <Link href={"/sectors"}>
             <div className="flex items-center flex-row-reverse gap-3   py-6 md:py-10 group  justify-end">
               <p className="mb-0 nuber-next-bold text-font28    text-white nuber-next-heavy cursor-pointer">
-                To Sectors
+                Sectors
               </p>
               <div className="transition-all duration-300 group-hover:translate-x-1 rotate-180">
                 <svg
@@ -148,7 +148,7 @@ const Sectors = () => {
               </div>
             </div>
           </Link>
-          <Link href={"/downlods"}>
+          <Link href={"/downloads"}>
             <div className="flex items-center gap-3   py-6 md:py-10 group  justify-end">
               <p className="mb-0 nuber-next-bold text-font28    text-white nuber-next-heavy cursor-pointer">
                 Downloads
