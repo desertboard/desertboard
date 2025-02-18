@@ -46,9 +46,9 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile,data }: {
 
                 {isMobile &&
                     <>
-                    <div className={` group border-b-[2px] border-[#1515151A] flex justify-between py-5 md:py-8 helvetica-bold cursor-pointer`} onClick={()=>setDropDownOpen((prev)=>!prev)}>
+                    <div className={` group border-b-[2px] border-[#1515151A] flex justify-between py-5 md:py-8   cursor-pointer`} onClick={()=>setDropDownOpen((prev)=>!prev)}>
 
-                        <h4>{selectedValue}</h4>
+                        <h4 className='text-font24 lg:text-font28 lg:nuber-next-bold leading-[1]'>{selectedValue}</h4>
 
                         <div className="transition-all duration-300 group-hover:translate-y-1 rotate-90">
                             <svg width="14" height="14" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +65,7 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile,data }: {
 
                             :
 
-                            <div className={`border-b-[2px] border-[#1515151A] flex justify-between py-6 helvetica cursor-pointer hover:text-orange`} onClick={()=>handleSelection(topic.title,index)} key={index}>
+                            <div className={`text-font21 md:text-font28 nuber-next-bold group border-b-[1px] md:border-b-[2px] border-[#00000010] flex justify-between py-3 md:py-6 lg:py-8 cursor-pointer text-[#151515BF] hover:text-orange`} onClick={()=>handleSelection(topic.title,index)} key={index}>
 
                             <h4>{topic.title}</h4>
 
