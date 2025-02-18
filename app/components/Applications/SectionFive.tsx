@@ -29,7 +29,31 @@ const SectionFive: React.FC<WhySupremeProps> = ({ relatedApps }) => {
   const swiperRef = useRef<SwiperType | null>(null);
       const [hoveredIndex, setHoveredIndex] = useState<number | string | null>(null);
       const contentRefs = useRef(new Map());
-      
+
+        const [showNavButtons, setShowNavButtons] = useState(false);
+
+        useEffect(() => {
+          const updateNavVisibility = () => {
+            if (swiperRef.current) {
+              const slidesPerView = swiperRef.current.params.slidesPerView;
+              if (typeof slidesPerView === 'number') {
+                setShowNavButtons(slidesPerView < 5);
+              }
+            }
+          };
+
+          // Check on initialization and listen to resize events
+          if (swiperRef.current) {
+            updateNavVisibility();
+            swiperRef.current.on("resize", updateNavVisibility);
+          }
+
+          return () => {
+            if (swiperRef.current) {
+              swiperRef.current.off("resize", updateNavVisibility);
+            }
+          };
+        }, []);
 
         useEffect(() => {
           if (hoveredIndex !== null) {
@@ -169,6 +193,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ relatedApps }) => {
                 ))}
               </Swiper>
             </motion.div>
+            {showNavButtons && (
             <div className="  relative">
               <div onClick={() => swiperRef.current?.slideNext()} className=" next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
                 <div className="transition-all duration-300 group-hover:translate-x-1">
@@ -208,6 +233,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ relatedApps }) => {
                 </div>
               </div>
             </div>
+      )}
           </div>
         </div>
       </section>

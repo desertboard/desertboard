@@ -39,32 +39,23 @@ export default function UspList({ secTitle }: UspsProps) {
       </div>
       <div className="container ">
         <motion.h2 className="text-3xl nuber-next-heavy text-font48 mb-5 lg:mb-10"
-        initial={{ opacity: 0, x: -30 }}
+        initial={{ opacity: 0, y: -30 }}
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+        viewport={{ once: true, amount: 0.3 }}
         variants={{
-          hidden: { opacity: 0, x: -30 }, // Start below and invisible
+          hidden: { opacity: 0, y: -30 },
           visible: {
             opacity: 1,
-            x: 0,
-            transition: { duration: 1, delay: 0.3 },
-          }, // Slide up and fade in
+            y: 0,
+            transition: { duration: 1, delay: 0.5 },
+          },
         }}>
           {secTitle}
           <span className="text-[#FF671F]">.</span>
         </motion.h2>
-        <motion.div className={`usp__list ${activeOrder ? "active-" + activeOrder : ""}`}
-          initial={{ opacity: 0, y: -30 }}
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={{
-                hidden: { opacity: 0, y: -30 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 1, delay: 0.5 },
-                },
-              }}>
+
+        <div className={`usp__list ${activeOrder ? "active-" + activeOrder : ""}`}
+           >
           <UspItem uspTitle="Deforestation Free" onMouseEnter={() => setActiveOrder("1")} uspIcon={uspI1} uspDesc="100% sustainable boards made from the UAE’s annually regenerated palm frond biomass, eliminating the need to cut down trees, and reducing reliance on imported wood." order="1" mainImg={uspImg1} />
           <UspItem uspTitle="Zero Formaldehyde" onMouseEnter={() => setActiveOrder("2")} uspIcon={uspI2} order="2" uspDesc="Designed for a healthier, eco-friendly indoor environment with zero formaldehyde emission." mainImg={uspImg2} />
           <UspItem
@@ -79,7 +70,7 @@ export default function UspList({ secTitle }: UspsProps) {
           <UspItem uspTitle="Versatile" onMouseEnter={() => setActiveOrder("5")} uspIcon={uspI5} order="5" uspDesc="Highly customizable boards with a variety of finishes, designed to meet the diverse needs of the construction & allied industries." mainImg={uspImg5} />
           <UspItem uspTitle="Production Facility" onMouseEnter={() => setActiveOrder("6")} uspIcon={uspI6} order="6" uspDesc="Capable of producing 6,200 sustainable PSB® boards per day, accommodating 16 (20-foot containers) daily." mainImg={uspImg6} />
           <UspItem uspTitle="Bi-Economical" onMouseEnter={() => setActiveOrder("7")} uspIcon={uspI7} order="7" uspDesc="An eco-friendly, cost-efficient alternative to traditional materials, PSB® Conform boards can be reused over 40 times vertically, saving both cost and time in the construction industry." mainImg={uspImg7} />
-        </motion.div>
+          </div>
       </div>
     </section>
   );

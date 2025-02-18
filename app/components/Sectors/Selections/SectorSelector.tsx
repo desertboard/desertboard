@@ -47,7 +47,7 @@ const SectorSelector = ({ setActiveSector, activeSector,data,setSectorName,page 
     useEffect(()=>{
         console.log(data && data.data[0].title)
         setSelectedValue(data && data.data[0].title)
-        
+
     },[data])
 
 
@@ -71,7 +71,7 @@ const SectorSelector = ({ setActiveSector, activeSector,data,setSectorName,page 
                     </div>
 
                     { isOpen && data && data.data && data.data.map((item, index) => (
-                        <div className={`text-font28 nuber-next-bold group border-b-[2px] border-[#00000010] flex justify-between py-6 lg:py-8 cursor-pointer ${activeSector == index ? "text-orange" : "text-[#151515BF]"}`} key={index} onClick={() => handleSelection(index,item.title)}>
+                        <div className={`text-font21 md:text-font28 nuber-next-bold group border-b-[1px] md:border-b-[2px] border-[#00000010] flex justify-between py-3 md:py-6 lg:py-8 cursor-pointer ${activeSector == index ? "text-orange" : "text-[#151515BF]"}`} key={index} onClick={() => handleSelection(index,item.title)}>
 
                             <h4 className='leading-[1]'>{item.title}</h4>
 
@@ -84,7 +84,7 @@ const SectorSelector = ({ setActiveSector, activeSector,data,setSectorName,page 
             {!isMobile &&
 
             data && data.data && data.data.map((item, index) => (
-                <div className={`text-font28 nuber-next-bold group border-b-[2px] border-[#00000010] flex justify-between py-6 lg:py-8 cursor-pointer ${activeSector == index ? "text-orange" : "text-[#151515BF]"}`} key={index} onClick={() => {setActiveSector(index);setSectorName(item.title)}}>
+                <div className={`text-font21 md:text-font28  nuber-next-bold group border-b-[1px] md:border-b-[2px] border-[#00000010] flex justify-between py-3 md:py-6 lg:py-8 cursor-pointer ${activeSector == index ? "text-orange" : "text-[#151515BF]"}`} key={index} onClick={() => {setActiveSector(index);setSectorName(item.title)}}>
 
                     <h4 className='leading-[1]'>{item.title}</h4>
 

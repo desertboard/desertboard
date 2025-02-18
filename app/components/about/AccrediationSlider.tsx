@@ -40,8 +40,8 @@ const AccrediationSlider = ({data}:{
   };
   return (
     <LightSectionContainer>
-      <div className="container mb-5 lg:mb-20">
-        <h2 className="heavydark mb-2 xl:mb-10">
+      <div className="container mb-7 lg:mb-20">
+        <h2 className="heavydark mb-5 xl:mb-10">
           Our Accreditation Partners<span className="text-[#FF671F] leading-[1]">.</span>
         </h2>
         {/* <div className="text-lightBlack text-font20 leading-[1.3] opacity-75">
@@ -54,7 +54,7 @@ const AccrediationSlider = ({data}:{
           ref={swiperRef}
           className="accr__slider !overflow-visible"
           modules={[Navigation, Pagination]}
-          observer={true} 
+          observer={true}
   observeParents={true}
           loop={true}
           centeredSlides={true}

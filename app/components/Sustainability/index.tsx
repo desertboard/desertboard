@@ -34,7 +34,7 @@ const Blogs = () => {
     console.log(data);
   },[data])
 
-  
+
   return (
     <>
 <PageBanner
@@ -55,7 +55,7 @@ const Blogs = () => {
       <Sustainslide data={data}/>
       <Sustainabilitypartners data={data}/>
       <Tabssustain data={data} />
-       <Downloads title={"To Downloads"} url='/downloads'/>
+       <Downloads title={"Downloads"} url='/downloads'/>
 
     </>
   )

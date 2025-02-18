@@ -69,6 +69,7 @@ export default function MisionVision({data}:{
   return (
     <section className="mivi bg-themebg">
       <div className="container d-none" ref={nextContainerRef}></div>
+
       <div className={`mivi__wrapper ${activeClass}`}>
         <div className="mivi__mi pt-8 pb-8 md:pt-[60px] md:pb-[124px]" onClick={handleMiClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
           {/* <div className="mivi__mi pt-5 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleMiClick} style={{ "--miviwidth": divWidth } as React.CSSProperties}> */}
@@ -83,9 +84,11 @@ export default function MisionVision({data}:{
               Mission<span className="text-[#FF671F]">.</span>
             </h3>
           </div>
-          <div className="mivi__desc text-black opacity-75 leading-[1.3] text-18 lg:text-font20 text-black/75" style={{ "--containerWidth": divWidth } as React.CSSProperties}>
+          <div className="container px-0">
+          <div className="mivi__desc text-black opacity-75 leading-[1.3] text-18 lg:text-font20 text-black/75"  >
               {data && data.about[0] && parse(data.about[0].mission)}
-          </div>
+            </div>
+            </div>
         </div>
         <div className="mivi__vi pt-8 pb-8 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={isSmallScreen ? {} : ({ "--miviwidth": divWidth } as React.CSSProperties)}>
           {/* <div className="mivi__vi pt-5 pb-10 lg:pt-[60px] lg:pb-[124px]" onClick={handleViClick} style={{ "--miviwidth": divWidth } as React.CSSProperties}> */}
@@ -100,11 +103,13 @@ export default function MisionVision({data}:{
               Vision<span className="text-[#FF671F]">.</span>
             </h3>
           </div>
-          <div className="mivi__desc text-black opacity-75 leading-[1.3] text-18 lg:text-font20" style={{ "--containerWidth": divWidth } as React.CSSProperties}>
+          <div className="container px-0">
+          <div className="mivi__desc text-black opacity-75 leading-[1.3] text-18 lg:text-font20"  >
              {data && data.about[0] && parse(data.about[0].vision)}
-          </div>
+            </div>
+            </div>
         </div>
-      </div>
+        </div>
     </section>
   );
 }

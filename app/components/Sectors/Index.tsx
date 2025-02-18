@@ -102,7 +102,7 @@ const Sectors = () => {
                 className={`w-full lg:w-2/3  lg:pl-20 flex flex-col gap-7 lg:border-l-2 border-[#15151510]`}
               >
                 <ApplicationSelector activeApplications={activeApplications} sectorName={sectorName} page="sectors" />
-                
+
                 <Link
                   href={`/sector-details/${sectorName}`}
                   className="nuber-next-heavy flex gap-2 max-w-fit w-[250px]
@@ -118,7 +118,7 @@ const Sectors = () => {
                     height={16}
                   />
                 </Link>
-              
+
               </div>
             </div>
 
@@ -126,8 +126,7 @@ const Sectors = () => {
 
         </div>
       </motion.div>
-
-      <Downloads title={"To Downloads"} url='/downloads' />
+      <Downloads title={"Downloads"} url='/downloads' />
     </>
   );
 };

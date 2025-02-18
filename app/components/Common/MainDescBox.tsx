@@ -100,9 +100,9 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
       </motion.div>
       <div className="container m-auto">
         <div className="lg:flex flex-col lg:flex-row items-center justify-between adst relative xl:pr-[10em] xxl:pr-[20em]">
-          <div className="lg:w-1/2 text-left px-5 lg:pl-6 xl:pl-16 py-5 lg:py-20 xl:py-20 opacity-[99%] mb-2 lg:mb-0">
+          <div className="lg:w-1/2 text-left px-5 lg:pl-6 xl:pl-16 py-5 lg:py-20 xl:py-20 opacity-[99%] mb-1 lg:mb-0">
             <motion.h2
-              className="text-Darkgreen mb-4 text-[28px] md:text-[48px] nuber-next-heavy leading-[1.2] overflow-hidden"
+              className="text-Darkgreen mb-4 md:mb-10 text-[28px] md:text-[48px] nuber-next-heavy leading-[1.2] overflow-hidden"
               initial={{ opacity: 0, x: -30 }}
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -119,7 +119,7 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
               <span className="text-[#FF671F]">.</span>
             </motion.h2>
             {subTitle && (
-              <p className="nuber-next md-6 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">
+              <p className="nuber-next mb-4 lg:mb-10 text-[#151515] font-black opacity-[50%] text-font24 leading-[1]">
                 {subTitle}
               </p>
             )}
@@ -138,7 +138,7 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
                 },
               }}
             >
-              <div className="text-black/75">{renderParagraphs(paragraphs)}</div>
+              <div className="text-black/75 pmns">{renderParagraphs(paragraphs)}</div>
             </motion.div>
           </div>
 
