@@ -29,7 +29,6 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
   const conRefs = useRef(new Map());
 
   const swiperRef = useRef<SwiperType | null>(null);
-  const contentRefs = useRef(new Map());
 
   const [showNavButtons, setShowNavButtons] = useState(false);
 
@@ -115,7 +114,9 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
           1800: { slidesPerView: 6, spaceBetween: 0 },
         }}
         pagination={false}
-        scrollbar={{ draggable: true }}
+                scrollbar={{ draggable: true }}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
+        onSlideChange={() => console.log("slide change")}
       >
         {data &&
           data.data &&

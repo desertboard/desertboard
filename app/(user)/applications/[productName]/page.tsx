@@ -38,7 +38,7 @@ const Sectors = () => {
   const { data }:{data:IndiApplication,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/products?productName=${productName}`, fetcher)
   const { data:sectorData }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(sector && `/api/admin/sector/byid?sector=${encodeURIComponent(sector?.replace(/-/g, " "))}`, fetcher)
   // const {data:relatedApps}:{data:RelatedApps} = useSWR(`/api/admin/sector?product=${productName}`, fetcher)
-  
+
   const [relatedApps,setRelatedApps] = useState<{ title: string; description: string; image: string; product: string; _id: string; bannerImage: string; gallery: string[]; shortDescription:string; }[]>([])
   useEffect(() => {
     if (data?.data?.finishes) {
@@ -54,7 +54,7 @@ const Sectors = () => {
   useEffect(()=>{
     console.log("data",sectorData && sectorData.data)
     setRelatedApps(sectorData && sectorData.data && sectorData.data.applications)
-  },[sectorData]) 
+  },[sectorData])
 
   useEffect(()=>{
     console.log("data data",data)
@@ -84,7 +84,7 @@ const Sectors = () => {
       <SectionThree data={finishesData}/>
       <SectionFour data={data} />
       <SectionFive {...relslideses} relatedApps={relatedApps}/>
-     <Downloads title={"To Downloads"}/>
+     <Downloads title={"Downloads"}/>
     </>
   );
 };

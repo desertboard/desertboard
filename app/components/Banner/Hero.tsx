@@ -24,8 +24,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title, b
             <span className="text-[#FF671F]">.</span>
           </h1>
 
-          <div className="pg-bnr__txt flex items-center flex-wrap">
-            <ul className="flex items-center flex-wrap">
+          <div className="pg-bnr__txt flex items-center flex-wrap ">
+            <ul className="flex items-center flex-wrap gap-[3px] md:gap-0">
               {breadcrumbs.map((breadcrumb, index) => (
                 <li key={index} className="inline-flex items-center">
                   {breadcrumb.href ? (

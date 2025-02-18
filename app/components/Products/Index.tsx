@@ -47,27 +47,27 @@ const Products = () => {
 
   useEffect(() => {
     if (!productData || !sectorData) return;
-  
+
     const mappedData = productData.data.map((productItem) => {
       const matchingSectors = sectorData.data.filter((sector) =>
         sector.applications.some((app) => app.product === productItem.title)
       );
-    
+
       const applications = matchingSectors.flatMap((sector) =>
         sector.applications.filter((app) => app.product === productItem.title)
       );
-    
+
       return {
         title: productItem.title,
         applications,
         sectorName: matchingSectors.length > 0 ? matchingSectors[0].title : "Unknown Sector", // Pick the first sector name or default
       };
     });
-  
+
     setStructuredData(mappedData);
 
   }, [productData, sectorData]);
-  
+
 
   const [sectorName,setSectorName] = useState("")
   const [activeSector, setActiveSector] = useState(0);
@@ -147,7 +147,7 @@ const Products = () => {
         </div>
       </div>
       </motion.div>
-      <Downloads title={"To Downloads"} url='/downloads' />
+      <Downloads title={"Downloads"} url='/downloads' />
     </>
   );
 };

@@ -106,7 +106,7 @@ useEffect(()=>{
         </div>
       </div>
       </motion.div>
-      <Downloads title={"To Downloads"} url='/downloads' />
+      <Downloads title={"Downloads"} url='/downloads' />
     </>
   );
 };

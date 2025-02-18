@@ -17,7 +17,7 @@ const Filter = () => {
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
   const { data } = useSWR('/api/admin/glossary', fetcher)
-  
+
 
   // const [sections, setSections] = useState([])
   // const [activeSession,setActiveSection] = useState(null)
@@ -62,156 +62,162 @@ const Filter = () => {
     alphabet: "E",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "E")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforF = {
     alphabet: "F",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "F")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforG = {
     alphabet: "G",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "G")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforH = {
     alphabet: "H",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "H")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforI = {
     alphabet: "I",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "I")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforJ = {
     alphabet: "J",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "J")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforK = {
     alphabet: "K",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "K")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforL = {
     alphabet: "L",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "L")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforM = {
     alphabet: "M",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "M")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforN = {
     alphabet: "N",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "N")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforO = {
     alphabet: "O",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "O")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforP = {
     alphabet: "P",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "P")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforQ = {
     alphabet: "Q",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "Q")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforR = {
     alphabet: "R",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "R")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforS = {
     alphabet: "S",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "S")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforT = {
     alphabet: "T",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "T")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforU = {
     alphabet: "U",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "U")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforV = {
     alphabet: "V",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "V")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforW = {
     alphabet: "W",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "W")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforX = {
     alphabet: "X",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "X")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforY = {
     alphabet: "Y",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "Y")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+
   const menuforZ = {
     alphabet: "Z",
     items: data?.glossary
       ?.filter((item: { alphabet: string }) => item.alphabet === "Z")
-      .flatMap((item: { contents: string[] }) => item.contents),  
+      .flatMap((item: { contents: string[] }) => item.contents),
   };
-  
+  const menuforhash = {
+    alphabet: "#",
+    items: data?.glossary
+      ?.filter((item: { alphabet: string }) => item.alphabet === "#")
+      .flatMap((item: { contents: string[] }) => item.contents),
+  };
+
 
   // const alphabet = [
   //   ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)),
@@ -222,9 +228,9 @@ const Filter = () => {
 
 
 
-  
 
-  
+
+
   const componentsList = [
     { id: 1, name: "A", component: <Searchresult itemdata={menuforA} /> },
     { id: 2, name: "B", component: <Searchresult itemdata={menuforB} /> },
@@ -252,7 +258,7 @@ const Filter = () => {
     { id: 24, name: "X", component: <Searchresult itemdata={menuforX} /> },
     { id: 25, name: "Y", component: <Searchresult itemdata={menuforY} /> },
     { id: 26, name: "Z", component: <Searchresult itemdata={menuforZ} /> },
-    { id: 27, name: "#", component: <Searchresult itemdata={menuforC} /> },
+    { id: 27, name: "#", component: <Searchresult itemdata={menuforhash} /> },
   ];
 
   useEffect(() => {

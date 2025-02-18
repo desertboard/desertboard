@@ -25,7 +25,7 @@ function SectionTwo({ suggested, data, pageName, sectorData }: SectionTwoProps) 
   const referenceDiv = useRef<HTMLDivElement | null>(null);
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
- 
+
   useEffect(() => {
     if (window.innerWidth > 1021 && sliderRef.current && referenceDiv.current) {
       gsap.to(sliderRef.current, {
@@ -55,7 +55,7 @@ function SectionTwo({ suggested, data, pageName, sectorData }: SectionTwoProps) 
     <section className="py-10 md:pt-20 pb-0 insp-mn relative inspbg">
       <div className="container overflow-hidden">
         <div className="lg:flex flex-col lg:flex-row relative">
-          <div className="lg:w-1/2 md:pr-5">
+          <div className="lg:w-1/2 w-full md:pr-5">
             {suggested && <SuggestedProduct data={data} />}
             <WhySupreme pageName={pageName} data={data} />
             <div className="p-4 md:p-8 bg-[#E3DED9]">
@@ -76,7 +76,7 @@ function SectionTwo({ suggested, data, pageName, sectorData }: SectionTwoProps) 
                   </div>
                 ))}
               </div>
-              <div className="flex justify-between gap-3 flex-wrap">
+              <div className="flex justify-between gap-3 flex-wrap contlink">
                 {links.map((item, index) => (
                   <Link
                     key={index}
@@ -96,7 +96,7 @@ function SectionTwo({ suggested, data, pageName, sectorData }: SectionTwoProps) 
               </div>
             </div>
           </div>
-          <div className="lg:w-1/2 " ref={referenceDiv}>
+          <div className="lg:w-1/2 hidden lg:block" ref={referenceDiv}>
             <div ref={sliderRef} className="transition-all duration-700 mt-10 lg:mt-0 md:pl-5" >
               <SingleSlider data={data} sectorData={sectorData} />
             </div>

@@ -696,3 +696,14 @@ body {
  .sixslideview .hovered-slide{
   width: 28% !important;
 }}
+@media screen and (min-width: 384px) and (max-width: 569px) {
+  .contlink{gap: 2px !important;}
+  .contlink  .nuber-next-heavy{font-size: 13px ;}
+  .contlink .rmbtn {gap: 4px;}
+  .contlink img{width: 10px;}
+}
+@media screen and (max-width: 383px) {
+  .contlink{gap: 0px !important;}
+  .contlink  .nuber-next-heavy{font-size: 12px ;}
+  .contlink img{display: none;}
+}
