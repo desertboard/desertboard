@@ -1,4 +1,5 @@
 import connectDB from "@/lib/mongodb";
+import { verifyAdmin } from "@/lib/verifyAdmin";
 import Faqs from "@/models/Faqs";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -33,7 +34,11 @@ export async function GET(req: NextRequest) {
   }
 
 export async function PATCH(req: NextRequest) {
-    
+    const isAdmin = await verifyAdmin(req);
+        
+          if (!isAdmin) {
+            return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
+          }
     await connectDB();
 
     try {
@@ -74,7 +79,11 @@ export async function PATCH(req: NextRequest) {
 
 
   export async function POST(req: NextRequest) {
+    const isAdmin = await verifyAdmin(req);
     
+      if (!isAdmin) {
+        return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
+      }
     await connectDB();
 
     try {
@@ -107,7 +116,11 @@ export async function PATCH(req: NextRequest) {
 
 
   export async function DELETE(req: NextRequest) {
+    const isAdmin = await verifyAdmin(req);
     
+      if (!isAdmin) {
+        return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
+      }
     await connectDB();
 
     try {
