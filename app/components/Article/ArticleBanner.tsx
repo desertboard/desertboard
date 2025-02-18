@@ -21,7 +21,7 @@ interface HeroSectionProps {
 
 const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labeltext ,  breadcrumbs }) => {
 
-  const handleShareArticle = () =>{
+ /*  const handleShareArticle = () =>{
     console.log(navigator.share)
     if (navigator.share) {
       const shareButton = document.getElementById('shareButton');
@@ -47,7 +47,7 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labe
     } else {
       console.warn('Web Share API not supported on this browser');
     }
-  }
+  } */
 
   return (
     // <section className="relative h-[75dvh] bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full">
