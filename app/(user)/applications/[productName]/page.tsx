@@ -104,7 +104,7 @@ const Sectors = () => {
         bannerSrc={
           sectorData?.data?.applications.find(
             (item) => item.title === application
-          )?.bannerImage || assets.appbanner
+          )?.bannerImage || assets.bggrn
         } // Corrected image import here
         arrowSrc={Arrow}
         desc=""
