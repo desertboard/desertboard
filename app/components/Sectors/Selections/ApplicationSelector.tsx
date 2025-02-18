@@ -57,7 +57,7 @@ const ApplicationSelector = ({
         {activeApplications && activeApplications.map((application, index) => (
           <div className="flex flex-col gap-3 lg:gap-5" key={index}>
             <div className="relative md:h-[400px] h-[300px] w-full group">
-              <figure className=" relative h-[100%] md:h-full  w-full  ">
+              <figure className=" relative h-[100%] md:h-full  w-full">
                 <Image
                   className="w-full   object-cover h-full"
                   src={application.image}
