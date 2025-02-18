@@ -46,7 +46,7 @@ export const menuItems = [
     href: "/news-and-events",
   },
   {
-    title: "Faqs  ",
+    title: "FAQs  ",
     href: "/faqs",
   },
   {

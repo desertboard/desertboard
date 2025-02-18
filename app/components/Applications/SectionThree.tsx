@@ -25,8 +25,10 @@ interface WhySupremeProps {
 
 // Component to display the data
 const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
+  const [hovIndex, setHovIndex] = useState<number | null>(null);
+  const conRefs = useRef(new Map());
+
   const swiperRef = useRef<SwiperType | null>(null);
-  const [hoveredIndex, setHoveredIndex] = useState<string | null>(null);
   const contentRefs = useRef(new Map());
 
   const [showNavButtons, setShowNavButtons] = useState(false);
@@ -54,18 +56,8 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
     };
   }, []);
 
-  console.log(data)
 
 
-  useEffect(() => {
-    if (hoveredIndex !== null) {
-      const contentRef = contentRefs.current.get(hoveredIndex);
-      if (contentRef) {
-        contentRef.style.maxHeight = contentRef.scrollHeight + 20 + "px"; // Expand to content height
-      }
-    }
-  }, [hoveredIndex]);
-  
    // Runs when hoveredIndex changes
   return (
     <>
@@ -91,106 +83,90 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
           </div>
 
           <div>
-            <motion.div
-              className="ansm"
-              initial={{ opacity: 0, y: -30 }}
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={{
-                hidden: { opacity: 0, y: -30 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 1, delay: 0.5 },
-                },
-              }}
+          <motion.div
+      className=" sixslideview"
+      initial={{ opacity: 0, y: -30 }}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={{
+        hidden: { opacity: 0, y: -30 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 1, delay: 0.5 },
+        },
+      }}
+    >
+      <Swiper
+        className="swpstss"
+        modules={[Navigation, Pagination]}
+        spaceBetween={0}
+        loop={true}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+        breakpoints={{
+          0: { slidesPerView: 1, spaceBetween: 0 },
+          410: { slidesPerView: 2, spaceBetween: 0 },
+          700: { slidesPerView: 3, spaceBetween: 0 },
+          1200: { slidesPerView: 3, spaceBetween: 0 },
+          1700: { slidesPerView: 6, spaceBetween: 0 },
+          1800: { slidesPerView: 6, spaceBetween: 0 },
+        }}
+        pagination={false}
+        scrollbar={{ draggable: true }}
+      >
+        {data &&
+          data.data &&
+          data.data.map((item, index) => (
+            <SwiperSlide
+              key={item._id}
+              className={`swiper-slide
+                ${hovIndex === index ? "hovered-slide" : ""}
+                ${hovIndex !== null && hovIndex !== index ? "sibling-slide" : ""}
+              `}
+              onMouseEnter={() => setHovIndex(index)}
+              onMouseLeave={() => setHovIndex(null)}
+              onTouchStart={() => setHovIndex(index)} // For mobile devices
             >
-              <Swiper
-                // install Swiper modules
-                className="swpstss  "
-                modules={[Navigation, Pagination]}
-                spaceBetween={0}
-                // slidesPerView='auto'
-                loop={true}
-                navigation={{
-                  nextEl: ".swiper-button-next", // Target the next button
-                  prevEl: ".swiper-button-prev", // Target the previous button
-                }}
-                breakpoints={{
-                  0: {
-                    slidesPerView: 1,
-                    spaceBetween: 0,
-                  },
-                  410: {
-                    slidesPerView: 2,
-                    spaceBetween: 0,
-                  },
-                  700: {
-                    slidesPerView: 3,
-                    spaceBetween: 0,
-                  },
-                  1200: {
-                    slidesPerView: 3,
-                    spaceBetween: 0,
-                  },
-                  1700: {
-                    slidesPerView: 5,
-                    spaceBetween: 0,
-                  },
-                  1800: {
-                    slidesPerView: 6,
-                    spaceBetween: 0,
-                  },
-                }}
-                pagination={false}
-                scrollbar={{ draggable: true }}
-                onSwiper={(swiper) => (swiperRef.current = swiper)}
-                onSlideChange={() => console.log("slide change")}
+              <div
+                className="relative group overflow-hidden transform goal-crd hrcd bg-center bg-cover transition-all duration-500 ease-in-out"
+                style={{ backgroundImage: `url(${item.image})` }}
               >
-                {data && data.data &&  data.data.map((item) => (
-                  <SwiperSlide key={item._id}>
-                    <div
-                      className="relative group overflow-hidden transform goal-crd hrcd bg-center bg-cover transition-all duration-500 ease-in-out"
-                      style={{ backgroundImage: `url(${item.image})` }}
-                      onMouseEnter={() => setHoveredIndex(item._id)}
-                      onMouseLeave={() => setHoveredIndex(null)}
-                      onTouchStart={() => setHoveredIndex(item._id)}  // For mobile devices
-                    >
-                      {/* <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
-                    <h3 className="nubernext28bold  text-white " >{item.description}</h3></div> */}
-                      <div className="flex items-end  min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500  ">
-                        <div className="p-5 transition-all duration-500 ease-in-out w-full  ">
-                          <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-linear w-full  translate-y-[0px] delay-200 group-hover:translate-y-[-10px]">
-                            {item.name}
-                          </h3>
+                <div className="flex items-end min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500">
+                  <div className="p-5 transition-all duration-500 ease-in-out w-full">
+                    <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-linear w-full translate-y-[0px] delay-200 group-hover:translate-y-[-10px]">
+                      {item.name}
+                    </h3>
 
-                          <p
-                            className="text-white overflow-hidden pt-3 transition-all duration-500 ease-in-out   "
-                            style={{
-                              maxHeight:
-                                hoveredIndex === item._id
-                                  ? `${contentRefs.current.get(item._id)?.scrollHeight || 0}px`
-                                  : "0px",
-                            }}
-                            ref={(el) => {
-                              if (el) {
-                                contentRefs.current.set(item._id, el);
-                              } else {
-                                contentRefs.current.delete(item._id); // Clean up if the element is removed
-                              }
-                            }}
-                          >
-                            <span className="   duration-500 delay-0 block">
-                              {item.description}
-                            </span>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </motion.div>
+                    <p
+                      className="text-white overflow-hidden pt-3 transition-all duration-500 ease-in-out"
+                      style={{
+                        maxHeight:
+                        hovIndex === index
+                            ? `${conRefs.current.get(item._id)?.scrollHeight || 0}px`
+                            : "0px",
+                      }}
+                      ref={(el) => {
+                        if (el) {
+                          conRefs.current.set(item._id, el);
+                        } else {
+                          conRefs.current.delete(item._id); // Clean up if the element is removed
+                        }
+                      }}
+                    >
+                      <span className="duration-500 delay-0 block">
+                        {item.description}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+      </Swiper>
+    </motion.div>
              {showNavButtons && (
         <div className="relative">
           <div

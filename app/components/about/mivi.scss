@@ -46,7 +46,7 @@
     }
 
     &__mi {
-        transition: 0.3s all ease-in-out;
+        transition: 0.5s all ease-in-out;
         // width: 20%;
     }
 
@@ -290,3 +290,8 @@
         padding-bottom: 80px;
     }
 }
+.mivi__desc p{opacity: 0;
+    transition: opacity 0.6s ease-in-out,
+    transform 0.8s ease-in-out;}
+.mivi__mibig .mivi__desc p{opacity: 1;}
+.mivi__vibig .mivi__desc p {opacity: 1;}

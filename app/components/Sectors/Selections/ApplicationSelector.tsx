@@ -53,7 +53,7 @@ const ApplicationSelector = ({
         </h3>
       </div>
 
-      <div className="grid  lg:gap-10 gap-3 grid-cols-1 sm:grid-cols-2 xxl:grid-cols-3">
+      <div className="grid  lg:gap-10 gap-8 grid-cols-1 sm:grid-cols-2 xxl:grid-cols-3">
         {activeApplications && activeApplications.map((application, index) => (
           <div className="flex flex-col gap-3 lg:gap-5" key={index}>
             <div className="relative md:h-[400px] h-[300px] w-full group">
