@@ -5,7 +5,7 @@ import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { tabData } from "./data";
+/* import { tabData } from "./data"; */
 import parse from 'html-react-parser'
 import readarrow from "@/public/assets/images/read-arrow.svg";
 import Link from "next/link";
