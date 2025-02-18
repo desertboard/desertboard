@@ -132,7 +132,7 @@ const TimeLineSlider = ({data}:{
   return (
    <section className="overflow-hidden min-h-max bg-black border-y-[6px] border-secondary timeline__sec relative">
          <div className="container d-none" ref={nextContainerRef}></div>
-         <div className="flex flex-col xl:flex-row w-full gap-6 relative h-[38em] lg:h-[70dvh] xl:h-[70dvh] xxl:h-[80dvh] 3xl:h-[70dvh]">
+         <div className="flex flex-col xl:flex-row w-full gap-6 relative h-[38em] lg:h-[660px] xl:h-[660px] xxl:h-[760px] 3xl:h-[660px]">
            <h2 className="text-white z-10 text-font48 nuber-next-heavy leading-[1] absolute top-10 lg:top-20 " style={{ left: `calc(100vw - (${divWidth})` }}>
              Our History<span className="text-[#FF671F]">.</span>
            </h2>
@@ -208,6 +208,11 @@ const TimeLineSlider = ({data}:{
                             slidesPerView: 4,
                           },
                           1230: {
+                            direction: "vertical",
+                            slidesPerView: 4,
+                            spaceBetween: 20,
+                          },
+                          1810: {
                             direction: "vertical",
                             slidesPerView: 4,
                             spaceBetween: 20,

@@ -24,7 +24,7 @@ const ProducrDetails = () => {
   const { productName } = useParams();
 
   const [finishes, setFinishes] = useState<string[]>([]);
-  
+
   const fetcher = (...args: Parameters<typeof fetch>) =>
     fetch(...args).then((res) => res.json());
 
@@ -78,7 +78,7 @@ const ProducrDetails = () => {
       <SectionFour data={data} />
 
       <SectionFive {...relslideses} data={finishesData}/>
-     <Downloads title={"To Downloads"} url="/downloads"/>
+     <Downloads title={"Downloads"} url="/downloads"/>
     </>
   );
 };

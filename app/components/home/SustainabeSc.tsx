@@ -67,7 +67,7 @@ const SustainabeSc = () => {
           </div>
         </div>
         <motion.div
-          className="ansm"
+          className="ansm omsus-mn"
           initial={{ opacity: 0, y: -30 }}
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}

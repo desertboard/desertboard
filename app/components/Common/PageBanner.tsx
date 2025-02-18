@@ -43,8 +43,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
           animate={{ opacity: 0.75, y: 0 }}
           transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
           dangerouslySetInnerHTML={{ __html: formatText(desc) }}  ></motion.p>}
-          <div className="pg-bnr__txt flex items-center flex-wrap">
-            <ul className="flex items-center flex-wrap">
+          <div className="pg-bnr__txt flex items-center flex-wrap ">
+            <ul className="flex items-center flex-wrap gap-[3px] md:gap-0">
               {breadcrumbs.map((breadcrumb, index) => (
                  <motion.li key={index} className="inline-flex items-center"
                  initial={{ opacity: 0, y: 30 }}

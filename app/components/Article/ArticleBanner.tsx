@@ -34,15 +34,15 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labe
               text: 'Check out this awesome content!',
               url: window.location.href
             });
-      
+
             console.log('Shared successfully');
           } catch (error) {
             console.error('Error sharing:', error);
           }
         });
       }
-    
-      
+
+
     } else {
       console.warn('Web Share API not supported on this browser');
     }
@@ -88,7 +88,7 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labe
                   </div>
 
           </div>
-          <div className="pg-bnr__txt flex items-center flex-wrap">
+          <div className="pg-bnr__txt flex items-center flex-wrap gap-[3px] md:gap-0 ">
             <ul className="flex items-center gap-4  md:gap-0 flex-wrap">
               {breadcrumbs.map((breadcrumb, index) => (
                 <li key={index} className="inline-flex items-center">

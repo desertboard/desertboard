@@ -114,7 +114,7 @@ const Tabssustain = ({ data }:{
                                     //   <span className="bg-[#FF671F] min-w-[8px] min-h-[8px] max-w-[8px] max-h-[8px] inline-block mr-[10px] relative top-2"></span>
                                     //   <span dangerouslySetInnerHTML={{ __html: formatText(item) }} />
                                     // </li>
-                                    
+
                                   ))} */}
                                   {parse(formatText(tab.description))}
                                 </div>
@@ -126,7 +126,7 @@ const Tabssustain = ({ data }:{
                                 {tab.image!=="" && <Image src={tab.image}
                                   alt="New Tab Content"
                                   className="w-full  h-full absolute object-center  object-cover opacity-80 transition-opacity duration-300 hover:opacity-100" width={800} height={600}/>}
-                            
+
                               </motion.div>
                               </div>
                             </motion.section>
@@ -135,7 +135,7 @@ const Tabssustain = ({ data }:{
                     </AnimatePresence>
                   </div>
                 </div>
-                
+
                 <div className="lg:hidden">
                 {data && data.sustainability && data.sustainability.vision.map(
                         (tab, index) =>
@@ -145,7 +145,7 @@ const Tabssustain = ({ data }:{
                         className="w-full text-left py-2 md:py-4 flex justify-between items-center"
                         onClick={() => handleAccordionClick(index)}
                       >
-                        <span className="cursor-pointer py-2 md:py-4 heavydark border-transparent nuber-next-bold leading-[1] text-font24">
+                        <span className="cursor-pointer py-2 md:py-4 nuber-next-heavy   text-[#002D28] border-transparent nuber-next-bold leading-[1] text-font24  md:text-[28px] lg:text-[48px]">
                           {tab.region}
                         </span>
                         <span className="text-xl">

@@ -84,7 +84,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
           <div><h2 className="heavydark48 mb-6 md:mb-10"><span dangerouslySetInnerHTML={{ __html: formatText(`${data && data.data.title}`) }} /> Applications<span className="text-orange">.</span></h2></div>
 
           <div>
-            <motion.div className="ansm" initial={{ opacity: 0, y: -30 }}
+            <motion.div className="" initial={{ opacity: 0, y: -30 }}
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={{
@@ -138,7 +138,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
               >
                 {filteredApplications && filteredApplications.length > 0 && filteredApplications.map((item) => (
 
-                  <SwiperSlide key={item._id}>
+                  <SwiperSlide key={item._id} className="transition-all duration-500">
                     <div
                       className="relative group slidehr overflow-hidden hcrd transform goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
                       style={{ backgroundImage: `url(${item.image})` }}
