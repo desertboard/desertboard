@@ -1,4 +1,5 @@
 import connectDB from "@/lib/mongodb";
+import ratelimit from "@/lib/rateLimit";
 import { verifyAdmin } from "@/lib/verifyAdmin";
 import Enquiry from "@/models/Enquiry";
 import { NextRequest, NextResponse } from "next/server";
@@ -29,14 +30,19 @@ export async function GET(req: NextRequest) {
 
 
 export async function POST(req: NextRequest) {
-  const isAdmin = await verifyAdmin(req);
-
-  if (!isAdmin) {
-    return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
-  }
+  
   await connectDB();
 
   try {
+    
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "127.0.0.1";   
+    const result = await ratelimit.limit(ip);
+
+    if(!result.success){
+      console.log("rate limit")
+      return NextResponse.json({ message: "Please wait while we process your request" }, { status: 200 })
+    }
+
     console.log("here")
     const { searchParams } = new URL(req.url)
     const department = searchParams.get("department")

@@ -8,6 +8,7 @@ import Menu from './Menu';
 import flogo from "@/public/assets/images/home/flogo.png";
 import Image from 'next/image';
 import Link from 'next/link';
+import SubMenu from './SubMenu/SubMenu';
 
 const MobileMenu = () => {
 
@@ -64,7 +65,7 @@ const MobileMenu = () => {
       <AnimatePresence mode='sync'>
 
         {isActive && <Menu key={"menu"} setSubMenuActive={setSubMenuActive} setIsActive={setIsActive}/>}
-        {/* {isSubMenuActive && <SubMenu setSubMenuActive={setSubMenuActive} setIsActive={setIsActive}/>} */}
+        {isSubMenuActive && <SubMenu setSubMenuActive={setSubMenuActive} setIsActive={setIsActive}/>}
 
       </AnimatePresence>
       </div>
