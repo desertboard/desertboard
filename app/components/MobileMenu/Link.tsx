@@ -33,7 +33,7 @@ export default function Index({data, isActive, setSelectedIndicator,setSubMenuAc
           animate={isActive ? "open" : "closed"} 
           className={styles.indicator}>
         </motion.div>
-        <Link href={href} className='text-2xl' onClick={()=>title=="Sectors" ? setSubMenuActive(true) : setIsActive(false)}>{title}</Link>
+        <Link href={title=="Sectors" ? "#" : href} className='text-2xl' onClick={()=>title=="Sectors" ? setSubMenuActive(true) : setIsActive(false)}>{title}</Link>
       </motion.div>
     )
 }
