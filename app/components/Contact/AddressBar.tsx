@@ -14,12 +14,14 @@ const AddressBar = ({data}:{data:ContactDataType}) => {
 
 
     const toggleAccordion = (accordianNumber: string) => {
+        console.log(accordianNumber)
         setActiveAccordian(prev => (prev === accordianNumber ? null : accordianNumber));
     };
 
     useEffect(()=>{
-        setActiveAccordian(0)
-    },[])
+        console.log("ID",data?.regions[0]?.content[0]?._id)
+        setActiveAccordian(data?.regions[0]?.content[0]?._id)
+    },[data])
 
     const [addressBarIndex,setAddressBarIndex] = useState(0)
 
