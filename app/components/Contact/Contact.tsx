@@ -23,11 +23,6 @@ const Contact = () => {
       const { data }: { data: ContactDataType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/contact', fetcher)
     
     
-    
-      useEffect(()=>{
-        console.log(data);
-        console.log('sdsdsds');
-      },[data])
 
 
     return (
