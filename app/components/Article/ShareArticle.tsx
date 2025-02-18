@@ -5,9 +5,10 @@ import {
   FacebookShareButton, 
   TwitterShareButton, 
   LinkedinShareButton, 
-  WhatsappShareButton 
+  WhatsappShareButton, 
+  XIcon
 } from "react-share";
-import { FacebookIcon, TwitterIcon, LinkedinIcon, WhatsappIcon } from "react-share";
+import { FacebookIcon, LinkedinIcon, WhatsappIcon } from "react-share";
 import Image from "next/image";
 import { assets } from "@/public/assets/images/assets";
 
@@ -61,7 +62,7 @@ const ShareArticle = () => {
           >
             {[
               { Component: FacebookShareButton, Icon: FacebookIcon },
-              { Component: TwitterShareButton, Icon: TwitterIcon },
+              { Component: TwitterShareButton, Icon: XIcon },
               { Component: LinkedinShareButton, Icon: LinkedinIcon },
               { Component: WhatsappShareButton, Icon: WhatsappIcon },
             ].map(({ Component, Icon }, index) => (
