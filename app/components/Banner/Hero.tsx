@@ -9,48 +9,33 @@ interface HeroSectionProps {
   breadcrumbs: { label: string; href: string }[];
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({
-  bannerSrc,
-  arrowSrc,
-  title,
-  breadcrumbs,
-}) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title, breadcrumbs }) => {
   return (
     <section className="relative h-[60vh] bg-cover bg-center flex items-center justify-center text-center bnr-pg w-full">
       {/* <div className="absolute inset-0 bg-black opacity-60 -z-10"></div>
       <div className="absolute inset-0 bg-primary opacity-20 -z-20"></div> */}
       <figure className="absolute h-[60vh] w-full -z-40">
-        <Image
-          className="w-full h-[60vh] absolute object-cover"
-          src={bannerSrc}
-          width={1000}
-          height={800}
-          alt="Banner image"
-        />
+        <Image className="w-full h-[60vh] absolute object-cover" src={bannerSrc} width={1000} height={800} alt="Banner image" />
       </figure>
-      <div className="container relative">
-        <div className="pg-bnr__div absolute bottom-0 pb-[80px]">
-          <h1 className="pg-bnr__ttl text-[72px] mb-[40px]">
+      <div className="container  ">
+        <div className="pg-bnr__div absolute bottom-0 pb-8 md:pb-10 lg:pb-20">
+          <h1 className="pg-bnr__ttl  heavywhite  mb-6 md:mb-10">
             {title}
             <span className="text-[#FF671F]">.</span>
           </h1>
 
-          <div className="pg-bnr__txt flex items-center flex-wrap">
-            <ul className="flex items-center">
+          <div className="pg-bnr__txt flex items-center flex-wrap ">
+            <ul className="flex items-center flex-wrap gap-[3px] md:gap-0">
               {breadcrumbs.map((breadcrumb, index) => (
                 <li key={index} className="inline-flex items-center">
-                  <a
-                    href={breadcrumb.href}
-                    className={`text-[#FFFFFFBF]  text-[20px] ${
-                      index === breadcrumbs.length - 1
-                        ? "font-bold text-white "
-                        : "opacity-75"
-                    }`}>
+                  {breadcrumb.href ? (
+                  <a href={breadcrumb.href} className={`text-[#FFFFFFBF] min-w-fit texthelvetica20 opacity-75 hover:text-[#FF671F] hover:opacity-[1]`}>
                     {breadcrumb.label}
-                  </a>
-                  {index < breadcrumbs.length - 1 && (
-                    <Image src={arrowSrc} alt="Arrow" className="mx-2" />
-                  )}
+                    </a>
+                    ) : (
+                      <span className={`text-[#FFFFFFBF] min-w-fit texthelvetica20 ${index === breadcrumbs.length - 1 ? "helveticaBold text-white " : "opacity-75"}`}>{breadcrumb.label}</span>
+                    )}
+                  {index < breadcrumbs.length - 1 && <Image src={arrowSrc} alt="Arrow" className="mx-2" />}
                 </li>
               ))}
             </ul>

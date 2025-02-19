@@ -1,0 +1,138 @@
+.suscard{
+    .goal-crd {
+    &__ibox {
+        top: 20%;
+
+    }
+}
+.goal-crd:hover .goal-crd__ibox {
+    top: 9%;
+}
+}
+
+.goal-crd {
+
+    &__icon {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 100%;
+        width: 100%;
+
+        transition: all 0.3s ease;
+
+    }
+    &__ibox {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease-in-out;
+
+    }
+    &:hover {
+        &__icon {
+            top: 10%;
+            left: 10%;
+            transform: none;
+        }
+
+    }
+}
+
+
+.goal-crd:hover .goal-crd__ibox {
+    top: 5%;
+    left: 25px;
+    transform: none;
+        width: 75px;
+        height: 75px;
+
+}
+
+@media (min-width: 1200px) {
+
+.ansm {
+    .swiper-slide{
+        // width:320px !important;
+        &:hover {
+            width: 430px !important;
+        }
+    }
+
+}
+.w800w .swiper-slide:hover {
+    width: 800px !important;
+  }
+}
+@media (max-width: 768px) {
+    .goal-crd {
+        &__icon {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+}
+
+
+
+    .nav > ul > li {
+        display: inline-block;
+        position: relative;
+        padding: 3px 10px 3px 0;
+        z-index: 100;
+      }
+
+      /* SECOND LEVEL */
+
+      .nav > .ulone > .lione  ul {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        padding: 0 1000em; /* trick from css-tricks comments */
+        margin: 0 -1000em; /* trick from css-tricks comments */
+        z-index: 101;
+        visibility: hidden;
+        opacity: 0;
+        background: rgba(255, 240, 240, 0.8);
+      }
+
+      .nav > .ulone > .lione:hover   ul {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .nav > .ulone > .lione   ul > li {
+        padding: 3px 0;
+      }
+      .firstmenu:hover + .firstitem {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .firstitem {
+
+        background: white;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+.afic::before{
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid #ffffff;
+    clear: both;
+    z-index: 9999999;
+    margin-left: auto;}
+    @media (min-width: 1630px) and (max-width: 1789px) {
+.csgap{gap:40px !important}
+    }
