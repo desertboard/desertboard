@@ -68,7 +68,7 @@ const NewsBlock = ({ sectionTitle,data}:NewsEventsProps) => {
 
                       <div className="flex flex-nowrap gap-2 mb-6">
                         <Image src={tagIcon} width={20} height={20} alt="categories" className="w-[15px] h-[15px] xl:w-[18px] xl:h-[18px]" />
-                        <ul className="news__category list-none text-black uppercase font-bold text-font14 leading-normal flex gap-3 opacity-75">
+                        <ul className="news__category list-none text-black uppercase font-bold text-font14 leading-normal flex gap-2 lg:gap-3 gap-y-0 opacity-75 flex-wrap">
                           {news.tags.map((category, index) => (
                             <li key={index}>
                               <Link href="#" className="underline min-w-max">

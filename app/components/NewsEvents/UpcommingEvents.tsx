@@ -38,7 +38,7 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
             </h2>
           </div>
         </div>
-        <div className="container pb-[100px] !overflow-visible">
+        <div className="container   !overflow-visible">
           <Swiper
             className="linkedin-slider !overflow-visible"
             modules={[Navigation, Pagination]}
@@ -55,7 +55,10 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
             //   swiper.updateSlidesClasses();
             // }}
             breakpoints={{
-              320: {
+              0: {
+                slidesPerView: 1,
+              },
+              450: {
                 slidesPerView: 1.2,
               },
               768: {

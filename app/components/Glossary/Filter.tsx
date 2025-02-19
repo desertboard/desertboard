@@ -321,7 +321,7 @@ const Filter = () => {
                     </h2>
                   </div>
                   <div className="w- flex items-center justify-between  ">
-                    <div className="relative w-full flex items-center gap-2 border-b-2 border-Darkgreen p-3 pl-5 pr-[110px]">
+                    <div className="relative w-full flex items-center gap-2 border-b-2 border-Darkgreen p-3 pb-2 md:pb-3 pl-2 md:pl-5 pr-[110px]">
                       <button
                         type="button"
                         className="  group top-0 left-0 mt-1 mr-1    text-sm nuber-next-bold text-Darkgreen flex gap-2 items-center transition-all duration-300 ease-in-out
