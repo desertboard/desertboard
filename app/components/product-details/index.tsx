@@ -5,7 +5,6 @@ import SectionThree from "./SectionThree";
 import SectionFive from "./SectionFive";
 import PageBanner from "../Common/PageBanner";
 import SectionFour from "../Applications/SectionFour";
-import Downloads from "../Common/BeforeFooterTag";
 
 
 // Image imports
@@ -16,6 +15,7 @@ import { useParams } from "next/navigation";
 
 import useSWR from "swr";
 import { useEffect, useState } from "react";
+import BacktoListing from "../Common/BacktoListing";
 
 
 
@@ -79,7 +79,7 @@ const ProducrDetails = () => {
       <SectionFour data={data} />
 
       <SectionFive {...relslideses} data={finishesData}/>
-     <Downloads title={"Downloads"} url="/downloads"/>
+       <BacktoListing url="/products" pagelabel="Products"/>
     </>
   );
 };
