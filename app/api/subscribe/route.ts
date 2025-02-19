@@ -2,7 +2,7 @@ import Subscription from "@/models/Subscription";
 import { NextRequest, NextResponse } from "next/server";
 
 
-export const GET = async(req:NextRequest) => {
+export const GET = async() => {
     try {
         const emails = await Subscription.find()
         if(emails){
