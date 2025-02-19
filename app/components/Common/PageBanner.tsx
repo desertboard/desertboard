@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 interface HeroSectionProps {
   bannerSrc: StaticImageData | string;
   arrowSrc: string;
-  bnrPos: string;
+  bnrPos?: string;
   title: string;
   desc?: string;
   breadcrumbs: { label: string; href: string }[];
