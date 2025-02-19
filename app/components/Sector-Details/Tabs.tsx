@@ -140,12 +140,12 @@ const Tabs = ({ applications,data }: {
 
                 <div className="lg:hidden">
                   {applications && applications.map((tab, index) => (
-                    <div key={index} className="border-b border-[#1515151A] mt-5">
+                    <div key={index} className="border-b border-[#1515151A] mt-0 md:mt-5">
                       <button
                         className="w-full text-left py-2 md:py-4 flex justify-between items-center"
                         onClick={() => handleAccordionClick(index)}
                       >
-                        <span className="cursor-pointer py-2 md:py-4 heavydark border-transparent nuber-next-bold leading-[1] text-font24">
+                        <span className="cursor-pointer py-2 md:py-4  text-Darkgreen border-transparent nuber-next-bold   text-font24  md:text-[32px]  lg:text-[48px] leading-[1]">
                           {tab.title}
                         </span>
                         <span className="text-xl">
@@ -171,8 +171,8 @@ const Tabs = ({ applications,data }: {
                             <div className=" pt-0 texthelvetica20 clr15op75 mb-6">
                               {/* <h3 className="heavydark mb-5">{tab.title}</h3> */}
                               {  parse(formatText(tab.description))  }
-                              
-                              
+
+
                               {/* <ul>
                                 {tab.list.map((item, idx) => (
                                   <li
