@@ -16,12 +16,12 @@ const Sustainabilitypartners = ({data}:{
     if (!text) return "";
     return text.replace(/®/g, "<sup>®</sup>");
   };
-  
+
 
   return (
     <section className="py-10 lg:py-20 bg-[#E1DCD8] insp-mn relative ">
       <motion.div
-        className="ola ola-right absolute top-0 right-[-10%] w-[40em]"
+        className="ola ola-right absolute top-0 right-[-10%] w-[20em] md:w-[40em]"
         animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -32,7 +32,7 @@ const Sustainabilitypartners = ({data}:{
         />
       </motion.div>
       <motion.div
-        className="ola ola-right absolute bottom-[43%] left-[-15%] w-[40em]"
+        className="ola ola-right absolute bottom-[43%] left-[-15%]  w-[20em] md:w-[40em]"
         animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -57,7 +57,7 @@ const Sustainabilitypartners = ({data}:{
       data?.sustainability?.partners.description
         .split(".")
         .slice(0, 1)
-        .join("") + "." 
+        .join("") + "."
     ),
   }}
 />
@@ -69,7 +69,7 @@ const Sustainabilitypartners = ({data}:{
                       data?.sustainability?.partners.description
                         .split(".")
                         .slice(1)
-                        .join("") + "." 
+                        .join("") + "."
                     ),
                   }}
                 />
