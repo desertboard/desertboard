@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactElement } from "react";
 import Image from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import Searchresult from "./Searchresult";
@@ -278,11 +278,37 @@ const Filter = () => {
   }, []);
 
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [filteredComponents,setFilteredComponents] = useState<{ id: number; name: string; component: React.ReactNode; }[]>([])
+  const [searchValue,setSearchValue] = useState("")
 
-  // Determine which components to show
-  const filteredComponents = selectedId
-    ? componentsList.filter((item) => item.id === selectedId)
-    : componentsList;
+
+  useEffect(() => {
+    if (!componentsList) return;
+  
+    let updatedComponents = componentsList;
+  
+    // Filter by selectedId if present
+    if (selectedId) {
+      updatedComponents = updatedComponents.filter((item) => item.id === selectedId);
+    }
+  
+    // Filter by searchValue if present
+    if (searchValue.trim() !== "") {
+      updatedComponents = updatedComponents.filter((item) => {
+        const component = item.component as ReactElement<{ itemdata: { items?: { title: string }[] } }>; // Explicitly type component props
+    
+        return component.props?.itemdata?.items?.some((contentItem) =>
+          contentItem.title.toLowerCase().includes(searchValue.toLowerCase())
+        );
+      });
+    }
+  
+    setFilteredComponents(updatedComponents);
+  }, [componentsList, selectedId, searchValue]); 
+
+    useEffect(()=>{
+    console.log("filteredCompo",filteredComponents)
+    },[filteredComponents])
 
   return (
     <>
@@ -346,6 +372,8 @@ const Filter = () => {
                       </button>
                       <input
                         type="text"
+                        value={searchValue}
+                        onChange={(e)=>setSearchValue(e.target.value)}
                         placeholder="Search"
                         className="emilfs w-full  text-font20 leading-none    focus:outline-none   focus:border-b-[#FF671F] "
                       />

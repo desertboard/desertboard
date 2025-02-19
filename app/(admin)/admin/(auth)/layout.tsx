@@ -23,6 +23,7 @@ const navItems = [
   { name: "Sectors", href: "/admin/sectors", icon: BuildingOfficeIcon },
   { name: "Contact", href: "/admin/contact", icon: EnvelopeIcon },
   { name: "Files", href: "/admin/files", icon: FolderIcon },
+  { name: "Subscriptions", href: "/admin/subscriptions", icon: FolderIcon },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

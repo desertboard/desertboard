@@ -15,6 +15,9 @@ import youtube from "@/public/assets/images/home/youtube.svg";
 import twx from "@/public/assets/images/home/twx.svg";
 import Link from "next/link";
 import { assets } from "@/public/assets/images/assets";
+import {useForm} from 'react-hook-form'
+import { zodResolver } from "@hookform/resolvers/zod"
+import { emailSchema } from "@/app/schemas/emailSchema";
 
 
 
@@ -41,6 +44,32 @@ useEffect(() => {
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
+
+
+const {handleSubmit,register,formState:{errors}}  = useForm<{email:string}>({
+  resolver: zodResolver(emailSchema),
+})
+
+const onSubmit = async(data:{email:string}) =>{
+  try {
+    const formData = new FormData()
+    formData.append("email",data.email)
+    const response = await fetch("/api/subscribe",{
+      method:"POST",
+      body:formData
+    })
+    if(response.ok){
+      const data = await response.json()
+      alert(data.message)
+    }else{
+      const data = await response.json()
+      alert(data.error)
+    }
+  } catch (error) {
+    console.log("Error subscribing to newsletter:",error)
+  }
+}
+
   return (
     <>
       <footer className="bg-[#00594F] fotersmn relative overflow-hidden *:">
@@ -116,18 +145,20 @@ const scrollToTop = () => {
                   </p></Link>
                 </div>
                 <div>
-                  <div className="w-full flex items-center justify-between  ">
+                  <form className="w-full flex items-center justify-between" onSubmit={handleSubmit(onSubmit)}>
                     <div className="relative w-full ">
                       {/* Email Input Field */}
                       <input
                         type="email"
+                        {...register("email",{required:"Enter a valid email"})}
                         placeholder="Email"
                         className="emilfs w-full p-3 pl-5 pr-[110px] text-font18 leading-none border-b-2 border-Darkgreen   focus:outline-none   focus:border-b-[#FF671F]"
                       />
+                      {errors.email && <span>{errors.email.message}</span>}
 
                       {/* Subscribe Button */}
                       <button
-                        type="button"
+                        type="submit"
                         className="absolute group top-0 right-0 mt-1 mr-1 px-5 py-2 text-sm nuber-next-bold text-Darkgreen flex gap-2 items-center transition-all duration-300 ease-in-out
                         hover:text-[#FF671F]"
                       >
@@ -149,7 +180,7 @@ const scrollToTop = () => {
                         </svg>
                       </button>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </motion.div>
