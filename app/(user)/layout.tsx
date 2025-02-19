@@ -6,8 +6,8 @@ import Header from "../components/Header";
 
 
 export const metadata: Metadata = {
-   title: "Desert Board World&#039;s first Wooden Board made from Palm Waste - Desert Board",
-  description: "Welcome to Desert Board. Pioneering a carbon negative future from the UAE to the World. Introducing the world&#039;s first Wooden Board made from Date Palm Biomass.",
+   title: "Desert Board World's first Wooden Board made from Palm Waste - Desert Board",
+  description: "Welcome to Desert Board. Pioneering a carbon negative future from the UAE to the World. Introducing the world's first Wooden Board made from Date Palm Biomass.",
 };
 
 export default function RootLayout({
