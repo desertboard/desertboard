@@ -684,6 +684,11 @@ body {
       height: 60px;
   }
 }
+@media screen and (max-width: 767px) {
+  .suscard .goal-crd:hover .goal-crd__ibox {
+    top: 5%;
+  }
+}
 
 .sixslideview .swiper-slide{transition: 500ms all ease-in-out;}
 @media  (min-width: 1700px){

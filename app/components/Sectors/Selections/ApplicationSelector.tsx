@@ -97,7 +97,7 @@ const ApplicationSelector = ({
               </div>
             </div>
             <div>
-              <h4 className="text-font20 nuber-next-bold">
+              <h4 className="text-[18px] md:text-font20 nuber-next-bold">
                 {application.title}
               </h4>
             </div>
