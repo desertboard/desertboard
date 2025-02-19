@@ -68,6 +68,7 @@ const ProducrDetails = () => {
         title={`${data && data.data.title}`}
         breadcrumbs={breadcrumbs}
         bnrHeight="60dvh"
+        bnrPos="object-right"
       />
 
       <SectionTwo pageName="products" data={data} suggested={false}/>

@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 interface HeroSectionProps {
   bannerSrc: StaticImageData | string;
   arrowSrc: string;
+  bnrPos: string;
   title: string;
   desc?: string;
   breadcrumbs: { label: string; href: string }[];
@@ -16,7 +17,7 @@ interface HeroSectionProps {
 const formatText = (text: string) => {
   return text.replace(/®/g, "<sup>®</sup>");
 };
-const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,desc, breadcrumbs, bnrHeight }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,desc, breadcrumbs, bnrHeight, bnrPos }) => {
   return (
     // <section className="relative h-[75dvh] bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full">
     <section className="relative bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full" style={ { "--banner-height": bnrHeight } as React.CSSProperties}>
@@ -24,16 +25,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
       <div className="absolute inset-0 bg-primary opacity-20 -z-20"></div>  */}
      <figure className="absolute left-0 top-0 h-full w-full -z-40 bg-primary">
   <Image
-    className="w-full h-full absolute top-0 left-0 object-cover object-right"
-    src={bannerSrc}
-    width={1600}
-    height={700}
-    alt="Banner image"
+     className={`w-full h-full absolute top-0 left-0 object-cover ${bnrPos ? bnrPos : "object-center"}`}
+     src={bannerSrc}
+     width={1600}
+     height={700}
+     alt="Banner image"
   />
 </figure>
 
       <div className="container relative">
-        <div className="pg-bnr__div absolute bottom-0 pb-4 md:pb-10 lg:pb-20">
+        <div className="pg-bnr__div absolute bottom-0 pb-10 md:pb-10 lg:pb-20">
           <motion.h1
           className="pg-bnr__ttl heavywhite  mb-5 md:mb-10"
           initial={{ opacity: 0, y: 50 }}
