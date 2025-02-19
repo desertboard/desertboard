@@ -25,7 +25,7 @@ const Tabssustain = ({ data }:{
   return (
     <section className="py-10 lg:py-20 insp-mn relative inspbg">
       <motion.div
-        className="ola ola-right absolute top-0 right-[-10%] w-[40em]"
+        className="ola ola-right absolute top-0 right-[-10%] w-[20em] md:w-[40em]"
         animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -36,7 +36,7 @@ const Tabssustain = ({ data }:{
         />
       </motion.div>
       <motion.div
-        className="ola ola-right absolute bottom-[43%] left-[-15%] w-[40em]"
+        className="ola ola-right absolute bottom-[43%] left-[-15%] w-[20em] md:w-[40em]"
         animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -140,12 +140,12 @@ const Tabssustain = ({ data }:{
                 {data && data.sustainability && data.sustainability.vision.map(
                         (tab, index) =>
                            (
-                    <div key={index} className="border-b border-[#1515151A]">
+                    <div key={index} className="border-b border-[#1515151A] mt-0 md:mt-5">
                       <button
                         className="w-full text-left py-2 md:py-4 flex justify-between items-center"
                         onClick={() => handleAccordionClick(index)}
                       >
-                        <span className="cursor-pointer py-2 md:py-4 nuber-next-heavy   text-[#002D28] border-transparent nuber-next-bold leading-[1] text-font24  md:text-[28px] lg:text-[48px]">
+                        <span className="cursor-pointer py-2 md:py-4  text-Darkgreen border-transparent nuber-next-bold   text-font24  md:text-[32px]  lg:text-[48px] leading-[1]">
                           {tab.region}
                         </span>
                         <span className="text-xl">

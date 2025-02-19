@@ -132,7 +132,9 @@
  }
 
  @media screen and (max-width: 678px) {
- .timeline__years .swiper-slide span{
+ .timeline__years .swiper-slide span,
+ .timeline__years .swiper-slide.swiper-slide-prev span,
+ .timeline__years .swiper-slide.swiper-slide-next span{
     line-height: 1.3 !important;
     font-size: 14px !important;
     }
