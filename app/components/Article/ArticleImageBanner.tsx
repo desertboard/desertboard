@@ -80,7 +80,7 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc, data }) => 
             </div>
           )}
 
-          <div className={`pb-6 ${data?.data?.images[4] || data?.data?.images[5] ? "lg:pb-[60px]" : ""} pt-6 lg:pt-20 clr15op75 texthelvetica20`}>
+          <div className={`pb-6 ${data?.data?.images[4] || data?.data?.images[5] ? "lg:pb-[60px]" : ""} clr15op75 texthelvetica20`}>
             {data && data.data && formatDescription(data.data.description.split("</p>").slice(3, 7).join(''))}
           </div>
 
