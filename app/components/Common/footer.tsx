@@ -446,7 +446,7 @@ const onSubmit = async(data:{email:string}) =>{
 
         <button
       onClick={scrollToTop}
-      className={`fixed bottom-5 right-20    transition-opacity duration-300 z-50 ${
+      className={`fixed bottom-5 right-5 md:right-10 xl:right-20    transition-opacity duration-300 z-50 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >

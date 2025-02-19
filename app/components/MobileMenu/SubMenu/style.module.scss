@@ -105,13 +105,13 @@
     left: -99px;
     width: 100px;
     height: 100%;
-    fill: #745b44;
+    fill: var(--Darkgreen);
     stroke: none;
 }
 
 .menu{
-    height: 100vh;
-    background-color: #745b44;
+    height: 100dvh;
+    background-color: var(--Darkgreen);
     position: fixed;
     right: 0;
     top: 0;
