@@ -21,12 +21,12 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <title>
-          Recommendation: DesertBoard | World&apos;s first Wooden Board made
-          from Palm{" "}
+          Desert Board World&apos;s first Wooden Board made from Palm Waste -
+          Desert Board
         </title>
         <meta
           name="description"
-          content="Recommendation: DesertBoard | World's first Wooden Board made from Palm "
+          content="Welcome to Desert Board. Pioneering a carbon negative future from the UAE to the World. Introducing the world's first Wooden Board made from Date Palm Biomass."
         />
         {/* Google Tag Manager Script */}
         <Script
