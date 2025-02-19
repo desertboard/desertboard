@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { FileUploader } from '../../ui/file-uploader';
-import { GoogleReCaptchaProvider, GoogleReCaptcha } from "react-google-recaptcha-v3";
+
 
 
 type FormData = {
@@ -21,6 +21,7 @@ const FormComponent = ({ department }: {
     const { register, formState: { errors }, handleSubmit, reset, watch, setValue } = useForm<FormData>()
     const [file, setFile] = useState<string>("")
     const [fileName, setFileName] = useState("")
+    const [message,setMessage] = useState("")
 
 
     const onSubmit = async (data: FormData) => {
@@ -41,13 +42,13 @@ const FormComponent = ({ department }: {
 
             if (response.ok) {
                 const data = await response.json()
-                alert(data.message)
+                setMessage(data.message)
                 reset()
                 setFile("")
                 setFileName("")
             } else {
                 const data = await response.json()
-                alert(data.error)
+                setMessage(data.error)
                 throw new Error("Failed to submit");
             }
 
@@ -70,19 +71,11 @@ const FormComponent = ({ department }: {
     }, [watch("phone")])
 
 
-    const [token, setToken] = useState("");
-
-    const setTokenFunc = (getToken:string) => {
-        console.log(token)
-        setToken(getToken);
-      };
-
-      console.log("key",process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY)
 
     return (
         <form className="mx-auto bg-[#E3DED9] md:px-6 px-0   py-0 md:py-8 text-black" onSubmit={handleSubmit(onSubmit)}>
+                {message!=="" && (message.slice(0,1) == "T" ? <div className='text-green-500'>{message}</div> : <div className='text-red-500'>{message}</div>)}
             <div className="grid grid-cols-2 gap-6">
-
                 <div className="relative float-label-input mb-4 md:mb-8 mt-0">
                     <input type="text" id="name" placeholder=" " {...register("name", { required: "Name is required" })} className="block w-full focus:shadow-outline  border-b border-gray-400 focus:outline-none focus:border-black bg-transparent texthelvetica20 clr15op50 lg:pl-3    py-3 px-3   appearance-none leading-normal   " />
                     <label className="absolute font-helvetica text-font20 text-[#000]/50 top-3 left-0 pointer-events-none transition duration-200 ease-in-outbg-white px-2 text-grey-darker">Name</label>
@@ -131,16 +124,12 @@ const FormComponent = ({ department }: {
 
                 </div>
 
-
-                <GoogleReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY ?? ""}>
-                <GoogleReCaptcha
-                onVerify={setTokenFunc}
                 
-          />
-        </GoogleReCaptchaProvider>
+                
 
             </div>}
 
+            {/* <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} /> */}
 
             <button
                 type="submit"
@@ -152,6 +141,8 @@ const FormComponent = ({ department }: {
                     </svg>
                 </div>
             </button>
+
+
         </form>
     )
 }
