@@ -47,7 +47,7 @@ import Link from 'next/link';
         <div className="flex items-baseline gap-2">
           <Image src={NewsIcon} alt="" />
           {
-            <ul className="news__category list-none text-black uppercase font-bold text-font14 leading-normal flex gap-3 opacity-75 flex-wrap">
+            <ul className="news__category list-none text-black uppercase font-bold text-font14 leading-normal flex gap-2 lg:gap-3 gap-y-0 opacity-75 flex-wrap">
               {listData && listData.tags && listData.tags.map((category, index) => (
                 <li key={index}>
                   <a href="#" className="underline">
@@ -59,8 +59,8 @@ import Link from 'next/link';
           }
         </div>
 
-       
-      
+
+
       </div>
       <Link className="text-[#FF671F] w-fit pb-1 flex items-center justify-between border-[#FF671F] border-b-[2px] text-font18 font-bold group font-nuber-next mt-auto" href={`/article/${listData._id}`}>
         Read More
