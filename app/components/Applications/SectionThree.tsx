@@ -135,7 +135,8 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
                 className="relative group overflow-hidden transform goal-crd hrcd bg-center bg-cover transition-all duration-500 ease-in-out"
                 style={{ backgroundImage: `url(${item.image})` }}
               >
-                <div className="flex items-end min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500">
+                <div className="icnview"></div>
+                <div className="flex items-end min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500 ">
                   <div className="p-5 transition-all duration-500 ease-in-out w-full">
                     <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-linear w-full translate-y-[0px] delay-200 group-hover:translate-y-[-10px]">
                       {item.name}

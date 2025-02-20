@@ -149,6 +149,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
                       <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
                         {/* <h3 className="nubernext28bold   text-white " >{item.title}</h3> */}
                       </div>
+                      <div className="icnview"></div>
                       <div className="flex items-end  min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500  ">
 
                         <div className="p-5 transition-all duration-500 ease-in-out w-full  ">

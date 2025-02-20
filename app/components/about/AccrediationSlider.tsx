@@ -139,7 +139,7 @@ const AccrediationSlider = ({data}:{
               slidesPerView: 3.2,
             },
           }}>
-      {data && data.about[0] && [...Array(3)].map((_, repeatIndex) => (
+      {data && data.about[0] && [...Array(8)].map((_, repeatIndex) => (
   data.about[0].partners.partners.map((accr, index) => (
     <SwiperSlide className="accr__slide h-40 text-white" key={`${repeatIndex}-${index}`}>
       <div className="accr-crd p-6 xl:p-[40px] bg-Darkgreen h-full flex items-center">
