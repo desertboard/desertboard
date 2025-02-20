@@ -160,10 +160,11 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                       onMouseLeave={() => setHoveredIndex(null)}
                       onTouchStart={() => setHoveredIndex(item._id)}  // For mobile devices
                     >
+                <div className="icnview"></div>
                       <div className="flex items-end pb-1 md:pb-3 xl:pb-3 min-h-[300px] lg:min-h-[426px]">
                         <div className="px-4 md:px-5 xl:px-5 w-full">
                           <h3 className="nubernext28bold text-white translate-y-[0px] pb-3 transition-all duration-500 delay-200 group-hover:translate-y-[-10px]">
-                            {item.name}
+
                           </h3>
 
 

@@ -24,7 +24,7 @@ interface WhySupremeProps {
   relatedApps:RelatedApps
   currentApplication: string; // Add this prop
 
- 
+
 }
 
 // Component to display the data
@@ -70,8 +70,8 @@ const SectionFive: React.FC<WhySupremeProps> = ({ relatedApps, currentApplicatio
 
        const filteredRelatedApps = Array.isArray(relatedApps)
   ? relatedApps.filter(app => app.title !== currentApplication)
-  : []; 
-       
+  : [];
+
   return (
     <>
 
@@ -168,6 +168,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ relatedApps, currentApplicatio
                       onMouseLeave={() => setHoveredIndex(null)}
                       onTouchStart={() => setHoveredIndex(item._id)}  // For mobile devices
                     >
+                <div className="icnview"></div>
                       <div className="flex items-end pb-1 md:pb-4 xl:pb-8 min-h-[300px] lg:min-h-[462px]">
                         <div className="px-4 md:px-6 xl:px-10 w-full">
                           <h3 className="nubernext28bold text-white translate-y-[0px] pb-3 transition-all duration-500 delay-200 group-hover:translate-y-[-10px]">
