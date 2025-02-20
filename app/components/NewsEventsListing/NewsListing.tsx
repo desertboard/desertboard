@@ -19,14 +19,14 @@ const Listing = ({
   const { data }: { data: NewsType; error: Error | undefined; isLoading: boolean } = useSWR('/api/admin/news', fetcher);
 
   const [filteredData, setFilteredData] = useState<
-    { 
-      date: string; 
-      description: string; 
-      images: string[]; 
-      tags: string[]; 
-      title: string; 
-      _id: string; 
-      type: string; 
+    {
+      date: string;
+      description: string;
+      images: string[];
+      tags: string[];
+      title: string;
+      _id: string;
+      type: string;
       sector: string;
     }[]
   >([]);
@@ -39,7 +39,7 @@ const Listing = ({
       if (!data?.data?.length || !typeSelected.name) return;
 
       console.log("Original Data:", data.data);
-      
+
       if (typeSelected.name === "Type" && sectorSelected.name === "Sector") {
         console.log("in if - Returning all data");
         setFilteredData(data.data);
@@ -52,7 +52,7 @@ const Listing = ({
         setFilteredData(data.data.filter((item) => item.sector === sectorSelected.name));
       } else {
         console.log("Filtering by both type and sector");
-        setFilteredData(data.data.filter((item) => 
+        setFilteredData(data.data.filter((item) =>
           item.type === typeSelected.name && item.sector === sectorSelected.name
         ));
       }
@@ -81,14 +81,14 @@ const Listing = ({
             <ListItem listData={item} key={item._id} />
           ))}
         </div>
-       
+
         {itemsToShow < filteredData.length && (
-     
-          <button onClick={handleLoadMore} className="load-more-button mt-8 bg-orange text-white px-8 py-3">
-            Load More
-          </button>
+
+          <div className="w-fit m-auto"><button onClick={handleLoadMore} className="load-more-button mt-8 bg-orange text-white px-8 py-3">
+          Load More
+        </button></div>
         )}
-      
+
       </div>
     </LightSectionContainer>
   );

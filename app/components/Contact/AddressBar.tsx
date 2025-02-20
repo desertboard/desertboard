@@ -21,7 +21,7 @@ const AddressBar = ({data}:{data:ContactDataType}) => {
     useEffect(()=>{
         console.log("ID",data?.regions[0]?.content[0]?._id)
         setActiveAccordian(data?.regions[0]?.content[0]?._id)
-    },[data])
+    },[ ])
 
     const [addressBarIndex,setAddressBarIndex] = useState(0)
 

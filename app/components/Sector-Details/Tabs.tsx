@@ -53,7 +53,7 @@ const Tabs = ({ applications,data }: {
             <div className="w-full">
               <div className="col-12 ">
                 <div className="hidden lg:block">
-                  <div className="tabset justify-between pt-2 border-b border-[#1515151A] hidden lg:flex md:gap-[30px] gap-[10px] lg:gap-[50px] xxl:gap-[107px]">
+                  <div className="tabstlb tabset justify-between pt-2 border-b border-[#1515151A] hidden lg:flex md:gap-[30px] gap-[10px] lg:gap-[50px] xxl:gap-[107px]">
                     {applications && applications.map((tab, index) => (
                       <React.Fragment key={`tab${index + 1}`}>
                         <input
@@ -67,7 +67,7 @@ const Tabs = ({ applications,data }: {
                         />
                         <label
                           htmlFor={`tab${index + 1}`}
-                          className={`cursor-pointer py-4 border-b-[6px] text-[#15151580] ${activeTab === `tab${index + 1}`
+                          className={`labelstyle cursor-pointer py-4 border-b-[6px] text-[#15151580] ${activeTab === `tab${index + 1}`
                             ? "border-[#FF671F] nuber-next-heavy leading-[1] text-font28"
                             : "border-transparent nuber-next-bold leading-[1] text-font24"
                             }`}

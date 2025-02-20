@@ -39,7 +39,7 @@ export default function Usps({ secTitle }: UspsProps) {
           <Usp uspTitle="Spearheading the Circular Economy" uspIcon={uspI4} order="4" uspDesc="PSB® boards are 100% reusable and recyclable, enabling a closed-loop lifecycle that minimizes waste and maximizes sustainability." mainImg={uspImg4} />
           <Usp uspTitle="Versatile" uspIcon={uspI5} order="5" uspDesc="Highly customizable boards with a variety of finishes, designed to meet the diverse needs of the construction & allied industries." mainImg={uspImg5} />
           <Usp uspTitle="Production Facility" uspIcon={uspI6} order="6" uspDesc="Capable of producing 6,200 sustainable PSB® boards per day, accommodating 16 (20-foot containers) daily." mainImg={uspImg6} />
-          <Usp uspTitle="Bi-Economical" uspIcon={uspI7} order="7" uspDesc="An eco-friendly, cost-efficient alternative to traditional materials, PSB® Conform boards can be reused over 40 times vertically, saving both cost and time in the construction industry." mainImg={uspImg7} />
+          <Usp uspTitle="Bio-Economical" uspIcon={uspI7} order="7" uspDesc="An eco-friendly, cost-efficient alternative to traditional materials, PSB® Conform boards can be reused over 40 times vertically, saving both cost and time in the construction industry." mainImg={uspImg7} />
         </div>
       </div>
     </section>
