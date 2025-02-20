@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { FileUploader } from '../../ui/file-uploader';
-
+import ReCAPTCHA from 'react-google-recaptcha';
 
 
 type FormData = {
@@ -18,42 +18,65 @@ const FormComponent = ({ department }: {
     department: string;
 }) => {
 
+    const recaptcha = useRef<ReCAPTCHA>(null)
     const { register, formState: { errors }, handleSubmit, reset, watch, setValue } = useForm<FormData>()
     const [file, setFile] = useState<string>("")
     const [fileName, setFileName] = useState("")
-    const [message,setMessage] = useState("")
+    const [message, setMessage] = useState("")
+    const [error,setError] = useState("")
 
 
     const onSubmit = async (data: FormData) => {
         try {
-            const formData = new FormData()
-            formData.append("name", data.name)
-            formData.append("email", data.email)
-            formData.append("phone", data.phone)
-            formData.append("message", data.message)
-            formData.append("resume", file)
 
-            const url = `/api/admin/contact/enquiries?department=${department}`;
-            const method = "POST";
-            const response = await fetch(url, {
-                method: method,
-                body: formData,
-            });
+            if (recaptcha) {
+                const captchaValue = recaptcha?.current?.getValue()
+                if (!captchaValue) {
+                    setError("Please verify yourself to continue")
+                    return;
+                } else {
+                    const formData = new FormData()
+                    formData.append("name", data.name)
+                    formData.append("email", data.email)
+                    formData.append("phone", data.phone)
+                    formData.append("message", data.message)
+                    formData.append("resume", file)
 
-            if (response.ok) {
-                const data = await response.json()
-                setMessage(data.message)
-                reset()
-                setFile("")
-                setFileName("")
-            } else {
-                const data = await response.json()
-                setMessage(data.error)
-                throw new Error("Failed to submit");
+                    if(department=="careers" && file == ""){
+                        setError("Please add your resume")
+                        return;
+                    }
+
+                    const url = `/api/admin/contact/enquiries?department=${department}`;
+                    const method = "POST";
+                    const response = await fetch(url, {
+                        method: method,
+                        body: formData,
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json()
+                        setMessage(data.message)
+                        reset()
+                        setFile("")
+                        setFileName("")
+                        setError("")
+                    } else {
+                        const data = await response.json()
+                        setError(data.error)
+                        
+                        throw new Error("Failed to submit");
+                    }
+
+                }
+
             }
 
         } catch (error) {
             console.log("Error submiting enquiry form:", error)
+        }finally{
+            
+            recaptcha?.current?.reset()
         }
     }
 
@@ -71,10 +94,10 @@ const FormComponent = ({ department }: {
     }, [watch("phone")])
 
 
-
     return (
         <form className="mx-auto bg-[#E3DED9] md:px-6 px-0   py-0 md:py-8 text-black" onSubmit={handleSubmit(onSubmit)}>
-                {message!=="" && (message.slice(0,1) == "T" ? <div className='text-green-500'>{message}</div> : <div className='text-red-500'>{message}</div>)}
+            {message !== "" && <div className='text-green-500'>{message}</div>}
+            {error !== "" && <div className='text-red-500'>{error}</div>}
             <div className="grid grid-cols-2 gap-6">
                 <div className="relative float-label-input mb-4 md:mb-8 mt-0">
                     <input type="text" id="name" placeholder=" " {...register("name", { required: "Name is required" })} className="block w-full focus:shadow-outline  border-b border-gray-400 focus:outline-none focus:border-black bg-transparent texthelvetica20 clr15op50 lg:pl-3    py-3 px-3   appearance-none leading-normal   " />
@@ -124,12 +147,9 @@ const FormComponent = ({ department }: {
 
                 </div>
 
-                
-                
-
             </div>}
 
-            {/* <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} /> */}
+            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} ref={recaptcha} />
 
             <button
                 type="submit"

@@ -6,7 +6,7 @@ import flogo from "@/public/assets/images/home/flogo.png";
 import logo from "@/public/assets/images/home/sticky-logo.png";
 import { Menu, MenuItem } from "./ui/navbar-menu";
 import MobileMenu from "./MobileMenu/MobileMenu";
-import { menuItems } from "../(user)/data/menuItems";
+import { fakeData, menuItems } from "../(user)/data/menuItems";
 import useSWR from "swr";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -90,41 +90,61 @@ const Header = () => {
                       <div className="flex flex-col gap-3">
                         {products && products.map((item: { title: string }, index) => (
                           <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/product-details/${item.title}`} key={index}>
-                              <motion.span
-            whileHover={{ scale: 1.1, color: "#000" }}
-            transition={{ duration: 0.2 }}
-            className="inline-block"
-          >
-             <span
-                          dangerouslySetInnerHTML={{ __html: formatText(item.title) }}
-                        />
-          </motion.span>
-                           </Link>
+                            <motion.span
+                              whileHover={{ scale: 1.1, color: "#000" }}
+                              transition={{ duration: 0.2 }}
+                              className="inline-block"
+                            >
+                              <span
+                                dangerouslySetInnerHTML={{ __html: formatText(item.title) }}
+                              />
+                            </motion.span>
+                          </Link>
                         ))}
                       </div>
                     }
 
                     {item.title == "Sectors" &&
                       <div className="flex space-x-5 gap-8" key={index}>
-                        {sectors && sectors.map((item: { title: string,applications:{title:string,product:string}[] }, index) => (
+                        {sectors && sectors.map((item: { title: string, applications: { title: string, product: string }[] }, index) => (
 
-                            <div className="flex flex-col gap-3" key={index} >
-                              <Link href={`/sector-details/${item.title}`}><div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div></Link>
-                              {item.applications.map((application,index)=>(
+                          item.title == "Interior Design" ?
 
-                                  <div  key={index}>
+                            (
+
+                              <div className="flex flex-col gap-3" key={index} >
+                                <Link href={`/sector-details/${item.title}`}><div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div></Link>
+                                {fakeData.applications.map((application, index) => (
+                                  <div key={index}>
                                     <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/applications/${application.product}?application=${encodeURIComponent(application.title)}&sector=${encodeURIComponent(item.title.replace(/\s+/g, "-"))}`} key={index}>        <motion.span
-            whileHover={{ scale: 1.1, color: "#000" }}
-            transition={{ duration: 0.2 }}
-            className="inline-block"
-          >
-            {application.title}
-          </motion.span></Link>
+                                      whileHover={{ scale: 1.1, color: "#000" }}
+                                      transition={{ duration: 0.2 }}
+                                      className="inline-block"
+                                    >
+                                      {application.title}
+                                    </motion.span></Link>
                                   </div>
+                                ))}
+                              </div>
+
+                            ) : (<div className="flex flex-col gap-3" key={index} >
+                              <Link href={`/sector-details/${item.title}`}><div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div></Link>
+                              {item.applications.map((application, index) => (
+
+                                <div key={index}>
+                                  <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/applications/${application.product}?application=${encodeURIComponent(application.title)}&sector=${encodeURIComponent(item.title.replace(/\s+/g, "-"))}`} key={index}>        <motion.span
+                                    whileHover={{ scale: 1.1, color: "#000" }}
+                                    transition={{ duration: 0.2 }}
+                                    className="inline-block"
+                                  >
+                                    {application.title}
+                                  </motion.span></Link>
+                                </div>
 
 
                               ))}
-                            </div>
+                            </div>)
+
 
                         ))}
                       </div>

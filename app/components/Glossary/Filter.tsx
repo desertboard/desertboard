@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, ReactElement } from "react";
+import React, { useState, useEffect, ReactElement, useMemo } from "react";
 import Image from "next/image";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import Searchresult from "./Searchresult";
@@ -278,37 +278,34 @@ const Filter = () => {
   }, []);
 
   const [selectedId, setSelectedId] = useState<number | null>(null);
-  const [filteredComponents,setFilteredComponents] = useState<{ id: number; name: string; component: React.ReactNode; }[]>([])
+  // const [filteredComponents,setFilteredComponents] = useState<{ id: number; name: string; component: React.ReactNode; }[]>([])
   const [searchValue,setSearchValue] = useState("")
 
 
-  useEffect(() => {
-    if (!componentsList) return;
+  const filteredComponents = useMemo(() => {
+    if (!componentsList) return [];
   
     let updatedComponents = componentsList;
   
-    // Filter by selectedId if present
     if (selectedId) {
       updatedComponents = updatedComponents.filter((item) => item.id === selectedId);
     }
   
-    // Filter by searchValue if present
     if (searchValue.trim() !== "") {
       updatedComponents = updatedComponents.filter((item) => {
-        const component = item.component as ReactElement<{ itemdata: { items?: { title: string }[] } }>; // Explicitly type component props
-    
+        const component = item.component as ReactElement<{ itemdata: { items?: { title: string }[] } }>;
         return component.props?.itemdata?.items?.some((contentItem) =>
           contentItem.title.toLowerCase().includes(searchValue.toLowerCase())
         );
       });
     }
   
-    setFilteredComponents(updatedComponents);
-  }, [componentsList, selectedId, searchValue]); 
+    return updatedComponents;
+  }, [componentsList, selectedId, searchValue]);
 
-    useEffect(()=>{
-    console.log("filteredCompo",filteredComponents)
-    },[filteredComponents])
+    // useEffect(()=>{
+    // console.log("filteredCompo",filteredComponents)
+    // },[filteredComponents])
 
   return (
     <>
