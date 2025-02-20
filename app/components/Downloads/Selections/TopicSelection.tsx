@@ -1,5 +1,5 @@
 
-import React, { Dispatch, SetStateAction,  useState } from 'react'
+import React, { Dispatch, SetStateAction,  useEffect,  useState } from 'react'
 import { topicSelection } from '../selectionData'
 import { Downloads } from '@/types/Downloads'
 
@@ -11,13 +11,20 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile,data }: {
 }) => {
 
     const [dropDownOpen,setDropDownOpen] = useState(false)
-    const [selectedValue,setSelectedValue] = useState(topicSelection[0].title)
+    const [selectedValue,setSelectedValue] = useState(data && topicSelection[0].title)
 
     const handleSelection = (title:string,index:number) =>{
         setSelectedValue(title)
         setDropDownOpen(false)
         setActiveTopic(index)
     }
+
+    useEffect(() => {
+        if (data?.data?.length > 0) {
+          setSelectedValue(data.data[0].title);
+        }
+      }, [data]);
+
 
 
     return (
