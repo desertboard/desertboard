@@ -1,3 +1,4 @@
+import sendMail from "@/app/helpers/sendMail";
 import connectDB from "@/lib/mongodb";
 import ratelimit from "@/lib/rateLimit";
 import { verifyAdmin } from "@/lib/verifyAdmin";
@@ -54,13 +55,21 @@ export async function POST(req: NextRequest) {
     const message = formData.get("message")
     const resume = formData.get("resume")
 
-    const enquiries = await Enquiry.findOne({ department })
+    const mailSend = await sendMail()
 
-    if (enquiries) {
-      enquiries.enquiry.push({ name, email, phone, message, resume })
-      await enquiries.save()
-      return NextResponse.json({ message: "Thank you, we will get back to you soon" }, { status: 200 })
+    if(mailSend){
+      const enquiries = await Enquiry.findOne({ department })
+
+      if (enquiries) {
+        enquiries.enquiry.push({ name, email, phone, message, resume })
+        await enquiries.save()
+        return NextResponse.json({ message: "Thank you, we will get back to you soon" }, { status: 200 })
+      }
+    }else{
+      return NextResponse.json({ error: "Couldn't complete that request at the moment, try again later" }, { status: 500 });
     }
+
+
   } catch (error) {
     console.log("error posting enquiry:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
