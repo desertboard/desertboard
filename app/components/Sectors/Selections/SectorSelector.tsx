@@ -1,6 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import Image from "next/image";
-import { assets } from '@/public/assets/images/assets';
+
 import { SectorType } from '@/types/SectorType';
 
 const SectorSelector = ({ setActiveSector, activeSector,data,setSectorName,page }: {
@@ -12,7 +11,6 @@ const SectorSelector = ({ setActiveSector, activeSector,data,setSectorName,page 
 }) => {
 
     const [isMobile, setIsMobile] = useState(false)
-    const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {
 
@@ -33,20 +31,16 @@ const SectorSelector = ({ setActiveSector, activeSector,data,setSectorName,page 
 
     }, [])
 
-    const [selectedValue,setSelectedValue] = useState("")
 
 
     const handleSelection = (index:number,title:string) =>{
         console.log(title)
         setSectorName(title)
-        setSelectedValue(title)
         setActiveSector(index)
-        setIsOpen(false)
     }
 
     useEffect(()=>{
         console.log(data && data.data[0].title)
-        setSelectedValue(data && data.data[0].title)
 
     },[data])
 
@@ -63,20 +57,17 @@ const SectorSelector = ({ setActiveSector, activeSector,data,setSectorName,page 
             {
                 isMobile &&
                 <>
-                    <div className={`   group border-b-[2px] border-[#00000010] flex justify-between py-6 lg:py-8 cursor-pointer`} onClick={()=>setIsOpen(true)}>
-
-                        <h4 className='text-font24 lg:text-font28 lg:nuber-next-bold leading-[1]'>{selectedValue}</h4>
-                        <Image src={assets.grarrow} alt="" />
-
-                    </div>
-
-                    { isOpen && data && data.data && data.data.map((item, index) => (
-                        <div className={`text-font20 md:text-font24 nuber-next-bold group border-b-[1px] md:border-b-[2px] border-[#00000010] flex justify-between py-3 md:py-6 lg:py-8 cursor-pointer ${activeSector == index ? "text-orange hidden" : "text-[#151515BF]"}`} key={index} onClick={() => handleSelection(index,item.title)}>
+                       {   data && data.data && data.data.map((item, index) => (
+                        <div className={`text-font20 md:text-font24 nuber-next-bold group border-b-[1px] md:border-b-[2px] border-[#00000010] flex justify-between py-3 md:py-6 lg:py-8 cursor-pointer ${activeSector == index ? "text-orange" : "text-[#151515BF]"}`} key={index} onClick={() => handleSelection(index,item.title)} >
 
                             <h4 className='leading-[1]'>{item.title}</h4>
 
                         </div>
                     ))}
+
+
+
+
                 </>
 
             }

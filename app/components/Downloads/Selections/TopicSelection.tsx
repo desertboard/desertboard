@@ -1,5 +1,5 @@
 
-import React, { Dispatch, SetStateAction,  useEffect,  useState } from 'react'
+import React, { Dispatch, SetStateAction,    useState } from 'react'
 import { topicSelection } from '../selectionData'
 import { Downloads } from '@/types/Downloads'
 
@@ -10,20 +10,18 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile,data }: {
     data:Downloads
 }) => {
 
-    const [dropDownOpen,setDropDownOpen] = useState(false)
     const [selectedValue,setSelectedValue] = useState(data && topicSelection[0].title)
 
     const handleSelection = (title:string,index:number) =>{
         setSelectedValue(title)
-        setDropDownOpen(false)
         setActiveTopic(index)
     }
 
-    useEffect(() => {
-        if (data?.data?.length > 0) {
-          setSelectedValue(data.data[0].title);
-        }
-      }, [data]);
+    // useEffect(() => {
+    //     if (data?.data?.length > 0) {
+    //       setSelectedValue(data.data[0].title);
+    //     }
+    //   }, [data]);
 
 
 
@@ -53,7 +51,20 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile,data }: {
 
                 {isMobile &&
                     <>
-                    <div className={` group border-b-[2px] border-[#1515151A] flex justify-between py-5 md:py-8   cursor-pointer`} onClick={()=>setDropDownOpen((prev)=>!prev)}>
+                    <div>
+                       {data && data.data.map((topic,index)=>(
+
+
+
+                            <div className={`text-font21 md:text-font28 nuber-next-bold group border-b-[1px] md:border-b-[2px] border-[#00000010] flex justify-between py-3 md:py-6 lg:py-8 cursor-pointer   hover:text-orange ${selectedValue == topic.title  ? "text-orange" : "text-[#151515BF]"} `} onClick={()=>handleSelection(topic.title,index)} key={index}>
+
+                            <h4>{topic.title}</h4>
+
+                            </div>
+
+                       ))}
+                    </div>
+                    {/* <div className={` group border-b-[2px] border-[#1515151A] flex justify-between py-5 md:py-8   cursor-pointer`} onClick={()=>setDropDownOpen((prev)=>!prev)}>
 
                         <h4 className='text-font24 lg:text-font28 lg:nuber-next-bold leading-[1]'>{selectedValue}</h4>
 
@@ -79,7 +90,7 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile,data }: {
                             </div>
 
                        ))}
-                    </div>}
+                    </div>} */}
 
                     </>
                     }
