@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  FacebookShareButton, 
-  TwitterShareButton, 
-  LinkedinShareButton, 
-  WhatsappShareButton, 
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+  WhatsappShareButton,
   XIcon
 } from "react-share";
 import { FacebookIcon, LinkedinIcon, WhatsappIcon } from "react-share";
@@ -54,7 +54,7 @@ const ShareArticle = () => {
       <AnimatePresence>
         {showIcons && (
           <motion.div
-            className="flex gap-3 mt-2 absolute top-7 p-2 rounded-lg"
+            className="flex gap-3 md:mt-2 relative bottom-2 md:absolute md:top-7   md:right-[-40px] lg:right-[-26px]  xl:right-[-29px] px-0 md:px-2 p-2 rounded-lg"
             variants={containerVariants}
             initial="hidden"
             animate="visible"

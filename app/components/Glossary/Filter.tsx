@@ -284,27 +284,27 @@ const Filter = () => {
 
   useEffect(() => {
     if (!componentsList) return;
-  
+
     let updatedComponents = componentsList;
-  
+
     // Filter by selectedId if present
     if (selectedId) {
       updatedComponents = updatedComponents.filter((item) => item.id === selectedId);
     }
-  
+
     // Filter by searchValue if present
     if (searchValue.trim() !== "") {
       updatedComponents = updatedComponents.filter((item) => {
         const component = item.component as ReactElement<{ itemdata: { items?: { title: string }[] } }>; // Explicitly type component props
-    
+
         return component.props?.itemdata?.items?.some((contentItem) =>
           contentItem.title.toLowerCase().includes(searchValue.toLowerCase())
         );
       });
     }
-  
+
     setFilteredComponents(updatedComponents);
-  }, [componentsList, selectedId, searchValue]); 
+  }, [componentsList, selectedId, searchValue]);
 
     useEffect(()=>{
     console.log("filteredCompo",filteredComponents)

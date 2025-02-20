@@ -295,3 +295,8 @@
     transform 0.8s ease-in-out;}
 .mivi__mibig .mivi__desc p{opacity: 1;}
 .mivi__vibig .mivi__desc p {opacity: 1;}
+@media (max-width: 768px) {
+    .mivi__desc p{
+        padding-right: 15px;
+}
+}

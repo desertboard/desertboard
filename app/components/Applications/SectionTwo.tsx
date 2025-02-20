@@ -44,7 +44,7 @@ function SectionTwo({ suggested, data, pageName, sectorData }: SectionTwoProps) 
   const links = [
     { text: "Technical Datasheet", href: "/downloads" },
     { text: "Certificates", href: "/downloads" },
-    { text: "Get InTouch", href: "/contact" },
+    { text: "Get In Touch", href: "/contact" },
   ];
 
   const formatmm2Text = (text: string) => {

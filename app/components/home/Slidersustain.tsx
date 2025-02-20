@@ -127,7 +127,7 @@ const Slidersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
       ))}
       </Swiper>
       <div className="container  relative">
-          <div onClick={() => swiperRef.current?.slidePrev()}  className=" next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
+          <div onClick={() => swiperRef.current?.slideNext()}  className=" next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
             <div className="transition-all duration-300 group-hover:translate-x-1">
               <svg width="20" height="30" viewBox="0 0 25 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.99992 2L21.9999 17L6.99992 32M1.9939 7.00392L11.99 17L1.99389 26.996" stroke="#FF671F" strokeWidth="3" strokeLinecap="round" />

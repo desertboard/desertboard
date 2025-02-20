@@ -210,7 +210,7 @@ export const topicSelection = [
                 ]
             },
             {
-                title: "Life Cycle Certificates",
+                title: "Life Cycle Assessment (LCA)",
                 result: [
                     {
                         title: " MArketing-Intertek",

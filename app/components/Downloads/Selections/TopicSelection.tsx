@@ -1,5 +1,5 @@
 
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import React, { Dispatch, SetStateAction,  useState } from 'react'
 import { topicSelection } from '../selectionData'
 import { Downloads } from '@/types/Downloads'
 
@@ -65,7 +65,7 @@ const TopicSelection = ({ activeTopic, setActiveTopic, isMobile,data }: {
 
                             :
 
-                            <div className={`text-font21 md:text-font28 nuber-next-bold group border-b-[1px] md:border-b-[2px] border-[#00000010] flex justify-between py-3 md:py-6 lg:py-8 cursor-pointer text-[#151515BF] hover:text-orange`} onClick={()=>handleSelection(topic.title,index)} key={index}>
+                            <div className={`text-font21 md:text-font28 nuber-next-bold group border-b-[1px] md:border-b-[2px] border-[#00000010] flex justify-between py-3 md:py-6 lg:py-8 cursor-pointer text-[#151515BF] hover:text-orange `} onClick={()=>handleSelection(topic.title,index)} key={index}>
 
                             <h4>{topic.title}</h4>
 

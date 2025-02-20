@@ -71,7 +71,7 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labe
             {title}
             <span className="text-[#FF671F]">.</span>
           </h1>
-          <div className="flex flex-col md:flex-row items-start gap-4 md:items-center justify-between mb-4 md:mb-[60px] ">
+          <div className="flex flex-col md:flex-row items-start gap-4 md:items-center justify-between mb-1 md:mb-[60px] ">
 
               <div className="flex  items-center gap-5">
                   <div className="flex items-center gap-2">
