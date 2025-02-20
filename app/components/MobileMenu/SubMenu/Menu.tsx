@@ -56,8 +56,8 @@ export default function Menu({setSubMenuActive,setIsActive}:{
                 <div className={`${styles.backbutton}`}></div>
               </div>}
 
-       <div className={styles.body}>
-            <div onMouseLeave={() => {setSelectedIndicator(pathname)}} className={styles.nav}>
+      <div className={` ${styles.body}`} >
+            <div onMouseLeave={() => {setSelectedIndicator(pathname)}} className={`mnsubss ${styles.nav}`}  >
 
                     {
                       navItems.map( (data, index) => {

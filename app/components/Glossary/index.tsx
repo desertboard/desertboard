@@ -23,7 +23,7 @@ const Blogs = () => {
         bnrHeight="60dvh"
       />
       <Filter />
-      <BeforeFooterTag title={'Discover Industry Solutions'} url="/sectors"  />
+      <BeforeFooterTag title={'Discover Industry Solutions'} url="/sectors" glossary="glossary"  />
     </>
   )
 }

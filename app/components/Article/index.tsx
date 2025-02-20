@@ -39,7 +39,7 @@ const Blogs = () => {
       <ArticleBanner arrowSrc={Arrow} title={data?.data?.title} date="November 30, 2024" labeltext={data?.data?.tags[0]} breadcrumbs={breadcrumbs} bnrHeight="60dvh" />
       <ArticleImageBanner bannerSrc={data?.data?.images[0] || ""} data={data}/>
       <RelatedArticles data={relatedData}/>
-      <Downloads title={"To Sustainability"} />
+      <Downloads title={"To Sustainability"} url={"/sustainability"}  />
     </>
   );
 };

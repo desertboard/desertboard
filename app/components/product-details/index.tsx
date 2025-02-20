@@ -36,7 +36,7 @@ const ProducrDetails = () => {
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: "Products", href: "" },
+    { label: "Products", href: "/products" },
     { label: `${data && data.data.title}`, href: "" },
   ];
 
