@@ -37,7 +37,7 @@ const ShareArticle = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-fit">
       {/* Share Button */}
       <motion.button
         onClick={() => setShowIcons(!showIcons)}
