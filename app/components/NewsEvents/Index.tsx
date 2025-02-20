@@ -33,7 +33,7 @@ const Index = () => {
   )).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   const latestExpertise = newsData && newsData.data
-  .filter((item) => item.type !== "Desertboard")
+  .filter((item) => item.type == "Expertise")
   // .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
 useEffect(()=>{
