@@ -765,7 +765,7 @@ body {
   color: #ff671f !important;
   opacity: 1;
   font-weight: 900 !important;
-  font-size: clamp(1.4rem, 2.5vw, 1.75rem) !important;
+  font-size: clamp(1.6rem, 2.5vw, 2rem) !important;
 }
 .thumbsplidemn .splide__track--nav>.splide__list>.splide__slide.is-active .stylefirst{
   background: #ff671f !important;
