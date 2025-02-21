@@ -61,6 +61,7 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
       setValue("images", data.data.images);
       setValue("sector", data.data.sector);
       setValue("type", data.data.type);
+      setValue("date", data.data.date.split("T")[0]);
       setImageUrls(data.data.images);
     };
     fetchNews();
