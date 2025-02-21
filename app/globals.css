@@ -757,3 +757,96 @@ body {
 }
 
 
+
+ .thumbsplidemn .splide__track--nav>.splide__list>.splide__slide.is-active {
+  border: none !important;
+}
+.thumbsplidemn .splide__track--nav>.splide__list>.splide__slide.is-active span {
+  color: #ff671f !important;
+  opacity: 1;
+  font-weight: 900 !important;
+  font-size: clamp(1.4rem, 2.5vw, 1.75rem) !important;
+}
+.thumbsplidemn .splide__track--nav>.splide__list>.splide__slide.is-active .stylefirst{
+  background: #ff671f !important;
+  opacity: 1;
+}
+.mainsplide .timeline__img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 61%, #000 99%), linear-gradient(270deg, #000b09 7%, rgba(0, 11, 9, .52) 53%, rgba(0, 11, 9, .886) 84%, #000b09), rgba(0, 45, 40, .1);
+  background-size: cover;
+
+  opacity: 1;
+}
+.thumbsplidemn .splide__arrows--ttb .splide__arrow--prev{
+  background: none !important;
+  background-image: url(/assets/images/icons/prevor.svg) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  opacity: 1 !important;
+}
+
+.thumbsplidemn .splide__arrows--ttb .splide__arrow--next{
+  background: none !important;
+  background-image: url(/assets/images/icons/nextor.svg) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  opacity: 1 !important;
+}
+
+.thumbsplidemn .splide__arrows--ttb .splide__arrow--prev svg,
+.thumbsplidemn .splide__arrows--ttb .splide__arrow--next svg {
+  display: none !important;
+}
+.splide__arrows--ttb .splide__arrow {
+  left: auto !important;
+  transform: translate(-50%) !important;
+  right: 65px !important;
+}
+
+.thumbsplidemn.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* On mobile, make it column layout */
+@media (max-width: 1230px) {
+  .splide__arrows--ttb .splide__arrow {
+    right: 0 !important;
+}
+}
+@media (max-width: 796px) {
+  .thumbsplidemn .splide__track--nav>.splide__list>.splide__slide.is-active span {
+
+    font-size: 18px !important;
+  }
+  .thumbsplidemn .splide__arrow.splide__arrow--prev {
+    display: none;
+    background: none !important;
+    background-image: url(/assets/images/icons/prevor.svg) !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    opacity: 1 !important;
+    rotate: -90deg;
+    top: -30%;
+  }.thumbsplidemn .splide__arrow.splide__arrow--next {
+    display: none;
+    background: none !important;
+    background-image: url(/assets/images/icons/nextor.svg) !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    opacity: 1 !important;
+    rotate: -90deg;
+    top: -30%;
+  }
+/* .thumbsplidemn .splide__arrow.splide__arrow--prev svg,
+.thumbsplidemn .splide__arrow.splide__arrow--next svg {
+  display: none !important;
+} */
+}

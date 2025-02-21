@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaInstagram } from "react-icons/fa";
+// import { FaInstagram } from "react-icons/fa";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -37,31 +37,28 @@ const ShareArticle = () => {
     exit: { opacity: 0, y: -10 },
   };
   // const shareOnInstagram = async () => {
-  //   const instagramPostUrl = "https://www.instagram.com/p/DGLMwLsNVY-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="; // Replace with actual post URL
-
+  //   const instagramUrl = "https://www.instagram.com/";
   //   try {
-  //     await navigator.clipboard.writeText(instagramPostUrl);
-  //     console.log(instagramPostUrl);
+  //     await navigator.clipboard.writeText(shareUrl);
 
-  //     // Open Instagram App (Android/iOS) or Web
-  //     window.open(instagramPostUrl, "_blank");
+  //     window.open(instagramUrl, "_blank");
   //   } catch (err) {
   //     console.error("Failed to copy URL:", err);
   //   }
   // };
-  const shareOnInstagram = async () => {
-    const instagramPostUrl = "https://www.instagram.com/p/DGLMwLsNVY-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==";
 
-    try {
-      await navigator.clipboard.writeText(instagramPostUrl);
-      console.log("URL copied!");
+//   const shareOnInstagram = () => {
+//     const imageUrl = "https://www.desertboard.ae/_next/static/media/share.54901c09.svg"; // Replace with your article image
+//     const articleUrl = "https://www.desertboard.ae/article/67ab4af0ad0aabc6e9df99fb"; // Your article link
 
-      // Try opening the Instagram app
-      window.location.href = "instagram://"; // iOS & Android
-    } catch (err) {
-      console.error("Error copying URL:", err);
-    }
-  };
+//     const instagramStoryUrl = `https://www.instagram.com/stories/create/?background=${encodeURIComponent(imageUrl)}`;
+
+//     window.open(instagramStoryUrl, "_blank");
+
+//     alert("Your article link: " + articleUrl + " (Add it manually in the story).");
+// };
+
+
 
   return (
     <div className="relative w-fit">
@@ -82,7 +79,7 @@ const ShareArticle = () => {
       <AnimatePresence>
         {showIcons && (
           <motion.div
-            className="flex gap-3 md:mt-2 relative bottom-2 md:absolute md:top-7   md:right-[-65px] lg:right-[-51px]  xl:right-[-54px] px-0 md:px-2 p-2 rounded-lg"
+            className="flex gap-3 md:mt-2 relative bottom-2 md:absolute md:top-7   md:right-[-41px] lg:right-[-26px]  xl:right-[-29px] px-0 md:px-2 p-2 rounded-lg"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -104,7 +101,7 @@ const ShareArticle = () => {
                 </Component>
               </motion.div>
             ))}
-            <motion.div
+            {/* <motion.div
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 variants={itemVariants}
               >
@@ -113,7 +110,7 @@ const ShareArticle = () => {
                   <FaInstagram size={32} color="#fff" className="w-[18px]"/>
                   </div>
               </p>
-              </motion.div>
+              </motion.div> */}
           </motion.div>
         )}
       </AnimatePresence>

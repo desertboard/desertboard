@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
-import { FreeMode, Thumbs, Mousewheel, EffectFade } from "swiper/modules";
+import { FreeMode, Thumbs, Mousewheel } from "swiper/modules";
 // import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import "swiper/css";
@@ -16,9 +16,9 @@ const TimeLineSlider = ({data}:{
   data:AboutType
 }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
-  const mainSwiperRef = useRef<SwiperType | null>(null);
+  const mainSwiperRef = useRef<SwiperRef | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  //   const [thumbsSwiper, setThumbsSwiper] = useState<Swiper | null>(null);
+    // const [thumbsSwiper, setThumbsSwiper] = useState<Swiper | null>(null);
 
   // const timelineData = [
   //   { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
@@ -139,30 +139,21 @@ const TimeLineSlider = ({data}:{
            {/* Main content slider */}
            <div className="w-full h-full absolute top-0 left-0 z-1 ">
            <Swiper
-            onSwiper={(swiper) => {
-              mainSwiperRef.current = swiper;
-            }}
-            direction="vertical"
-            spaceBetween={0}
-            slidesPerView={1}
-            loop={true}
-            modules={[FreeMode, Thumbs, EffectFade]}
-            className="h-full main-swiper"
-              speed={1000}
-                 effect="fade"
-             fadeEffect={{ crossFade: true }}
-              watchSlidesProgress={true}
-            allowTouchMove={true}
-             mousewheel={false}
-           noSwiping={true}
-             noSwipingClass="swiper-slide"
-             observer={true}
-              observeParents={true}
-             watchOverflow={true}
-              preventInteractionOnTransition={true}
+             ref={mainSwiperRef}
+                     loop={true}
+                   direction="vertical"
+                     slidesPerView={1}
+                     navigation={false}
+                   spaceBetween={10}
+                     allowTouchMove={false}
+                   thumbs={{ swiper: thumbsSwiper }}
+                   className="w-full h-full absoluteimportant top-0 left-0 z-1 "
+                     modules={[FreeMode, Thumbs, Mousewheel]}
           >
-            {data && data.about[0] && data.about[0].history.map((item, index) => (
-              <SwiperSlide key={index} className="!h-full ">
+            {/* {data && data.about[0] && data.about[0].history.map((item, index) => ( */}
+              {data && data.about[0] && [...Array(25)].map((_, repeatIndex) => (
+                data.about[0].history.map((item, index) => (
+              <SwiperSlide key={`${repeatIndex}-${index}`} className="!h-full ">
                 <div className="timeline__bg flex-grow bg-cover bg-center absolute top-0 left-0 z-1 history__bg  w-full h-full">
                   <div className="timeline__img">
                     <Image src={item.image} fill objectFit="cover" className="h-full w-full" alt="" />
@@ -174,6 +165,7 @@ const TimeLineSlider = ({data}:{
                   <p className="text-white text-font20 leading-[1.3] opacity-75 font-normal">{item.description}</p>
                 </div>
               </SwiperSlide>
+             ))
             ))}
           </Swiper>
            </div>
@@ -193,60 +185,34 @@ const TimeLineSlider = ({data}:{
             </div>
           </div>
              <Swiper
-                        onSwiper={setThumbsSwiper}
-                        direction={"horizontal"}
-                        // slidesPerView={4}
-                        breakpoints={{
-
-                          320: {
-                            spaceBetween:15,
-                            slidesPerView: 3,
-                          },
-
-                          678: {
-                            spaceBetween:20,
-                            slidesPerView: 4,
-                          },
-                          1230: {
-                            direction: "vertical",
-                            slidesPerView: 4,
-                            spaceBetween: 20,
-                          },
-                          1810: {
-                            direction: "vertical",
-                            slidesPerView: 4,
-                            spaceBetween: 20,
-                          },
-                        }}
-                        spaceBetween={10}
-                        loop={true}
-                        watchSlidesProgress={true}
-                        modules={[FreeMode, Thumbs, Mousewheel]}
-                        className="h-full thumbs-swiper"
-                        mousewheel={{
-                          forceToAxis: true,
-                          sensitivity: 1,
-                          thresholdDelta: 50,
-                        }}
-                        slideToClickedSlide={true}
-                        speed={800}
-                        allowTouchMove={true}
-                        centeredSlides={false}
-
-                        onSlideChange={(swiper) => {
-                          if (mainSwiperRef.current) {
-                            mainSwiperRef.current.slideTo(swiper.realIndex);
-                            setActiveIndex(swiper.realIndex);
-                          }
-                        }}>
-               {data && data.about[0] && data.about[0].history.map((item, index) => (
-                 <SwiperSlide key={index} className="!h-16 lg:!h-24 cursor-pointer timeline__thumb">
+                     onSwiper={setThumbsSwiper}
+                              loop={true}
+                              direction="vertical"
+                              slidesPerView={4}
+                              freeMode={true}
+                              watchSlidesProgress={true}
+                              spaceBetween={10}
+                              // mousewheel={{ forceToAxis: true }}
+                              centeredSlides={false}
+                              onSlideChange={(swiper) => mainSwiperRef.current?.swiper.slideTo(swiper.realIndex)}
+                              modules={[FreeMode, Thumbs, Mousewheel]}
+                              mousewheel={{
+                                forceToAxis: true,
+                                sensitivity: 1,
+                                thresholdDelta: 0,
+                              }}
+          >
+            {/* {data && data.about[0] && data.about[0].history.map((item, index) => ( */}
+                  {data && data.about[0] && [...Array(25)].map((_, repeatIndex) => (
+                    data.about[0].history.map((item, index) => (
+                 <SwiperSlide  key={`${repeatIndex}-${index}`} className="!h-16 lg:!h-24 cursor-pointer timeline__thumb">
                    <div className={`w-full h-full flex items-center justify-center xl:justify-end rounded transition-all duration-300`}>
                      <span className={` nuber-next-bold font-[400] text-font24 leading-[1.3] transition-colors duration-300 text-center xl:text-right ${thumbsSwiper?.realIndex === index ? "text-accent nuber-next-heavy  text-font32 opacity-100" : "text-white opacity-50   hover:text-gray-200"}`}>{item.timeSpan}</span>
                      <div className={`hidden xl:block lg:ml-3 h-[4px] w-[68px] transition-all ease-linear duration-300 stylefirst ${thumbsSwiper?.realIndex === index ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
                    </div>
                  </SwiperSlide>
-               ))}
+           ))
+          ))}
           </Swiper>
           <div className="hidden  w-full  relative top-[-8px] z-[1] xl:flex items-center justify-end rounded transition-all duration-300">
                <button   onClick={() => thumbsSwiper?.slideNext()}>

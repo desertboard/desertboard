@@ -12,11 +12,11 @@ import bannerImg from "@/public/assets/images/banners/about.jpg";
 import baxnnerImg from "@/public/assets/images/about/about-main.jpg";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import BeforeFooterTag from "../Common/BeforeFooterTag";
-import TimeLineSlider from "./TimelineSlider";
 import useSWR from 'swr'
 import { AboutType } from "@/types/AboutType";
 import Error from "next/error";
 import parse from 'html-react-parser'
+import HistorySlider from "./HistorySlider";
 
 // import SecondSec from "../components/Common/Second-sec";
 
@@ -56,8 +56,8 @@ export default function Index() {
 
         mainImg={baxnnerImg}
       />
-      {/* <HistorySlider /> */}
-      <TimeLineSlider data={data}/>
+      <HistorySlider data={data} />
+      {/* <TimeLineSlider data={data}/> */}
       <MisionVision data={data}/>
       <AccrediationSlider data={data}/>
        <BeforeFooterTag title={"Discover Industry Solutions"} url="/sectors" />
