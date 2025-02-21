@@ -30,7 +30,8 @@ export default function Home() {
         subTitle={data?.home[0].secondSectionSubTitle}
         paragraphs={data?.home[0].inspiration}
         // mainImg="/assets/images/mn.jpg"
-        mainVdo={data?.home[0]?.video}
+/*         mainVdo={data?.home[0]?.video} */
+        mainVdo={'/assets/videos/abt_bnr.mp4'}
         vdoPoster={data?.home[0]?.videoPoster}
       />
       <UspList secTitle={"Key USPs"} data={data}/>
