@@ -1,17 +1,20 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { Downloads } from '@/types/Downloads';
 
-const TypeSelection = ({ activeTypes, setActiveType, activeType, isMobile ,data }: {
+const TypeSelection = ({selectedValue,setSelectedValue,activeTypes, setActiveType, activeType, isMobile ,data }: {
     activeTypes: { title: string; _id: string; files: { file: string; name: string; thumbnail: string; _id: string; }[]; }[]
     activeType: number,
+    activeTopic: number,
     setActiveType: Dispatch<SetStateAction<number>>
     isMobile: boolean
-    activeTopic: number
     data:Downloads
+    selectedValue:string;
+    setSelectedValue:Dispatch<SetStateAction<string>>
 }) => {
 
+
     const [dropDownOpen, setDropDownOpen] = useState(false)
-    const [selectedValue, setSelectedValue] = useState(data && data.data && data.data[0].types[0].title)
+    // const [selectedValue, setSelectedValue] = useState(data && data.data && data.data[0].types[0].title)
 
     const handleSelection = (title: string, index: number) => {
         setSelectedValue(title)
@@ -22,6 +25,13 @@ const TypeSelection = ({ activeTypes, setActiveType, activeType, isMobile ,data 
 useEffect(()=>{
     setSelectedValue(data && data.data && data.data[0].types[0].title)
 },[data])
+
+// useEffect(()=>{
+//     if(activeType==0){
+//         setSelectedValue(data && data.data && data.data[activeTopic].types[activeType].title)
+//         console.log("work")
+//     }
+// },[activeType])
 
     return (
         <>

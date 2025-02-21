@@ -9,11 +9,26 @@ const HomeSchema = new mongoose.Schema({
     pageDescription: {
         type: String,
     },
+    bannerVideo:{
+        type:String
+    },
+    bannerPoster:{
+        type:String
+    },
+    secondSectionTitle:{
+        type:String
+    },
+    secondSectionSubTitle:{
+        type:String
+    },
     inspiration: {
         type: String,
     },
     video: {
         type: String,
+    },
+    videoPoster:{
+        type:String
     },
     thirdSection: {
         heading:{
@@ -33,6 +48,9 @@ const HomeSchema = new mongoose.Schema({
     },
     sustainabilitySection: {
         heading:{
+            type:String
+        },
+        description:{
             type:String
         },
         contents:[

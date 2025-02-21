@@ -40,12 +40,18 @@ export async function PATCH(req: NextRequest) {
     const formData = await req.formData();
     const inspiration = formData.get("inspiration")
     const video = formData.get("video")
+    const videoPoster = formData.get("poster")
+    const secondSectionTitle = formData.get("title")
+    const secondSectionSubTitle = formData.get("subTitle")
 
     const home = await Home.findOne({});
 
     if(home){
         home.inspiration = inspiration;
         home.video = video;
+        home.secondSectionTitle = secondSectionTitle
+        home.secondSectionSubTitle = secondSectionSubTitle
+        home.videoPoster = videoPoster
         await home.save()
     }
 

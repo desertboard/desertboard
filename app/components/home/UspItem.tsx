@@ -1,11 +1,10 @@
 import Image from 'next/image';
-import { StaticImageData } from 'next/image';
 interface UspProps {
   uspTitle: string;
   uspDesc: string;
   order: string;
-  mainImg: StaticImageData;
-  uspIcon: StaticImageData;
+  mainImg: string;
+  uspIcon: string;
   onMouseEnter?: () => void;
 }
 const formatText = (text: string) => {
@@ -15,10 +14,10 @@ const UspItem = ({ uspTitle, order, mainImg, uspDesc, uspIcon, onMouseEnter }: U
     return (
       <div className={`usp-item usp-${order} relative overflow-hidden hover:pb-7`} onMouseEnter={onMouseEnter}>
         <div className="usp-item__bg absolute inset-0 overflow-hidden">
-          <Image src={mainImg} alt="usp" className="w-full h-full object-cover"></Image>
+          <Image src={mainImg} alt="usp" className="w-full h-full object-cover" fill></Image>
         </div>
         <div className="usp-item__i absolute top-5 left-5 xl:top-10 xl:left-10 z-20">
-          <Image src={uspIcon} alt="usp" className=""></Image>
+          <Image src={uspIcon} alt="usp" className="" width={40} height={40}></Image>
         </div>
 
         <div className="usp-item__content relative z-10 px-4 xxl:px-8">

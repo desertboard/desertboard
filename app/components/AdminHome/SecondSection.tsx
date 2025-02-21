@@ -8,11 +8,16 @@ const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { VideoUploader } from '../ui/video-uploader'
+import { ImageUploader } from '../ui/image-uploader'
 
 
 type FormData = {
+    title: string;
+    sub_title: string;
     inspiration: string;
     video: string;
+    poster:string;
 };
 
 
@@ -22,18 +27,23 @@ const SecondSection = () => {
         register,
         handleSubmit,
         setValue,
+        watch,
         control,
+        formState: { errors }
     } = useForm<FormData>();
 
 
     const [submitting, setIsSubmitting] = useState(false)
-    const [refetch,setRefetch] = useState(false)
+    const [refetch, setRefetch] = useState(false)
 
     const onSubmit = async (data: FormData) => {
         setIsSubmitting(true);
         const formData = new FormData();
         formData.append("inspiration", data.inspiration);
         formData.append("video", data.video);
+        formData.append("poster", data.poster);
+        formData.append("title", data.title);
+        formData.append("subTitle", data.sub_title);
         try {
 
             const url = `/api/admin/home/second`;
@@ -46,7 +56,7 @@ const SecondSection = () => {
             if (response.ok) {
                 const data = await response.json()
                 alert(data.message)
-                setRefetch((prev)=>!prev)
+                setRefetch((prev) => !prev)
             } else {
                 throw new Error("Failed to save content");
             }
@@ -71,8 +81,11 @@ const SecondSection = () => {
 
                     const data = await response.json();
                     if (data) {
-                        setValue("inspiration",data.home[0].inspiration)
-                        setValue("video",data.home[0].video)
+                        setValue("inspiration", data.home[0].inspiration)
+                        setValue("video", data.home[0].video)
+                        setValue("title", data.home[0].secondSectionTitle)
+                        setValue("sub_title", data.home[0].secondSectionSubTitle)
+                        setValue("poster", data.home[0].videoPoster)
 
                     }
                 } else {
@@ -84,7 +97,7 @@ const SecondSection = () => {
         }
 
         fetchData()
-    }, [setValue,refetch])
+    }, [setValue, refetch])
 
 
     return (
@@ -93,8 +106,22 @@ const SecondSection = () => {
                 <h3>Home / SecondSection</h3>
                 <Button disabled={submitting}>Save</Button>
             </div>
+
             <div className='mt-5'>
-                <Label htmlFor="title">Inspiration</Label>
+                <Label htmlFor="title">Title</Label>
+                <Input {...register("title", { required: "Title is required" })} />
+                {errors.title && <span className='text-red-500'>{errors.title.message}</span>}
+            </div>
+
+            <div className='mt-5'>
+                <Label htmlFor="title">Subtitle</Label>
+                <Input {...register("sub_title", { required: "Sub title is required" })} />
+                {errors.sub_title && <span className='text-red-500'>{errors.sub_title.message}</span>}
+            </div>
+
+
+            <div className='mt-5'>
+                <Label htmlFor="title">Description</Label>
                 <Controller
                     name="inspiration"
                     control={control}
@@ -104,10 +131,17 @@ const SecondSection = () => {
                 />
             </div>
 
-            <div className='mt-5'>
-                <Label htmlFor="title">Video</Label>
-                <Input {...register("video")} />
+            <div className='grid grid-cols-2'>
+                <div className='mt-5'>
+                    <Label htmlFor="title">Video</Label>
+                    <VideoUploader value={watch("video")} onChange={(url) => setValue("video", url)} />
+                </div>
+                <div className='mt-5'>
+                    <Label htmlFor="title">Poster</Label>
+                    <ImageUploader value={watch("poster")} onChange={(url) => setValue("poster", url)} />
+                </div>
             </div>
+
 
         </form>
 

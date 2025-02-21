@@ -140,12 +140,22 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
           <Label htmlFor="type" className="block text-sm font-medium text-gray-700">
             Type
           </Label>
-          <Input
+          {/* <Input
             {...register("type", { required: "Type is required" })}
             type="text"
             id="type"
             className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
-          />
+          /> */}
+          <div className="">
+
+            <select id="countries" {...register("type",{required:"Type is required"})}className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value="" disabled>Select Option</option>
+              <option defaultValue={"Company news"}>Company news</option>
+              <option value={"Expertise"}>Expertise</option>
+            </select>
+
+          </div>
+
         </div>
 
         {/* Description Field */}

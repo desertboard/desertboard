@@ -1,0 +1,33 @@
+export type HomeType = {
+    home:{
+      pageHeading:string;
+      pageDescription:string;
+      inspiration:string;
+      video:string;
+      videoPoster:string;
+       thirdSection:{
+        contents:{
+            logo:string;
+            image:string;
+            title:string;
+            description:string;
+        }[]
+        heading:string;
+       }
+       sectorsDescription:string;
+       sustainabilitySection:{
+        contents:{
+            logo:string;
+            image:string;
+            title:string;
+            description:string;
+        }[]
+        heading:string;
+        description:string;
+       }
+       bannerVideo:string;
+       bannerPoster:string;
+       secondSectionTitle:string;
+       secondSectionSubTitle:string;
+    }[]
+}
