@@ -1,153 +1,136 @@
-import React, { useState, useCallback, useMemo } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Mousewheel, Controller } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
-import "swiper/css";
-import "swiper/css/mousewheel";
+"use client";
 
-import "@/app/components/about/history.scss";
+import React, { useEffect,  useState } from "react";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import type { Splide as SplideComponent } from "@splidejs/splide";
+import "@splidejs/react-splide/css"; // Import Splide CSS
+import Image from "next/image";
 
-interface TimelineItem {
-  year: string;
-  subtitle: string;
-  description: string;
-  image: string;
-}
 
-const timelineData: TimelineItem[] = [
-  { year: "1997", subtitle: "Market Leadership", description: "Achieved market leadership in key sectors through strategic acquisitions and partnerships.", image: "/assets/images/timeline/1997.jpeg" },
-  {
-    year: "2009 - 2021",
-    subtitle: "Resilience & Refined Visions",
-    description:
-      "In 2014, after years of dedicated research, the team began their experiments aimed at revolutionizing green construction materials. Despite numerous challenges over twelve years, their determination only grew stronger. Viewing each setback as a learning opportunity, they were guided by the principle of innovation and adaptation. ",
-    image: "/assets/images/timeline/2009-2021.jpeg",
-  },
-  {
-    year: "Dec-14 2021",
-    subtitle: "Digital Transformation",
-    description:
-      "On a significant day, after years of dedicated effort and research, the team produced the world’s first palm-based board - PSB® (Palm Strand Board). This wasn't merely a manufacturing milestone; it symbolized perseverance, innovation, and a vision for eco-friendly production. PSB® boards represented the fusion of technology and sustainability, ushering in a hopeful future for sustainability.",
-    image: "/assets/images/timeline/dec14-2021.jpg",
-  },
+import { AboutType } from "@/types/AboutType";
+const SplideSlider = ({ data }: { data: AboutType }) => {
 
-  { year: "2023", subtitle: "Innovation Era", description: "Established R&D centers and launched groundbreaking products that redefined industry standards.", image: "/assets/images/timeline/2023.jpg" },
-];
+  const [mainSlider, setMainSlider] = useState<SplideComponent | null>(null);
+  const [thumbSlider, setThumbSlider] = useState<SplideComponent | null>(null);
 
-interface HistorySliderProps {
-  className?: string;
-}
 
-const HistorySlider: React.FC<HistorySliderProps> = ({ className = "" }) => {
-  const [activeYear, setActiveYear] = useState<string>(timelineData[0].year);
-  const [swiper, setSwiper] = useState<SwiperType | null>(null);
-
-  // Pre-sort timeline data in descending order
-  const sortedTimelineData = useMemo(() => {
-    return [...timelineData].sort((a, b) => parseInt(b.year) - parseInt(a.year));
-  }, []);
-
-  // Handle slide changes
-  const handleSlideChange = useCallback(
-    (swiperInstance: SwiperType) => {
-      const realIndex = swiperInstance.realIndex;
-      setActiveYear(sortedTimelineData[realIndex].year);
-    },
-    [sortedTimelineData]
-  );
-
-  // Handle year clicks
-  const handleYearClick = useCallback(
-    (year: string) => {
-      if (!swiper) return;
-
-      const targetIndex = sortedTimelineData.findIndex((item) => item.year === year.toString());
-      if (targetIndex === -1) return;
-
-      setActiveYear(year.toString());
-      swiper.slideToLoop(targetIndex, 800);
-    },
-    [swiper, sortedTimelineData]
-  );
-
-  const activeContent = sortedTimelineData.find((item) => item.year === activeYear);
-
-  if (!activeContent) return null;
+  useEffect(() => {
+    if (mainSlider && thumbSlider) {
+      mainSlider.sync(thumbSlider);
+    }
+  }, [mainSlider, thumbSlider]);
 
   return (
-    <section className={`border-y-[6px] border-secondary flex h-auto max-h-[800px] history  relative ${className}`}>
-      {/* Content Section */}
-      <div
-        className="flex-grow bg-cover bg-center absolute w-full h-full z-0 history__bg"
-        style={{
-          backgroundImage: `url(${activeContent.image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-      <div className="container relative">
-        <h2 className="relative text-white z-10 text-font48 nuber-next-heavy pt-20 leading-[1]">
-          Our History<span className="text-[#FF671F]">.</span>
-        </h2>
-        <div className="flex relative z-10 min-h-[50dvh]">
-          <div className="flex-grow flex items-end relative overflow-hidden history__content">
-            <div className="absolute inset-0 flex items-center transition-transform duration-500">
-              <div className="max-w-2xl">
-                <h3 className="text-4xl md:text-5xl lg:text-6xl helveticaBold text-white mb-10 nuber-next-heavy text-font72">
-                  {activeYear} <span className="text-[#FF671F]">.</span>
-                </h3>
-                <h4 className="text-xl md:text-2xl lg:text-font28 leading-[1.3] opacity-75 font-semibold text-white mb-5">{activeContent.subtitle}</h4>
-                <p className="text-white text-font20 leading-[1.3] opacity-75 font-[400]">{activeContent.description}</p>
-              </div>
-            </div>
-          </div>
+    <div className="flex w-full  mx-auto flex-col md:flex-row   relative ">
+      {/* Main Slider */}
+      <div className="w-full relative md:absolute mainsplide ">
+        <div className="container">
+          <h2 className="text-white z-10 text-font48 nuber-next-heavy leading-[1] absolute top-10 lg:top-20 ">
+            Our History<span className="text-[#FF671F]">.</span>
+          </h2>
         </div>
-        {/* Year Navigation */}
-        <div className="w-50 absolute right-0 top-0 flex flex-col justify-center z-50 h-full">
-          <div className=" z-10 pointer-events-none " />
-          <Swiper
-            direction="vertical"
-            slidesPerView={5}
-            loop={true}
-            mousewheel={{
-              sensitivity: 1,
-              thresholdDelta: 30,
-            }}
-            modules={[Mousewheel, Controller]}
-            className="h-full "
-            onSwiper={setSwiper}
-            onSlideChange={handleSlideChange}
-            centeredSlides={true}
-            speed={800}
-            initialSlide={1}
-            watchSlidesProgress={true}
-            observer={true}
-            observeParents={true}
-            breakpoints={{
-              1024: {
-                slidesPerView: 5,
+
+        <Splide
+          options={{
+            type: "fade",
+            pagination: false,
+            arrows: false,
+            height: "660px",
+            breakpoints: {
+              374: { height: "550px" },
+              797: { height: "500px" },
+              992: {
+                height: "550px",
               },
-            }}>
-            {sortedTimelineData.map((item) => (
-              <SwiperSlide key={item.year} className="!h-[100px] flex items-center justify-center lg:min-w-[20em]">
-                <button
-                  onClick={() => handleYearClick(item.year)}
-                  className={`lg:w-full lg:min-w-[20em] h-full flex items-center text-right justify-end gap-1 relative group transition-all ease-linear duration-300 text-font24
-                  // ${activeYear === item.year ? "text-accent font-[400] z-20 xl:text-font32 ease-linear" : "text-gray-100 font-normal hover:text-gray-200"}`}>
-                  <span className="relative z-10 transition-all ease-linear duration-300 helvetica">{item.year}</span>
-                  <div className={`w-[30px] h-[2px] transition-all ease-linear duration-300 ${activeYear === item.year ? "bg-accent opacity-100 " : "opacity-0 group-hover:opacity-50 "}`} />
-                </button>
-              </SwiperSlide>
+            },
+          }}
+          onMounted={setMainSlider}
+        >
+          {data && data.about[0] && data.about[0].history.map((item, index) => (
+            <SplideSlide key={index}>
+              <div className="container h-full">
+                <div className="timeline__bg flex-grow bg-cover bg-center absolute top-0 left-0 z-1 history__bg  w-full h-full">
+                  <div className="timeline__img">
+                    <Image
+                      src={item.image}
+                      fill
+                      objectFit="cover"
+                      className="h-full w-full"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="md:w-2/3 h-full rounded-lg shadow   flex flex-col justify-end pb-20 relative z-30  ">
+                  <h3 className="text-4xl lg:text-5xl lg:text-font72 helveticaBold text-white mb-2 md:mb-10 nuber-next-heavy ">
+                    {item.timeSpan}
+                  </h3>
+                  <h4 className="text-xl lg:text-2xl lg:text-font28 leading-[1.2] opacity-75 nuber-next-heavy text-white mb-2 md:mb-5">
+                    {item.heading}
+                  </h4>
+                  <p className="text-white text-font20 leading-[1.3] opacity-75 font-normal">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
+
+      {/* Thumbnail Slider */}
+
+        <div className="w-full container   thumbsplidemn">
+        <div className="relative">
+        <div className="  top-[-70px] md:top-[0] relative md:w-1/4 mt-5 md:mt-0 md:ml-auto">
+        <Splide
+            options={{
+              type: "loop",
+              direction: "ttb", // Vertical Scroll
+              height: "660px",
+              breakpoints: {
+                797: {
+                  direction: "ltr", // Horizontal on Mobile
+                  perPage: 3,
+                  height: "auto",
+                  gap: "5px",
+                },
+                1200: {
+                  perPage:4,
+                },
+                992: {
+                  height: "550px",
+                },
+              },
+              perPage: 4,
+              wheel: true,
+              pagination: false,
+              isNavigation: true, // Enables thumbnail clicking
+            }}
+            onMounted={setThumbSlider}
+          >
+            {data && data.about[0] && data.about[0].history.map((item, index) => (
+              <SplideSlide key={index}>
+                <div
+                  className={`w-full h-full flex items-center justify-center xl:justify-end rounded transition-all duration-300`}
+                >
+                  <span
+                    className={`  nuber-next-bold font-[400] text-font-[14px] md:text-font24 leading-[1.3] transition-colors duration-300 text-center xl:text-right text-white opacity-50   hover:text-gray-200 `}
+                  >
+                    {item.timeSpan}
+                  </span>
+                  <div
+                    className={`hidden xl:block lg:ml-3 h-[4px] w-[68px] transition-all ease-linear duration-300 stylefirst opacity-0 group-hover:opacity-50 `}
+                  />
+                </div>
+              </SplideSlide>
             ))}
-          </Swiper>
+          </Splide>
+         </div>
+        </div>
         </div>
       </div>
 
-      {/* <style jsx global>{`
-
-      `}</style> */}
-    </section>
   );
 };
 
-export default HistorySlider;
+export default SplideSlider;

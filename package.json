@@ -22,6 +22,7 @@
     "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-select": "^2.1.6",
     "@radix-ui/react-slot": "^1.1.1",
+    "@splidejs/react-splide": "^0.7.12",
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.8",
     "@upstash/ratelimit": "^2.0.5",
