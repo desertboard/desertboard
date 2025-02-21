@@ -37,7 +37,7 @@ const SplideSlider = ({ data }: { data: AboutType }) => {
             arrows: false,
             height: "660px",
             breakpoints: {
-              374: { height: "600px" },
+              480: { height: "600px" },
               797: { height: "500px" },
               992: {
                 height: "550px",
