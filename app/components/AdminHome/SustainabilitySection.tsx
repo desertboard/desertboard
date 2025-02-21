@@ -21,6 +21,7 @@ import Image from 'next/image'
 
 type FormData = {
     heading: string;
+    mainDescription:string;
     logo:string;
     image:string;
     title:string;
@@ -47,6 +48,7 @@ const SustainabilitySection = () => {
         setIsSubmitting(true);
         const formData = new FormData();
         formData.append("heading", data.heading);
+        formData.append("description", data.mainDescription);
         try {
 
             const url = `/api/admin/home/sustainability`;
@@ -127,6 +129,7 @@ const SustainabilitySection = () => {
                         const data = await response.json();
                         if (data) {
                             setValue("heading",data.home[0].sustainabilitySection.heading)
+                            setValue("mainDescription",data.home[0].sustainabilitySection.description)
                             setItems(data.home[0].sustainabilitySection.contents)
                         }
                     } else {
@@ -207,13 +210,18 @@ const SustainabilitySection = () => {
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='text-3xl flex justify-between'>
-                    <h3>Home / ThirdSection</h3>
+                    <h3>Home / Sustainability Section</h3>
                     <Button type="submit">Save</Button>
                 </div>
                 <div className='mt-5'>
                     <Label htmlFor="title">Title</Label>
                     <Input {...register("heading",{required:"Heading is required"})} />
                     {errors.heading && <span className='text-red-500'>{errors.heading.message}</span>}
+                </div>
+                <div className='mt-5'>
+                    <Label htmlFor="title">Description</Label>
+                    <Input {...register("mainDescription",{required:"Description is required"})} />
+                    {errors.mainDescription && <span className='text-red-500'>{errors.mainDescription.message}</span>}
                 </div>
             </form>
 

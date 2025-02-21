@@ -13,7 +13,7 @@ import { assets } from "@/public/assets/images/assets";
 interface MainDescBoxProps {
   secTitle: string;
   subTitle: string;
-  paragraphs: JSX.Element | string | JSX.Element[] | string[];
+  paragraphs?: JSX.Element | string | JSX.Element[] | string[];
   mainImg?: StaticImageData | string;
   mainVdo?: string;
   vdoPoster?: string;
@@ -54,7 +54,7 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
 
   const renderParagraphs = (paragraphs: JSX.Element | string | JSX.Element[] | string[]) => {
     if (typeof paragraphs === "string") {
-      return <p>{parse(formatText(paragraphs))}</p>;
+      return <div>{parse(formatText(paragraphs))}</div>;
     } else if (Array.isArray(paragraphs)) {
       return paragraphs.map((paragraph, index) => {
         if (typeof paragraph === "string") {
@@ -138,7 +138,7 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
                 },
               }}
             >
-              <div className="text-black/75 pmns">{renderParagraphs(paragraphs)}</div>
+              <div className="text-black/75 pmns">{renderParagraphs(paragraphs || "")}</div>
             </motion.div>
           </div>
 

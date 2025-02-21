@@ -27,6 +27,7 @@ const Selections = () => {
     const activeTypes = data && data.data[activeTopic].types
     const [activeType,setActiveType] = useState(0)
     const [isMobile,setIsMobile] = useState(false)
+    const [selectedValue, setSelectedValue] = useState(data && data.data && data.data[0].types[0].title)
 
     
 
@@ -58,12 +59,15 @@ const Selections = () => {
         if (!data?.data) {
             if(!data?.data[activeTopic] || !data?.data[activeTopic]?.types){
                 return;
-            }         
-
+            }  
+            
+            
         }else if(data && data.data && data.data[activeTopic].types[activeType] == undefined){
-
+            
             setActiveType(data && data.data[activeTopic] && data.data[activeTopic].types.findIndex((item)=>item.title == data.data[activeTopic].types[0].title))
             const currentType = data.data[activeTopic].types[0];
+            setSelectedValue(data.data[activeTopic].types[0].title)
+            console.log(data.data[activeTopic].types[0].title)
             if (currentType.files === undefined) {
                 setActiveType(0);
                 setActiveResult(currentTopic.types[0]?.files || []);
@@ -80,6 +84,7 @@ const Selections = () => {
                 setActiveResult(currentTopic.types[0]?.files || []);
             } else {
                 setActiveResult(data && data.data && currentType.files);
+                setSelectedValue(data.data[activeTopic].types[0].title)
             }
         }
 
@@ -118,7 +123,7 @@ const Selections = () => {
                     </div>
 
                     <div className={`col-span-1 pr-8 border-[#00000010] ${!isMobile ? "pl-4 border-r-2" : "mt-5"}`}>
-                        <TypeSelection activeTypes={activeTypes} activeType={activeType} setActiveType={setActiveType} isMobile={isMobile} activeTopic={activeTopic} data={data}/>
+                        <TypeSelection selectedValue={selectedValue} setSelectedValue={setSelectedValue} activeTopic={activeTopic} activeTypes={activeTypes} activeType={activeType} setActiveType={setActiveType} isMobile={isMobile} data={data}/>
                     </div>
 
                     <div className={`col-span-1 ${!isMobile ? "pl-4" : "mt-5 pr-8"}`}>

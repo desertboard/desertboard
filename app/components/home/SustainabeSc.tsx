@@ -3,8 +3,6 @@ import React from "react";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
 import readarrow from "@/public/assets/images/read-arrow.svg";
-
-import {  SliderData } from "./data";
 // Import Swiper styles
 import "swiper/css";
 import Image from "next/image";
@@ -12,8 +10,11 @@ import "@/app/components/home/goalcrd.scss";
 import { motion } from "framer-motion";
 import Slidersustain from "./Slidersustain";
 import Link from "next/link";
+import { HomeType } from "@/types/HomeType";
 
-const SustainabeSc = () => {
+const SustainabeSc = ({data}:{
+  data:HomeType
+}) => {
   return (
     <>
       <section className="pt-10 lg:pt-20 pb-20 md:pb-20 insp-mn relative darkbanner  overflow-hidden">
@@ -39,7 +40,7 @@ const SustainabeSc = () => {
                     transition: { duration: 1, delay: 0.3 },
                   },
                 }}>
-                Sustainable Development Goals
+                {data?.home[0].sustainabilitySection.heading}
                 <span className="text-[#FF671F]">.</span>
               </motion.h2>
               <motion.p
@@ -55,7 +56,7 @@ const SustainabeSc = () => {
                     transition: { duration: 1, delay: 0.5 },
                   },
                 }}>
-                Explore how eco-friendly and locally produced materials are helping us move closer to the United Nations&apos; Sustainable Development Goals.
+                {data?.home[0].sustainabilitySection.description}
               </motion.p>
             </div>
             <div className="flex gap-3 items-center group rmbtn pb-3">
@@ -79,7 +80,7 @@ const SustainabeSc = () => {
               transition: { duration: 1, delay: 0.5 },
             },
           }}>
-          <Slidersustain data={SliderData} />
+          <Slidersustain data={data} />
 
         </motion.div>
 

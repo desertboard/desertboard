@@ -14,16 +14,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { StaticImageData } from "next/image";
+import { HomeType } from "@/types/HomeType";
 
 interface LinkedInSliderProps {
-  data: {
-    id: number;
-    title: string;
-    desc: string;
-    icon: StaticImageData;
-    image: StaticImageData;
-  }[];
+  data:HomeType
 }
 
 const Slidersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
@@ -78,8 +72,8 @@ const Slidersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
         onSlideChange={() => console.log("slide change")}
       >
 
-      {data.map((framework, index) => (
-        <SwiperSlide key={framework.id}
+      {data?.home[0]?.sustainabilitySection.contents.map((framework, index) => (
+        <SwiperSlide key={index}
         className={`
           ${hovIndex === index ? "hovered-homeslide" : ""}
           ${hovIndex !== null && hovIndex !== index ? "sibling-homeslide" : ""}
@@ -91,7 +85,7 @@ const Slidersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
           <div
             className="relative group overflow-hidden transform   growf goal-crd   bg-center delay-0"
             style={{
-              backgroundImage: `url(${framework.image.src})`,
+              backgroundImage: `url(${framework.image})`,
             }}
           >
             <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
@@ -102,7 +96,7 @@ const Slidersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
                 {/* Thumbnail Image Container with Hover Effect */}
                 <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
                   <Image
-                    src={framework.icon}
+                    src={framework.logo}
                     width={131}
                     height={131}
                     alt="Thumbnail"
@@ -117,7 +111,7 @@ const Slidersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
                   <h3 className="nuber-next-bold text-font28  text-black">
                     {framework.title}
                   </h3>
-                  <p className="helvetica text-font20 text-black opacity-[75%] mt-2" dangerouslySetInnerHTML={{ __html: formatText(framework.desc) }} />
+                  <p className="helvetica text-font20 text-black opacity-[75%] mt-2" dangerouslySetInnerHTML={{ __html: formatText(framework.description) }} />
                 </div>
               </div>
             </div>

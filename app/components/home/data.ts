@@ -18,7 +18,7 @@ export const SliderData = [
   {
     id: 3,
     title:"SDG 8",
-    desc:" DesertBoard adheres to the Abu Dhabi Occupational Safety and Health System Framework, along with ISO 45001, ISO 14001, and ISO 9001 standards, ensuring a safe work environment.",
+    desc:"DesertBoard adheres to the Abu Dhabi Occupational Safety and Health System Framework, along with ISO 45001, ISO 14001, and ISO 9001 standards, ensuring a safe work environment.",
     icon: assets.iconsl3,
     image:assets.sliconmn3
   },

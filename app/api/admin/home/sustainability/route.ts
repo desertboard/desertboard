@@ -17,12 +17,13 @@ export async function PATCH(req: NextRequest) {
 
       const formData = await req.formData();
       const heading = formData.get("heading")
-      console.log(heading)
+      const description = formData.get("description")
     const home = await Home.findOne({});
 
     if(home){
         console.log(home)
         home.sustainabilitySection.heading = heading;
+        home.sustainabilitySection.description = description;
         await home.save()
     }
 

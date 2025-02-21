@@ -6,9 +6,13 @@ import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import parse from 'html-react-parser'
+import { HomeType } from "@/types/HomeType";
 
 
-const SectorsList = () => {
+const SectorsList = ({data}:{
+  data:HomeType
+}) => {
   return (
     <>
       <section className="relative py-10 lg:py-20  insp-mn inspbg">
@@ -36,7 +40,7 @@ const SectorsList = () => {
               Sectors<span className="text-[#FF671F]">.</span>
             </motion.h2>
 
-            <motion.p
+            <motion.div
               className="text-font20 text-litetext opacity-[75%]  max-w-[75ch]"
               initial={{ opacity: 0, x: -30 }}
               whileInView="visible"
@@ -49,8 +53,8 @@ const SectorsList = () => {
                   transition: { duration: 1, delay: 0.5 },
                 },
               }}>
-              PSB<sup>®</sup> boards&apos; diverse product lineup is used in everything from house building, furniture, and interior design to mass timber structures, fire-rated doors, building facades, and flooring.
-            </motion.p>
+              {parse(data?.home[0]?.sectorsDescription || "")}
+            </motion.div>
           </div>
 
           <CardFlow data={Homecarlsldata.data} />
