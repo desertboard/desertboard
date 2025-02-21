@@ -37,7 +37,7 @@ const SplideSlider = ({ data }: { data: AboutType }) => {
             arrows: false,
             height: "660px",
             breakpoints: {
-              374: { height: "550px" },
+              374: { height: "600px" },
               797: { height: "500px" },
               992: {
                 height: "550px",
@@ -67,7 +67,7 @@ const SplideSlider = ({ data }: { data: AboutType }) => {
                   <h4 className="text-xl lg:text-2xl lg:text-font28 leading-[1.2] opacity-75 nuber-next-heavy text-white mb-2 md:mb-5">
                     {item.heading}
                   </h4>
-                  <p className="text-white text-font20 leading-[1.3] opacity-75 font-normal">
+                  <p className="text-white text-font20 leading-[1.3] opacity-75 font-normal pb-[63px] md:pb-0">
                     {item.description}
                   </p>
                 </div>
@@ -81,7 +81,7 @@ const SplideSlider = ({ data }: { data: AboutType }) => {
 
         <div className="w-full container   thumbsplidemn">
         <div className="relative">
-        <div className="  top-[-70px] md:top-[0] relative md:w-1/4 mt-5 md:mt-0 md:ml-auto">
+        <div className="  top-[-100px] md:top-[0] relative md:w-1/4 mt-0 md:ml-auto">
         <Splide
             options={{
               type: "loop",
