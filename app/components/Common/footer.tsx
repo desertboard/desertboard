@@ -437,7 +437,7 @@ const onSubmit = async(data:{email:string}) =>{
                 }}
               >
                 <p className="mb-0 text-center text-white text-[14px]">
-                  Copyright 2025
+                © Desert Board 2025 All rights reserved. <span className="opacity-50 hover:opacity-100 transition-all ease-in-out duration-300">By <Link href={'https://www.globalsurf.ae/'} target="_blank">Global Surf</Link></span>
                 </p>
               </motion.div>
             </div>
