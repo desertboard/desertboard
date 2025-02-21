@@ -82,9 +82,10 @@ const Selections = () => {
             if (data && data.data && currentType.files === undefined) {
                 setActiveType(0);
                 setActiveResult(currentTopic.types[0]?.files || []);
+                setSelectedValue(data.data[activeTopic].types[0].title)
             } else {
                 setActiveResult(data && data.data && currentType.files);
-                setSelectedValue(data.data[activeTopic].types[0].title)
+                setSelectedValue(data.data[activeTopic].types[activeType].title)
             }
         }
 
