@@ -94,11 +94,12 @@ const SplideSlider = ({ data }: { data: AboutType }) => {
                   height: "auto",
                   gap: "5px",
                 },
-                1200: {
-                  perPage:4,
-                },
                 992: {
                   height: "550px",
+                  perPage:4,
+                },
+                1200: {
+                  perPage:4,
                 },
               },
               perPage: 4,
@@ -111,7 +112,7 @@ const SplideSlider = ({ data }: { data: AboutType }) => {
             {data && data.about[0] && data.about[0].history.map((item, index) => (
               <SplideSlide key={index}>
                 <div
-                  className={`w-full h-full flex items-center justify-center xl:justify-end rounded transition-all duration-300`}
+                  className={`w-full h-full flex items-center justify-center md:justify-end rounded transition-all duration-300`}
                 >
                   <span
                     className={`  nuber-next-bold font-[400] text-font-[14px] md:text-font24 leading-[1.3] transition-colors duration-300 text-center xl:text-right text-white opacity-50   hover:text-gray-200 `}
