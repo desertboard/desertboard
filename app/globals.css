@@ -834,7 +834,7 @@ body {
     background-repeat: no-repeat !important;
     opacity: 1 !important;
     rotate: -90deg;
-    top: 40px;
+    top: 55px;
   }.thumbsplidemn .splide__arrow.splide__arrow--next {
 
     background: none !important;
@@ -843,8 +843,7 @@ body {
     background-repeat: no-repeat !important;
     opacity: 1 !important;
     rotate: -90deg;
-    top: 40px;
-    top: 40px;
+    top: 55px;
     right: -22px;
   }
 .thumbsplidemn .splide__arrow.splide__arrow--prev svg,

@@ -81,7 +81,7 @@ const SplideSlider = ({ data }: { data: AboutType }) => {
 
         <div className="w-full container   thumbsplidemn">
         <div className="relative">
-        <div className="  top-[-100px] md:top-[0] relative md:w-1/4 mt-0 md:ml-auto">
+        <div className="  top-[-120px] md:top-[0] relative md:w-1/4 mt-0 md:ml-auto">
         <Splide
             options={{
               type: "loop",
