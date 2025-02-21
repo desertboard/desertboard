@@ -827,26 +827,28 @@ body {
     font-size: 18px !important;
   }
   .thumbsplidemn .splide__arrow.splide__arrow--prev {
-    display: none;
+
     background: none !important;
     background-image: url(/assets/images/icons/prevor.svg) !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
     opacity: 1 !important;
     rotate: -90deg;
-    top: -30%;
+    top: 40px;
   }.thumbsplidemn .splide__arrow.splide__arrow--next {
-    display: none;
+
     background: none !important;
     background-image: url(/assets/images/icons/nextor.svg) !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
     opacity: 1 !important;
     rotate: -90deg;
-    top: -30%;
+    top: 40px;
+    top: 40px;
+    right: -22px;
   }
-/* .thumbsplidemn .splide__arrow.splide__arrow--prev svg,
+.thumbsplidemn .splide__arrow.splide__arrow--prev svg,
 .thumbsplidemn .splide__arrow.splide__arrow--next svg {
   display: none !important;
-} */
+}
 }
