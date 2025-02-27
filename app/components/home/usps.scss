@@ -40,7 +40,7 @@
         }
         &:hover {
             .usp-desc {
-                opacity: 0.75;
+                opacity: 1;
                 display: block;
                 transition: 300ms all linear;
             }
@@ -180,7 +180,7 @@
             height: 0;
             transition: 300ms all linear;
             @media (max-width: 768px) {
-                opacity: 0.75;
+                opacity: 1;
                 filter: blur(0);
                 transform: translateY(0);
                 height: 100%;
@@ -206,7 +206,7 @@
         &:hover {
             .usp-item {
                 &__desc {
-                    opacity: 0.75;
+                    opacity: 1;
                     filter: blur(0);
                     transform: translateY(0);
                     height: 100%;
@@ -227,12 +227,18 @@
         width: 50%;
         padding-bottom: 1.75rem;
         .usp-item__desc {
-            opacity: 0.75;
+            opacity: 1;
             filter: blur(0);
             transform: translateY(0);
             height: 100%;
             transition: 300ms all linear;
         }
+        .usp__title{
+            transform: translateY(10px);
+            transition: 300ms all linear;
+            transition-delay: 300ms;
+        }
+
     }
     .usp-3 {
         left: 50%;
@@ -259,7 +265,7 @@
         height: 100%;
         padding-bottom: 1.75rem;
         .usp-item__desc {
-            opacity: 0.75;
+            opacity: 1;
             filter: blur(0);
             transform: translateY(0);
             height: 100%;
@@ -300,11 +306,15 @@
         height: 100%;
         padding-bottom: 1.75rem;
         .usp-item__desc {
-            opacity: 0.75;
+            opacity: 1;
             filter: blur(0);
             transform: translateY(0);
             height: 100%;
             transition: 300ms all linear;
+        }.usp__title{
+            transform: translateY(10px);
+            transition: 300ms all linear;
+            transition-delay: 300ms;
         }
     }
     .usp-4 {
@@ -339,11 +349,15 @@
         width: 50%;
         padding-bottom: 1.75rem;
         .usp-item__desc {
-            opacity: 0.75;
+            opacity: 1;
             filter: blur(0);
             transform: translateY(0);
             height: 100%;
             transition: 300ms all linear;
+        }.usp__title{
+            transform: translateY(10px);
+            transition: 300ms all linear;
+            transition-delay: 300ms;
         }
     }
     .usp-5 {
@@ -379,11 +393,15 @@
         height: 100%;
         padding-bottom: 1.75rem;
         .usp-item__desc {
-            opacity: 0.75;
+            opacity: 1;
             filter: blur(0);
             transform: translateY(0);
             height: 100%;
             transition: 300ms all linear;
+        }.usp__title{
+            transform: translateY(10px);
+            transition: 300ms all linear;
+            transition-delay: 300ms;
         }
     }
     .usp-6 {
@@ -418,11 +436,15 @@
         width: 50%;
         padding-bottom: 1.75rem;
         .usp-item__desc {
-            opacity: 0.75;
+            opacity: 1;
             filter: blur(0);
             transform: translateY(0);
             height: 100%;
             transition: 300ms all linear;
+        }.usp__title{
+            transform: translateY(10px);
+            transition: 300ms all linear;
+            transition-delay: 300ms;
         }
     }
     .usp-7 {
@@ -460,11 +482,15 @@
         height: 100%;
         padding-bottom: 1.75rem;
         .usp-item__desc {
-            opacity: 0.75;
+            opacity: 1;
             filter: blur(0);
             transform: translateY(0);
             height: 100%;
             transition: 300ms all linear;
+        }.usp__title{
+            transform: translateY(10px);
+            transition: 300ms all linear;
+            transition-delay: 300ms;
         }
     }
 }
@@ -502,4 +528,16 @@
     .usp__list .usp-item {
         padding-bottom: 1.75rem!important;
     }
+}
+.intitle{
+    transition: 300ms all linear;
+}
+.usp__list.active-1 .usp-1,
+.usp__list.active-2 .usp-2,
+.usp__list.active-3 .usp-3,
+.usp__list.active-4 .usp-4,
+.usp__list.active-5 .usp-5,
+.usp__list.active-6 .usp-6,
+.usp__list.active-7 .usp-7{
+    .intitle{opacity: 0;}
 }

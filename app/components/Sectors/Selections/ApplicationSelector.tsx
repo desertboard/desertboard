@@ -54,7 +54,7 @@ const ApplicationSelector = ({
       <div className="grid  lg:gap-10 gap-8 grid-cols-1 sm:grid-cols-2 xxl:grid-cols-3">
         {activeApplications && activeApplications.map((application, index) => (
           <div className="flex flex-col gap-3 lg:gap-5" key={index}>
-            <div className="relative md:h-[400px] h-[300px] w-full group">
+            <div className="relative  h-[350px] md:h-[400px] lg:h-[450px] w-full group">
               <figure className="relative h-[100%] md:h-full w-full">
                 <Image
                   className="w-full object-cover h-full"
@@ -65,19 +65,21 @@ const ApplicationSelector = ({
                 />
               </figure>
               <div
-                className="absolute left-0 top-0 w-full h-full bg-Darkgreen p-4 md:p-10
+                className="absolute left-0 top-0 w-full h-full bg-Darkgreen px-4 md:px-8 lg:px-6 xl:px-10 xxl:px-6  3xl:px-10 py-3 md:py-6 lg:py-10
                 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100
-                transition-all duration-500 ease-in-out"
+                transition-all duration-500 ease-in-out flex flex-col justify-between"
                 onMouseEnter={() => handleProductImageChange(application.product)}
               >
+                <div>
                 <p className="texthelvetica20 text-white opacity-75 mb-2">
                   Product Used:
                 </p>
 
-                <p className="pb-3 md:pb-10 helvetica-bold text-font28 text-white" dangerouslySetInnerHTML={{ __html: formatText(application.product) || "" }}>
+                <p className="  helvetica-bold text-font28 text-white" dangerouslySetInnerHTML={{ __html: formatText(application.product) || "" }}>
                 </p>
+                </div>
 
-                <Image src={productImage ?? assets.bghr} className="pb-3 md:pb-10 h-[150px]" alt="" width={300} height={50} />
+                <Image src={productImage ?? assets.bghr} className="  h-[150px]" alt="" width={300} height={50} />
 
                 <Link
                   href={page === "product" ? `/product-details/${application.product}` : `/applications/${application.product}?application=${encodeURIComponent(application.title)}&sector=${encodeURIComponent(sectorName?.replace(/\s+/g, "-"))}`}

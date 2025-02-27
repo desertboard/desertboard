@@ -69,7 +69,7 @@ const Swipersustain = ({ data }:{
               <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
                 <Image src={arrowExpand} alt="" width={20} height={20} />
               </div>
-              <div className="flex items-center justify-center min-h-[460px] max-h-[484px]">
+              <div className="flex items-center justify-center min-h-[484px] max-h-[484px]">
                 <div className="absolute bg-cover bg-center h-full goal-crd__icon">
                   <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
                     {framework.logo !== "" && (
@@ -84,7 +84,7 @@ const Swipersustain = ({ data }:{
                   </div>
                 </div>
                 <div className="p-6">
-                  <div className="textvisible opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
+                  <div className="textvisible opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 md:group-hover:delay-500 delay-0">
                     <h3
                       className="nuber-next-bold text-font28 text-black"
                       dangerouslySetInnerHTML={{ __html: formatText(framework.heading) }}
