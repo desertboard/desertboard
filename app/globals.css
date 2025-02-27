@@ -851,3 +851,4 @@ body {
   display: none !important;
 }
 }
+.usp-item__desc p {opacity: .75 !important;}
