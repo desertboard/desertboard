@@ -13,6 +13,15 @@ const nextConfig: NextConfig = {
   compiler:{
     removeConsole : process.env.NODE_ENV === 'production'
   },
+  async redirects() {
+    return [
+      {
+        source:'https://desertboard.ae/tag/formwork',
+        destination:'https://desertboard.ae/',
+        permanent:true
+      }
+    ]
+  },
 };
 
 export default nextConfig;
