@@ -8,7 +8,7 @@ import useSWR from 'swr'
 const Accordians = () => {
     const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-    const { data,isLoading } = useSWR('/api/admin/faqs', fetcher)
+    const { data } = useSWR('/api/admin/faqs', fetcher)
 
     const [sections, setSections] = useState([])
     const [activeSession, setActiveSection] = useState(null)
@@ -37,9 +37,7 @@ const Accordians = () => {
         }
     }, [activeSession, data]);
 
-    if(isLoading){
-        return null
-    }
+
 
     return (
         <div className='w-full'>

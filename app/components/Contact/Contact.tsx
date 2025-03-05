@@ -20,12 +20,10 @@ const Contact = () => {
 
       const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-      const { data,isLoading }: { data: ContactDataType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/contact', fetcher)
+      const { data }: { data: ContactDataType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/contact', fetcher)
     
     
-      if(isLoading){
-        return null
-      }
+
 
     return (
         <>

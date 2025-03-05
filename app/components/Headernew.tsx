@@ -19,10 +19,10 @@ const Header = () => {
   const fetcher = (...args: Parameters<typeof fetch>) =>
     fetch(...args).then((res) => res.json());
 
-  const { data: productData,isLoading:productLoading } = useSWR(`/api/admin/products`, fetcher);
+  const { data: productData } = useSWR(`/api/admin/products`, fetcher);
   const [products, setProducts] = useState([]);
 
-  const { data: sectorData,isLoading:sectorsLoading } = useSWR(`/api/admin/sector`, fetcher);
+  const { data: sectorData } = useSWR(`/api/admin/sector`, fetcher);
   const [sectors, setSectors] = useState<{ title: string; applications: { title: string; product: string }[] }[]>([]);
 
 
@@ -69,9 +69,7 @@ const Header = () => {
     return text.replace(/®/g, "<sup>®</sup>");
   };
 
-  if(productLoading || sectorsLoading){
-    return null
-  }
+
 
   return (
     <header

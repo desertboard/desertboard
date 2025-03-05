@@ -16,7 +16,7 @@ const Filter = () => {
 
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data,isLoading } = useSWR('/api/admin/glossary', fetcher)
+  const { data } = useSWR('/api/admin/glossary', fetcher)
   const [isSticky, setIsSticky] = useState(false);
 
 
@@ -309,10 +309,8 @@ const Filter = () => {
     // console.log("filteredCompo",filteredComponents)
     // },[filteredComponents])
 
-    if(isLoading){
-      return null
-    }
-    
+
+
 
   return (
     <>

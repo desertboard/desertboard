@@ -16,7 +16,7 @@ const Listing = ({
   searchItem: string;
 }) => {
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json());
-  const { data,isLoading }: { data: NewsType; error: Error | undefined; isLoading: boolean } = useSWR('/api/admin/news', fetcher);
+  const { data }: { data: NewsType; error: Error | undefined; isLoading: boolean } = useSWR('/api/admin/news', fetcher);
 
   const [filteredData, setFilteredData] = useState<
     {
@@ -73,9 +73,7 @@ const Listing = ({
     setItemsToShow((prev) => prev + 3); // Load 2 more items
   };
 
-  if(isLoading){
-    return null
-  }
+
 
   return (
     <LightSectionContainer>

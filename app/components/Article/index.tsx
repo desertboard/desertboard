@@ -19,9 +19,9 @@ const Blogs = () => {
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data,isLoading:newsLoading }:{data:IndiNews,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/news/byid?slug=${itemTitle}`, fetcher)
+  const { data }:{data:IndiNews,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/news/byid?slug=${itemTitle}`, fetcher)
 
-  const { data:relatedData,isLoading:relatedDataLoading }:{data:NewsType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/news`, fetcher)
+  const { data:relatedData}:{data:NewsType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/news`, fetcher)
 
 
   useEffect(()=>{
@@ -35,9 +35,7 @@ const Blogs = () => {
     { label: `${data?.data?.title.slice(0,20)+"..."}`, href: "" },
   ];
 
-  if(newsLoading || relatedDataLoading){
-    return null
-  }
+
 
   return (
     <>

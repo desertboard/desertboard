@@ -16,7 +16,7 @@ const Selections = () => {
 
     const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-    const { data,isLoading }: { data: Downloads, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/files', fetcher)
+    const { data }: { data: Downloads, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/files', fetcher)
   
     useEffect(()=>{
       console.log("files",data);
@@ -92,9 +92,6 @@ const Selections = () => {
     }, [activeType,activeTopic,data]);
 
 
-    if(isLoading){
-        return null
-    }
 
     return (
         <>

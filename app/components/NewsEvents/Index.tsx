@@ -24,9 +24,9 @@ const Index = () => {
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data:newsData,isLoading:newsLoading }:{data:NewsType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/news', fetcher)
+  const { data:newsData }:{data:NewsType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/news', fetcher)
 
-  const { data:eventsData,isLoading:eventLoading }:{data:EventType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/events', fetcher)
+  const { data:eventsData }:{data:EventType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/events', fetcher)
 
   const latestNews = newsData && newsData.data.filter((item)=>(
     item.type=="Company news"
@@ -40,9 +40,7 @@ useEffect(()=>{
   console.log("events",eventsData && eventsData.data)
 },[eventsData])
 
-if(newsLoading || eventLoading){
-  return null
-}
+
 
   return (
     <>

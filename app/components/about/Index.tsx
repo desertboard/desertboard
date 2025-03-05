@@ -29,7 +29,7 @@ export default function Index() {
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data,isLoading }: { data: AboutType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/about', fetcher)
+  const { data }: { data: AboutType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/about', fetcher)
 
 
 
@@ -38,9 +38,7 @@ export default function Index() {
     console.log('sdsdsds');
   },[data])
 
-  if(isLoading){
-    return null
-  }
+
 
   return (
     <>

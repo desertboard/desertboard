@@ -29,7 +29,7 @@ const ProducrDetails = () => {
     fetch(...args).then((res) => res.json());
 
   // First API Call: Fetch product details
-  const { data,isLoading:productLoading } = useSWR(
+  const { data } = useSWR(
     productName ? `/api/admin/products?productName=${productName}` : null,
     fetcher
   );
@@ -49,7 +49,7 @@ const ProducrDetails = () => {
   }, [data]);
 
   // Second API Call: Fetch finishes details once finishes are set
-  const { data: finishesData,isLoading:finishesLoading } = useSWR(
+  const { data: finishesData } = useSWR(
     finishes.length > 0 ? `/api/admin/finish?finishes=${encodeURIComponent(finishes.join(","))}` : null,
     fetcher
   );
@@ -58,9 +58,7 @@ const ProducrDetails = () => {
     console.log("Finishes Data:", finishes);
   }, [finishes]);
 
-  if(productLoading || finishesLoading){
-    return null
-  }
+
 
 
   return (
