@@ -30,6 +30,8 @@ export const MenuItem = ({
 }) => {
 
 
+
+
   return (
     <div onMouseEnter={() => noMenu ? setActive(null) : setActive(item)} className="relative ">
       <motion.p
