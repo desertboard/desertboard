@@ -20,7 +20,7 @@ const SectorDetails = () => {
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/sector?title=${sectorTitle}`, fetcher)
+  const { data,isLoading }:{data:IndiSectorType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/sector?title=${sectorTitle}`, fetcher)
 
 
   useEffect(()=>{
@@ -32,6 +32,10 @@ const SectorDetails = () => {
     { label: "Sectors", href: "/sectors" },
     { label: `${data && data.data.title}`, href: "" },
   ];
+
+  if(isLoading){
+    return null
+  }
 
 
   return (

@@ -15,13 +15,13 @@ import { NewsType } from "@/types/NewsType";
 
 const Blogs = () => {
 
-  const {itemId} = useParams()
+  const {itemTitle} = useParams()
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data }:{data:IndiNews,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/news/byid?id=${itemId}`, fetcher)
+  const { data,isLoading:newsLoading }:{data:IndiNews,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/news/byid?slug=${itemTitle}`, fetcher)
 
-  const { data:relatedData }:{data:NewsType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/news`, fetcher)
+  const { data:relatedData,isLoading:relatedDataLoading }:{data:NewsType,error:Error|undefined,isLoading:boolean} = useSWR(`/api/admin/news`, fetcher)
 
 
   useEffect(()=>{
@@ -34,6 +34,11 @@ const Blogs = () => {
     { label: "News & Events", href: "/news-and-events-listing" },
     { label: "DesertBoard® Stands....", href: "" },
   ];
+
+  if(newsLoading || relatedDataLoading){
+    return null
+  }
+
   return (
     <>
       <ArticleBanner arrowSrc={Arrow} title={data?.data?.title} date="November 30, 2024" labeltext={data?.data?.tags[0]} breadcrumbs={breadcrumbs} bnrHeight="60dvh" />

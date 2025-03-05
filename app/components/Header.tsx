@@ -15,10 +15,10 @@ const Header = () => {
 
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data: productData } = useSWR(`/api/admin/products`, fetcher)
+  const { data: productData,isLoading:loadingProducts } = useSWR(`/api/admin/products`, fetcher)
   const [products, setProducts] = useState([])
 
-  const { data: sectorData } = useSWR(`/api/admin/sector`, fetcher)
+  const { data: sectorData,isLoading:loadingSectors } = useSWR(`/api/admin/sector`, fetcher)
   const [sectors, setSectors] = useState([])
 
   useEffect(() => {
@@ -68,6 +68,11 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  if(loadingProducts || loadingSectors){
+    return null
+  }
+
 
   if (isMobile) {
     return <MobileMenu />;

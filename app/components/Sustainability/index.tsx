@@ -26,13 +26,17 @@ const Blogs = () => {
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data }: { data: Sustainability, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/sustainability', fetcher)
+  const { data,isLoading }: { data: Sustainability, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/sustainability', fetcher)
 
 
 
   useEffect(()=>{
     console.log(data);
   },[data])
+
+  if(isLoading){
+    return null
+  }
 
 
   return (

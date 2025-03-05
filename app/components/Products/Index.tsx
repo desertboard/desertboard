@@ -39,9 +39,9 @@ const Products = () => {
 
   const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data:productData }:{data:SectorType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/products', fetcher)
+  const { data:productData,isLoading:productLoading }:{data:SectorType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/products', fetcher)
 
-  const {data:sectorData}:{data:SectorType} = useSWR(
+  const {data:sectorData,isLoading:sectorLoading}:{data:SectorType,isLoading:boolean} = useSWR(
     productData ? `/api/admin/sector` : null, fetcher
   )
 
@@ -85,6 +85,9 @@ const Products = () => {
   structuredData.length > 0 &&
   structuredData.find((item) => item.title === sectorName)?.applications || [];
 
+  if(productLoading || sectorLoading){
+    return null
+  }
 
   return (
     <>

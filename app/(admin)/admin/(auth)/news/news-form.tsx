@@ -14,9 +14,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { formatLinkForArticle } from "@/app/helpers/formatLinks";
 
 interface NewsFormData {
   title: string;
+  slug:string;
   description: string;
   tags: string[];
   date: string;
@@ -38,10 +40,12 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
     handleSubmit,
     control,
     setValue,
+    watch,
     formState: { errors },
   } = useForm<NewsFormData>({
     defaultValues: {
       title: "",
+      slug:"",
       description: "",
       tags: [],
       date: new Date().toISOString().split("T")[0],
@@ -107,6 +111,10 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
     }
   };
 
+  useEffect(()=>{
+    setValue("slug",formatLinkForArticle(watch("title")))
+  },[watch("title")])
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-4xl mx-auto p-6">
       <div className="space-y-4">
@@ -122,6 +130,20 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
             className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
           />
           {errors.title && <p className="mt-1 text-sm text-red-600">{errors.title.message}</p>}
+        </div>
+
+        <div>
+          <Label htmlFor="title" className="block text-sm font-medium text-gray-700">
+            Slug
+          </Label>
+          <Input
+            {...register("slug")}
+            type="text"
+            id="title"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+            readOnly
+          />
+          
         </div>
 
         <div>

@@ -5,6 +5,7 @@ import "@/app/components/NewsEvents/newsblock.scss";
 import tagIcon from "@/public/assets/images/News/pin.svg";
 import PrimaryArrowBtn from "../Common/PrimaryArrowBtn";
 import Link from "next/link";
+import { formatLinkForArticle } from "@/app/helpers/formatLinks";
 // import parse from 'html-react-parser'
 
 
@@ -78,7 +79,7 @@ const NewsBlock = ({ sectionTitle,data}:NewsEventsProps) => {
                           ))}
                         </ul>
                       </div>
-                      <PrimaryArrowBtn btntitle="Read more" btnLink={`/article/${news._id}`} />
+                      <PrimaryArrowBtn btntitle="Read more" btnLink={`/article/${formatLinkForArticle(news.title)}`} />
                     </div>
                   </>
                 ) : (
@@ -102,7 +103,7 @@ const NewsBlock = ({ sectionTitle,data}:NewsEventsProps) => {
                           ))}
                         </ul>
                       </div>
-                      <PrimaryArrowBtn btntitle="Read more" btnLink={`/article/${news._id}`} />
+                      <PrimaryArrowBtn btntitle="Read more" btnLink={`/article/${formatLinkForArticle(news.title)}`} />
                     </div>
                   </>
                 )}

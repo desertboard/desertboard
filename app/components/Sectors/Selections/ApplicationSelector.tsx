@@ -19,7 +19,7 @@ const ApplicationSelector = ({
 }) => {
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json());
 
-  const { data: productData } = useSWR('/api/admin/products', fetcher);
+  const { data: productData,isLoading } = useSWR('/api/admin/products', fetcher);
 
   const [productImage, setProductImage] = useState(null);
 
@@ -34,6 +34,10 @@ const ApplicationSelector = ({
     }
     return text.replace(/®/g, "<sup>®</sup>");
   };
+
+  if(isLoading){
+    return null
+  }
 
   return (
     <>

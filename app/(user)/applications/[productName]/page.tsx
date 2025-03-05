@@ -39,10 +39,12 @@ const Sectors = () => {
 
   const {
     data,
+    isLoading:loadingApplication
   }: { data: IndiApplication; error: Error | undefined; isLoading: boolean } =
     useSWR(`/api/admin/products?productName=${productName}`, fetcher);
   const {
     data: sectorData,
+    isLoading:loadingSector
   }: { data: IndiSectorType; error: Error | undefined; isLoading: boolean } =
     useSWR(
       sector &&
@@ -97,6 +99,12 @@ const Sectors = () => {
     { label: `${sector.replace(/-/g, " ")}`, href: `/sector-details/${sector.replace(/-/g, " ")}` },
     { label: `${application}`, href: "" },
   ];
+
+  
+  if(loadingApplication || loadingSector){
+    return null
+  }
+
 
   return (
     <>

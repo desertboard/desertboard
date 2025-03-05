@@ -1,6 +1,7 @@
 import Image from 'next/image';
 /* import NewsIcon from "@/public/assets/images/News/pin.svg"; */
 import PrimaryArrowBtn from '../Common/PrimaryArrowBtn';
+import { formatLinkForArticle } from '@/app/helpers/formatLinks';
 
 const formatDate = (dateString: string) => {
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -38,7 +39,7 @@ const RelatedItem = ({listData}:ListItemProps) => {
             </ul>
           }
         </div> */}
-        <PrimaryArrowBtn btntitle={"Read More"} btnLink={`/article/${listData._id}`}></PrimaryArrowBtn>
+        <PrimaryArrowBtn btntitle={"Read More"} btnLink={`/article/${formatLinkForArticle(listData.title)}`}></PrimaryArrowBtn>
       </div>
      
     </div>

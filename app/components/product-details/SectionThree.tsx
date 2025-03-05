@@ -35,7 +35,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
 
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data: applications }: {
+  const { data: applications,isLoading }: {
     data: {
       data: {
         title: string;
@@ -70,6 +70,10 @@ const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
   const formatText = (text: string) => {
     return text.replace(/®/g, "<sup>®</sup>");
   };
+
+  if(isLoading){
+    return null
+  }
 
   return (
     <>

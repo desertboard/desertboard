@@ -16,7 +16,8 @@ const Filter = () => {
 
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data } = useSWR('/api/admin/glossary', fetcher)
+  const { data,isLoading } = useSWR('/api/admin/glossary', fetcher)
+  const [isSticky, setIsSticky] = useState(false);
 
 
   // const [sections, setSections] = useState([])
@@ -32,6 +33,8 @@ const Filter = () => {
   //   //   item.contents
   //   // )))
   // },[data])
+
+
 
   const menuforA = {
     alphabet: "A",
@@ -224,7 +227,6 @@ const Filter = () => {
   //   "#",
   // ];
   // const [activeLetter, setActiveLetter] = useState<string>("");
-  const [isSticky, setIsSticky] = useState(false);
 
 
 
@@ -306,6 +308,11 @@ const Filter = () => {
     // useEffect(()=>{
     // console.log("filteredCompo",filteredComponents)
     // },[filteredComponents])
+
+    if(isLoading){
+      return null
+    }
+    
 
   return (
     <>

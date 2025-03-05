@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const NewsSchema = new mongoose.Schema({
   title: String,
+  slug:String,
   description: String,
   images: [String],
   tags: [String],

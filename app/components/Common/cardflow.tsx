@@ -26,7 +26,7 @@ import { SectorType } from "@/types/SectorType";
 
     const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-    const { data }:{data:SectorType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/sector', fetcher)
+    const { data,isLoading }:{data:SectorType,error:Error|undefined,isLoading:boolean} = useSWR('/api/admin/sector', fetcher)
 
     useEffect(()=>{
       console.log(data && data.data)
@@ -36,6 +36,11 @@ import { SectorType } from "@/types/SectorType";
     const formatText = (text: string) => {
       return text.replace(/®/g, "<sup>®</sup>");
     };
+
+    if(isLoading){
+      return null
+    }
+
   return (
     <motion.div className={`grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-10`} initial={{ opacity: 0, y: -30 }}
     whileInView="visible"

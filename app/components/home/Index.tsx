@@ -14,13 +14,16 @@ export default function Home() {
 
     const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-    const { data }: { data: HomeType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/home', fetcher)
+    const { data,isLoading }: { data: HomeType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/home', fetcher)
   
   
     useEffect(()=>{
       console.log(data);
     },[data])
 
+    if(isLoading){
+      return null
+    }
     
   return (
     <>

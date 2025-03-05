@@ -29,7 +29,7 @@ const Sectors = () => {
 
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data }: { data: SectorType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/sector', fetcher)
+  const { data,isLoading }: { data: SectorType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/sector', fetcher)
 
   useEffect(() => {
     console.log(data && data.data)
@@ -44,6 +44,10 @@ const Sectors = () => {
     console.log(data && data.data && data.data[0].title)
     setSectorName(data && data.data && data.data[0].title)
   }, [data])
+
+  if(isLoading){
+    return null
+  }
 
 
   return (
