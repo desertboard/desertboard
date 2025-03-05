@@ -81,7 +81,7 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labe
                   <div className="flex items-center gap-2">
                     <Image src={assets.label} alt=""></Image>
                     {labeltext && labeltext.map((item,index)=>(
-                        <p className="nuber-next-bold text-font20 text-[#fff] leading-[1.2] opacity-[75%] uppercase underline text-left">{index==labeltext.length - 1 ? item : item + ","} </p>
+                        <p className="nuber-next-bold text-font20 text-[#fff] leading-[1.2] opacity-[75%] uppercase underline text-left" key={index}>{index==labeltext.length - 1 ? item : item + ","} </p>
                     ))}
                     </div>
               </div>

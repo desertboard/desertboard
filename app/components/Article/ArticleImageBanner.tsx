@@ -97,8 +97,8 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc, data }) => 
 
           <div className="flex items-center gap-2 pb-6 lg:pb-[60px]">
             <Image src={assets.label} alt="" />
-            {data?.data?.tags?.map((item)=>(
-              <p className="nuber-next-bold texthelvetica20bold text-Darkgreen leading-[1] uppercase underline">{item}</p>
+            {data?.data?.tags?.map((item,index)=>(
+              <p className="nuber-next-bold texthelvetica20bold text-Darkgreen leading-[1] uppercase underline" key={index}>{item}</p>
             ))}
           </div>
           
