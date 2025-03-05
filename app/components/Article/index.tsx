@@ -32,7 +32,7 @@ const Blogs = () => {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "News & Events", href: "/news-and-events-listing" },
-    { label: "DesertBoard® Stands....", href: "" },
+    { label: `${data?.data?.title.slice(0,20)+"..."}`, href: "" },
   ];
 
   if(newsLoading || relatedDataLoading){
@@ -41,7 +41,7 @@ const Blogs = () => {
 
   return (
     <>
-      <ArticleBanner arrowSrc={Arrow} title={data?.data?.title} date="November 30, 2024" labeltext={data?.data?.tags[0]} breadcrumbs={breadcrumbs} bnrHeight="60dvh" />
+      <ArticleBanner arrowSrc={Arrow} title={data?.data?.title} date="November 30, 2024" labeltext={data?.data?.tags} breadcrumbs={breadcrumbs} bnrHeight="60dvh" />
       <ArticleImageBanner bannerSrc={data?.data?.images[0] || ""} data={data}/>
       <RelatedArticles data={relatedData}/>
       <Downloads title={"To Sustainability"} url={"/sustainability"}  />

@@ -11,7 +11,7 @@ interface HeroSectionProps {
   arrowSrc: string;
   title: string;
   date: string;
-  labeltext: string;
+  labeltext: string[];
 
   breadcrumbs: { label: string; href: string }[];
   bnrHeight?: string;
@@ -80,7 +80,9 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labe
                   </div>
                   <div className="flex items-center gap-2">
                     <Image src={assets.label} alt=""></Image>
-                    <p className="nuber-next-bold text-font20 text-[#fff] leading-[1.2] opacity-[75%] uppercase underline text-left">{labeltext} </p>
+                    {labeltext && labeltext.map((item,index)=>(
+                        <p className="nuber-next-bold text-font20 text-[#fff] leading-[1.2] opacity-[75%] uppercase underline text-left">{index==labeltext.length - 1 ? item : item + ","} </p>
+                    ))}
                     </div>
               </div>
     {/*           <div className="flex items-center gap-2">
