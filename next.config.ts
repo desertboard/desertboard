@@ -16,8 +16,8 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source:'/desertboard.ae/tag/formwork',
-        destination:'/desertboard.ae/',
+        source:'/tag/formwork',
+        destination:'/',
         permanent:true
       }
     ]
