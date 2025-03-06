@@ -162,7 +162,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
                             {item.title}
                           </h3>
 
-                          <p
+                          <div
                             className="text-white overflow-hidden pt-3   transition-all duration-500 ease-in-out   "
                             style={{
                               maxHeight:
@@ -184,7 +184,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
                             >
                               {parse(item.shortDescription ? item.shortDescription : "")}
                             </span>
-                          </p>
+                          </div>
 
                         </div>
                       </div>
