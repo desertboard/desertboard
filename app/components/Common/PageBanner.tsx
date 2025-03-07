@@ -26,7 +26,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
      <figure className="absolute left-0 top-0 h-full w-full -z-40 bg-primary">
   <Image
      className={`w-full h-full absolute top-0 left-0 object-cover ${bnrPos ? bnrPos : "object-center"}`}
-     src={bannerSrc}
+     src={bannerSrc || "data:"}
      width={1600}
      height={700}
      alt="Banner image"

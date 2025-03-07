@@ -71,7 +71,7 @@ const ProducrDetails = () => {
   return (
     <>
        <PageBanner
-        bannerSrc={data && data.data.bannerImage}
+        bannerSrc={data && data.data.bannerImage || ""}
         arrowSrc={Arrow}
         desc=""
         title={`${data && data.data.title}`}
