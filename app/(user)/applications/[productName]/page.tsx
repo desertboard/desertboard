@@ -101,7 +101,7 @@ const Sectors = () => {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Sectors", href: "/sectors" },
-    { label: `${sector.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/and/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())}`, href: `/sector-details/${sector.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/and/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())}` },
+    { label: `${sector.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())}`, href: `/sector-details/${sector.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/and/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())}` },
     { label: `${application}`, href: "" },
   ];
 

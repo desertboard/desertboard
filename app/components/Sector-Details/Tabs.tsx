@@ -10,6 +10,7 @@ import parse from 'html-react-parser'
 import readarrow from "@/public/assets/images/read-arrow.svg";
 import Link from "next/link";
 import { Applications, IndiSectorType } from "@/types/IndiSector";
+import { formatLinkForSectors } from "@/app/helpers/formatLinks";
 
 const Tabs = ({ applications,data }: {
   applications?: Applications
@@ -126,7 +127,7 @@ const Tabs = ({ applications,data }: {
                                   </li>
                                 ))}
                               </ul> */}
-                                <Link href={`/applications/${tab.product}?application=${tab.title}&sector=${encodeURIComponent(data.data.title.replace(/\s+/g, "-"))}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-1 group-hover:opacity-100 w-[250px]
+                                <Link href={`/applications/${formatLinkForSectors(tab.product)}?application=${formatLinkForSectors(tab.title)}&sector=${formatLinkForSectors(data.data.title)}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-1 group-hover:opacity-100 w-[250px]
                                     group-hover:w-full transition-opacity duration-300 text-[14px] md:text-font16   leading-[1.5] rmbtn pb-2 ">
                                   Read More <Image src={readarrow} alt="icn1" className="transition-all duration-300 relative top-[2px]" width={11} height={16} />
                                 </Link>
