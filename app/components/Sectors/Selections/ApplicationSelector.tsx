@@ -3,6 +3,7 @@ import Image from "next/image";
 import { assets } from "@/public/assets/images/assets";
 import Link from "next/link";
 import useSWR from "swr";
+import { formatLinkForSectors } from "@/app/helpers/formatLinks";
 
 const ApplicationSelector = ({
   activeApplications,
@@ -84,7 +85,7 @@ const ApplicationSelector = ({
                 <Image src={productImage ?? assets.bghr} className="  h-[150px]" alt="" width={300} height={50} />
 
                 <Link
-                  href={page === "product" ? `/product-details/${application.product}` : `/applications/${application.product}?application=${encodeURIComponent(application.title)}&sector=${encodeURIComponent(sectorName?.replace(/\s+/g, "-"))}`}
+                  href={page === "product" ? `/product-details/${formatLinkForSectors(application.product)}` : `/applications/${formatLinkForSectors(application.product)}?application=${formatLinkForSectors(application.title)}&sector=${formatLinkForSectors(sectorName)}`}
                   className="nuber-next-heavy flex gap-2 max-w-fit w-[250px]
                                             group-hover:w-full transition-all duration-300
                                             text-[14px] md:text-font16 leading-[1.5] rmbtn pb-2"

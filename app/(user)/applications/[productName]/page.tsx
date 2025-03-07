@@ -23,16 +23,25 @@ const Sectors = () => {
   const { productName } = useParams();
   const searchParams = useSearchParams();
   const application = searchParams.get("application")
-    ? decodeURIComponent(searchParams.get("application") || "")
+    ? decodeURIComponent(searchParams.get("application") || "")?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
     : "";
-  const sector = searchParams.get("sector")
+  const sector = searchParams.get("sector")?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
     ? decodeURIComponent(searchParams.get("sector")!)
     : "";
   const [finishes, setFinishes] = useState<string[]>([]);
+  const [convertedProductName,setConvertedProductName] = useState("")
 
-  console.log("secotr", sector.replace(/-/g, " "));
+  console.log("secotr", sector.replace(/\s+/g, "-").replace(/-+/g, " "));
 
   console.log("applic", application);
+
+  useEffect(()=>{
+    if(productName?.includes("psb") && typeof productName == "string"){
+      setConvertedProductName(productName.replace("psb", "PSB").replace("fr", "FR").replace("ecocore", "ecoCore").replace(/\s+/g, "-").replace(/\b\w/g, (char) => char.toUpperCase()))
+    }
+  },[productName])
+
+
 
   const fetcher = (...args: Parameters<typeof fetch>) =>
     fetch(...args).then((res) => res.json());
@@ -40,15 +49,13 @@ const Sectors = () => {
   const {
     data,
   }: { data: IndiApplication; error: Error | undefined; isLoading: boolean } =
-    useSWR(`/api/admin/products?productName=${productName}`, fetcher);
+    useSWR(`/api/admin/products?productName=${convertedProductName}`, fetcher);
   const {
     data: sectorData,
   }: { data: IndiSectorType; error: Error | undefined; isLoading: boolean } =
     useSWR(
       sector &&
-        `/api/admin/sector/byid?sector=${encodeURIComponent(
-          sector?.replace(/-/g, " ")
-        )}`,
+        `/api/admin/sector/byid?sector=${sector}`,
       fetcher
     );
   // const {data:relatedApps}:{data:RelatedApps} = useSWR(`/api/admin/sector?product=${productName}`, fetcher)
@@ -94,7 +101,7 @@ const Sectors = () => {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Sectors", href: "/sectors" },
-    { label: `${sector.replace(/-/g, " ")}`, href: `/sector-details/${sector.replace(/-/g, " ")}` },
+    { label: `${sector.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/and/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())}`, href: `/sector-details/${sector.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/and/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())}` },
     { label: `${application}`, href: "" },
   ];
 

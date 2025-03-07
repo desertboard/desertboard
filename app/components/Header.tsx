@@ -10,6 +10,7 @@ import { fakeData, menuItems } from "../(user)/data/menuItems";
 import useSWR from "swr";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { formatLinkForSectors } from "../helpers/formatLinks";
 
 const Header = () => {
 
@@ -92,7 +93,7 @@ const Header = () => {
                     {item.title == "Products" &&
                       <div className="flex flex-col gap-3">
                         {products && products.map((item: { title: string }, index) => (
-                          <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/product-details/${item.title}`} key={index}>
+                          <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/product-details/${formatLinkForSectors(item.title)}`} key={index}>
                             <motion.span
                               whileHover={{ scale: 1.1, color: "#000" }}
                               transition={{ duration: 0.2 }}
@@ -119,7 +120,7 @@ const Header = () => {
                                 <Link href={`/sector-details/${item.title}`}><div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div></Link>
                                 {fakeData.applications.map((application, index) => (
                                   <div key={index}>
-                                    <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/applications/${application.product}?application=${encodeURIComponent(application.title)}&sector=${encodeURIComponent(item.title.replace(/\s+/g, "-"))}`} key={index}>        <motion.span
+                                    <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/applications/${formatLinkForSectors(application.product)}?application=${formatLinkForSectors(application.title)}&sector=${formatLinkForSectors(item.title)}`} key={index}>        <motion.span
                                       whileHover={{ scale: 1.1, color: "#000" }}
                                       transition={{ duration: 0.2 }}
                                       className="inline-block"
@@ -135,7 +136,7 @@ const Header = () => {
                               {item.applications.map((application, index) => (
 
                                 <div key={index}>
-                                  <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/applications/${application.product}?application=${encodeURIComponent(application.title)}&sector=${encodeURIComponent(item.title.replace(/\s+/g, "-"))}`} key={index}>        <motion.span
+                                  <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/applications/${formatLinkForSectors(application.product)}?application=${formatLinkForSectors(application.title)}&sector=${formatLinkForSectors(item.title)}`} key={index}>        <motion.span
                                     whileHover={{ scale: 1.1, color: "#000" }}
                                     transition={{ duration: 0.2 }}
                                     className="inline-block"

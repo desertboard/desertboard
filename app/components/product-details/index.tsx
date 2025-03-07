@@ -24,13 +24,20 @@ const ProducrDetails = () => {
   const { productName } = useParams();
 
   const [finishes, setFinishes] = useState<string[]>([]);
+  const [convertedProductName,setConvertedProductName] = useState("")
 
   const fetcher = (...args: Parameters<typeof fetch>) =>
     fetch(...args).then((res) => res.json());
 
+  useEffect(()=>{
+    if(productName?.includes("psb") && typeof productName == "string"){
+      setConvertedProductName(productName.replace("psb", "PSB").replace("fr", "FR").replace("ecocore", "ecoCore").replace(/\s+/g, "-").replace(/\b\w/g, (char) => char.toUpperCase()))
+    }
+  },[productName])
+
   // First API Call: Fetch product details
   const { data } = useSWR(
-    productName ? `/api/admin/products?productName=${productName}` : null,
+    productName ? `/api/admin/products?productName=${convertedProductName}` : null,
     fetcher
   );
 

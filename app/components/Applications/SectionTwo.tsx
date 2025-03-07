@@ -63,7 +63,7 @@ function SectionTwo({ suggested, data, pageName, sectorData }: SectionTwoProps) 
                 Specifications
               </h3>
               <div className="border-t border-[#15151510] border-dashed pb-4 md:pb-8">
-                {data?.data?.specifications.map((item, index) => (
+                {data?.data?.specifications?.map((item, index) => (
                   <div
                     key={index}
                     className="flex justify-between py-2 md:py-5 border-b border-[#15151510] border-dashed"

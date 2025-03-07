@@ -73,7 +73,7 @@ const SectionTwo = ({data,sectorData}:{
 
         >
           {/* Slide 1 */}
-          {data && data.data && galleryImages.length == 0 && data.data.images.map((item,index)=>(
+          {data && data.data && galleryImages.length == 0 && data?.data?.images && data?.data?.images.map((item,index)=>(
             <SwiperSlide key={index}>
             <div>
 

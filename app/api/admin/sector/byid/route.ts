@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
-  const sector = searchParams.get("sector") ? decodeURIComponent(searchParams.get("sector")!) : "";;
+  const sector = searchParams.get("sector") ? decodeURIComponent(searchParams.get("sector")!).replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase()) : "";
 
   console.log("sectorNAme",sector)
 

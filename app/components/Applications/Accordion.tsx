@@ -63,7 +63,7 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }
 const Accordion : React.FC<AccordionProps> = ({ data, bg, bullet}) => {
   return (
     <div className="w-full relative z-[1] ">
-      {data && data.data && data.data.bestPractices.map((item, index) => (
+      {data && data.data && data.data.bestPractices && data.data.bestPractices.map((item, index) => (
         <AccordionItem key={index} bg={bg} bullet={bullet} title={item.title} content={item.description} />
       ))}
     </div>

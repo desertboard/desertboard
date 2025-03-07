@@ -44,10 +44,18 @@ export async function POST(request: NextRequest) {
 export async function GET(req:NextRequest) {
   await connectDB();
   const {searchParams} = new URL(req.url)
-  const productName = searchParams.get("productName")
+  let productName = searchParams.get("productName")?.replace(/-+/g, " ")
+  console.log("productNAme fist",productName)
+  if(productName?.includes("PSB")){
+    console.log("includes")
+    productName = productName.replace("PSB", "PSB®")
+  }
 
+  
   if(productName){
+    console.log("PRODUCT",productName)
     const product = await Product.findOne({title:productName})
+    console.log("foundProduct",product)
     if(product){
       return NextResponse.json({ success: true, data: product }, { status: 200 }); 
     }else{
