@@ -72,7 +72,7 @@ const Slidersustain: React.FC<LinkedInSliderProps> = ({ data }) => {
         onSlideChange={() => console.log("slide change")}
       >
 
-      {data?.home[0]?.sustainabilitySection.contents.map((framework, index) => (
+      {data && data?.home[0]?.sustainabilitySection.contents.map((framework, index) => (
         <SwiperSlide key={index}
         className={`
           ${hovIndex === index ? "hovered-homeslide" : ""}

@@ -64,7 +64,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
                     {breadcrumb.label}
                     </a>
                     ) : (
-                      <span className={`text-[#FFFFFFBF] min-w-fit texthelvetica20 ${index === breadcrumbs.length - 1 ? "helveticaBold text-white " : "opacity-75"}`}dangerouslySetInnerHTML={{ __html: formatText(breadcrumb.label) }} />
+                      <span className={`text-[#FFFFFFBF] min-w-fit texthelvetica20 ${index === breadcrumbs.length - 1 ? "helveticaBold text-white " : "opacity-75"}`} dangerouslySetInnerHTML={{ __html: formatText(breadcrumb.label) }} />
                     )}
                   {index < breadcrumbs.length - 1 && <Image src={arrowSrc} alt="Arrow" className="mx-2" />}
 
