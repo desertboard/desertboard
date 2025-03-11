@@ -58,7 +58,7 @@ export default function UspList({ secTitle,data }: UspsProps) {
 
         <div className={`usp__list ${activeOrder ? "active-" + activeOrder : ""}`}
            >
-            {data?.home[0].thirdSection.contents.map((item,index)=>(
+            {data?.home[0]?.thirdSection.contents.map((item,index)=>(
               <UspItem uspTitle={item.title} onMouseEnter={() => setActiveOrder((index+1).toString())} uspIcon={item.logo} uspDesc={item.description} order={(index+1).toString()} mainImg={item.image} key={index}/>
             ))}
           {/* <UspItem uspTitle="Deforestation Free" onMouseEnter={() => setActiveOrder("1")} uspIcon={uspI1} uspDesc="100% sustainable boards made from the UAE’s annually regenerated palm frond biomass, eliminating the need to cut down trees, and reducing reliance on imported wood." order="1" mainImg={uspImg1} />

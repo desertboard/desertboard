@@ -51,7 +51,7 @@ import { SectorType } from "@/types/SectorType";
         transition: { duration: 1, delay: 0.5 },
       },
     }}>
-      {data && data.data &&  data.data.map((framework) => (
+      {data && data?.data &&  data?.data?.map((framework) => (
         <div className="relative group bg-gray-800 csmn overflow-hidden sectorcrd" key={framework._id}>
           <Image src={framework.image} alt={framework.title} width={800} height={400} className="w-full h-[340px] lg:h-[450px] xxl:h-[492px] 3xl:h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300"/>
           <div className="absolute inset-0 sectorcrd-overlay transition-all duration-500 ease-in-out"></div>

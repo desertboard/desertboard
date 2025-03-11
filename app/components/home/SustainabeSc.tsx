@@ -40,7 +40,7 @@ const SustainabeSc = ({data}:{
                     transition: { duration: 1, delay: 0.3 },
                   },
                 }}>
-                {data?.home[0].sustainabilitySection.heading}
+                {data?.home[0]?.sustainabilitySection.heading}
                 <span className="text-[#FF671F]">.</span>
               </motion.h2>
               <motion.p
@@ -56,7 +56,7 @@ const SustainabeSc = ({data}:{
                     transition: { duration: 1, delay: 0.5 },
                   },
                 }}>
-                {data?.home[0].sustainabilitySection.description}
+                {data?.home[0]?.sustainabilitySection?.description}
               </motion.p>
             </div>
             <div className="flex gap-3 items-center group rmbtn pb-3">
