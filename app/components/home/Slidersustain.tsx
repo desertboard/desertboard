@@ -171,6 +171,7 @@ const Slidersustain: React.FC<LinkedInSliderProps> = () => {
             style={{
               backgroundImage: `url(${framework.image.src})`,
             }}
+            
           >
             <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
               <Image src={arrowExpand} alt="" width={20} height={20}></Image>

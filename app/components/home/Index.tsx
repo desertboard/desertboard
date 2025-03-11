@@ -27,9 +27,9 @@ export default function Home() {
     <>
       <BannerSr data={data}/>
       <MainDescBOx
-        secTitle={data?.home[0].secondSectionTitle}
-        subTitle={data?.home[0].secondSectionSubTitle}
-        paragraphs={data?.home[0].inspiration}
+        secTitle={data?.home[0]?.secondSectionTitle}
+        subTitle={data?.home[0]?.secondSectionSubTitle}
+        paragraphs={data?.home[0]?.inspiration}
         // mainImg="/assets/images/mn.jpg"
 /*         mainVdo={data?.home[0]?.video} */
         mainVdo={'/assets/videos/abt_bnr.mp4'}
