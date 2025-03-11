@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Navigation, Pagination } from "swiper/modules";
@@ -22,12 +22,12 @@ interface LinkedInSliderProps {
 }
 
 const Slidersustain: React.FC<LinkedInSliderProps> = () => {
-  const [hovIndex, setHovIndex] = useState<number | null>(null);
+  // const [hovIndex, setHovIndex] = useState<number | null>(null);
 
   const swiperRef = useRef<SwiperType | null>(null);
-  const formatText = (text: string) => {
-    return text.replace(/®/g, "<sup>®</sup>");
-  };
+  // const formatText = (text: string) => {
+  //   return text.replace(/®/g, "<sup>®</sup>");
+  // };
   return (
     <>
       {/* <Swiper
