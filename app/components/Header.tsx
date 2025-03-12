@@ -74,9 +74,6 @@ const Header = () => {
     return <MobileMenu />;
   }
 
-  if(!productData?.data || !sectorData?.data){
-    return null
-  }
 
   return (
     <header className={`w-full ${isSticky ? "fixed bg-white text-primary header" : "absolute bg-transparent text-white"} top-0 z-40`}>
