@@ -41,30 +41,35 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({ success: true, data: product }, { status: 201 });
 }
 
-export async function GET(req:NextRequest) {
-  await connectDB();
-  const {searchParams} = new URL(req.url)
-  let productName = searchParams.get("productName")?.replace(/-+/g, " ")
-  console.log("productNAme fist",productName)
-  if(productName?.includes("PSB")){
-    console.log("includes")
-    productName = productName.replace("PSB", "PSB®")
-  }
-
-  
-  if(productName){
-    console.log("PRODUCT",productName)
-    const product = await Product.findOne({title:productName})
-    console.log("foundProduct",product)
-    if(product){
-      return NextResponse.json({ success: true, data: product }, { status: 200 }); 
-    }else{
-      return NextResponse.json({message:"No product found", success: false }, { status: 400 });
+export async function GET(req: NextRequest) {
+  try {
+    await connectDB();
+    const { searchParams } = new URL(req.url)
+    let productName = searchParams.get("productName")?.replace(/-+/g, " ")
+    console.log("productNAme fist", productName)
+    if (productName?.includes("PSB")) {
+      console.log("includes")
+      productName = productName.replace("PSB", "PSB®")
     }
-  }else{
-    const products = await Product.find();
 
-    return NextResponse.json({ success: true, data: products }, { status: 200 });
+
+    if (productName) {
+      console.log("PRODUCT", productName)
+      const product = await Product.findOne({ title: productName })
+      console.log("foundProduct", product)
+      if (product) {
+        return NextResponse.json({ success: true, data: product }, { status: 200 });
+      } else {
+        return NextResponse.json({ message: "No product found", success: false }, { status: 400 });
+      }
+    } else {
+      const products = await Product.find();
+
+      return NextResponse.json({ success: true, data: products }, { status: 200 });
+    }
+  } catch (error) {
+    console.log("Error fetching products", error)
   }
+
 
 }
