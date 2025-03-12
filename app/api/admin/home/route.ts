@@ -10,6 +10,8 @@ export async function GET() {
   try {
     const home = await Home.find();
 
+    console.log("Home",home)
+
     if (!home) {
       return NextResponse.json({ error: "Home not found" }, { status: 404 });
     }
