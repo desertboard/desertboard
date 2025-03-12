@@ -64,6 +64,7 @@ export async function GET(req: NextRequest) {
     }
   } catch (error) {
     console.log("Error fetching sectors", error)
+    return NextResponse.json({ success: false }, { status: 500 });
   }
 
 }

@@ -69,7 +69,6 @@ export async function GET(req: NextRequest) {
     }
   } catch (error) {
     console.log("Error fetching products", error)
+    return NextResponse.json({ success: false}, { status: 500 });
   }
-
-
 }
