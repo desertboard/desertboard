@@ -5,9 +5,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 
 export async function GET() {
-  await connectDB();
-
+  
   try {
+    await connectDB();
     const home = await Home.find();
 
     console.log("Home",home)
