@@ -24,7 +24,7 @@ import { HomeType } from '@/types/HomeType';
 
 interface UspsProps {
   secTitle: string;
-  data:HomeType
+  data:HomeType | null
 }
 
 export default function UspList({ secTitle,data }: UspsProps) {

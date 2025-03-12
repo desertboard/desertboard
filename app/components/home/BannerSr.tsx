@@ -8,7 +8,7 @@ import readarrow from "@/public/assets/images/read-arrow.svg";
 import { HomeType } from "@/types/HomeType";
 
 const BannerSr = ({data}:{
-  data:HomeType
+  data:HomeType | null
 }) => {
 
   console.log(data && data.home[0] && data.home[0].bannerVideo)

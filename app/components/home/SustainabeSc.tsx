@@ -13,7 +13,7 @@ import Link from "next/link";
 import { HomeType } from "@/types/HomeType";
 
 const SustainabeSc = ({data}:{
-  data:HomeType
+  data:HomeType | null
 }) => {
   return (
     <>

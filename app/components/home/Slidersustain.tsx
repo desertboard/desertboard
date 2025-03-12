@@ -18,7 +18,7 @@ import "swiper/css/scrollbar";
 import { HomeType } from "@/types/HomeType";
 
 interface LinkedInSliderProps {
-  data:HomeType
+  data:HomeType | null
 }
 
 const Slidersustain: React.FC<LinkedInSliderProps> = () => {

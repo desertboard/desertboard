@@ -11,7 +11,7 @@ import { HomeType } from "@/types/HomeType";
 
 
 const SectorsList = ({data}:{
-  data:HomeType
+  data:HomeType | null
 }) => {
   return (
     <>

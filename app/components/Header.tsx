@@ -23,11 +23,8 @@ const Header = () => {
   const [sectors, setSectors] = useState([])
 
   useEffect(() => {
-    console.log(productData && productData.data)
-    console.log(sectorData && sectorData.data)
-
-    setProducts(productData && productData.data)
-    setSectors(sectorData && sectorData.data)
+    setProducts(productData && productData?.data)
+    setSectors(sectorData && sectorData?.data)
   }, [productData, sectorData])
 
 
