@@ -31,7 +31,9 @@ export async function GET(req:NextRequest) {
     return NextResponse.json({ data: filteredFinishes, success: true }, { status: 200 });
   }else{
     const finishes = await Finish.find();
-    return NextResponse.json({ data: finishes, success: true }, { status: 200 });
+    if(finishes.length){
+      return NextResponse.json({ data: finishes, success: true }, { status: 200 });
+    }
   }
   } catch (error) {
     return NextResponse.json({ message: error, success: false }, { status: 500 });
