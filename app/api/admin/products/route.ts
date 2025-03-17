@@ -65,7 +65,9 @@ export async function GET(req: NextRequest) {
     } else {
       try {
         const products = await Product.find();
-        return NextResponse.json({ success: true, data: products }, { status: 200 });
+        if(products.length){
+          return NextResponse.json({ success: true, data: products }, { status: 200 });
+        }
       } catch (error) {
         return NextResponse.json({ success: false, message: error }, { status: 500 });
       }
