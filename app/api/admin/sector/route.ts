@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
     const title = searchParams.get("title")
     const product = searchParams.get("product")
 
-    console.log("product", product)
+    console.log("product name", product)
     if (title) {
       const sector = await Sector.findOne({ title })
       if (sector) {
