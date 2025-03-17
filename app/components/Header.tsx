@@ -14,22 +14,12 @@ import { formatLinkForSectors } from "../helpers/formatLinks";
 
 const Header = () => {
 
-  const fetcher = (url:string) => fetch(url,{cache:"force-cache"}).then(res => res.json())
+  const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-  const { data: productData } = useSWR(`/api/admin/products`, fetcher,{
-    revalidateOnFocus: false, // Prevents re-fetching when tab is focused
-    revalidateIfStale: true, // Re-fetch only if data is stale
-    revalidateOnReconnect: true, // Re-fetch only on reconnect
-    dedupingInterval: 60000, // Cache results for 1 minute (60,000ms)
-  })
+  const { data: productData } = useSWR(`/api/admin/products`, fetcher)
   const [products, setProducts] = useState([])
 
-  const { data: sectorData } = useSWR(`/api/admin/sector`, fetcher,{
-    revalidateOnFocus: false, // Prevents re-fetching when tab is focused
-    revalidateIfStale: true, // Re-fetch only if data is stale
-    revalidateOnReconnect: true, // Re-fetch only on reconnect
-    dedupingInterval: 60000, // Cache results for 1 minute (60,000ms)
-  })
+  const { data: sectorData } = useSWR(`/api/admin/sector`, fetcher)
   const [sectors, setSectors] = useState([])
 
   useEffect(() => {
