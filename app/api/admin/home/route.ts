@@ -4,22 +4,19 @@ import Home from "@/models/Home";
 import { NextRequest, NextResponse } from "next/server";
 
 
+
 export async function GET() {
   
   try {
     await connectDB();
-    try {
-      const home = await Home.find();
+    const home = await Home.find();
 
-      console.log("Home",home)
-  
-      if (home.length == 0) {
-        return NextResponse.json({ error: "Home not found" }, { status: 404 });
-      }else{
-        return NextResponse.json({ home });
-      }
-    } catch (error) {
-      return NextResponse.json({ error: error }, { status: 500 });
+    console.log("Home",home)
+
+    if (home.length == 0) {
+      return NextResponse.json({ error: "Home not found" }, { status: 404 });
+    }else{
+      return NextResponse.json({ home });
     }
   } catch (error) {
     console.error("error getting about:", error);
