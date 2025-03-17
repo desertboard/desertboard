@@ -65,8 +65,10 @@ export async function GET(req: NextRequest) {
     } else {
       try {
         const products = await Product.find();
-        if(products.length){
+        if(products && products.length !== 0){
           return NextResponse.json({ success: true, data: products }, { status: 200 });
+        }else{
+          return NextResponse.json({ message:"No products found",success: false, data: [] }, { status: 200 });
         }
       } catch (error) {
         console.log(error)

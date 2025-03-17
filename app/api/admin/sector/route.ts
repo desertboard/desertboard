@@ -60,8 +60,10 @@ export async function GET(req: NextRequest) {
     } else {
       try {
         const sectors = await Sector.find();
-        if(sectors.length){
+        if(sectors && sectors.length !== 0){
           return NextResponse.json({ success: true, data: sectors }, { status: 200 });
+        }else{
+          return NextResponse.json({ success: false, data: [],message:"No sector found" }, { status: 200 });
         }
       } catch (error) {
         console.log(error)
