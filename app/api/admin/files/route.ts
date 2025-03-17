@@ -24,7 +24,7 @@ export async function GET() {
       return NextResponse.json({ data: [], success: false , message:"Files not found"}, { status: 400 });
     }
   } catch (error) {
-    return NextResponse.json({ data: [], success: false , message:"Files not found"}, { status: 400 });
+    return NextResponse.json({ data: [], success: false , error}, { status: 400 });
   }
 }
 
