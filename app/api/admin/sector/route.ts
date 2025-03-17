@@ -60,7 +60,9 @@ export async function GET(req: NextRequest) {
     } else {
       try {
         const sectors = await Sector.find();
-        return NextResponse.json({ success: true, data: sectors }, { status: 200 });
+        if(sectors.length){
+          return NextResponse.json({ success: true, data: sectors }, { status: 200 });
+        }
       } catch (error) {
         return NextResponse.json({ success: false, message: error }, { status: 500 });
       }
