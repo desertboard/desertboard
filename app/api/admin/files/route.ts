@@ -15,9 +15,17 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
-  await connectDB();
-  const topics = await Topic.find();
-  return NextResponse.json({ data: topics, success: true }, { status: 200 });
+  try {
+    await connectDB();
+    const topics = await Topic.find();
+    if(topics && topics.length !== 0){
+      return NextResponse.json({ data: topics, success: true }, { status: 200 });
+    }else{
+      return NextResponse.json({ data: [], success: false , message:"Files not found"}, { status: 400 });
+    }
+  } catch (error) {
+    return NextResponse.json({ data: [], success: false , message:"Files not found"}, { status: 400 });
+  }
 }
 
 export async function PATCH(request: NextRequest) {
