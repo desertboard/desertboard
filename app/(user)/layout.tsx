@@ -5,7 +5,6 @@ import Footer from "../components/Common/footer";
 import Header from "../components/Header";
 import Script from "next/script";
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title:
