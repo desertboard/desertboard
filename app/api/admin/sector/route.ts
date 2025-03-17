@@ -64,6 +64,7 @@ export async function GET(req: NextRequest) {
           console.log(sectors)
           return NextResponse.json({ success: true, data: sectors }, { status: 200 });
         }else{
+          console.error("sectors",sectors)
           return NextResponse.json({ success: false, data: [],message:"No sector found" }, { status: 404 });
         }
       } catch (error) {
