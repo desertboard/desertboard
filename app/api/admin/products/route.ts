@@ -63,9 +63,12 @@ export async function GET(req: NextRequest) {
         return NextResponse.json({ message: "No product found", success: false }, { status: 400 });
       }
     } else {
-      const products = await Product.find();
-
-      return NextResponse.json({ success: true, data: products }, { status: 200 });
+      try {
+        const products = await Product.find();
+        return NextResponse.json({ success: true, data: products }, { status: 200 });
+      } catch (error) {
+        return NextResponse.json({ success: false, message: error }, { status: 500 });
+      }
     }
   } catch (error) {
     console.log("Error fetching products", error)
