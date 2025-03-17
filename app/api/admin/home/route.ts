@@ -2,7 +2,6 @@ import connectDB from "@/lib/mongodb";
 import { verifyAdmin } from "@/lib/verifyAdmin";
 import Home from "@/models/Home";
 import { NextRequest, NextResponse } from "next/server";
-import bcrypt from "bcryptjs";
 
 
 export async function GET() {
