@@ -18,7 +18,7 @@ const BannerSr = ({data}:{
 
       className="relative h-[75vh] md:h-screen bg-cover bg-center flex items-center justify-center text-center"
     >
-         {data && data.home[0] && data.home[0].bannerVideo && <video 
+         {/* {data && data.home[0] && data.home[0].bannerVideo && <video 
         autoPlay 
         loop 
         muted 
@@ -27,6 +27,16 @@ const BannerSr = ({data}:{
         className="absolute h-[75vh] md:h-screen w-full object-cover -z-50"
       >
         <source src={data && data.home[0] && data.home[0].bannerVideo} type="video/mp4" />
+      </video>} */}
+               {<video 
+        autoPlay 
+        loop 
+        muted 
+        playsInline 
+        poster={'/assets/images/home/banner.jpg'}
+        className="absolute h-[75vh] md:h-screen w-full object-cover -z-50"
+      >
+        <source src={'/assets/videos/brandvideo.mp4'} type="video/mp4" />
       </video>}
       {/* <figure className="absolute h-[75vh] md:h-screen top-0 w-full -z-40 bg-primary hr-figs">
         <motion.img
