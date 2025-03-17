@@ -61,6 +61,7 @@ export async function GET(req: NextRequest) {
       try {
         const sectors = await Sector.find();
         if(sectors && sectors.length !== 0){
+          console.log(sectors)
           return NextResponse.json({ success: true, data: sectors }, { status: 200 });
         }else{
           return NextResponse.json({ success: false, data: [],message:"No sector found" }, { status: 200 });
