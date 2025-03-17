@@ -4,9 +4,13 @@ import connectDB from "@/lib/mongodb";
 import { verifyAdmin } from "@/lib/verifyAdmin";
 
 export async function GET() {
-  await connectDB();
-  const events = await Event.find();
-  return NextResponse.json({ data: events, success: true }, { status: 200 });
+  try {
+    await connectDB();
+    const events = await Event.find();
+    return NextResponse.json({ data: events, success: true }, { status: 200 }); 
+  } catch (error) {
+    return NextResponse.json({ message: error, success: false }, { status: 500 });
+  }
 }
 
 export async function POST(request: NextRequest) {
