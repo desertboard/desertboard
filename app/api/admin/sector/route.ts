@@ -59,7 +59,6 @@ export async function GET(req: NextRequest) {
 
     } else {
       try {
-        await connectDB();
         const sectors = await Sector.find();
         if(sectors && sectors.length !== 0){
           console.log(sectors)
