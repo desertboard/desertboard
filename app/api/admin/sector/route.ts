@@ -58,9 +58,12 @@ export async function GET(req: NextRequest) {
 
 
     } else {
-      const sectors = await Sector.find();
-
-      return NextResponse.json({ success: true, data: sectors }, { status: 200 });
+      try {
+        const sectors = await Sector.find();
+        return NextResponse.json({ success: true, data: sectors }, { status: 200 });
+      } catch (error) {
+        return NextResponse.json({ success: false, message: error }, { status: 500 });
+      }
     }
   } catch (error) {
     console.log("Error fetching sectors", error)

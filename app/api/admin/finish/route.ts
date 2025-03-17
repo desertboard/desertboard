@@ -19,6 +19,8 @@ export async function POST(req: NextRequest) {
 
 export async function GET(req:NextRequest) {
 
+  try {
+    
   const {searchParams} = new URL(req.url)
   const finishes = searchParams.get("finishes")?.split(",")
 
@@ -30,6 +32,9 @@ export async function GET(req:NextRequest) {
   }else{
     const finishes = await Finish.find();
     return NextResponse.json({ data: finishes, success: true }, { status: 200 });
+  }
+  } catch (error) {
+    return NextResponse.json({ message: error, success: false }, { status: 500 });
   }
   
 }
