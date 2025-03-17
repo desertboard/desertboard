@@ -5,6 +5,8 @@ import Footer from "../components/Common/footer";
 import Header from "../components/Header";
 import Script from "next/script";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title:
     "Desert Board World's first Wooden Board made from Palm Waste - Desert Board",
