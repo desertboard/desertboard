@@ -12,13 +12,13 @@ export async function GET() {
 
     console.log("Home",home)
 
-    if (!home) {
+    if (!home.length) {
       return NextResponse.json({ error: "Home not found" }, { status: 404 });
     }
 
     return NextResponse.json({ home });
   } catch (error) {
-    console.log("error getting about:", error);
+    console.error("error getting about:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
