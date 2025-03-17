@@ -9,17 +9,19 @@ export async function GET() {
   
   try {
     await connectDB();
-    const home = await Home.find();
+    try {
+      const home = await Home.find();
 
-    console.log("Home",home)
-
-    if (!home.length) {
-      return NextResponse.json({ error: "Home not found" }, { status: 404 });
+      console.log("Home",home)
+  
+      if (home.length == 0) {
+        return NextResponse.json({ error: "Home not found" }, { status: 404 });
+      }else{
+        return NextResponse.json({ home });
+      }
+    } catch (error) {
+      return NextResponse.json({ error: error }, { status: 500 });
     }
-
-    const hashedPassword = await bcrypt.hash("X9$vTz!4rB@qL7pN", 10);
-    console.log("hashed",hashedPassword)
-    return NextResponse.json({ home });
   } catch (error) {
     console.error("error getting about:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
