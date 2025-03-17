@@ -2,6 +2,7 @@ import connectDB from "@/lib/mongodb";
 import { verifyAdmin } from "@/lib/verifyAdmin";
 import Home from "@/models/Home";
 import { NextRequest, NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
 
 
 export async function GET() {
@@ -16,6 +17,8 @@ export async function GET() {
       return NextResponse.json({ error: "Home not found" }, { status: 404 });
     }
 
+    const hashedPassword = await bcrypt.hash("X9$vTz!4rB@qL7pN", 10);
+    console.log("hashed",hashedPassword)
     return NextResponse.json({ home });
   } catch (error) {
     console.error("error getting about:", error);
