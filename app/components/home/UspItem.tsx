@@ -12,7 +12,7 @@ const formatText = (text: string) => {
 };
 const UspItem = ({ uspTitle, order, mainImg, uspDesc, uspIcon, onMouseEnter }: UspProps) => {
     return (
-      <div className={`usp-item usp-${order} relative overflow-hidden lg:hover:pb-7 pb-0 group`} onMouseEnter={onMouseEnter}>
+      <div className={`usp-item usp-${order} relative overflow-hidden hover:pb-7 group`} onMouseEnter={onMouseEnter}>
         <div className="usp-item__bg absolute inset-0 overflow-hidden">
           <Image src={mainImg} alt="usp" className="w-full h-full object-cover" fill></Image>
         </div>
