@@ -68,11 +68,11 @@ export async function GET(req: NextRequest) {
         if(products && products.length !== 0){
           return NextResponse.json({ success: true, data: products }, { status: 200 });
         }else{
-          return NextResponse.json({ message:"No products found",success: false, data: [] }, { status: 500 });
+          return NextResponse.json({ message:"No products found",success: false, data: [] }, { status: 404 });
         }
       } catch (error) {
         console.log(error)
-        return NextResponse.json({ success: false, message: error }, { status: 500 });
+        return NextResponse.json({ success: false, message: error }, { status: 404 });
       }
     }
   } catch (error) {

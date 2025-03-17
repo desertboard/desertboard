@@ -64,11 +64,11 @@ export async function GET(req: NextRequest) {
           console.log(sectors)
           return NextResponse.json({ success: true, data: sectors }, { status: 200 });
         }else{
-          return NextResponse.json({ success: false, data: [],message:"No sector found" }, { status: 200 });
+          return NextResponse.json({ success: false, data: [],message:"No sector found" }, { status: 404 });
         }
       } catch (error) {
         console.error(error)
-        return NextResponse.json({ success: false, message: error }, { status: 500 });
+        return NextResponse.json({ success: false, message: error }, { status: 404 });
       }
     }
   } catch (error) {

@@ -34,7 +34,7 @@ export async function GET(req:NextRequest) {
     if(finishes && finishes.length !== 0 ){
       return NextResponse.json({ data: finishes, success: true }, { status: 200 });
     }else{
-      return NextResponse.json({ data: [], success: false,message:"No finish found" }, { status: 500 });
+      return NextResponse.json({ data: [], success: false,message:"No finish found" }, { status: 404 });
     }
   }
   } catch (error) {
