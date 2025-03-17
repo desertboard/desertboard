@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
 export async function GET(req:NextRequest) {
 
   try {
-    
+  await connectDB();
   const {searchParams} = new URL(req.url)
   const finishes = searchParams.get("finishes")?.split(",")
 
