@@ -66,7 +66,7 @@ export async function GET(req: NextRequest) {
           return NextResponse.json({ success: false, data: [],message:"No sector found" }, { status: 200 });
         }
       } catch (error) {
-        console.log(error)
+        console.error(error)
         return NextResponse.json({ success: false, message: error }, { status: 500 });
       }
     }
