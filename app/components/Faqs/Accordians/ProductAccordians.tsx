@@ -96,7 +96,7 @@ const ProductAccordians = ({items}:{
 
                             </div>
 
-                            {item.linkLabel && item.link &&<div>
+                            {item.linkLabel && item.link && item.linkLabel !=="undefined" && item.link !=="undefined" && <div>
                                 <Link href={item.link}>
                                 <button
                                     type="submit"

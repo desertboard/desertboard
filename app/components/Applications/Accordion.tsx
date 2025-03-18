@@ -34,7 +34,7 @@ const AccordionItem: React.FC<HeroSectionProps> = ({ title, bg,bullet ,content }
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex gap-3 md:gap-[16px] items-start">
-        {bullet && <Image src={assets.accic} alt="icon" />}
+        {bullet && <Image src={assets.accic} alt="icon" className="text-lg"/>}
           <p className="texthelvetica20bold clr15op75">{title}</p>
         </div>
         <div

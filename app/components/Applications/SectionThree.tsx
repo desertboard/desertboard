@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
+
 import { Swiper as SwiperType } from "swiper";
 import { motion } from "framer-motion";
 
@@ -136,6 +137,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
                 style={{ backgroundImage: `url(${item.image})` }}
               >
                 <div className="icnview"></div>
+                {/* <Image src={arrowExpand} alt="expand" width={20} height={20}/> */}
                 <div className="flex items-end min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500 ">
                   <div className="p-5 transition-all duration-500 ease-in-out w-full">
                     <h3 className="nubernext28bold max-w-[15ch] text-white transition-all duration-500 ease-linear w-full translate-y-[0px] delay-200 group-hover:translate-y-[-10px]">

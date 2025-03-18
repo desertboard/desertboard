@@ -732,15 +732,16 @@ body {
     right: 8px;
   }
 
-  .icnview::after {
-    content: url(/assets/images/icons/viewic.svg);
+  .icnview {
+    background-image: url(/assets/images/icons/expand-icon.png);
     position: absolute;
-    top: 0px;
+    top: 10px;
+    background-size: contain;
     right: 15px;
     width: 24px;
     height: 24px;
     display: inline-block;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     padding: 5px;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     opacity: 0.8;
@@ -748,8 +749,8 @@ body {
 
 
 
-  .hrcd:hover .icnview::after,
-  .hcrd:hover .icnview::after {
+  .hrcd:hover .icnview,
+  .hcrd:hover .icnview {
     transform: scale(1.1); /* Slight zoom effect */
     opacity: 0;
     filter: drop-shadow(0px 0px 6px rgba(255, 255, 255, 0.7));

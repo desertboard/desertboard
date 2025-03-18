@@ -7,9 +7,10 @@ import {
   TwitterShareButton,
   LinkedinShareButton,
   WhatsappShareButton,
+  EmailShareButton,
   XIcon
 } from "react-share";
-import { FacebookIcon, LinkedinIcon, WhatsappIcon } from "react-share";
+import { FacebookIcon, LinkedinIcon, WhatsappIcon,EmailIcon } from "react-share";
 import Image from "next/image";
 import { assets } from "@/public/assets/images/assets";
 
@@ -86,6 +87,7 @@ const ShareArticle = () => {
             exit="exit"
           >
             {[
+              { Component: EmailShareButton, Icon: EmailIcon },
               { Component: FacebookShareButton, Icon: FacebookIcon },
               { Component: TwitterShareButton, Icon: XIcon },
               { Component: LinkedinShareButton, Icon: LinkedinIcon },
@@ -96,8 +98,8 @@ const ShareArticle = () => {
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 variants={itemVariants}
               >
-                <Component url={shareUrl}>
-                  <Icon size={32} round />
+                <Component url={shareUrl} onClick={()=>{}} openShareDialogOnClick>
+                  <Icon size={32} round iconFillColor="#FF671F" style={{borderColor:"#FF671F",borderWidth:"2px",borderRadius:"50%"}} bgStyle={{fill:"none"}}/>
                 </Component>
               </motion.div>
             ))}
