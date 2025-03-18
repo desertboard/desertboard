@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
+import { IoExpand } from "react-icons/io5";
 
 
 import { Swiper as SwiperType } from "swiper";
@@ -136,7 +137,8 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
                 className="relative group overflow-hidden transform goal-crd hrcd bg-center bg-cover transition-all duration-500 ease-in-out"
                 style={{ backgroundImage: `url(${item.image})` }}
               >
-                <div className="icnview"></div>
+                {/* <div className="icnview"></div> */}
+                <IoExpand className="text-3xl absolute right-5 top-5 text-orange group-hover:hidden"/>
                 {/* <Image src={arrowExpand} alt="expand" width={20} height={20}/> */}
                 <div className="flex items-end min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500 ">
                   <div className="p-5 transition-all duration-500 ease-in-out w-full">
