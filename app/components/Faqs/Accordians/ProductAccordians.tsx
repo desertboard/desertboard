@@ -76,11 +76,11 @@ const ProductAccordians = ({items}:{
                 {items && items.map((item, index) => (
                     <div key={index}>
                         <button onClick={() => toggleAccordian(index)}
-                            className={`w-full flex justify-between items-center  text-slate-800 p-2 md:p-4 bg-[#E3DED9] `}
+                            className={`w-full  justify-between items-center  text-slate-800 p-2 md:p-4 bg-[#E3DED9] grid grid-cols-6 lg:flex`}
                         >
-                            <div className='helvetica-bold clr15op75 text-font20 md:text-font20 text-left '  dangerouslySetInnerHTML={{ __html: formatText(item.question) }} ></div>
-                            <span id="icon-1" className="text-slate-800 transition-transform duration-300">
-                                {activeAccordian == index ? <Image src={accordianArrow} alt='arrow' /> : <Image src={accordianArrow} alt='arrow' className='rotate-180' />}
+                            <div className='helvetica-bold clr15op75 text-font20 md:text-font20 text-left col-span-5'  dangerouslySetInnerHTML={{ __html: formatText(item.question) }} ></div>
+                            <span id="icon-1" className="text-slate-800 transition-transform duration-300 col-span-1 flex justify-end">
+                                {activeAccordian == index ? <Image src={accordianArrow} alt='arrow'/> : <Image src={accordianArrow} alt='arrow' className='rotate-180' />}
 
                             </span>
                         </button>

@@ -5,7 +5,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
-import { assets } from "@/public/assets/images/assets";
+// import { assets } from "@/public/assets/images/assets";
+import accordianArrow from '@/public/assets/images/accordian-arrow.svg'
 
 interface MenuItem {
   id: number;
@@ -53,24 +54,8 @@ const Searchresult: React.FC<AlphabetMenuProps> = ({ itemdata }) => {
         <p className="nuber-next-heavy text-font20 leading-[1] text-Darkgreen">
           {item.title}
         </p>
-        <Image
-          src={assets.grarrow}
-          alt="arrow"
-        className= {`relative top-[2px] transition-opacity duration-300 ${
-                                  activeIndex === index ? "block" : "hidden"
-                                }`}
-          width={16}
-          height={8}
-                            />
-             <Image
-        src={assets.grarrow}
-        alt="arrow"
-      className= {`relative top-[2px] transition-opacity duration-300 ${
-                                activeIndex === index ? "hidden" : "block"
-                              }`}
-        width={16}
-        height={8}
-      />
+        <Image src={accordianArrow} alt='arrow' className={`${activeIndex !== index ? "hidden":"block"}`} width={16} height={16}/>
+             <Image src={accordianArrow} alt='arrow' className={`rotate-180 ${activeIndex == index ? "hidden":"block"}`} width={16} height={16}/>
       </div>
 
       {/* Hidden Paragraph (Only Affects Next Sibling) */}
