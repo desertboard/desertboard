@@ -32,14 +32,14 @@ export async function POST(request: Request) {
     const token = await new jose.SignJWT({ userId: admin._id })
       .setProtectedHeader({ alg: "HS256" })
       .setIssuedAt()
-      .setExpirationTime("1m")
+      .setExpirationTime("24h")
       .sign(secret);
 
     //set the token in the cookie
     cookieStore.set("adminToken", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      maxAge: 60, // 1 day
+      maxAge: 24 * 60 * 60, // 1 day
     });
 
     return NextResponse.json({ success: true, data: "" }, { status: 200 });

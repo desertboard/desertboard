@@ -73,16 +73,20 @@ const ArticleBanner: React.FC<HeroSectionProps> = ({  arrowSrc, title,date, labe
           </h1>
           <div className="flex flex-col md:flex-row items-start gap-4 md:items-center justify-between mb-1 md:mb-[60px] ">
 
-              <div className="flex  items-center gap-5">
+              <div className="flex gap-5 flex-col lg:flex-row">
                   <div className="flex items-center gap-2">
                     <Image src={assets.calender} alt=""></Image>
                     <p className="nuber-next-bold text-font20 text-[#fff] leading-[1.2] opacity-[75%] uppercase text-left">{date} </p>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Image src={assets.label} alt=""></Image>
-                    {labeltext && labeltext.map((item,index)=>(
-                        <p className="nuber-next-bold text-font20 text-[#fff] leading-[1.2] opacity-[75%] uppercase underline text-left" key={index}>{index==labeltext.length - 1 ? item : item + ","} </p>
-                    ))}
+                  <div className="flex gap-2">
+                    
+                    <div className="flex flex-col lg:flex-row gap-2">
+                    {labeltext && labeltext.map((item,index)=>{
+                      return index == 0 ? 
+                      <div className="flex gap-2"><Image src={assets.label} alt=""></Image><p className="nuber-next-bold text-font20 text-[#fff] leading-[1.2] opacity-[75%] uppercase underline text-left" key={index}>{index==labeltext.length - 1 ? item : item + ","} </p></div> :
+                        <p className="nuber-next-bold text-font20 text-[#fff] leading-[1.2] opacity-[75%] uppercase underline text-left pl-8 lg:pl-0" key={index}>{index==labeltext.length - 1 ? item : item + ","} </p>
+                      })}
+                    </div>
                     </div>
               </div>
     {/*           <div className="flex items-center gap-2">
