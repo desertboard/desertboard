@@ -30,7 +30,7 @@ interface UspsProps {
 export default function UspList({ secTitle,data }: UspsProps) {
   const [activeOrder, setActiveOrder] = useState<string | null>("1");
   return (
-    <section className=" py-10 lg:py-20  relative bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
+    <section className="py-10 z-0 lg:py-20  relative bg-primary text-white overflow-hidden border-t-[5px] border-b-[5px] border-secondary">
       <motion.div className="ola ola-right absolute top-5 right-[-20%] md:right-[-10%] w-[20em] md:w-[40em]" animate={{ y: [0, -20, 0], rotate: [0, -1, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
         <Image className="absolute" src={ola} alt="Description of the image"></Image>

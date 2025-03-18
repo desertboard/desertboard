@@ -16,7 +16,7 @@ const BannerSr = ({data}:{
   return (
     <section
 
-      className="relative h-[75vh] md:h-screen bg-cover bg-center flex items-center justify-center text-center"
+      className="relative h-[75vh] z-0 md:h-screen bg-cover bg-center flex items-center justify-center text-center"
     >
          {/* {data && data.home[0] && data.home[0].bannerVideo && <video 
         autoPlay 
