@@ -4,11 +4,10 @@ import "@/app/components/Common/MainDescBox.scss";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
 import { StaticImageData } from "next/image";
-import React, { JSX, useRef, useState } from "react";
+import React, { JSX, useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import parse from "html-react-parser";
-import { assets } from "@/public/assets/images/assets";
-/* import { assets } from "@/public/assets/images/assets"; */
+
 
 interface MainDescBoxProps {
   secTitle: string;
@@ -29,15 +28,17 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
 }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const togglePlay = () => {
+    console.log("working")
     const video = videoRef.current;
     if (video) {
       if (video.paused) {
-        video.play();
-        setIsPlaying(true);
+        // video.play();
+        setIsPopupOpen(true)
       } else {
-        video.pause();
+        setIsPopupOpen(false)
         setIsPlaying(false);
       }
     } else {
@@ -81,6 +82,20 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
       return paragraphs;
     }
   };
+
+  useEffect(() => {
+    if (isPopupOpen) {
+      console.log("make hidden")
+      document.documentElement.style.overflow = "hidden"; // Disable scroll
+    } else {
+      console.log("make bla")
+      document.documentElement.style.overflow = "auto";// Re-enable scroll
+    }
+
+    return () => {
+      document.body.style.overflow = ""; // Ensure reset on unmount
+    };
+  }, [isPopupOpen]);
 
   return (
     <section className="pt-10 lg:pt-20 pb-10 lg:pb-[110px] insp-mn relative inspbg overflow-hidden">
@@ -148,7 +163,7 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
                 <Image
                   className="w-full object-cover  h-full object-center"
                   src={mainImg}
-                 width={1500} height={1000}
+                  width={1500} height={1000}
                   alt="Banner image"
                 />
               </figure>
@@ -168,7 +183,7 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
                     onEnded={() => setIsPlaying(false)}
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
-                  {!isPlaying && (
+                    {!isPlaying && (
                       <button
                         className="bg-white bg-opacity-20 rounded-sm px-6 py-3 md:px-10 md:py-6 transition duration-300 hover:bg-opacity-50"
                         onClick={togglePlay}
@@ -178,16 +193,44 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
                         </svg>
                       </button>
                     )}
-                     {isPlaying && (
+                    {/* {isPlaying && (
                       <button
                         className="bg-white bg-opacity-20 opacity-0 group-hover:opacity-[1] rounded-sm px-6 py-3 md:px-10 md:py-6 transition duration-300 hover:bg-opacity-50"
                         onClick={togglePlay}
                       >
-                     <Image src={assets.pause} alt="image" className="invert"></Image>
+                        <Image src={assets.pause} alt="image" className="invert"></Image>
                       </button>
-                    )}
+                    )} */}
                   </div>
                 </motion.div>
+
+              </div>
+
+
+            )}
+
+            {isPopupOpen && (
+              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+                <div className="relative w-[90%] max-w-[1080px]">
+                  {/* Close Button */}
+                  <button
+                    className="absolute z-10 right-5 top-5 cursor-pointer bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-100 transition size-10"
+                    onClick={() => setIsPopupOpen(false)}
+                  >
+                    ✖
+                  </button>
+
+                  {/* Video Player */}
+                  <video
+                    className="w-full h-full rounded-lg object-cover"
+                    src={mainVdo}
+                    poster={vdoPoster}
+                    width={1080}
+                    height={740}
+                    controls
+                    autoPlay
+                  />
+                </div>
               </div>
             )}
           </div>

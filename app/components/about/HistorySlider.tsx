@@ -103,7 +103,7 @@ const SplideSlider = ({ data }: { data: AboutType }) => {
                 },
               },
               perPage: 4,
-              wheel: true,
+              // wheel: true,
               pagination: false,
               isNavigation: true, // Enables thumbnail clicking
             }}
