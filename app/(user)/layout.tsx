@@ -24,9 +24,9 @@ interface HomeData {
 export async function generateMetadata(): Promise<Metadata> {
   const data = await apiService.get<HomeData>("/home");
 
-  const metadataTitle = data?.home[0]?.metaTitle || "Default Title";
+  const metadataTitle = data?.home[0]?.metaTitle || "Desert Board World's first Wooden Board made from Palm Waste - Desert Board";
   const metadataDescription =
-    data?.home[0]?.metaDescription || "Default description";
+    data?.home[0]?.metaDescription || "Welcome to Desert Board. Pioneering a carbon negative future from the UAE to the World. Introducing the world's first Wooden Board made from Date Palm Biomass.";
 
     console.log(metadataTitle, metadataDescription)
 
