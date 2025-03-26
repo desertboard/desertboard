@@ -44,7 +44,7 @@ const ProducrDetails = () => {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
-    { label: `${data && data.data.title}`, href: "" },
+    { label: `${data?.data?.title || ""}`, href: "" },
   ];
 
 
@@ -74,7 +74,7 @@ const ProducrDetails = () => {
         bannerSrc={data && data.data.bannerImage || ""}
         arrowSrc={Arrow}
         desc=""
-        title={`${data && data.data.title}`}
+        title={`${data?.data?.title || ""}`}
         breadcrumbs={breadcrumbs}
         bnrHeight="60dvh"
         bnrPos="object-right"

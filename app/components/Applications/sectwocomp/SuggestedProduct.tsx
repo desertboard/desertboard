@@ -27,7 +27,7 @@ const SuggestedProduct: React.FC<HeroSectionProps> = ({ data }) => {
             </div>
             <div className="flex items-center ">
 
-              <p className=" helvetica-bold text-font22  md:text-font28 leading-[1] text-Darkgreen " dangerouslySetInnerHTML={{ __html: formatText(data && data.data && data.data.title) }} />
+              <p className=" helvetica-bold text-font22  md:text-font28 leading-[1] text-Darkgreen " dangerouslySetInnerHTML={{ __html: formatText(data && data.data && data.data.title || "") }} />
             </div>
           </div>
           <div className="col-span-3  h-full ">

@@ -21,7 +21,7 @@ const WhySupreme = ({ data,pageName }:{
 
         <div className="pb-7 md:pb-[60px] ">
         <div>
-           {pageName === "products" ? <p className=" helvetica-bold text-font28   text-Darkgreen mb-4 md:mb-8">Key <span dangerouslySetInnerHTML={{ __html: formatText(`${data && data?.data?.title}`) }} /> Information</p> : <p className=" helvetica-bold text-font28   text-Darkgreen mb-4 md:mb-8" dangerouslySetInnerHTML={{ __html: formatText(`Why ${data && data?.data?.title}`) }} />}
+           {pageName === "products" ? <p className=" helvetica-bold text-font28   text-Darkgreen mb-4 md:mb-8">Key <span dangerouslySetInnerHTML={{ __html: formatText(`${data?.data?.title || ""}`) }} /> Information</p> : <p className=" helvetica-bold text-font28   text-Darkgreen mb-4 md:mb-8" dangerouslySetInnerHTML={{ __html: formatText(`Why ${data?.data?.title || ""}`) }} />}
 
 
         </div>
