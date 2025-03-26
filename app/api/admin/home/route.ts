@@ -41,6 +41,8 @@ export async function PATCH(req: NextRequest) {
     const formData = await req.formData();
     const pageHeading = formData.get("pageHeading")
     const pageDescription = formData.get("pageDescription")
+    const metaTitle = formData.get("metaTitle")
+    const metaDescription = formData.get("metaDescription")
     const bannerVideo = formData.get("bannerVideo")
     const bannerPoster = formData.get("bannerPoster")
 
@@ -49,6 +51,8 @@ export async function PATCH(req: NextRequest) {
     if(home){
         home.pageHeading = pageHeading;
         home.pageDescription = pageDescription;
+        home.metaTitle = metaTitle;
+        home.metaDescription = metaDescription;
         home.bannerVideo = bannerVideo;
         home.bannerPoster = bannerPoster
         await home.save()

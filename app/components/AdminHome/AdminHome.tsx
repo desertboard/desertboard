@@ -18,6 +18,8 @@ import { ImageUploader } from '../ui/image-uploader';
 type FormData = {
     pageHeading: string;
     pageDescription: string;
+    metaTitle: string;
+    metaDescription: string;
     inspiration: string;
     second_section_title:string;
     second_section_sub_title:string;
@@ -54,6 +56,8 @@ const AdminHome = () => {
         const formData = new FormData();
         formData.append("pageHeading", data.pageHeading);
         formData.append("pageDescription", data.pageDescription);
+        formData.append("metaTitle", data.metaTitle);
+        formData.append("metaDescription", data.metaDescription);
         formData.append("bannerVideo", data.bannerVideo);
         formData.append("bannerPoster", data.bannerPoster);
         try {
@@ -95,6 +99,8 @@ const AdminHome = () => {
                     if (data) {
                         setValue("pageHeading", data.home[0].pageHeading)
                         setValue("pageDescription", data.home[0].pageDescription)
+                        setValue("metaTitle", data.home[0].metaTitle)
+                        setValue("metaDescription", data.home[0].metaDescription)
                         setValue("bannerVideo", data.home[0].bannerVideo)
                         setValue("bannerPoster", data.home[0].bannerPoster)
                         setValue("inspiration", data.home[0].inspiration)
@@ -144,6 +150,17 @@ const AdminHome = () => {
                         <Input {...register("pageDescription", { required: "Page description is required" })} />
                         {errors.pageDescription && <span className="text-red-500">{errors.pageDescription.message}</span>}
                     </div>
+
+                    <div className='mt-5'>
+                        <Label htmlFor="title">Meta Title</Label>
+                        <Input {...register("metaTitle")} />
+                    </div>
+
+                    <div className='mt-5'>
+                        <Label htmlFor="title">Meta Description</Label>
+                        <Input {...register("metaDescription")} />
+                    </div>
+
                     </div>
 
                     <div className='flex flex-col gap-5'>

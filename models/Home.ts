@@ -9,6 +9,12 @@ const HomeSchema = new mongoose.Schema({
     pageDescription: {
         type: String,
     },
+    metaTitle: {
+        type: String,
+    },
+    metaDescription: {
+        type: String,
+    },
     bannerVideo:{
         type:String
     },
