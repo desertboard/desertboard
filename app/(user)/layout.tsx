@@ -24,9 +24,9 @@ interface HomeData {
 export async function generateMetadata(): Promise<Metadata> {
   const data = await apiService.get<HomeData>("/home");
 
-  const metadataTitle = data?.home[0]?.metaTitle;
+  const metadataTitle = data?.home[0]?.metaTitle || "Default Title";
   const metadataDescription =
-    data?.home[0]?.metaDescription;
+    data?.home[0]?.metaDescription || "Default description";
 
     console.log(metadataTitle, metadataDescription)
 

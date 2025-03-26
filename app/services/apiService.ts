@@ -1,8 +1,9 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios";
+import axios, { AxiosInstance, AxiosResponse, AxiosError } from "axios";
 
-const BASE_URL = process.env.NODE_ENV === "development" ? "http://localhost:3000/api/admin" : "https://desertboard.ae//api/admin";
-
-// const BASE_URL = "http://localhost:3001"
+const BASE_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000/api/admin"
+    : "https://desertboard.ae/api/admin";
 
 class ApiService {
   private api: AxiosInstance;
@@ -16,22 +17,24 @@ class ApiService {
     });
   }
 
-  async get<T>(url: string, params?: any): Promise<T> {
+  async get<T>(url: string, params?: Record<string, string | number | boolean | undefined>): Promise<T> {
     try {
       const response: AxiosResponse<T> = await this.api.get(url, { params });
       return response.data;
     } catch (error) {
-      this.handleError(error);
+      this.handleError(error as AxiosError);
       throw error;
     }
   }
 
-  private handleError(error: any): void {
-    console.error("API request failed:", error);
-    // You can add more error handling logic here, such as showing notifications
+  private handleError(error: AxiosError): void {
+    console.error("API request failed:", error.message);
+    if (error.response) {
+      console.error("Response data:", error.response.data);
+      console.error("Response status:", error.response.status);
+    }
   }
 }
 
 const apiService = new ApiService();
 export default apiService;
-
