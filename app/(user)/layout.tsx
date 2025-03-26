@@ -4,7 +4,6 @@ import "../../app/components/Common/common.scss";
 import Footer from "../components/Common/footer";
 import Header from "../components/Header";
 import Script from "next/script";
-import ApiService from "../services/apiService";
 import apiService from "../services/apiService";
 
 
