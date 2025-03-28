@@ -100,7 +100,13 @@ const SustainabilitySchema = new mongoose.Schema({
             }
         ]
     },
-    vision: [VisionSchema]
+    vision: [VisionSchema],
+    metaTitle: {
+        type: String
+    },
+    metaDescription: {
+        type: String
+    }
 });
 
 

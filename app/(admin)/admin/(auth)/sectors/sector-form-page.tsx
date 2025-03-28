@@ -20,6 +20,8 @@ interface Application {
   bannerImage: string;
   gallery: string[]
   shortDescription:string;
+  metaTitle:string;
+  metaDescription:string;
 }
 
 interface SectorFormData {
@@ -30,6 +32,8 @@ interface SectorFormData {
   icon: string;
   bannerImage: string;
   shortDescription: string;
+  metaTitle: string;
+  metaDescription: string;
 
 }
 
@@ -103,6 +107,8 @@ const SectorFormPage = ({ sectorId }: Props) => {
             setValue("icon", data.data.icon);
             setValue("bannerImage", data.data.bannerImage);
             setValue("shortDescription", data.data.shortDescription);
+            setValue("metaTitle", data.data.metaTitle);
+            setValue("metaDescription", data.data.metaDescription);
           }
         } catch (error) {
           console.error("Error fetching sector:", error);
@@ -145,7 +151,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
   };
 
   const handleAddApplication = () => {
-    append({ title: "", description: "", image: "", product: "", bannerImage: "", gallery: [], shortDescription:"" });
+    append({ title: "", description: "", image: "", product: "", bannerImage: "", gallery: [], shortDescription:"", metaTitle:"", metaDescription:"" });
   };
 
   const handleRemoveApplication = (index: number) => {
@@ -218,6 +224,23 @@ const SectorFormPage = ({ sectorId }: Props) => {
             />
             {errors.shortDescription && <p className="text-red-500 text-sm">{errors.shortDescription.message}</p>}
           </div>
+
+          <div className="space-y-2">
+            <Label className="text-sm font-medium">Meta Title</Label>
+            <Input
+              {...register("metaTitle")}
+              className="w-full p-2 border rounded-md"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label className="text-sm font-medium">Meta Description</Label>
+            <Input
+              {...register("metaDescription")}
+              className="w-full p-2 border rounded-md"
+            />
+          </div>
+
 
           <div className="space-y-2">
             <Label className="text-sm font-medium">Image</Label>
@@ -308,6 +331,8 @@ const SectorFormPage = ({ sectorId }: Props) => {
                   )}
                 </div>
 
+
+
                 <div className="space-y-2">
                   <Label className="text-sm font-medium">Description</Label>
                   <Controller
@@ -336,6 +361,22 @@ const SectorFormPage = ({ sectorId }: Props) => {
                   {errors.applications?.[index]?.shortDescription && (
                     <p className="text-red-500 text-sm">{errors.applications[index]?.shortDescription?.message}</p>
                   )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Meta Title</Label>
+                  <Input
+                    {...register(`applications.${index}.metaTitle`)}
+                    className="w-full p-2 border rounded-md"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Meta Description</Label>
+                  <Input
+                    {...register(`applications.${index}.metaDescription`)}
+                    className="w-full p-2 border rounded-md"
+                  />
                 </div>
 
                 <div className="space-y-2 grid grid-cols-2">

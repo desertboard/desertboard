@@ -42,6 +42,8 @@ type FormData = {
     image_url:string;
     partner_image_url:string;
     bannerImage:string;
+    metaTitle:string;
+    metaDescription:string;
 };
 
 
@@ -87,6 +89,8 @@ export default function AdminAbout() {
         formData.append("history",JSON.stringify(histories))
         formData.append("partners",JSON.stringify(partners))
         formData.append("partnerDescription",data.partnerDescription)
+        formData.append("metaTitle",data.metaTitle)
+        formData.append("metaDescription",data.metaDescription)
 
 
         try {
@@ -211,6 +215,9 @@ export default function AdminAbout() {
                         setValue("mission", data.about[0].mission)
                         setValue("vision", data.about[0].vision)
                         setValue("partnerDescription", data.about[0].partners.description)
+                        setValue("metaTitle", data.about[0].metaTitle)
+                        setValue("metaDescription", data.about[0].metaDescription)
+
 
                         if (data.about[0].history) {
                             console.log(data.about[0].history)
@@ -252,10 +259,20 @@ export default function AdminAbout() {
                 <Button variant="outline" className="bg-blue-50" type="submit" disabled={isSubmitting}>Save Changes</Button>
             </div>
 
-            <div>
-                <Label htmlFor="bannerImage">Banner Image</Label>
-                <ImageUploader value={watch("bannerImage")} onChange={(url) => setValue("bannerImage", url)} />
+            <div className="grid grid-cols-2 gap-5">
+                <div>
+                    <Label htmlFor="bannerImage">Banner Image</Label>
+                    <ImageUploader value={watch("bannerImage")} onChange={(url) => setValue("bannerImage", url)} />
+                </div>
+                <div>
+                    <Label htmlFor="metaTitle">Meta Title</Label>
+                    <Input {...register("metaTitle")} />
+
+                    <Label htmlFor="metaDescription">Meta Description</Label>
+                    <Input {...register("metaDescription")} />
+                </div>
             </div>
+
 
             <div>
                 <Label htmlFor="title">Title</Label>

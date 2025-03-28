@@ -51,10 +51,12 @@ export default function AdminFaqs() {
     const [items, setItems] = useState<{customId:string,sectionName: string, question: string; answer: string }[]>([]);
     const [sectionName,setSectionName] = useState("")
     const [refetch,setRefetch] = useState(false)
-    
 
     const {
         handleSubmit,
+        register,
+        setValue,
+        getValues
     } = useForm();
 
 
@@ -87,17 +89,7 @@ export default function AdminFaqs() {
         }
     }
 
-    // const handleAddItem = () => {
-    //     setItems((prev) => (
-    //         [...prev, { customId:uuidv4(),sectionName: selectedSection, question, answer }]
-    //     ))
-    // }
 
-    // useEffect(() => {
-    //     const filteredItems = items.filter((item) => item.sectionName == selectedSection)
-    //     setSelectedItems(filteredItems)
-
-    // }, [selectedSection, items])
 
     const onSubmit = async () => {
         setIsSubmitting(true);
@@ -127,6 +119,22 @@ export default function AdminFaqs() {
         }
     };
 
+    const fetchMeta = async() =>{
+        try {
+            const response = await fetch(`/api/admin/faqs/meta`);
+            if(response.ok){
+                const data = await response.json();
+                console.log(data)
+                setValue("metaTitle",data?.data?.metaTitle)
+                setValue("metaDescription",data?.data?.metaDescription) 
+            }else{
+                console.error("Failed to fetch meta")
+            }
+        } catch (error) {
+            console.log("Error fetching meta:",error)
+        }
+    }
+
 
     useEffect(() => {
         const fetchFaqData = async () => {
@@ -138,7 +146,7 @@ export default function AdminFaqs() {
 
                     if (data.faqs) {
 
-                        console.log(data.faqs)
+                        console.log("Data",data.faqs)
                         setItems(data.faqs)
                         setSections(data.faqs);
                     }
@@ -154,30 +162,10 @@ export default function AdminFaqs() {
         fetchFaqData()
     }, [refetch])
 
-    // const handleEditItem = (question:string,answer:string) =>{
-    //     setQuestion(question)
-    //     setAnswer(answer)
-    // }
+    useEffect(()=>{
+        fetchMeta()
+    },[])
 
-    // const handleConfirmEditItem = (id:string|null) =>{
-    //     setItems((prev) =>
-    //         prev.map((item) =>
-    //             item.customId === id
-    //                 ? { ...item, question, answer }
-    //                 : item
-    //         )
-    //     );
-    // }
-
-    // const handleDeleteItem = (id:string) =>{
-    //     setItems((prev)=>(
-    //         prev.map((item)=>(
-    //             item.customId === id ? 
-    //             {...item,customId:item.customId + "DELETE"} 
-    //             : item
-    //         ))
-    //     ))
-    // }
 
     const handleSetEditSection = (item:string) =>{
         setSectionName(item)
@@ -237,13 +225,56 @@ export default function AdminFaqs() {
         }
     }
 
+    const handleSaveMeta = async() =>{
+        try {
+            const formData = new FormData();
+            formData.append("metaTitle", getValues("metaTitle"));
+            formData.append("metaDescription", getValues("metaDescription"));
+            const url = `/api/admin/faqs/meta`;
+            const method = "POST"; 
+            const response = await fetch(url, {
+                method: method,
+                body: formData,
+            });
+            if(response.ok){
+                const data = await response.json()
+                alert(data.message)
+            }else{
+                const data = await response.json()
+                throw new Error(data.message)
+            }
+            
+        } catch (error) {
+            console.log("Error saving meta:",error)
+        }
+    }
+
 
     return (
         <>
             <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex justify-between">
                     <h1 className="text-3xl font-bold">Faqs</h1>
-                    <Sheet>
+                </div>
+                <div className="flex gap-2 flex-col border-dashed border-2 border-gray-300 p-4 rounded-lg">
+                    <div className="flex justify-between">
+                        <h3>Meta Section</h3>
+                    <Button className="bg-blue-500 text-white w-fit" type="button" onClick={handleSaveMeta}>Save</Button>
+                    </div>
+                    <div>
+                        <Label htmlFor="metaTitle">Meta Title</Label>
+                        <Input {...register("metaTitle")} />
+                    </div>
+                    <div>
+                        <Label htmlFor="metaDescription">Meta Description</Label>
+                        <Input {...register("metaDescription")} />
+                    </div>
+                </div>
+                <div className="grid grid-cols-1">
+                    <div className="col-span-1 flex flex-col w-full gap-2 h-screen px-2">
+                        <div className="flex gap-2 items-center justify-between">
+                            <h3>Sections</h3>
+                            <Sheet>
                                 <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white flex gap-2 items-center" type="button">Add Section<FaPlusCircle /></SheetTrigger>
                                 <SheetContent className="flex flex-col gap-2">
 
@@ -259,12 +290,6 @@ export default function AdminFaqs() {
 
                                 </SheetContent>
                             </Sheet>
-                </div>
-                <div className="grid grid-cols-1">
-                    <div className="col-span-1 flex flex-col w-full gap-2 h-screen px-2">
-                        <div className="flex gap-2 items-center">
-                            <h3>Sections</h3>
-                            
 
                         </div>
                         {sections.map((item, index) => (

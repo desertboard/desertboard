@@ -6,6 +6,7 @@ import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger 
 import { Label } from '@radix-ui/react-label'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 
 
 const AdminContact = () => {
@@ -15,6 +16,7 @@ const AdminContact = () => {
     const [contacts, setContacts] = useState<{ id: string, regionName: string }[]>([])
     const [refetch, setRefetch] = useState(false)
     // const [regions,setRegions] = useState([])
+    const { register, setValue, getValues } = useForm();
 
     const handleSaveRegion = async () => {
 
@@ -68,6 +70,7 @@ const AdminContact = () => {
         }
 
         fetchContactData()
+        handleFetchMeta()
     }, [refetch])
 
 
@@ -126,13 +129,71 @@ const AdminContact = () => {
         }
     }
 
+    const handleSaveMeta = async () => {
+        try {
+            const formData = new FormData();
+            formData.append("metaTitle", getValues("metaTitle"));
+            formData.append("metaDescription", getValues("metaDescription"));
+            const response = await fetch("/api/admin/contact/meta", {
+                method: "POST",
+                body: formData,
+            });
+            if(response.ok){
+                const data = await response.json();
+                alert(data.message);
+            }else{
+                const data = await response.json();
+                alert(data.message);
+            }
+        } catch (error) {
+            console.error("Error saving meta:", error);
+            alert("Failed to save meta. Please try again.");
+        }
+    }
+
+    const handleFetchMeta = async () => {
+        try {
+            const response = await fetch("/api/admin/contact/meta");
+            if(response.ok){
+                const data = await response.json();
+                setValue("metaTitle", data.data[0].metaTitle);
+                setValue("metaDescription", data.data[0].metaDescription);
+            }else{
+                const data = await response.json();
+                alert(data.message);
+            }
+        } catch (error) {
+            console.error("Error fetching meta:", error);
+        }
+    }
+
     return (
         <div>
             <form className='flex flex-col gap-5'>
                 <div className='flex justify-between'>
                     <div className='text-3xl font-bold'>Contact</div>
+                </div>
+                <div className="flex flex-col gap-5">
+
+                    <div className="flex gap-2 flex-col border-dashed border-2 border-gray-300 p-4 rounded-lg">
+                        <div className="flex justify-between">
+                            <h3>Meta Section</h3>
+                            <Button className="bg-blue-500 text-white w-fit" type="button" onClick={handleSaveMeta}>Save</Button>
+                        </div>
+                        <div>
+                            <Label htmlFor="metaTitle">Meta Title</Label>
+                            <Input {...register("metaTitle")} />
+                        </div>
+                        <div>
+                            <Label htmlFor="metaDescription">Meta Description</Label>
+                            <Input {...register("metaDescription")} />
+                        </div>
+                    </div>
+
+                    <div className='flex gap-4 flex-col'>
+                        <div className='flex justify-end'>
                     <Sheet>
-                        <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button">Add Region</SheetTrigger>
+                        <SheetTrigger className="w-fit border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button">Add Region</SheetTrigger>
                         <SheetContent className="gap-4 flex flex-col">
 
                             <SheetHeader>
@@ -146,9 +207,7 @@ const AdminContact = () => {
                             </div>
                         </SheetContent>
                     </Sheet>
-                </div>
-                <div className="flex flex-col gap-5">
-
+                    </div>
                     <div className="grid grid-cols-1">
                         <div className="col-span-1 flex flex-col w-full gap-2 h-96 border p-2 overflow-y-scroll">
                             {contacts && contacts.map((item) => (
@@ -182,6 +241,7 @@ const AdminContact = () => {
                             ))}
 
                         </div>
+                    </div>
                     </div>
                 </div>
             </form>

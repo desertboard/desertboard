@@ -24,6 +24,12 @@ const ApplicationSchema = new mongoose.Schema({
   gallery:[String],
   shortDescription:{
     type:String
+  },
+  metaTitle:{
+    type:String
+  },
+  metaDescription:{
+    type:String
   }
 });
 
@@ -50,6 +56,14 @@ const SectorSchema = new mongoose.Schema(
       required: false,
     },
     shortDescription: {
+      type: String,
+      required: false,
+    },
+    metaTitle: {
+      type: String,
+      required: false,
+    },
+    metaDescription: {
       type: String,
       required: false,
     },

@@ -22,7 +22,7 @@ const FaqsSchema = new mongoose.Schema({
     link:{
       type:String
     }
-  }]
+  }],
 });
 
 

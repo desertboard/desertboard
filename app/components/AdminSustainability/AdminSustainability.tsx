@@ -17,6 +17,8 @@ type FormData = {
     description:string;
     image_url:string;
     banner_image:string;
+    metaTitle:string;
+    metaDescription:string;
 }
 
 const AdminSustainability = () => {
@@ -46,7 +48,10 @@ const AdminSustainability = () => {
             formData.append("bannerImage", getValues("banner_image"));
             formData.append("heading", data.heading);
             formData.append("description", data.description);
+            formData.append("metaTitle", data.metaTitle);
+            formData.append("metaDescription", data.metaDescription);
     
+
             try {
                 const url = `/api/admin/sustainability`;
                 const method = "PATCH";
@@ -93,6 +98,8 @@ const AdminSustainability = () => {
                             setGoals(data.sustainability.goals)
                             setPartners(data.sustainability.partners)
                             setVisions(data.sustainability.vision)
+                            setValue("metaTitle",data.sustainability.metaTitle)
+                            setValue("metaDescription",data.sustainability.metaDescription)
                         }
     
                     } else {
@@ -120,10 +127,26 @@ const AdminSustainability = () => {
             
                 <div className='flex flex-col gap-3'>
 
+                    <div className='grid grid-cols-2 gap-5'>
                     <div>
                         <Label>Banner Image</Label>
                         <ImageUploader value={watch("banner_image")} onChange={(url) => setValue("banner_image", url)} />
                     </div>
+
+                    <div>
+                    <div>
+                        <Label>Meta Title</Label>
+                        <Input {...register("metaTitle")}/> 
+                    </div>
+
+                    <div>
+                        <Label>Meta Description</Label>
+                        <Input {...register("metaDescription")}/> 
+                    </div>
+                    </div>
+
+                    </div>
+
 
                     <div>
                         <Label>Page Heading</Label>

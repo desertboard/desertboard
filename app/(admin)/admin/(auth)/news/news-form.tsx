@@ -25,6 +25,8 @@ interface NewsFormData {
   images: string[];
   sector: string;
   type: string;
+  metaTitle: string;
+  metaDescription: string;
 }
 
 interface NewsFormProps {
@@ -65,6 +67,8 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
       setValue("images", data.data.images);
       setValue("sector", data.data.sector);
       setValue("type", data.data.type);
+      setValue("metaTitle", data.data.metaTitle);
+      setValue("metaDescription", data.data.metaDescription);
       setValue("date", data.data.date.split("T")[0]);
       setImageUrls(data.data.images);
     };
@@ -246,6 +250,30 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
           </div>
         </div>
       </div>
+
+      <div>
+          <Label htmlFor="sector" className="block text-sm font-medium text-gray-700">
+            Meta Title
+          </Label>
+          <Input
+            {...register("metaTitle")}
+            type="text"
+            id="metaTitle"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+          />
+        </div>
+
+        <div>
+          <Label htmlFor="metaDescription" className="block text-sm font-medium text-gray-700">
+            Meta Description
+          </Label>
+          <Input
+            {...register("metaDescription")}
+            type="text"
+            id="metaDescription"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+          />
+        </div>
 
       <div className="flex justify-end">
         <Button

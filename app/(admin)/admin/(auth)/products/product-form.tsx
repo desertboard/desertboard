@@ -40,6 +40,8 @@ type ProductData = {
   images: string[];
   bannerImage: string;
   featuredImage?: string;
+  metaTitle?: string;
+  metaDescription?: string;
 };
 
 interface ProductFormData {
@@ -64,6 +66,8 @@ const ProductForm = ({ productId }: ProductFormData) => {
       images: [],
       bannerImage: "",
       featuredImage: "",
+      metaTitle: "",
+      metaDescription: "",
     },
   });
 
@@ -149,6 +153,8 @@ const ProductForm = ({ productId }: ProductFormData) => {
       setValue("images", res.data.images);
       setValue("bannerImage", res.data.bannerImage);
       setValue("featuredImage", res.data.featuredImage);
+      setValue("metaTitle", res.data.metaTitle);
+      setValue("metaDescription", res.data.metaDescription);
       setImageUrls(res.data.images);
     } catch (error) {
       console.error("Error fetching product:", error);
@@ -453,6 +459,16 @@ const ProductForm = ({ productId }: ProductFormData) => {
               </div>
             )}
           </div>
+
+          <div className="space-y-2">
+              <Label htmlFor="metaTitle">Meta Title</Label>
+              <Input id="metaTitle" {...register("metaTitle")} />
+            </div>
+
+            <div className="space-y-2">
+                <Label htmlFor="metaDescription">Meta Description</Label>
+              <Input id="metaDescription" {...register("metaDescription")} />
+            </div>
 
           <Button type="submit" className="w-full">
             {isLoading ? "Saving..." : productId ? "Update Product" : "Create Product"}

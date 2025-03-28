@@ -7,6 +7,9 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import DeleteNewsDialog from "./components/DeleteNewsDialog";
+import { Label } from "@/app/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { useForm } from "react-hook-form";
 
 type News = {
   _id: string;
@@ -17,10 +20,16 @@ type News = {
   tags: string[];
 };
 
+type Meta = {
+  metaTitle: string;
+  metaDescription: string;
+}
+
 export default function AdminProducts() {
   const [news, setNews] = useState<News[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const { register, getValues, setValue } = useForm<Meta>();
 
   const fetchNews = async () => {
     try {
@@ -34,8 +43,47 @@ export default function AdminProducts() {
     }
   };
 
+  const handleSaveMeta = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("metaTitle", getValues("metaTitle"));
+      formData.append("metaDescription", getValues("metaDescription"));
+      const response = await fetch("/api/admin/news/meta", {
+        method: "POST",
+        body: formData,
+      });
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+      } else {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Error saving meta:", error);
+    }
+
+  }
+
+  const fetchMeta = async () => {
+    try {
+      const response = await fetch("/api/admin/news/meta");
+      if (response.ok) {
+        const data = await response.json();
+        setValue("metaTitle", data.newsMeta.metaTitle);
+        setValue("metaDescription", data.newsMeta.metaDescription);
+      } else {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Error fetching meta:", error);
+    }
+  }
+
   useEffect(() => {
     fetchNews();
+    fetchMeta();
   }, []);
 
   const handleClickNewNews = () => {
@@ -61,11 +109,23 @@ export default function AdminProducts() {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">News</h1>
-        <Button className="bg-primary text-white" onClick={handleClickNewNews}>
-          <span className="mr-2">+</span>
-          Add News
-        </Button>
+       
       </div>
+
+      <div className="flex gap-2 flex-col border-dashed border-2 border-gray-300 p-4 rounded-lg">
+                    <div className="flex justify-between">
+                        <h3>Meta Section</h3>
+                    <Button className="bg-blue-500 text-white w-fit" type="button" onClick={handleSaveMeta}>Save</Button>
+                    </div>
+                    <div>
+                        <Label htmlFor="metaTitle">Meta Title</Label>
+                        <Input {...register("metaTitle")} />
+                    </div>
+                    <div>
+                        <Label htmlFor="metaDescription">Meta Description</Label>
+                        <Input {...register("metaDescription")} />
+                    </div>
+        </div>
 
       {news?.length === 0 ? (
         <div className="text-center py-12 bg-gray-50 rounded-lg">
@@ -77,7 +137,16 @@ export default function AdminProducts() {
           </Button>
         </div>
       ) : (
+        <div className="flex flex-col gap-4 mt-5">
+          <div className="flex justify-end">
+           <Button className="bg-primary text-white" onClick={handleClickNewNews}>
+          <span className="mr-2">+</span>
+          Add News
+        </Button>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
           {news?.map((news, index) => (
             <Card key={index} className="overflow-hidden group">
               <div className="aspect-video relative">
@@ -102,6 +171,9 @@ export default function AdminProducts() {
             </Card>
           ))}
         </div>
+
+        </div>
+
       )}
     </div>
   );

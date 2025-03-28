@@ -14,6 +14,8 @@ import apiService from "../services/apiService";
 //     "Welcome to Desert Board. Pioneering a carbon negative future from the UAE to the World. Introducing the world's first Wooden Board made from Date Palm Biomass.",
 // };
 
+export const dynamic = "force-dynamic";
+
 interface HomeData {
     home: {
       metaTitle: string;
@@ -27,8 +29,6 @@ export async function generateMetadata(): Promise<Metadata> {
   const metadataTitle = data?.home[0]?.metaTitle || "Desert Board World's first Wooden Board made from Palm Waste - Desert Board";
   const metadataDescription =
     data?.home[0]?.metaDescription || "Welcome to Desert Board. Pioneering a carbon negative future from the UAE to the World. Introducing the world's first Wooden Board made from Date Palm Biomass.";
-
-    console.log(metadataTitle, metadataDescription)
 
   return {
     title: metadataTitle,

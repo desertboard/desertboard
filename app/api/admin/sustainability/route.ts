@@ -47,6 +47,8 @@ export async function GET() {
         sustainability.description = updatedData.description
         sustainability.image = updatedData.image
         sustainability.bannerImage = updatedData.bannerImage
+        sustainability.metaTitle = updatedData.metaTitle
+        sustainability.metaDescription = updatedData.metaDescription
         await sustainability.save()
         return NextResponse.json({ message: "Sustainability updated successfully" }, { status: 200 });
         }   

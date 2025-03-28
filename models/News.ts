@@ -9,6 +9,8 @@ const NewsSchema = new mongoose.Schema({
   date: Date,
   sector: String,
   type: String,
+  metaTitle: String,
+  metaDescription: String,
 });
 
 const News = mongoose.models.News || mongoose.model("News", NewsSchema);

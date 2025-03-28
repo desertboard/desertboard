@@ -62,7 +62,13 @@ const AboutSchema = new mongoose.Schema({
     required:true
   },
   history: [HistorySchema],
-  partners: PartnersSchema
+  partners: PartnersSchema,
+  metaTitle: {
+    type: String,
+  },
+  metaDescription: {
+    type: String,
+  }
 });
 
 

@@ -85,6 +85,12 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  metaTitle: {
+    type: String,
+  },
+  metaDescription: {
+    type: String,
+  },
 });
 
 const Product = mongoose.models.Product || mongoose.model("Product", ProductSchema);

@@ -8,6 +8,9 @@ import { useRouter } from "next/navigation";
 import AddFinishDialog from "./components/AddFinishDialog";
 import Image from "next/image";
 import DeleteProductDialog from "./components/DeleteProductDialog";
+import { Label } from "@/app/components/ui/label";
+import { Input } from "@/app/components/ui/input";
+import { useForm } from "react-hook-form";
 type Specification = {
   name: string;
   value: string;
@@ -27,11 +30,17 @@ type Finish = {
   image: string;
 };
 
+type Meta = {
+  metaTitle: string;
+  metaDescription: string;
+}
+
 export default function AdminProducts() {
   const [products, setProducts] = useState<Product[]>([]);
   const [finishes, setFinishes] = useState<Finish[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const { register, getValues, setValue } = useForm<Meta>();
 
   useEffect(() => {
     const fetchFinishes = async () => {
@@ -54,8 +63,24 @@ export default function AdminProducts() {
     }
   };
 
+  const fetchMeta = async () => {
+    try {
+      const response = await fetch("/api/admin/products/meta");
+      if(response.ok){
+        const data = await response.json();
+        setValue("metaTitle", data.productMeta.metaTitle);
+        setValue("metaDescription", data.productMeta.metaDescription);
+      }else{
+        console.log("Error fetching meta");
+      }
+    } catch (error) {
+      console.log("Error fetching meta:", error);
+    }
+  };
+
   useEffect(() => {
     fetchProducts();
+    fetchMeta();
   }, []);
 
   const handleClickNewProduct = () => {
@@ -66,8 +91,28 @@ export default function AdminProducts() {
     router.push(`/admin/products/${productId}/edit`);
   };
 
-  console.log(products);
+  const handleSaveMeta = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("metaTitle", getValues("metaTitle"));
+      formData.append("metaDescription", getValues("metaDescription"));
+      const response = await fetch("/api/admin/products/meta", {
+      method: "POST",
+      body: formData,
+    });
+    if (response.ok) {
+      const data = await response.json();
+      alert(data.message);
+    } else {
+      const data = await response.json();
+      alert(data.message);
+    }
+  } catch (error) {
+    console.error("Error saving meta:", error);
+  }
+  };
 
+  console.log(products);
   if (isLoading) {
     return (
       <div className="p-6 flex justify-center items-center">
@@ -83,10 +128,7 @@ export default function AdminProducts() {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Products</h1>
-        <Button className="bg-primary text-white" onClick={handleClickNewProduct}>
-          <span className="mr-2">+</span>
-          Add Product
-        </Button>
+
       </div>
 
       {products.length === 0 ? (
@@ -99,6 +141,29 @@ export default function AdminProducts() {
           </Button>
         </div>
       ) : (
+        <div>
+          <div className="flex gap-2 flex-col border-dashed border-2 border-gray-300 p-4 rounded-lg">
+                    <div className="flex justify-between">
+                        <h3>Meta Section</h3>
+                    <Button className="bg-blue-500 text-white w-fit" type="button" onClick={handleSaveMeta}>Save</Button>
+                    </div>
+                    <div>
+                        <Label htmlFor="metaTitle">Meta Title</Label>
+                        <Input {...register("metaTitle")} />
+                    </div>
+                    <div>
+                        <Label htmlFor="metaDescription">Meta Description</Label>
+                        <Input {...register("metaDescription")} />
+                    </div>
+        </div>
+        
+        <div className="mt-5 flex flex-col gap-4">
+        <div className="flex justify-end">
+        <Button className="bg-primary text-white" onClick={handleClickNewProduct}>
+          <span className="mr-2">+</span>
+          Add Product
+        </Button>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product, index) => (
             <Card key={index} className="group">
@@ -130,6 +195,8 @@ export default function AdminProducts() {
               </CardContent>
             </Card>
           ))}
+        </div>
+        </div>
         </div>
       )}
 
