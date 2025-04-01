@@ -46,34 +46,34 @@ const nextConfig: NextConfig = {
       { source: "/sector-details/Interior%20Design", destination: "/sectors/interior-design", permanent: true }
     ];
   },
-  async rewrites() {
-    return [
-      {
-        source: "/applications/:application",
-        has: [
-          { type: "query", key: "application" },
-          { type: "query", key: "sector" }
-        ],
-        destination: "/sectors/:sector/:application"
-      },
-      // {
-      //   source: "/applications/psb-supreme",
-      //   has: [
-      //     { type: "query", key: "application" },
-      //     { type: "query", key: "sector" }
-      //   ],
-      //   destination: "/sectors/:sector/:application"
-      // },
-      // {
-      //   source: "/applications/PSB%C2%AE%20Conform",
-      //   has: [
-      //     { type: "query", key: "application" },
-      //     { type: "query", key: "sector" }
-      //   ],
-      //   destination: "/sectors/:sector/:application"
-      // }
-    ];
-  }
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: "/applications/:application",
+  //       has: [
+  //         { type: "query", key: "application" },
+  //         { type: "query", key: "sector" }
+  //       ],
+  //       destination: "/sectors/:sector/:application"
+  //     },
+  //     {
+  //       source: "/applications/psb-supreme",
+  //       has: [
+  //         { type: "query", key: "application" },
+  //         { type: "query", key: "sector" }
+  //       ],
+  //       destination: "/sectors/:sector/:application"
+  //     },
+  //     {
+  //       source: "/applications/PSB%C2%AE%20Conform",
+  //       has: [
+  //         { type: "query", key: "application" },
+  //         { type: "query", key: "sector" }
+  //       ],
+  //       destination: "/sectors/:sector/:application"
+  //     }
+  //   ];
+  // }
 };
 
 export default nextConfig;
