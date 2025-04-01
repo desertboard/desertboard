@@ -23,21 +23,22 @@ const Sectors = () => {
   // const { productName } = useParams();
   const productName = localStorage.getItem("product")
   // console.log("product", product)
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
   // const application = searchParams.get("application")
-  let {application} = useParams()
+  let {application,sectorTitle} = useParams()
   if(application && typeof application == "string"){
     application = application.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
   }
     // ? decodeURIComponent(searchParams.get("application") || "")?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
     // : "";
-  const sector = searchParams.get("sector")?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
-    ? decodeURIComponent(searchParams.get("sector")!)
-    : "";
+  // const sector = typeof sectorTitle == "string" ? sectorTitle?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase()) : ""
+  //   ? decodeURIComponent(searchParams.get("sector")!)
+  //   : "";
+  const sector = typeof sectorTitle == "string" ? sectorTitle : ""
   const [finishes, setFinishes] = useState<string[]>([]);
   const [convertedProductName,setConvertedProductName] = useState("")
 
-  console.log("secotr", sector.replace(/\s+/g, "-").replace(/-+/g, " "));
+  console.log("secotr", sector?.replace(/\s+/g, "-").replace(/-+/g, " "));
 
   console.log("applic", application);
 
@@ -107,7 +108,7 @@ const Sectors = () => {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Sectors", href: "/sectors" },
-    { label: `${sector.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())}`, href: `/sector-details/${sector.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/and/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())}` },
+    { label: `${sector?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())}`, href: `/sector-details/${sector.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/and/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())}` },
     { label: `${application}`, href: "" },
   ];
 
