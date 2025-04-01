@@ -43,16 +43,37 @@ const nextConfig: NextConfig = {
       { source: "/product-details/PSB%C2%AE%20Supreme", destination: "/product-details/psb-supreme", permanent: true },
       { source: "/sector-details/Engineering%20&%20Construction", destination: "/sectors/engineering-and-construction", permanent: true },
       { source: "/product-details/news-and-events", destination: "/news-and-events", permanent: true },
-      { source: "/sector-details/Interior%20Design", destination: "/sectors/interior-design", permanent: true },
-      { source: "/applications/PSB%C2%AE%20Supreme", destination: "/sectors/landscape/exterior-pergolas", permanent: true },
-      { source: "/applications/psb-supreme", destination: "/sectors/engineering-and-construction/roofing", permanent: true },
-      { source: "/applications/psb-supreme", destination: "/sectors/engineering-and-construction/site-hoarding", permanent: true },
-      { source: "/applications/psb-supreme", destination: "/sectors/engineering-and-construction/wall-cladding", permanent: true },
-      { source: "/applications/PSB%C2%AE%20Supreme", destination: "/sectors/engineering-and-construction/facade-cladding", permanent: true },
-      { source: "/applications/PSB%C2%AE%20Conform", destination: "/sectors/engineering-and-construction/concrete-forming", permanent: true },
-      { source: "/applications/PSB%C2%AE%20Supreme", destination: "/sectors/engineering-and-construction/wall-cladding", permanent: true }
+      { source: "/sector-details/Interior%20Design", destination: "/sectors/interior-design", permanent: true }
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: "/applications/PSB%C2%AE%20Supreme",
+        has: [
+          { type: "query", key: "application" },
+          { type: "query", key: "sector" }
+        ],
+        destination: "/sectors/:sector/:application"
+      },
+      {
+        source: "/applications/psb-supreme",
+        has: [
+          { type: "query", key: "application" },
+          { type: "query", key: "sector" }
+        ],
+        destination: "/sectors/:sector/:application"
+      },
+      {
+        source: "/applications/PSB%C2%AE%20Conform",
+        has: [
+          { type: "query", key: "application" },
+          { type: "query", key: "sector" }
+        ],
+        destination: "/sectors/:sector/:application"
+      }
+    ];
+  }
 };
 
 export default nextConfig;
