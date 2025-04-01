@@ -56,22 +56,22 @@ const nextConfig: NextConfig = {
         ],
         destination: "/sectors/:sector/:application"
       },
-      {
-        source: "/applications/psb-supreme",
-        has: [
-          { type: "query", key: "application" },
-          { type: "query", key: "sector" }
-        ],
-        destination: "/sectors/:sector/:application"
-      },
-      {
-        source: "/applications/PSB%C2%AE%20Conform",
-        has: [
-          { type: "query", key: "application" },
-          { type: "query", key: "sector" }
-        ],
-        destination: "/sectors/:sector/:application"
-      }
+      // {
+      //   source: "/applications/psb-supreme",
+      //   has: [
+      //     { type: "query", key: "application" },
+      //     { type: "query", key: "sector" }
+      //   ],
+      //   destination: "/sectors/:sector/:application"
+      // },
+      // {
+      //   source: "/applications/PSB%C2%AE%20Conform",
+      //   has: [
+      //     { type: "query", key: "application" },
+      //     { type: "query", key: "sector" }
+      //   ],
+      //   destination: "/sectors/:sector/:application"
+      // }
     ];
   }
 };
