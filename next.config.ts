@@ -44,13 +44,13 @@ const nextConfig: NextConfig = {
       { source: "/sector-details/Engineering%20&%20Construction", destination: "/sectors/engineering-and-construction", permanent: true },
       { source: "/product-details/news-and-events", destination: "/news-and-events", permanent: true },
       { source: "/sector-details/Interior%20Design", destination: "/sectors/interior-design", permanent: true },
-      { source: "/applications/PSB%C2%AE%20Supreme?application=Exterior%20Pergolas&sector=Landscape", destination: "/sectors/landscape/exterior-pergolas", permanent: true },
-      { source: "/applications/psb-supreme?application=roofing&sector=engineering-and-construction", destination: "/sectors/engineering-and-construction/roofing", permanent: true },
-      { source: "/applications/psb-supreme?application=site-hoarding&sector=engineering-and-construction", destination: "/sectors/engineering-and-construction/site-hoarding", permanent: true },
-      { source: "/applications/psb-supreme?application=wall-cladding&sector=engineering-and-construction", destination: "/sectors/engineering-and-construction/wall-cladding", permanent: true },
-      { source: "/applications/PSB%C2%AE%20Supreme?application=Facade%20Cladding&sector=Engineering-%26-Construction", destination: "/sectors/engineering-and-construction/facade-cladding", permanent: true },
-      { source: "/applications/PSB%C2%AE%20Conform?application=Concrete%20Forming&sector=Engineering-%26-Construction", destination: "/sectors/engineering-and-construction/concrete-forming", permanent: true },
-      { source: "/applications/PSB%C2%AE%20Supreme?application=Wall%20Cladding&sector=Engineering-%26-Construction", destination: "/sectors/engineering-and-construction/wall-cladding", permanent: true }
+      { source: "/applications/PSB%C2%AE%20Supreme", destination: "/sectors/landscape/exterior-pergolas", permanent: true },
+      { source: "/applications/psb-supreme", destination: "/sectors/engineering-and-construction/roofing", permanent: true },
+      { source: "/applications/psb-supreme", destination: "/sectors/engineering-and-construction/site-hoarding", permanent: true },
+      { source: "/applications/psb-supreme", destination: "/sectors/engineering-and-construction/wall-cladding", permanent: true },
+      { source: "/applications/PSB%C2%AE%20Supreme", destination: "/sectors/engineering-and-construction/facade-cladding", permanent: true },
+      { source: "/applications/PSB%C2%AE%20Conform", destination: "/sectors/engineering-and-construction/concrete-forming", permanent: true },
+      { source: "/applications/PSB%C2%AE%20Supreme", destination: "/sectors/engineering-and-construction/wall-cladding", permanent: true }
     ];
   },
 };
