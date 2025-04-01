@@ -33,10 +33,10 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url)
     const title = searchParams.get("title")
     const product = searchParams.get("product")
+    const sectorTitle = title?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
 
-    console.log("product name", product)
     if (title) {
-      const sector = await Sector.findOne({ title })
+      const sector = await Sector.findOne({ title:sectorTitle })
       if (sector) {
         return NextResponse.json({ success: true, data: sector }, { status: 200 });
       }
