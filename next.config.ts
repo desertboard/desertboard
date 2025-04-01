@@ -49,7 +49,7 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/applications/PSB%C2%AE%20Supreme",
+        source: "/applications/:application",
         has: [
           { type: "query", key: "application" },
           { type: "query", key: "sector" }
