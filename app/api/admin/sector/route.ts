@@ -61,10 +61,10 @@ export async function GET(req: NextRequest) {
       try {
         const sectors = await Sector.find();
         if(sectors && sectors.length !== 0){
-          console.log(sectors)
+          // console.log(sectors)
           return NextResponse.json({ success: true, data: sectors }, { status: 200 });
         }else{
-          console.error("sectors",sectors)
+          // console.error("sectors",sectors)
           return NextResponse.json({ success: false, data: [],message:"No sector found" }, { status: 204 });
         }
       } catch (error) {

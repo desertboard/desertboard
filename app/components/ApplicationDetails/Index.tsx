@@ -22,7 +22,6 @@ import BacktoListing from "@/app/components/Common/BacktoListing";
 const Sectors = () => {
   // const { productName } = useParams();
   const productName = localStorage.getItem("product")
-  // console.log("product", product)
   // const searchParams = useSearchParams();
   // const application = searchParams.get("application")
   let {application} = useParams()

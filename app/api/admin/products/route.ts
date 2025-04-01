@@ -60,7 +60,7 @@ export async function GET(req: NextRequest) {
     if (productName) {
       console.log("PRODUCT", productName)
       const product = await Product.findOne({ title: productName })
-      console.log("foundProduct", product)
+      // console.log("foundProduct", product)
       if (product) {
         return NextResponse.json({ success: true, data: product }, { status: 200 });
       } else {

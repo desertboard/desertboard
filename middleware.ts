@@ -3,7 +3,10 @@ import { NextRequest } from "next/server";
 import * as jose from "jose";
 
 export async function middleware(request: NextRequest) {
+  console.log("workkkkk")
   const path = request.nextUrl.pathname;
+  const searchParams = request.nextUrl.searchParams;
+
 
   // Define protected routes
   const isProtectedRoute = path.startsWith("/admin") && !path.includes("/admin/login");
@@ -25,9 +28,34 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // if (
+  //   path.startsWith('/applications/PSB%C2%AE%20Supreme') &&
+  //   searchParams.has('application') &&
+  //   searchParams.has('sector')
+  // ) {
+  //   let application = decodeURIComponent(searchParams.get('application')?.toLowerCase() || "");
+  //   const sector = searchParams.get('sector')?.toLowerCase();
+  //   application = application?.replace(/ /g, '-') 
+  //   // Construct the new URL with dynamic segments
+  //   const newUrl = request.nextUrl.clone();
+  //   newUrl.pathname = `/sectors/${sector}/${application}`;
+  //   newUrl.search = ""
+
+  //   // Perform the redirect
+  //   const response = NextResponse.redirect(newUrl);
+  //   response.cookies.set("productName", "psb-supreme", {
+  //     path: "/", // Make the cookie available across the site
+  //     httpOnly: true, // Ensures it's only accessible via HTTP requests (not JavaScript)
+  //     secure: process.env.NODE_ENV === "production", // Secure in production
+  //     sameSite: "lax",
+  //   });
+
+  //   return response;
+  // }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: "/admin/:path*",
+  matcher: ["/admin/:path*"],
 };
