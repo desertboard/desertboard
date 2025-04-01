@@ -11,7 +11,7 @@ import { assets } from "@/public/assets/images/assets";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import { relslideses } from "../../components/Applications/data";
 import { useParams } from "next/navigation";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 // import { IndiSectorType } from "@/types/IndiSector";
