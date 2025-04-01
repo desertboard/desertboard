@@ -25,7 +25,8 @@ const Sectors = () => {
   // console.log("product", product)
   // const searchParams = useSearchParams();
   // const application = searchParams.get("application")
-  let {application,sectorTitle} = useParams()
+  let {application} = useParams()
+  const {sectorTitle} = useParams()
   if(application && typeof application == "string"){
     application = application.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
   }
