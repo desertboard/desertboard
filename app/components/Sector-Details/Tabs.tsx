@@ -25,6 +25,11 @@ const Tabs = ({ applications,data }: {
   const formatText = (text: string) => {
     return text.replace(/®/g, "<sup>®</sup>");
   };
+
+  const handleSetProductInStorage = (product: string) => {
+    localStorage.setItem("product", formatLinkForSectors(product));
+  }
+
   return (
     <section className="py-10 lg:py-20 bg-[#E1DCD8] insp-mn relative">
       <motion.div
@@ -127,7 +132,7 @@ const Tabs = ({ applications,data }: {
                                   </li>
                                 ))}
                               </ul> */}
-                                <Link href={`/applications/${formatLinkForSectors(tab.product)}?application=${formatLinkForSectors(tab.title)}&sector=${formatLinkForSectors(data.data.title)}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-1 group-hover:opacity-100 w-[250px]
+                                <Link onClick={()=>handleSetProductInStorage(tab.product)} href={`/sectors/${formatLinkForSectors(data.data.title)}/${formatLinkForSectors(tab.title)}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-1 group-hover:opacity-100 w-[250px]
                                     group-hover:w-full transition-opacity duration-300 text-[14px] md:text-font16   leading-[1.5] rmbtn pb-2 ">
                                   Read More <Image src={readarrow} alt="icn1" className="transition-all duration-300 relative top-[2px]" width={11} height={16} />
                                 </Link>

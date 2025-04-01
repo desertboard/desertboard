@@ -68,6 +68,11 @@ const Header = () => {
   }, []);
 
 
+  const handleSetProductInStorage = (product: string) => {
+    localStorage.setItem("product", formatLinkForSectors(product));
+  }
+
+
 
 
   if (isMobile) {
@@ -118,7 +123,7 @@ const Header = () => {
                                 <Link href={`/sectors/${formatLinkForSectors(item.title)}`}><div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div></Link>
                                 {fakeData.applications.map((application, index) => (
                                   <div key={index}>
-                                    <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/applications/${formatLinkForSectors(application.product)}?application=${formatLinkForSectors(application.title)}&sector=${formatLinkForSectors(item.title)}`} key={index}>        <motion.span
+                                    <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" onClick={()=>handleSetProductInStorage(application.product)} href={`/sectors/${formatLinkForSectors(item.title)}/${formatLinkForSectors(application.title)}`} key={index}>        <motion.span
                                       whileHover={{ scale: 1.1, color: "#000" }}
                                       transition={{ duration: 0.2 }}
                                       className="inline-block"
@@ -134,7 +139,7 @@ const Header = () => {
                               {item.applications.map((application, index) => (
 
                                 <div key={index}>
-                                  <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/applications/${formatLinkForSectors(application.product)}?application=${formatLinkForSectors(application.title)}&sector=${formatLinkForSectors(item.title)}`} key={index}>        <motion.span
+                                  <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" onClick={()=>handleSetProductInStorage(application.product)} href={`/sectors/${formatLinkForSectors(item.title)}/${formatLinkForSectors(application.title)}`} key={index}>        <motion.span
                                     whileHover={{ scale: 1.1, color: "#000" }}
                                     transition={{ duration: 0.2 }}
                                     className="inline-block"

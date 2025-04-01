@@ -20,11 +20,17 @@ import { IndiSectorType } from "@/types/IndiSector";
 import BacktoListing from "@/app/components/Common/BacktoListing";
 
 const Sectors = () => {
-  const { productName } = useParams();
+  // const { productName } = useParams();
+  const productName = localStorage.getItem("product")
+  // console.log("product", product)
   const searchParams = useSearchParams();
-  const application = searchParams.get("application")
-    ? decodeURIComponent(searchParams.get("application") || "")?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
-    : "";
+  // const application = searchParams.get("application")
+  let {application} = useParams()
+  if(application && typeof application == "string"){
+    application = application.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
+  }
+    // ? decodeURIComponent(searchParams.get("application") || "")?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
+    // : "";
   const sector = searchParams.get("sector")?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
     ? decodeURIComponent(searchParams.get("sector")!)
     : "";
@@ -118,7 +124,7 @@ const Sectors = () => {
         } // Corrected image import here
         arrowSrc={Arrow}
         desc=""
-        title={application || ""}
+        title={typeof application=="string" && application || ""}
         breadcrumbs={breadcrumbs}
         bnrHeight="60dvh"
       />
@@ -132,7 +138,7 @@ const Sectors = () => {
       <div className="pt-10 md:pt-20 insp-mn relative inspbg"></div>
       <SectionThree data={finishesData} />
       <SectionFour data={data} />
-      <SectionFive {...relslideses} relatedApps={relatedApps} currentApplication={application} />
+      <SectionFive {...relslideses} relatedApps={relatedApps} currentApplication={typeof application=="string" && application || ""} />
       <BacktoListing url="/sectors" pagelabel="Sectors" />
 
     </>

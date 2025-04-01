@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 import useSWR from "swr";
 import { SectorType } from "@/types/SectorType";
 import Link from "next/link";
+import { formatLinkForSectors } from "@/app/helpers/formatLinks";
 
 const Sectors = () => {
   const breadcrumbs = [
@@ -106,7 +107,7 @@ const Sectors = () => {
                 <ApplicationSelector activeApplications={activeApplications} sectorName={sectorName} page="sectors" />
 
                 <Link
-                  href={`/sector-details/${sectorName}`}
+                  href={`/sectors/${formatLinkForSectors(sectorName)}`}
                   className="nuber-next-heavy flex gap-2 max-w-fit w-[250px]
                                             group-hover:w-full transition-all duration-300
                                             text-[14px] md:text-font16 leading-[1.5] rmbtn pb-2"
