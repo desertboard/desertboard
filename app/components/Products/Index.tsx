@@ -24,6 +24,7 @@ type StructuredData = {
     description:string;
     image:string;
     product:string;
+    productSlug:string;
     title:string;
     _id:string;
   }[];

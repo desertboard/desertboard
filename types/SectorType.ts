@@ -6,6 +6,7 @@ export type SectorType = {
                     description:string;
                     image:string;
                     product:string;
+                    productSlug:string;
                     _id:string;
                 }[],
                 title:string;

@@ -17,6 +17,10 @@ const ApplicationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  productSlug: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,
