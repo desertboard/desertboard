@@ -24,6 +24,7 @@ export async function PATCH(request: NextRequest) {
   const id = searchParams.get("id");
   const {
     title,
+    slug,
     subTitle,
     sector,
     specifications,
@@ -41,6 +42,7 @@ export async function PATCH(request: NextRequest) {
 
   const product = await Product.findByIdAndUpdate(id, {
     title,
+    slug,
     subTitle,
     sector,
     specifications,

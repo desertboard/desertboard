@@ -11,42 +11,22 @@ import { assets } from "@/public/assets/images/assets";
 import Arrow from "@/public/assets/brdcrbs.svg";
 import { relslideses } from "../../components/Applications/data";
 import { useParams } from "next/navigation";
-// import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
-// import { IndiSectorType } from "@/types/IndiSector";
 import { IndiApplication } from "@/types/ApplicationType";
 import { IndiSectorType } from "@/types/IndiSector";
 import BacktoListing from "@/app/components/Common/BacktoListing";
 
 const Sectors = () => {
-  // const { productName } = useParams();
-  const productName = localStorage.getItem("product")
-  // const searchParams = useSearchParams();
-  // const application = searchParams.get("application")
   let {application} = useParams()
   const {sectorTitle} = useParams()
   if(application && typeof application == "string"){
     application = application.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
   }
-    // ? decodeURIComponent(searchParams.get("application") || "")?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
-    // : "";
-  // const sector = typeof sectorTitle == "string" ? sectorTitle?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase()) : ""
-  //   ? decodeURIComponent(searchParams.get("sector")!)
-  //   : "";
+
   const sector = typeof sectorTitle == "string" ? sectorTitle : ""
   const [finishes, setFinishes] = useState<string[]>([]);
-  const [convertedProductName,setConvertedProductName] = useState("")
-
-  console.log("secotr", sector?.replace(/\s+/g, "-").replace(/-+/g, " "));
-
-  console.log("applic", application);
-
-  useEffect(()=>{
-    if(productName?.includes("psb") && typeof productName == "string"){
-      setConvertedProductName(productName.replace("psb", "PSB").replace("fr", "FR").replace("ecocore", "ecoCore").replace(/\s+/g, "-").replace(/\b\w/g, (char) => char.toUpperCase()))
-    }
-  },[productName])
+  const [product,setProduct] = useState("")
 
 
 
@@ -56,7 +36,7 @@ const Sectors = () => {
   const {
     data,
   }: { data: IndiApplication; error: Error | undefined; isLoading: boolean } =
-    useSWR(`/api/admin/products?productName=${convertedProductName}`, fetcher);
+    useSWR(product ? `/api/admin/products?productName=${product}` : null, fetcher);
   const {
     data: sectorData,
   }: { data: IndiSectorType; error: Error | undefined; isLoading: boolean } =
@@ -65,8 +45,7 @@ const Sectors = () => {
         `/api/admin/sector/byid?sector=${sector}`,
       fetcher
     );
-  // const {data:relatedApps}:{data:RelatedApps} = useSWR(`/api/admin/sector?product=${productName}`, fetcher)
-
+ 
   const [relatedApps, setRelatedApps] = useState<
     {
       title: string;
@@ -99,6 +78,13 @@ const Sectors = () => {
     setRelatedApps(
       sectorData && sectorData.data && sectorData.data.applications
     );
+
+    sectorData?.data?.applications.find((item)=>{
+      if(item.title === application){
+        setProduct(item.product)
+      }
+    })
+
   }, [sectorData]);
 
   useEffect(() => {

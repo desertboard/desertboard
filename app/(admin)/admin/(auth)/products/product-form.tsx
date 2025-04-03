@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ImageUploader } from "@/app/components/ui/image-uploader";
 import Image from "next/image";
+import { formatLinkForSectors } from "@/app/helpers/formatLinks";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 type FinishData = {
@@ -23,6 +24,7 @@ type FinishData = {
 type ProductData = {
   title: string;
   subTitle: string;
+  slug: string;
   specifications: {
     name: string;
     value: string;
@@ -54,7 +56,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
   const router = useRouter();
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const [isSectorsLoading, setIsSectorsLoading] = useState(true);
-  const { register, handleSubmit, control, setValue } = useForm<ProductData>({
+  const { register, handleSubmit, control, setValue, watch, formState: { errors } } = useForm<ProductData>({
     defaultValues: {
       title: "",
       subTitle: "",
@@ -135,6 +137,13 @@ const ProductForm = ({ productId }: ProductFormData) => {
     fetchFinishes();
   }, []);
 
+  useEffect(() => {
+    if (!productId) {
+      setValue("slug", formatLinkForSectors(watch("title")));
+    }
+  }, [productId, watch("title")]);
+
+
   const fetchProduct = async () => {
     try {
       const response = await fetch(`/api/admin/products/byid?id=${productId}`);
@@ -144,10 +153,10 @@ const ProductForm = ({ productId }: ProductFormData) => {
       setValue("specifications", res.data.specifications);
       setValue("subSections", res.data.subSections);
       setValue("bestPractices", res.data.bestPractices);
+      setValue("slug", res.data.slug);
+      console.log("FINISHEs", res.data.finishes)
 
-      console.log("FINISHEs",res.data.finishes)
 
-      
       setValue("finishes", res.data.finishes);
       setValue("sector", res.data.sector);
       setValue("images", res.data.images);
@@ -247,6 +256,18 @@ const ProductForm = ({ productId }: ProductFormData) => {
                   </Select>
                 )}
               />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="slug">Slug</Label>
+              <Input id="slug" {...register("slug", {
+                required: true,
+                pattern: {
+                  value: /^[a-zA-Z0-9-]+$/,
+                    message: "Only letters, numbers, and hyphens are allowed"
+                  }
+                })
+              }/>
+              {errors.slug && <p className="text-red-500 text-sm">Slug is required</p>}
             </div>
           </div>
           <div className="space-y-4">
@@ -461,14 +482,14 @@ const ProductForm = ({ productId }: ProductFormData) => {
           </div>
 
           <div className="space-y-2">
-              <Label htmlFor="metaTitle">Meta Title</Label>
-              <Input id="metaTitle" {...register("metaTitle")} />
-            </div>
+            <Label htmlFor="metaTitle">Meta Title</Label>
+            <Input id="metaTitle" {...register("metaTitle")} />
+          </div>
 
-            <div className="space-y-2">
-                <Label htmlFor="metaDescription">Meta Description</Label>
-              <Input id="metaDescription" {...register("metaDescription")} />
-            </div>
+          <div className="space-y-2">
+            <Label htmlFor="metaDescription">Meta Description</Label>
+            <Input id="metaDescription" {...register("metaDescription")} />
+          </div>
 
           <Button type="submit" className="w-full">
             {isLoading ? "Saving..." : productId ? "Update Product" : "Create Product"}

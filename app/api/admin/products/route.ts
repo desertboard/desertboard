@@ -13,6 +13,7 @@ export async function POST(request: NextRequest) {
   const {
     title,
     subTitle,
+    slug,
     sector,
     specifications,
     subSections,
@@ -29,6 +30,7 @@ export async function POST(request: NextRequest) {
 
   const product = await Product.create({
     title,
+    slug,
     subTitle,
     sector,
     specifications,
@@ -49,11 +51,18 @@ export async function GET(req: NextRequest) {
   try {
     await connectDB();
     const { searchParams } = new URL(req.url)
-    let productName = searchParams.get("productName")?.replace(/-+/g, " ")
-    console.log("productNAme fist", productName)
-    if (productName?.includes("PSB")) {
-      console.log("includes")
-      productName = productName.replace("PSB", "PSB®")
+    const productName = searchParams.get("productName")?.replace(/-+/g, " ")
+    const slug = searchParams.get("slug")
+    console.log("productNAme first", productName)
+    console.log("slug first", slug)
+
+    if(slug){
+      const product = await Product.findOne({ slug: slug })
+      if(product){
+        return NextResponse.json({ success: true, data: product }, { status: 200 });
+      }else{
+        return NextResponse.json({ message: "No product found", success: false }, { status: 400 });
+      }
     }
 
 

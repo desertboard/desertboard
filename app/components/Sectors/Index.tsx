@@ -44,6 +44,8 @@ const Sectors = () => {
   useEffect(() => {
     console.log(data && data.data && data.data[0].title)
     setSectorName(data && data.data && data.data[0].title)
+    // localStorage.setItem("product-slug", data?.data[0]?.slug !== "" ? data?.data[0]?.slug : "")
+    console.log("HEREEEE")
   }, [data])
 
 

@@ -456,6 +456,19 @@ const SectorFormPage = ({ sectorId }: Props) => {
                     <p className="text-red-500 text-sm">{errors.applications[index]?.product?.message}</p>
                   )}
                 </div>
+
+                {/* <div className="space-y-2">
+                  <Label className="text-sm font-medium">Title</Label>
+                  <Input
+                    {...register(`applications.${index}.productSlug`, {
+                      required: "Product Slug is required",
+                    })}
+                    className="w-full p-2 border rounded-md"
+                    placeholder="Enter application title"
+                  />
+                  
+                </div> */}
+
               </Card>
             ))}
           </div>

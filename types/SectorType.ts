@@ -9,6 +9,7 @@ export type SectorType = {
                     _id:string;
                 }[],
                 title:string;
+                slug:string;
                 description:string;
                 icon:string;
                 image:string;

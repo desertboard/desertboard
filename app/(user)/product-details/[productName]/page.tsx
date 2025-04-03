@@ -12,10 +12,10 @@ interface ProductDetails {
 
 export async function generateMetadata({params}:{params: Promise<{productName: string}>}) {
 const {productName} = await params;
-let convertedProductName;
-if(productName?.includes("psb") && typeof productName == "string"){
-  convertedProductName = productName.replace("psb", "PSB").replace("fr", "FR").replace("ecocore", "ecoCore").replace(/\s+/g, "-").replace(/\b\w/g, (char) => char.toUpperCase())
-  const data = await apiService.get<ProductDetails>(`/products?productName=${convertedProductName}`);
+// let convertedProductName;
+if(productName){
+  // convertedProductName = productName.replace("psb", "PSB").replace("fr", "FR").replace("ecocore", "ecoCore").replace(/\s+/g, "-").replace(/\b\w/g, (char) => char.toUpperCase())
+  const data = await apiService.get<ProductDetails>(`/products?slug=${productName}`);
   const metadataTitle = data?.data?.metaTitle || "Desert Board World's first Wooden Board made from Palm Waste - Desert Board";
   const metadataDescription =
   data?.data?.metaDescription || "Welcome to Desert Board. Pioneering a carbon negative future from the UAE to the World. Introducing the world's first Wooden Board made from Date Palm Biomass.";
