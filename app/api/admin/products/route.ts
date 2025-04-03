@@ -51,7 +51,7 @@ export async function GET(req: NextRequest) {
   try {
     await connectDB();
     const { searchParams } = new URL(req.url)
-    const productName = searchParams.get("productName")?.replace(/-+/g, " ")
+    let productName = searchParams.get("productName")?.replace(/-+/g, " ")
     const slug = searchParams.get("slug")
     console.log("productNAme first", productName)
     console.log("slug first", slug)
@@ -62,6 +62,13 @@ export async function GET(req: NextRequest) {
         return NextResponse.json({ success: true, data: product }, { status: 200 });
       }else{
         return NextResponse.json({ message: "No product found", success: false }, { status: 400 });
+      }
+    }
+
+    if (productName?.includes("PSB")) {
+      if(!productName.includes("PSB®")){
+        console.log("includes")
+        productName = productName.replace("PSB", "PSB®")
       }
     }
 

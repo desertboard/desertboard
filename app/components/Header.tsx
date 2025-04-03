@@ -94,7 +94,7 @@ const Header = () => {
                     {item.title == "Products" &&
                       <div className="flex flex-col gap-3">
                         {products && products.map((item: { title: string, slug: string }, index) => (
-                          <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/product-details/${item.slug}`} key={index}>
+                          <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/product-details/${formatLinkForSectors(item.title)}`} key={index}>
                             <motion.span
                               whileHover={{ scale: 1.1, color: "#000" }}
                               transition={{ duration: 0.2 }}

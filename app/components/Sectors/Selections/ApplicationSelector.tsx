@@ -89,7 +89,7 @@ const ApplicationSelector = ({
 
                 <Link
                   
-                  href={page === "product" ? `/product-details/${application.productSlug}` : `/sectors/${formatLinkForSectors(sectorName)}/${formatLinkForSectors(application.title)}`}
+                  href={page === "product" ? `/product-details/${formatLinkForSectors(application.product)}` : `/sectors/${formatLinkForSectors(sectorName)}/${formatLinkForSectors(application.title)}`}
                   className="nuber-next-heavy flex gap-2 max-w-fit w-[250px]
                                             group-hover:w-full transition-all duration-300
                                             text-[14px] md:text-font16 leading-[1.5] rmbtn pb-2"

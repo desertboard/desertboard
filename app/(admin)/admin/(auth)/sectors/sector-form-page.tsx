@@ -16,7 +16,6 @@ interface Application {
   title: string;
   description: string;
   image: string;
-  productSlug: string;
   product: string;
   bannerImage: string;
   gallery: string[]
@@ -44,7 +43,7 @@ interface Props {
 
 const SectorFormPage = ({ sectorId }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [products, setProducts] = useState<{title:string,slug:string}[]>([]);
+  const [products, setProducts] = useState<string[]>([]);
   const router = useRouter();
 
   // Add loading state for products
@@ -80,7 +79,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
         setIsProductsLoading(true);
         const response = await fetch("/api/admin/products");
         const data = await response.json();
-        setProducts(data.data.map((product: { title: string,slug:string }) => product));
+        setProducts(data.data.map((product: { title: string }) => product.title));
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -151,21 +150,8 @@ const SectorFormPage = ({ sectorId }: Props) => {
     }
   };
 
-  // useEffect(()=>{
-  //   setProductSlug(products.find((product)=>product.title === selectedProduct)?.slug)
-  // },[selectedProduct])
-
-  const handleAddProductSlug = (productTitle:string,index:number)=>{
-    console.log("productTitle",productTitle,index)
-    const slug = products.find((product)=>product.title === productTitle)?.slug
-    console.log("slug",slug)
-    setValue(`applications.${index}.productSlug`,slug || "")
-  }
-
-
-
   const handleAddApplication = () => {
-    append({ title: "", description: "", image: "", product: "", productSlug: "", bannerImage: "", gallery: [], shortDescription:"", metaTitle:"", metaDescription:"" });
+    append({ title: "", description: "", image: "", product: "", bannerImage: "", gallery: [], shortDescription:"", metaTitle:"", metaDescription:"" });
   };
 
   const handleRemoveApplication = (index: number) => {
@@ -451,21 +437,17 @@ const SectorFormPage = ({ sectorId }: Props) => {
                     {...register(`applications.${index}.product`, {
                       required: "Product is required",
                     })}
-                    onChange={(e) => {
-                      console.log("onChange triggered", e.target.value, index); // Debugging log
-                      handleAddProductSlug(e.target.value, index);
-                    }}
                     className="w-full p-2 border rounded-md"
                     disabled={isProductsLoading}
                   >
                     <option value="">Select a product</option>
                     {products.map((product) => (
                       <option
-                        key={product.title}
-                        value={product.title}
-                        selected={getValues(`applications.${index}.product`) === product.title}
+                        key={product}
+                        value={product}
+                        selected={getValues(`applications.${index}.product`) === product}
                       >
-                        {product.title}
+                        {product}
                       </option>
                     ))}
                   </select>
