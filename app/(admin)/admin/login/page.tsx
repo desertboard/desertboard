@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 
 export default function AdminLogin() {
   const [username, setUsername] = useState("");
@@ -33,9 +34,13 @@ export default function AdminLogin() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
+        <div className="flex justify-center">
+          <Image src="/assets/images/home/sticky-logo.png" alt="DesertBoard Logo" width={200} height={200} />
+        </div>
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Admin Login</h2>
         </div>
+
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {error && <div className="text-red-500 text-center text-sm">{error}</div>}
           <div className="rounded-md shadow-sm -space-y-px">
