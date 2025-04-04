@@ -138,7 +138,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({ data }) => {
                 style={{ backgroundImage: `url(${item.image})` }}
               >
                 {/* <div className="icnview"></div> */}
-                <IoExpand className="text-3xl absolute right-5 top-5 text-orange group-hover:hidden"/>
+                <IoExpand className="text-3xl absolute right-5 top-5 text-orange group-hover:hidden lg:hidden"/>
                 {/* <Image src={arrowExpand} alt="expand" width={20} height={20}/> */}
                 <div className="flex items-end min-h-[300px] lg:min-h-[462px] sld transition-colors duration-500 ">
                   <div className="p-5 transition-all duration-500 ease-in-out w-full">

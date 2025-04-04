@@ -170,7 +170,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ relatedApps, currentApplicatio
                       onTouchStart={() => setHoveredIndex(item._id)}  // For mobile devices
                     >
                 {/* <div className="icnview"></div> */}
-                <IoExpand className="text-3xl absolute right-5 top-5 text-orange group-hover:hidden"/>
+                <IoExpand className="text-3xl absolute right-5 top-5 text-orange group-hover:hidden lg:hidden"/>
                       <div className="flex items-end pb-1 md:pb-4 xl:pb-8 min-h-[300px] lg:min-h-[462px]">
                         <div className="px-4 md:px-6 xl:px-10 w-full">
                           <h3 className="nubernext28bold text-white translate-y-[0px] pb-3 transition-all duration-500 delay-200 group-hover:translate-y-[-10px]">
