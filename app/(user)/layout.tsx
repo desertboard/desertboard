@@ -6,7 +6,6 @@ import Header from "../components/Header";
 import Script from "next/script";
 import apiService from "../services/apiService";
 
-
 // export const metadata: Metadata = {
 //   title:
 //     "Desert Board World's first Wooden Board made from Palm Waste - Desert Board",
@@ -17,18 +16,27 @@ import apiService from "../services/apiService";
 export const dynamic = "force-dynamic";
 
 interface HomeData {
-    home: {
-      metaTitle: string;
-      metaDescription: string;
-    }[];
+  home: {
+    metaTitle: string;
+    metaDescription: string;
+  }[];
+}
+
+interface GTMConfigData {
+  gtmConfig: {
+    gtmId: string;
+    googleAnalyticsId: string;
+  };
 }
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await apiService.get<HomeData>("/home");
 
-  const metadataTitle = data?.home[0]?.metaTitle || "Desert Board World's first Wooden Board made from Palm Waste - Desert Board";
+  const metadataTitle =
+    data?.home[0]?.metaTitle || "Desert Board World's first Wooden Board made from Palm Waste - Desert Board";
   const metadataDescription =
-    data?.home[0]?.metaDescription || "Welcome to Desert Board. Pioneering a carbon negative future from the UAE to the World. Introducing the world's first Wooden Board made from Date Palm Biomass.";
+    data?.home[0]?.metaDescription ||
+    "Welcome to Desert Board. Pioneering a carbon negative future from the UAE to the World. Introducing the world's first Wooden Board made from Date Palm Biomass.";
 
   return {
     title: metadataTitle,
@@ -36,11 +44,15 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Fetch GTM configuration
+  const gtmData = await apiService.get<GTMConfigData>("/gtm-config");
+  const gtmId = gtmData?.gtmConfig?.gtmId || "GTM-NZPT95ZG";
+  const googleAnalyticsId = gtmData?.gtmConfig?.googleAnalyticsId || "AW-16905314007";
 
   return (
     <html lang="en">
@@ -64,36 +76,33 @@ export default function RootLayout({
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-NZPT95ZG');
+              })(window,document,'script','dataLayer','${gtmId}');
             `,
           }}
         />
 
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'AW-16905314007');
+          gtag('config', '${googleAnalyticsId}');
         `}
-      </Script>
+        </Script>
       </head>
       <body className={`antialiased overflow-x-hidden`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-NZPT95ZG"
+            src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
             height="0"
             width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
+            style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
         {/* End Google Tag Manager */}
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=AW-16905314007"
-      />
+        <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`} />
         <Header />
         {children}
         <Footer />
