@@ -27,13 +27,16 @@ type Product = {
 type Finish = {
   _id: string;
   name: string;
-  image: string;
+  image: {
+    url: string;
+    alt: string;
+  };
 };
 
 type Meta = {
   metaTitle: string;
   metaDescription: string;
-}
+};
 
 export default function AdminProducts() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -66,11 +69,11 @@ export default function AdminProducts() {
   const fetchMeta = async () => {
     try {
       const response = await fetch("/api/admin/products/meta");
-      if(response.ok){
+      if (response.ok) {
         const data = await response.json();
         setValue("metaTitle", data.productMeta.metaTitle);
         setValue("metaDescription", data.productMeta.metaDescription);
-      }else{
+      } else {
         console.log("Error fetching meta");
       }
     } catch (error) {
@@ -97,19 +100,19 @@ export default function AdminProducts() {
       formData.append("metaTitle", getValues("metaTitle"));
       formData.append("metaDescription", getValues("metaDescription"));
       const response = await fetch("/api/admin/products/meta", {
-      method: "POST",
-      body: formData,
-    });
-    if (response.ok) {
-      const data = await response.json();
-      alert(data.message);
-    } else {
-      const data = await response.json();
-      alert(data.message);
+        method: "POST",
+        body: formData,
+      });
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+      } else {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Error saving meta:", error);
     }
-  } catch (error) {
-    console.error("Error saving meta:", error);
-  }
   };
 
   console.log(products);
@@ -128,7 +131,6 @@ export default function AdminProducts() {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Products</h1>
-
       </div>
 
       {products.length === 0 ? (
@@ -143,60 +145,62 @@ export default function AdminProducts() {
       ) : (
         <div>
           <div className="flex gap-2 flex-col border-dashed border-2 border-gray-300 p-4 rounded-lg">
-                    <div className="flex justify-between">
-                        <h3>Meta Section</h3>
-                    <Button className="bg-blue-500 text-white w-fit" type="button" onClick={handleSaveMeta}>Save</Button>
-                    </div>
-                    <div>
-                        <Label htmlFor="metaTitle">Meta Title</Label>
-                        <Input {...register("metaTitle")} />
-                    </div>
-                    <div>
-                        <Label htmlFor="metaDescription">Meta Description</Label>
-                        <Input {...register("metaDescription")} />
-                    </div>
-        </div>
-        
-        <div className="mt-5 flex flex-col gap-4">
-        <div className="flex justify-end">
-        <Button className="bg-primary text-white" onClick={handleClickNewProduct}>
-          <span className="mr-2">+</span>
-          Add Product
-        </Button>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product, index) => (
-            <Card key={index} className="group">
-              <CardContent className="p-4">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h2 className="text-xl font-semibold">{product.title}</h2>
-                    <p className="text-sm text-gray-500 mt-1">{product.subtitle}</p>
-                    {product.sector && (
-                      <div className="mt-2">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
-                          {product.sector}
-                        </span>
+            <div className="flex justify-between">
+              <h3>Meta Section</h3>
+              <Button className="bg-blue-500 text-white w-fit" type="button" onClick={handleSaveMeta}>
+                Save
+              </Button>
+            </div>
+            <div>
+              <Label htmlFor="metaTitle">Meta Title</Label>
+              <Input {...register("metaTitle")} />
+            </div>
+            <div>
+              <Label htmlFor="metaDescription">Meta Description</Label>
+              <Input {...register("metaDescription")} />
+            </div>
+          </div>
+
+          <div className="mt-5 flex flex-col gap-4">
+            <div className="flex justify-end">
+              <Button className="bg-primary text-white" onClick={handleClickNewProduct}>
+                <span className="mr-2">+</span>
+                Add Product
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {products.map((product, index) => (
+                <Card key={index} className="group">
+                  <CardContent className="p-4">
+                    <div className="flex justify-between items-start mb-2">
+                      <div>
+                        <h2 className="text-xl font-semibold">{product.title}</h2>
+                        <p className="text-sm text-gray-500 mt-1">{product.subtitle}</p>
+                        {product.sector && (
+                          <div className="mt-2">
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                              {product.sector}
+                            </span>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                  <div className="flex gap-2">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-8 w-8 text-gray-500 hover:text-primary hover:bg-primary/10"
-                      onClick={() => handleEditProduct(product._id)}
-                    >
-                      <PencilIcon className="h-4 w-4" />
-                    </Button>
-                    <DeleteProductDialog productId={product._id} onDelete={fetchProducts} />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        </div>
+                      <div className="flex gap-2">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-8 w-8 text-gray-500 hover:text-primary hover:bg-primary/10"
+                          onClick={() => handleEditProduct(product._id)}
+                        >
+                          <PencilIcon className="h-4 w-4" />
+                        </Button>
+                        <DeleteProductDialog productId={product._id} onDelete={fetchProducts} />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
         </div>
       )}
 
@@ -209,7 +213,7 @@ export default function AdminProducts() {
         {finishes.map((finish, index) => (
           <Card key={index} className="overflow-hidden group">
             <div className="aspect-video relative">
-              <Image src={finish.image} alt={finish.name} className="object-cover w-full h-full" fill />
+              <Image src={finish.image.url} alt={finish.image.alt} className="object-cover w-full h-full" fill />
             </div>
             <CardContent className="p-4 flex items-center justify-between">
               <h2 className="text-xl font-semibold">{finish.name}</h2>

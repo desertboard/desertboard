@@ -16,7 +16,10 @@ import { PencilIcon, PlusIcon } from "lucide-react";
 
 interface Finish {
   name: string;
-  image: string;
+  image: {
+    url: string;
+    alt: string;
+  };
   description: string;
 }
 
@@ -28,11 +31,14 @@ export default function AddFinishDialog({ finishId }: AddFinishDialogProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
-  const [image, setImage] = useState<string>("");
+  const [image, setImage] = useState<{ url: string; alt: string }>({ url: "", alt: "" });
   const { register, handleSubmit, setValue } = useForm<Finish>({
     defaultValues: {
       name: "",
-      image: "",
+      image: {
+        url: "",
+        alt: "",
+      },
       description: "",
     },
   });
@@ -74,7 +80,7 @@ export default function AddFinishDialog({ finishId }: AddFinishDialogProps) {
       const responseData = await response.json();
       if (responseData.success) {
         setIsLoading(false);
-        setImage("");
+        setImage({ url: "", alt: "" });
         setIsOpen(false);
       }
     } catch (error) {
@@ -107,7 +113,7 @@ export default function AddFinishDialog({ finishId }: AddFinishDialogProps) {
             </div>
             <div className="space-y-2">
               <Label htmlFor="image">Image</Label>
-              <ImageUploader value={image} onChange={(url) => setImage(url)} />
+              <ImageUploader value={image.url} onChange={(url) => setImage({ url, alt: image.alt })} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="description">Description</Label>

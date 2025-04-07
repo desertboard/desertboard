@@ -16,7 +16,10 @@ const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 type FinishData = {
   name: string;
-  image: string;
+  image: {
+    url: string;
+    alt: string;
+  };
   description: string;
 };
 
@@ -38,11 +41,20 @@ type ProductData = {
   }[];
   finishes: FinishData[];
   sector: string;
-  images: string[];
-  bannerImage: string;
-  featuredImage?: string;
-  metaTitle?: string;
-  metaDescription?: string;
+  images: {
+    url: string;
+    alt: string;
+  }[];
+  bannerImage: {
+    url: string;
+    alt: string;
+  };
+  featuredImage?: {
+    url: string;
+    alt: string;
+  };
+  metaTitle: string;
+  metaDescription: string;
 };
 
 interface ProductFormData {
@@ -65,8 +77,14 @@ const ProductForm = ({ productId }: ProductFormData) => {
       finishes: [],
       sector: "",
       images: [],
-      bannerImage: "",
-      featuredImage: "",
+      bannerImage: {
+        url: "",
+        alt: "",
+      },
+      featuredImage: {
+        url: "",
+        alt: "",
+      },
       metaTitle: "",
       metaDescription: "",
     },
@@ -142,7 +160,6 @@ const ProductForm = ({ productId }: ProductFormData) => {
   //   }
   // }, [productId, watch("title")]);
 
-
   const fetchProduct = async () => {
     try {
       const response = await fetch(`/api/admin/products/byid?id=${productId}`);
@@ -153,8 +170,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
       setValue("subSections", res.data.subSections);
       setValue("bestPractices", res.data.bestPractices);
       setValue("slug", res.data.slug);
-      console.log("FINISHEs", res.data.finishes)
-
+      console.log("FINISHEs", res.data.finishes);
 
       setValue("finishes", res.data.finishes);
       setValue("sector", res.data.sector);
@@ -197,14 +213,14 @@ const ProductForm = ({ productId }: ProductFormData) => {
 
   const handleImageUpload = async (uploadedUrl: string) => {
     setImageUrls((prev) => [...prev, uploadedUrl]);
-    setValue("images", [...imageUrls, uploadedUrl]);
+    setValue("images", [...imageUrls.map((url) => ({ url, alt: "" })), { url: uploadedUrl, alt: "" }]);
   };
 
   const handleRemoveImage = (indexToRemove: number) => {
     setImageUrls((prev) => prev.filter((_, index) => index !== indexToRemove));
     setValue(
       "images",
-      imageUrls.filter((_, index) => index !== indexToRemove)
+      imageUrls.filter((_, index) => index !== indexToRemove).map((url) => ({ url, alt: "" }))
     );
   };
 
@@ -374,10 +390,10 @@ const ProductForm = ({ productId }: ProductFormData) => {
               control={control}
               render={({ field }) => (
                 <ImageUploader
-                  value={field.value}
+                  value={field.value.url}
                   onChange={(url) => {
-                    field.onChange(url);
-                    setValue("bannerImage", url);
+                    field.onChange({ url, alt: field.value.alt });
+                    setValue("bannerImage", { url, alt: field.value.alt });
                   }}
                 />
               )}
@@ -395,10 +411,10 @@ const ProductForm = ({ productId }: ProductFormData) => {
               control={control}
               render={({ field }) => (
                 <ImageUploader
-                  value={field.value}
+                  value={field.value?.url}
                   onChange={(url) => {
-                    field.onChange(url);
-                    setValue("featuredImage", url);
+                    field.onChange({ url, alt: field.value?.alt || "" });
+                    setValue("featuredImage", { url, alt: field.value?.alt || "" });
                   }}
                 />
               )}
@@ -457,7 +473,11 @@ const ProductForm = ({ productId }: ProductFormData) => {
                       onClick={() => toggleFinish(finish)}
                     >
                       <div className="aspect-square w-full relative mb-1">
-                        <img src={finish.image} alt={finish.name} className="object-cover rounded-md w-full h-full" />
+                        <img
+                          src={finish.image.url}
+                          alt={finish.image.alt}
+                          className="object-cover rounded-md w-full h-full"
+                        />
                         {isSelected && (
                           <div className="absolute top-1 right-1 bg-primary text-white rounded-full p-0.5">
                             <svg

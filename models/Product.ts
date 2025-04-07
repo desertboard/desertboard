@@ -1,5 +1,16 @@
 import mongoose from "mongoose";
 
+const ImageSchema = new mongoose.Schema({
+  url: {
+    type: String,
+    required: true,
+  },
+  alt: {
+    type: String,
+    required: true,
+  },
+});
+
 const SpecificationSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -39,7 +50,7 @@ const FinishSchema = new mongoose.Schema({
     required: true,
   },
   image: {
-    type: String,
+    type: ImageSchema,
     required: true,
   },
 });
@@ -77,15 +88,15 @@ const ProductSchema = new mongoose.Schema({
     required: true,
   },
   images: {
-    type: [String],
+    type: [ImageSchema],
     required: true,
   },
   bannerImage: {
-    type: String,
+    type: ImageSchema,
     required: true,
   },
   featuredImage: {
-    type: String,
+    type: ImageSchema,
     required: false,
   },
   metaTitle: {
