@@ -67,7 +67,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
   const router = useRouter();
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const [isSectorsLoading, setIsSectorsLoading] = useState(true);
-  const { register, handleSubmit, control, setValue } = useForm<ProductData>({
+  const { register, handleSubmit, control, setValue, getValues } = useForm<ProductData>({
     defaultValues: {
       title: "",
       subTitle: "",
@@ -179,7 +179,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
       setValue("featuredImage", res.data.featuredImage);
       setValue("metaTitle", res.data.metaTitle);
       setValue("metaDescription", res.data.metaDescription);
-      setImageUrls(res.data.images);
+      setImageUrls(res.data.images.map((img: { url: string }) => img.url));
     } catch (error) {
       console.error("Error fetching product:", error);
     }
@@ -211,17 +211,26 @@ const ProductForm = ({ productId }: ProductFormData) => {
     }
   };
 
-  const handleImageUpload = async (uploadedUrl: string) => {
+  const handleImageUpload = async (uploadedUrl: string, altText?: string) => {
     setImageUrls((prev) => [...prev, uploadedUrl]);
-    setValue("images", [...imageUrls.map((url) => ({ url, alt: "" })), { url: uploadedUrl, alt: "" }]);
+    setValue("images", [...imageUrls.map((url) => ({ url, alt: "" })), { url: uploadedUrl, alt: altText || "" }]);
   };
 
   const handleRemoveImage = (indexToRemove: number) => {
     setImageUrls((prev) => prev.filter((_, index) => index !== indexToRemove));
-    setValue(
-      "images",
-      imageUrls.filter((_, index) => index !== indexToRemove).map((url) => ({ url, alt: "" }))
-    );
+
+    // Get the current images array
+    const currentImages = getValues("images");
+
+    // Filter out the image at indexToRemove and preserve alt texts
+    const updatedImages = currentImages
+      .filter((_, index) => index !== indexToRemove)
+      .map((img) => ({
+        url: img.url,
+        alt: img.alt || "",
+      }));
+
+    setValue("images", updatedImages);
   };
 
   const toggleFinish = (finish: FinishData) => {
@@ -391,9 +400,10 @@ const ProductForm = ({ productId }: ProductFormData) => {
               render={({ field }) => (
                 <ImageUploader
                   value={field.value.url}
-                  onChange={(url) => {
-                    field.onChange({ url, alt: field.value.alt });
-                    setValue("bannerImage", { url, alt: field.value.alt });
+                  altText={field.value.alt}
+                  onChange={(url, alt) => {
+                    field.onChange({ url, alt: alt || field.value.alt });
+                    setValue("bannerImage", { url, alt: alt || field.value.alt });
                   }}
                 />
               )}
@@ -412,9 +422,10 @@ const ProductForm = ({ productId }: ProductFormData) => {
               render={({ field }) => (
                 <ImageUploader
                   value={field.value?.url}
-                  onChange={(url) => {
-                    field.onChange({ url, alt: field.value?.alt || "" });
-                    setValue("featuredImage", { url, alt: field.value?.alt || "" });
+                  altText={field.value?.alt}
+                  onChange={(url, alt) => {
+                    field.onChange({ url, alt: alt || field.value?.alt || "" });
+                    setValue("featuredImage", { url, alt: alt || field.value?.alt || "" });
                   }}
                 />
               )}
@@ -424,14 +435,14 @@ const ProductForm = ({ productId }: ProductFormData) => {
           <div>
             <Label className="block text-sm font-medium text-gray-700">Images</Label>
             <div className="mt-2">
-              <ImageUploader onChange={handleImageUpload} deleteAfterUpload={true} />
+              <ImageUploader onChange={(url, alt) => handleImageUpload(url, alt)} deleteAfterUpload={true} />
             </div>
             <div className="mt-4 grid grid-cols-3 gap-4">
               {imageUrls.map((url, index) => (
                 <div key={index} className="relative h-40">
                   <Image
                     src={url}
-                    alt={`Uploaded image ${index + 1}`}
+                    alt={getValues(`images.${index}.alt`) || `Uploaded image ${index + 1}`}
                     className="h-full w-full object-cover rounded-lg"
                     width={100}
                     height={100}
