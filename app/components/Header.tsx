@@ -6,11 +6,10 @@ import flogo from "@/public/assets/images/home/flogo.png";
 import logo from "@/public/assets/images/home/sticky-logo.png";
 import { Menu, MenuItem } from "./ui/navbar-menu";
 import MobileMenu from "./MobileMenu/MobileMenu";
-import { fakeData, menuItems } from "../(user)/data/menuItems";
+import { menuItems } from "../(user)/data/menuItems";
 import useSWR from "swr";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { formatLinkForSectors } from "../helpers/formatLinks";
 
 const Header = () => {
 
@@ -68,9 +67,9 @@ const Header = () => {
   }, []);
 
 
-  const handleSetProductInStorage = (product: string) => {
-    localStorage.setItem("product", formatLinkForSectors(product));
-  }
+  // const handleSetProductInStorage = (product: string) => {
+  //   localStorage.setItem("product", formatLinkForSectors(product));
+  // }
 
 
   if (isMobile) {
@@ -94,7 +93,7 @@ const Header = () => {
                     {item.title == "Products" &&
                       <div className="flex flex-col gap-3">
                         {products && products.map((item: { title: string, slug: string }, index) => (
-                          <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/product-details/${formatLinkForSectors(item.title)}`} key={index}>
+                          <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/product-details/${item.slug}`} key={index}>
                             <motion.span
                               whileHover={{ scale: 1.1, color: "#000" }}
                               transition={{ duration: 0.2 }}
@@ -111,17 +110,17 @@ const Header = () => {
 
                     {item.title == "Sectors" &&
                       <div className="flex space-x-5 gap-8" key={index}>
-                        {sectors && sectors.map((item: { title: string, applications: { title: string, product: string }[] }, index) => (
+                        {sectors && sectors.map((item: { title: string,slug:string, applications: { title: string, product: string,slug:string }[] }, index) => (
 
                           item.title == "Interior Design" ?
 
                             (
 
                               <div className="flex flex-col gap-3" key={index} >
-                                <Link href={`/sectors/${formatLinkForSectors(item.title)}`}><div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div></Link>
-                                {fakeData.applications.map((application, index) => (
+                                <Link href={`/sectors/${item.slug}`}><div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div></Link>
+                                {item.applications.map((application, index) => (
                                   <div key={index}>
-                                    <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" onClick={()=>handleSetProductInStorage(application.product)} href={`/sectors/${formatLinkForSectors(item.title)}/${formatLinkForSectors(application.title)}`} key={index}>        <motion.span
+                                    <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/sectors/${item.slug}/${application.slug}`} key={index}>        <motion.span
                                       whileHover={{ scale: 1.1, color: "#000" }}
                                       transition={{ duration: 0.2 }}
                                       className="inline-block"
@@ -133,11 +132,11 @@ const Header = () => {
                               </div>
 
                             ) : (<div className="flex flex-col gap-3" key={index} >
-                              <Link href={`/sectors/${formatLinkForSectors(item.title)}`}><div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div></Link>
+                              <Link href={`/sectors/${item.slug}`}><div className="font-bold text-black text-[14px] xxl:text-[16px] mb-4 tracking-normal">{item.title}</div></Link>
                               {item.applications.map((application, index) => (
 
                                 <div key={index}>
-                                  <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" onClick={()=>handleSetProductInStorage(application.product)} href={`/sectors/${formatLinkForSectors(item.title)}/${formatLinkForSectors(application.title)}`} key={index}>        <motion.span
+                                  <Link className="text-black/75 hover:text-black/40 transition-all ease-linear duration-300 text-[12px] xl:text-[14px]  xxl:text-[16px] tracking-normal" href={`/sectors/${item.slug}/${application.slug}`} key={index}>        <motion.span
                                     whileHover={{ scale: 1.1, color: "#000" }}
                                     transition={{ duration: 0.2 }}
                                     className="inline-block"

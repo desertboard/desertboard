@@ -15,7 +15,7 @@ interface ApplicationData {
 
 export async function generateMetadata({params}:{params: Promise<{application: string,sectorTitle: string}>}): Promise<Metadata> {
   const {application:applicationTitle,sectorTitle} = await params;
-  const data = await apiService.get<ApplicationData>(`/sector/byid?sector=${sectorTitle}`);
+  const data = await apiService.get<ApplicationData>(`/sector/byid?slug=${sectorTitle}`);
   const applicationFetched = data.data.applications.find((application) => application.title === applicationTitle.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase()))
 
 

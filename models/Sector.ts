@@ -36,6 +36,9 @@ const ApplicationSchema = new mongoose.Schema({
   },
   bannerImageAlt:{
     type:String
+  },
+  slug:{
+    type:String
   }
 });
 
@@ -81,6 +84,9 @@ const SectorSchema = new mongoose.Schema(
       type:String
     },
     bannerImageAlt:{
+      type:String
+    },
+    slug:{
       type:String
     }
   },

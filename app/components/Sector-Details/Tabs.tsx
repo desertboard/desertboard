@@ -10,12 +10,13 @@ import parse from 'html-react-parser'
 import readarrow from "@/public/assets/images/read-arrow.svg";
 import Link from "next/link";
 import { Applications, IndiSectorType } from "@/types/IndiSector";
-import { formatLinkForSectors } from "@/app/helpers/formatLinks";
+import { useParams } from "next/navigation";
 
-const Tabs = ({ applications,data }: {
+const Tabs = ({ applications }: {
   applications?: Applications
   data:IndiSectorType
 }) => {
+  const {sectorTitle} = useParams()
   const [activeTab, setActiveTab] = useState<string>("tab1");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   // Toggle accordion
@@ -26,9 +27,9 @@ const Tabs = ({ applications,data }: {
     return text.replace(/®/g, "<sup>®</sup>");
   };
 
-  const handleSetProductInStorage = (product: string) => {
-    localStorage.setItem("product", formatLinkForSectors(product));
-  }
+  // const handleSetProductInStorage = (product: string) => {
+  //   localStorage.setItem("product", formatLinkForSectors(product));
+  // }
 
   return (
     <section className="py-10 lg:py-20 bg-[#E1DCD8] insp-mn relative">
@@ -132,7 +133,7 @@ const Tabs = ({ applications,data }: {
                                   </li>
                                 ))}
                               </ul> */}
-                                <Link onClick={()=>handleSetProductInStorage(tab.product)} href={`/sectors/${formatLinkForSectors(data.data.title)}/${formatLinkForSectors(tab.title)}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-1 group-hover:opacity-100 w-[250px]
+                                <Link href={`/sectors/${sectorTitle}/${tab.slug}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-1 group-hover:opacity-100 w-[250px]
                                     group-hover:w-full transition-opacity duration-300 text-[14px] md:text-font16   leading-[1.5] rmbtn pb-2 ">
                                   Read More <Image src={readarrow} alt="icn1" className="transition-all duration-300 relative top-[2px]" width={11} height={16} />
                                 </Link>
@@ -191,7 +192,7 @@ const Tabs = ({ applications,data }: {
                                 ))}
                               </ul> */}
                             </div>
-                            <Link href={`/applications/${formatLinkForSectors(tab.product)}?application=${formatLinkForSectors(tab.title)}&sector=${encodeURIComponent(formatLinkForSectors(data.data.title))}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-1 group-hover:opacity-100 w-[250px]
+                            <Link href={`/sectors/${sectorTitle}/${tab.slug}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-1 group-hover:opacity-100 w-[250px]
                                     group-hover:w-full transition-opacity duration-300 text-[14px] md:text-font16   leading-[1.5] rmbtn pb-2 mb-4">
                                   Read More <Image src={readarrow} alt="icn1" className="transition-all duration-300 relative top-[2px]" width={11} height={16} />
                                 </Link>

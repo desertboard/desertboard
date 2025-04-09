@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ImageUploader } from "@/app/components/ui/image-uploader";
 import Image from "next/image";
+import { formatLinkForSectors } from "@/app/helpers/formatLinks";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 type FinishData = {
@@ -58,7 +59,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
   const router = useRouter();
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const [isSectorsLoading, setIsSectorsLoading] = useState(true);
-  const { register, handleSubmit, control, setValue } = useForm<ProductData>({
+  const { register, handleSubmit, control, setValue,watch,formState:{errors} } = useForm<ProductData>({
     defaultValues: {
       title: "",
       subTitle: "",
@@ -139,11 +140,11 @@ const ProductForm = ({ productId }: ProductFormData) => {
     fetchFinishes();
   }, []);
 
-  // useEffect(() => {
-  //   if (!productId) {
-  //     setValue("slug", formatLinkForSectors(watch("title")));
-  //   }
-  // }, [productId, watch("title")]);
+  useEffect(() => {
+    if (!productId) {
+      setValue("slug", formatLinkForSectors(watch("title")));
+    }
+  }, [productId, watch("title")]);
 
 
   const fetchProduct = async () => {
@@ -261,7 +262,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
                 )}
               />
             </div>
-            {/* <div className="space-y-2">
+            <div className="space-y-2">
               <Label htmlFor="slug">Slug</Label>
               <Input id="slug" {...register("slug", {
                 required: true,
@@ -272,7 +273,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
                 })
               }/>
               {errors.slug && <p className="text-red-500 text-sm">Slug is required</p>}
-            </div> */}
+            </div>
           </div>
           <div className="space-y-4">
             <div className="flex items-center justify-between">

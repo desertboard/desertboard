@@ -10,7 +10,11 @@ import "react-quill/dist/quill.snow.css";
 import Image from "next/image";
 import { ImageUploader } from "@/app/components/ui/image-uploader";
 import { Textarea } from "@/components/ui/textarea";
+import { formatLinkForSectors } from "@/app/helpers/formatLinks";
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
+import {closestCorners, DndContext, DragEndEvent, UniqueIdentifier} from '@dnd-kit/core'
+import {SortableContext, verticalListSortingStrategy} from '@dnd-kit/sortable'
+import ApplicationCard from "./applicationCard";
 
 interface Application {
   title: string;
@@ -24,6 +28,7 @@ interface Application {
   metaDescription:string;
   bannerImageAlt:string;
   imageAlt:string;
+  slug:string;
 }
 
 interface SectorFormData {
@@ -39,6 +44,7 @@ interface SectorFormData {
   imageAlt:string;
   iconAlt:string;
   bannerImageAlt:string;
+  slug:string;
 }
 
 interface Props {
@@ -52,6 +58,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
 
   // Add loading state for products
   const [isProductsLoading, setIsProductsLoading] = useState(true);
+  const [reorderMode,setReorderMode] = useState(false)
 
   const {
     register,
@@ -59,6 +66,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
     getValues,
     setValue,
     control,
+    watch,
     formState: { errors },
   } = useForm<SectorFormData>({
     defaultValues: {
@@ -72,7 +80,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
     },
   });
 
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append, remove,move } = useFieldArray({
     control,
     name: "applications",
   });
@@ -116,6 +124,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
             setValue("imageAlt", data.data.imageAlt);
             setValue("iconAlt", data.data.iconAlt);
             setValue("bannerImageAlt", data.data.bannerImageAlt);
+            setValue("slug",data.data.slug)
           }
         } catch (error) {
           console.error("Error fetching sector:", error);
@@ -158,7 +167,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
   };
 
   const handleAddApplication = () => {
-    append({ title: "", description: "", image: "", product: "", bannerImage: "", gallery: [], shortDescription:"", metaTitle:"", metaDescription:"",imageAlt:"",bannerImageAlt:"" });
+    append({ title: "", description: "", image: "", product: "", bannerImage: "", gallery: [], shortDescription:"", metaTitle:"", metaDescription:"",imageAlt:"",bannerImageAlt:"",slug:"" });
   };
 
   const handleRemoveApplication = (index: number) => {
@@ -192,6 +201,29 @@ const SectorFormPage = ({ sectorId }: Props) => {
     setValue(`applications.${appIndex}.gallery`, currentGallery, { shouldValidate: true, shouldDirty: true });
   };
 
+  useEffect(() => {
+    if (!sectorId) {
+      setValue("slug", formatLinkForSectors(watch("title")));
+    }
+  }, [sectorId, watch("title")]);
+
+
+  const getTaskPos = (id: UniqueIdentifier) => fields.findIndex((item:{id:string})=>( item.id == id))
+
+
+
+  const handleDragEnd = (event: DragEndEvent) => {
+      const {active,over} = event
+
+      
+
+      if(!over || active.id == over.id) return;
+        const originalPos = getTaskPos(active.id)
+        const newPos = getTaskPos(over.id);
+        move(originalPos, newPos);
+  }
+
+
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6">{sectorId ? "Edit" : "Create"} Sector</h1>
@@ -206,6 +238,19 @@ const SectorFormPage = ({ sectorId }: Props) => {
               placeholder="Enter sector title"
             />
             {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
+          </div>
+
+          <div className="space-y-2">
+            <Label className="text-sm font-medium">Slug</Label>
+            <Input id="slug" {...register("slug", {
+                required: true,
+                pattern: {
+                  value: /^[a-zA-Z0-9-]+$/,
+                    message: "Only letters, numbers, and hyphens are allowed"
+                  }
+                })
+              }/>
+            {errors.slug && <p className="text-red-500 text-sm">{errors.slug.message}</p>}
           </div>
 
           <div className="space-y-2">
@@ -321,16 +366,36 @@ const SectorFormPage = ({ sectorId }: Props) => {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <h2 className="text-xl font-semibold">Applications</h2>
-              <Button
+              <div className="flex gap-5">
+              {!reorderMode && <Button
                 type="button"
                 className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
                 onClick={handleAddApplication}
               >
                 Add Application
+              </Button>}
+              <Button
+                type="button"
+                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                onClick={()=>setReorderMode(!reorderMode)}
+              >
+                {reorderMode ? "Confirm" : "Reorder"}
               </Button>
+              </div>
             </div>
 
-            {fields.map((field, index) => (
+              {reorderMode && <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
+              <div className='flex flex-col gap-3'>
+                <SortableContext items={fields} strategy={verticalListSortingStrategy}>
+                  {fields.map((field,index)=>(
+                    <ApplicationCard title={field.title} id={field.id} key={index}/>
+                  ))}
+                </SortableContext>
+              </div>
+                </DndContext>}
+
+
+            {!reorderMode && fields.map((field, index) => (
               <Card key={field.id} className="p-4 space-y-4">
                 <div className="flex justify-between items-center">
                   <h3 className="text-lg font-medium">Application {index + 1}</h3>
@@ -350,6 +415,24 @@ const SectorFormPage = ({ sectorId }: Props) => {
                   />
                   {errors.applications?.[index]?.title && (
                     <p className="text-red-500 text-sm">{errors.applications[index]?.title?.message}</p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Slug</Label>
+                  <Input
+                    {...register(`applications.${index}.slug`, {
+                      required: true,
+                      pattern: {
+                        value: /^[a-zA-Z0-9-]+$/,
+                          message: "Only letters, numbers, and hyphens are allowed"
+                        }
+                    })}
+                    className="w-full p-2 border rounded-md"
+                    placeholder="Enter application slug"
+                  />
+                  {errors.applications?.[index]?.slug && (
+                    <p className="text-red-500 text-sm">{errors.applications[index]?.slug?.message}</p>
                   )}
                 </div>
 
@@ -507,9 +590,9 @@ const SectorFormPage = ({ sectorId }: Props) => {
             ))}
           </div>
 
-          <Button type="submit" className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600">
+          {!reorderMode && <Button type="submit" className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600">
             {isLoading ? "Saving..." : sectorId ? "Update Sector" : "Create Sector"}
-          </Button>
+          </Button>}
         </form>
       </Card>
     </div>

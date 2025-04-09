@@ -18,15 +18,18 @@ import { IndiSectorType } from "@/types/IndiSector";
 import BacktoListing from "@/app/components/Common/BacktoListing";
 
 const Sectors = () => {
-  let {application} = useParams()
+  const {application} = useParams()
   const {sectorTitle} = useParams()
-  if(application && typeof application == "string"){
-    application = application.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
-  }
 
-  const sector = typeof sectorTitle == "string" ? sectorTitle : ""
+  // if(application && typeof application == "string"){
+  //   application = application.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
+  // }
+
+  // const sector = typeof sectorTitle == "string" ? sectorTitle : ""
   const [finishes, setFinishes] = useState<string[]>([]);
   const [product,setProduct] = useState("")
+
+
 
 
 
@@ -41,8 +44,8 @@ const Sectors = () => {
     data: sectorData,
   }: { data: IndiSectorType; error: Error | undefined; isLoading: boolean } =
     useSWR(
-      sector &&
-        `/api/admin/sector/byid?sector=${sector}`,
+      sectorTitle &&
+        `/api/admin/sector/byid?slug=${sectorTitle}`,
       fetcher
     );
  
@@ -57,6 +60,7 @@ const Sectors = () => {
       gallery: string[];
       shortDescription: string;
       bannerImageAlt:string;
+      slug:string;
     }[]
   >([]);
   useEffect(() => {
@@ -74,6 +78,7 @@ const Sectors = () => {
     fetcher
   );
 
+
   useEffect(() => {
     console.log("data", sectorData && sectorData.data);
     setRelatedApps(
@@ -81,7 +86,7 @@ const Sectors = () => {
     );
 
     sectorData?.data?.applications.find((item)=>{
-      if(item.title === application){
+      if(item.slug === application){
         setProduct(item.product)
       }
     })
@@ -95,8 +100,8 @@ const Sectors = () => {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Sectors", href: "/sectors" },
-    { label: `${sector?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())}`, href: `/sector-details/${sector.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/and/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())}` },
-    { label: `${application}`, href: "" },
+    { label: `${sectorData?.data?.title}`,href:"sector" },
+    { label: `${sectorData?.data?.applications.find((item)=>item.slug===application)?.title}`, href: "" },
   ];
 
   
@@ -107,12 +112,12 @@ const Sectors = () => {
       <PageBanner
         bannerSrc={
           sectorData?.data?.applications.find(
-            (item) => item.title === application
+            (item) => item.slug === application
           )?.bannerImage || assets.bggrn
         } // Corrected image import here
         arrowSrc={Arrow}
         desc=""
-        title={typeof application=="string" && application || ""}
+        title={sectorData?.data?.applications.find((item)=>item.slug===application)?.title || ""}
         breadcrumbs={breadcrumbs}
         bnrHeight="60dvh"
         imageAlt={sectorData?.data?.applications.find((item)=>item.title === application)?.bannerImageAlt || ""}

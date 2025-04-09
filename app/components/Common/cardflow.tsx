@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import '@/app/components/Common/sectorcrd.scss';
 import readarrow from "@/public/assets/images/read-arrow.svg";
-import { formatLinkForSectors } from "@/app/helpers/formatLinks";
 import { SectorType } from "@/types/SectorType";
 
 
@@ -59,7 +58,7 @@ import Link from "next/link";
             <hr className="opacity-10 border-t-2 mt-4 transition-all duration-500 delay-100 ease-in-out group-hover:mt-7" />
             <h3 className="opacity-[90%] text-font28 font-[400] leading-[1.3] transition-all duration-500 delay-100 mt-4 group-hover:mt-7 nuber-next-bold" >{framework.title}</h3>
             <p className="mt-5  lg:opacity-0 group-hover:opacity-75 w-[250px] group-hover:w-full transition-opacity duration-500  delay-100 text-font20 leading-[1.5]" dangerouslySetInnerHTML={{ __html: formatText(framework.shortDescription) }} />
-            <Link href={`/sectors/${formatLinkForSectors(framework.title)}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-0 group-hover:opacity-100 w-[250px]
+            <Link href={`/sectors/${framework.slug}`} className="relative nuber-next-heavy flex gap-2 max-w-fit top-3 lg:opacity-0 group-hover:opacity-100 w-[250px]
             group-hover:w-full transition-opacity duration-300 text-[14px] md:text-font18   leading-[1.5] rmbtn pb-2 ">
               Read More <Image src={readarrow} alt="icn1" className="transition-all duration-300 relative top-[2px]" width={11} height={16} />
             </Link>

@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
   if (!isAdmin) {
     return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
   }
-  const { title, description, image, applications, icon, bannerImage, shortDescription, gallery, metaTitle, metaDescription,imageAlt,iconAlt,bannerImageAlt } = await request.json();
+  const { title, description, image, applications, icon, bannerImage, shortDescription, gallery, metaTitle, metaDescription,imageAlt,iconAlt,bannerImageAlt,slug } = await request.json();
 
   await connectDB();
 
@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: false, message: "Sector already exists" }, { status: 400 });
   }
 
-  const sector = await Sector.create({ title, description, image, applications, icon, bannerImage, shortDescription, gallery, metaTitle, metaDescription,imageAlt,iconAlt,bannerImageAlt });
+  const sector = await Sector.create({ title, description, image, applications, icon, bannerImage, shortDescription, gallery, metaTitle, metaDescription,imageAlt,iconAlt,bannerImageAlt,slug });
 
   return NextResponse.json({ success: true, data: sector }, { status: 201 });
 }
@@ -32,9 +32,16 @@ export async function GET(req: NextRequest) {
 
     const { searchParams } = new URL(req.url)
     const title = searchParams.get("title")
+    const slug = searchParams.get("slug")
     const product = searchParams.get("product")
     const sectorTitle = title?.replace(/\s+/g, "-").replace(/-+/g, " ").replace(/\band\b/g, "&").replace(/\b\w/g, (char) => char.toUpperCase())
 
+    if(slug){
+      const sector = await Sector.findOne({ slug })
+      if (sector) {
+        return NextResponse.json({ success: true, data: sector }, { status: 200 });
+      }
+    }
     if (title) {
       const sector = await Sector.findOne({ title:sectorTitle })
       if (sector) {
@@ -88,7 +95,7 @@ export async function PATCH(request: NextRequest) {
 
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
-  const { title, description, image, applications, icon, bannerImage, shortDescription, gallery, metaTitle, metaDescription,imageAlt,iconAlt,bannerImageAlt } = await request.json();
+  const { title, description, image, applications, icon, bannerImage, shortDescription, gallery, metaTitle, metaDescription,imageAlt,iconAlt,bannerImageAlt,slug } = await request.json();
 
   console.log("gallery", applications)
 
@@ -107,7 +114,8 @@ export async function PATCH(request: NextRequest) {
     metaDescription,
     imageAlt,
     iconAlt,
-    bannerImageAlt
+    bannerImageAlt,
+    slug
   });
 
 

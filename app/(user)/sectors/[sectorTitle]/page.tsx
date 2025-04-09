@@ -13,7 +13,7 @@ interface SectorDetails {
 
 export async function generateMetadata({params}:{params: Promise<{sectorTitle: string}>}): Promise<Metadata> {
 const {sectorTitle} = await params;
-const data = await apiService.get<SectorDetails>(`/sector?title=${sectorTitle}`);
+const data = await apiService.get<SectorDetails>(`/sector?slug=${sectorTitle}`);
 
 
 const metadataTitle = data?.data?.metaTitle || "Desert Board World's first Wooden Board made from Palm Waste - Desert Board";
