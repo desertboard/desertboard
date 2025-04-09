@@ -16,6 +16,7 @@ interface MainDescBoxProps {
   mainImg?: StaticImageData | string;
   mainVdo?: string;
   vdoPoster?: string;
+  imageAlt?:string;
 }
 
 const MainDescBox: React.FC<MainDescBoxProps> = ({
@@ -25,6 +26,7 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
   mainImg,
   mainVdo,
   vdoPoster,
+  imageAlt
 }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -164,7 +166,7 @@ const MainDescBox: React.FC<MainDescBoxProps> = ({
                   className="w-full object-cover  h-full object-center"
                   src={mainImg}
                   width={1500} height={1000}
-                  alt="Banner image"
+                  alt={imageAlt ?? "Banner Image"}
                 />
               </figure>
             )}

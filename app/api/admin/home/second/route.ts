@@ -43,6 +43,7 @@ export async function PATCH(req: NextRequest) {
     const videoPoster = formData.get("poster")
     const secondSectionTitle = formData.get("title")
     const secondSectionSubTitle = formData.get("subTitle")
+    const imageAlt = formData.get("imageAlt")
 
     const home = await Home.findOne({});
 
@@ -52,6 +53,7 @@ export async function PATCH(req: NextRequest) {
         home.secondSectionTitle = secondSectionTitle
         home.secondSectionSubTitle = secondSectionSubTitle
         home.videoPoster = videoPoster
+        home.videoPosterAlt = imageAlt
         await home.save()
     }
 

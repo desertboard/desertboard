@@ -67,7 +67,7 @@ const Swipersustain = ({ data }:{
           >
             <div className="relative group overflow-hidden transform growf goal-crd bg-center delay-0">
               <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
-                <Image src={arrowExpand} alt="" width={20} height={20} />
+                <Image src={arrowExpand} alt={framework.imageAlt} width={20} height={20} />
               </div>
               <div className="flex items-center justify-center min-h-[484px] max-h-[484px]">
                 <div className="absolute bg-cover bg-center h-full goal-crd__icon">
@@ -77,7 +77,7 @@ const Swipersustain = ({ data }:{
                         src={framework.logo}
                         width={131}
                         height={131}
-                        alt="Thumbnail"
+                        alt={framework.logoAlt}
                         className="transform transition-all duration-500"
                       />
                     )}

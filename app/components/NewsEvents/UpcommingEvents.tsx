@@ -78,7 +78,7 @@ const UpcommingEvents: React.FC<upCommingEventsProps> = ({ commingEvents }) => {
               <SwiperSlide className="upc-event__slide  border-r border-r-gray-300 px-6 xxl:px-8" key={event._id}>
                 <div className="upc-event-crd flex flex-col gap-4">
                   <div className="upc-event-crd__head bg-white flex items-center justify-center min-h-28">
-                    <Image src={event.image} className="object-contain" width={150} height={42} alt={event.title}></Image>
+                    <Image src={event.image} className="object-contain" width={150} height={42} alt={event.imageAlt}></Image>
                   </div>
                   <div className="upc-event-crd__body">
                     <h3 className="text-Darkgreen nuber-next-heavy text-font24 leading-[1.3]">{event.title}</h3>

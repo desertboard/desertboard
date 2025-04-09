@@ -22,6 +22,8 @@ interface Application {
   shortDescription:string;
   metaTitle:string;
   metaDescription:string;
+  bannerImageAlt:string;
+  imageAlt:string;
 }
 
 interface SectorFormData {
@@ -34,7 +36,9 @@ interface SectorFormData {
   shortDescription: string;
   metaTitle: string;
   metaDescription: string;
-
+  imageAlt:string;
+  iconAlt:string;
+  bannerImageAlt:string;
 }
 
 interface Props {
@@ -109,6 +113,9 @@ const SectorFormPage = ({ sectorId }: Props) => {
             setValue("shortDescription", data.data.shortDescription);
             setValue("metaTitle", data.data.metaTitle);
             setValue("metaDescription", data.data.metaDescription);
+            setValue("imageAlt", data.data.imageAlt);
+            setValue("iconAlt", data.data.iconAlt);
+            setValue("bannerImageAlt", data.data.bannerImageAlt);
           }
         } catch (error) {
           console.error("Error fetching sector:", error);
@@ -151,7 +158,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
   };
 
   const handleAddApplication = () => {
-    append({ title: "", description: "", image: "", product: "", bannerImage: "", gallery: [], shortDescription:"", metaTitle:"", metaDescription:"" });
+    append({ title: "", description: "", image: "", product: "", bannerImage: "", gallery: [], shortDescription:"", metaTitle:"", metaDescription:"",imageAlt:"",bannerImageAlt:"" });
   };
 
   const handleRemoveApplication = (index: number) => {
@@ -260,6 +267,11 @@ const SectorFormPage = ({ sectorId }: Props) => {
             {errors.image && <p className="text-red-500 text-sm">{errors.image.message}</p>}
           </div>
 
+          <div>
+            <Label>Image Alt</Label>
+            <Input {...register("imageAlt")}/>
+          </div>
+
           <div className="space-y-2">
             <Label className="text-sm font-medium">Icon</Label>
             <Controller
@@ -278,6 +290,11 @@ const SectorFormPage = ({ sectorId }: Props) => {
             {errors.icon && <p className="text-red-500 text-sm">{errors.icon.message}</p>}
           </div>
 
+          <div>
+            <Label>Icon Alt</Label>
+            <Input {...register("iconAlt")}/>
+          </div>
+
           <div className="space-y-2">
             <Label className="text-sm font-medium">Banner Image</Label>
             <Controller
@@ -294,6 +311,11 @@ const SectorFormPage = ({ sectorId }: Props) => {
               )}
             />
             {errors.bannerImage && <p className="text-red-500 text-sm">{errors.bannerImage.message}</p>}
+          </div>
+
+          <div>
+            <Label>Banner Image Alt</Label>
+            <Input {...register("bannerImageAlt")}/>
           </div>
 
           <div className="space-y-4">
@@ -380,6 +402,7 @@ const SectorFormPage = ({ sectorId }: Props) => {
                 </div>
 
                 <div className="space-y-2 grid grid-cols-2">
+                  <div className="flex flex-col gap-2">
                   <div className="w-full">
                     <Label className="text-sm font-medium">Image</Label>
                     <ImageUploader className="w-full"
@@ -390,7 +413,13 @@ const SectorFormPage = ({ sectorId }: Props) => {
                       <p className="text-red-500 text-sm">{errors.applications[index]?.image?.message}</p>
                     )}
                   </div>
+                  <div className="w-3/4">
+                    <Label>Image Alt</Label>
+                    <Input {...register(`applications.${index}.imageAlt`)}/>
+                  </div>
+                  </div>
 
+                    <div>
                   <div className="">
                     <Label className="text-sm font-medium">Banner Image</Label>
                     <ImageUploader className="w-full"
@@ -400,6 +429,11 @@ const SectorFormPage = ({ sectorId }: Props) => {
                     {errors.applications?.[index]?.image && (
                       <p className="text-red-500 text-sm">{errors.applications[index]?.image?.message}</p>
                     )}
+                  </div>
+                  <div className="w-3/4">
+                    <Label>Banner Image Alt</Label>
+                    <Input {...register(`applications.${index}.bannerImageAlt`)}/>
+                  </div>
                   </div>
 
                 </div>

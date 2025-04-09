@@ -45,12 +45,14 @@ const Blogs = () => {
         title={data && data.sustainability && data.sustainability.pageHeading}
         breadcrumbs={breadcrumbs}
         bnrHeight="90dvh"
+        imageAlt={data?.sustainability?.bannerImageAlt}
       />
        <MainDescBOx
         secTitle={data && data.sustainability && data.sustainability.heading}
         subTitle=""
         paragraphs={data && data.sustainability && data.sustainability.description}
         mainImg={data && data.sustainability && data.sustainability.image!=="" && data.sustainability.image || assets.sumain}
+        imageAlt={data?.sustainability?.imageAlt}
       />
       <Greenslider data={data}/>
       <Sustainslide data={data}/>

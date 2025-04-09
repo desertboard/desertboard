@@ -28,12 +28,12 @@ const formatText = (text: string) => {
     }}>
       {data && data.sustainability && data.sustainability.roles.map((framework) => (
         <div className="relative group bg-gray-800 csmn overflow-hidden sectorcrd" key={framework._id}>
-          {framework.image !== "" && <Image src={framework.image} alt={framework.title} className="w-full h-[300px] md:h-[340px] xxl:h-[400px] 3xl:h-[460px] object-cover opacity-80 lg:group-hover:opacity-100 transition-all duration-300" width={300} height={400}/>}
+          {framework.image !== "" && <Image src={framework.image} alt={framework.imageAlt} className="w-full h-[300px] md:h-[340px] xxl:h-[400px] 3xl:h-[460px] object-cover opacity-80 lg:group-hover:opacity-100 transition-all duration-300" width={300} height={400}/>}
           <div className="absolute inset-0 sectorcrd-overlay transition-all duration-500 ease-in-out"></div>
           <div className="absolute inset-0 sectorcrd-overlaygreen transition-all duration-500 ease-in-out "></div>
           <div className="gpsp absolute top-0 text-white w-full h-full transition-all duration-500 ease-in-out p-5 lg:p-8 ">
             <div className="w-full ">
-              {framework.logo !=="" && <Image src={framework.logo} alt="icn1" className="h-[40px] w-auto" width={100} height={100}/>}
+              {framework.logo !=="" && <Image src={framework.logo} alt={framework.logoAlt} className="h-[40px] w-auto" width={100} height={100}/>}
             </div>
             <hr className="opacity-10 border-t-2 mt-4 transition-all duration-500 delay-100 ease-in-out hcustm   lg:group-hover:mt-7" />
             <h3 className="opacity-[90%] nuber-next-heavy mtsts text-font20   leading-[1.3] transition-all duration-500 delay-100 mt-4 lg:group-hover:mt-7 nuber-next-bold" dangerouslySetInnerHTML={{ __html: formatText(framework.title) }}></h3>

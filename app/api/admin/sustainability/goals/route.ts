@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ message: "Goal updated successfully" }, { status: 200 });
       } else {
         console.log(sustainability)
-        sustainability.goals.goals.push({ image: entries.image, logo: entries.logo, heading: entries.title, description: entries.description })
+        sustainability.goals.goals.push({ image: entries.image, logo: entries.logo, heading: entries.title, description: entries.description,imageAlt:entries.imageAlt,logoAlt:entries.logoAlt })
         await sustainability.save()
         return NextResponse.json({ message: "Goal added successfully" }, { status: 200 });
       }
@@ -101,6 +101,8 @@ export async function PATCH(req: NextRequest) {
         toEditItem.description = updatedData.description
         toEditItem.image = updatedData.image
         toEditItem.logo = updatedData.logo
+        toEditItem.imageAlt = updatedData.imageAlt
+        toEditItem.logoAlt = updatedData.logoAlt
 
         await sustainability.save()
         return NextResponse.json({ message: "Goal updated successfully" }, { status: 200 });

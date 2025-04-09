@@ -13,7 +13,9 @@ export type SectorType = {
                 slug:string;
                 description:string;
                 icon:string;
+                iconAlt:string;
                 image:string;
+                imageAlt:string;
                 image_url:string;
                 shortDescription:string;
                 _id:string;

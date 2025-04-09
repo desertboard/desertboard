@@ -5,9 +5,11 @@ export type IndiSectorType = {
             description:string;
            
             image:string;
+            imageAlt:string;
             product:string;
             _id:string;
             bannerImage:string;
+            bannerImageAlt:string;
             gallery:string[];
             shortDescription:string;
         }[],
@@ -15,7 +17,9 @@ export type IndiSectorType = {
         description:string;
         icon:string;
         image:string;
+        imageAlt:string;
         bannerImage:string;
+        bannerImageAlt:string;
         image_url:string;
         shortDescription:string;
         _id:string;
@@ -30,4 +34,5 @@ export type Applications = {
         product:string;
         _id:string;
         gallery:string[]
+        imageAlt:string;
 }[]

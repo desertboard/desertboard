@@ -1,10 +1,10 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper";
-import {SliderData as data} from './data'
+// import {SliderData as data} from './data'
 
 // Images
 import arrowExpand from "@/public/assets/images/icons/expand-icon.png";
@@ -21,16 +21,16 @@ interface LinkedInSliderProps {
   data:HomeType | null
 }
 
-const Slidersustain: React.FC<LinkedInSliderProps> = () => {
-  // const [hovIndex, setHovIndex] = useState<number | null>(null);
+const Slidersustain: React.FC<LinkedInSliderProps> = ({data}) => {
+  const [hovIndex, setHovIndex] = useState<number | null>(null);
 
   const swiperRef = useRef<SwiperType | null>(null);
-  // const formatText = (text: string) => {
-  //   return text.replace(/®/g, "<sup>®</sup>");
-  // };
+  const formatText = (text: string) => {
+    return text.replace(/®/g, "<sup>®</sup>");
+  };
   return (
     <>
-      {/* <Swiper
+      <Swiper
         // install Swiper modules
         modules={[Navigation, Pagination]}
         spaceBetween={0}
@@ -90,7 +90,7 @@ const Slidersustain: React.FC<LinkedInSliderProps> = () => {
             }}
           >
             <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
-              <Image src={arrowExpand} alt="" width={20} height={20}></Image>
+              <Image src={arrowExpand} alt={framework.imageAlt ?? "altImage"} width={20} height={20}></Image>
             </div>
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="absolute bg-cover bg-center h-full goal-crd__icon">
@@ -100,7 +100,7 @@ const Slidersustain: React.FC<LinkedInSliderProps> = () => {
                     src={framework.logo}
                     width={131}
                     height={131}
-                    alt="Thumbnail"
+                    alt={framework.logoAlt ?? "logoAlt"}
                     className="  transform transition-all duration-500"
                   />
                 </div>
@@ -120,17 +120,17 @@ const Slidersustain: React.FC<LinkedInSliderProps> = () => {
         </SwiperSlide>
 
       ))}
-      </Swiper> */}
+      </Swiper>
 
-<Swiper
-        // install Swiper modules
+{/* <Swiper
+        
         modules={[Navigation, Pagination]}
         spaceBetween={0}
-        // slidesPerView='auto'
+        
         loop={true}
         navigation={{
-          nextEl: ".button-next", // Target the next button
-          prevEl: ".button-prev", // Target the previous button
+          nextEl: ".button-next", 
+          prevEl: ".button-prev", 
         }}
         breakpoints={{
           0: {
@@ -174,22 +174,22 @@ const Slidersustain: React.FC<LinkedInSliderProps> = () => {
             
           >
             <div className="block lg:hidden absolute top-5 right-5 z-50 hover:cursor-pointer">
-              <Image src={arrowExpand} alt="" width={20} height={20}></Image>
+              <Image src={arrowExpand} alt={"alt"} width={20} height={20}></Image>
             </div>
             <div className="flex items-center justify-center min-h-[460px]">
               <div className="absolute bg-cover bg-center h-full goal-crd__icon">
-                {/* Thumbnail Image Container with Hover Effect */}
+                
                 <div className="absolute flex items-center justify-center transition-all duration-500 goal-crd__ibox">
                   <Image
                     src={framework.icon}
                     width={131}
                     height={131}
-                    alt="Thumbnail"
+                    alt={"alt"}
                     className="  transform transition-all duration-500"
                   />
                 </div>
 
-                {/* Description Content with Hover Effect */}
+                
               </div>
               <div className="p-6">
                 <div className="opacity-0 group-hover:opacity-100 w-full group-hover:w-full transition-opacity duration-500 group-hover:delay-300 delay-0">
@@ -206,7 +206,7 @@ const Slidersustain: React.FC<LinkedInSliderProps> = () => {
         </SwiperSlide>
 
       ))}
-      </Swiper>
+      </Swiper> */}
       <div className="container  relative">
           <div onClick={() => swiperRef.current?.slideNext()}  className=" next-style cursor-pointer group absolute bottom-[-70px] right-[15px]  transform -translate-y-1/2 text-white z-10">
             <div className="transition-all duration-300 group-hover:translate-x-1">

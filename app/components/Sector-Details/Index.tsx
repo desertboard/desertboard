@@ -45,12 +45,14 @@ const SectorDetails = () => {
         title={data && data.data.title}
         breadcrumbs={breadcrumbs}
         bnrHeight="60dvh"
+        imageAlt={data?.data.bannerImageAlt}
       />
       <MainDescBOx
         secTitle={data && data.data.title}
         subTitle=""
         paragraphs={data && data.data.description}
          mainImg={data && data.data.image}
+         imageAlt={data?.data.imageAlt}
         // mainVdo={"../assets/images/home/liftvdo.mp4"}
         // vdoPoster="../assets/images/mn.jpg"
       />

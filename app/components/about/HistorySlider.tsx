@@ -56,7 +56,7 @@ const SplideSlider = ({ data }: { data: AboutType }) => {
                       fill
                       objectFit="cover"
                       className="h-full w-full"
-                      alt=""
+                      alt={item.imageAlt ?? "history"}
                     />
                   </div>
                 </div>

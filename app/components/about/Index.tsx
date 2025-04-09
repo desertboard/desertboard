@@ -49,6 +49,7 @@ export default function Index() {
         title={data && data.about[0] && data.about[0].title}
         breadcrumbs={breadcrumbs}
         bnrHeight="90dvh"
+        imageAlt={data?.about[0]?.bannerImageAlt}
       />
       <MainDescBOx
         secTitle="The DesertBoard Story"

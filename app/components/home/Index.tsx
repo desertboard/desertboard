@@ -9,12 +9,15 @@ import SustainabeSc from "../../components/home/SustainabeSc";
 import UspList from "../../components/home/UspList";
 // import useSWR from "swr";
 import { HomeType } from "@/types/HomeType";
+import { SectorType } from "@/types/SectorType";
+
+import useSWR from "swr";
 
 export default function Home() {
 
-    // const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
+    const fetcher = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
 
-    // const { data }: { data: HomeType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/home', fetcher)
+    const { data:sectorData }: { data: SectorType, error: Error | undefined, isLoading: boolean } = useSWR('/api/admin/sector', fetcher)
 
     const [data,setData] = useState<HomeType|null>(null)
   
@@ -54,7 +57,7 @@ export default function Home() {
         vdoPoster={data?.home[0]?.videoPoster}
       />
       <UspList secTitle={"Key USPs"} data={data}/>
-      <SectorsList data={data}/>
+      <SectorsList sectorData={sectorData} data={data}/>
       <SustainabeSc data={data}/>
       <BeforeFooterTag title={"To Sustainability"} url={"/sustainability"} />
     </>

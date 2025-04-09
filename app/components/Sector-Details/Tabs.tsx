@@ -106,7 +106,7 @@ const Tabs = ({ applications,data }: {
                               <div className="w-full lg:w-1/2">
                                 <motion.img
                                   src={tab.image}
-                                  alt="New Tab Content"
+                                  alt={tab.imageAlt}
                                   className="w-full h-350 lg:h-[552px] object-cover transition-opacity duration-300"
                                   width={1500} height={900}
                                   initial={{ scale: 0.9 }}
@@ -168,7 +168,7 @@ const Tabs = ({ applications,data }: {
                             className="overflow-hidden"
                           ><motion.img
                               src={tab.image}
-                              alt="New Tab Content"
+                              alt={tab.imageAlt}
                               className="w-full h-[200px] mb-5  object-cover opacity-80 transition-opacity duration-300 hover:opacity-100"
                               initial={{ scale: 0.9 }}
                               animate={{ scale: 1 }}

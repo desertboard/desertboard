@@ -13,11 +13,12 @@ interface HeroSectionProps {
   desc?: string;
   breadcrumbs: { label: string; href: string }[];
   bnrHeight?: string;
+  imageAlt?:string;
 }
 const formatText = (text: string) => {
   return text.replace(/®/g, "<sup>®</sup>");
 };
-const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,desc, breadcrumbs, bnrHeight, bnrPos }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,desc, breadcrumbs, bnrHeight, bnrPos,imageAlt }) => {
   return (
     // <section className="relative h-[75dvh] bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full">
     <section className="relative bg-cover bg-center flex items-center justify-center text-center bnr-pg pg-bnr w-full" style={ { "--banner-height": bnrHeight } as React.CSSProperties}>
@@ -29,7 +30,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ bannerSrc, arrowSrc, title,de
      src={bannerSrc || "/assets/images/banners/bggrn.jpg"}
      width={1600}
      height={700}
-     alt="Banner image"
+     alt={imageAlt ?? "Banner Image"}
   />
 </figure>
 

@@ -1,26 +1,20 @@
 import React, { useEffect } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import '@/app/components/Common/sectorcrd.scss';
 import readarrow from "@/public/assets/images/read-arrow.svg";
 import { formatLinkForSectors } from "@/app/helpers/formatLinks";
+import { SectorType } from "@/types/SectorType";
 
-interface FrameworkItem {
-  id: number;
-  title: string;
-  dec: string;
-  link: string;
-  image: StaticImageData;
-  icon: string;
-}
+
 
 interface FrameworkSectionProps {
-  data: FrameworkItem[];
+  data: SectorType | null;
 }
 import {motion} from "framer-motion"
 import useSWR from "swr";
 import Link from "next/link";
 // import parse from 'html-react-parser'
-import { SectorType } from "@/types/SectorType";
+
 
 
 
@@ -55,12 +49,12 @@ import { SectorType } from "@/types/SectorType";
     }}>
       {data && data?.data &&  data?.data?.map((framework) => (
         <div className="relative group bg-gray-800 csmn overflow-hidden sectorcrd" key={framework._id}>
-          <Image src={framework.image} alt={framework.title} width={800} height={400} className="w-full h-[340px] lg:h-[450px] xxl:h-[492px] 3xl:h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300"/>
+          <Image src={framework.image} alt={framework.imageAlt} width={800} height={400} className="w-full h-[340px] lg:h-[450px] xxl:h-[492px] 3xl:h-[552px] object-cover opacity-80 group-hover:opacity-100 transition-all duration-300"/>
           <div className="absolute inset-0 sectorcrd-overlay transition-all duration-500 ease-in-out"></div>
           <div className="absolute inset-0 sectorcrd-overlaygreen transition-all duration-500 ease-in-out "></div>
           <div className="absolute top-0 text-white w-full h-full transition-all duration-500 ease-in-out p-5 lg:p-8 ">
             <div className="w-full">
-              <Image src={framework.icon} alt="icn1" className="" width={34} height={34}/>
+              <Image src={framework.icon} alt={framework.iconAlt} className="" width={34} height={34}/>
             </div>
             <hr className="opacity-10 border-t-2 mt-4 transition-all duration-500 delay-100 ease-in-out group-hover:mt-7" />
             <h3 className="opacity-[90%] text-font28 font-[400] leading-[1.3] transition-all duration-500 delay-100 mt-4 group-hover:mt-7 nuber-next-bold" >{framework.title}</h3>

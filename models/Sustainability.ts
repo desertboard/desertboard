@@ -13,6 +13,12 @@ const RoleSchema = new mongoose.Schema({
     },
     description:{
         type:String
+    },
+    imageAlt:{
+        type:String
+    },
+    logoAlt:{
+        type:String
     }
 })
 
@@ -29,12 +35,18 @@ const VisionSchema = new mongoose.Schema({
     },
     region:{
         type:String
+    },
+    imageAlt:{
+        type:String
     }
 })
 
 
 const SustainabilitySchema = new mongoose.Schema({
     bannerImage:{
+        type:String
+    },
+    bannerImageAlt:{
         type:String
     },
     pageHeading: {
@@ -57,6 +69,9 @@ const SustainabilitySchema = new mongoose.Schema({
         type: String,
         default: ""
     },
+    imageAlt:{
+        type:String
+    },
     roles: [RoleSchema],
     goals: {
         heading: {
@@ -78,6 +93,12 @@ const SustainabilitySchema = new mongoose.Schema({
                 },
                 description: {
                     type: String
+                },
+                imageAlt:{
+                    type:String
+                },
+                logoAlt:{
+                    type:String
                 }
             }
         ]

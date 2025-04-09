@@ -11,6 +11,8 @@ export type HomeType = {
             image:string;
             title:string;
             description:string;
+            imageAlt:string;
+            logoAlt:string;
         }[]
         heading:string;
        }
@@ -21,6 +23,8 @@ export type HomeType = {
             image:string;
             title:string;
             description:string;
+            imageAlt:string;
+            logoAlt:string;
         }[]
         heading:string;
         description:string;

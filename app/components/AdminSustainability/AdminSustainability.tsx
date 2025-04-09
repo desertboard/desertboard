@@ -16,9 +16,11 @@ type FormData = {
     heading:string;
     description:string;
     image_url:string;
+    imageAlt:string;
     banner_image:string;
     metaTitle:string;
     metaDescription:string;
+    bannerImageAlt:string;
 }
 
 const AdminSustainability = () => {
@@ -45,7 +47,9 @@ const AdminSustainability = () => {
             formData.append("pageHeading", data.pageHeading);
             formData.append("pageDescription", data.pageDescription);
             formData.append("image", getValues("image_url"));
+            formData.append("imageAlt", getValues("imageAlt"));
             formData.append("bannerImage", getValues("banner_image"));
+            formData.append("bannerImageAlt", getValues("bannerImageAlt"));
             formData.append("heading", data.heading);
             formData.append("description", data.description);
             formData.append("metaTitle", data.metaTitle);
@@ -93,7 +97,9 @@ const AdminSustainability = () => {
                             setValue("heading",data.sustainability.heading)
                             setValue("description",data.sustainability.description)
                             setValue("image_url",data.sustainability.image)
+                            setValue("imageAlt",data.sustainability.imageAlt)
                             setValue("banner_image",data.sustainability.bannerImage)
+                            setValue("bannerImageAlt",data.sustainability.bannerImageAlt)
                             setRoles(data.sustainability.roles)
                             setGoals(data.sustainability.goals)
                             setPartners(data.sustainability.partners)
@@ -128,10 +134,18 @@ const AdminSustainability = () => {
                 <div className='flex flex-col gap-3'>
 
                     <div className='grid grid-cols-2 gap-5'>
-                    <div>
+                        <div>
+                        <div>
                         <Label>Banner Image</Label>
                         <ImageUploader value={watch("banner_image")} onChange={(url) => setValue("banner_image", url)} />
                     </div>
+
+                    <div>
+                        <Label>Banner Image Alt</Label>
+                        <Input {...register("bannerImageAlt")}/> 
+                    </div>
+                        </div>
+                    
 
                     <div>
                     <div>
@@ -173,6 +187,11 @@ const AdminSustainability = () => {
                     <Label>Image</Label>
                     <ImageUploader value={watch("image_url")} onChange={(url) => setValue("image_url", url)} />
                 </div>
+
+                <div>
+                        <Label>Image Alt</Label>
+                        <Input {...register("imageAlt")}/> 
+                    </div>
                 
             
         </div>

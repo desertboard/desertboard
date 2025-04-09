@@ -8,5 +8,6 @@ export type IndiNews = {
         title:string;
         type:string;
         _id:string;
+        imageAlt:string;
     }
 }

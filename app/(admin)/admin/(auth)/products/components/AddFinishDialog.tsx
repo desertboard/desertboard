@@ -18,6 +18,7 @@ interface Finish {
   name: string;
   image: string;
   description: string;
+  imageAlt:string;
 }
 
 interface AddFinishDialogProps {
@@ -34,6 +35,7 @@ export default function AddFinishDialog({ finishId }: AddFinishDialogProps) {
       name: "",
       image: "",
       description: "",
+      imageAlt:""
     },
   });
 
@@ -45,6 +47,7 @@ export default function AddFinishDialog({ finishId }: AddFinishDialogProps) {
       setValue("name", responseData.name);
       setValue("image", responseData.image);
       setValue("description", responseData.description);
+      setValue("imageAlt", responseData.imageAlt);
       setImage(responseData.image);
     } catch (error) {
       console.error(error);
@@ -64,6 +67,7 @@ export default function AddFinishDialog({ finishId }: AddFinishDialogProps) {
       name: data.name,
       image: image,
       description: data.description,
+      imageAlt:data.imageAlt
     };
     setIsLoading(true);
     try {
@@ -108,6 +112,10 @@ export default function AddFinishDialog({ finishId }: AddFinishDialogProps) {
             <div className="space-y-2">
               <Label htmlFor="image">Image</Label>
               <ImageUploader value={image} onChange={(url) => setImage(url)} />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="name">Image Alt</Label>
+              <Input id="name" {...register("imageAlt")} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="description">Description</Label>

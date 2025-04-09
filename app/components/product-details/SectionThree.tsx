@@ -30,7 +30,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<string | null>(null);
   const contentRefs = useRef(new Map());
-  const [filteredApplications, setFilteredApplications] = useState<{ title: string; description: string; image: string; product: string; _id: string;shortDescription:string }[]>([])
+  const [filteredApplications, setFilteredApplications] = useState<{ title: string; description: string; image: string; product: string; _id: string;shortDescription:string,imageAlt:string }[]>([])
 
 
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
@@ -44,6 +44,7 @@ const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
         product: string;
         _id: string;
         shortDescription:string;
+        imageAlt:string;
       }[]
     }
     , error: Error | undefined, isLoading: boolean
@@ -145,11 +146,12 @@ const SectionThree: React.FC<WhySupremeProps> = ({  data }) => {
                   <SwiperSlide key={item._id} className="transition-all duration-500">
                     <div
                       className="relative group slidehr overflow-hidden hcrd transform goal-crd bg-center bg-cover transition-all duration-500 ease-in-out"
-                      style={{ backgroundImage: `url(${item.image})` }}
+                      style={{ backgroundImage: `url(${item.image})`}}
                       onMouseEnter={() => setHoveredIndex(item._id)}
                       onMouseLeave={() => setHoveredIndex(null)}
                       onTouchStart={() => setHoveredIndex(item._id)}  // For mobile devices
                     >
+                      <img src={item.image} alt={item.imageAlt} className="hidden" />
                       <div className="absolute bottom-[20px] left-[20px] opacity-[1] group-hover:opacity-[0]">
                         {/* <h3 className="nubernext28bold   text-white " >{item.title}</h3> */}
                       </div>

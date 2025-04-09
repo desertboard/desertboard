@@ -25,6 +25,7 @@ type FormData = {
     image: string;
     region: string;
     description: string;
+    imageAlt:string;
 }
 
 const VisionSection = () => {
@@ -47,6 +48,7 @@ const VisionSection = () => {
         setValue("image", "")
         setValue("region", "")
         setValue("description", "")
+        setValue("imageAlt", "")
     }
 
     useEffect(() => {
@@ -82,6 +84,7 @@ const VisionSection = () => {
         formData.append("description", data.description);
         formData.append("region", data.region);
         formData.append("image", data.image);
+        formData.append("imageAlt", data.imageAlt);
 
         try {
             const url = `/api/admin/sustainability/vision`;
@@ -117,6 +120,8 @@ const VisionSection = () => {
             formData.append("description", getValues("description"))
             formData.append("region", getValues("region"))
             formData.append("image", getValues("image"))
+            formData.append("imageAlt", getValues("imageAlt"))
+
             const url = `/api/admin/sustainability/vision?id=${id}`;
             const method = "PATCH";
             const response = await fetch(url, {
@@ -163,11 +168,12 @@ const VisionSection = () => {
         }
     }
 
-    const handleSetEditVision = (title: string, description: string, region: string, image: string) => {
+    const handleSetEditVision = (title: string, description: string, region: string, image: string,imageAlt:string) => {
         setValue("title", title)
         setValue("description", description)
         setValue("region", region)
         setValue("image", image)
+        setValue("imageAlt", imageAlt)
     }
 
     return (
@@ -184,6 +190,9 @@ const VisionSection = () => {
 
                                 <Label>Image</Label>
                                 <ImageUploader value={watch("image")} onChange={(url) => setValue("image", url)} />
+
+                                <Label>Image Alt</Label>
+                                <Input {...register("imageAlt")}></Input>
 
                                 <div className='grid grid-cols-2 gap-2'>
                                     <div className='col-span-1'>
@@ -212,13 +221,20 @@ const VisionSection = () => {
                 </Dialog>
             </div>
 
-            {visions && visions.length > 0 ? visions.map((vision: { _id: string, image: string, description: string, title: string, region: string }) => (
+            {visions && visions.length > 0 ? visions.map((vision: { _id: string, image: string, description: string, title: string, region: string,imageAlt:string }) => (
                 <div className='h-80 w-full border border-neutral-200 flex p-2  flex-col gap-5 rounded-xl' key={vision._id}>
                     <div className='grid grid-cols-2 h-full w-full rounded-xl  border-neutral-200 gap-5'>
 
-                        <div className='flex items-center justify-center col-span-1 bg-blue-50 relative'>
+                        <div className='flex flex-col w-full h-full'>
+                        <div className='flex items-center justify-center col-span-1 bg-blue-50 relative h-3/4'>
                             {vision.image !== "" ? <Image src={vision.image} alt='role-image' fill className='absolute object-cover' /> : <span>No image</span>}
                         </div>
+
+                            <div>
+                                <Label>Image Alt</Label>
+                                <Input value={vision.imageAlt} readOnly />
+                            </div>
+                            </div>
 
                         <div className='flex flex-col h-full px-4 gap-5'>
                             <div className='flex flex-col'>
@@ -236,7 +252,7 @@ const VisionSection = () => {
                             <div className='flex justify-end items-end h-1/3 gap-2'>
                                 {/* <Button onClick={()=>handleEditVison(vision._id)}>Save</Button> */}
                                 <Dialog>
-                                    <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4' onClick={() => handleSetEditVision(vision.title, vision.description, vision.region, vision.image)}>Edit</DialogTrigger>
+                                    <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4' onClick={() => handleSetEditVision(vision.title, vision.description, vision.region, vision.image,vision.imageAlt)}>Edit</DialogTrigger>
                                     <DialogContent>
                                         <DialogHeader>
                                             <DialogTitle>Edit the item</DialogTitle>
@@ -245,7 +261,9 @@ const VisionSection = () => {
 
                                                 <Label>Image</Label>
                                                 <ImageUploader value={watch("image")} onChange={(url) => setValue("image", url)} />
-
+                                                
+                                                <Label>Image Alt</Label>
+                                                <Input {...register("imageAlt")}></Input>
 
                                                 <div className='grid grid-cols-2 gap-2'>
                                                     <div className='col-span-1'>

@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Sustainability not found" }, { status: 404 });
       }
 
-      sustainability.vision.push({image:entries.image,description:entries.description,title:entries.title,region:entries.region})
+      sustainability.vision.push({image:entries.image,description:entries.description,title:entries.title,region:entries.region,imageAlt:entries.imageAlt})
       await sustainability.save()      
       return NextResponse.json({ message: "Vision added successfully" }, { status: 200 });
     
@@ -82,6 +82,7 @@ export async function POST(req: NextRequest) {
           toEditItem.description = updatedData.description
           toEditItem.region = updatedData.region
           toEditItem.image = updatedData.image
+          toEditItem.imageAlt = updatedData.imageAlt
           
           await sustainability.save()
         } 

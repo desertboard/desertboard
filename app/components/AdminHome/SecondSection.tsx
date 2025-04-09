@@ -18,6 +18,7 @@ type FormData = {
     inspiration: string;
     video: string;
     poster:string;
+    imageAlt:string;
 };
 
 
@@ -44,6 +45,7 @@ const SecondSection = () => {
         formData.append("poster", data.poster);
         formData.append("title", data.title);
         formData.append("subTitle", data.sub_title);
+        formData.append("imageAlt", data.imageAlt);
         try {
 
             const url = `/api/admin/home/second`;
@@ -86,6 +88,7 @@ const SecondSection = () => {
                         setValue("title", data.home[0].secondSectionTitle)
                         setValue("sub_title", data.home[0].secondSectionSubTitle)
                         setValue("poster", data.home[0].videoPoster)
+                        setValue("imageAlt", data.home[0].videoPosterAlt)
 
                     }
                 } else {
@@ -136,9 +139,15 @@ const SecondSection = () => {
                     <Label htmlFor="title">Video</Label>
                     <VideoUploader value={watch("video")} onChange={(url) => setValue("video", url)} />
                 </div>
+                <div>
                 <div className='mt-5'>
                     <Label htmlFor="title">Poster</Label>
                     <ImageUploader value={watch("poster")} onChange={(url) => setValue("poster", url)} />
+                </div>
+                <div className='mt-5'>
+                    <Label htmlFor="title">Image Alt</Label>
+                    <Input {...register("imageAlt")}/>
+                </div>
                 </div>
             </div>
 

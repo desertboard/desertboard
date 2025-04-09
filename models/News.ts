@@ -11,6 +11,7 @@ const NewsSchema = new mongoose.Schema({
   type: String,
   metaTitle: String,
   metaDescription: String,
+  imageAlt:String
 });
 
 const News = mongoose.models.News || mongoose.model("News", NewsSchema);

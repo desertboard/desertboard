@@ -19,6 +19,7 @@ interface WhySupremeProps {
       name: string;
       image: string;
       description: string
+      imageAlt:string;
     }[]
   }
 }
@@ -160,6 +161,7 @@ const SectionFive: React.FC<WhySupremeProps> = ({ sectitle, data }) => {
                       onMouseLeave={() => setHoveredIndex(null)}
                       onTouchStart={() => setHoveredIndex(item._id)}  // For mobile devices
                     >
+                      <img src={item.image} alt={item.imageAlt} className="hidden" />
                 <div className="icnview"></div>
                       <div className="flex items-end pb-1 md:pb-3 xl:pb-3 min-h-[300px] lg:min-h-[426px]">
                         <div className="px-4 md:px-5 xl:px-5 w-full">

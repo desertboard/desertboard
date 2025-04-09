@@ -20,9 +20,11 @@ import { Textarea } from '@/components/ui/textarea'
 
 type FormData = {
     title: string;
-    description:string;
+    description: string;
     image: string;
     logo: string;
+    imageAlt: string;
+    logoAlt: string;
 }
 
 const RoleSection = () => {
@@ -30,8 +32,8 @@ const RoleSection = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [refetch, setRefetch] = useState(false)
     const [roles, setRoles] = useState([])
-   
-    
+
+
 
     const {
         handleSubmit,
@@ -49,6 +51,8 @@ const RoleSection = () => {
         formData.append("description", data.description);
         formData.append("image", data.image);
         formData.append("logo", data.logo);
+        formData.append("imageAlt", data.imageAlt);
+        formData.append("logoAlt", data.logoAlt);
 
         try {
             console.log("POST WORKS")
@@ -73,7 +77,7 @@ const RoleSection = () => {
         } finally {
             setIsSubmitting(false);
             setRefetch((prev) => !prev)
-            
+
         }
 
     };
@@ -111,8 +115,10 @@ const RoleSection = () => {
             const formData = new FormData()
             formData.append("title", getValues("title"))
             formData.append("description", getValues("description"))
-            formData.append("image",getValues("image"))
-            formData.append("logo",getValues("logo"))
+            formData.append("image", getValues("image"))
+            formData.append("logo", getValues("logo"))
+            formData.append("imageAlt", getValues("imageAlt"))
+            formData.append("logoAlt", getValues("logoAlt"))
             const url = `/api/admin/sustainability/roles?id=${id}`;
             const method = "PATCH";
             const response = await fetch(url, {
@@ -132,7 +138,7 @@ const RoleSection = () => {
             console.error("Error editing role:", error);
             alert("Failed to edit role. Please try again.");
         } finally {
-            
+
             setRefetch((prev) => !prev)
         }
     }
@@ -166,13 +172,17 @@ const RoleSection = () => {
         setValue("description", "")
         setValue("image", "")
         setValue("logo", "")
+        setValue("imageAlt", "")
+        setValue("logoAlt", "")
     }
 
-    const handleSetEditRole = (roleTitle:string,roleDescription:string,roleImage:string,roleLogo:string) =>{
-        setValue("image",roleImage)
-        setValue("title",roleTitle)
-        setValue("description",roleDescription)
-        setValue("logo",roleLogo)
+    const handleSetEditRole = (roleTitle: string, roleDescription: string, roleImage: string, roleLogo: string, imageAlt: string, logoAlt: string) => {
+        setValue("image", roleImage)
+        setValue("title", roleTitle)
+        setValue("description", roleDescription)
+        setValue("logo", roleLogo)
+        setValue("imageAlt", imageAlt)
+        setValue("logoAlt", logoAlt)
     }
 
 
@@ -186,14 +196,21 @@ const RoleSection = () => {
                         <DialogHeader>
                             <DialogTitle>Add an item</DialogTitle>
 
-                            <form className='flex flex-col gap-2' onSubmit={handleSubmit(onSubmit)}>
+                            <form className='flex flex-col gap-2 h-[600px] overflow-y-auto' onSubmit={handleSubmit(onSubmit)}>
 
                                 <Label>Image</Label>
                                 <ImageUploader value={watch("image")} onChange={(url) => setValue("image", url)} />
 
+                                <Label>Image Alt</Label>
+                                <Input {...register("imageAlt")}></Input>
+
 
                                 <Label>Logo</Label>
                                 <ImageUploader value={watch("logo")} onChange={(url) => setValue("logo", url)} />
+
+                                <Label>Logo Alt</Label>
+                                <Input {...register("logoAlt")}></Input>
+
 
                                 <Label>Title</Label>
                                 <Input {...register("title")}></Input>
@@ -210,13 +227,22 @@ const RoleSection = () => {
                 </Dialog>
             </div>
 
-            {roles && roles.length > 0 ? roles.map((role: { _id: string, image: string, logo: string, title: string ,description:string}) => (
+            {roles && roles.length > 0 ? roles.map((role: { _id: string, image: string, logo: string, title: string, description: string, imageAlt: string, logoAlt: string }) => (
                 <div className='h-80 w-full border border-neutral-200 flex p-2  flex-col gap-5 rounded-xl' key={role._id}>
                     <div className='grid grid-cols-2 h-full w-full rounded-xl  border-neutral-200 gap-5'>
 
-                        <div className='flex items-center justify-center col-span-1 bg-blue-500 h-full w-full relative'>
-                            {role.image !== "" ? <Image src={role.image} alt='role-image' fill className='absolute object-cover' /> : <span>No image</span>}
+                        <div className='flex flex-col h-full w-full'>
+                            <div className='flex items-center justify-center col-span-1 bg-blue-500 h-3/4 w-full relative'>
+                                {role.image !== "" ? <Image src={role.image} alt='role-image' fill className='absolute object-cover' /> : <span>No image</span>}
+                            </div>
+
+                            <div>
+                                <Label>Image Alt</Label>
+                                <Input value={role.imageAlt} readOnly />
+                            </div>
+
                         </div>
+
 
                         <div className='flex flex-col h-full px-4 gap-5'>
                             <div className='flex flex-col'>
@@ -228,26 +254,35 @@ const RoleSection = () => {
                                     {role.logo !== "" ? <Image src={role.logo} alt='role-image' width={100} height={100} /> : <span>No logo</span>}
                                 </div>
                                 <div>
+                                    <Label>Logo Alt</Label>
+                                    <Input value={role.logoAlt} readOnly />
+                                </div>
+                                <div>
                                     <Textarea value={role.description} readOnly></Textarea>
-                                    
+
                                 </div>
                             </div>
                             <div className='flex justify-end items-end h-1/3 gap-2'>
                                 {/* <Button onClick={()=>handleEditRole(role._id)}>Save</Button> */}
                                 <Dialog>
-                                    <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4' onClick={()=>handleSetEditRole(role.title,role.description,role.image,role.logo)}>Edit</DialogTrigger>
+                                    <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4' onClick={() => handleSetEditRole(role.title, role.description, role.image, role.logo, role.imageAlt, role.logoAlt)}>Edit</DialogTrigger>
                                     <DialogContent>
                                         <DialogHeader>
                                             <DialogTitle>Edit the item</DialogTitle>
 
-                                            <form className='flex flex-col gap-2'>
+                                            <form className='flex flex-col gap-2 h-[600px] overflow-y-auto'>
 
                                                 <Label>Image</Label>
                                                 <ImageUploader value={watch("image")} onChange={(url) => setValue("image", url)} />
 
+                                                <Label>Image Alt</Label>
+                                                <Input {...register("imageAlt")}></Input>
 
                                                 <Label>Logo</Label>
                                                 <ImageUploader value={watch("logo")} onChange={(url) => setValue("logo", url)} />
+
+                                                <Label>Logo Alt</Label>
+                                                <Input {...register("logoAlt")}></Input>
 
                                                 <Label>Title</Label>
                                                 <Input {...register("title")}></Input>
@@ -255,7 +290,7 @@ const RoleSection = () => {
                                                 <Label>Description</Label>
                                                 <Textarea {...register("description")}></Textarea>
 
-                                                <DialogClose className="bg-black text-white p-3" disabled={isSubmitting} onClick={()=>handleEditRole(role._id)} type='button'>Save</DialogClose>
+                                                <DialogClose className="bg-black text-white p-3" disabled={isSubmitting} onClick={() => handleEditRole(role._id)} type='button'>Save</DialogClose>
                                             </form>
 
 

@@ -36,6 +36,8 @@ export async function PATCH(request: NextRequest) {
     featuredImage,
     metaTitle,
     metaDescription,
+    bannerImageAlt,
+    imageAlt
   } = await request.json();
 
   await connectDB();
@@ -54,6 +56,8 @@ export async function PATCH(request: NextRequest) {
     featuredImage,
     metaTitle,
     metaDescription,
+    bannerImageAlt,
+    imageAlt
   });
 
   return NextResponse.json({ success: true, data: product }, { status: 200 });

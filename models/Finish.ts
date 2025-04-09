@@ -13,6 +13,9 @@ const FinishSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  imageAlt:{
+    type:String
+  }
 });
 
 const Finish = mongoose.models.Finish || mongoose.model("Finish", FinishSchema);

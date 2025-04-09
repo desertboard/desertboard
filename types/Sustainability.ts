@@ -1,6 +1,7 @@
 export type Sustainability = {
     sustainability:{
         bannerImage:string;
+        bannerImageAlt:string;
         description:string;
         goals:{
             description:string;
@@ -11,10 +12,13 @@ export type Sustainability = {
                 image:string;
                 logo:string;
                 _id:string;
+                imageAlt:string;
+                logoAlt:string;
             }[]
         }
         heading:string;
         image:string;
+        imageAlt:string;
         pageDescription:string;
         pageHeading:string;
         partners:{
@@ -32,6 +36,8 @@ export type Sustainability = {
             logo:string;
             title:string;
             _id:string;
+            imageAlt:string;
+            logoAlt:string;
         }[]
         vision:{
             description:string;
@@ -39,6 +45,7 @@ export type Sustainability = {
             region:string;
             title:string;
             _id:string;
+            imageAlt:string;
         }[]
         _id:string;
     }

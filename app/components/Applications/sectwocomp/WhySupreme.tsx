@@ -29,7 +29,7 @@ const WhySupreme = ({ data,pageName }:{
         {data && data.data && data.data.subSections && data.data.subSections.map((framework) => (
         <div key={framework._id}  className="sser" >
           <div className="flex gap-3 md:gap-[18px] items-start mb-4 strs">
-            <Image src={framework.icon} alt="icon-image" width={30} height={40} className="imgwd"/>
+            <Image src={framework.icon} alt={framework.iconAlt} width={30} height={40} className="imgwd"/>
 
               {/* <span className="texthelvetica20bold opacity-[1] text-black">
               {framework.boldtest}:

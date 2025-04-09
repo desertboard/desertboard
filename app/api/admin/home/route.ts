@@ -45,6 +45,7 @@ export async function PATCH(req: NextRequest) {
     const metaDescription = formData.get("metaDescription")
     const bannerVideo = formData.get("bannerVideo")
     const bannerPoster = formData.get("bannerPoster")
+    const bannerImageAlt = formData.get("bannerImageAlt")
 
     const home = await Home.findOne({});
 
@@ -55,6 +56,7 @@ export async function PATCH(req: NextRequest) {
         home.metaDescription = metaDescription;
         home.bannerVideo = bannerVideo;
         home.bannerPoster = bannerPoster
+        home.bannerImageAlt = bannerImageAlt
         await home.save()
     }
 

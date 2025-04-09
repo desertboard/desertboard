@@ -30,6 +30,7 @@ type FormData = {
     sustainability_description: string;
     bannerVideo:string;
     bannerPoster:string;
+    bannerImageAlt:string;
 };
 
 
@@ -60,6 +61,7 @@ const AdminHome = () => {
         formData.append("metaDescription", data.metaDescription);
         formData.append("bannerVideo", data.bannerVideo);
         formData.append("bannerPoster", data.bannerPoster);
+        formData.append("bannerImageAlt", data.bannerImageAlt);
         try {
 
             const url = `/api/admin/home`;
@@ -115,6 +117,7 @@ const AdminHome = () => {
                         setValue("sustainability_description", data.home[0].sustainabilitySection.description)
                         setSustainabilityItems(data.home[0].sustainabilitySection.contents)
                         // setItems(data.home[0].sustainabilitySection.contents)
+                        setValue("bannerImageAlt",data.home[0].bannerImageAlt)
                     }
                 } else {
                     console.error("Failed to fetch data");
@@ -175,6 +178,13 @@ const AdminHome = () => {
                             <Label htmlFor="title" className='font-bold'>Banner Poster</Label>
                             <div className='col-span-1'>
                                 <ImageUploader value={watch("bannerPoster")} onChange={(url) => setValue("bannerPoster", url)} />
+                            </div>
+                        </div>
+
+                        <div>
+                            <Label htmlFor="title" className='font-bold'>Banner Image Alt</Label>
+                            <div className='col-span-1'>
+                                <Input {...register("bannerImageAlt")}/>
                             </div>
                         </div>
                         

@@ -26,6 +26,8 @@ type FormData = {
     image:string;
     title:string;
     description:string;
+    imageAlt:string;
+    logoAlt:string;
 };
 
 const SustainabilitySection = () => {
@@ -82,6 +84,8 @@ const SustainabilitySection = () => {
         setValue("description","")
         setValue("image","")
         setValue("logo","")
+        setValue("imageAlt","")
+        setValue("logoAlt","")
     }
 
 
@@ -91,6 +95,8 @@ const SustainabilitySection = () => {
         formData.append("description", getValues("description"));
         formData.append("logo", getValues("logo"));
         formData.append("image", getValues("image"));
+        formData.append("imageAlt", getValues("imageAlt"));
+        formData.append("logoAlt", getValues("logoAlt"));
         try {
 
             const url = `/api/admin/home/sustainability/content`;
@@ -167,11 +173,13 @@ const SustainabilitySection = () => {
             }
         }
 
-        const handleSetEditItem = (title:string,description:string,image:string,logo:string) =>{
+        const handleSetEditItem = (title:string,description:string,image:string,logo:string,imageAlt:string,logoAlt:string) =>{
             setValue("image",image)
             setValue("title",title)
             setValue("description",description)
             setValue("logo",logo)
+            setValue("imageAlt",imageAlt)
+            setValue("logoAlt",logoAlt)
         }
 
 
@@ -182,6 +190,9 @@ const SustainabilitySection = () => {
                 formData.append("description", getValues("description"))
                 formData.append("image",getValues("image"))
                 formData.append("logo",getValues("logo"))
+                formData.append("imageAlt",getValues("imageAlt"))
+                formData.append("logoAlt",getValues("logoAlt"))
+
                 const url = `/api/admin/home/sustainability/content?id=${id}`;
                 const method = "PATCH";
                 const response = await fetch(url, {
@@ -232,15 +243,20 @@ const SustainabilitySection = () => {
                         <DialogHeader>
                             <DialogTitle>Add an item</DialogTitle>
 
-                            <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-2 h-[600px] overflow-y-auto'>
 
                                 <Label>Image</Label>
                                 <ImageUploader value={watch("image")} onChange={(url) => setValue("image", url)} />
 
+                                <Label>Image Alt</Label>
+                                <Input {...register("imageAlt")}></Input>
 
                                 <Label>Logo</Label>
                                 <ImageUploader value={watch("logo")} onChange={(url) => setValue("logo", url)} />
 
+                                <Label>Logo Alt</Label>
+                                <Input {...register("logoAlt")}></Input>
+                                
                                 <Label>Title</Label>
                                 <Input {...register("title")}></Input>
 
@@ -259,12 +275,19 @@ const SustainabilitySection = () => {
 
 
             <div className='mt-5 flex flex-col gap-5'>
-            {items && items.length > 0 ? items.map((item: { _id: string, image: string, logo: string, title: string ,description:string}) => (
+            {items && items.length > 0 ? items.map((item: { _id: string, image: string, logo: string, title: string ,description:string,imageAlt:string,logoAlt:string}) => (
                 <div className='h-80 w-full border border-neutral-200 flex p-2  flex-col gap-5 rounded-xl' key={item._id}>
                     <div className='grid grid-cols-2 h-full w-full rounded-xl  border-neutral-200 gap-5'>
 
-                        <div className='flex items-center justify-center col-span-1 bg-blue-500 h-full w-full relative'>
+                        <div className='w-full h-full flex flex-col'>
+                        <div className='flex items-center justify-center col-span-1 bg-blue-500 h-3/4 w-full relative'>
                             {item.image !== "" ? <Image src={item.image} alt='role-image' fill className='absolute object-cover' /> : <span>No image</span>}
+                        </div>
+
+                        <div>
+                                    <Label>Image Alt</Label>
+                                    <Input placeholder='Image Alt' value={item.imageAlt} readOnly />
+                        </div>
                         </div>
 
                         <div className='flex flex-col h-full px-4 gap-5'>
@@ -277,6 +300,10 @@ const SustainabilitySection = () => {
                                     {item.logo !== "" ? <Image src={item.logo} alt='role-image' width={100} height={100} /> : <span>No logo</span>}
                                 </div>
                                 <div>
+                                        <Label>Logo Alt</Label>
+                                        <Input placeholder='Logo Alt' value={item.logoAlt} readOnly />
+                                    </div>
+                                <div>
                                     <Textarea value={item.description} readOnly></Textarea>
                                     
                                 </div>
@@ -284,19 +311,24 @@ const SustainabilitySection = () => {
                             <div className='flex justify-end items-end h-1/3 gap-2'>
                                 {/* <Button onClick={()=>handleEditRole(role._id)}>Save</Button> */}
                                 <Dialog>
-                                    <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4' onClick={()=>handleSetEditItem(item.title,item.description,item.image,item.logo)}>Edit</DialogTrigger>
+                                    <DialogTrigger className='bg-black text-white rounded-lg py-2 px-4' onClick={()=>handleSetEditItem(item.title,item.description,item.image,item.logo,item.imageAlt,item.logoAlt)}>Edit</DialogTrigger>
                                     <DialogContent>
                                         <DialogHeader>
                                             <DialogTitle>Edit the item</DialogTitle>
 
-                                            <form className='flex flex-col gap-2'>
+                                            <form className='flex flex-col gap-2 h-[600px] overflow-y-auto'>
 
                                                 <Label>Image</Label>
                                                 <ImageUploader value={watch("image")} onChange={(url) => setValue("image", url)} />
 
+                                                <Label>Image Alt</Label>
+                                                <Input {...register("imageAlt")}></Input>
 
                                                 <Label>Logo</Label>
                                                 <ImageUploader value={watch("logo")} onChange={(url) => setValue("logo", url)} />
+
+                                                <Label>Logo Alt</Label>
+                                                <Input {...register("logoAlt")}></Input>
 
                                                 <Label>Title</Label>
                                                 <Input {...register("title")}></Input>

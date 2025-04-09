@@ -20,12 +20,14 @@ export async function POST(req: NextRequest) {
     const description = formData.get("description")
     const image = formData.get("image")
     const logo = formData.get("logo")
+    const imageAlt = formData.get("imageAlt")
+    const logoAlt = formData.get("logoAlt")
 
     const home = await Home.findOne({}); 
 
     if(home){
         console.log(home)
-        home.thirdSection.contents.push({title,description,image,logo})
+        home.thirdSection.contents.push({title,description,image,logo,imageAlt,logoAlt})
         await home.save()
         return NextResponse.json({ message: "Content updated successfully" }, { status: 200 });
     }
@@ -60,6 +62,8 @@ export async function PATCH(req: NextRequest) {
     const description = formData.get("description")
     const image = formData.get("image")
     const logo = formData.get("logo")
+    const imageAlt = formData.get("imageAlt")
+    const logoAlt = formData.get("logoAlt")
 
     const home = await Home.findOne({}); 
 
@@ -71,6 +75,8 @@ export async function PATCH(req: NextRequest) {
             toBeEditedItem.description = description
             toBeEditedItem.image = image
             toBeEditedItem.logo = logo
+            toBeEditedItem.imageAlt = imageAlt
+            toBeEditedItem.logoAlt = logoAlt
 
             await home.save()
             return NextResponse.json({ message: "Content updated successfully" }, { status: 200 });

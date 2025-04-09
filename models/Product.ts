@@ -16,6 +16,9 @@ const SubSectionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  iconAlt: {
+    type: String,
+  },
   description: {
     type: String,
     required: true,
@@ -94,6 +97,12 @@ const ProductSchema = new mongoose.Schema({
   metaDescription: {
     type: String,
   },
+  bannerImageAlt:{
+    type:String
+  },
+  imageAlt:{
+    type:String
+  }
 });
 
 const Product = mongoose.models.Product || mongoose.model("Product", ProductSchema);

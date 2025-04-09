@@ -30,6 +30,12 @@ const ApplicationSchema = new mongoose.Schema({
   },
   metaDescription:{
     type:String
+  },
+  imageAlt:{
+    type:String
+  },
+  bannerImageAlt:{
+    type:String
   }
 });
 
@@ -68,6 +74,15 @@ const SectorSchema = new mongoose.Schema(
       required: false,
     },
     applications: [ApplicationSchema],
+    imageAlt:{
+      type:String
+    },
+    iconAlt:{
+      type:String
+    },
+    bannerImageAlt:{
+      type:String
+    }
   },
   {
     timestamps: true,

@@ -21,6 +21,9 @@ const HomeSchema = new mongoose.Schema({
     bannerPoster:{
         type:String
     },
+    bannerImageAlt:{
+        type:String
+    },
     secondSectionTitle:{
         type:String
     },
@@ -36,6 +39,9 @@ const HomeSchema = new mongoose.Schema({
     videoPoster:{
         type:String
     },
+    videoPosterAlt:{
+        type:String
+    },
     thirdSection: {
         heading:{
             type:String,
@@ -46,6 +52,8 @@ const HomeSchema = new mongoose.Schema({
                 image: String,
                 title: String,
                 description: String,
+                imageAlt:String,
+                logoAlt:String
             }
         ]
     },
@@ -65,6 +73,8 @@ const HomeSchema = new mongoose.Schema({
                 image: String,
                 title: String,
                 description: String,
+                imageAlt:String,
+                logoAlt:String
             }
         ]
     }

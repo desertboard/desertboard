@@ -32,7 +32,7 @@ const SuggestedProduct: React.FC<HeroSectionProps> = ({ data }) => {
           </div>
           <div className="col-span-3  h-full ">
             <figure className=" relative h-[50px] md:h-full  w-full">
-                          {data && data.data && data?.data?.images &&  data?.data?.images[0] !=="" && <Image className="w-full object-cover h-full absolute object-center" src={data && data.data && data.data.images[0]} width={400} height={200} alt="" />}
+                          {data && data.data && data?.data?.images &&  data?.data?.images[0] !=="" && <Image className="w-full object-cover h-full absolute object-center" src={data && data.data && data.data.images[0]} width={400} height={200} alt={data?.data.imageAlt} />}
                         </figure>
             {/* <Image src={framework.image} alt="" className="h-full" /> */}
           </div>

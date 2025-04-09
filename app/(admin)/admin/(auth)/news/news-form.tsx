@@ -27,6 +27,7 @@ interface NewsFormData {
   type: string;
   metaTitle: string;
   metaDescription: string;
+  imageAlt:string;
 }
 
 interface NewsFormProps {
@@ -71,6 +72,7 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
       setValue("metaDescription", data.data.metaDescription);
       setValue("date", data.data.date.split("T")[0]);
       setImageUrls(data.data.images);
+      setValue("imageAlt",data.data.imageAlt)
     };
     fetchNews();
   }, [newsId]);
@@ -250,6 +252,11 @@ const NewsForm = ({ newsId }: NewsFormProps) => {
           </div>
         </div>
       </div>
+
+      <div className="space-y-2">
+              <Label htmlFor="name">Image Alt</Label>
+              <Input id="name" {...register("imageAlt")} />
+            </div>
 
       <div>
           <Label htmlFor="sector" className="block text-sm font-medium text-gray-700">

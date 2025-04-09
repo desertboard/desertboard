@@ -56,6 +56,7 @@ const Sectors = () => {
       bannerImage: string;
       gallery: string[];
       shortDescription: string;
+      bannerImageAlt:string;
     }[]
   >([]);
   useEffect(() => {
@@ -114,6 +115,7 @@ const Sectors = () => {
         title={typeof application=="string" && application || ""}
         breadcrumbs={breadcrumbs}
         bnrHeight="60dvh"
+        imageAlt={sectorData?.data?.applications.find((item)=>item.title === application)?.bannerImageAlt || ""}
       />
 
       <SectionTwo

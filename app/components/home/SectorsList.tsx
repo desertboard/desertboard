@@ -1,17 +1,18 @@
 "use client";
 import React from "react";
 import CardFlow from "../Common/cardflow";
-import { Homecarlsldata } from "@/app/(user)/data/homecarlsl";
 import lfbef from "@/public/assets/images/home/leaf.svg";
 import lfbt from "@/public/assets/images/home/lfbt.svg";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import parse from 'html-react-parser'
+import { SectorType } from "@/types/SectorType";
 import { HomeType } from "@/types/HomeType";
 
 
-const SectorsList = ({data}:{
+const SectorsList = ({data,sectorData}:{
   data:HomeType | null
+  sectorData:SectorType
 }) => {
   return (
     <>
@@ -57,7 +58,7 @@ const SectorsList = ({data}:{
             </motion.div>
           </div>
 
-          <CardFlow data={Homecarlsldata.data} />
+          <CardFlow data={sectorData} />
         </div>
       </section>
     </>

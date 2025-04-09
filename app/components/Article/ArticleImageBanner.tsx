@@ -62,7 +62,7 @@ const ArticleImageBanner: React.FC<HeroSectionProps> = ({ bannerSrc, data }) => 
           <Image
             className="w-full h-full object-cover"
             src={bannerSrc}
-            alt="Banner image"
+            alt={data?.data.imageAlt}
             width={1500}
             height={500}
           />

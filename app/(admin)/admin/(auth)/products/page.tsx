@@ -28,6 +28,7 @@ type Finish = {
   _id: string;
   name: string;
   image: string;
+  imageAlt:string;
 };
 
 type Meta = {

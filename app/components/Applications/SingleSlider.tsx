@@ -81,7 +81,7 @@ const SectionTwo = ({data,sectorData}:{
               <Image
                 className="w-full h-full object-cover object-center"
                 src={item}
-                alt="" width={1500} height={1000}
+                alt={data?.data?.imageAlt} width={1500} height={1000}
               />
               </figure>
               </div>
@@ -96,7 +96,7 @@ const SectionTwo = ({data,sectorData}:{
               <Image
                className="w-full h-full object-cover object-center ss"
                src={item}
-               alt="" width={1500} height={1000}
+               alt={data?.data?.imageAlt} width={1500} height={1000}
               />
               </figure>
               </div>

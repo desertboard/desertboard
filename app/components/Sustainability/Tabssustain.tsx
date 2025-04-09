@@ -124,7 +124,7 @@ const Tabssustain = ({ data }:{
                                   animate={{ scale: 1 }}
                                   transition={{ duration: 0.5 }}>
                                 {tab.image!=="" && <Image src={tab.image}
-                                  alt="New Tab Content"
+                                  alt={tab.imageAlt}
                                   className="w-full  h-full absolute object-center  object-cover opacity-80 transition-opacity duration-300 hover:opacity-100" width={800} height={600}/>}
 
                               </motion.div>
@@ -163,7 +163,7 @@ const Tabssustain = ({ data }:{
                           >
                             {tab.image !=="" && <motion.img
                               src={tab.image}
-                              alt="New Tab Content"
+                              alt={tab.imageAlt}
                               className="w-full h-[200px] mb-5  object-cover opacity-80 transition-opacity duration-300 hover:opacity-100"
                               initial={{ scale: 0.9 }}
                               animate={{ scale: 1 }}

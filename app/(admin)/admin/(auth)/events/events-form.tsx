@@ -22,6 +22,7 @@ interface EventsFormData {
   image: string;
   tickets: string;
   website: string;
+  imageAlt: string;
 }
 
 interface EventsFormProps {
@@ -33,8 +34,8 @@ const EventsForm = ({ eventId }: EventsFormProps) => {
   const router = useRouter();
   const [selectedTime, setSelectedTime] = useState<Date | null>(null);
 
-  const handleTimeChange = (time:Date) =>{  
-    console.log("selectedTime",time)
+  const handleTimeChange = (time: Date) => {
+    console.log("selectedTime", time)
     setSelectedTime(time)
     setValue("time", time.toISOString());
   }
@@ -54,7 +55,8 @@ const EventsForm = ({ eventId }: EventsFormProps) => {
       description: "",
       image: "",
       tickets: "",
-      website: ""
+      website: "",
+      imageAlt: ""
     },
   });
 
@@ -76,11 +78,13 @@ const EventsForm = ({ eventId }: EventsFormProps) => {
       setValue("image", data.data.image);
       setValue("tickets", data.data.tickets)
       setValue("website", data.data.website)
-      if(data.data.time){
+      setValue("imageAlt", data.data.imageAlt)
+
+      if (data.data.time) {
         setSelectedTime(new Date(data.data.time));
         const time = new Date(data.data.time) // Convert string to Date
         const parsedTime = time?.toISOString()
-        setValue("time",parsedTime ?? "")
+        setValue("time", parsedTime ?? "")
       }
     };
     fetchEvent();
@@ -239,6 +243,12 @@ const EventsForm = ({ eventId }: EventsFormProps) => {
             )}
           />
         </div>
+
+            <div>
+        <Label>Image Alt</Label>
+        <Input {...register("imageAlt")}></Input>
+        </div>
+
       </div>
 
       <div className="flex justify-end">

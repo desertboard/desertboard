@@ -145,7 +145,7 @@ const AccrediationSlider = ({data}:{
       <div className="accr-crd p-6 xl:p-[40px] bg-Darkgreen h-full flex items-center">
         <div>
           <div className="accr__img bg-white mb-7 p-2 w-[70px] h-[70px] flex items-center justify-center">
-            <Image src={accr.image} alt="" width={70} height={70} className="object-contain" />
+            <Image src={accr.image} alt={accr.imageAlt ?? "accr image"} width={70} height={70} className="object-contain" />
           </div>
           <h3 className="accr__title text-white leading-[1] nuber-next-heavy mb-7">
             {accr.name}<span className="text-[#FF671F]">.</span>

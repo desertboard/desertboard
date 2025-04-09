@@ -75,6 +75,7 @@ const ProducrDetails = () => {
         breadcrumbs={breadcrumbs}
         bnrHeight="60dvh"
         bnrPos="object-right"
+        imageAlt={data?.data?.bannerImageAlt}
       />
 
       <SectionTwo pageName="products" data={data} suggested={false}/>

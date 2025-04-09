@@ -1,6 +1,7 @@
 export type IndiApplication = {
     data:{
         bannerImage:string;
+        bannerImageAlt:string;
         bestPractices:{
             title:string;
             description:string;
@@ -15,6 +16,7 @@ export type IndiApplication = {
         }[],
         images:string[],
         sector:string;
+        imageAlt:string;
         specifications:{
             name:string;
             value:string;
@@ -24,6 +26,7 @@ export type IndiApplication = {
             description:string;
             icon:string;
             _id:string;
+            iconAlt:string;
         }[],
         subTitle:string;
         title:string;

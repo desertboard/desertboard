@@ -17,8 +17,8 @@ export async function POST(request: NextRequest) {
   }
   try {
     await connectDB();
-    const { title, slug, description, images, tags, date, sector, type, metaTitle, metaDescription } = await request.json();
-    const news = await News.create({ title, slug, description, images, tags, date, sector, type, metaTitle, metaDescription });
+    const { title, slug, description, images, tags, date, sector, type, metaTitle, metaDescription,imageAlt } = await request.json();
+    const news = await News.create({ title, slug, description, images, tags, date, sector, type, metaTitle, metaDescription,imageAlt });
     return NextResponse.json({ data: news, success: true }, { status: 200 });
   } catch (error) {
     console.error("Error creating news:", error);

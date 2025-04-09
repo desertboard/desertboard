@@ -44,6 +44,7 @@ type FormData = {
     bannerImage:string;
     metaTitle:string;
     metaDescription:string;
+    bannerImageAlt:string;
 };
 
 
@@ -59,18 +60,21 @@ export default function AdminAbout() {
         getValues,
         control,
         watch,
+        reset
     } = useForm<FormData>();
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [timeSpan,setTimeSpan] = useState("")
     const [heading,setHeading] = useState("")
     const [description,setDescription] = useState("")
+    const [imageAlt,setImageAlt] = useState("")
    
   
 
     const [partnerImage,setPartnerImage] = useState("")
     const [partnerName,setPartnerName] = useState("")
     const [partnerDescription,setPartnerDescription] = useState("")
+    const [partnerImageAlt,setPartnerImageAlt] = useState("")
 
     // const { 
     //     tempHistoryImage, setTempHistoryImage, clearTempHistoryImage,
@@ -84,6 +88,7 @@ export default function AdminAbout() {
         formData.append("description", data.description);
         formData.append("story", data.story);
         formData.append("bannerImage",data.bannerImage)
+        formData.append("bannerImageAlt",data.bannerImageAlt)
         formData.append("mission", data.mission);
         formData.append("vision", data.vision);
         formData.append("history",JSON.stringify(histories))
@@ -122,28 +127,30 @@ export default function AdminAbout() {
         }
     };
 
-    const [histories,setHistories] = useState<{_id?:string;timeSpan:string,heading:string,description:string,image:string}[] | []>([])
-    const [partners,setPartners] = useState<{image:string,name:string,description:string}[] | []>([])
+    const [histories,setHistories] = useState<{_id?:string;timeSpan:string,heading:string,description:string,image:string,imageAlt:string}[] | []>([])
+    const [partners,setPartners] = useState<{image:string,name:string,description:string,imageAlt:string}[] | []>([])
 
     const handleAddHistory = () =>{
         console.log("Image",getValues("image_url"))
         setHistories((prev)=>{
-            const newHistory = {timeSpan,heading,description,image:getValues("image_url")}
+            const newHistory = {timeSpan,heading,description,image:getValues("image_url"),imageAlt}
             return [...prev,newHistory]
         })
         setTimeSpan("")
         setHeading("")
         setDescription("")
+        setImageAlt("")
     }
 
     const handleAddPartner = () =>{
         setPartners((prev)=>{
-            const newPartner = {image:getValues("partner_image_url"),name:partnerName,description:partnerDescription}
+            const newPartner = {image:getValues("partner_image_url"),name:partnerName,description:partnerDescription,imageAlt}
             return [...prev,newPartner]
         })
         setTimeSpan("")
         setHeading("")
         setDescription("")
+        setPartnerImageAlt("")
     }
 
 
@@ -153,6 +160,7 @@ export default function AdminAbout() {
         setHeading(histories[index].heading)
         setDescription(histories[index].description)
         setValue("image_url",histories[index].image)
+        setImageAlt(histories[index].imageAlt)
     }
 
     const handleDeleteHistory = (index:number) =>{
@@ -166,7 +174,7 @@ export default function AdminAbout() {
         setHistories((prev) => {
            
             return prev.map((item, i) => 
-                i === index ? { ...item, timeSpan, heading, description,image:getValues("image_url") } : item
+                i === index ? { ...item, timeSpan, heading, description,image:getValues("image_url"),imageAlt } : item
             );
         });
     };
@@ -176,13 +184,15 @@ export default function AdminAbout() {
         setPartnerName(partners[index].name)
         setPartnerDescription(partners[index].description)
         setValue("partner_image_url",partners[index].image)
+        setPartnerImageAlt(partners[index].imageAlt)
+        console.log(partnerImage)
     }
 
     const handleConfirmEditPartner = (index: number) => {
         setPartners((prev) => {
            
             return prev.map((item, i) => 
-                i === index ? { ...item, image:getValues("partner_image_url"), name:partnerName, description:partnerDescription } : item
+                i === index ? { ...item, image:getValues("partner_image_url"), name:partnerName, description:partnerDescription,imageAlt:partnerImageAlt } : item
             );
         });
     };
@@ -211,6 +221,7 @@ export default function AdminAbout() {
                         setValue("title", data.about[0].title);
                         setValue("description", data.about[0].description);
                         setValue("bannerImage", data.about[0].bannerImage);
+                        setValue("bannerImageAlt", data.about[0].bannerImageAlt);
                         setValue("story", data.about[0].story);
                         setValue("mission", data.about[0].mission)
                         setValue("vision", data.about[0].vision)
@@ -260,10 +271,19 @@ export default function AdminAbout() {
             </div>
 
             <div className="grid grid-cols-2 gap-5">
+                
+                <div>
                 <div>
                     <Label htmlFor="bannerImage">Banner Image</Label>
                     <ImageUploader value={watch("bannerImage")} onChange={(url) => setValue("bannerImage", url)} />
                 </div>
+
+                <div>
+                    <Label htmlFor="bannerImage">Banner Image Alt</Label>
+                    <Input {...register("bannerImageAlt")} />
+                </div>
+                </div>
+
                 <div>
                     <Label htmlFor="metaTitle">Meta Title</Label>
                     <Input {...register("metaTitle")} />
@@ -310,7 +330,7 @@ export default function AdminAbout() {
                             <TableHead>Description</TableHead>
                             <TableHead className="">
                                 <Sheet>
-                                    <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button">Add</SheetTrigger>
+                                    <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button" onClick={()=>{setHeading("");setTimeSpan("");setDescription("");reset()}}>Add</SheetTrigger>
                                     <SheetContent>
                                         
                                         <SheetHeader>
@@ -329,6 +349,9 @@ export default function AdminAbout() {
 
                                             <Label className="text-sm font-medium">Image</Label>
                                             <ImageUploader value={watch("image_url")} onChange={(url) => setValue("image_url", url)} />
+                                            
+                                            <Label htmlFor="heading">Image Alt</Label>
+                                            <Input value={imageAlt} onChange={(e)=>setImageAlt(e.target.value)}/>
                                             
                                             <SheetClose className="bg-blue-500 text-white p-3" type="button" onClick={handleAddHistory}>Confirm</SheetClose>
                                             </div>
@@ -352,7 +375,7 @@ export default function AdminAbout() {
                                     <Button className="border-2 py-1 px-3 bg-yellow-800 rounded-lg text-white max-h-8" onClick={()=>handleDeleteHistory(index)} type="button">Delete</Button>
                                     <SheetContent>
                                         <SheetHeader>
-                                            <SheetTitle>Add a history</SheetTitle>
+                                            <SheetTitle>Edit the history</SheetTitle>
                                         </SheetHeader>
                                             
                                             <div className="flex justify-center flex-col gap-3">
@@ -367,6 +390,9 @@ export default function AdminAbout() {
 
                                             <Label htmlFor="heading">Image</Label>
                                             <ImageUploader value={watch("image_url")} onChange={(url) => setValue("image_url", url)} />
+
+                                            <Label htmlFor="heading">Image Alt</Label>
+                                            <Input value={imageAlt} onChange={(e)=>setImageAlt(e.target.value)}/>
 
                                             <SheetClose className="bg-blue-500 text-white p-3" onClick={()=>handleConfirmEdit(index)}>Confirm</SheetClose>
                                             </div>
@@ -434,14 +460,14 @@ export default function AdminAbout() {
                             <TableHead>Description</TableHead>
                             <TableHead>
                             <Sheet>
-                                    <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button">Add</SheetTrigger>
+                                    <SheetTrigger className="border-2 py-1 px-3 bg-blue-500 rounded-lg text-white" type="button" onClick={()=>{setPartnerName("");setPartnerDescription("");reset();setPartnerImageAlt("");}}>Add</SheetTrigger>
                                     <SheetContent>
                                         <SheetHeader>
                                             <SheetTitle>Add a partner</SheetTitle>
                                         </SheetHeader>
                                             <div className="flex justify-center flex-col gap-3">
-                                            <Label htmlFor="timeSpan">Image</Label>
-                                            <Input value={partnerImage} onChange={(e)=>setPartnerImage(e.target.value)}/>
+                                            {/* <Label htmlFor="timeSpan">Image</Label>
+                                            <Input value={partnerImage} onChange={(e)=>setPartnerImage(e.target.value)}/> */}
                                             
                                             <Label htmlFor="heading">Partner Name</Label>
                                             <Input value={partnerName} onChange={(e)=>setPartnerName(e.target.value)}/>
@@ -452,6 +478,9 @@ export default function AdminAbout() {
                                             <Label className="text-sm font-medium">Image</Label>
                                             <ImageUploader value={watch("partner_image_url")} onChange={(url) => setValue("partner_image_url", url)} />
 
+                                            <Label htmlFor="heading">Image Alt</Label>
+                                            <Input value={partnerImageAlt} onChange={(e)=>setPartnerImageAlt(e.target.value)}/>
+                                            
                                             <SheetClose className="bg-blue-500 text-white p-3" onClick={handleAddPartner}>Confirm</SheetClose>
                                             </div>
                                     </SheetContent>
@@ -478,6 +507,9 @@ export default function AdminAbout() {
                                             <div className="flex justify-center flex-col gap-3">
                                             <Label htmlFor="timeSpan">Image</Label>
                                             <ImageUploader value={watch("partner_image_url")} onChange={(url) => setValue("partner_image_url", url)} />
+                                            
+                                            <Label htmlFor="heading">Image Alt</Label>
+                                            <Input value={partnerImageAlt} onChange={(e)=>setPartnerImageAlt(e.target.value)}/>
                                             
                                             <Label htmlFor="heading">Name</Label>
                                             <Input value={partnerName} onChange={(e)=>setPartnerName(e.target.value)}/>

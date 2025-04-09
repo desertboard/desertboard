@@ -9,6 +9,7 @@ export type EventType = {
         _id:string;
         tickets:string;
         website:string;
+        imageAlt:string;
     }[]
     
 }

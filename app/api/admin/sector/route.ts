@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
   if (!isAdmin) {
     return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
   }
-  const { title, description, image, applications, icon, bannerImage, shortDescription, gallery, metaTitle, metaDescription } = await request.json();
+  const { title, description, image, applications, icon, bannerImage, shortDescription, gallery, metaTitle, metaDescription,imageAlt,iconAlt,bannerImageAlt } = await request.json();
 
   await connectDB();
 
@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: false, message: "Sector already exists" }, { status: 400 });
   }
 
-  const sector = await Sector.create({ title, description, image, applications, icon, bannerImage, shortDescription, gallery, metaTitle, metaDescription });
+  const sector = await Sector.create({ title, description, image, applications, icon, bannerImage, shortDescription, gallery, metaTitle, metaDescription,imageAlt,iconAlt,bannerImageAlt });
 
   return NextResponse.json({ success: true, data: sector }, { status: 201 });
 }
@@ -88,7 +88,7 @@ export async function PATCH(request: NextRequest) {
 
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
-  const { title, description, image, applications, icon, bannerImage, shortDescription, gallery, metaTitle, metaDescription } = await request.json();
+  const { title, description, image, applications, icon, bannerImage, shortDescription, gallery, metaTitle, metaDescription,imageAlt,iconAlt,bannerImageAlt } = await request.json();
 
   console.log("gallery", applications)
 
@@ -105,7 +105,11 @@ export async function PATCH(request: NextRequest) {
     shortDescription,
     metaTitle,
     metaDescription,
+    imageAlt,
+    iconAlt,
+    bannerImageAlt
   });
+
 
   return NextResponse.json({ success: true, data: sector }, { status: 200 });
 }

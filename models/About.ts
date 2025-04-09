@@ -13,6 +13,9 @@ const HistorySchema = new mongoose.Schema({
   },
   description: {
     type: String
+  },
+  imageAlt:{
+    type:String
   }
 })
 
@@ -30,6 +33,9 @@ const PartnersSchema = new mongoose.Schema({
       },
       description: {
         type: String
+      },
+      imageAlt:{
+        type:String
       }
     }
   ]
@@ -47,6 +53,9 @@ const AboutSchema = new mongoose.Schema({
     required: true,
   },
   bannerImage:{
+    type:String
+  },
+  bannerImageAlt:{
     type:String
   },
   story: {

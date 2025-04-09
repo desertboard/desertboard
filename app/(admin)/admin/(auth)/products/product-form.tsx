@@ -31,6 +31,7 @@ type ProductData = {
   subSections: {
     icon: string;
     description: string;
+    iconAlt:string;
   }[];
   bestPractices: {
     title: string;
@@ -43,6 +44,8 @@ type ProductData = {
   featuredImage?: string;
   metaTitle?: string;
   metaDescription?: string;
+  bannerImageAlt:string;
+  imageAlt:string;
 };
 
 interface ProductFormData {
@@ -160,6 +163,8 @@ const ProductForm = ({ productId }: ProductFormData) => {
       setValue("sector", res.data.sector);
       setValue("images", res.data.images);
       setValue("bannerImage", res.data.bannerImage);
+      setValue("bannerImageAlt", res.data.bannerImageAlt);
+      setValue("imageAlt", res.data.imageAlt);
       setValue("featuredImage", res.data.featuredImage);
       setValue("metaTitle", res.data.metaTitle);
       setValue("metaDescription", res.data.metaDescription);
@@ -298,7 +303,7 @@ const ProductForm = ({ productId }: ProductFormData) => {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <Label>Sub Sections</Label>
-              <Button type="button" variant="outline" onClick={() => appendSubSection({ icon: "", description: "" })}>
+              <Button type="button" variant="outline" onClick={() => appendSubSection({ icon: "", description: "" ,iconAlt:""})}>
                 Add Sub Section
               </Button>
             </div>
@@ -312,6 +317,10 @@ const ProductForm = ({ productId }: ProductFormData) => {
                     control={control}
                     render={({ field }) => <ImageUploader value={field.value} onChange={field.onChange} />}
                   />
+                </div>
+                <div>
+                  <Label>Image Alt</Label>
+                  <Input {...register(`subSections.${index}.iconAlt`)}/>
                 </div>
                 <div className="space-y-2">
                   <Label>Description</Label>
@@ -384,6 +393,11 @@ const ProductForm = ({ productId }: ProductFormData) => {
             />
           </div>
 
+          <div>
+            <Label>Banner Image Alt</Label>
+            <Input {...register("bannerImageAlt")}/>
+          </div>
+
           {/* Featured Image */}
           <div className="space-y-2">
             <Label>
@@ -430,6 +444,11 @@ const ProductForm = ({ productId }: ProductFormData) => {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div>
+            <Label>Image Alt</Label>
+            <Input {...register("imageAlt")}/>
           </div>
 
           <div className="space-y-4">
