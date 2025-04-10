@@ -100,7 +100,7 @@ const Sectors = () => {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Sectors", href: "/sectors" },
-    { label: `${sectorData?.data?.title}`,href:"sector" },
+    { label: `${sectorData?.data?.title}`,href:`/sectors/${sectorTitle}` },
     { label: `${sectorData?.data?.applications.find((item)=>item.slug===application)?.title}`, href: "" },
   ];
 
