@@ -372,7 +372,7 @@ const onSubmit = async(data:{email:string}) =>{
                       </div>
                       <div className="flex flex-col linkq">
                         <Link
-                          href="tel:+97165610999"
+                          href="tel:+97122467042"
                           className="transition-all duration-300 ease-in-out hover:text-[#FF671F] hover:translate-x-2"
                         >
                           {" "}
@@ -390,7 +390,7 @@ const onSubmit = async(data:{email:string}) =>{
                               />
                             </svg>
 
-                            <span>+971 6 5610999</span>
+                            <span>+97122467042</span>
                           </div>
                         </Link>
                         <Link
