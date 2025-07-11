@@ -3,6 +3,15 @@ import { NextRequest } from "next/server";
 import * as jose from "jose";
 
 export async function middleware(request: NextRequest) {
+ 
+  const referer = request.headers.get("referer") || "";
+  const host = request.headers.get("host") || "";
+
+  if (referer.includes("desertboard.in") || host.includes("desertboard.in")) {
+    return new NextResponse("Access Denied", { status: 403 });
+  }
+
+  
   console.log("workkkkk")
   const path = request.nextUrl.pathname;
   const searchParams = request.nextUrl.searchParams;
