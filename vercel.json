@@ -1,0 +1,16 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "referer",
+          "value": ".*desertboard\\.in.*"
+        }
+      ],
+      "statusCode": 403,
+      "destination": "/blocked"
+    }
+  ]
+}
