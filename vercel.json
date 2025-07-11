@@ -4,9 +4,8 @@
       "source": "/(.*)",
       "has": [
         {
-          "type": "header",
-          "key": "referer",
-          "value": ".*desertboard\\.in.*"
+          "type": "host",
+          "value": "desertboard.in"
         }
       ],
       "statusCode": 403,
