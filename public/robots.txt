@@ -2,4 +2,6 @@ User-agent: *
 
 Disallow: /*?type=
 
-Sitemap: https://desertboard.ae/sitemap.xml
+Disallow: /sitemap.xml
+
+Sitemap: https://desertboard.ae/sitemap-new.xml
